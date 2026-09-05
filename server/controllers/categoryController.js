@@ -52,7 +52,7 @@ const createCategory = asyncHandler(async (req, res) => {
 // @desc   Get all categories
 // @route   /api/category
 // @method  GET
-// @access  Public
+// @access  Private for admin and employees
 const getAllCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
@@ -74,7 +74,6 @@ const getAllCategories = asyncHandler(async (req, res) => {
 
   const formattedCategories = formatMongoData(sortedColums);
 
-  // Include parent category IDs in the response
   const categoriesWithParent = formattedCategories.map((category) => ({
     ...category,
     parentCategoryId: category.parentCategory || null, // Add parentCategoryId if it exists
