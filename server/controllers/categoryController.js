@@ -65,14 +65,14 @@ const getAllCategories = asyncHandler(async (req, res) => {
     statusKey: 'categoryStatus',
   });
 
-  const sortedColums = sortColumns({
+  const sortedColumns = sortColumns({
     collection: updatedCategories,
     sortField,
     sortOrder,
     language: req.lang,
   });
 
-  const formattedCategories = formatMongoData(sortedColums);
+  const formattedCategories = formatMongoData(sortedColumns);
 
   res.status(200).json({ success: true, categories: formattedCategories });
 });
