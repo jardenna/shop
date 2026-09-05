@@ -85,6 +85,7 @@ const buildShopProductProjection = () => [
       subCategoryId: '$subCategory',
       subCategoryName: '$subCategoryData.subCategoryName',
       categoryName: '$categoryData.categoryName',
+      allowedSizes: '$subCategoryData.allowedSizes',
     },
   },
   {

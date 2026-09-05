@@ -1,23 +1,20 @@
-import type {
-  MainCategoryNames,
-  Size,
-  SubCategoryNames,
-} from '../../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
-import SizeList from '../../features/shop/components/productLists/SizeList';
+import ProductList from '../../features/shop/components/productLists/ProductList';
+import SizeList from '../../features/shop/components/SizeList';
+
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
 type ProductCartCenterProps = {
-  availableSizeList: Size[];
+  allowedSizes: Size[];
   brand: string;
-  categoryName: MainCategoryNames;
   colours: string[];
   countInStock: number;
   discount: number;
   material: string;
-  subCategoryName: SubCategoryNames;
+  sizes: Size[];
   onReset: () => void;
 };
 
@@ -26,11 +23,10 @@ const ProductCartCenter = ({
   colours,
   discount,
   material,
-  availableSizeList,
   onReset,
   countInStock,
-  categoryName,
-  subCategoryName,
+  sizes,
+  allowedSizes,
 }: ProductCartCenterProps) => {
   const { language } = useLanguage();
 
@@ -53,15 +49,13 @@ const ProductCartCenter = ({
           id: 'view-product-colors',
         }}
       />
-      <SizeList
-        availableSizeList={availableSizeList}
-        categoryName={categoryName}
-        subCategoryName={subCategoryName}
-        groupTitle={{
-          title: language.sizes,
-          id: 'view-product-sizes',
-        }}
-      />
+
+      <ProductList
+        groupTitle={{ title: language.sizes, id: '' }}
+        className="color-list"
+      >
+        <SizeList allowedSizes={allowedSizes} sizes={sizes} />
+      </ProductList>
     </CartContent>
   );
 };

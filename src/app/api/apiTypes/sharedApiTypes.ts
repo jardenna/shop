@@ -50,6 +50,7 @@ export type SubCategoryNames = (typeof subCategoryValues)[number];
 export type SortOrder = 'asc' | 'desc';
 
 export type BaseProduct = {
+  allowedSizes: Size[];
   brand: string;
   categoryName: MainCategoryNames;
   colors: string[];

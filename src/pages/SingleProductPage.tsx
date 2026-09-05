@@ -18,7 +18,6 @@ import SingleProductHeader from '../features/shop/components/singleProduct/Singl
 import SingleProductPurchaseSection from '../features/shop/components/singleProduct/SingleProductPurchaseSection';
 import { useGetSingleProductQuery } from '../features/shop/shopApiSlice';
 import MetaTags from '../layout/MetaTags';
-import { getDisplaySizes } from '../utils/sizeUtils';
 import './singleProductPage.styles.scss';
 
 const SingleProductPage = () => {
@@ -92,13 +91,7 @@ const SingleProductPage = () => {
     },
   ];
 
-  const displaySizeList = product
-    ? getDisplaySizes({
-        mainKey: product.categoryName,
-        subKey: product.subCategoryName,
-        availableSizes: product.sizes,
-      })
-    : [];
+  const displaySizeList = product?.allowedSizes ?? [];
 
   const missingSizes = displaySizeList.filter(
     (size) => !product?.sizes.includes(size),

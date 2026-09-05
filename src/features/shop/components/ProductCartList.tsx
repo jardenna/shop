@@ -1,14 +1,9 @@
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductCart from './ProductCart';
+import ProductCart, { BaseProductCart } from './ProductCart';
 
-interface ProductCartListProps {
+interface ProductCartListProps extends BaseProductCart {
   products: BaseProduct[];
-  productView: string;
-  showSizeOverlay: boolean;
-  currentUser?: UserResponse | null;
   getProductLink: (id: string) => string;
-  onOpenPanel?: (id: string) => void;
 }
 
 const ProductCartList = ({

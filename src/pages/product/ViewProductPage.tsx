@@ -108,10 +108,9 @@ const ViewProductPage = () => {
               colours={product.colors}
               discount={product.discount || 0}
               material={product.material}
-              availableSizeList={product.sizes}
+              sizes={product.sizes}
+              allowedSizes={product.allowedSizes}
               onReset={() => refetch()}
-              categoryName={product.categoryName}
-              subCategoryName={product.subCategoryName}
             />
             <CartRight
               linkTo={AdminPath.AdminSubCategories}
