@@ -99,7 +99,12 @@ const getSaleSubMenu = asyncHandler(async (req, res) => {
     .select('categoryName')
     .lean();
 
-  res.status(200).json(formatMongoData(categories));
+  const saleSubMenu = categories.map(({ _id, categoryName }) => ({
+    label: categoryName.toLowerCase(),
+    categoryId: _id,
+  }));
+
+  res.status(200).json(formatMongoData(saleSubMenu));
 });
 
 // @desc    Get shop product by ID

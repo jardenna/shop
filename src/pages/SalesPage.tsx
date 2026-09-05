@@ -13,7 +13,10 @@ import { getProductLink } from '../features/shop/cartUtils';
 import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
-import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
+import {
+  useGetSaleMenuQuery,
+  useGetSaleProductsQuery,
+} from '../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
@@ -25,10 +28,15 @@ const Salespage = () => {
   const params = useParams();
   const { language } = useLanguage();
 
-  const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
     'grid',
+  );
+
+  const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
+
+  const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery(
+    params.categoryId ?? '',
   );
 
   if (!products) {
@@ -56,17 +64,11 @@ const Salespage = () => {
     );
   }
 
-  const subMenu = [
-    { label: 'kids', categoryId: '680091c674682cc14143e243' },
-    { label: 'men', categoryId: '68145e5d1ac3dd2a44867016' },
-    { label: 'women', categoryId: '680091d574682cc14143e248' },
-  ];
-
   const selectedProducts = params.categoryId
     ? products.filter((product) => product.categoryId === params.categoryId)
     : products;
 
-  const selectedCategory = subMenu.find(
+  const selectedCategory = subMenu?.find(
     ({ categoryId }) => categoryId === params.categoryId,
   );
 
@@ -85,18 +87,20 @@ const Salespage = () => {
         <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
 
         <div className="collection-page-container">
-          <CollectionAside
-            ariaLabelledby={ariaLabelledby}
-            subMenu={subMenu}
-            headerText={language.sale}
-            category=""
-            onReset={() => {
-              console.log(123);
-            }}
-            language={language}
-            getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
-            linkTo={`/${ShopPath.Sale}`}
-          />
+          {subMenu && (
+            <CollectionAside
+              ariaLabelledby={ariaLabelledby}
+              subMenu={subMenu}
+              headerText={language.sale}
+              category=""
+              onReset={() => {
+                refetchSubMenu();
+              }}
+              language={language}
+              getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
+              linkTo={`/${ShopPath.Sale}`}
+            />
+          )}
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
