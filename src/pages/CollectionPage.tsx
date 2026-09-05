@@ -163,7 +163,7 @@ const CollectionPage = () => {
       )}
 
       <section
-        className="container collection-page"
+        className="container shop-product-page"
         ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
@@ -174,7 +174,7 @@ const CollectionPage = () => {
             routeList={collectionBreadcrumbsList}
           />
         )}
-        <div className="collection-page-container">
+        <div className="shop-product-page-container">
           {!isMobileSize && subMenu && (
             <ProductAside
               headerText={categoryText}
@@ -193,7 +193,7 @@ const CollectionPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="collection-page-content">
+            <section className="shop-product-page-content">
               {!isMobileSize && (
                 <Picture
                   src={`${src}.jpg`}
@@ -201,7 +201,7 @@ const CollectionPage = () => {
                   alt={language[altText]}
                   ratio="16:9"
                   priority
-                  className="collection-banner"
+                  className="shop-product-banner"
                 />
               )}
               <div className="product-toolbar">

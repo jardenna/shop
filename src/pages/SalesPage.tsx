@@ -85,10 +85,10 @@ const Salespage = () => {
     <>
       {params.category && <MetaTags metaTitle={pageHeading} />}
 
-      <section className="container collection-page">
+      <section className="container shop-product-page">
         <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
 
-        <div className="collection-page-container">
+        <div className="shop-product-page-container">
           {subMenu && (
             <ProductAside
               ariaLabelledby={ariaLabelledby}
@@ -106,14 +106,14 @@ const Salespage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="collection-page-content">
+            <section className="shop-product-page-content">
               <Picture
                 src={`${src}.jpg`}
                 srcSet={`${src}.avif`}
                 alt={language[altText]}
                 ratio="16:9"
                 priority
-                className="collection-banner"
+                className="shop-product-banner"
               />
               <div className="product-toolbar">
                 <DisplayControls
