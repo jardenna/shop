@@ -75,7 +75,7 @@ const Salespage = () => {
     ({ categoryId }) => categoryId === params.categoryId,
   );
 
-  const categoryLabel = selectedCategory?.label ?? 'women';
+  const categoryLabel = selectedCategory?.label ?? 'all';
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
@@ -94,7 +94,7 @@ const Salespage = () => {
             <CollectionAside
               ariaLabelledby={ariaLabelledby}
               subMenu={filteredSubMenu ?? []}
-              headerText={language.sale}
+              headerText={`${language.sale} ${language[categoryLabel]}`}
               onReset={() => {
                 refetchSubMenu();
               }}
