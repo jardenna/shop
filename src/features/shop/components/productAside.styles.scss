@@ -3,14 +3,9 @@
 .product-aside {
   background-color: $color-light-gray-10;
   min-width: rem(300px);
-
-  .product-aside-header {
-    border-bottom: 4px solid $color-gray-40;
-    padding: 32px;
-  }
 }
 
-.collection-page-header {
+.product-aside-header {
   padding: 32px;
   display: flex;
   justify-content: center;
@@ -24,7 +19,7 @@
   }
 }
 
-.collection-nav-list {
+.product-nav-list {
   margin-top: 12px;
   font-size: $font-medium;
 
@@ -32,7 +27,7 @@
     margin: 0;
   }
 
-  .collection-nav-item {
+  .product-nav-item {
     display: flex;
     align-items: center;
     padding-left: 8px;

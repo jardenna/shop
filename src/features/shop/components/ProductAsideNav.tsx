@@ -24,8 +24,8 @@ const ProductAsideNav = ({
   const { language } = useLanguage();
 
   return (
-    <ul className="collection-nav-list">
-      <li className="collection-nav-item">
+    <ul className="product-nav-list">
+      <li className="product-nav-item">
         <NavLink to={linkTo} end>
           {language.showAll}
         </NavLink>
@@ -36,7 +36,7 @@ const ProductAsideNav = ({
         onReset={onReset}
       >
         {subMenu.map(({ label, categoryId }) => (
-          <li className="collection-nav-item" key={categoryId}>
+          <li className="product-nav-item" key={categoryId}>
             <NavLink to={getProductLink(categoryId)}>
               {translateKey(label, language)}
             </NavLink>
