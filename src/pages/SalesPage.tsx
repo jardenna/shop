@@ -36,6 +36,12 @@ const Salespage = () => {
   const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
   const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery();
 
+  const filteredSubMenu = subMenu?.filter(({ categoryId }) =>
+    products?.some(
+      ({ categoryId: productCategoryId }) => productCategoryId === categoryId,
+    ),
+  );
+
   if (!products) {
     return <SkeletonCollectionPage count={4} />;
   }
@@ -74,8 +80,6 @@ const Salespage = () => {
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
 
-  console.log(products, subMenu);
-
   return (
     <>
       {params.category && (
@@ -89,9 +93,8 @@ const Salespage = () => {
           {subMenu && (
             <CollectionAside
               ariaLabelledby={ariaLabelledby}
-              subMenu={subMenu}
+              subMenu={filteredSubMenu ?? []}
               headerText={language.sale}
-              category=""
               onReset={() => {
                 refetchSubMenu();
               }}
