@@ -34,7 +34,6 @@ const Salespage = () => {
   );
 
   const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
-
   const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery();
 
   if (!products) {
@@ -74,6 +73,8 @@ const Salespage = () => {
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
+
+  console.log(products, subMenu);
 
   return (
     <>
@@ -121,7 +122,7 @@ const Salespage = () => {
               </div>
               <ProductCartList
                 products={selectedProducts}
-                showSizeOverlay
+                showSizeOverlay={productView !== 'list'}
                 getProductLink={getProductLink}
                 productView={productView}
               />
