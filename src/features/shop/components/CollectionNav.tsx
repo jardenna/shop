@@ -6,13 +6,13 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
-type CollectionNavProps = {
-  category: string;
+export interface CollectionNavProps {
   subMenu: ProductMenuResponse[];
+  category?: string;
   linkTo?: string;
   getProductLink: (id: string) => string;
   onReset: () => void;
-};
+}
 
 const CollectionNav = ({
   subMenu,

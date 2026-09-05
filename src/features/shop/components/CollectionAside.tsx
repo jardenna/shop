@@ -1,19 +1,13 @@
-import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import LayoutElement from '../../../layout/LayoutElement';
 import './collectionAside.styles.scss';
-import CollectionNav from './CollectionNav';
+import CollectionNav, { CollectionNavProps } from './CollectionNav';
 import CollectionPageHeader from './CollectionPageHeader';
 
-type CollectionAsideProps = {
+interface CollectionAsideProps extends CollectionNavProps {
   ariaLabelledby: string;
-  category: string;
   headerText: string;
   language: Record<string, string>;
-  subMenu: ProductMenuResponse[];
-  linkTo?: string;
-  getProductLink: (id: string) => string;
-  onReset: () => void;
-};
+}
 
 const CollectionAside = ({
   subMenu,
