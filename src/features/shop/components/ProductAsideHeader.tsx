@@ -1,16 +1,16 @@
 import LayoutElement from '../../../layout/LayoutElement';
 
-type CollectionPageHeaderProps = {
+interface ProductAsideHeaderProps {
   ariaLabelledby: string;
   headerText: string;
-};
-const CollectionPageHeader = ({
+}
+const ProductAsideHeader = ({
   headerText,
   ariaLabelledby,
-}: CollectionPageHeaderProps) => (
-  <LayoutElement className="collection-page-header">
+}: ProductAsideHeaderProps) => (
+  <LayoutElement className="product-aside-header">
     <h1 id={ariaLabelledby}>{headerText}</h1>
   </LayoutElement>
 );
 
-export default CollectionPageHeader;
+export default ProductAsideHeader;

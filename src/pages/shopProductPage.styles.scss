@@ -1,6 +1,6 @@
 @use '../scss/globals' as *;
 
-.collection-page {
+.shop-product-page {
   .breadcrumbs-container {
     display: flex;
     justify-content: flex-end;
@@ -12,7 +12,7 @@
   }
 }
 
-.collection-page-container {
+.shop-product-page-container {
   display: flex;
   gap: 20px;
   width: 100%;
@@ -22,11 +22,11 @@
   }
 }
 
-.collection-page-content {
+.shop-product-page-content {
   width: 100%;
 }
 
-.collection-banner {
+.shop-product-banner {
   img {
     max-height: rem(476px);
   }

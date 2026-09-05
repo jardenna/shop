@@ -13,11 +13,11 @@ import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
+import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -32,8 +32,8 @@ import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
-import './collectionPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
@@ -163,7 +163,7 @@ const CollectionPage = () => {
       )}
 
       <section
-        className="container collection-page"
+        className="container shop-product-page"
         ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
@@ -174,9 +174,9 @@ const CollectionPage = () => {
             routeList={collectionBreadcrumbsList}
           />
         )}
-        <div className="collection-page-container">
+        <div className="shop-product-page-container">
           {!isMobileSize && subMenu && (
-            <CollectionAside
+            <ProductAside
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
@@ -193,7 +193,7 @@ const CollectionPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="collection-page-content">
+            <section className="shop-product-page-content">
               {!isMobileSize && (
                 <Picture
                   src={`${src}.jpg`}
@@ -201,7 +201,7 @@ const CollectionPage = () => {
                   alt={language[altText]}
                   ratio="16:9"
                   priority
-                  className="collection-banner"
+                  className="shop-product-banner"
                 />
               )}
               <div className="product-toolbar">

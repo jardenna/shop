@@ -6,7 +6,7 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
-export interface CollectionNavProps {
+export interface ProductAsideNavProps {
   subMenu: ProductMenuResponse[];
   category?: string;
   linkTo?: string;
@@ -14,18 +14,18 @@ export interface CollectionNavProps {
   onReset: () => void;
 }
 
-const CollectionNav = ({
+const ProductAsideNav = ({
   subMenu,
   category,
   onReset,
   getProductLink,
   linkTo = `/${ShopPath.Collection}/${category}`,
-}: CollectionNavProps) => {
+}: ProductAsideNavProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className="collection-nav-list">
-      <li className="collection-nav-item">
+    <ul className="product-nav-list">
+      <li className="product-nav-item">
         <NavLink to={linkTo} end>
           {language.showAll}
         </NavLink>
@@ -36,7 +36,7 @@ const CollectionNav = ({
         onReset={onReset}
       >
         {subMenu.map(({ label, categoryId }) => (
-          <li className="collection-nav-item" key={categoryId}>
+          <li className="product-nav-item" key={categoryId}>
             <NavLink to={getProductLink(categoryId)}>
               {translateKey(label, language)}
             </NavLink>
@@ -47,4 +47,4 @@ const CollectionNav = ({
   );
 };
 
-export default CollectionNav;
+export default ProductAsideNav;

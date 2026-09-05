@@ -68,7 +68,7 @@
     background-color: $color-white;
     display: inline-grid;
     place-content: center;
-    border: 1px solid $color-gray-30;
+    border: $border;
     border-radius: 50%;
     cursor: pointer;
     width: rem(40px);

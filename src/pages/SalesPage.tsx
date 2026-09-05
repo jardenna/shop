@@ -10,8 +10,8 @@ import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import {
   useGetSaleMenuQuery,
@@ -48,7 +48,7 @@ const Salespage = () => {
 
   if (isError) {
     return (
-      <MainPageContainer heading="collection">
+      <MainPageContainer heading={language.sale}>
         <NotFoundError error={error} />
       </MainPageContainer>
     );
@@ -76,25 +76,24 @@ const Salespage = () => {
   );
 
   const categoryLabel = selectedCategory?.label ?? 'all';
+  const pageHeading = `${language.sale} ${language[categoryLabel]}`;
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
 
   return (
     <>
-      {params.category && (
-        <MetaTags metaTitle={`${language.sale} ${language[categoryLabel]}`} />
-      )}
+      {params.category && <MetaTags metaTitle={pageHeading} />}
 
-      <section className="container collection-page">
+      <section className="container shop-product-page">
         <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
 
-        <div className="collection-page-container">
+        <div className="shop-product-page-container">
           {subMenu && (
-            <CollectionAside
+            <ProductAside
               ariaLabelledby={ariaLabelledby}
               subMenu={filteredSubMenu ?? []}
-              headerText={`${language.sale} ${language[categoryLabel]}`}
+              headerText={pageHeading}
               onReset={() => {
                 refetchSubMenu();
               }}
@@ -107,14 +106,14 @@ const Salespage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="collection-page-content">
+            <section className="shop-product-page-content">
               <Picture
                 src={`${src}.jpg`}
                 srcSet={`${src}.avif`}
                 alt={language[altText]}
                 ratio="16:9"
                 priority
-                className="collection-banner"
+                className="shop-product-banner"
               />
               <div className="product-toolbar">
                 <DisplayControls
