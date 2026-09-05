@@ -34,7 +34,12 @@ router.get('/published', getPublishedCategories);
 router
   .route('/')
   .post(languageMiddleware, authenticate, authorizeAdmin, createCategory)
-  .get(languageMiddleware, filterCategoriesMiddleware, getAllCategories);
+  .get(
+    languageMiddleware,
+    filterCategoriesMiddleware,
+    authenticate,
+    getAllCategories,
+  );
 
 router
   .route('/:id')

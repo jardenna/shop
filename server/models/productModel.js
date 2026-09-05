@@ -18,7 +18,6 @@ const reviewSchema = new Schema(
   { timestamps: true },
 );
 
-// Product schema
 const productSchema = new Schema(
   {
     productName: { type: String, required: true },

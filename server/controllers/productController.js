@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { PUBLISHED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
+import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import { getProductByIdService } from '../services/getProductByIdService.js';
 import getProductListing from '../services/getProductListing.js';
@@ -87,6 +88,25 @@ const getSaleProducts = asyncHandler(async (req, res) => {
   res.status(200).json(formattedSaleProducts);
 });
 
+// @desc    Get Sale menu
+// @route   /api/products/sale-menu
+// @method  GET
+// @access  Public
+const getSaleSubMenu = asyncHandler(async (req, res) => {
+  const categories = await Category.find({
+    categoryStatus: PUBLISHED,
+  })
+    .select('categoryName')
+    .lean();
+
+  const saleSubMenu = categories.map(({ _id, categoryName }) => ({
+    label: categoryName.toLowerCase(),
+    categoryId: _id,
+  }));
+
+  res.status(200).json(formatMongoData(saleSubMenu));
+});
+
 // @desc    Get shop product by ID
 // @route   /api/products/shop/:id
 // @method  GET
@@ -104,4 +124,4 @@ const getShopProductById = asyncHandler(async (req, res) => {
   res.status(200).json(product);
 });
 
-export { getSaleProducts, getShopProductById, getShopProducts };
+export { getSaleProducts, getSaleSubMenu, getShopProductById, getShopProducts };

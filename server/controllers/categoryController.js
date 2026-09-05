@@ -52,7 +52,7 @@ const createCategory = asyncHandler(async (req, res) => {
 // @desc   Get all categories
 // @route   /api/category
 // @method  GET
-// @access  Public
+// @access  Private for admin and employees
 const getAllCategories = asyncHandler(async (req, res) => {
   const sortField = req.query.sortField;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
@@ -65,22 +65,16 @@ const getAllCategories = asyncHandler(async (req, res) => {
     statusKey: 'categoryStatus',
   });
 
-  const sortedColums = sortColumns({
+  const sortedColumns = sortColumns({
     collection: updatedCategories,
     sortField,
     sortOrder,
     language: req.lang,
   });
 
-  const formattedCategories = formatMongoData(sortedColums);
+  const formattedCategories = formatMongoData(sortedColumns);
 
-  // Include parent category IDs in the response
-  const categoriesWithParent = formattedCategories.map((category) => ({
-    ...category,
-    parentCategoryId: category.parentCategory || null, // Add parentCategoryId if it exists
-  }));
-
-  res.status(200).json({ success: true, categories: categoriesWithParent });
+  res.status(200).json({ success: true, categories: formattedCategories });
 });
 
 // @desc    Check if category is scheduled
