@@ -1,9 +1,9 @@
 import LayoutElement from '../../../layout/LayoutElement';
-import CollectionNav, { CollectionNavProps } from './CollectionNav';
 import ProductAsideHeader from './ProductAsideHeader';
+import ProductAsideNav, { ProductAsideNavProps } from './ProductAsideNav';
 import './productAside.styles.scss';
 
-interface ProductAsideProps extends CollectionNavProps {
+interface ProductAsideProps extends ProductAsideNavProps {
   ariaLabelledby: string;
   headerText: string;
   language: Record<string, string>;
@@ -26,7 +26,7 @@ const ProductAside = ({
     />
     <section className="product-aside">
       <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
-        <CollectionNav
+        <ProductAsideNav
           subMenu={subMenu}
           category={category}
           onReset={onReset}

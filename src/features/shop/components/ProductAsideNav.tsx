@@ -6,7 +6,7 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
-export interface CollectionNavProps {
+export interface ProductAsideNavProps {
   subMenu: ProductMenuResponse[];
   category?: string;
   linkTo?: string;
@@ -14,13 +14,13 @@ export interface CollectionNavProps {
   onReset: () => void;
 }
 
-const CollectionNav = ({
+const ProductAsideNav = ({
   subMenu,
   category,
   onReset,
   getProductLink,
   linkTo = `/${ShopPath.Collection}/${category}`,
-}: CollectionNavProps) => {
+}: ProductAsideNavProps) => {
   const { language } = useLanguage();
 
   return (
@@ -47,4 +47,4 @@ const CollectionNav = ({
   );
 };
 
-export default CollectionNav;
+export default ProductAsideNav;
