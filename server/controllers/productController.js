@@ -58,7 +58,7 @@ const getSaleProducts = asyncHandler(async (req, res) => {
     discount: { $gt: 0 },
   })
     .select(
-      'productName price discount sizes colors images brand countInStock subCategory',
+      'productName price discount sizes colors images brand countInStock subCategory description',
     )
     .populate({
       path: 'subCategory',
