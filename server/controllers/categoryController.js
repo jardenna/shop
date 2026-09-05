@@ -74,12 +74,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 
   const formattedCategories = formatMongoData(sortedColums);
 
-  const categoriesWithParent = formattedCategories.map((category) => ({
-    ...category,
-    parentCategoryId: category.parentCategory || null, // Add parentCategoryId if it exists
-  }));
-
-  res.status(200).json({ success: true, categories: categoriesWithParent });
+  res.status(200).json({ success: true, categories: formattedCategories });
 });
 
 // @desc    Check if category is scheduled
