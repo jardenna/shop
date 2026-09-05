@@ -1,15 +1,15 @@
 import LayoutElement from '../../../layout/LayoutElement';
-import './collectionAside.styles.scss';
 import CollectionNav, { CollectionNavProps } from './CollectionNav';
 import CollectionPageHeader from './CollectionPageHeader';
+import './productAside.styles.scss';
 
-interface CollectionAsideProps extends CollectionNavProps {
+interface ProductAsideProps extends CollectionNavProps {
   ariaLabelledby: string;
   headerText: string;
   language: Record<string, string>;
 }
 
-const CollectionAside = ({
+const ProductAside = ({
   subMenu,
   category,
   onReset,
@@ -18,7 +18,7 @@ const CollectionAside = ({
   ariaLabelledby,
   headerText,
   getProductLink,
-}: CollectionAsideProps) => (
+}: ProductAsideProps) => (
   <div>
     <CollectionPageHeader
       headerText={headerText}
@@ -37,4 +37,4 @@ const CollectionAside = ({
     </section>
   </div>
 );
-export default CollectionAside;
+export default ProductAside;

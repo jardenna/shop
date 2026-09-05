@@ -13,11 +13,11 @@ import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
+import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../features/shop/hooks/useSubMenu';
@@ -176,7 +176,7 @@ const CollectionPage = () => {
         )}
         <div className="collection-page-container">
           {!isMobileSize && subMenu && (
-            <CollectionAside
+            <ProductAside
               headerText={categoryText}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}

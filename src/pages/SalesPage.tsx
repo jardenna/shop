@@ -10,8 +10,8 @@ import Picture from '../components/Picture';
 import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import {
   useGetSaleMenuQuery,
@@ -91,7 +91,7 @@ const Salespage = () => {
 
         <div className="collection-page-container">
           {subMenu && (
-            <CollectionAside
+            <ProductAside
               ariaLabelledby={ariaLabelledby}
               subMenu={filteredSubMenu ?? []}
               headerText={`${language.sale} ${language[categoryLabel]}`}
