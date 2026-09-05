@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
@@ -13,8 +14,10 @@ import CollectionAside from '../features/shop/components/CollectionAside';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import { useGetSaleProductsQuery } from '../features/shop/shopApiSlice';
+import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
+import { productViewIconList } from '../utils/productViewIconList';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
@@ -23,6 +26,10 @@ const Salespage = () => {
   const { language } = useLanguage();
 
   const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
+  const [productView, setProductView] = useLocalStorage(
+    localStorageKeys.productView,
+    'grid',
+  );
 
   if (!products) {
     return <SkeletonCollectionPage count={4} />;
@@ -103,11 +110,16 @@ const Salespage = () => {
                 priority
                 className="collection-banner"
               />
+              <DisplayControls
+                onSetDisplay={setProductView}
+                displayControlList={productViewIconList}
+                activeDisplay={productView}
+              />
               <ProductCartList
                 products={selectedProducts}
-                productView="list"
                 showSizeOverlay
                 getProductLink={getProductLink}
+                productView={productView}
               />
             </section>
           </ErrorBoundary>
