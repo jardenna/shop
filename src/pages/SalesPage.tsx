@@ -35,9 +35,7 @@ const Salespage = () => {
 
   const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
 
-  const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery(
-    params.categoryId ?? '',
-  );
+  const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery();
 
   if (!products) {
     return <SkeletonCollectionPage count={4} />;

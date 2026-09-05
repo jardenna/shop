@@ -33,8 +33,8 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       query: (params) => `${subCategoryMenuUrl}${params}`,
       providesTags: [TagTypesEnum.Products],
     }),
-    getSaleMenu: builder.query<ProductMenuResponse[], string>({
-      query: (params) => `${productUrl}/sale-menu/${params}`,
+    getSaleMenu: builder.query<ProductMenuResponse[], void>({
+      query: () => `${productUrl}/sale-menu`,
       providesTags: [TagTypesEnum.Products],
     }),
     postReviews: builder.mutation<ReviewsResponse, ReviewsRequest>({
