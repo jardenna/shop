@@ -18,7 +18,6 @@ export type BaseControlGroupProps = {
   type: ControlInputType;
   autoFocus?: boolean;
   className?: string;
-  classType?: string;
   groupTitle?: OptionGroupHeading;
   iconClassName?: string;
   iconName?: IconName;
@@ -41,7 +40,6 @@ const ControlGroupList = ({
   groupTitle,
   required,
   inputInfo,
-  classType = '',
   values = [],
   initialChecked,
   disabledList,
@@ -64,7 +62,7 @@ const ControlGroupList = ({
         <OptionGroupTitle groupTitle={groupTitle} required={required} />
       )}
       <ul
-        className={`control-list ${className} ${classType}`}
+        className={`control-list ${className}`}
         aria-labelledby={groupTitle ? groupTitle.id : undefined}
       >
         {options.map((label, index) => (

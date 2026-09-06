@@ -24,15 +24,14 @@
     gap: 20px;
     justify-content: space-between;
     background-color: $color-secondary;
-    padding-block: 12px;
-    padding-inline: 4px 12px;
+    padding: 12px;
     border-radius: $border-radius;
     margin-bottom: 12px;
   }
 
   .secondary-radio {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    flex-direction: row;
+    gap: 20px;
 
     @include max-size($small) {
       grid-template-columns: repeat(2, 1fr);
