@@ -29,9 +29,10 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
     colorList,
     count ?? colorList.length,
   );
+  console.log(groupTitle);
 
   return (
-    <ProductList groupTitle={groupTitle} className="color-list">
+    <ProductList className="color-list" title={language.colours}>
       {visibleItems.map(({ color, border, value }) => (
         <ProductListItem
           key={color}

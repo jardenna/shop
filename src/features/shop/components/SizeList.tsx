@@ -12,13 +12,7 @@ const SizeList = ({ allowedSizes, sizes }: SizeListProps) => {
   const { language } = useLanguage();
 
   return (
-    <ProductList
-      className="size-list"
-      groupTitle={{
-        title: language.sizes,
-        id: 'view-product-colors',
-      }}
-    >
+    <ProductList className="size-list" title={language.sizes}>
       {allowedSizes.map((size) => (
         <ProductListItem
           key={size}

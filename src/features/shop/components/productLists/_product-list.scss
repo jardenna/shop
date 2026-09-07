@@ -1,5 +1,11 @@
 @use '../../../../scss/globals' as *;
 
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .product-list {
   display: flex;
   flex-wrap: wrap;

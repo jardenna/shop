@@ -1,20 +1,16 @@
 import type { ReactNode } from 'react';
-import type { OptionGroupHeading } from '../../../../types/types';
-import OptionGroupTitle from './OptionGroupTitle';
 import './_product-list.scss';
 
 interface ProductListProps {
   children: ReactNode;
+  title: string;
   className?: string;
-  groupTitle?: OptionGroupHeading;
 }
 
-const ProductList = ({ children, groupTitle, className }: ProductListProps) => (
-  <div>
-    {groupTitle && <OptionGroupTitle groupTitle={groupTitle} />}
-    <ul className={`product-list ${className}`} id={groupTitle?.id}>
-      {children}
-    </ul>
+const ProductList = ({ children, className, title }: ProductListProps) => (
+  <div className="product-list-container">
+    <span>{title}</span>
+    <ul className={`product-list ${className}`}>{children}</ul>
   </div>
 );
 
