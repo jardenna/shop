@@ -78,7 +78,7 @@ const ReviewsForm = ({
             <RadioButtonList
               name="rating"
               radioButtonList={createRatingList(totalStars)}
-              initialChecked={String(values.rating)}
+              checked={String(values.rating)}
               onChange={handleChange}
               className="reviews"
               iconName={IconName.Star}

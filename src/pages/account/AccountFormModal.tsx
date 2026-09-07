@@ -123,7 +123,7 @@ const AccountFormModal = ({
         <RadioButtonList
           radioButtonList={preferredFashionList}
           name="preferredFashion"
-          initialChecked={values.preferredFashion}
+          checked={values.preferredFashion}
           onChange={onChange}
         />
       </FieldSet>

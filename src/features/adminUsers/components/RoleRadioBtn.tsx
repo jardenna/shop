@@ -12,7 +12,7 @@ const RoleRadioBtn = ({ roleValue, onChange }: RoleRadioBtnProps) => (
   <RadioButtonList
     radioButtonList={roleList}
     name="role"
-    initialChecked={roleValue}
+    checked={roleValue}
     onChange={onChange}
   />
 );

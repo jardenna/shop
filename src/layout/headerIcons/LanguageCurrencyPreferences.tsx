@@ -23,7 +23,7 @@ const LanguageCurrencyPreferences = ({
       <RadioButtonList
         radioButtonList={languageOptions}
         name="languageOption"
-        initialChecked={values.languageOption}
+        checked={values.languageOption}
         onChange={onChange}
         autoFocus
       />

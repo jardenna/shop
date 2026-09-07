@@ -5,13 +5,13 @@ import type { BaseControlProps } from './ControlInput';
 import ControlInput from './ControlInput';
 
 interface RadioButtonListProps extends BaseControlProps {
-  initialChecked: string;
+  checked: string;
   radioButtonList: OptionType[];
   variant?: 'primary' | 'secondary';
 }
 
 const RadioButtonList = ({
-  initialChecked,
+  checked,
   radioButtonList,
   onChange,
   name,
@@ -31,15 +31,15 @@ const RadioButtonList = ({
             id={radio.label}
             name={name}
             value={radio.value}
-            checked={initialChecked === radio.value}
+            checked={checked === radio.value}
             onChange={onChange}
             label={translateKey(radio.label, language)}
-            autoFocus={autoFocus && initialChecked === radio.value}
+            autoFocus={autoFocus && checked === radio.value}
             ariaLabel={translateKey(radio.label, language)}
             className="control-label"
             iconName={iconName}
             iconClassName={
-              Number(radio.value) <= Number(initialChecked) ? 'filled' : ''
+              Number(radio.value) <= Number(checked) ? 'filled' : ''
             }
           />
         </li>

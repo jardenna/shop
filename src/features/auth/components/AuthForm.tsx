@@ -128,7 +128,7 @@ const AuthForm = ({
           <RadioButtonList
             radioButtonList={roleList}
             name="role"
-            initialChecked={values.role}
+            checked={values.role}
             onChange={onChange}
             autoFocus
           />
