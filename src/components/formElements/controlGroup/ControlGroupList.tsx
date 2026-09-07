@@ -13,12 +13,12 @@ import InputInfo from '../InputInfo';
 import ControlGroupInput from './ControlGroupInput';
 
 export interface BaseControlGroupProps {
+  groupTitle: OptionGroupHeading;
   name: string;
   onChange: InputChangeHandler;
   type: ControlInputType;
   autoFocus?: boolean;
   className?: string;
-  groupTitle?: OptionGroupHeading;
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
@@ -58,12 +58,11 @@ const ControlGroupList = ({
 
   return (
     <div>
-      {groupTitle && (
-        <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      )}
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+
       <ul
         className={`control-list ${className}`}
-        aria-labelledby={groupTitle ? groupTitle.id : undefined}
+        aria-labelledby={groupTitle.id}
       >
         {options.map((label, index) => (
           <li key={label} className="control-item">
@@ -85,6 +84,11 @@ const ControlGroupList = ({
               label={label}
               variant={variant}
               iconClassName={iconClassName}
+              groupTitle={{
+                id: '',
+                title: '',
+                errorText: undefined,
+              }}
             />
           </li>
         ))}
