@@ -1,7 +1,7 @@
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import { useLanguage } from '../../language/useLanguage';
-import ProductList from './productLists/ProductList';
-import ProductListItem from './productLists/ProductListItem';
+import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { useLanguage } from '../../../language/useLanguage';
+import ProductList from './ProductList';
+import ProductListItem from './ProductListItem';
 
 interface SizeListProps {
   allowedSizes: Size[];

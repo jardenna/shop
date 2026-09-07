@@ -1,7 +1,7 @@
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
-import SizeList from '../../features/shop/components/SizeList';
+import SizeList from '../../features/shop/components/productLists/SizeList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
