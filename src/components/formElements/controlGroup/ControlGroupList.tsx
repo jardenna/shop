@@ -27,12 +27,12 @@ export interface BaseControlGroupProps {
   variant?: ProductLabelVariant;
 }
 
-type ControlGroupListProps = BaseControlGroupProps & {
+interface ControlGroupListProps extends BaseControlGroupProps {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
-};
+}
 
 const ControlGroupList = ({
   name,
