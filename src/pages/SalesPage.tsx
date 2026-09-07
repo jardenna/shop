@@ -93,8 +93,9 @@ const Salespage = () => {
       {params.category && <MetaTags metaTitle={pageHeading} />}
 
       <section className="container shop-product-page">
-        <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
-
+        {!noCategoryId && (
+          <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
+        )}
         <div className="shop-product-page-container">
           {subMenu && (
             <ProductAside
