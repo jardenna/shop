@@ -1,11 +1,11 @@
 @use '../../../scss/globals' as *;
 
-.secondary-radio {
+.radio-button-list {
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  .secondary-radio-container {
+  .radio-button-item {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -25,7 +25,7 @@
     color: currentcolor;
     width: rem(24px);
     height: rem(24px);
-    border: 2px solid #617886;
+    border: 2px solid $color-blue-30;
     transform: translateY(-1.2px);
     display: flex;
     position: relative;
@@ -43,11 +43,11 @@
 
       @include transition($time: 0.12s);
 
-      box-shadow: inset 16px 0 #617886;
+      box-shadow: inset 16px 0 $color-blue-30;
     }
 
     &:checked {
-      border-color: #617886;
+      border-color: $color-blue-30;
       outline: transparent;
 
       &::before {

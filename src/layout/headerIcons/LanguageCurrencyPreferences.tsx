@@ -1,5 +1,5 @@
 import FieldSet from '../../components/fieldset/FieldSet';
-import RadioButtonList from '../../components/formElements/RadioButtonList';
+import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
 import CurrencySelect from '../../features/currency/components/CurrencySelect';
 import { languageOptions } from '../../features/language/useLanguage';
 import type { OmitChecked } from '../../types/types';
@@ -20,10 +20,10 @@ const LanguageCurrencyPreferences = ({
 }: OmittedHeaderProps) => (
   <div className="preferences">
     <FieldSet legendText={localLanguage.language} showLegendText>
-      <RadioButtonList
+      <RadioTileList
         radioButtonList={languageOptions}
         name="languageOption"
-        initialChecked={values.languageOption}
+        checked={values.languageOption}
         onChange={onChange}
         autoFocus
       />

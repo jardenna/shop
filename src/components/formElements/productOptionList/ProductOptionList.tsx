@@ -10,38 +10,37 @@ import type {
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import InputInfo from '../InputInfo';
-import ControlGroupInput from './ControlGroupInput';
+import ControlGroupInput from './ProductOptionInput';
+import './_product-option-list.scss';
 
-export type BaseControlGroupProps = {
+export interface BaseControlGroupProps {
+  groupTitle: OptionGroupHeading;
   name: string;
   onChange: InputChangeHandler;
   type: ControlInputType;
   autoFocus?: boolean;
   className?: string;
-  classType?: string;
-  groupTitle?: OptionGroupHeading;
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
   inputInfo?: string;
   required?: boolean;
   variant?: ProductLabelVariant;
-};
+}
 
-type ControlGroupListProps = BaseControlGroupProps & {
+interface ProductOptionListProps extends BaseControlGroupProps {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
-};
+}
 
-const ControlGroupList = ({
+const ProductOptionList = ({
   name,
   options,
   groupTitle,
   required,
   inputInfo,
-  classType = '',
   values = [],
   initialChecked,
   disabledList,
@@ -53,19 +52,18 @@ const ControlGroupList = ({
   iconSize,
   type,
   iconClassName,
-}: ControlGroupListProps) => {
+}: ProductOptionListProps) => {
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
   return (
     <div>
-      {groupTitle && (
-        <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      )}
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+
       <ul
-        className={`control-list ${className} ${classType}`}
-        aria-labelledby={groupTitle ? groupTitle.id : undefined}
+        className={`control-list product-option-list ${className}`}
+        aria-labelledby={groupTitle.id}
       >
         {options.map((label, index) => (
           <li key={label} className="control-item">
@@ -87,6 +85,11 @@ const ControlGroupList = ({
               label={label}
               variant={variant}
               iconClassName={iconClassName}
+              groupTitle={{
+                id: '',
+                title: '',
+                errorText: undefined,
+              }}
             />
           </li>
         ))}
@@ -96,4 +99,4 @@ const ControlGroupList = ({
   );
 };
 
-export default ControlGroupList;
+export default ProductOptionList;

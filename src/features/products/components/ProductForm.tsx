@@ -10,8 +10,8 @@ import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import Form from '../../../components/Form';
-import ControlGroupList from '../../../components/formElements/controlGroup/ControlGroupList';
 import Input from '../../../components/formElements/Input';
+import ProductOptionList from '../../../components/formElements/productOptionList/ProductOptionList';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
@@ -361,7 +361,7 @@ const ProductForm = ({
               }}
               required
             />
-            <ControlGroupList
+            <ProductOptionList
               options={availableSizes}
               name="sizes"
               type="checkbox"

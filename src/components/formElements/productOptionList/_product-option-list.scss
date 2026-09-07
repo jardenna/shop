@@ -1,0 +1,25 @@
+@use '../../../scss/globals' as *;
+
+.product-option-list {
+  line-height: 0.75rem;
+
+  .control-item {
+    &:has(input:disabled) {
+      .control-label {
+        pointer-events: none;
+
+        @extend %disabled-item;
+      }
+    }
+  }
+
+  &.color-list {
+    .control-item {
+      border: 1px solid transparent;
+
+      .control-label {
+        background-color: $color-light-gray-30;
+      }
+    }
+  }
+}

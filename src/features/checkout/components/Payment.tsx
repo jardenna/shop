@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import RadioBtnList from '../../../components/formElements/radioList/RadioBtnList';
+import RadioButtonList from '../../../components/formElements/radioList/RadioButtonList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 import type {
   InputChangeHandler,
@@ -49,7 +49,7 @@ const Payment = ({
     (method) => method.id === values.paymentMethod,
   );
 
-  const paymentMethodListnew = availablePaymentMethods.map(({ id, label }) => ({
+  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
     label,
     value: id,
     id,
@@ -58,10 +58,10 @@ const Payment = ({
   return (
     <div>
       <form className="select-payment-method" noValidate>
-        <RadioBtnList
+        <RadioButtonList
           onChange={onChange}
           value={values.paymentMethod}
-          radioList={paymentMethodListnew}
+          radioButtonList={paymentMethodList}
           name={name}
         />
         <PaymentMethodsList paymentMethods={paymentMethod} />

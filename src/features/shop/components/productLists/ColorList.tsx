@@ -1,5 +1,4 @@
 import variables from '../../../../scss/variables.module.scss';
-import type { OptionGroupHeading } from '../../../../types/types';
 import { getColorOptions } from '../../../../utils/colorUtils';
 import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
 import { useLanguage } from '../../../language/useLanguage';
@@ -8,14 +7,13 @@ import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
 
-type ColorListProps = {
+interface ColorListProps {
   colors: string[];
   variant: ProductLabelVariant;
   count?: number;
-  groupTitle?: OptionGroupHeading;
-};
+}
 
-const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
+const ColorList = ({ count, colors, variant }: ColorListProps) => {
   const { language } = useLanguage();
 
   const colorList = getColorOptions({
@@ -31,7 +29,7 @@ const ColorList = ({ count, colors, groupTitle, variant }: ColorListProps) => {
   );
 
   return (
-    <ProductList groupTitle={groupTitle} className="color-list">
+    <ProductList variant="color" title={language.colours}>
       {visibleItems.map(({ color, border, value }) => (
         <ProductListItem
           key={color}

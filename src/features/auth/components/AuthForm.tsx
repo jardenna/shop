@@ -5,7 +5,7 @@ import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import PasswordInput from '../../../components/formElements/password/PasswordInput';
-import RadioButtonList from '../../../components/formElements/RadioButtonList';
+import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
 import type { BlurEventType, InputChangeHandler } from '../../../types/types';
@@ -125,10 +125,10 @@ const AuthForm = ({
       )}
       {canAssignRoles && values.role && (
         <FieldSet legendText={language.assignRole}>
-          <RadioButtonList
+          <RadioTileList
             radioButtonList={roleList}
             name="role"
-            initialChecked={values.role}
+            checked={values.role}
             onChange={onChange}
             autoFocus
           />

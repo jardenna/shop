@@ -44,8 +44,14 @@
   .reviews {
     border-top: 2px solid $color-border;
     padding-top: 8px;
+    gap: 0;
 
     .control-item {
+      height: auto;
+      background-color: transparent;
+      border-radius: 0;
+      flex: none;
+
       &:hover {
         color: $color-yellow;
       }
