@@ -49,7 +49,7 @@ const Payment = ({
     (method) => method.id === values.paymentMethod,
   );
 
-  const paymentMethodListnew = availablePaymentMethods.map(({ id, label }) => ({
+  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
     label,
     value: id,
     id,
@@ -61,7 +61,7 @@ const Payment = ({
         <RadioButtonList
           onChange={onChange}
           value={values.paymentMethod}
-          radioButtonList={paymentMethodListnew}
+          radioButtonList={paymentMethodList}
           name={name}
         />
         <PaymentMethodsList paymentMethods={paymentMethod} />
