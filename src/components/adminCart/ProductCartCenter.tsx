@@ -40,7 +40,6 @@ const ProductCartCenter = ({
       <LabelValueGrid text={language.brand}>{brand}</LabelValueGrid>
       <LabelValueGrid text={language.material}>{material}</LabelValueGrid>
       <ColorList colors={colours} variant="small" />
-
       <SizeList allowedSizes={allowedSizes} sizes={sizes} />
     </CartContent>
   );
