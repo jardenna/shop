@@ -1,13 +1,11 @@
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
-import ProductList from '../../features/shop/components/productLists/ProductList';
 import SizeList from '../../features/shop/components/SizeList';
-
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import CartContent from './CartContent';
 
-type ProductCartCenterProps = {
+interface ProductCartCenterProps {
   allowedSizes: Size[];
   brand: string;
   colours: string[];
@@ -16,7 +14,7 @@ type ProductCartCenterProps = {
   material: string;
   sizes: Size[];
   onReset: () => void;
-};
+}
 
 const ProductCartCenter = ({
   brand,
@@ -50,12 +48,7 @@ const ProductCartCenter = ({
         }}
       />
 
-      <ProductList
-        groupTitle={{ title: language.sizes, id: '' }}
-        className="color-list"
-      >
-        <SizeList allowedSizes={allowedSizes} sizes={sizes} />
-      </ProductList>
+      <SizeList allowedSizes={allowedSizes} sizes={sizes} />
     </CartContent>
   );
 };

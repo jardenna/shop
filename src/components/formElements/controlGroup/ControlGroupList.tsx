@@ -12,7 +12,7 @@ import { translateKey } from '../../../utils/utils';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ControlGroupInput';
 
-export type BaseControlGroupProps = {
+export interface BaseControlGroupProps {
   name: string;
   onChange: InputChangeHandler;
   type: ControlInputType;
@@ -25,7 +25,7 @@ export type BaseControlGroupProps = {
   inputInfo?: string;
   required?: boolean;
   variant?: ProductLabelVariant;
-};
+}
 
 type ControlGroupListProps = BaseControlGroupProps & {
   options: string[];
