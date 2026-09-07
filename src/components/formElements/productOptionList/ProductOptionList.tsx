@@ -10,7 +10,7 @@ import type {
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import InputInfo from '../InputInfo';
-import ControlGroupInput from './ControlGroupInput';
+import ControlGroupInput from './ProductOptionInput';
 
 export interface BaseControlGroupProps {
   groupTitle: OptionGroupHeading;
@@ -27,14 +27,14 @@ export interface BaseControlGroupProps {
   variant?: ProductLabelVariant;
 }
 
-interface ControlGroupListProps extends BaseControlGroupProps {
+interface ProductOptionListProps extends BaseControlGroupProps {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
   values?: string[];
 }
 
-const ControlGroupList = ({
+const ProductOptionList = ({
   name,
   options,
   groupTitle,
@@ -51,7 +51,7 @@ const ControlGroupList = ({
   iconSize,
   type,
   iconClassName,
-}: ControlGroupListProps) => {
+}: ProductOptionListProps) => {
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
@@ -98,4 +98,4 @@ const ControlGroupList = ({
   );
 };
 
-export default ControlGroupList;
+export default ProductOptionList;
