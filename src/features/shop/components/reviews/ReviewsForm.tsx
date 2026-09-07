@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import RadioTileList from '../../../../components/formElements/RadioTileList';
+import RadioTileList from '../../../../components/formElements/radioTileList/RadioTileList';
 import Textarea from '../../../../components/formElements/Textarea';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { IconName } from '../../../../types/enums';

@@ -5,7 +5,7 @@ import type {
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
-import RadioTileList from '../../components/formElements/RadioTileList';
+import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
