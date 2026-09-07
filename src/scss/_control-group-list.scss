@@ -32,16 +32,6 @@
     cursor: pointer;
   }
 
-  &.color-list {
-    .control-item {
-      border: 1px solid transparent;
-
-      .control-label {
-        background-color: $color-light-gray-30;
-      }
-    }
-  }
-
   .control-item {
     &:has(input:checked) {
       background-color: $color-background-secondary;

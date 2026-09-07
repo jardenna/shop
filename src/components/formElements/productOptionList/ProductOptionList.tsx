@@ -11,6 +11,7 @@ import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
+import './_product-option-list.scss';
 
 export interface BaseControlGroupProps {
   groupTitle: OptionGroupHeading;
@@ -61,7 +62,7 @@ const ProductOptionList = ({
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
 
       <ul
-        className={`control-list ${className}`}
+        className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}
       >
         {options.map((label, index) => (
