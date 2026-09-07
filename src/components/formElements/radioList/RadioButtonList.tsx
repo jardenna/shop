@@ -24,7 +24,7 @@ const RadioButtonList = ({
   return (
     <ul className="radio-button-list">
       {radioButtonList.map((radio) => (
-        <li key={radio.label} className="radio-button-list-container">
+        <li key={radio.label} className="radio-button-item">
           <ControlInput
             type="radio"
             name={name}
