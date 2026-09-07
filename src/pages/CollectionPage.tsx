@@ -5,7 +5,6 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import NotFoundError from '../components/NotFoundError';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -79,7 +78,6 @@ const CollectionPage = () => {
     data: products,
     isLoading,
     isError,
-    error,
     refetch,
   } = useGetProductsQuery({
     productsPerPage: itemsPerPage,
@@ -130,7 +128,7 @@ const CollectionPage = () => {
   if (isError) {
     return (
       <MainPageContainer heading="collection">
-        <NotFoundError error={error} />
+        <ErrorBoundaryFallback resetErrorBoundary={refetch} />
       </MainPageContainer>
     );
   }
