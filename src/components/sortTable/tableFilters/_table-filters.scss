@@ -1,34 +1,25 @@
 @use '../../../scss/globals' as *;
 
 .table-filter-popup {
-  // &.popup-container {
-  //   background-color: $color-light-gray-20;
-  //   padding: 20px 16px;
+  &.popup-container {
+    background-color: $color-light-gray-20;
+    padding: 20px 16px;
 
-  //   .control-list.primary.control-list {
-  //     gap: 0;
-  //     display: flex;
-  //     flex-direction: column;
-  //     align-items: flex-start;
+    &:has(.radio-button-list) {
+      padding: 0;
+      background-color: $color-white;
+      min-width: rem(200px);
+    }
 
-  //     .control-item {
-  //       height: auto;
-  //       border-radius: 0;
+    .radio-button-list {
+      gap: 0;
 
-  //       .control-label {
-  //         padding: 12px;
-  //         width: 100%;
-  //         display: flex;
-  //         justify-content: flex-start;
-  //       }
-  //     }
-  //   }
-
-  //   &:has(.control-list) {
-  //     padding: 0;
-  //     min-width: 200px;
-  //   }
-  // }
+      .radio-button-item {
+        border-bottom: $border;
+        padding: 12px;
+      }
+    }
+  }
 
   .number-container {
     display: flex;
