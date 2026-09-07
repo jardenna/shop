@@ -4,11 +4,11 @@ import { translateKey } from '../../utils/utils';
 import type { BaseControlProps } from './ControlInput';
 import ControlInput from './ControlInput';
 
-type RadioButtonListProps = BaseControlProps & {
+interface RadioButtonListProps extends BaseControlProps {
   initialChecked: string;
   radioButtonList: OptionType[];
   variant?: 'primary' | 'secondary';
-};
+}
 
 const RadioButtonList = ({
   initialChecked,
