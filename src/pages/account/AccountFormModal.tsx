@@ -5,7 +5,7 @@ import type {
 } from '../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
-import RadioButtonList from '../../components/formElements/RadioButtonList';
+import RadioTileList from '../../components/formElements/RadioTileList';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import ModalContainer from '../../components/modal/ModalContainer';
@@ -120,7 +120,7 @@ const AccountFormModal = ({
         ))}
       </FieldSet>
       <FieldSet legendText={language.fashionPreference}>
-        <RadioButtonList
+        <RadioTileList
           radioButtonList={preferredFashionList}
           name="preferredFashion"
           checked={values.preferredFashion}

@@ -4,13 +4,13 @@ import { translateKey } from '../../utils/utils';
 import type { BaseControlProps } from './ControlInput';
 import ControlInput from './ControlInput';
 
-interface RadioButtonListProps extends BaseControlProps {
+interface RadioTileListProps extends BaseControlProps {
   checked: string;
   radioButtonList: OptionType[];
   variant?: 'primary' | 'secondary';
 }
 
-const RadioButtonList = ({
+const RadioTileList = ({
   checked,
   radioButtonList,
   onChange,
@@ -19,7 +19,7 @@ const RadioButtonList = ({
   iconName,
   className = '',
   variant = 'primary',
-}: RadioButtonListProps) => {
+}: RadioTileListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -48,4 +48,4 @@ const RadioButtonList = ({
   );
 };
 
-export default RadioButtonList;
+export default RadioTileList;

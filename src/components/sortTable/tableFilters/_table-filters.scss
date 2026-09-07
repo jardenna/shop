@@ -1,34 +1,34 @@
 @use '../../../scss/globals' as *;
 
 .table-filter-popup {
-  &.popup-container {
-    background-color: $color-light-gray-20;
-    padding: 20px 16px;
+  // &.popup-container {
+  //   background-color: $color-light-gray-20;
+  //   padding: 20px 16px;
 
-    .control-list.primary.control-list {
-      gap: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+  //   .control-list.primary.control-list {
+  //     gap: 0;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: flex-start;
 
-      .control-item {
-        height: auto;
-        border-radius: 0;
+  //     .control-item {
+  //       height: auto;
+  //       border-radius: 0;
 
-        .control-label {
-          padding: 12px;
-          width: 100%;
-          display: flex;
-          justify-content: flex-start;
-        }
-      }
-    }
+  //       .control-label {
+  //         padding: 12px;
+  //         width: 100%;
+  //         display: flex;
+  //         justify-content: flex-start;
+  //       }
+  //     }
+  //   }
 
-    &:has(.control-list) {
-      padding: 0;
-      min-width: 200px;
-    }
-  }
+  //   &:has(.control-list) {
+  //     padding: 0;
+  //     min-width: 200px;
+  //   }
+  // }
 
   .number-container {
     display: flex;

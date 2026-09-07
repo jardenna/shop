@@ -4,7 +4,7 @@ import { translateKey } from '../../../utils/utils';
 import ControlInput from '../ControlInput';
 import './_radio_btn_list.scss';
 
-interface RadioBtnListProps {
+interface RadioButtonListProps {
   name: string;
   onChange: InputChangeHandler;
   radioButtonList: OptionType[];
@@ -12,13 +12,13 @@ interface RadioBtnListProps {
   autoFocus?: boolean;
 }
 
-const RadioBtnList = ({
+const RadioButtonList = ({
   radioButtonList,
   value,
   onChange,
   name,
   autoFocus,
-}: RadioBtnListProps) => {
+}: RadioButtonListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -41,4 +41,4 @@ const RadioBtnList = ({
   );
 };
 
-export default RadioBtnList;
+export default RadioButtonList;

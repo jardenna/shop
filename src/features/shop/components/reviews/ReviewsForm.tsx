@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
-import RadioButtonList from '../../../../components/formElements/RadioButtonList';
+import RadioTileList from '../../../../components/formElements/RadioTileList';
 import Textarea from '../../../../components/formElements/Textarea';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { IconName } from '../../../../types/enums';
@@ -75,7 +75,7 @@ const ReviewsForm = ({
           className="review-form"
         >
           <FieldSet legendText={language.rateProduct} showLegendText>
-            <RadioButtonList
+            <RadioTileList
               name="rating"
               radioButtonList={createRatingList(totalStars)}
               checked={String(values.rating)}

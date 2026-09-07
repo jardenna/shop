@@ -4,7 +4,7 @@ import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
 import Input from '../../formElements/Input';
-import RadioBtnList from '../../formElements/radioList/RadioBtnList';
+import RadioButtonList from '../../formElements/radioList/RadioButtonList';
 import Icon from '../../icons/Icon';
 import Popup from '../../popup/Popup';
 import VisuallyHidden from '../../VisuallyHidden';
@@ -121,7 +121,7 @@ const TableFilterPopup = <T,>({
               event.preventDefault();
             }}
           >
-            <RadioBtnList
+            <RadioButtonList
               radioButtonList={getListByName(name as keyof ListsMap)}
               name={name}
               onChange={onFilter}
