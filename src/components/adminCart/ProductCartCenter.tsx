@@ -39,14 +39,7 @@ const ProductCartCenter = ({
       )}
       <LabelValueGrid text={language.brand}>{brand}</LabelValueGrid>
       <LabelValueGrid text={language.material}>{material}</LabelValueGrid>
-      <ColorList
-        colors={colours}
-        variant="small"
-        groupTitle={{
-          title: language.colours,
-          id: 'view-product-colors',
-        }}
-      />
+      <ColorList colors={colours} variant="small" />
 
       <SizeList allowedSizes={allowedSizes} sizes={sizes} />
     </CartContent>
