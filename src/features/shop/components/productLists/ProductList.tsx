@@ -11,8 +11,10 @@ interface ProductListProps {
 
 const ProductList = ({ children, title, variant }: ProductListProps) => (
   <div className="product-list-container">
-    <span>{title}</span>
-    <ul className={`product-list ${variant}-list`}>{children}</ul>
+    <span id={variant}>{title}</span>
+    <ul className={`product-list ${variant}-list`} aria-labelledby={variant}>
+      {children}
+    </ul>
   </div>
 );
 
