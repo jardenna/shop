@@ -41,13 +41,5 @@
     &:has(input:focus-visible) {
       @include outline;
     }
-
-    &:has(input:disabled) {
-      .control-label {
-        pointer-events: none;
-
-        @extend %disabled-item;
-      }
-    }
   }
 }
