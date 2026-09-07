@@ -3,11 +3,11 @@ import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
+import './_radio-tile-list.scss';
 
 interface RadioTileListProps extends BaseControlProps {
   checked: string;
   radioButtonList: OptionType[];
-  variant?: 'primary' | 'secondary';
 }
 
 const RadioTileList = ({
@@ -18,12 +18,11 @@ const RadioTileList = ({
   autoFocus,
   iconName,
   className = '',
-  variant = 'primary',
 }: RadioTileListProps) => {
   const { language } = useLanguage();
 
   return (
-    <ul className={`control-list ${className} ${variant}`}>
+    <ul className={`control-list radio-tile-list ${className}`}>
       {radioButtonList.map((radio) => (
         <li key={radio.value} className="control-item">
           <ControlInput
