@@ -7,11 +7,11 @@ import ProductList from './ProductList';
 import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
 
-type ColorListProps = {
+interface ColorListProps {
   colors: string[];
   variant: ProductLabelVariant;
   count?: number;
-};
+}
 
 const ColorList = ({ count, colors, variant }: ColorListProps) => {
   const { language } = useLanguage();
