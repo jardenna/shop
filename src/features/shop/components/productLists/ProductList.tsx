@@ -3,11 +3,11 @@ import type { OptionGroupHeading } from '../../../../types/types';
 import OptionGroupTitle from './OptionGroupTitle';
 import './_product-list.scss';
 
-type ProductListProps = {
+interface ProductListProps {
   children: ReactNode;
   className?: string;
   groupTitle?: OptionGroupHeading;
-};
+}
 
 const ProductList = ({ children, groupTitle, className }: ProductListProps) => (
   <div>
