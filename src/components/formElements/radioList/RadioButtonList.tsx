@@ -2,7 +2,7 @@ import { useLanguage } from '../../../features/language/useLanguage';
 import { InputChangeHandler, OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput from '../ControlInput';
-import './_radio_btn_list.scss';
+import './_radio-button-list.scss';
 
 interface RadioButtonListProps {
   name: string;
@@ -22,9 +22,9 @@ const RadioButtonList = ({
   const { language } = useLanguage();
 
   return (
-    <ul className="secondary-radio">
+    <ul className="radio-button-list">
       {radioButtonList.map((radio) => (
-        <li key={radio.label} className="secondary-radio-container">
+        <li key={radio.label} className="radio-button-list-container">
           <ControlInput
             type="radio"
             name={name}

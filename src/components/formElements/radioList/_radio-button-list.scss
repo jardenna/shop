@@ -1,11 +1,11 @@
 @use '../../../scss/globals' as *;
 
-.secondary-radio {
+.radio-button-list {
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  .secondary-radio-container {
+  .radio-button-list-container {
     display: flex;
     align-items: center;
     gap: 4px;
