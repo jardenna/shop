@@ -9,6 +9,7 @@ interface RadioBtnListProps {
   onChange: InputChangeHandler;
   radioButtonList: OptionType[];
   value: string;
+  autoFocus?: boolean;
 }
 
 const RadioBtnList = ({
@@ -16,6 +17,7 @@ const RadioBtnList = ({
   value,
   onChange,
   name,
+  autoFocus,
 }: RadioBtnListProps) => {
   const { language } = useLanguage();
 
@@ -31,6 +33,7 @@ const RadioBtnList = ({
             checked={value === radio.value}
             onChange={onChange}
             label={translateKey(radio.label, language)}
+            autoFocus={autoFocus}
           />
         </li>
       ))}
