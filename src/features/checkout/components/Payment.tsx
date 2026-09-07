@@ -61,7 +61,7 @@ const Payment = ({
         <RadioBtnList
           onChange={onChange}
           value={values.paymentMethod}
-          radioList={paymentMethodListnew}
+          radioButtonList={paymentMethodListnew}
           name={name}
         />
         <PaymentMethodsList paymentMethods={paymentMethod} />
