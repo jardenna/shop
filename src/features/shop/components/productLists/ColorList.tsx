@@ -29,7 +29,7 @@ const ColorList = ({ count, colors, variant }: ColorListProps) => {
   );
 
   return (
-    <ProductList className="color-list" title={language.colours}>
+    <ProductList variant="color" title={language.colours}>
       {visibleItems.map(({ color, border, value }) => (
         <ProductListItem
           key={color}
