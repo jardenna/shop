@@ -49,7 +49,10 @@ const Salespage = () => {
   if (isError) {
     return (
       <MainPageContainer heading={language.sale}>
-        <NotFoundError error={error} />
+        <ErrorBoundaryFallback
+          error={error}
+          resetErrorBoundary={() => refetch()}
+        />
       </MainPageContainer>
     );
   }
@@ -74,6 +77,10 @@ const Salespage = () => {
   const selectedCategory = subMenu?.find(
     ({ categoryId }) => categoryId === params.categoryId,
   );
+
+  const noCategoryId =
+    params.categoryId &&
+    !subMenu?.some(({ categoryId }) => categoryId === params.categoryId);
 
   const categoryLabel = selectedCategory?.label ?? 'all';
   const pageHeading = `${language.sale} ${language[categoryLabel]}`;
@@ -115,6 +122,7 @@ const Salespage = () => {
                 priority
                 className="shop-product-banner"
               />
+
               <div className="product-toolbar">
                 <DisplayControls
                   onSetDisplay={setProductView}
@@ -122,6 +130,7 @@ const Salespage = () => {
                   activeDisplay={productView}
                 />
               </div>
+              {noCategoryId && <NotFoundError error="" className="sale" />}
               <ProductCartList
                 products={selectedProducts}
                 showSizeOverlay={productView !== 'list'}
