@@ -42,8 +42,8 @@ const MyOrderDetailsPage = () => {
     return (
       <NotFoundError
         error={error}
-        btnLabel="viewOrders"
-        path={ShopPath.MyOrder}
+        btnLabel="myOrders"
+        path={`/${ShopPath.MyOrders}`}
       />
     );
   }

@@ -6,17 +6,23 @@ import Picture from './Picture';
 interface NotFoundErrorProps {
   error: any;
   btnLabel?: string;
+  className?: string;
   path?: string;
 }
 
-const NotFoundError = ({ path, error, btnLabel }: NotFoundErrorProps) => {
+const NotFoundError = ({
+  path,
+  error,
+  btnLabel,
+  className = '',
+}: NotFoundErrorProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const errorText = error?.data?.message ?? language.somethingWentWrong;
   const src = '/images/icons/sad_smiley';
 
   return (
-    <section className="error-content">
+    <section className={`error-content ${className}`}>
       <Picture
         className="emoji"
         src={`${src}.png`}
@@ -25,11 +31,12 @@ const NotFoundError = ({ path, error, btnLabel }: NotFoundErrorProps) => {
       />
 
       <div className="flex">
-        {error.status !== 'FETCH_ERROR' && (
+        {error?.status && error.status !== 'FETCH_ERROR' && (
           <span className="error-code">{error.status}</span>
         )}
         <h1 className="error-info">{errorText}</h1>
       </div>
+
       <Button
         onClick={() => {
           if (path) {

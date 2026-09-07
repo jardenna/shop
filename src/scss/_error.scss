@@ -10,6 +10,11 @@
   padding-block: 20px;
   width: 100%;
 
+  &.sale {
+    height: auto;
+    padding: 0;
+  }
+
   h1 {
     display: flex;
     align-items: center;
