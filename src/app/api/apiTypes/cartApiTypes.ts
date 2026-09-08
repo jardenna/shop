@@ -52,10 +52,10 @@ export interface UpdateCartRequest {
 }
 
 export interface GuestCartResponse {
+  cartItems: Order[];
   discount: Discount;
   missingProductIds: string[];
   paymentMethods: PaymentMethods[];
-  products: Order[];
   summary: Summary;
 }
 

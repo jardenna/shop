@@ -40,7 +40,7 @@ const ShoppingCartPage = () => {
     isAuthReady,
   });
 
-  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
+  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.cartItems;
   const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
     useApplyPromoCodeMutation();

@@ -399,7 +399,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
   });
 
   return res.status(200).json({
-    products: cartData.cartItems,
+    cartItems: cartData.cartItems,
     missingProductIds,
     summary: cartData.summary,
     paymentMethods: PAYMENT_METHODS_LIST,
