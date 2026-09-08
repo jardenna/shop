@@ -11,7 +11,7 @@ const SkeletonShopProducts = ({ count }: PickedSkeletonTypes) => (
     <div className="breadcrumb-row">
       <SkeletonBreadCrumbs width="12" />
     </div>
-    <div className="skeleton-shop-product">
+    <div className="skeleton-shop-product-container">
       <SkeletonAsideNav />
       <div className="skeleton-shop-product-content">
         <Skeleton className="skeleton-hero" />

@@ -10,12 +10,7 @@
   min-width: rem(300px);
 
   @include max-size($small) {
-    max-width: 100%;
-    padding: 0;
-
-    .skeleton-nav-item {
-      display: none;
-    }
+    display: none;
   }
 
   .skeleton-aside-nav-title {
@@ -28,7 +23,7 @@
   }
 }
 
-.skeleton-shop-product {
+.skeleton-shop-product-container {
   display: flex;
   gap: 20px;
   width: 100%;
@@ -43,6 +38,10 @@
   .skeleton-hero {
     width: 100%;
     height: rem(332px);
+
+    @include max-size($small) {
+      height: rem(120px);
+    }
   }
 
   .skeleton-toolbar {
