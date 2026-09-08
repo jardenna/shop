@@ -364,7 +364,7 @@ orderStatusMessage;We process your order within 24 hours on weekdays. You can fo
 orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
 orderSummary;Order summary;Ordreoversigt
 orderSummaryList;Order summary list;Ordreoversigtsliste
-orderTotalInclVat;Total price Incl. vat;Pris i alt Inkl. moms
+orderTotalInclVat;Total price incl. vat;Pris i alt inkl. moms
 orderUpdated;Order updated;Ordre opdateret
 originaPrice;Original price;Før pris
 outOf;out of;ud af

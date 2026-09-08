@@ -18,6 +18,7 @@ export const useActiveCart = ({
   const {
     data: apiCartList,
     isError: isApiCartError,
+    isFetching: isApiCartFetching,
     refetch: refetchApiCartList,
   } = useGetCartQuery(currentUser ? undefined : skipToken);
 
@@ -26,12 +27,14 @@ export const useActiveCart = ({
   const {
     data: guestCart,
     refetch: refetchGuestCart,
+    isFetching: isGuestCartFetching,
     isError: isGuestCartError,
   } = useGetGuestCartQuery(shouldFetchGuestCart ? cartList : skipToken);
 
   const activeCartList =
     currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
+  const isFetching = currentUser ? isApiCartFetching : isGuestCartFetching;
   const cartData = currentUser ? apiCartList : guestCart;
   const isCartError = currentUser ? isApiCartError : isGuestCartError;
   const refetchCart = currentUser ? refetchApiCartList : refetchGuestCart;
@@ -43,5 +46,6 @@ export const useActiveCart = ({
     cartData,
     activeCartList,
     isCartError,
+    isFetching,
   };
 };

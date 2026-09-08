@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
 import { useAnimatedMount } from '../../../../components/transition/useAnimatedMount';
@@ -16,27 +16,34 @@ import {
   selectIsMiniCartOpen,
 } from '../../../miniCartPopupSlice';
 import OrderList from '../../../orders/components/OrderList';
-import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import TotalPrice from '../../../orders/components/TotalPrice';
 import { useActiveCart } from '../../useActiveCart';
-import PaymentSummaryList from '../paymentSummery/PaymentSummaryList';
 import './_mini-cart-popup.scss';
+import MiniCartInfo from './MiniCartInfo';
 
-const MiniCartPopup = () => {
+interface MiniCartPopupProps {
+  gotoCart: () => void;
+}
+
+const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
   const dispatch = useAppDispatch();
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const { apiCartList, refetchCart } = useActiveCart({
+  const miniCartRef = useRef<HTMLUListElement>(null);
+
+  const { cartData, isFetching, refetchCart } = useActiveCart({
     currentUser,
     isAuthReady: true,
   });
+
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
+  const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
+
   const { shouldRender, transitionState } = useAnimatedMount({
-    isOpen: isMiniCartOpen,
+    isOpen: shouldOpenMiniCart,
     duration: 300,
   });
-
-  const miniCartRef = useRef<HTMLUListElement>(null);
 
   const handleCloseMiniCart = () => {
     dispatch(closeMiniCart());
@@ -45,15 +52,13 @@ const MiniCartPopup = () => {
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
   useScrollLock(shouldRender);
 
-  useClickOutside(miniCartRef, () => {
-    handleCloseMiniCart();
-  }, [miniCartRef]);
+  useClickOutside(miniCartRef, handleCloseMiniCart, [miniCartRef]);
 
-  if (!apiCartList || !shouldRender) {
+  if (!cartData || !shouldRender) {
     return null;
   }
 
-  const { cartItems, summary, discount } = apiCartList;
+  const { cartItems, summary } = cartData;
 
   return (
     <Portal portalId="miniCart">
@@ -61,31 +66,19 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        {discount && (
-          <section
-            className={`mini-cart transition ${transitionState}`}
-            ref={miniCartRef}
-          >
-            <h2 className="mini-cart-title">{language.myBag}</h2>
-            <OrderList orders={cartItems} language={language} />
-
-            <article>
-              {summary.remainingForFreeShipping > 0 && (
-                <div className="mini-cart-info">
-                  <span>{language.buyForFreeShipping}</span>
-                  <ProductPrice price={summary.remainingForFreeShipping} />
-                  <span>{language.freeShippingSuffix}</span>
-                </div>
-              )}
-
-              <PaymentSummaryList
-                language={language}
-                summary={summary}
-                promoDiscount={discount}
-              />
-            </article>
-          </section>
-        )}
+        <section
+          className={`mini-cart transition ${transitionState}`}
+          ref={miniCartRef}
+        >
+          <h2 className="mini-cart-title">{language.myBag}</h2>
+          <MiniCartInfo
+            remainingForFreeShipping={summary.remainingForFreeShipping}
+            language={language}
+          />
+          <OrderList orders={cartItems} language={language} />
+          <TotalPrice price={summary.totalPrice} />
+          <Button onClick={gotoCart}>{language.bag}</Button>
+        </section>
       </ErrorBoundary>
     </Portal>
   );
