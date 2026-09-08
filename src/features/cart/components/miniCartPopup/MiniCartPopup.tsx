@@ -21,7 +21,11 @@ import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 
-const MiniCartPopup = () => {
+interface MiniCartPopupProps {
+  gotoCart: () => void;
+}
+
+const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
   const dispatch = useAppDispatch();
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
@@ -78,7 +82,7 @@ const MiniCartPopup = () => {
 
           <OrderList orders={cartItems} language={language} />
           <TotalPrice price={summary.totalPrice} />
-          <Button>{language.bag}</Button>
+          <Button onClick={gotoCart}>{language.bag}</Button>
         </section>
       </ErrorBoundary>
     </Portal>

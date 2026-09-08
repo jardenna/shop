@@ -7,6 +7,7 @@ import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
@@ -16,11 +17,11 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
+import PageErrorBoundary from '../pages/PageErrorBoundary';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
-import PageErrorBoundary from '../pages/PageErrorBoundary';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -115,6 +116,10 @@ const Layout = () => {
     },
   ];
 
+  const handleGoToCart = () => {
+    navigate(`/${ShopPath.ShoppingCart}`);
+  };
+
   return (
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
@@ -139,6 +144,7 @@ const Layout = () => {
       <PageErrorBoundary>
         <main id="main">
           <Outlet />
+          <MiniCartPopup gotoCart={handleGoToCart} />
         </main>
       </PageErrorBoundary>
     </div>
