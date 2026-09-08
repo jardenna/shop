@@ -1,7 +1,7 @@
 import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
 import SkeletonBreadCrumbs from '../SkeletonBreadCrumbs';
 
-import './_skeleton-collection-page.scss';
+import './_skeleton-shop-products.scss';
 import SkeletonAsideNav from './SkeletonAsideNav';
 import SkeletonProductInfo from './SkeletonProductInfo';
 import SkeletonToolbar from './SkeletonToolbar';
