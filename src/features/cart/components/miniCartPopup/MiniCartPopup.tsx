@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -26,13 +25,17 @@ const MiniCartPopup = () => {
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const { apiCartList, refetchCart } = useActiveCart({
+
+  const { apiCartList, isFetching, refetchCart } = useActiveCart({
     currentUser,
     isAuthReady: true,
   });
+
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
+  const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
+
   const { shouldRender, transitionState } = useAnimatedMount({
-    isOpen: isMiniCartOpen,
+    isOpen: shouldOpenMiniCart,
     duration: 300,
   });
 
@@ -45,15 +48,13 @@ const MiniCartPopup = () => {
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
   useScrollLock(shouldRender);
 
-  useClickOutside(miniCartRef, () => {
-    handleCloseMiniCart();
-  }, [miniCartRef]);
+  useClickOutside(miniCartRef, handleCloseMiniCart, [miniCartRef]);
 
   if (!apiCartList || !shouldRender) {
     return null;
   }
 
-  const { cartItems, summary, discount } = apiCartList;
+  const { cartItems, summary } = apiCartList;
 
   return (
     <Portal portalId="miniCart">
@@ -61,27 +62,26 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        {discount && (
-          <section
-            className={`mini-cart transition ${transitionState}`}
-            ref={miniCartRef}
-          >
-            <h2 className="mini-cart-title">{language.myBag}</h2>
-            <OrderList orders={cartItems} language={language} />
+        <section
+          className={`mini-cart transition ${transitionState}`}
+          ref={miniCartRef}
+        >
+          <h2 className="mini-cart-title">{language.myBag}</h2>
 
-            <article>
-              {summary.remainingForFreeShipping > 0 && (
-                <div className="mini-cart-info">
-                  <span>{language.buyForFreeShipping}</span>
-                  <ProductPrice price={summary.remainingForFreeShipping} />
-                  <span>{language.freeShippingSuffix}</span>
-                </div>
-              )}
+          <OrderList orders={cartItems} language={language} />
 
-              <TotalPrice price={summary.totalPrice} />
-            </article>
-          </section>
-        )}
+          <article>
+            {summary.remainingForFreeShipping > 0 && (
+              <div className="mini-cart-info">
+                <span>{language.buyForFreeShipping}</span>
+                <ProductPrice price={summary.remainingForFreeShipping} />
+                <span>{language.freeShippingSuffix}</span>
+              </div>
+            )}
+
+            <TotalPrice price={summary.totalPrice} />
+          </article>
+        </section>
       </ErrorBoundary>
     </Portal>
   );
