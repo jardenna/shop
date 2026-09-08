@@ -1,4 +1,3 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
@@ -8,7 +7,6 @@ import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCa
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useApplyPromoCodeMutation,
-  useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartInfo from '../features/cart/components/CartInfo';
@@ -33,18 +31,16 @@ const ShoppingCartPage = () => {
   const { language } = useLanguage();
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady, isEmployee } = useAuth();
-  const { apiCartList, cartList, refetchApiCartList, isCartError } =
-    useActiveCart({
-      currentUser,
-    });
 
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
-  const shouldFetchGuestCart = isAuthReady && !currentUser;
 
-  const { data: guestCart, refetch } = useGetGuestCartQuery(
-    shouldFetchGuestCart ? cartList : skipToken,
-  );
+  const { apiCartList, isCartError, refetchCart, cartData } = useActiveCart({
+    currentUser,
+    isAuthReady,
+  });
+
+  const cartItems = cartData?.cartItems;
 
   const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
@@ -67,12 +63,10 @@ const ShoppingCartPage = () => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
 
-  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
-
   if (isCartError) {
     return (
       <MainPageContainer heading={pageHeading}>
-        <ErrorBoundaryFallback resetErrorBoundary={refetchApiCartList} />
+        <ErrorBoundaryFallback resetErrorBoundary={refetchCart} />
       </MainPageContainer>
     );
   }
@@ -104,14 +98,14 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading={pageHeading} variant="large">
-      <div className="order-flow">
-        <section>
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch}
-          >
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetchCart}
+      >
+        <div className="order-flow">
+          <section>
             <CartList
-              cartList={cartItems}
+              cartList={cartData.cartItems}
               language={language}
               isLoading={isUpdateQtyLoading}
               onDeleteCartItem={
@@ -121,51 +115,38 @@ const ShoppingCartPage = () => {
                 currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
               }
             />
-          </ErrorBoundary>
-        </section>
+          </section>
 
-        <aside>
-          <OrderHeading heading={language.paymentSummary} />
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetchApiCartList}
-          >
-            {apiCartList && (
-              <>
-                <PaymentSummaryList
-                  summary={apiCartList.summary}
-                  language={language}
-                  promoDiscount={apiCartList.discount}
-                />
-                {!isEmployee && (
-                  <PromoCodeForm
-                    onSubmitPromoCode={handleApplyPromoCode}
-                    isLoading={isPromoCodeLoading}
-                    promoDiscount={apiCartList.discount}
-                  />
-                )}
-                <div className="fixed-bottom-container">
-                  {isMobileSize && (
-                    <TotalPrice price={apiCartList.summary.totalPrice} />
-                  )}
-                  <Button
-                    onClick={goToCheckoutPage}
-                    className="shopping-cart-btn"
-                  >
-                    {language.continueToCheckout}
-                  </Button>
-                </div>
-                <div className="payment-info">
-                  <PaymentMethodsList
-                    paymentMethods={apiCartList.paymentMethods}
-                  />
-                  <CartInfo language={language} />
-                </div>
-              </>
+          <aside>
+            <OrderHeading heading={language.paymentSummary} />
+
+            <PaymentSummaryList
+              summary={cartData.summary}
+              language={language}
+              promoDiscount={cartData.discount}
+            />
+            {!isEmployee && apiCartList && (
+              <PromoCodeForm
+                onSubmitPromoCode={handleApplyPromoCode}
+                isLoading={isPromoCodeLoading}
+                promoDiscount={cartData.discount}
+              />
             )}
-          </ErrorBoundary>
-        </aside>
-      </div>
+            <div className="fixed-bottom-container">
+              {isMobileSize && (
+                <TotalPrice price={cartData.summary.totalPrice} />
+              )}
+              <Button onClick={goToCheckoutPage} className="shopping-cart-btn">
+                {language.continueToCheckout}
+              </Button>
+            </div>
+            <div className="payment-info">
+              <PaymentMethodsList paymentMethods={cartData.paymentMethods} />
+              <CartInfo language={language} />
+            </div>
+          </aside>
+        </div>
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };

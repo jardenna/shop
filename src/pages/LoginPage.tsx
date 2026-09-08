@@ -50,11 +50,15 @@ const LoginPage = () => {
 
   async function handleLoginUser() {
     const result = await loginUser(values).unwrap();
+
     if (result.success) {
       if (cartList.length > 0) {
         await syncCart(cartList).unwrap();
 
         cartStorageUtil.clear();
+
+        navigate(`/${ShopPath.ShoppingCart}`, { replace: true });
+        return;
       }
 
       navigate(from, { replace: true });

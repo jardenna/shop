@@ -4,7 +4,7 @@ import { localStorageKeys } from '../../../hooks/useLocalStorage';
 export const cartStorageUtil = {
   load(): CartItem[] {
     try {
-      const storedValue = localStorage.getItem(localStorageKeys.cartList);
+      const storedValue = localStorage.getItem(localStorageKeys.cartItems);
 
       return storedValue ? (JSON.parse(storedValue) as CartItem[]) : [];
     } catch {
@@ -12,11 +12,11 @@ export const cartStorageUtil = {
     }
   },
 
-  save(cartList: CartItem[]) {
-    localStorage.setItem(localStorageKeys.cartList, JSON.stringify(cartList));
+  save(cartItems: CartItem[]) {
+    localStorage.setItem(localStorageKeys.cartItems, JSON.stringify(cartItems));
   },
 
   clear() {
-    localStorage.removeItem(localStorageKeys.cartList);
+    localStorage.removeItem(localStorageKeys.cartItems);
   },
 };

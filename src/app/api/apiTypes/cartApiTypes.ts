@@ -52,8 +52,11 @@ export interface UpdateCartRequest {
 }
 
 export interface GuestCartResponse {
+  cartItems: Order[];
+  discount: Discount;
   missingProductIds: string[];
-  products: Order[];
+  paymentMethods: PaymentMethods[];
+  summary: Summary;
 }
 
 export interface UpdateCartQtyRequest {
