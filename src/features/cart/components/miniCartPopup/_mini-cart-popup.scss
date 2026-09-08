@@ -7,13 +7,27 @@
   top: 16px;
   right: 16px;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 10;
   display: flex;
   gap: 4px;
   flex-direction: column;
   padding: 16px;
   background-color: $color-white;
   box-shadow: $box-shadow;
+
+  .total-price {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .order-list {
+    margin: 0;
+
+    .order-img {
+      width: rem(68px);
+      height: rem(112px);
+    }
+  }
 
   &.enter {
     transform: translateX(100%);
@@ -36,19 +50,12 @@
     display: flex;
   }
 
-  .product-price {
-    font-size: rem(16px);
-  }
-
   .mini-cart-info {
     display: flex;
-    align-items: center;
     gap: 4px;
-    justify-content: center;
     padding: 12px;
     border-radius: $border-radius;
     background-color: $color-background;
     margin-bottom: 8px;
-    flex-direction: column;
   }
 }

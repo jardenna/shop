@@ -16,9 +16,9 @@ import {
   selectIsMiniCartOpen,
 } from '../../../miniCartPopupSlice';
 import OrderList from '../../../orders/components/OrderList';
+import TotalPrice from '../../../orders/components/TotalPrice';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
-import PaymentSummaryList from '../paymentSummery/PaymentSummaryList';
 import './_mini-cart-popup.scss';
 
 const MiniCartPopup = () => {
@@ -78,11 +78,7 @@ const MiniCartPopup = () => {
                 </div>
               )}
 
-              <PaymentSummaryList
-                language={language}
-                summary={summary}
-                promoDiscount={discount}
-              />
+              <TotalPrice price={summary.totalPrice} />
             </article>
           </section>
         )}
