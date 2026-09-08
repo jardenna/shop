@@ -28,7 +28,7 @@ const LoginPage = () => {
     onReset,
   } = useAuth();
   // const initialState = { email: '', password: '' };
-  const initialState = { email: 'lisbeth@mail.com', password: 'Lisbeth123!' };
+  const initialState = { email: 'ole@mail.com', password: 'Ole1234!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
   const paramKey = 'mode';
@@ -50,6 +50,7 @@ const LoginPage = () => {
 
   async function handleLoginUser() {
     const result = await loginUser(values).unwrap();
+
     if (result.success) {
       if (cartList.length > 0) {
         await syncCart(cartList).unwrap();
@@ -57,7 +58,10 @@ const LoginPage = () => {
         cartStorageUtil.clear();
       }
 
-      navigate(from, { replace: true });
+      const redirectPath =
+        from === `/${ShopPath.Checkout}` ? `/${ShopPath.ShoppingCart}` : from;
+
+      navigate(redirectPath, { replace: true });
     }
   }
 
