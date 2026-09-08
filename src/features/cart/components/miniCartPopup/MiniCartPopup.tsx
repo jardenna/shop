@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Portal from '../../../../components/Portal';
 import { useAnimatedMount } from '../../../../components/transition/useAnimatedMount';
@@ -67,20 +68,17 @@ const MiniCartPopup = () => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
+          {summary.remainingForFreeShipping > 0 && (
+            <div className="mini-cart-info">
+              <span>{language.buyForFreeShipping}</span>
+              <ProductPrice price={summary.remainingForFreeShipping} />
+              <span>{language.freeShippingSuffix}</span>
+            </div>
+          )}
 
           <OrderList orders={cartItems} language={language} />
-
-          <article>
-            {summary.remainingForFreeShipping > 0 && (
-              <div className="mini-cart-info">
-                <span>{language.buyForFreeShipping}</span>
-                <ProductPrice price={summary.remainingForFreeShipping} />
-                <span>{language.freeShippingSuffix}</span>
-              </div>
-            )}
-
-            <TotalPrice price={summary.totalPrice} />
-          </article>
+          <TotalPrice price={summary.totalPrice} />
+          <Button>{language.bag}</Button>
         </section>
       </ErrorBoundary>
     </Portal>
