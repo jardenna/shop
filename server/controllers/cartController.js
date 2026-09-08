@@ -356,6 +356,16 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
     return res.status(200).json({
       products: [],
       missingProductIds: [],
+      summary: {
+        subTotal: 0,
+        discountPrice: 0,
+        taxPrice: 0,
+        shippingPrice: 0,
+        totalPrice: 0,
+        promoDiscount: 0,
+        remainingForFreeShipping: 1500,
+      },
+      paymentMethods: PAYMENT_METHODS_LIST,
     });
   }
 
@@ -370,30 +380,29 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
     (productId) => !productMap.has(productId),
   );
 
-  const products = cartItems.flatMap((item) => {
-    const product = productMap.get(item.productId);
+  const validCartItems = cartItems.filter((item) =>
+    productMap.has(item.productId),
+  );
 
-    if (!product) {
-      return [];
-    }
+  const cart = {
+    cartItems: validCartItems,
+    discount: {
+      code: '',
+      label: '',
+      percent: 0,
+    },
+  };
 
-    return {
-      id: item.id,
-      productId: item.productId,
-      qty: item.qty,
-      size: item.size,
-      color: item.color,
-      image: product.images[0],
-      productName: product.productName,
-      price: product.price,
-      discount: product.discount,
-      countInStock: product.countInStock,
-    };
+  const cartData = await buildCartData({
+    cart,
+    promoDiscountPercent: 0,
   });
 
   return res.status(200).json({
-    products,
+    products: cartData.cartItems,
     missingProductIds,
+    summary: cartData.summary,
+    paymentMethods: PAYMENT_METHODS_LIST,
   });
 });
 
