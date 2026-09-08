@@ -11,9 +11,9 @@ const SkeletonCollectionPage = ({ count }: PickedSkeletonTypes) => (
     <div className="breadcrumb-row">
       <SkeletonBreadCrumbs width="12" />
     </div>
-    <div className="skeleton-collection-page-container">
+    <div className="skeleton-shop-product">
       <SkeletonAsideNav />
-      <div className="skeleton-collection-container">
+      <div className="skeleton-shop-product-content">
         <Skeleton className="skeleton-hero" />
         <SkeletonToolbar />
         <SkeletonCollection count={count} />
