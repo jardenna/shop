@@ -17,9 +17,9 @@ import {
 } from '../../../miniCartPopupSlice';
 import OrderList from '../../../orders/components/OrderList';
 import TotalPrice from '../../../orders/components/TotalPrice';
-import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
+import MiniCartInfo from './MiniCartInfo';
 
 interface MiniCartPopupProps {
   gotoCart: () => void;
@@ -72,13 +72,10 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
-          {summary.remainingForFreeShipping > 0 && (
-            <div className="mini-cart-info">
-              <span>{language.buyForFreeShipping}</span>
-              <ProductPrice price={summary.remainingForFreeShipping} />
-              <span>{language.freeShippingSuffix}</span>
-            </div>
-          )}
+          <MiniCartInfo
+            remainingForFreeShipping={summary.remainingForFreeShipping}
+            language={language}
+          />
 
           <OrderList orders={cartItems} language={language} />
           <TotalPrice price={summary.totalPrice} />
