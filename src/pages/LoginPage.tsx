@@ -28,7 +28,7 @@ const LoginPage = () => {
     onReset,
   } = useAuth();
   // const initialState = { email: '', password: '' };
-  const initialState = { email: 'ole@mail.com', password: 'Ole1234!' };
+  const initialState = { email: 'lisbeth@mail.com', password: 'Lisbeth123!' };
   const from = location.state?.from?.pathname || ShopPath.Root;
   const [searchParams, setSearchParams] = useSearchParams();
   const paramKey = 'mode';
