@@ -3,7 +3,9 @@ import SkeletonNavItem from '../SkeletonNavItem';
 
 const SkeletonAsideNav = () => (
   <div className="skeleton-aside-nav">
-    <Skeleton className="skeleton-aside-nav-title" />
+    <div className="skeleton-aside-nav-title">
+      <Skeleton className="nav-label" />
+    </div>
     <SkeletonNavItem className="active" width="7" />
     <SkeletonNavItem width="4" />
     <SkeletonNavItem width="5" />

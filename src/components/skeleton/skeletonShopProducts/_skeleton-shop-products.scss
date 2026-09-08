@@ -6,6 +6,28 @@
   padding-block: 8px;
 }
 
+.skeleton-aside-nav {
+  min-width: rem(300px);
+
+  @include max-size($small) {
+    max-width: 100%;
+    padding: 0;
+
+    .skeleton-nav-item {
+      display: none;
+    }
+  }
+
+  .skeleton-aside-nav-title {
+    display: flex;
+    align-items: center;
+    height: rem(80px);
+    padding-inline: 32px;
+    margin-bottom: 4px;
+    background-color: $skeleton-background;
+  }
+}
+
 .skeleton-shop-product {
   display: flex;
   gap: 20px;
@@ -16,31 +38,6 @@
     gap: 8px;
     display: flex;
     flex-direction: column;
-  }
-
-  .skeleton-aside-nav {
-    min-width: rem(300px);
-
-    @include max-size($small) {
-      max-width: 100%;
-      padding: 0;
-
-      .skeleton-nav-item {
-        display: none;
-      }
-    }
-
-    .skeleton-aside-nav-title {
-      height: rem(22px);
-      width: 55%;
-      margin: 0 auto 20px;
-
-      @include max-size($small) {
-        width: 100%;
-        margin: 0;
-        height: rem(52px);
-      }
-    }
   }
 
   .skeleton-hero {
