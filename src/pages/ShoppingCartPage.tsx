@@ -35,10 +35,11 @@ const ShoppingCartPage = () => {
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
 
-  const { apiCartList, isCartError, guestCart, refetchCart } = useActiveCart({
-    currentUser,
-    isAuthReady,
-  });
+  const { apiCartList, isCartError, guestCart, refetchCart, cartData } =
+    useActiveCart({
+      currentUser,
+      isAuthReady,
+    });
 
   const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.cartItems;
   const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
@@ -101,59 +102,55 @@ const ShoppingCartPage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart}
       >
-        <div className="order-flow">
-          <section>
-            <CartList
-              cartList={cartItems}
-              language={language}
-              isLoading={isUpdateQtyLoading}
-              onDeleteCartItem={
-                currentUser ? deleteCartItem : handleDeleteGuestCart
-              }
-              onUpdateQty={
-                currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
-              }
-            />
-          </section>
+        {cartData && (
+          <div className="order-flow">
+            <section>
+              <CartList
+                cartList={cartData.cartItems}
+                language={language}
+                isLoading={isUpdateQtyLoading}
+                onDeleteCartItem={
+                  currentUser ? deleteCartItem : handleDeleteGuestCart
+                }
+                onUpdateQty={
+                  currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
+                }
+              />
+            </section>
 
-          <aside>
-            <OrderHeading heading={language.paymentSummary} />
+            <aside>
+              <OrderHeading heading={language.paymentSummary} />
 
-            {apiCartList && (
-              <>
-                <PaymentSummaryList
-                  summary={apiCartList.summary}
-                  language={language}
-                  promoDiscount={apiCartList.discount}
+              <PaymentSummaryList
+                summary={cartData.summary}
+                language={language}
+                promoDiscount={cartData.discount}
+              />
+              {!isEmployee && apiCartList && (
+                <PromoCodeForm
+                  onSubmitPromoCode={handleApplyPromoCode}
+                  isLoading={isPromoCodeLoading}
+                  promoDiscount={cartData.discount}
                 />
-                {!isEmployee && (
-                  <PromoCodeForm
-                    onSubmitPromoCode={handleApplyPromoCode}
-                    isLoading={isPromoCodeLoading}
-                    promoDiscount={apiCartList.discount}
-                  />
+              )}
+              <div className="fixed-bottom-container">
+                {isMobileSize && (
+                  <TotalPrice price={cartData.summary.totalPrice} />
                 )}
-                <div className="fixed-bottom-container">
-                  {isMobileSize && (
-                    <TotalPrice price={apiCartList.summary.totalPrice} />
-                  )}
-                  <Button
-                    onClick={goToCheckoutPage}
-                    className="shopping-cart-btn"
-                  >
-                    {language.continueToCheckout}
-                  </Button>
-                </div>
-                <div className="payment-info">
-                  <PaymentMethodsList
-                    paymentMethods={apiCartList.paymentMethods}
-                  />
-                  <CartInfo language={language} />
-                </div>
-              </>
-            )}
-          </aside>
-        </div>
+                <Button
+                  onClick={goToCheckoutPage}
+                  className="shopping-cart-btn"
+                >
+                  {language.continueToCheckout}
+                </Button>
+              </div>
+              <div className="payment-info">
+                <PaymentMethodsList paymentMethods={cartData.paymentMethods} />
+                <CartInfo language={language} />
+              </div>
+            </aside>
+          </div>
+        )}
       </ErrorBoundary>
     </MainPageContainer>
   );
