@@ -37,7 +37,7 @@
 
   .skeleton-hero {
     width: 100%;
-    height: rem(332px);
+    height: rem(400px);
 
     @include max-size($small) {
       height: rem(120px);
