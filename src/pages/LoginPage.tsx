@@ -56,12 +56,12 @@ const LoginPage = () => {
         await syncCart(cartList).unwrap();
 
         cartStorageUtil.clear();
+
+        navigate(`/${ShopPath.ShoppingCart}`, { replace: true });
+        return;
       }
 
-      const redirectPath =
-        from === `/${ShopPath.Checkout}` ? `/${ShopPath.ShoppingCart}` : from;
-
-      navigate(redirectPath, { replace: true });
+      navigate(from, { replace: true });
     }
   }
 
