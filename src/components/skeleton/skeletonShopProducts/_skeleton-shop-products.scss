@@ -23,6 +23,12 @@
   }
 }
 
+.skeleton-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .skeleton-shop-product-container {
   display: flex;
   gap: 20px;
@@ -68,11 +74,5 @@
       height: rem(20px);
       width: rem(90px);
     }
-  }
-
-  .skeleton-product-info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
   }
 }

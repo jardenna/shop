@@ -8,7 +8,7 @@ type SkeletonProductInfoProps = SkeletonProps & {
 };
 
 const SkeletonProductInfo = ({
-  count = 3,
+  count = 4,
   showCtaBtn,
   className = '',
 }: SkeletonProductInfoProps) => {
