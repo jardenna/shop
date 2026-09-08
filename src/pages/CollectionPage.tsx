@@ -9,7 +9,7 @@ import { usePaginationText } from '../components/pagination/hooks/usePaginationT
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
+import SkeletonCollectionPage from '../components/skeleton/skeletonShopProducts/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';

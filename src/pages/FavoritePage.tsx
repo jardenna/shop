@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import SkeletonCollection from '../components/skeleton/skeletonCollection/SkeletonCollection';
+import SkeletonCollection from '../components/skeleton/skeletonShopProducts/SkeletonCollection';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';

@@ -7,7 +7,7 @@ import DisplayControls from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
-import SkeletonCollectionPage from '../components/skeleton/skeletonCollection/SkeletonCollectionPage';
+import SkeletonCollectionPage from '../components/skeleton/skeletonShopProducts/SkeletonCollectionPage';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
