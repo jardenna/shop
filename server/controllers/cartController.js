@@ -354,7 +354,7 @@ const getGuestCartProducts = asyncHandler(async (req, res) => {
 
   if (cartItems.length === 0) {
     return res.status(200).json({
-      products: [],
+      cartItems: [],
       missingProductIds: [],
       summary: {
         subTotal: 0,
