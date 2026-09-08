@@ -18,7 +18,7 @@ const PaginationSelect = ({
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
-  const { isTabletSize } = useMediaQuery();
+  const { isLargeTabletSize } = useMediaQuery();
   const selectProductCountList = ['8', '16', '32'];
 
   const options = [...selectProductCountList, String(totalCount)]
@@ -45,7 +45,7 @@ const PaginationSelect = ({
           inputHasNoLabel
         />
       </FieldSet>
-      {!isTabletSize && <p>{language.productPerPage}</p>}
+      {!isLargeTabletSize && <p>{language.productPerPage}</p>}
     </form>
   );
 };

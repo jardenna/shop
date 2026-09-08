@@ -192,16 +192,15 @@ const CollectionPage = () => {
             onReset={() => refetch()}
           >
             <section className="shop-product-page-content">
-              {!isMobileSize && (
-                <Picture
-                  src={`${src}.jpg`}
-                  srcSet={`${src}.avif`}
-                  alt={language[altText]}
-                  ratio="16:9"
-                  priority
-                  className="shop-product-banner"
-                />
-              )}
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={`${src}.avif`}
+                alt={language[altText]}
+                ratio="16:9"
+                priority
+                className="shop-product-banner"
+              />
+
               <div className="product-toolbar">
                 <ProductToolbar
                   setProductView={setProductView}
