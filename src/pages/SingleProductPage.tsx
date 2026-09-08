@@ -21,7 +21,7 @@ import MetaTags from '../layout/MetaTags';
 import './singleProductPage.styles.scss';
 
 const SingleProductPage = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
   const { id } = useParams();
   const { language } = useLanguage();
 
@@ -148,6 +148,7 @@ const SingleProductPage = () => {
                   }}
                   displaySizeList={displaySizeList}
                   currentUser={currentUser}
+                  isAuthReady={isAuthReady}
                 />
               )}
               <Accordion

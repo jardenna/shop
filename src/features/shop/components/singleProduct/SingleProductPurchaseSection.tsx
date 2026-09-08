@@ -26,6 +26,7 @@ import SingleProductPanel, { PopupData } from './SingleProductPanel';
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;
   displaySizeList: Size[];
+  isAuthReady: boolean;
   productData: ProductFormData;
   src: string;
   onReset: () => void;
@@ -37,11 +38,13 @@ const SingleProductPurchaseSection = ({
   onReset,
   productData,
   currentUser,
+  isAuthReady,
 }: SingleProductPurchaseSectionProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
   const { activeCartList, apiCartList, cartList } = useActiveCart({
     currentUser,
+    isAuthReady,
   });
   const { id, countInStock } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);

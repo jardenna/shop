@@ -28,6 +28,7 @@ const MiniCartPopup = () => {
   const currentUser = loggedInUser?.user ?? null;
   const { apiCartList, refetchApiCartList } = useActiveCart({
     currentUser,
+    isAuthReady: true,
   });
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
   const { shouldRender, transitionState } = useAnimatedMount({

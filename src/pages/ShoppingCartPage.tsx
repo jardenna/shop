@@ -1,4 +1,3 @@
-import { skipToken } from '@reduxjs/toolkit/query';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
@@ -8,7 +7,6 @@ import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCa
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useApplyPromoCodeMutation,
-  useGetGuestCartQuery,
   useUpdateQtyMutation,
 } from '../features/cart/cartApiSlice';
 import CartInfo from '../features/cart/components/CartInfo';
@@ -33,19 +31,22 @@ const ShoppingCartPage = () => {
   const { language } = useLanguage();
   const dispatch = useAppDispatch();
   const { currentUser, isAuthReady, isEmployee } = useAuth();
-  const { apiCartList, cartList, refetchApiCartList, isCartError } =
-    useActiveCart({
-      currentUser,
-    });
 
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
-  const shouldFetchGuestCart = isAuthReady && !currentUser;
 
-  const { data: guestCart, refetch } = useGetGuestCartQuery(
-    shouldFetchGuestCart ? cartList : skipToken,
-  );
+  const {
+    apiCartList,
+    refetchApiCartList,
+    isCartError,
+    guestCart,
+    refetchGuestCart,
+  } = useActiveCart({
+    currentUser,
+    isAuthReady,
+  });
 
+  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
   const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
     useApplyPromoCodeMutation();
@@ -66,8 +67,6 @@ const ShoppingCartPage = () => {
   const handleDeleteGuestCart = (cartItemId: string) => {
     dispatch(deleteGuestCartItem(cartItemId));
   };
-
-  const cartItems = currentUser ? apiCartList?.cartItems : guestCart?.products;
 
   if (isCartError) {
     return (
@@ -108,7 +107,7 @@ const ShoppingCartPage = () => {
         <section>
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch}
+            onReset={() => refetchGuestCart}
           >
             <CartList
               cartList={cartItems}
