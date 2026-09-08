@@ -9,7 +9,7 @@ import { usePaginationText } from '../components/pagination/hooks/usePaginationT
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
 import Picture from '../components/Picture';
-import SkeletonCollectionPage from '../components/skeleton/skeletonShopProducts/SkeletonCollectionPage';
+import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
@@ -134,7 +134,7 @@ const CollectionPage = () => {
   }
 
   if (!products) {
-    return <SkeletonCollectionPage count={4} />;
+    return <SkeletonShopProducts count={4} />;
   }
 
   if (itemCount === 0) {
@@ -156,7 +156,7 @@ const CollectionPage = () => {
 
   return (
     <>
-      <SkeletonCollectionPage count={4} />
+      <SkeletonShopProducts count={4} />
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}

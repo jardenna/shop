@@ -6,7 +6,7 @@ import SkeletonAsideNav from './SkeletonAsideNav';
 import SkeletonCollection from './SkeletonCollection';
 import SkeletonToolbar from './SkeletonToolbar';
 
-const SkeletonCollectionPage = ({ count }: PickedSkeletonTypes) => (
+const SkeletonShopProducts = ({ count }: PickedSkeletonTypes) => (
   <div className="container">
     <div className="breadcrumb-row">
       <SkeletonBreadCrumbs width="12" />
@@ -22,4 +22,4 @@ const SkeletonCollectionPage = ({ count }: PickedSkeletonTypes) => (
   </div>
 );
 
-export default SkeletonCollectionPage;
+export default SkeletonShopProducts;
