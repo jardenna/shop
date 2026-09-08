@@ -17,8 +17,8 @@ const SkeletonCollection = ({
   return (
     <div className={`product-cart-list ${className}`}>
       {skeletons.map((_, index) => (
-        <span key={index} className="flex flex-column">
-          <Skeleton height="34" />
+        <span key={index} className="skeleton-product-info">
+          <Skeleton height="24" />
           <SkeletonParagraph count={1} height="2" width="18" />
           <SkeletonParagraph width="8" count={1} height="1.5" />
           <SkeletonControlList count={3} className="mini-item" />

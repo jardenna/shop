@@ -156,6 +156,7 @@ const CollectionPage = () => {
 
   return (
     <>
+      <SkeletonCollectionPage count={4} />
       {category && (
         <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
       )}
