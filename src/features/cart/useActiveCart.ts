@@ -45,7 +45,6 @@ export const useActiveCart = ({
   return {
     cartList,
     apiCartList,
-    guestCart,
     refetchCart,
     cartData,
     activeCartList,
