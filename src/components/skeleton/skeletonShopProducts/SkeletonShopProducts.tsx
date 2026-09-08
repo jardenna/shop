@@ -3,7 +3,7 @@ import SkeletonBreadCrumbs from '../SkeletonBreadCrumbs';
 
 import './_skeleton-collection-page.scss';
 import SkeletonAsideNav from './SkeletonAsideNav';
-import SkeletonCollection from './SkeletonCollection';
+import SkeletonProductInfo from './SkeletonProductInfo';
 import SkeletonToolbar from './SkeletonToolbar';
 
 const SkeletonShopProducts = ({ count }: PickedSkeletonTypes) => (
@@ -16,7 +16,7 @@ const SkeletonShopProducts = ({ count }: PickedSkeletonTypes) => (
       <div className="skeleton-shop-product-content">
         <Skeleton className="skeleton-hero" />
         <SkeletonToolbar />
-        <SkeletonCollection count={count} />
+        <SkeletonProductInfo count={count} />
       </div>
     </div>
   </div>

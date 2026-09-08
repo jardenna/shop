@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import SkeletonCollection from '../components/skeleton/skeletonShopProducts/SkeletonCollection';
+import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
 import Panel from '../components/togglePanel/Panel';
 import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -67,7 +67,7 @@ const FavoritePage = () => {
   }
 
   if (!favorites) {
-    return <SkeletonCollection showCtaBtn className="skeleton-favorites" />;
+    return <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />;
   }
 
   if (favorites.length === 0) {
@@ -90,7 +90,7 @@ const FavoritePage = () => {
       className="favorite-page"
     >
       {isLoading && (
-        <SkeletonCollection showCtaBtn className="skeleton-favorites" />
+        <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
       )}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

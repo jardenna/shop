@@ -3,15 +3,15 @@ import SkeletonButton from '../SkeletonButton';
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonParagraph from '../SkeletonParagraph';
 
-type SkeletonCollectionProps = SkeletonProps & {
+type SkeletonProductInfoProps = SkeletonProps & {
   showCtaBtn?: boolean;
 };
 
-const SkeletonCollection = ({
+const SkeletonProductInfo = ({
   count = 3,
   showCtaBtn,
   className = '',
-}: SkeletonCollectionProps) => {
+}: SkeletonProductInfoProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
@@ -29,4 +29,4 @@ const SkeletonCollection = ({
   );
 };
 
-export default SkeletonCollection;
+export default SkeletonProductInfo;
