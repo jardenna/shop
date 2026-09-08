@@ -17,19 +17,15 @@ export const useActiveCart = ({
 
   const {
     data: apiCartList,
-    isLoading: isApiCartLoading,
     isError: isApiCartError,
     refetch: refetchApiCartList,
-    isSuccess: isApiCartSuccess,
   } = useGetCartQuery(currentUser ? undefined : skipToken);
 
   const cartList = useAppSelector(selectCartList);
 
   const {
     data: guestCart,
-    isLoading: isGuestCartLoading,
     refetch: refetchGuestCart,
-    isSuccess: isGuestCartSuccess,
     isError: isGuestCartError,
   } = useGetGuestCartQuery(shouldFetchGuestCart ? cartList : skipToken);
 
@@ -37,9 +33,7 @@ export const useActiveCart = ({
     currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
   const cartData = currentUser ? apiCartList : guestCart;
-  const isCartLoading = currentUser ? isApiCartLoading : isGuestCartLoading;
   const isCartError = currentUser ? isApiCartError : isGuestCartError;
-  const isCartSuccess = currentUser ? isApiCartSuccess : isGuestCartSuccess;
   const refetchCart = currentUser ? refetchApiCartList : refetchGuestCart;
 
   return {
@@ -49,8 +43,6 @@ export const useActiveCart = ({
     refetchCart,
     cartData,
     activeCartList,
-    isCartLoading,
     isCartError,
-    isCartSuccess,
   };
 };
