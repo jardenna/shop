@@ -35,13 +35,7 @@ const ShoppingCartPage = () => {
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
 
-  const {
-    apiCartList,
-    refetchApiCartList,
-    isCartError,
-    guestCart,
-    refetchGuestCart,
-  } = useActiveCart({
+  const { apiCartList, isCartError, guestCart, refetchCart } = useActiveCart({
     currentUser,
     isAuthReady,
   });
@@ -71,7 +65,7 @@ const ShoppingCartPage = () => {
   if (isCartError) {
     return (
       <MainPageContainer heading={pageHeading}>
-        <ErrorBoundaryFallback resetErrorBoundary={refetchApiCartList} />
+        <ErrorBoundaryFallback resetErrorBoundary={refetchCart} />
       </MainPageContainer>
     );
   }
@@ -103,12 +97,12 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading={pageHeading} variant="large">
-      <div className="order-flow">
-        <section>
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetchGuestCart}
-          >
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetchCart}
+      >
+        <div className="order-flow">
+          <section>
             <CartList
               cartList={cartItems}
               language={language}
@@ -120,15 +114,11 @@ const ShoppingCartPage = () => {
                 currentUser ? handleUpdateQty : handleUpdateQtyGuestCart
               }
             />
-          </ErrorBoundary>
-        </section>
+          </section>
 
-        <aside>
-          <OrderHeading heading={language.paymentSummary} />
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetchApiCartList}
-          >
+          <aside>
+            <OrderHeading heading={language.paymentSummary} />
+
             {apiCartList && (
               <>
                 <PaymentSummaryList
@@ -162,9 +152,9 @@ const ShoppingCartPage = () => {
                 </div>
               </>
             )}
-          </ErrorBoundary>
-        </aside>
-      </div>
+          </aside>
+        </div>
+      </ErrorBoundary>
     </MainPageContainer>
   );
 };

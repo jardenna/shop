@@ -26,7 +26,7 @@ const MiniCartPopup = () => {
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const { apiCartList, refetchApiCartList } = useActiveCart({
+  const { apiCartList, refetchCart } = useActiveCart({
     currentUser,
     isAuthReady: true,
   });
@@ -59,7 +59,7 @@ const MiniCartPopup = () => {
     <Portal portalId="miniCart">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => refetchApiCartList()}
+        onReset={() => refetchCart()}
       >
         {discount && (
           <section

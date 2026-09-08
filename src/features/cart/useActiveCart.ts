@@ -18,9 +18,9 @@ export const useActiveCart = ({
   const {
     data: apiCartList,
     isLoading: isApiCartLoading,
-    isError: isCartError,
+    isError: isApiCartError,
     refetch: refetchApiCartList,
-    isSuccess: isCartSuccess,
+    isSuccess: isApiCartSuccess,
   } = useGetCartQuery(currentUser ? undefined : skipToken);
 
   const cartList = useAppSelector(selectCartList);
@@ -29,21 +29,28 @@ export const useActiveCart = ({
     data: guestCart,
     isLoading: isGuestCartLoading,
     refetch: refetchGuestCart,
+    isSuccess: isGuestCartSuccess,
+    isError: isGuestCartError,
   } = useGetGuestCartQuery(shouldFetchGuestCart ? cartList : skipToken);
 
   const activeCartList =
     currentUser && apiCartList ? apiCartList.cartItems : cartList;
 
+  const cartData = currentUser ? apiCartList : guestCart;
+  const isCartLoading = currentUser ? isApiCartLoading : isGuestCartLoading;
+  const isCartError = currentUser ? isApiCartError : isGuestCartError;
+  const isCartSuccess = currentUser ? isApiCartSuccess : isGuestCartSuccess;
+  const refetchCart = currentUser ? refetchApiCartList : refetchGuestCart;
+
   return {
     cartList,
     apiCartList,
     guestCart,
-    refetchGuestCart,
+    refetchCart,
+    cartData,
     activeCartList,
-    isGuestCartLoading,
-    isApiCartLoading,
+    isCartLoading,
     isCartError,
     isCartSuccess,
-    refetchApiCartList,
   };
 };
