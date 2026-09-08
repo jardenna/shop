@@ -67,7 +67,15 @@ const FavoritePage = () => {
   }
 
   if (!favorites) {
-    return <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />;
+    return (
+      <MainPageContainer
+        heading={pageHeading}
+        variant="large"
+        className="favorite-page"
+      >
+        <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
+      </MainPageContainer>
+    );
   }
 
   if (favorites.length === 0) {
