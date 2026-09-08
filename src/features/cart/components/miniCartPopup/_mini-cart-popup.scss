@@ -19,9 +19,12 @@
   .total-price {
     box-shadow: none;
     padding: 0;
+    margin-bottom: 12px;
   }
 
   .order-list {
+    max-height: rem(300px);
+    overflow: auto;
     margin: 0;
 
     .order-img {
