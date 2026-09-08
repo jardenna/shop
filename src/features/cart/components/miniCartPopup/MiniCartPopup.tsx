@@ -30,6 +30,7 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
+  const miniCartRef = useRef<HTMLUListElement>(null);
 
   const { apiCartList, isFetching, refetchCart } = useActiveCart({
     currentUser,
@@ -43,8 +44,6 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
     isOpen: shouldOpenMiniCart,
     duration: 300,
   });
-
-  const miniCartRef = useRef<HTMLUListElement>(null);
 
   const handleCloseMiniCart = () => {
     dispatch(closeMiniCart());
@@ -76,7 +75,6 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
             remainingForFreeShipping={summary.remainingForFreeShipping}
             language={language}
           />
-
           <OrderList orders={cartItems} language={language} />
           <TotalPrice price={summary.totalPrice} />
           <Button onClick={gotoCart}>{language.bag}</Button>
