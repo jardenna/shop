@@ -18,14 +18,13 @@
 
   .total-price {
     box-shadow: none;
-    padding: 0;
-    margin-bottom: 12px;
   }
 
   .order-list {
     max-height: rem(300px);
     overflow: auto;
     margin: 0;
+    padding-right: 12px;
 
     .order-img {
       width: rem(68px);
@@ -47,11 +46,6 @@
 
   .order-cart {
     align-items: center;
-  }
-
-  .mini-cart-title {
-    padding-bottom: 8px;
-    display: flex;
   }
 
   .mini-cart-info {
