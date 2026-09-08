@@ -81,6 +81,7 @@ const SingleProductPurchaseSection = ({
     }
 
     onHidePanel();
+    dispatch(openMiniCart());
   };
 
   async function handleSubmitCartItem(values: InitialShopValues) {
@@ -95,12 +96,15 @@ const SingleProductPurchaseSection = ({
       size: values.size,
       color: values.color,
     };
-    const cartResult = cartUtils({ cartList: activeCartList, cartItem });
+
+    const cartResult = cartUtils({
+      cartList: activeCartList,
+      cartItem,
+    });
 
     switch (cartResult.action) {
       case 'addToCartListAction':
         await addToCart(cartItem);
-
         break;
 
       case 'addToQtyAction': {
@@ -132,6 +136,7 @@ const SingleProductPurchaseSection = ({
           dispatch(replaceCartItem(updatedCartList));
         }
 
+        dispatch(openMiniCart());
         break;
       }
 
@@ -143,8 +148,6 @@ const SingleProductPurchaseSection = ({
       default:
         break;
     }
-
-    dispatch(openMiniCart());
   }
 
   // SingleProductPanel handlers
@@ -173,6 +176,7 @@ const SingleProductPurchaseSection = ({
     }
 
     onHidePanel();
+    dispatch(openMiniCart());
   };
 
   const quantityByProductId = activeCartList.reduce<ProductQuantityMap>(
