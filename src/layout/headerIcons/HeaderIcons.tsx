@@ -1,4 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
+import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
@@ -6,6 +7,7 @@ import IconContent from '../../components/IconContent';
 import ModalContainer from '../../components/modal/ModalContainer';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
@@ -25,7 +27,12 @@ const HeaderIcons = ({
 }: BaseHeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
+  const [cartItems] = useLocalStorage<CartItem[]>(
+    localStorageKeys.cartItems,
+    [],
+  );
 
+  const cartItemsLength = cartItems.length;
   const favoriteItemText =
     favorites && favorites.length === 1 ? language.item : language.items;
 
@@ -60,7 +67,7 @@ const HeaderIcons = ({
             iconName={IconName.ShoppingBag}
             itemUpdatedText={language.itemsUpdated}
             itemText={cartListItemText}
-            count={currentUser ? totalQuantity : 0}
+            count={currentUser ? totalQuantity : cartItemsLength}
           />
         </li>
         <li>
