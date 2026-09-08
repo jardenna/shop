@@ -32,7 +32,7 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
   const currentUser = loggedInUser?.user ?? null;
   const miniCartRef = useRef<HTMLUListElement>(null);
 
-  const { apiCartList, isFetching, refetchCart } = useActiveCart({
+  const { cartData, isFetching, refetchCart } = useActiveCart({
     currentUser,
     isAuthReady: true,
   });
@@ -54,11 +54,11 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
 
   useClickOutside(miniCartRef, handleCloseMiniCart, [miniCartRef]);
 
-  if (!apiCartList || !shouldRender) {
+  if (!cartData || !shouldRender) {
     return null;
   }
 
-  const { cartItems, summary } = apiCartList;
+  const { cartItems, summary } = cartData;
 
   return (
     <Portal portalId="miniCart">
