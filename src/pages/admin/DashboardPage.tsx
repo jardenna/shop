@@ -1,7 +1,7 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const { language } = useLanguage();
 
   return (
@@ -11,4 +11,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

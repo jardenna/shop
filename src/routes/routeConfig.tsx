@@ -6,7 +6,7 @@ import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
-import Dashboard from '../pages/admin/Dashboard';
+import DashboardPage from '../pages/admin/DashboardPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
 import CategoryPage from '../pages/category/CategoryPage';
@@ -92,7 +92,7 @@ const routeList = [
 const adminRouteList = [
   {
     index: true,
-    element: <Dashboard />,
+    element: <DashboardPage />,
   },
   {
     path: AdminPath.Users,
