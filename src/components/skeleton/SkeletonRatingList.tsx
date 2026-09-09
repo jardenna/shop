@@ -1,10 +1,18 @@
+import { ProductLabelVariant } from '../../features/shop/components/productLists/ProductListItem';
 import Skeleton, { SkeletonProps } from './Skeleton';
 
-const SkeletonRatingList = ({ count = 5 }: SkeletonProps) => (
-  <div>
+interface SkeletonRatingListProps extends SkeletonProps {
+  variant?: ProductLabelVariant;
+}
+
+const SkeletonRatingList = ({
+  count = 5,
+  variant = 'small',
+}: SkeletonRatingListProps) => (
+  <div className="skeleton-rating">
     {Array.from({ length: count }).map((_, index) => (
-      <div className="skeleton-accordion-item" key={index}>
-        <Skeleton className="skeleton-accordion-title" />
+      <div key={index}>
+        <Skeleton className={`skeleton-star ${variant}`} />
       </div>
     ))}
   </div>

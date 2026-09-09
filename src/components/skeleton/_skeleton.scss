@@ -18,6 +18,24 @@
   margin-bottom: 12px;
 }
 
+.skeleton-rating {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+
+  .skeleton-star {
+    &.small {
+      width: rem(20px);
+      height: rem(20px);
+    }
+
+    &.medium {
+      width: rem(26px);
+      height: rem(26px);
+    }
+  }
+}
+
 .skeleton {
   background: linear-gradient(
     90deg,
@@ -64,23 +82,6 @@
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
-}
-
-.skeleton-cart {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 25%;
-  margin-bottom: 12px;
-
-  .img {
-    width: 100%;
-    height: rem(520px);
-  }
-
-  .flex {
-    gap: 4px;
-  }
 }
 
 .skeleton-column {

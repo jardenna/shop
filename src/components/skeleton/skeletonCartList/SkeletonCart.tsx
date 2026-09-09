@@ -1,6 +1,6 @@
-import Skeleton from './Skeleton';
-import SkeletonControlList from './SkeletonControlList';
-import SkeletonParagraph from './SkeletonParagraph';
+import Skeleton from '../Skeleton';
+import SkeletonControlList from '../SkeletonControlList';
+import SkeletonParagraph from '../SkeletonParagraph';
 
 const SkeletonCart = () => (
   <div className="skeleton-cart">

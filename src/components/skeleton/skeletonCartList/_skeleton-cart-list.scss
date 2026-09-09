@@ -10,6 +10,23 @@
     minmax(min(100%, var(--grid-size)), 1fr)
   );
 
+  .skeleton-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 25%;
+    margin-bottom: 12px;
+
+    .img {
+      width: 100%;
+      height: rem(520px);
+    }
+
+    .flex {
+      gap: 4px;
+    }
+  }
+
   .skeleton {
     border-radius: 0;
     height: 100%;

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { SkeletonProps } from '../Skeleton';
-import SkeletonCart from '../SkeletonCart';
+import SkeletonCart from './SkeletonCart';
 import './_skeleton-cart-list.scss';
 
 type SkeletonCartListProps = SkeletonProps & {

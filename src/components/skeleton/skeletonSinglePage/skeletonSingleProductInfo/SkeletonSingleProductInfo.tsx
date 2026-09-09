@@ -1,3 +1,4 @@
+import SkeletonRatingList from '../../SkeletonRatingList';
 import './_skeleton-single-product-info.scss';
 
 const SkeletonSingleProductInfo = () => (
@@ -6,14 +7,7 @@ const SkeletonSingleProductInfo = () => (
       <div className="title-skeleton skeleton" />
       <div className="heart-skeleton skeleton" />
     </div>
-
-    <div className="stars-row">
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-    </div>
+    <SkeletonRatingList />
 
     <div className="stock-row">
       <div className="stock-icon skeleton" />
@@ -26,14 +20,7 @@ const SkeletonSingleProductInfo = () => (
 
     <div className="section-label skeleton" />
     <hr className="divider" />
-
-    <div className="rate-stars">
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-      <div className="star-skeleton skeleton" />
-    </div>
+    <SkeletonRatingList variant="medium" />
 
     <div className="swatch-label skeleton" />
     <div className="swatches">
