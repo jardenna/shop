@@ -47,15 +47,9 @@
   }
 }
 
-/* ---- price ---- */
-.price-row {
+.skeleton-price-row {
   display: flex;
   justify-content: flex-end;
-}
-
-.price-skeleton {
-  width: 150px;
-  height: 28px;
 }
 
 .skeleton-rating-container {

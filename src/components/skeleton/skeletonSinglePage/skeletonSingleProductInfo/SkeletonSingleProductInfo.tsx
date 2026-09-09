@@ -16,8 +16,8 @@ const SkeletonSingleProductInfo = () => (
       <Skeleton className="skeleton-count-in-stock-icon" />
       <Skeleton className="skeleton-count-in-stock-label" />
     </div>
-    <div className="price-row">
-      <div className="price-skeleton skeleton" />
+    <div className="skeleton-price-row">
+      <Skeleton width="10" height="3" />
     </div>
     <SkeletonRating />
     ???
