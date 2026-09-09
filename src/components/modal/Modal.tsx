@@ -5,7 +5,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { BtnType, BtnVariant } from '../../types/enums';
-import { SizeVariantNew } from '../../types/types';
+import { SizeVariant } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
@@ -46,7 +46,7 @@ export type ModalProps = {
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
-  modalSize?: SizeVariantNew;
+  modalSize?: SizeVariant;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
   secondaryActionBtnLabel?: string;
   showCloseIcon?: boolean;

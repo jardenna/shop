@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { SizeVariantNew } from '../../types/types';
+import { SizeVariant } from '../../types/types';
 
 type AdminPageContainerProps = {
   children: ReactNode;
@@ -10,7 +10,7 @@ type AdminPageContainerProps = {
   hideBreadCrumbs?: boolean;
   linkText?: string;
   linkTo?: string;
-  variant?: SizeVariantNew;
+  variant?: SizeVariant;
 };
 
 const AdminPageContainer = ({

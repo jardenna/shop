@@ -1,14 +1,14 @@
 import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/pageHeader/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { SizeVariantNew } from '../../types/types';
+import { SizeVariant } from '../../types/types';
 
 type MainPageContainerProps = {
   children: ReactNode;
   heading: string;
   className?: string;
   hideBreadCrumbs?: boolean;
-  variant?: SizeVariantNew;
+  variant?: SizeVariant;
 };
 
 // Accept display text, not translation keys.

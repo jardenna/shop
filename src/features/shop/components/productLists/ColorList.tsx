@@ -1,5 +1,5 @@
 import variables from '../../../../scss/variables.module.scss';
-import { SizeVariantNew } from '../../../../types/types';
+import { SizeVariant } from '../../../../types/types';
 import { getColorOptions } from '../../../../utils/colorUtils';
 import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
 import { useLanguage } from '../../../language/useLanguage';
@@ -9,7 +9,7 @@ import ProductListItem from './ProductListItem';
 
 interface ColorListProps {
   colors: string[];
-  variant: SizeVariantNew;
+  variant: SizeVariant;
   count?: number;
 }
 

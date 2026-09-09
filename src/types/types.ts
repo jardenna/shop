@@ -80,4 +80,4 @@ export type FiltersCountResult = {
   totalCount: number;
 };
 
-export type SizeVariantNew = 'mini' | 'small' | 'medium' | 'large' | 'x-large';
+export type SizeVariant = 'mini' | 'small' | 'medium' | 'large' | 'x-large';

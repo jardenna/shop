@@ -1,8 +1,8 @@
-import { SizeVariantNew } from '../../types/types';
+import { SizeVariant } from '../../types/types';
 import Skeleton, { SkeletonProps } from './Skeleton';
 
 interface SkeletonRatingListProps extends SkeletonProps {
-  variant?: SizeVariantNew;
+  variant?: SizeVariant;
 }
 
 const SkeletonRatingList = ({

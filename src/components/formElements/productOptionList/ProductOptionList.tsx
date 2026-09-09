@@ -5,7 +5,7 @@ import type {
   ControlInputType,
   InputChangeHandler,
   OptionGroupHeading,
-  SizeVariantNew,
+  SizeVariant,
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
@@ -25,7 +25,7 @@ export interface BaseControlGroupProps {
   iconSize?: string;
   inputInfo?: string;
   required?: boolean;
-  variant?: SizeVariantNew;
+  variant?: SizeVariant;
 }
 
 interface ProductOptionListProps extends BaseControlGroupProps {
