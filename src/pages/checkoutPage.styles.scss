@@ -21,57 +21,35 @@
 
   .select-payment-method {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
     background-color: $color-secondary;
     padding: 12px;
     border-radius: $border-radius;
-    margin-bottom: 12px;
+    margin-block: 12px;
   }
 
   .radio-button-list {
     flex-direction: row;
     gap: 20px;
 
-    @include max-size($small) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     @include max-size($mini) {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      gap: 12px;
     }
   }
 
   .address-list {
-    .address-title {
-      margin-top: 4px;
+    grid-auto-rows: rem(168px) auto;
+
+    .address-item {
+      grid-row: span 1;
+      padding: 20px;
     }
 
-    &.checkout-address-list {
-      display: flex;
-      flex-direction: column;
-
-      .address-item {
-        border: 0;
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 12px;
-        border-bottom: 1px solid $color-border;
-
-        &.add-address {
-          justify-content: end;
-        }
-      }
-
-      .address-content {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-      }
-
-      .address-footer {
-        padding: 0;
-      }
+    .address-title {
+      margin: 0;
     }
   }
 

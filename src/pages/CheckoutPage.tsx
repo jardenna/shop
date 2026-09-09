@@ -50,7 +50,7 @@ const CheckoutPage = () => {
   }
 
   return (
-    <MainPageContainer heading={language.checkout}>
+    <MainPageContainer heading={language.checkout} variant="large">
       {isError && <ErrorBoundaryFallback resetErrorBoundary={refetch} />}
       {isLoading && <SkeletonCheckoutPage />}
       <div className="checkout-page order-flow">
