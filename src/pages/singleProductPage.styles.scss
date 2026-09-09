@@ -22,6 +22,11 @@
     @include max-size($small) {
       margin-bottom: 80px;
     }
+
+    @include min-size($medium) {
+      width: 100%;
+      max-width: rem(500px);
+    }
   }
 
   .rating-info {
@@ -35,6 +40,8 @@
   .product-img-list {
     flex-direction: column;
     gap: 0;
+    width: 100%;
+    max-width: rem(700px);
   }
 
   .product-img-item {
