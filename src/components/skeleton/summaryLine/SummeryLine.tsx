@@ -1,5 +1,5 @@
 import '../_skeleton.scss';
-import { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
 import './_summary-line.scss';
 
 const SummeryLine = ({ count = 5 }: PickedSkeletonTypes) => {
@@ -8,8 +8,8 @@ const SummeryLine = ({ count = 5 }: PickedSkeletonTypes) => {
     <span className="flex flex-column">
       {skeletons.map((_, index) => (
         <span className="summary-line" key={index}>
-          <span className="skeleton label-skeleton" />
-          <span className="skeleton value-skeleton" />
+          <Skeleton className="label-skeleton" />
+          <Skeleton className="value-skeleton" />
         </span>
       ))}
     </span>
