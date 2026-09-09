@@ -1,11 +1,10 @@
-import Skeleton from '../../Skeleton';
-import SkeletonBreadCrumbs from '../../SkeletonBreadCrumbs';
-import SkeletonButton from '../../SkeletonButton';
-import SkeletonControlList from '../../SkeletonControlList';
-import SkeletonNumberStep from '../../skeletonNumberStep/SkeletonNumberStep';
-import SkeletonRatingList from '../../SkeletonRatingList';
-import SkeletonRating from '../SkeletonRating';
-import './_skeleton-single-product-info.scss';
+import Skeleton from '../Skeleton';
+import SkeletonBreadCrumbs from '../SkeletonBreadCrumbs';
+import SkeletonButton from '../SkeletonButton';
+import SkeletonControlList from '../SkeletonControlList';
+import SkeletonNumberStep from '../skeletonNumberStep/SkeletonNumberStep';
+import SkeletonRatingList from '../SkeletonRatingList';
+import SkeletonRating from './SkeletonRating';
 
 const SkeletonSingleProductInfo = () => (
   <div className="skeleton-single-product-container">

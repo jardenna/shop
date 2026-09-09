@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
 import SkeletonAccordion from '../skeletonAccordion/SkeletonAccordion';
 import './_skeleton-single-page.scss';
-import SkeletonSingleProductInfo from './skeletonSingleProductInfo/SkeletonSingleProductInfo';
+import SkeletonSingleProductInfo from './SkeletonSingleProductInfo';
 
 const SkeletonSinglePage = () => (
   <>
