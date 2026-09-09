@@ -1,4 +1,5 @@
 import Skeleton from '../Skeleton';
+import SkeletonAccordion from '../skeletonAccordion/SkeletonAccordion';
 import SkeletonBreadCrumbs from '../SkeletonBreadCrumbs';
 import SkeletonButton from '../SkeletonButton';
 import SkeletonControlList from '../SkeletonControlList';
@@ -26,6 +27,7 @@ const SkeletonSingleProductInfo = () => (
     <SkeletonControlList count={5} variant="medium" />
     <SkeletonNumberStep />
     <SkeletonButton />
+    <SkeletonAccordion />
   </div>
 );
 

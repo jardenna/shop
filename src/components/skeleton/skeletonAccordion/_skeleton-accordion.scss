@@ -9,12 +9,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding-block: 16px;
   border-bottom: 1px solid $skeleton-border-color;
 
   .skeleton-accordion-title {
     width: rem(264px);
-    height: rem(32px);
+    height: rem(24px);
   }
 
   .skeleton-accordion-chevron {

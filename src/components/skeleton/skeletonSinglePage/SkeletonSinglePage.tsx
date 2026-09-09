@@ -1,15 +1,12 @@
 import Skeleton from '../Skeleton';
-import SkeletonAccordion from '../skeletonAccordion/SkeletonAccordion';
 import './_skeleton-single-page.scss';
 import SkeletonSingleProductInfo from './SkeletonSingleProductInfo';
 
 const SkeletonSinglePage = () => (
   <>
     <Skeleton height="44" className="skeleton-single-product-img" />
-    <div className="flex flex-column">
-      <SkeletonSingleProductInfo />
-      <SkeletonAccordion />
-    </div>
+
+    <SkeletonSingleProductInfo />
   </>
 );
 
