@@ -13,6 +13,18 @@ $animation-timing-function: ease-in-out;
   }
 }
 
+// @mixin max-height($width) {
+//   @media (height <= $width) {
+//     @content;
+//   }
+// }
+
+@mixin max-height($height) {
+  @media (height <= $height) {
+    @content;
+  }
+}
+
 @mixin between-size($maxWidth, $minWidth) {
   @media ($maxWidth <= width <= $minWidth) {
     @content;

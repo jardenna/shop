@@ -11,6 +11,10 @@
     border: 0;
   }
 
+  @include max-size($mini) {
+    gap: 0;
+  }
+
   input {
     height: auto;
   }

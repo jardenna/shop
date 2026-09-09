@@ -31,8 +31,8 @@
   height: rem(528px);
   overflow: auto;
 
-  @include max-size($small) {
-    height: rem(492px);
+  @include max-height(800px) {
+    height: rem(100px);
   }
 
   .padding-20 {
