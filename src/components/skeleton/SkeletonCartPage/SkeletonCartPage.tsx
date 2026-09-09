@@ -14,7 +14,7 @@ const SkeletonCartPage = () => (
       <SkeletonPriceList />
       <SkeletonButton />
       <SkeletonPaymentMethodIcons />
-      <SkeletonParagraph />
+      <SkeletonParagraph count={2} />
     </span>
   </span>
 );
