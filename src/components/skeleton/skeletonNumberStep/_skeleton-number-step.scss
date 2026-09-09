@@ -1,0 +1,29 @@
+.skeleton-number-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.qty-title {
+  width: 60px;
+  height: 16px;
+}
+
+.qty-selector {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.qty-selector .skeleton {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.qty-value {
+  width: 14px;
+  height: 16px;
+  border-radius: 4px;
+}

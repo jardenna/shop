@@ -1,6 +1,8 @@
 import Skeleton from '../../Skeleton';
 import SkeletonBreadCrumbs from '../../SkeletonBreadCrumbs';
+import SkeletonButton from '../../SkeletonButton';
 import SkeletonControlList from '../../SkeletonControlList';
+import SkeletonNumberStep from '../../skeletonNumberStep/SkeletonNumberStep';
 import SkeletonRatingList from '../../SkeletonRatingList';
 import SkeletonRating from '../SkeletonRating';
 import './_skeleton-single-product-info.scss';
@@ -23,16 +25,8 @@ const SkeletonSingleProductInfo = () => (
     <SkeletonRating />
     <SkeletonControlList count={5} variant="large" />
     <SkeletonControlList count={5} variant="medium" />
-    qty
-    <div className="qty-row">
-      <div className="qty-title skeleton" />
-      <div className="qty-selector">
-        <div className="skeleton" />
-        <div className="qty-value skeleton" />
-        <div className="skeleton" />
-      </div>
-    </div>
-    <div className="add-to-cart skeleton" />
+    <SkeletonNumberStep />
+    <SkeletonButton />
   </div>
 );
 

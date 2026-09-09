@@ -6,10 +6,8 @@ import SkeletonSingleProductInfo from './skeletonSingleProductInfo/SkeletonSingl
 const SkeletonSinglePage = () => (
   <>
     <Skeleton height="44" className="skeleton-single-product-img" />
-
     <div className="flex flex-column">
       <SkeletonSingleProductInfo />
-      Skeleton Accordion
       <SkeletonAccordion />
     </div>
   </>
