@@ -42,18 +42,22 @@ const SingleProductPage = () => {
     );
   }
 
-  // if (!product) {
-  //   return null;
-  // }
+  if (isLoading) {
+    return <SkeletonSinglePage />;
+  }
+
+  if (!product) {
+    return null;
+  }
 
   const accordionList: AccordionList[] = [
-    { title: language.description, content: <p>{product?.description}</p> },
+    { title: language.description, content: <p>{product.description}</p> },
     {
       title: language.materialAndCare,
       content: (
         <>
           <p>
-            <strong>{language.material}:</strong> {product?.material}
+            <strong>{language.material}:</strong> {product.material}
           </p>
           <ProductCareList
             title={language.care}
@@ -81,10 +85,9 @@ const SingleProductPage = () => {
     },
     {
       title: language.reviews,
-      additionalTitle:
-        product && product.numReviews > 0 ? product.numReviews : '',
+      additionalTitle: product.numReviews > 0 ? product.numReviews : '',
       content:
-        product && product.rating > 0 ? (
+        product.rating > 0 ? (
           <ReviewList
             reviewList={product.reviews}
             title={`${language.numberOfReviews} ${product.numReviews}`}
@@ -95,61 +98,58 @@ const SingleProductPage = () => {
     },
   ];
 
-  const displaySizeList = product?.allowedSizes ?? [];
+  const displaySizeList = product.allowedSizes;
 
   const missingSizes = displaySizeList.filter(
-    (size) => !product?.sizes.includes(size),
+    (size) => !product.sizes.includes(size),
   );
 
   return (
     <>
-      <MetaTags metaTitle={product?.productName} />
-      {isLoading && <SkeletonSinglePage />}
+      <MetaTags metaTitle={product.productName} />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}
       >
-        {product && (
-          <section className="single-product-container">
-            <ImgList
-              images={product.images}
-              isOutOfStock={product.countInStock === 0}
-            />
+        <section className="single-product-container">
+          <ImgList
+            images={product.images}
+            isOutOfStock={product.countInStock === 0}
+          />
 
-            <section className="single-product-content">
-              <SingleProductHeader product={product} />
-              <ReviewStars
-                stars={getStarsArray(product.rating)}
-                rating={product.rating}
-                className="rating-info"
-              />
-              <InStockContainer
+          <article className="single-product-content">
+            <SingleProductHeader product={product} />
+            <ReviewStars
+              stars={getStarsArray(product.rating)}
+              rating={product.rating}
+              className="rating-info"
+            />
+            <InStockContainer
+              currentUser={currentUser}
+              missingSizes={missingSizes}
+              countInStock={product.countInStock}
+            />
+            <ProductPrice price={product.price} discount={product.discount} />
+            {id && currentUser && <ReviewsForm productId={id} />}
+            {product.countInStock > 0 && (
+              <SingleProductPurchaseSection
+                onReset={() => refetch}
+                src={product.images[0]}
+                productData={{
+                  id: product.id,
+                  sizes: product.sizes,
+                  colors: product.colors,
+                  categoryName: product.categoryName,
+                  countInStock: product.countInStock,
+                }}
+                displaySizeList={displaySizeList}
                 currentUser={currentUser}
-                missingSizes={missingSizes}
-                countInStock={product.countInStock}
+                isAuthReady={isAuthReady}
               />
-              <ProductPrice price={product.price} discount={product.discount} />
-              {id && currentUser && <ReviewsForm productId={id} />}
-              {product.countInStock > 0 && (
-                <SingleProductPurchaseSection
-                  onReset={() => refetch}
-                  src={product.images[0]}
-                  productData={{
-                    id: product.id,
-                    sizes: product.sizes,
-                    colors: product.colors,
-                    categoryName: product.categoryName,
-                    countInStock: product.countInStock,
-                  }}
-                  displaySizeList={displaySizeList}
-                  currentUser={currentUser}
-                  isAuthReady={isAuthReady}
-                />
-              )}
-              <Accordion accordionList={accordionList} />
-            </section>
-          </section>
-        )}
+            )}
+            <Accordion accordionList={accordionList} />
+          </article>
+        </section>
       </ErrorBoundary>
     </>
   );
