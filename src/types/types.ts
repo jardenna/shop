@@ -79,3 +79,5 @@ export type FiltersCountResult = {
   countsByKey: Record<string, number>;
   totalCount: number;
 };
+
+export type SizeVariantNew = 'mini' | 'small' | 'medium' | 'large' | 'x-large';

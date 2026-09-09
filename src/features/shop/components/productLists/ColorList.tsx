@@ -1,15 +1,15 @@
 import variables from '../../../../scss/variables.module.scss';
+import { SizeVariantNew } from '../../../../types/types';
 import { getColorOptions } from '../../../../utils/colorUtils';
 import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
 import { useLanguage } from '../../../language/useLanguage';
 import AdditionalCountBadge from './AdditionalCountBadge';
 import ProductList from './ProductList';
-import type { ProductLabelVariant } from './ProductListItem';
 import ProductListItem from './ProductListItem';
 
 interface ColorListProps {
   colors: string[];
-  variant: ProductLabelVariant;
+  variant: SizeVariantNew;
   count?: number;
 }
 

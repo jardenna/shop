@@ -1,8 +1,8 @@
-import { ProductLabelVariant } from '../../features/shop/components/productLists/ProductListItem';
+import { SizeVariantNew } from '../../types/types';
 import Skeleton, { SkeletonProps } from './Skeleton';
 
 interface SkeletonRatingListProps extends SkeletonProps {
-  variant?: ProductLabelVariant;
+  variant?: SizeVariantNew;
 }
 
 const SkeletonRatingList = ({
