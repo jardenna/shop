@@ -110,7 +110,7 @@ const SingleProductPage = () => {
         onReset={() => refetch}
       >
         {product && (
-          <div className="single-product-container">
+          <section className="single-product-container">
             <ImgList
               images={product.images}
               isOutOfStock={product.countInStock === 0}
@@ -148,7 +148,7 @@ const SingleProductPage = () => {
               )}
               <Accordion accordionList={accordionList} />
             </section>
-          </div>
+          </section>
         )}
       </ErrorBoundary>
     </>
