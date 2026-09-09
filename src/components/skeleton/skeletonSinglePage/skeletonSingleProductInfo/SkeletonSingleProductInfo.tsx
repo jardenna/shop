@@ -11,10 +11,9 @@ const SkeletonSingleProductInfo = () => (
       <Skeleton className="skeleton-heart" />
     </div>
     <SkeletonRatingList />
-    Stock row
-    <div className="stock-row">
-      <div className="stock-icon skeleton" />
-      <div className="stock-label skeleton" />
+    <div className="skeleton-count-in-stock">
+      <Skeleton className="skeleton-count-in-stock-icon" />
+      <Skeleton className="skeleton-count-in-stock-label" />
     </div>
     PriceRow
     <div className="price-row">

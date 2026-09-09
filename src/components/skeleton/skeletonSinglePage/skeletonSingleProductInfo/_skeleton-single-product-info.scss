@@ -27,36 +27,24 @@
   }
 }
 
-/* ---- title row ---- */
-
 /* ---- rating + stock ---- */
-.stars-row {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 20px;
-}
 
-.star-skeleton {
-  width: rem(20px);
-  height: rem(20px);
-}
-
-.stock-row {
+.skeleton-count-in-stock {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 24px;
-}
 
-.stock-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
+  .skeleton-count-in-stock-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
 
-.stock-label {
-  width: 110px;
-  height: 16px;
+  .skeleton-count-in-stock-label {
+    width: 110px;
+    height: 16px;
+  }
 }
 
 /* ---- price ---- */
