@@ -1,8 +1,7 @@
 import '../_skeleton.scss';
 import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
-import './_summary-line.scss';
 
-const SummeryLine = ({ count = 5 }: PickedSkeletonTypes) => {
+const SkeletonPriceItem = ({ count = 5 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
   return (
     <span className="flex flex-column">
@@ -16,4 +15,4 @@ const SummeryLine = ({ count = 5 }: PickedSkeletonTypes) => {
   );
 };
 
-export default SummeryLine;
+export default SkeletonPriceItem;
