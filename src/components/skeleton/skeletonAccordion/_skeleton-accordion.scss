@@ -1,6 +1,10 @@
 @use '../../../scss/globals/variables' as *;
 @use '../../../scss/globals/functions' as *;
 
+.skeleton-accordion {
+  width: 100%;
+}
+
 .skeleton-accordion-item {
   display: flex;
   justify-content: space-between;
@@ -9,8 +13,8 @@
   border-bottom: 1px solid $skeleton-border-color;
 
   .skeleton-accordion-title {
-    width: rem(200px);
-    height: rem(16px);
+    width: rem(264px);
+    height: rem(32px);
   }
 
   .skeleton-accordion-chevron {

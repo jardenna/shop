@@ -5,6 +5,9 @@
 }
 
 .skeleton-single-product-container {
+  width: 100%;
+  max-width: rem(500px);
+
   .skeleton-breadcrumbs {
     margin-bottom: 6px;
   }
