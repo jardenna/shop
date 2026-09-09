@@ -11,14 +11,6 @@
     gap: 0;
   }
 
-  .single-product {
-    width: 100%;
-
-    @include max-size($small) {
-      margin-top: 12px;
-    }
-  }
-
   .single-product-heading {
     display: flex;
     align-items: center;
@@ -28,14 +20,6 @@
   .single-product-content {
     @include max-size($small) {
       margin-bottom: 80px;
-    }
-
-    @include min-size($medium) {
-      max-width: rem(500px);
-    }
-
-    p {
-      margin: 0;
     }
   }
 
@@ -48,7 +32,6 @@
   }
 
   .product-img-list {
-    width: 100%;
     flex-direction: column;
     gap: 0;
   }
