@@ -1,25 +1,33 @@
 @use '../../../../scss/globals' as *;
 
+.skeleton-single-product-container {
+  .skeleton-breadcrumbs {
+    margin-bottom: 6px;
+  }
+
+  .skeleton-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 20px;
+
+    .skeleton {
+      height: 40px;
+    }
+
+    .skeleton-title {
+      width: 65%;
+    }
+
+    .skeleton-heart {
+      width: 40px;
+      border-radius: 6px;
+    }
+  }
+}
+
 /* ---- title row ---- */
-.title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  margin-bottom: 20px;
-}
-
-.title-skeleton {
-  width: 65%;
-  height: 26px;
-}
-
-.heart-skeleton {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
 
 /* ---- rating + stock ---- */
 .stars-row {
