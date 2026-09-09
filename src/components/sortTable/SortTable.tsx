@@ -12,6 +12,7 @@ import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
 import SkeletonList from '../skeleton/SkeletonList';
+import SkeletonRow from '../skeleton/skeletonTable/SkeletonRow';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_sort-table.scss';
@@ -147,6 +148,7 @@ const SortTable = <T,>({
           activeDisplay={padding}
         />
       </div>
+      <SkeletonRow />
       <div className="fixed-table">
         {isLoading ? (
           <SkeletonList
