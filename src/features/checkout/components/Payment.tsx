@@ -66,6 +66,7 @@ const Payment = ({
         />
         <PaymentMethodsList paymentMethods={paymentMethod} />
       </form>
+
       {methodToShow && (
         <PaymentCardForm
           additionalFooterInfo={additionalFooterInfo}

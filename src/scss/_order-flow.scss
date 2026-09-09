@@ -9,8 +9,9 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  @include max-size($medium) {
+  @include max-size($small) {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
