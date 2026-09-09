@@ -18,11 +18,15 @@
     gap: 12px;
   }
 
+  .panel-content-info {
+    margin: 0;
+  }
+
   .panel-img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-block: 20px;
 
     img {
       border-radius: 0;

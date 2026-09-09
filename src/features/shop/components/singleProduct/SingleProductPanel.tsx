@@ -54,7 +54,7 @@ const SingleProductPanel = ({
         <h2>
           {language.singleProductPanelHeading} {changedValue}
         </h2>
-        <p>{language.singleProductPanelText}</p>
+        <p className="panel-content-info">{language.singleProductPanelText}</p>
         <div className="panel-img">
           <Img alt="" src={src} />
         </div>
