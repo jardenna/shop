@@ -3,7 +3,7 @@ import Skeleton from '../Skeleton';
 const SkeletonProductCart = () => (
   <span className="skeleton-product-cart">
     <Skeleton className="product-thumb" />
-    <span className="product-body">
+    <span className="skeleton-product-cart-content">
       <span className="top-row">
         <Skeleton className="title-skeleton" />
         <Skeleton className="price-skeleton" />
