@@ -4,11 +4,11 @@ import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
 const SkeletonPriceItem = ({ count = 5 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
   return (
-    <span className="flex flex-column">
+    <span className="skeleton-price-item">
       {skeletons.map((_, index) => (
-        <span className="summary-line" key={index}>
-          <Skeleton className="label-skeleton" />
-          <Skeleton className="value-skeleton" />
+        <span className="skeleton-price-line" key={index}>
+          <Skeleton className="skeleton-price-label" />
+          <Skeleton className="skeleton-price-value" />
         </span>
       ))}
     </span>

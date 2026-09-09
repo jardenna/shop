@@ -1,5 +1,4 @@
-@use '../../../scss/globals/variables' as *;
-@use '../../../scss/globals/functions' as *;
+@use '../../../scss/globals' as *;
 
 .skeleton-product-cart {
   display: flex;
@@ -7,9 +6,18 @@
   padding-bottom: 12px;
   border-bottom: $border;
 
+  @include max-size($mini) {
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .product-thumb {
     width: rem(180px);
     height: rem(180px);
+
+    @include max-size($mini) {
+      width: 100%;
+    }
   }
 }
 
@@ -24,6 +32,10 @@
     align-items: flex-start;
     margin-bottom: 28px;
     gap: 24px;
+
+    @include max-size($mini) {
+      margin-bottom: 8px;
+    }
   }
 
   .product-cart-bottom-row {
