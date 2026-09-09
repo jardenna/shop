@@ -51,7 +51,7 @@ const MyAccountPage = () => {
       <div className="my-account">
         {isLoading && (
           <>
-            <SkeletonGrid width="12" height="1.4" />
+            <SkeletonGrid width="8" height="1.4" />
             <Skeleton height="3.2" />
           </>
         )}
