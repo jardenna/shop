@@ -1,29 +1,29 @@
+@use '../../../scss/globals/functions' as *;
+
 .skeleton-number-step {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
-}
+  margin-bottom: 12px;
 
-.qty-title {
-  width: 60px;
-  height: 16px;
-}
+  .skeleton-number-title {
+    width: rem(60px);
+    height: rem(16px);
+  }
 
-.qty-selector {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
+  .skeleton-number-selector {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
 
-.qty-selector .skeleton {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
+  .skeleton-number-selector .skeleton {
+    width: rem(20px);
+    height: rem(20px);
+  }
 
-.qty-value {
-  width: 14px;
-  height: 16px;
-  border-radius: 4px;
+  .skeleton-number-value {
+    width: rem(14px);
+    height: rem(16px);
+  }
 }

@@ -3,10 +3,10 @@ import './_skeleton-number-step.scss';
 
 const SkeletonNumberStep = () => (
   <div className="skeleton-number-step">
-    <Skeleton className="qty-title" />
-    <div className="qty-selector">
+    <Skeleton className="skeleton-number-title" />
+    <div className="skeleton-number-selector">
       <Skeleton />
-      <Skeleton className="qty-value" />
+      <Skeleton className="skeleton-number-value" />
       <Skeleton />
     </div>
   </div>
