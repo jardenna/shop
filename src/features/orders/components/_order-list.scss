@@ -39,8 +39,8 @@
   margin-bottom: 12px;
 
   .order-img {
-    width: rem(120px);
-    height: rem(132px);
+    max-width: rem(120px);
+    height: rem(148px);
   }
 
   .product-price {
