@@ -1,5 +1,5 @@
-import { useLanguage } from '../../features/language/useLanguage';
-import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import { useLanguage } from '../features/language/useLanguage';
+import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
