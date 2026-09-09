@@ -49,7 +49,7 @@
   border-radius: 8px;
   display: flex;
 
-  @include animation(skeleton-animation, 1.5s infinite, linear);
+  // @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 .skeleton-content-row {
@@ -94,6 +94,10 @@
 
   &.small {
     max-width: 50%;
+
+    @include max-size($mini) {
+      max-width: 100%;
+    }
   }
 
   .page-cart {
