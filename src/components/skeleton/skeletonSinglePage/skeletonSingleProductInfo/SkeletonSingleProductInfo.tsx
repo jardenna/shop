@@ -1,6 +1,7 @@
 import Skeleton from '../../Skeleton';
 import SkeletonBreadCrumbs from '../../SkeletonBreadCrumbs';
 import SkeletonRatingList from '../../SkeletonRatingList';
+import SkeletonRating from '../SkeletonRating';
 import './_skeleton-single-product-info.scss';
 
 const SkeletonSingleProductInfo = () => (
@@ -15,16 +16,10 @@ const SkeletonSingleProductInfo = () => (
       <Skeleton className="skeleton-count-in-stock-icon" />
       <Skeleton className="skeleton-count-in-stock-label" />
     </div>
-    PriceRow
     <div className="price-row">
       <div className="price-skeleton skeleton" />
     </div>
-    ???
-    <div className="section-label skeleton" />
-    Divider
-    <Skeleton className="skeleton-divider" />
-    Rating list medium
-    <SkeletonRatingList variant="medium" />
+    <SkeletonRating />
     ???
     <div className="swatch-label skeleton" />
     <div className="swatches">
