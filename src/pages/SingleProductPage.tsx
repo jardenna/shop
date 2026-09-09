@@ -43,7 +43,11 @@ const SingleProductPage = () => {
   }
 
   if (isLoading) {
-    return <SkeletonSinglePage />;
+    return (
+      <div className="single-product-container">
+        <SkeletonSinglePage />
+      </div>
+    );
   }
 
   if (!product) {
@@ -106,6 +110,9 @@ const SingleProductPage = () => {
 
   return (
     <>
+      <div className="single-product-container">
+        <SkeletonSinglePage />
+      </div>
       <MetaTags metaTitle={product.productName} />
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

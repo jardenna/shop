@@ -4,8 +4,8 @@ import SkeletonHeader from '../SkeletonHeader';
 import SkeletonParagraph from '../SkeletonParagraph';
 
 const SkeletonSinglePage = () => (
-  <div className="single-product-container">
-    <div className="width-100 product-img-item ">
+  <>
+    <div className="width-100">
       <Skeleton height="45" />
     </div>
     <div className="flex flex-column">
@@ -15,7 +15,7 @@ const SkeletonSinglePage = () => (
       <SkeletonControlList count={5} />
       <Skeleton count={4} />
     </div>
-  </div>
+  </>
 );
 
 export default SkeletonSinglePage;
