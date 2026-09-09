@@ -1,10 +1,11 @@
+import { SizeVariantNew } from '../../types/types';
 import './_badge.scss';
 
 interface BadgeProps {
   badgeText: string;
   className?: string;
   showDot?: boolean;
-  variant?: 'small' | 'medium' | 'large';
+  variant?: SizeVariantNew;
 }
 
 const Badge = ({
