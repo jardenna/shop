@@ -1,7 +1,12 @@
-@use '../../../scss/globals/functions' as *;
+@use '../../../scss/globals' as *;
 
 .skeleton-single-product-img {
   max-width: rem(700px);
+  height: rem(820px);
+
+  @include max-size($small) {
+    height: rem(400px);
+  }
 }
 
 .skeleton-single-product-container {
