@@ -1,21 +1,12 @@
 import Skeleton from '../Skeleton';
-import SkeletonControlList from '../SkeletonControlList';
-import SkeletonHeader from '../SkeletonHeader';
-import SkeletonParagraph from '../SkeletonParagraph';
+import './_skeleton-single-page.scss';
+import SkeletonSingleProductInfo from './SkeletonSingleProductInfo';
 
 const SkeletonSinglePage = () => (
-  <div className="single-product-container">
-    <div className="width-100 product-img-item ">
-      <Skeleton height="45" width="44" />
-    </div>
-    <div className="flex flex-column">
-      <SkeletonParagraph width="4" count={1} />
-      <SkeletonHeader hideLink />
-      <SkeletonControlList count={4} />
-      <SkeletonControlList count={5} />
-      <Skeleton count={4} />
-    </div>
-  </div>
+  <>
+    <Skeleton className="skeleton-single-product-img" />
+    <SkeletonSingleProductInfo />
+  </>
 );
 
 export default SkeletonSinglePage;

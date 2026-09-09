@@ -1,14 +1,13 @@
 import { CSSProperties } from 'react';
 import VisuallyHidden from '../../../../components/VisuallyHidden';
-
-export type ProductLabelVariant = 'mini' | 'small' | 'medium' | 'large';
+import { SizeVariant } from '../../../../types/types';
 
 type ProductListItemProps = {
   screenReaderText?: string;
   style?: CSSProperties;
   text?: string;
   unavailable?: boolean;
-  variant?: ProductLabelVariant;
+  variant?: SizeVariant;
 };
 
 const ProductListItem = ({

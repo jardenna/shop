@@ -3,10 +3,10 @@ import { IconName } from '../../../types/enums';
 import { minInStock } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
-type InStockProps = {
+interface InStockProps {
   stock: number;
   minStock?: number;
-};
+}
 
 const InStock = ({ stock, minStock = minInStock }: InStockProps) => {
   const { language } = useLanguage();

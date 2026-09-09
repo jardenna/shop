@@ -61,12 +61,6 @@ export enum KeyCode {
   Tab = 'Tab',
 }
 
-export enum SizeVariant {
-  Lg = 'lg',
-  Md = 'md',
-  Sm = 'sm',
-}
-
 export enum BtnVariant {
   Danger = 'danger',
   Default = 'default',

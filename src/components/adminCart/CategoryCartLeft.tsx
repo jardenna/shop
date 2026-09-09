@@ -8,7 +8,6 @@ type CategoryCartLeftProps = {
   productsInSubcategory: number;
   scheduledDate: Date | null;
   status: Status;
-  onReset: () => void;
 };
 
 const CategoryCartLeft = ({
@@ -16,12 +15,11 @@ const CategoryCartLeft = ({
   scheduledDate,
   productsInSubcategory,
   name,
-  onReset,
 }: CategoryCartLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent onReset={onReset}>
+    <CartContent>
       <CartHeading
         scheduledDate={scheduledDate || null}
         name={name}

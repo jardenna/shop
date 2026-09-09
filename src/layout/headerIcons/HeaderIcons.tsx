@@ -8,7 +8,7 @@ import ModalContainer from '../../components/modal/ModalContainer';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
@@ -84,7 +84,7 @@ const HeaderIcons = ({
             triggerModalBtnVariant={BtnVariant.Ghost}
             id="languageId"
             primaryActionBtn={primaryActionBtn}
-            modalSize={SizeVariant.Md}
+            modalSize="medium"
             modalHeaderText={localLanguage.preferences}
           >
             <LanguageCurrencyPreferences

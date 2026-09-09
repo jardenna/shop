@@ -1,0 +1,29 @@
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-number-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .skeleton-number-title {
+    width: rem(60px);
+    height: rem(16px);
+  }
+
+  .skeleton-number-selector {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .skeleton-number-selector .skeleton {
+    width: rem(20px);
+    height: rem(20px);
+  }
+
+  .skeleton-number-value {
+    width: rem(14px);
+    height: rem(16px);
+  }
+}

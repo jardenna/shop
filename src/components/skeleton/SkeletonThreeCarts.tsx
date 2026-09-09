@@ -26,7 +26,7 @@ const SkeletonThreeCarts = () => (
         <div className="flex flex-column page-cart flex-1">
           <SkeletonGrid />
           <SkeletonControlList count={4} />
-          <SkeletonControlList count={5} className="medium-item" />
+          <SkeletonControlList count={5} variant="medium" />
         </div>
         <Skeleton height="27" width="25" />
       </div>

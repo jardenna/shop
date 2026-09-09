@@ -15,7 +15,7 @@
     margin-top: 20px;
   }
 
-  @include grid-template-column(280px);
+  @include grid-template-column;
 
   gap: 12px;
   grid-auto-rows: rem(248px) auto;

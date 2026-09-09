@@ -13,7 +13,6 @@ import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { SizeVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
@@ -96,7 +95,7 @@ const AccountFormModal = ({
       triggerModalBtnContent={language.update}
       onClearAllValues={onClearAllValues}
       id="id"
-      modalSize={SizeVariant.Md}
+      modalSize="medium"
       primaryActionBtn={primaryActionBtn}
       modalHeaderText={language.updateYourInfo}
       onBoundaryReset={() => {

@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import Button from '../../../../components/Button';
-import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../../components/formElements/radioTileList/RadioTileList';
 import Textarea from '../../../../components/formElements/Textarea';
@@ -20,14 +18,12 @@ type ReviewsFormProps = {
   productId: string;
   initialRating?: number;
   totalStars?: number;
-  onReset: () => void;
 };
 
 const ReviewsForm = ({
   totalStars = 5,
   initialRating = 0,
   productId,
-  onReset,
 }: ReviewsFormProps) => {
   const { language } = useLanguage();
 
@@ -63,48 +59,43 @@ const ReviewsForm = ({
 
   return (
     !hasReviewed?.reviewed && (
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onSubmit();
+        }}
+        className="review-form"
       >
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            onSubmit();
-          }}
-          className="review-form"
-        >
-          <FieldSet legendText={language.rateProduct} showLegendText>
-            <RadioTileList
-              name="rating"
-              radioButtonList={createRatingList(totalStars)}
-              checked={String(values.rating)}
-              onChange={handleChange}
-              className="reviews"
-              iconName={IconName.Star}
-            />
-          </FieldSet>
+        <FieldSet legendText={language.rateProduct} showLegendText>
+          <RadioTileList
+            name="rating"
+            radioButtonList={createRatingList(totalStars)}
+            checked={String(values.rating)}
+            onChange={handleChange}
+            className="reviews"
+            iconName={IconName.Star}
+          />
+        </FieldSet>
 
-          {visible && (
-            <div className={`review-textbox ${visible ? 'visible' : ''}`}>
-              <FieldSet legendText={language.describeProduct}>
-                <Textarea
-                  ariaHidden={!visible}
-                  value={values.comment}
-                  name="comment"
-                  id="comment"
-                  labelText={language.shareYourExperience}
-                  onChange={onChangeTextArea}
-                  rows={8}
-                />
-              </FieldSet>
-              <Button type="submit" showBtnLoader={isLoading}>
-                {language.shareReview}
-              </Button>
-            </div>
-          )}
-        </form>
-      </ErrorBoundary>
+        {visible && (
+          <div className={`review-textbox ${visible ? 'visible' : ''}`}>
+            <FieldSet legendText={language.describeProduct}>
+              <Textarea
+                ariaHidden={!visible}
+                value={values.comment}
+                name="comment"
+                id="comment"
+                labelText={language.shareYourExperience}
+                onChange={onChangeTextArea}
+                rows={8}
+              />
+            </FieldSet>
+            <Button type="submit" showBtnLoader={isLoading}>
+              {language.shareReview}
+            </Button>
+          </div>
+        )}
+      </form>
     )
   );
 };

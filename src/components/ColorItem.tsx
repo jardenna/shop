@@ -1,12 +1,12 @@
-import { ProductLabelVariant } from '../features/shop/components/productLists/ProductListItem';
 import variables from '../scss/variables.module.scss';
+import { SizeVariant } from '../types/types';
 import { colorMap } from '../utils/colorUtils';
 
-type ColorItemProps = {
+interface ColorItemProps {
   colorKey: string;
   hasBorderColor?: boolean;
-  variant?: ProductLabelVariant;
-};
+  variant?: SizeVariant;
+}
 
 const ColorItem = ({
   hasBorderColor,

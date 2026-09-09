@@ -1,15 +1,13 @@
-import Skeleton from '../Skeleton';
-import SummeryLine from '../summaryLine/SummeryLine';
+import SkeletonPriceItem from './SkeletonPriceItem';
 import './_skeleton-price-list.scss';
 
 const SkeletonPriceList = () => (
-  <span>
-    <SummeryLine />
-    <span className="skeleton-summary-total">
-      <Skeleton className="label-skeleton" />
-      <Skeleton className="value-skeleton" />
+  <>
+    <SkeletonPriceItem />
+    <span className="skeleton-price-total">
+      <SkeletonPriceItem count={1} />
     </span>
-  </span>
+  </>
 );
 
 export default SkeletonPriceList;

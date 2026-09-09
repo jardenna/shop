@@ -43,7 +43,7 @@ const NumberStep = ({
   };
 
   return (
-    <article className="number-step">
+    <div className="number-step">
       {showLabel && <span>{labelText}</span>}
       <div className="number-step-container">
         <IconBtn
@@ -83,7 +83,7 @@ const NumberStep = ({
           disabled={disabled}
         />
       </div>
-    </article>
+    </div>
   );
 };
 

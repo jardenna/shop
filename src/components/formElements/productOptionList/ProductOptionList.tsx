@@ -1,11 +1,11 @@
 import { useLanguage } from '../../../features/language/useLanguage';
 import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
-import type { ProductLabelVariant } from '../../../features/shop/components/productLists/ProductListItem';
 import { IconName } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
   OptionGroupHeading,
+  SizeVariant,
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
@@ -25,7 +25,7 @@ export interface BaseControlGroupProps {
   iconSize?: string;
   inputInfo?: string;
   required?: boolean;
-  variant?: ProductLabelVariant;
+  variant?: SizeVariant;
 }
 
 interface ProductOptionListProps extends BaseControlGroupProps {

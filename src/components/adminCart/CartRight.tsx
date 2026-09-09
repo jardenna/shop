@@ -9,7 +9,6 @@ type CartRightProps = {
   name: string;
   showStatusMessage: boolean;
   statusMessage: string;
-  onReset: () => void;
 };
 
 const CartRight = ({
@@ -18,12 +17,11 @@ const CartRight = ({
   name,
   showStatusMessage,
   statusMessage,
-  onReset,
 }: CartRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent className="right" heading={heading} onReset={onReset}>
+    <CartContent className="right" heading={heading}>
       {showStatusMessage && (
         <>
           <div>

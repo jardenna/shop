@@ -6,7 +6,6 @@ import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/account/AddressPage';
 import MyAccountPage from '../pages/account/MyAccountPage';
-import Dashboard from '../pages/admin/Dashboard';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
 import CategoryPage from '../pages/category/CategoryPage';
@@ -15,6 +14,7 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import ContactPage from '../pages/ContactPage';
+import DashboardPage from '../pages/DashboardPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
 import HomePage from '../pages/home/HomePage';
@@ -92,7 +92,7 @@ const routeList = [
 const adminRouteList = [
   {
     index: true,
-    element: <Dashboard />,
+    element: <DashboardPage />,
   },
   {
     path: AdminPath.Users,

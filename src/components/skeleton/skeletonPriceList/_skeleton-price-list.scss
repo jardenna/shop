@@ -1,23 +1,42 @@
 @use '../../../scss/globals/variables' as *;
 @use '../../../scss/globals/functions' as *;
 
-.skeleton-summary-total {
+.skeleton-price-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  .skeleton-price-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .skeleton-price-label,
+  .skeleton-price-value {
+    height: rem(15px);
+  }
+
+  .skeleton-price-label {
+    width: rem(140px);
+  }
+
+  .skeleton-price-value {
+    width: rem(70px);
+  }
+}
+
+.skeleton-price-total {
+  display: flex;
+  padding-top: 20px;
   margin-top: 16px;
   border-top: $border;
+  width: 100%;
 
-  .skeleton {
-    height: rem(20px);
-  }
-
-  .label-skeleton {
-    width: rem(60px);
-  }
-
-  .value-skeleton {
-    width: rem(100px);
+  .skeleton-price-label,
+  .skeleton-price-value {
+    height: rem(24px);
   }
 }

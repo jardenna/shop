@@ -15,7 +15,6 @@ type ProductCartLeftProps = {
   price: number;
   scheduledDate: Date | null;
   status: Status;
-  onReset: () => void;
 };
 
 const ProductCartLeft = ({
@@ -24,19 +23,14 @@ const ProductCartLeft = ({
   scheduledDate,
   description,
   images,
-  onReset,
   price,
   discount,
 }: ProductCartLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent onReset={onReset}>
-      {images.length > 0 ? (
-        <ImgList images={images} onReset={onReset} />
-      ) : (
-        <MissingImage />
-      )}
+    <CartContent>
+      {images.length > 0 ? <ImgList images={images} /> : <MissingImage />}
       <CartHeading
         status={status}
         scheduledDate={scheduledDate || null}

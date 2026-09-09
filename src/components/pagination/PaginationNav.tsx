@@ -26,7 +26,7 @@ const PaginationNav = ({
   pageLimit = 5,
 }: PaginationNavProps) => {
   const { language } = useLanguage();
-  const { isMobileSize } = useMediaQuery();
+  const { isTabletSize } = useMediaQuery();
 
   const paginationBtnList = createPaginationItems(page, totalBtns, pageLimit);
 
@@ -45,7 +45,7 @@ const PaginationNav = ({
   return (
     <LayoutElement as="nav" ariaLabel={language.pagination}>
       <ul className="pagination-btn-list">
-        {!isMobileSize && (
+        {!isTabletSize && (
           <li>
             <IconBtn
               iconName={IconName.ChevronsLeft}
@@ -65,7 +65,7 @@ const PaginationNav = ({
             disabled={page === 1}
           />
         </li>
-        {isMobileSize ? (
+        {isTabletSize ? (
           <li>{paginationMobileText}</li>
         ) : (
           <PaginationBtnItems
@@ -83,7 +83,7 @@ const PaginationNav = ({
             disabled={page === totalBtns}
           />
         </li>
-        {!isMobileSize && (
+        {!isTabletSize && (
           <li>
             <IconBtn
               iconName={IconName.ChevronsRight}

@@ -1,0 +1,74 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-single-product-img {
+  max-width: rem(700px);
+  height: rem(820px);
+
+  @include max-size($small) {
+    height: rem(400px);
+  }
+}
+
+.skeleton-single-product-container {
+  width: 100%;
+  max-width: rem(500px);
+
+  .skeleton-breadcrumbs {
+    margin-bottom: 6px;
+  }
+
+  .skeleton-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: rem(20px);
+
+    .skeleton {
+      height: rem(40px);
+    }
+
+    .skeleton-title {
+      width: 65%;
+    }
+
+    .skeleton-heart {
+      width: rem(40px);
+      border-radius: 6px;
+    }
+  }
+}
+
+.skeleton-count-in-stock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+
+  .skeleton-count-in-stock-icon {
+    width: rem(20px);
+    height: rem(20px);
+    border-radius: 50%;
+  }
+
+  .skeleton-count-in-stock-label {
+    width: rem(110px);
+    height: rem(16px);
+  }
+}
+
+.skeleton-price-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.skeleton-rating-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .skeleton-rating-label {
+    width: rem(130px);
+    height: rem(16px);
+  }
+}

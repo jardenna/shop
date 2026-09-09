@@ -21,7 +21,7 @@ const Skeleton = ({
   !count ? (
     <span
       style={{ height: `${height}rem`, width: `${width}rem` }}
-      className={`skeleton   ${className}`}
+      className={`skeleton ${className}`}
     />
   ) : (
     Array.from({ length: count }).map((_, index) => (
