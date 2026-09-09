@@ -3,13 +3,12 @@
 .single-product-container {
   display: flex;
   gap: 40px;
-  margin-top: 40px;
   padding-right: 20px;
 
-  @include max-size($small) {
+  @include max-size($mini) {
     flex-direction: column;
-    margin-top: 16px;
-    gap: 0;
+    gap: 20px;
+    padding-inline: 20px;
   }
 
   .single-product-heading {
@@ -19,6 +18,8 @@
   }
 
   .single-product-content {
+    flex: 1;
+
     @include max-size($small) {
       margin-bottom: 80px;
     }
@@ -39,6 +40,7 @@
 
   .product-img-list {
     flex-direction: column;
+    flex: 1;
     gap: 0;
     width: 100%;
     max-width: rem(700px);
@@ -53,6 +55,10 @@
   .product-img {
     border-radius: 0;
     max-height: rem(820px);
+
+    @include max-size($mini) {
+      max-height: rem(600px);
+    }
   }
 
   .product-care-info {
