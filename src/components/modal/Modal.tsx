@@ -4,7 +4,8 @@ import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useClickOutside } from '../../hooks/useClickOutside';
-import { BtnType, BtnVariant, SizeVariant } from '../../types/enums';
+import { BtnType, BtnVariant } from '../../types/enums';
+import { SizeVariantNew } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
@@ -45,7 +46,7 @@ export type ModalProps = {
   className?: string;
   isAlert?: boolean;
   modalInfo?: ReactNode;
-  modalSize?: SizeVariant;
+  modalSize?: SizeVariantNew;
   secondaryActionBtn?: SecondaryActionBtnProps | null;
   secondaryActionBtnLabel?: string;
   showCloseIcon?: boolean;
@@ -62,7 +63,7 @@ const Modal = ({
   secondaryActionBtn,
   secondaryActionBtnLabel,
   showCloseIcon,
-  modalSize = SizeVariant.Sm,
+  modalSize = 'small',
   className = '',
   isAlert,
   modalInfo,

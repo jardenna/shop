@@ -21,7 +21,7 @@ import {
   useUpdateAddressMutation,
 } from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnVariant, IconName, SizeVariant } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import type { InputType, RefBtnType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
@@ -141,7 +141,7 @@ const AddressFormModal = ({
       triggerModalClassName={triggerModalClassName ?? ''}
       // onClearAllValues={onClearAllValues}
       onBoundaryReset={id ? reset : addReset}
-      modalSize={SizeVariant.Md}
+      modalSize="medium"
       triggerModalBtnContent={
         id ? (
           <IconContent
