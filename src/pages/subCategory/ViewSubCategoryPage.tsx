@@ -1,5 +1,7 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import CategoryCart from '../../components/adminCart/CategoryCart';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCarts from '../../components/skeleton/SkeletonTwoCarts';
@@ -65,33 +67,37 @@ const ViewSubCategoryPage = () => {
   return (
     <>
       {isLoading && <SkeletonTwoCarts />}
-      {category && (
-        <AdminPageContainer
-          heading={`${language.category} ${subCategoryName || category.subCategoryName}`}
-          linkText={language.createNewCategory}
-          linkTo={AdminPath.AdminSubCategoryCreate}
-          variant="medium"
-        >
-          <CategoryCart
-            isLoading={isLoading}
-            onReset={() => refetch()}
-            onDeleteSubCategory={handleDeleteSubCategory}
-            categoryId={category.id}
-            subCategoryName={subCategoryName || category.subCategoryName}
-            productsInSubcategory={category.productCount}
-            categoryName={category.mainCategory.categoryName}
-            showStatusMessage={
-              category.mainCategory.categoryStatus !== 'Published'
-            }
-            scheduledDate={category.scheduledDate || null}
-            statusMessage={translateKey(
-              category.mainCategory.categoryStatus,
-              language,
-            )}
-            status={category.categoryStatus}
-          />
-        </AdminPageContainer>
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        {category && (
+          <AdminPageContainer
+            heading={`${language.category} ${subCategoryName || category.subCategoryName}`}
+            linkText={language.createNewCategory}
+            linkTo={AdminPath.AdminSubCategoryCreate}
+            variant="medium"
+          >
+            <CategoryCart
+              isLoading={isLoading}
+              onDeleteSubCategory={handleDeleteSubCategory}
+              categoryId={category.id}
+              subCategoryName={subCategoryName || category.subCategoryName}
+              productsInSubcategory={category.productCount}
+              categoryName={category.mainCategory.categoryName}
+              showStatusMessage={
+                category.mainCategory.categoryStatus !== 'Published'
+              }
+              scheduledDate={category.scheduledDate || null}
+              statusMessage={translateKey(
+                category.mainCategory.categoryStatus,
+                language,
+              )}
+              status={category.categoryStatus}
+            />
+          </AdminPageContainer>
+        )}
+      </ErrorBoundary>
     </>
   );
 };

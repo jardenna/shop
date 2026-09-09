@@ -1,10 +1,12 @@
-import { ReactNode, useId } from 'react';
+import { ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
 } from '../../../components/accordion/Accordion';
 import ColorItem from '../../../components/ColorItem';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
@@ -70,7 +72,6 @@ const FilterPanel = ({
   onClearSingleFilter,
   onClearAllFilters,
 }: FilterPanelProps) => {
-  const ariaLabelledby = useId();
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
@@ -149,75 +150,76 @@ const FilterPanel = ({
         </>
       }
     >
-      <section aria-labelledby={ariaLabelledby} className="filter-panel">
-        <VisuallyHidden as="header">
-          <h2 id={ariaLabelledby}>{language.filterHeading}</h2>
-        </VisuallyHidden>
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={onReset}
+      >
+        <section className="filter-panel">
+          <VisuallyHidden as="header">
+            <h2>{language.filterHeading}</h2>
+          </VisuallyHidden>
 
-        <Form
-          className="filter-form"
-          submitBtnLabel={primaryBtnText}
-          onSubmit={onHidePanel}
-          cancelBtnProps={{
-            btnLabel: language.clearAllFilters,
-            isDisabled: isClearFiltersDisabled,
-            onCancel: onClearAllFilters,
-          }}
-        >
-          <FieldSet
-            legendText={language.filterProducts}
-            className="filter-fieldset"
-            showLegendText
+          <Form
+            className="filter-form"
+            submitBtnLabel={primaryBtnText}
+            onSubmit={onHidePanel}
+            cancelBtnProps={{
+              btnLabel: language.clearAllFilters,
+              isDisabled: isClearFiltersDisabled,
+              onCancel: onClearAllFilters,
+            }}
           >
-            {filteredEntries.length > 0 && (
-              <div className="toggle-content">
-                {filteredEntries.map(([key, values]) => (
-                  <TagList
-                    key={key}
-                    language={language}
-                    tagList={values.map((value) => ({
-                      key: key as FilterKeys,
-                      value,
-                    }))}
-                    onClick={onRemoveFilterTag}
-                  />
-                ))}
-              </div>
-            )}
             <FieldSet
-              legendText={language.priceRange}
-              className="dural-range-fieldset"
+              legendText={language.filterProducts}
+              className="filter-fieldset"
               showLegendText
             >
-              <DualRange
-                minValue={values.minPrice}
-                maxValue={values.maxPrice}
-                inputNames={{
-                  min: 'minPrice',
-                  max: 'maxPrice',
-                }}
-                inputLabels={{
-                  min: language.priceFrom,
-                  max: language.priceTo,
-                }}
-                onChange={setValue}
-                unitLabel={currencyText}
-              />
-              <ClearFiltersBtn
-                onClick={() => {
-                  onClearSingleFilter(['minPrice', 'maxPrice']);
-                }}
-                disabled={isClearPriceBtnDisabled}
-              />
+              {filteredEntries.length > 0 && (
+                <div className="toggle-content">
+                  {filteredEntries.map(([key, values]) => (
+                    <TagList
+                      key={key}
+                      language={language}
+                      tagList={values.map((value) => ({
+                        key: key as FilterKeys,
+                        value,
+                      }))}
+                      onClick={onRemoveFilterTag}
+                    />
+                  ))}
+                </div>
+              )}
+              <FieldSet
+                legendText={language.priceRange}
+                className="dural-range-fieldset"
+                showLegendText
+              >
+                <DualRange
+                  minValue={values.minPrice}
+                  maxValue={values.maxPrice}
+                  inputNames={{
+                    min: 'minPrice',
+                    max: 'maxPrice',
+                  }}
+                  inputLabels={{
+                    min: language.priceFrom,
+                    max: language.priceTo,
+                  }}
+                  onChange={setValue}
+                  unitLabel={currencyText}
+                />
+                <ClearFiltersBtn
+                  onClick={() => {
+                    onClearSingleFilter(['minPrice', 'maxPrice']);
+                  }}
+                  disabled={isClearPriceBtnDisabled}
+                />
+              </FieldSet>
+              <Accordion accordionList={accordionList} name="filter" />
             </FieldSet>
-            <Accordion
-              accordionList={accordionList}
-              name="filter"
-              onReset={onReset}
-            />
-          </FieldSet>
-        </Form>
-      </section>
+          </Form>
+        </section>
+      </ErrorBoundary>
     </TogglePanel>
   );
 };

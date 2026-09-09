@@ -1,8 +1,10 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import CartFooter from '../../components/adminCart/CartFooter';
 import CartRight from '../../components/adminCart/CartRight';
 import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
 import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
@@ -85,53 +87,55 @@ const ViewProductPage = () => {
     <>
       {isLoading && <SkeletonThreeCarts />}
 
-      {product && (
-        <AdminPageContainer
-          heading={product.productName}
-          linkText={language.createNewProduct}
-          linkTo={AdminPath.AdminProductCreate}
-        >
-          <section className="three-col admin-cart-container">
-            <ProductCartLeft
-              name={product.productName}
-              scheduledDate={product.scheduledDate || null}
-              status={product.productStatus}
-              description={product.description}
-              images={product.images}
-              price={product.price}
-              discount={product.discount || 0}
-              onReset={() => refetch()}
-            />
-            <ProductCartCenter
-              countInStock={product.countInStock}
-              brand={product.brand}
-              colours={product.colors}
-              discount={product.discount || 0}
-              material={product.material}
-              sizes={product.sizes}
-              allowedSizes={product.allowedSizes}
-              onReset={() => refetch()}
-            />
-            <CartRight
-              linkTo={AdminPath.AdminSubCategories}
-              heading={heading}
-              onReset={() => refetch()}
-              name={product.productName}
-              showStatusMessage={
-                product.subCategory.categoryStatus !== 'Published'
-              }
-              statusMessage={statusMessage}
-            />
-            <CartFooter
-              id={product.id}
-              primaryActionBtn={primaryActionBtn}
-              name={product.productName}
-              modalHeaderText={language.deleteProduct}
-              linkTo={`${AdminPath.AdminProductUpdate}/${id}`}
-            />
-          </section>
-        </AdminPageContainer>
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        {product && (
+          <AdminPageContainer
+            heading={product.productName}
+            linkText={language.createNewProduct}
+            linkTo={AdminPath.AdminProductCreate}
+          >
+            <section className="three-col admin-cart-container">
+              <ProductCartLeft
+                name={product.productName}
+                scheduledDate={product.scheduledDate || null}
+                status={product.productStatus}
+                description={product.description}
+                images={product.images}
+                price={product.price}
+                discount={product.discount || 0}
+              />
+              <ProductCartCenter
+                countInStock={product.countInStock}
+                brand={product.brand}
+                colours={product.colors}
+                discount={product.discount || 0}
+                material={product.material}
+                sizes={product.sizes}
+                allowedSizes={product.allowedSizes}
+              />
+              <CartRight
+                linkTo={AdminPath.AdminSubCategories}
+                heading={heading}
+                name={product.productName}
+                showStatusMessage={
+                  product.subCategory.categoryStatus !== 'Published'
+                }
+                statusMessage={statusMessage}
+              />
+              <CartFooter
+                id={product.id}
+                primaryActionBtn={primaryActionBtn}
+                name={product.productName}
+                modalHeaderText={language.deleteProduct}
+                linkTo={`${AdminPath.AdminProductUpdate}/${id}`}
+              />
+            </section>
+          </AdminPageContainer>
+        )}
+      </ErrorBoundary>
     </>
   );
 };

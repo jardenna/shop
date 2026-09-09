@@ -6,10 +6,9 @@ import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
 type ReviewListProps = {
   reviewList: DisplyReviews[];
   title: string;
-  onReset: () => void;
 };
 
-const ReviewList = ({ reviewList, title, onReset }: ReviewListProps) => {
+const ReviewList = ({ reviewList, title }: ReviewListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -20,7 +19,6 @@ const ReviewList = ({ reviewList, title, onReset }: ReviewListProps) => {
           <li key={index} className="review-item">
             <div className="review-header">
               <ReviewStars
-                onReset={onReset}
                 stars={getStarsArray(review.rating)}
                 rating={review.rating}
               />

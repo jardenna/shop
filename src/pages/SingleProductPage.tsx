@@ -88,7 +88,6 @@ const SingleProductPage = () => {
           <ReviewList
             reviewList={product.reviews}
             title={`${language.numberOfReviews} ${product.numReviews}`}
-            onReset={() => refetch}
           />
         ) : (
           <span>{language.noReview}</span>
@@ -114,7 +113,6 @@ const SingleProductPage = () => {
           <div className="single-product-container">
             <ImgList
               images={product.images}
-              onReset={() => refetch}
               isOutOfStock={product.countInStock === 0}
             />
 
@@ -123,7 +121,6 @@ const SingleProductPage = () => {
               <ReviewStars
                 stars={getStarsArray(product.rating)}
                 rating={product.rating}
-                onReset={() => refetch}
                 className="rating-info"
               />
               <InStockContainer
@@ -132,9 +129,7 @@ const SingleProductPage = () => {
                 countInStock={product.countInStock}
               />
               <ProductPrice price={product.price} discount={product.discount} />
-              {id && currentUser && (
-                <ReviewsForm productId={id} onReset={() => refetch} />
-              )}
+              {id && currentUser && <ReviewsForm productId={id} />}
               {product.countInStock > 0 && (
                 <SingleProductPurchaseSection
                   onReset={() => refetch}
@@ -151,10 +146,7 @@ const SingleProductPage = () => {
                   isAuthReady={isAuthReady}
                 />
               )}
-              <Accordion
-                accordionList={accordionList}
-                onReset={() => refetch}
-              />
+              <Accordion accordionList={accordionList} />
             </section>
           </div>
         )}

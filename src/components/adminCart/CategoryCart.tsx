@@ -5,10 +5,11 @@ import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
 import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CartFooter from './CartFooter';
+
 import CartRight from './CartRight';
 import CategoryCartLeft from './CategoryCartLeft';
 
-type CategoryCartProps = {
+interface CategoryCartProps {
   categoryId: string;
   categoryName: string;
   isLoading: boolean;
@@ -20,8 +21,7 @@ type CategoryCartProps = {
   subCategoryName: string;
   triggerModalDisabled?: boolean;
   onDeleteSubCategory: () => void;
-  onReset: () => void;
-};
+}
 
 const CategoryCart = ({
   subCategoryName,
@@ -33,7 +33,6 @@ const CategoryCart = ({
   status,
   categoryId,
   onDeleteSubCategory,
-  onReset,
   isLoading,
   triggerModalDisabled,
 }: CategoryCartProps) => {
@@ -53,7 +52,6 @@ const CategoryCart = ({
         status={status}
         productsInSubcategory={productsInSubcategory}
         scheduledDate={scheduledDate}
-        onReset={onReset}
       />
       <CartRight
         linkTo={AdminPath.AdminCategories}
@@ -61,7 +59,6 @@ const CategoryCart = ({
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
         statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
-        onReset={onReset}
       />
       <CartFooter
         id={categoryId}

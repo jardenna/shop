@@ -1,5 +1,3 @@
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Icon from '../../../../components/icons/Icon';
 import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
@@ -10,31 +8,20 @@ type ReviewStarsProps = {
   rating: number;
   stars: StarType[];
   className?: string;
-  onReset: () => void;
 };
 
-const ReviewStars = ({
-  stars,
-  rating,
-  onReset,
-  className = '',
-}: ReviewStarsProps) => (
+const ReviewStars = ({ stars, rating, className = '' }: ReviewStarsProps) => (
   <div className="stars">
     <ul className={`star-list ${className}`} aria-hidden={true}>
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => onReset}
-      >
-        {stars.map((type, index) => (
-          <li key={index} className="star-item">
-            {type === 'full' && (
-              <Icon iconName={IconName.Star} fill={variables.colorYellow} />
-            )}
-            {type === 'half' && <Icon iconName={IconName.HalfStar} />}
-            {type === 'empty' && <Icon iconName={IconName.Star} />}
-          </li>
-        ))}
-      </ErrorBoundary>
+      {stars.map((type, index) => (
+        <li key={index} className="star-item">
+          {type === 'full' && (
+            <Icon iconName={IconName.Star} fill={variables.colorYellow} />
+          )}
+          {type === 'half' && <Icon iconName={IconName.HalfStar} />}
+          {type === 'empty' && <Icon iconName={IconName.Star} />}
+        </li>
+      ))}
     </ul>
     <ReviewStarsInfo rating={rating} />
   </div>

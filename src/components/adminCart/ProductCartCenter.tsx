@@ -13,7 +13,6 @@ interface ProductCartCenterProps {
   discount: number;
   material: string;
   sizes: Size[];
-  onReset: () => void;
 }
 
 const ProductCartCenter = ({
@@ -21,7 +20,6 @@ const ProductCartCenter = ({
   colours,
   discount,
   material,
-  onReset,
   countInStock,
   sizes,
   allowedSizes,
@@ -29,7 +27,7 @@ const ProductCartCenter = ({
   const { language } = useLanguage();
 
   return (
-    <CartContent onReset={onReset} className="center">
+    <CartContent className="center">
       <span className="separator" aria-hidden={true} />
       <LabelValueGrid text={language.productsInStock}>
         {countInStock} {language.pcs}
