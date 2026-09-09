@@ -2,12 +2,12 @@ import Skeleton from '../Skeleton';
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonHeader from '../SkeletonHeader';
 import SkeletonParagraph from '../SkeletonParagraph';
+import './_skeleton-single-page.scss';
 
 const SkeletonSinglePage = () => (
   <>
-    <div className="width-100">
-      <Skeleton height="45" />
-    </div>
+    <Skeleton height="44" className="skeleton-single-product-img" />
+
     <div className="flex flex-column">
       <SkeletonParagraph width="4" count={1} />
       <SkeletonHeader hideLink />
