@@ -1,5 +1,6 @@
 import Skeleton from '../../Skeleton';
 import SkeletonBreadCrumbs from '../../SkeletonBreadCrumbs';
+import SkeletonControlList from '../../SkeletonControlList';
 import SkeletonRatingList from '../../SkeletonRatingList';
 import SkeletonRating from '../SkeletonRating';
 import './_skeleton-single-product-info.scss';
@@ -20,14 +21,9 @@ const SkeletonSingleProductInfo = () => (
       <Skeleton width="10" height="3" />
     </div>
     <SkeletonRating />
-    ???
-    <div className="swatch-label skeleton" />
-    <div className="swatches">
-      <div className="swatch skeleton" />
-      <div className="swatch skeleton" />
-    </div>
-    <div className="size-label skeleton" />
-    <div className="size-option skeleton" />
+    <SkeletonControlList count={5} variant="large" />
+    <SkeletonControlList count={5} variant="medium" />
+    qty
     <div className="qty-row">
       <div className="qty-title skeleton" />
       <div className="qty-selector">
