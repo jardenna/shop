@@ -23,7 +23,7 @@ const SkeletonSingleProductInfo = () => (
       <Skeleton width="10" height="3" />
     </div>
     <SkeletonRating />
-    <SkeletonControlList count={5} variant="large" />
+    <SkeletonControlList count={3} variant="large" />
     <SkeletonControlList count={5} variant="medium" />
     <SkeletonNumberStep />
     <SkeletonButton />
