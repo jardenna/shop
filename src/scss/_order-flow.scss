@@ -11,6 +11,7 @@
 
   @include max-size($small) {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 

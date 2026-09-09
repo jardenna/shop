@@ -4,6 +4,14 @@
   display: flex;
   gap: 20px;
 
+  @include max-size($mini) {
+    flex-direction: column;
+
+    .order-img {
+      width: 100%;
+    }
+  }
+
   @include between-size($small, $medium) {
     flex-direction: column;
 
