@@ -59,7 +59,10 @@ $animation-timing-function: ease-in-out;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, $size), 1fr));
 
   @include max-size($medium) {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(100%, rem(224px)), 1fr)
+    );
   }
 }
 
