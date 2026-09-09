@@ -1,0 +1,20 @@
+@use '../../../scss/globals/variables' as *;
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-accordion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid $skeleton-border-color;
+
+  .skeleton-accordion-title {
+    width: rem(200px);
+    height: rem(16px);
+  }
+
+  .skeleton-accordion-chevron {
+    width: 18px;
+    height: 18px;
+  }
+}

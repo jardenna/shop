@@ -1,4 +1,5 @@
 import Skeleton from '../Skeleton';
+import SkeletonAccordion from '../skeletonAccordion/SkeletonAccordion';
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonHeader from '../SkeletonHeader';
 import SkeletonParagraph from '../SkeletonParagraph';
@@ -13,7 +14,7 @@ const SkeletonSinglePage = () => (
       <SkeletonHeader hideLink />
       <SkeletonControlList count={4} />
       <SkeletonControlList count={5} />
-      <Skeleton count={4} />
+      <SkeletonAccordion />
     </div>
   </>
 );
