@@ -1,11 +1,11 @@
 @use '../../../scss/globals' as *;
 
-.table {
+.skeleton-table {
   width: 100%;
   background: $color-white;
   border: $border;
 
-  .row {
+  .skeleton-row {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -13,11 +13,11 @@
     border-bottom: $border;
   }
 
-  .row:last-child {
+  .skeleton-row:last-child {
     border-bottom: none;
   }
 
-  .cell {
+  .skeleton-cell {
     flex: 1;
     min-width: 0;
   }

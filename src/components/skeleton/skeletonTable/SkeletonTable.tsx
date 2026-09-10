@@ -10,10 +10,10 @@ const SkeletonTable = ({ count = 12, skeletonHeight }: SkeletonTableProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
-    <div className="table">
+    <div className="skeleton-table">
       {skeletons.map((_, index) => (
         <div
-          className="row"
+          className="skeleton-row"
           key={index}
           style={{ height: `${skeletonHeight}rem` }}
         >
