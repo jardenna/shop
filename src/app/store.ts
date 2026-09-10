@@ -28,7 +28,11 @@ export const rtkQueryErrorLogger: Middleware =
 
       const errorStatus = payload?.status;
 
-      if (typeof errorStatus === 'number' && errorStatus < 500) {
+      if (
+        typeof errorStatus === 'number' &&
+        errorStatus < 500 &&
+        errorStatus !== 404
+      ) {
         const errorMessage =
           typeof payload?.data?.message === 'string'
             ? payload.data.message
