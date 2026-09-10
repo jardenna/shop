@@ -38,13 +38,15 @@ const UpdateProductPage = () => {
     );
   }
 
+  if (isLoading || isSubCategoriesLoading) {
+    return <SkeletonForm />;
+  }
+
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
       onReset={() => refetch()}
     >
-      {(isLoading || isSubCategoriesLoading) && <SkeletonForm />}
-
       {product && subCategories && (
         <AdminPageContainer
           heading={`${language.update} ${product.productName}`}
