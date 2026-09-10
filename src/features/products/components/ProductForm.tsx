@@ -54,14 +54,12 @@ type ProductFormProps = {
   images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
-  onReset: () => void;
 };
 
 const ProductForm = ({
   id,
   selectedProduct,
   parentCategories,
-  onReset,
   images,
   allowedSizes,
 }: ProductFormProps) => {
@@ -271,7 +269,7 @@ const ProductForm = ({
     >
       <div className="product-form-container">
         <div className="product-form-left-column">
-          <FormCart legendText={language.category} onReset={onReset}>
+          <FormCart legendText={language.category}>
             <Selectbox
               errorText={language[errors.subCategory]}
               id="subCategory"
@@ -289,7 +287,6 @@ const ProductForm = ({
           </FormCart>
           <FormCart
             legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
-            onReset={onReset}
           >
             <ImageUpload
               images={images}
@@ -302,7 +299,7 @@ const ProductForm = ({
               disabledImages={disabledImages}
             />
           </FormCart>
-          <FormCart legendText={language.productInformation} onReset={onReset}>
+          <FormCart legendText={language.productInformation}>
             <Input
               value={values.productName}
               id="productName"
@@ -344,7 +341,7 @@ const ProductForm = ({
           </FormCart>
         </div>
         <div className="product-form-right-column">
-          <FormCart legendText={language.productVariants} onReset={onReset}>
+          <FormCart legendText={language.productVariants}>
             <Selectbox
               id="colors"
               name="colors"
@@ -378,7 +375,7 @@ const ProductForm = ({
               }}
             />
           </FormCart>
-          <FormCart legendText={language.pricing} onReset={onReset}>
+          <FormCart legendText={language.pricing}>
             <div className="product-form-2-columns">
               <Input
                 type="number"
@@ -424,7 +421,7 @@ const ProductForm = ({
               )}
             </div>
           </FormCart>
-          <FormCart legendText={language.details} onReset={onReset}>
+          <FormCart legendText={language.details}>
             <StatusInputs
               labelText={language.productStatus}
               ref={formRef}

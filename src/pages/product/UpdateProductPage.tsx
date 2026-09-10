@@ -15,22 +15,15 @@ const UpdateProductPage = () => {
   const {
     data: product,
     isLoading,
-    refetch,
     isError,
     error,
   } = useGetProductByIdQuery(id || '');
 
   const {
     data: subCategories,
-    refetch: refetchSubCategories,
     isLoading: isSubCategoriesLoading,
     isError: isSubCategoriesError,
   } = useGetSubCategoriesWithParentQuery();
-
-  const handleReset = () => {
-    refetch(); // refetch product
-    refetchSubCategories(); // refetch subcategories
-  };
 
   if (isError || isSubCategoriesError) {
     return (
@@ -58,7 +51,6 @@ const UpdateProductPage = () => {
             id={id || null}
             parentCategories={subCategories}
             allowedSizes={product.subCategory.allowedSizes}
-            onReset={handleReset}
           />
         </AdminPageContainer>
       )}
