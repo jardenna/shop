@@ -1,38 +1,35 @@
 import Skeleton from './Skeleton';
+import SkeletonAdminPage from './SkeletonAdminPage';
 import SkeletonBadge from './SkeletonBadge';
-import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
-import SkeletonButton from './SkeletonButton';
 import SkeletonControlList from './SkeletonControlList';
+import SkeletonFooter from './SkeletonFooter';
 import SkeletonGrid from './SkeletonGrid';
-import SkeletonHeader from './SkeletonHeader';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCarts = () => (
-  <div className="skeleton-column">
-    <SkeletonBreadCrumbs />
-    <SkeletonHeader />
-    <div className="page-cart">
-      <div className="flex">
-        <div className="page-cart flex-1">
-          <div className="flex flex-column">
-            <Skeleton height="12" />
-            <div className="flex">
-              <SkeletonParagraph height="1.5" count={1} />
-              <SkeletonBadge />
-            </div>
-            <SkeletonParagraph />
-            <SkeletonButton />
+  <SkeletonAdminPage variant="large">
+    <div className="flex">
+      <div className="page-cart flex-1">
+        <div className="flex flex-column">
+          <Skeleton height="12" />
+          <div className="flex">
+            <SkeletonParagraph height="1.5" count={1} />
+            <SkeletonBadge />
           </div>
+
+          <SkeletonParagraph />
+          <SkeletonFooter />
         </div>
-        <div className="flex flex-column page-cart flex-1">
-          <SkeletonGrid />
-          <SkeletonControlList count={4} />
-          <SkeletonControlList count={5} variant="medium" />
-        </div>
-        <Skeleton height="27" width="25" />
       </div>
+      <div className="flex flex-column page-cart flex-1">
+        <SkeletonGrid />
+        <SkeletonControlList count={4} />
+        <SkeletonControlList count={5} variant="medium" />
+      </div>
+
+      <Skeleton height="27" width="25" />
     </div>
-  </div>
+  </SkeletonAdminPage>
 );
 
 export default SkeletonThreeCarts;
