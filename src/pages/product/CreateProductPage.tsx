@@ -5,7 +5,7 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const CreateProductPage = () => {
   const { language } = useLanguage();
-  const { data: subCategories, refetch } = useGetSubCategoriesWithParentQuery();
+  const { data: subCategories } = useGetSubCategoriesWithParentQuery();
 
   return (
     subCategories && (
@@ -15,7 +15,6 @@ const CreateProductPage = () => {
           images={[]}
           id={null}
           parentCategories={subCategories}
-          onReset={() => refetch()}
           allowedSizes={[]}
         />
       </AdminPageContainer>

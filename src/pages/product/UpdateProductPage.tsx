@@ -1,6 +1,8 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonPage from '../../components/skeleton/SkeletonPage';
+import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
@@ -15,22 +17,16 @@ const UpdateProductPage = () => {
   const {
     data: product,
     isLoading,
-    refetch,
     isError,
     error,
+    refetch,
   } = useGetProductByIdQuery(id || '');
 
   const {
     data: subCategories,
-    refetch: refetchSubCategories,
     isLoading: isSubCategoriesLoading,
     isError: isSubCategoriesError,
   } = useGetSubCategoriesWithParentQuery();
-
-  const handleReset = () => {
-    refetch(); // refetch product
-    refetchSubCategories(); // refetch subcategories
-  };
 
   if (isError || isSubCategoriesError) {
     return (
@@ -43,10 +39,11 @@ const UpdateProductPage = () => {
   }
 
   return (
-    <>
-      {(isLoading || isSubCategoriesLoading) && (
-        <SkeletonPage count={3} height="14" />
-      )}
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => refetch()}
+    >
+      {(isLoading || isSubCategoriesLoading) && <SkeletonForm />}
 
       {product && subCategories && (
         <AdminPageContainer
@@ -58,11 +55,10 @@ const UpdateProductPage = () => {
             id={id || null}
             parentCategories={subCategories}
             allowedSizes={product.subCategory.allowedSizes}
-            onReset={handleReset}
           />
         </AdminPageContainer>
       )}
-    </>
+    </ErrorBoundary>
   );
 };
 

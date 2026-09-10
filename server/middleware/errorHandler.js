@@ -7,9 +7,7 @@ const errorHandler = (error, req, res, next) => {
 
   // Handle CastError (e.g. invalid ObjectId)
   if (error.name === 'CastError') {
-    const isIdParam = error.path === '_id' && req.params?.id;
-
-    if (isIdParam) {
+    if (error.path === '_id') {
       statusCode = 404;
       message = t('resourceNotFound', req.lang);
     } else {
