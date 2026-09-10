@@ -11,7 +11,6 @@ import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
-import SkeletonList from '../skeleton/SkeletonList';
 import SkeletonRow from '../skeleton/skeletonTable/SkeletonRow';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
@@ -44,7 +43,6 @@ type TableProps<T> = {
   className?: string;
   emptyHeaderCellText?: string;
   scrollToRef?: RefObject<HTMLTableElement | null>;
-  skeletonCount?: number;
   skeletonHeight?: string;
   children: (data: T[]) => ReactNode;
   onFilter: (event: ChangeInputType) => void;
@@ -72,7 +70,6 @@ const SortTable = <T,>({
   values,
   onFilter,
   skeletonHeight = '2.75',
-  skeletonCount = 8,
   onRemoveFilterTag,
   navigationPath,
   scrollToRef,
@@ -148,14 +145,9 @@ const SortTable = <T,>({
           activeDisplay={padding}
         />
       </div>
-      <SkeletonRow />
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonList
-            count={skeletonCount}
-            className="flex-column"
-            height={skeletonHeight}
-          />
+          <SkeletonRow skeletonHeight={skeletonHeight} />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
