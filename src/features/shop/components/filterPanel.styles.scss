@@ -21,8 +21,8 @@
     max-height: rem(172px);
     overflow: auto;
 
-    @media (height <= 700px) {
-      max-height: rem(100px);
+    @include max-height(700px) {
+      height: rem(100px);
     }
 
     .checkbox-item {

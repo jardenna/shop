@@ -11,7 +11,7 @@ import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
-import SkeletonList from '../skeleton/SkeletonList';
+import SkeletonTable from '../skeleton/skeletonTable/SkeletonTable';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_sort-table.scss';
@@ -70,8 +70,8 @@ const SortTable = <T,>({
   initialFilters,
   values,
   onFilter,
-  skeletonHeight = '2.75',
-  skeletonCount = 8,
+  skeletonHeight,
+  skeletonCount,
   onRemoveFilterTag,
   navigationPath,
   scrollToRef,
@@ -149,10 +149,9 @@ const SortTable = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonList
+          <SkeletonTable
+            skeletonHeight={skeletonHeight}
             count={skeletonCount}
-            className="flex-column"
-            height={skeletonHeight}
           />
         ) : (
           <ErrorBoundary

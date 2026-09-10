@@ -70,6 +70,7 @@ const CategoryPage = () => {
         onRemoveFilterTag={onRemoveFilterTag}
         isError={isError}
         error={error}
+        skeletonCount={3}
         values={filterParams}
         onFilter={setFilterParams}
         initialFilters={initialFilters}

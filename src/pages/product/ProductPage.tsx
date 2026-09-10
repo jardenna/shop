@@ -162,8 +162,7 @@ const ProductPage = () => {
         onReset={() => refetch()}
         isLoading={isLoading}
         data={allProducts?.products ?? []}
-        skeletonCount={20}
-        skeletonHeight="10"
+        skeletonHeight="7"
         columns={tableHeaders}
         tableCaption={language.productList}
         emptyHeaderCellText={language.updateProduct}

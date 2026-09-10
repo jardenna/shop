@@ -150,6 +150,11 @@
     display: flex;
     gap: 4px;
     padding-top: 12px;
+
+    @include max-size($medium) {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
   .overview-items {

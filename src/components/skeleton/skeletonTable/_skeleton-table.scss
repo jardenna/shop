@@ -1,0 +1,24 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-table {
+  width: 100%;
+  background: $color-white;
+  border: $border;
+
+  .skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-bottom: $border;
+  }
+
+  .skeleton-row:last-child {
+    border-bottom: none;
+  }
+
+  .skeleton-cell {
+    flex: 1;
+    min-width: 0;
+  }
+}

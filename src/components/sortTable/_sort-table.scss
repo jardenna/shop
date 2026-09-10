@@ -23,16 +23,18 @@
   }
 }
 
+$table-header-height: rem(320px);
+
 .fixed-table {
   position: relative;
   width: 100%;
   margin-bottom: 12px;
   border: $border;
-  height: rem(528px);
+  height: min(rem(632px), calc(100dvh - $table-header-height));
   overflow: auto;
 
-  @include max-size($small) {
-    height: rem(492px);
+  @include max-size($large) {
+    height: min(rem(1050px), calc(100dvh - $table-header-height));
   }
 
   .padding-20 {
