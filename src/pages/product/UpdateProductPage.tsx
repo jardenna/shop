@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
@@ -39,7 +39,7 @@ const UpdateProductPage = () => {
   }
 
   if (isLoading || isSubCategoriesLoading) {
-    return <SkeletonForm />;
+    return <SkeletonFormPage />;
   }
 
   return (
