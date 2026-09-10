@@ -1,5 +1,6 @@
 import Skeleton from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
+import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
 import SkeletonButton from './SkeletonButton';
 import SkeletonControlList from './SkeletonControlList';
 import SkeletonGrid from './SkeletonGrid';
@@ -8,7 +9,7 @@ import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCarts = () => (
   <div className="skeleton-column">
-    <SkeletonParagraph count={1} width="24" />
+    <SkeletonBreadCrumbs />
     <SkeletonHeader />
     <div className="page-cart">
       <div className="flex">
