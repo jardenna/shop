@@ -2,11 +2,11 @@ import { SkeletonProps } from '../Skeleton';
 import './_skeleton-table.scss';
 import SkeletonCell from './SkeletonCell';
 
-interface SkeletonRowProps extends SkeletonProps {
+interface SkeletonTableProps extends SkeletonProps {
   skeletonHeight: string;
 }
 
-const SkeletonRow = ({ count = 12, skeletonHeight }: SkeletonRowProps) => {
+const SkeletonTable = ({ count = 12, skeletonHeight }: SkeletonTableProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
@@ -24,4 +24,4 @@ const SkeletonRow = ({ count = 12, skeletonHeight }: SkeletonRowProps) => {
   );
 };
 
-export default SkeletonRow;
+export default SkeletonTable;

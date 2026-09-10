@@ -11,7 +11,7 @@ import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
-import SkeletonRow from '../skeleton/skeletonTable/SkeletonRow';
+import SkeletonTable from '../skeleton/skeletonTable/SkeletonTable';
 import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './_sort-table.scss';
@@ -147,7 +147,7 @@ const SortTable = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonRow skeletonHeight={skeletonHeight} />
+          <SkeletonTable skeletonHeight={skeletonHeight} />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}
