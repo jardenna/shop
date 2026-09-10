@@ -1,6 +1,6 @@
 import { SizeVariant } from '../../types/types';
 import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
-import SkeletonButtonList from './SkeletonButtonList';
+import SkeletonFooter from './SkeletonFooter';
 import SkeletonHeader from './SkeletonHeader';
 import SkeletonInputList from './SkeletonInputList';
 
@@ -19,7 +19,7 @@ const SkeletonAdminPage = ({
     <div className="page-cart">
       <div className="skeleton-column">
         <SkeletonInputList count={count} />
-        <SkeletonButtonList />
+        <SkeletonFooter />
       </div>
     </div>
   </div>
