@@ -1,5 +1,9 @@
 @use '../../scss/globals' as *;
 
+.skeleton-admin-page {
+  margin-top: 20px;
+}
+
 .skeleton-header {
   display: flex;
   justify-content: space-between;
@@ -101,21 +105,21 @@
     }
   }
 
-  .page-cart {
-    min-height: rem(360px);
+  // .page-cart {
+  //   min-height: rem(360px);
 
-    @include max-size($small) {
-      min-height: auto;
+  //   @include max-size($small) {
+  //     min-height: auto;
 
-      .flex {
-        flex-direction: column;
-      }
-    }
-  }
+  //     .flex {
+  //       flex-direction: column;
+  //     }
+  //   }
+  // }
 
-  &.skeleton-page {
-    gap: 32px;
-  }
+  // &.skeleton-page {
+  //   gap: 32px;
+  // }
 
   &.skeleton-input-container {
     gap: 20px;
