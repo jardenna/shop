@@ -1,4 +1,4 @@
-import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
@@ -18,21 +18,22 @@ const CreateSubCategoryPage = () => {
     refetch,
   } = useGetAllCategoriesQuery();
 
+  if (isLoading) {
+    return <SkeletonFormPage count={4} />;
+  }
+
   return (
-    <>
-      {isLoading && <SkeletonForm count={4} />}
-      <AdminPageContainer heading={language.createNewCategory} variant="small">
-        {allCategories && (
-          <SubCategoryForm
-            onReset={() => refetch}
-            selectedCategory={null}
-            id={null}
-            parentCategories={allCategories.categories}
-            popupMessage={language.categoryCreated}
-          />
-        )}
-      </AdminPageContainer>
-    </>
+    <AdminPageContainer heading={language.createNewCategory} variant="small">
+      {allCategories && (
+        <SubCategoryForm
+          onReset={() => refetch}
+          selectedCategory={null}
+          id={null}
+          parentCategories={allCategories.categories}
+          popupMessage={language.categoryCreated}
+        />
+      )}
+    </AdminPageContainer>
   );
 };
 
