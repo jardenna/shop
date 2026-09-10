@@ -43,6 +43,7 @@ type TableProps<T> = {
   className?: string;
   emptyHeaderCellText?: string;
   scrollToRef?: RefObject<HTMLTableElement | null>;
+  skeletonCount?: number;
   skeletonHeight?: string;
   children: (data: T[]) => ReactNode;
   onFilter: (event: ChangeInputType) => void;
@@ -69,7 +70,8 @@ const SortTable = <T,>({
   initialFilters,
   values,
   onFilter,
-  skeletonHeight = '2.75',
+  skeletonHeight,
+  skeletonCount,
   onRemoveFilterTag,
   navigationPath,
   scrollToRef,
@@ -147,7 +149,10 @@ const SortTable = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonTable skeletonHeight={skeletonHeight} />
+          <SkeletonTable
+            skeletonHeight={skeletonHeight}
+            count={skeletonCount}
+          />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}

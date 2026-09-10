@@ -3,10 +3,11 @@ import './_skeleton-table.scss';
 import SkeletonCell from './SkeletonCell';
 
 interface SkeletonTableProps extends SkeletonProps {
-  skeletonHeight: string;
+  count?: number;
+  skeletonHeight?: string;
 }
 
-const SkeletonTable = ({ count = 12, skeletonHeight }: SkeletonTableProps) => {
+const SkeletonTable = ({ count = 10, skeletonHeight }: SkeletonTableProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
