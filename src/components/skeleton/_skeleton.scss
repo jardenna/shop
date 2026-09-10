@@ -4,13 +4,23 @@
   margin-top: 20px;
 }
 
+.skeleton-cart-right {
+  width: 100%;
+  height: rem(416px);
+  flex: 1;
+
+  .skeleton {
+    min-height: 100%;
+  }
+}
+
 .skeleton-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
 
-  @include max-size($small) {
+  @include max-size($mini) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;

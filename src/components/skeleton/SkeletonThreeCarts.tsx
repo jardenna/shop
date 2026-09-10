@@ -16,7 +16,6 @@ const SkeletonThreeCarts = () => (
             <SkeletonParagraph height="1.5" count={1} />
             <SkeletonBadge />
           </div>
-
           <SkeletonParagraph />
           <SkeletonFooter />
         </div>
@@ -26,8 +25,9 @@ const SkeletonThreeCarts = () => (
         <SkeletonControlList count={4} />
         <SkeletonControlList count={5} variant="medium" />
       </div>
-
-      <Skeleton height="27" width="25" />
+      <div className="skeleton-cart-right">
+        <Skeleton />
+      </div>
     </div>
   </SkeletonAdminPage>
 );
