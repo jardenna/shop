@@ -35,11 +35,7 @@ const SingleProductPage = () => {
   } = useGetSingleProductQuery(id ?? '');
 
   if (isError) {
-    return (
-      <div className="container">
-        <NotFoundError error={error} />
-      </div>
-    );
+    return <NotFoundError error={error} />;
   }
 
   if (isLoading) {

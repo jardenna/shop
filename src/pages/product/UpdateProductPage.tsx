@@ -30,13 +30,11 @@ const UpdateProductPage = () => {
 
   if (isError || isSubCategoriesError) {
     return (
-      <AdminPageContainer heading={language.update}>
-        <NotFoundError
-          error={error}
-          btnLabel="products"
-          path={AdminPath.AdminProducts}
-        />
-      </AdminPageContainer>
+      <NotFoundError
+        error={error}
+        btnLabel="products"
+        path={AdminPath.AdminProducts}
+      />
     );
   }
 
