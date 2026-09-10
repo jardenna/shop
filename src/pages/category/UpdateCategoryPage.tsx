@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonAdminPage from '../../components/skeleton/SkeletonAdminPage';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -35,7 +35,7 @@ const UpdateCategoryPage = () => {
     <>
       {isLoading && <SkeletonForm />}
 
-      <SkeletonAdminPage />
+      <SkeletonFormPage />
 
       {category && (
         <AdminPageContainer
