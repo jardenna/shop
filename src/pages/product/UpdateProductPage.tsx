@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonForm from '../../components/skeleton/SkeletonForm';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -17,6 +19,7 @@ const UpdateProductPage = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useGetProductByIdQuery(id || '');
 
   const {
@@ -27,17 +30,22 @@ const UpdateProductPage = () => {
 
   if (isError || isSubCategoriesError) {
     return (
-      <NotFoundError
-        error={error}
-        btnLabel="products"
-        path={AdminPath.AdminProducts}
-      />
+      <AdminPageContainer heading={language.update}>
+        <NotFoundError
+          error={error}
+          btnLabel="products"
+          path={AdminPath.AdminProducts}
+        />
+      </AdminPageContainer>
     );
   }
 
   return (
-    <>
-      {(!isLoading || isSubCategoriesLoading) && <SkeletonForm />}
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => refetch()}
+    >
+      {(isLoading || isSubCategoriesLoading) && <SkeletonForm />}
 
       {product && subCategories && (
         <AdminPageContainer
@@ -52,7 +60,7 @@ const UpdateProductPage = () => {
           />
         </AdminPageContainer>
       )}
-    </>
+    </ErrorBoundary>
   );
 };
 
