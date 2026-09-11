@@ -15,6 +15,7 @@
 
   @include max-size($small) {
     flex-direction: column;
+    gap: 0;
   }
 }
 
