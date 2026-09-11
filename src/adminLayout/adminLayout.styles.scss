@@ -14,17 +14,6 @@
   width: 100%;
   z-index: 1;
   padding: 20px;
-
-  @include max-size($small) {
-    padding: 20px;
-  }
-
-  .page-header-link {
-    @include max-size($mini) {
-      width: 100%;
-      justify-content: flex-end;
-    }
-  }
 }
 
 .page-cart {
@@ -55,15 +44,12 @@
     padding-inline: 20px;
     justify-content: space-between;
 
-    .toggle-panel {
-      overflow: hidden;
-    }
-
     .menu-burger {
       top: 30px;
     }
 
     .toggle-panel {
+      overflow: hidden;
       height: calc(100svh - $admin-header-height);
       top: $admin-header-height;
     }

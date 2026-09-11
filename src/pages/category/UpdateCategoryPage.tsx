@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -30,23 +30,24 @@ const UpdateCategoryPage = () => {
     );
   }
 
+  if (isLoading) {
+    return <SkeletonFormPage />;
+  }
+
   return (
-    <>
-      {isLoading && <SkeletonForm />}
-      {category && (
-        <AdminPageContainer
-          heading={`${language.updateCategory} ${translateKey(category.categoryName, language)}`}
-          variant="small"
-        >
-          <CategoryForm
-            selectedCategory={category}
-            onReset={() => refetch()}
-            id={id || ''}
-            popupMessage={language.categoryUpdated}
-          />
-        </AdminPageContainer>
-      )}
-    </>
+    category && (
+      <AdminPageContainer
+        heading={`${language.updateCategory} ${translateKey(category.categoryName, language)}`}
+        variant="small"
+      >
+        <CategoryForm
+          selectedCategory={category}
+          onReset={() => refetch()}
+          id={id || ''}
+          popupMessage={language.categoryUpdated}
+        />
+      </AdminPageContainer>
+    )
   );
 };
 

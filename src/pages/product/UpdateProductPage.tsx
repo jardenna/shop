@@ -1,8 +1,6 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
@@ -38,27 +36,24 @@ const UpdateProductPage = () => {
     );
   }
 
-  return (
-    <ErrorBoundary
-      FallbackComponent={ErrorBoundaryFallback}
-      onReset={() => refetch()}
-    >
-      {(isLoading || isSubCategoriesLoading) && <SkeletonForm />}
+  if (isLoading || isSubCategoriesLoading) {
+    return <SkeletonFormPage />;
+  }
 
-      {product && subCategories && (
-        <AdminPageContainer
-          heading={`${language.update} ${product.productName}`}
-        >
-          <ProductForm
-            selectedProduct={product}
-            images={product.images}
-            id={id || null}
-            parentCategories={subCategories}
-            allowedSizes={product.subCategory.allowedSizes}
-          />
-        </AdminPageContainer>
-      )}
-    </ErrorBoundary>
+  return (
+    product &&
+    subCategories && (
+      <AdminPageContainer heading={`${language.update} ${product.productName}`}>
+        <ProductForm
+          selectedProduct={product}
+          refetch={refetch}
+          images={product.images}
+          id={id || null}
+          parentCategories={subCategories}
+          allowedSizes={product.subCategory.allowedSizes}
+        />
+      </AdminPageContainer>
+    )
   );
 };
 

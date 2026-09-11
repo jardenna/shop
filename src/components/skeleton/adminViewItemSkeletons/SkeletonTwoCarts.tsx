@@ -1,0 +1,28 @@
+import Skeleton from '../Skeleton';
+import SkeletonAdminPage from '../SkeletonAdminPage';
+import SkeletonBadge from '../SkeletonBadge';
+import SkeletonButton from '../SkeletonButton';
+import SkeletonParagraph from '../SkeletonParagraph';
+
+const SkeletonTwoCarts = () => (
+  <SkeletonAdminPage variant="medium" showLink>
+    <div className="flex">
+      <div className="flex-1">
+        <div
+          className="column flex-justify-space-between"
+          style={{ height: '100%' }}
+        >
+          <div className="flex">
+            <SkeletonParagraph height="1.5" count={1} />
+            <SkeletonBadge />
+          </div>
+          <SkeletonParagraph />
+          <SkeletonButton />
+        </div>
+      </div>
+      <Skeleton height="22" width="25" />
+    </div>
+  </SkeletonAdminPage>
+);
+
+export default SkeletonTwoCarts;

@@ -8,7 +8,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonThreeCarts from '../../components/skeleton/SkeletonThreeCarts';
+import SkeletonThreeCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCarts';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -86,7 +86,6 @@ const ViewProductPage = () => {
   return (
     <>
       {isLoading && <SkeletonThreeCarts />}
-
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}

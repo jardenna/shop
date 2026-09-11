@@ -25,7 +25,7 @@ const CategoryCartLeft = ({
         name={name}
         status={status}
       />
-      <span>
+      <span className="text-pretty">
         {language.productsInSubcategory}: {productsInSubcategory} {language.pcs}
       </span>
     </CartContent>

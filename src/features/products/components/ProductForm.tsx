@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import type {
   Product,
@@ -9,6 +10,7 @@ import type {
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import ProductOptionList from '../../../components/formElements/productOptionList/ProductOptionList';
@@ -54,6 +56,7 @@ type ProductFormProps = {
   images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
+  refetch: () => void;
 };
 
 const ProductForm = ({
@@ -62,6 +65,7 @@ const ProductForm = ({
   parentCategories,
   images,
   allowedSizes,
+  refetch,
 }: ProductFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -257,207 +261,216 @@ const ProductForm = ({
   }, [availableSizes, values.sizes, onCustomChange]);
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      disabled={!!id && !isSubmitActive}
-      submitBtnLabel={id ? language.save : language.create}
-      ref={formRef}
-      cancelBtnProps={{
-        onCancel: handleGoback,
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => {
+        refetch();
       }}
-      isLoading={isLoading || isCreateLoading}
     >
-      <div className="product-form-container">
-        <div className="product-form-left-column">
-          <FormCart legendText={language.category}>
-            <Selectbox
-              errorText={language[errors.subCategory]}
-              id="subCategory"
-              name="subCategory"
-              labelText={language.category}
-              options={parentCategoryOptions}
-              components={{ Option: StatusOptions }}
-              defaultValue={defaultCategoryValue}
-              isSearchable
-              onChange={(selectedOptions: OptionType) => {
-                handleSelectCategory('subCategory', selectedOptions);
-              }}
-              required
-            />
-          </FormCart>
-          <FormCart
-            legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
-          >
-            <ImageUpload
-              images={images}
-              onChange={onFileChange}
-              previewData={previewData}
-              removePreviewImage={removePreviewImage}
-              onToggleImage={(id) => {
-                handleToggleImage(id);
-              }}
-              disabledImages={disabledImages}
-            />
-          </FormCart>
-          <FormCart legendText={language.productInformation}>
-            <Input
-              value={values.productName}
-              id="productName"
-              name="productName"
-              errorText={language[errors.productName]}
-              labelText={language.productName}
-              onChange={onChange}
-              required
-            />
-            <Textarea
-              value={values.description}
-              errorText={language[errors.description]}
-              name="description"
-              id="description"
-              labelText={language.description}
-              onChange={onChangeTextArea}
-              required
-            />
-            <div className="product-form-2-columns">
+      <Form
+        onSubmit={onSubmit}
+        disabled={!!id && !isSubmitActive}
+        submitBtnLabel={id ? language.save : language.create}
+        ref={formRef}
+        cancelBtnProps={{
+          onCancel: handleGoback,
+        }}
+        isLoading={isLoading || isCreateLoading}
+      >
+        <div className="product-form-container">
+          <div className="product-form-left-column">
+            <FormCart legendText={language.category}>
+              <Selectbox
+                errorText={language[errors.subCategory]}
+                id="subCategory"
+                name="subCategory"
+                labelText={language.category}
+                options={parentCategoryOptions}
+                components={{ Option: StatusOptions }}
+                defaultValue={defaultCategoryValue}
+                isSearchable
+                onChange={(selectedOptions: OptionType) => {
+                  handleSelectCategory('subCategory', selectedOptions);
+                }}
+                required
+              />
+            </FormCart>
+            <FormCart
+              legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
+            >
+              <ImageUpload
+                images={images}
+                onChange={onFileChange}
+                previewData={previewData}
+                removePreviewImage={removePreviewImage}
+                onToggleImage={(id) => {
+                  handleToggleImage(id);
+                }}
+                disabledImages={disabledImages}
+              />
+            </FormCart>
+            <FormCart legendText={language.productInformation}>
               <Input
-                value={values.brand}
-                id="brand"
-                name="brand"
-                errorText={language[errors.brand]}
-                labelText={language.brand}
+                value={values.productName}
+                id="productName"
+                name="productName"
+                errorText={language[errors.productName]}
+                labelText={language.productName}
                 onChange={onChange}
                 required
               />
-              <Input
-                value={values.material}
-                id="material"
-                name="material"
-                errorText={language[errors.material]}
-                labelText={language.material}
-                onChange={onChange}
+              <Textarea
+                value={values.description}
+                errorText={language[errors.description]}
+                name="description"
+                id="description"
+                labelText={language.description}
+                onChange={onChangeTextArea}
                 required
               />
-            </div>
-          </FormCart>
-        </div>
-        <div className="product-form-right-column">
-          <FormCart legendText={language.productVariants}>
-            <Selectbox
-              id="colors"
-              name="colors"
-              errorText={language[errors.colors]}
-              closeMenuOnSelect={false}
-              labelText={language.colours}
-              options={sortedColorList}
-              components={{ Option: ColorOptions }}
-              isSearchable
-              defaultValue={defaultColorValue}
-              isMulti
-              onChange={(values: OptionType[]) => {
-                handleSelectColors('colors', values);
-              }}
-              required
-            />
-            <ProductOptionList
-              options={availableSizes}
-              name="sizes"
-              type="checkbox"
-              onChange={onChange}
-              values={values.sizes}
-              required
-              inputInfo={
-                availableSizes.length === 0 ? language.sizeInfoText : undefined
-              }
-              groupTitle={{
-                title: language.sizes,
-                id: 'choose-product-sizes',
-                errorText: language[errors.sizes],
-              }}
-            />
-          </FormCart>
-          <FormCart legendText={language.pricing}>
-            <div className="product-form-2-columns">
-              <Input
-                type="number"
-                value={values.price || ''}
-                id="price"
-                name="price"
-                errorText={language[errors.price]}
-                labelText={language.price}
-                onChange={onChange}
-                required
-                min={5}
-                inputSuffix={currencyText}
-                inputMode="numeric"
-              />
-              <Input
-                type="number"
-                value={values.discount || ''}
-                id="discount"
-                name="discount"
-                labelText={language.discount}
-                onChange={onChange}
-                inputSuffix="%"
-                max={maxDiscount}
-                min={minDiscount}
-                inputMode="numeric"
-                errorText={language[errors.discount]}
-                onBlur={onBlur}
-              />
-            </div>
-            <div className="product-form-2-columns">
-              <ToggleSwitch
-                id="show-price"
-                checked={showPrice}
-                onChange={handleShowPrice}
-                labelText="showPrice"
-              />
-              {showPrice && (
-                <ProductPrice
-                  price={values.price}
-                  discount={values.discount}
-                  hasError={errors.discount}
+              <div className="product-form-2-columns">
+                <Input
+                  value={values.brand}
+                  id="brand"
+                  name="brand"
+                  errorText={language[errors.brand]}
+                  labelText={language.brand}
+                  onChange={onChange}
+                  required
                 />
-              )}
-            </div>
-          </FormCart>
-          <FormCart legendText={language.details}>
-            <StatusInputs
-              labelText={language.productStatus}
-              ref={formRef}
-              defaultStatusValue={{
-                label: translateKey(values.productStatus, language),
-                value: values.productStatus,
-              }}
-              onSelectStatus={(selectedOptions: OptionType) => {
-                handleSelectStatus('productStatus', selectedOptions);
-              }}
-              status={values.productStatus}
-              onSelectDate={handleDaySelect}
-              selectedDate={selectedDate}
-              timeValue={timeValue}
-              onTimeChange={handleTimeChange}
-            />
-            <div>
-              <Input
-                value={values.quantity || ''}
-                type="number"
-                id="quantity"
-                name="quantity"
-                labelText={language.addToStock}
-                onChange={onChange}
-                inputMode="numeric"
+                <Input
+                  value={values.material}
+                  id="material"
+                  name="material"
+                  errorText={language[errors.material]}
+                  labelText={language.material}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+            </FormCart>
+          </div>
+          <div className="product-form-right-column">
+            <FormCart legendText={language.productVariants}>
+              <Selectbox
+                id="colors"
+                name="colors"
+                errorText={language[errors.colors]}
+                closeMenuOnSelect={false}
+                labelText={language.colours}
+                options={sortedColorList}
+                components={{ Option: ColorOptions }}
+                isSearchable
+                defaultValue={defaultColorValue}
+                isMulti
+                onChange={(values: OptionType[]) => {
+                  handleSelectColors('colors', values);
+                }}
+                required
               />
-            </div>
-            {selectedProduct && (
-              <LabelValueGrid text={language.productsInStock}>
-                {selectedProduct.countInStock} {language.pcs}
-              </LabelValueGrid>
-            )}
-          </FormCart>
+              <ProductOptionList
+                options={availableSizes}
+                name="sizes"
+                type="checkbox"
+                onChange={onChange}
+                values={values.sizes}
+                required
+                inputInfo={
+                  availableSizes.length === 0
+                    ? language.sizeInfoText
+                    : undefined
+                }
+                groupTitle={{
+                  title: language.sizes,
+                  id: 'choose-product-sizes',
+                  errorText: language[errors.sizes],
+                }}
+              />
+            </FormCart>
+            <FormCart legendText={language.pricing}>
+              <div className="product-form-2-columns">
+                <Input
+                  type="number"
+                  value={values.price || ''}
+                  id="price"
+                  name="price"
+                  errorText={language[errors.price]}
+                  labelText={language.price}
+                  onChange={onChange}
+                  required
+                  min={5}
+                  inputSuffix={currencyText}
+                  inputMode="numeric"
+                />
+                <Input
+                  type="number"
+                  value={values.discount || ''}
+                  id="discount"
+                  name="discount"
+                  labelText={language.discount}
+                  onChange={onChange}
+                  inputSuffix="%"
+                  max={maxDiscount}
+                  min={minDiscount}
+                  inputMode="numeric"
+                  errorText={language[errors.discount]}
+                  onBlur={onBlur}
+                />
+              </div>
+              <div className="product-form-2-columns">
+                <ToggleSwitch
+                  id="show-price"
+                  checked={showPrice}
+                  onChange={handleShowPrice}
+                  labelText="showPrice"
+                />
+                {showPrice && (
+                  <ProductPrice
+                    price={values.price}
+                    discount={values.discount}
+                    hasError={errors.discount}
+                  />
+                )}
+              </div>
+            </FormCart>
+            <FormCart legendText={language.details}>
+              <StatusInputs
+                labelText={language.productStatus}
+                ref={formRef}
+                defaultStatusValue={{
+                  label: translateKey(values.productStatus, language),
+                  value: values.productStatus,
+                }}
+                onSelectStatus={(selectedOptions: OptionType) => {
+                  handleSelectStatus('productStatus', selectedOptions);
+                }}
+                status={values.productStatus}
+                onSelectDate={handleDaySelect}
+                selectedDate={selectedDate}
+                timeValue={timeValue}
+                onTimeChange={handleTimeChange}
+              />
+              <div>
+                <Input
+                  value={values.quantity || ''}
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  labelText={language.addToStock}
+                  onChange={onChange}
+                  inputMode="numeric"
+                />
+              </div>
+              {selectedProduct && (
+                <LabelValueGrid text={language.productsInStock}>
+                  {selectedProduct.countInStock} {language.pcs}
+                </LabelValueGrid>
+              )}
+            </FormCart>
+          </div>
         </div>
-      </div>
-    </Form>
+      </Form>
+    </ErrorBoundary>
   );
 };
 

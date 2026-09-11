@@ -1,10 +1,10 @@
 import { SkeletonProps } from './Skeleton';
 import SkeletonButton from './SkeletonButton';
 
-const SkeletonButtonList = ({ count = 2 }: SkeletonProps) => {
+const SkeletonFooter = ({ count = 2 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
   return (
-    <span className="skeleton-list">
+    <span className="footer">
       {skeletons.map((_, index) => (
         <SkeletonButton key={index} />
       ))}
@@ -12,4 +12,4 @@ const SkeletonButtonList = ({ count = 2 }: SkeletonProps) => {
   );
 };
 
-export default SkeletonButtonList;
+export default SkeletonFooter;

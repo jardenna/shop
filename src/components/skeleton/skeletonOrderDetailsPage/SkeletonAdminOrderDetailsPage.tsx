@@ -1,5 +1,5 @@
 import Skeleton from '../Skeleton';
-import SkeletonButtonList from '../SkeletonButtonList';
+import SkeletonFooter from '../SkeletonFooter';
 import SkeletonHeading from '../SkeletonHeading';
 import SkeletonList from '../SkeletonList';
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
@@ -30,7 +30,7 @@ const SkeletonAdminOrderDetailsPage = () => (
         <SkeletonAddressList />
       </div>
     </div>
-    <SkeletonButtonList />
+    <SkeletonFooter />
   </div>
 );
 

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonForm from '../../components/skeleton/SkeletonForm';
+import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useGetAllCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import SubCategoryForm from '../../features/subCategories/components/SubCategoryForm';
@@ -34,7 +34,7 @@ const UpdateSubCategoryPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonForm count={3} />}
+      {isLoading && <SkeletonFormPage count={4} />}
       {allCategories && category && (
         <AdminPageContainer
           variant="small"
