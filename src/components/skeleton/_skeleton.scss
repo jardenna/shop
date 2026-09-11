@@ -119,6 +119,18 @@
   }
 }
 
+.skeleton-toggle-switch {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.skeleton-toggle-btn {
+  width: 47px;
+  height: 25px;
+  border-radius: 99px;
+}
+
 .skeleton-control-list {
   display: flex;
   flex-direction: column;
