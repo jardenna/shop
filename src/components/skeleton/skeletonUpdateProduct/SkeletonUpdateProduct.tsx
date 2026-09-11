@@ -1,4 +1,4 @@
-import SkeletonAdminPage from './SkeletonAdminPage';
+import SkeletonAdminPage from '../SkeletonAdminPage';
 import SkeletonUpdateProductLeft from './SkeletonUpdateProductLeft';
 
 const SkeletonUpdateProduct = () => (

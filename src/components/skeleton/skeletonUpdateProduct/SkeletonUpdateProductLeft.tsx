@@ -1,7 +1,7 @@
-import SkeletonFlexInputList from './SkeletonFlexInputList';
-import SkeletonFormCart from './SkeletonFormCart';
-import SkeletonImageUpload from './SkeletonImageUpload';
-import SkeletonInputList from './SkeletonInputList';
+import SkeletonFlexInputList from '../SkeletonFlexInputList';
+import SkeletonFormCart from '../SkeletonFormCart';
+import SkeletonImageUpload from '../SkeletonImageUpload';
+import SkeletonInputList from '../SkeletonInputList';
 
 const SkeletonUpdateProductLeft = () => (
   <div className="product-form-left-column">
