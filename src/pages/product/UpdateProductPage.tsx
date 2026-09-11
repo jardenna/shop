@@ -1,6 +1,4 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -43,24 +41,19 @@ const UpdateProductPage = () => {
   }
 
   return (
-    <ErrorBoundary
-      FallbackComponent={ErrorBoundaryFallback}
-      onReset={() => refetch()}
-    >
-      {product && subCategories && (
-        <AdminPageContainer
-          heading={`${language.update} ${product.productName}`}
-        >
-          <ProductForm
-            selectedProduct={product}
-            images={product.images}
-            id={id || null}
-            parentCategories={subCategories}
-            allowedSizes={product.subCategory.allowedSizes}
-          />
-        </AdminPageContainer>
-      )}
-    </ErrorBoundary>
+    product &&
+    subCategories && (
+      <AdminPageContainer heading={`${language.update} ${product.productName}`}>
+        <ProductForm
+          selectedProduct={product}
+          refetch={refetch}
+          images={product.images}
+          id={id || null}
+          parentCategories={subCategories}
+          allowedSizes={product.subCategory.allowedSizes}
+        />
+      </AdminPageContainer>
+    )
   );
 };
 
