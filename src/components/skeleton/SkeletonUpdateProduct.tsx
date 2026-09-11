@@ -1,25 +1,10 @@
 import SkeletonAdminPage from './SkeletonAdminPage';
-import SkeletonFlexInputList from './SkeletonFlexInputList';
-import SkeletonFormCart from './SkeletonFormCart';
-import SkeletonImageUpload from './SkeletonImageUpload';
-
-import SkeletonInputList from './SkeletonInputList';
+import SkeletonUpdateProductLeft from './SkeletonUpdateProductLeft';
 
 const SkeletonUpdateProduct = () => (
   <SkeletonAdminPage variant="large">
     <div className="product-form-container">
-      <div className="product-form-left-column">
-        <SkeletonFormCart>
-          <SkeletonInputList count={1} />
-        </SkeletonFormCart>
-        <SkeletonFormCart>
-          <SkeletonImageUpload />
-        </SkeletonFormCart>
-        <SkeletonFormCart>
-          <SkeletonInputList count={2} />
-          <SkeletonFlexInputList />
-        </SkeletonFormCart>
-      </div>
+      <SkeletonUpdateProductLeft />
       <div className="product-form-right-column">ss</div>
     </div>
   </SkeletonAdminPage>
