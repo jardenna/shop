@@ -1,11 +1,44 @@
 @use '../../scss/globals' as *;
 
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    $color-light-gray-30 25%,
+    $color-light-gray-40 50%,
+    $color-light-gray-30 75%
+  );
+  background-size: 200% 100%;
+  height: rem(36px);
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+
+  &.skeleton-cart-right {
+    padding-right: 12px;
+    padding-top: 40px;
+    grid-row: span 2;
+    height: auto;
+  }
+
+  // @include animation(skeleton-animation, 1.5s infinite, linear);
+}
+
 .skeleton-admin-page {
   margin-top: 20px;
   padding-inline: 20px;
 
   .three-col {
     gap: 12px;
+
+    .footer {
+      @include between-size($small, $medium) {
+        grid-column: span 3;
+      }
+
+      @include max-size($small) {
+        margin-top: 0;
+      }
+    }
   }
 }
 
@@ -13,16 +46,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.skeleton-cart-right {
-  width: 100%;
-  height: rem(416px);
-  flex: 1;
-
-  .skeleton {
-    min-height: 100%;
-  }
 }
 
 .skeleton-header {
@@ -59,22 +82,6 @@
       height: rem(26px);
     }
   }
-}
-
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    $color-light-gray-30 25%,
-    $color-light-gray-40 50%,
-    $color-light-gray-30 75%
-  );
-  background-size: 200% 100%;
-  height: rem(36px);
-  width: 100%;
-  border-radius: 8px;
-  display: flex;
-
-  // @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 .skeleton-content-row {

@@ -1,5 +1,6 @@
 import Skeleton from '../Skeleton';
 import SkeletonAdminPage from '../SkeletonAdminPage';
+import SkeletonFooter from '../SkeletonFooter';
 import SkeletomProductCartCenter from './SkeletomProductCartCenter';
 import SkeletomProductCartLeft from './SkeletomProductCartLeft';
 
@@ -8,9 +9,8 @@ const SkeletonThreeCarts = () => (
     <div className="three-col">
       <SkeletomProductCartLeft />
       <SkeletomProductCartCenter />
-      <div className="skeleton-cart-right">
-        <Skeleton />
-      </div>
+      <Skeleton className="skeleton-cart-right" />
+      <SkeletonFooter />
     </div>
   </SkeletonAdminPage>
 );
