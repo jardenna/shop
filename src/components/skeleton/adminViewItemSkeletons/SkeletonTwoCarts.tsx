@@ -1,26 +1,20 @@
 import Skeleton from '../Skeleton';
 import SkeletonAdminPage from '../SkeletonAdminPage';
-import SkeletonBadge from '../SkeletonBadge';
-import SkeletonButton from '../SkeletonButton';
+import SkeletonFooter from '../SkeletonFooter';
 import SkeletonParagraph from '../SkeletonParagraph';
+import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
 const SkeletonTwoCarts = () => (
   <SkeletonAdminPage variant="medium" showLink>
-    <div className="flex">
-      <div className="flex-1">
-        <div
-          className="column flex-justify-space-between"
-          style={{ height: '100%' }}
-        >
-          <div className="flex">
-            <SkeletonParagraph height="1.5" count={1} />
-            <SkeletonBadge />
-          </div>
-          <SkeletonParagraph />
-          <SkeletonButton />
+    <div className="two-col admin-cart-container">
+      <article className="admin-cart ">
+        <div className="admin-cart-content">
+          <SkeletonAdminSubHeader />
+          <SkeletonParagraph count={2} />
         </div>
-      </div>
-      <Skeleton height="22" width="25" />
+      </article>
+      <Skeleton className="skeleton-cart-right" />
+      <SkeletonFooter />
     </div>
   </SkeletonAdminPage>
 );

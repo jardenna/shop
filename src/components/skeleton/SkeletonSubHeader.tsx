@@ -1,9 +1,9 @@
-import Skeleton from './Skeleton';
+import Skeleton, { PickedSkeletonTypes } from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
 
-const SkeletonAdminSubHeader = () => (
+const SkeletonAdminSubHeader = ({ width }: PickedSkeletonTypes) => (
   <div className="admin-cart-heading">
-    <Skeleton width="12" height="1.8" />
+    <Skeleton width={width} height="1.8" />
     <SkeletonBadge />
   </div>
 );
