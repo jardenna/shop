@@ -2,6 +2,11 @@
 
 .skeleton-admin-page {
   margin-top: 20px;
+  padding-inline: 20px;
+
+  .three-col {
+    gap: 12px;
+  }
 }
 
 .skeleton-cart-right {
