@@ -277,8 +277,8 @@ const ProductForm = ({
         }}
         isLoading={isLoading || isCreateLoading}
       >
-        <div className="product-form-container">
-          <div className="product-form-left-column">
+        <section className="product-form-container">
+          <article className="product-form-left-column">
             <FormCart legendText={language.category}>
               <Selectbox
                 errorText={language[errors.subCategory]}
@@ -349,8 +349,8 @@ const ProductForm = ({
                 />
               </div>
             </FormCart>
-          </div>
-          <div className="product-form-right-column">
+          </article>
+          <article className="product-form-right-column">
             <FormCart legendText={language.productVariants}>
               <Selectbox
                 id="colors"
@@ -467,8 +467,8 @@ const ProductForm = ({
                 </LabelValueGrid>
               )}
             </FormCart>
-          </div>
-        </div>
+          </article>
+        </section>
       </Form>
     </ErrorBoundary>
   );
