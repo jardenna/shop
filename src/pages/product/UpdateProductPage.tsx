@@ -43,21 +43,16 @@ const UpdateProductPage = () => {
   return (
     product &&
     subCategories && (
-      <div className="flex flex-column">
-        <SkeletonUpdateProduct />
-        <AdminPageContainer
-          heading={`${language.update} ${product.productName}`}
-        >
-          <ProductForm
-            selectedProduct={product}
-            refetch={refetch}
-            images={product.images}
-            id={id || null}
-            parentCategories={subCategories}
-            allowedSizes={product.subCategory.allowedSizes}
-          />
-        </AdminPageContainer>
-      </div>
+      <AdminPageContainer heading={`${language.update} ${product.productName}`}>
+        <ProductForm
+          selectedProduct={product}
+          refetch={refetch}
+          images={product.images}
+          id={id || null}
+          parentCategories={subCategories}
+          allowedSizes={product.subCategory.allowedSizes}
+        />
+      </AdminPageContainer>
     )
   );
 };

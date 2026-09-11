@@ -1,4 +1,5 @@
 import SkeletonAdminPage from '../SkeletonAdminPage';
+import SkeletonFooter from '../SkeletonFooter';
 import SkeletonUpdateProductLeft from './SkeletonUpdateProductLeft';
 import SkeletonUpdateProductRight from './SkeletonUpdateProductRight';
 
@@ -8,6 +9,7 @@ const SkeletonUpdateProduct = () => (
       <SkeletonUpdateProductLeft />
       <SkeletonUpdateProductRight />
     </div>
+    <SkeletonFooter />
   </SkeletonAdminPage>
 );
 
