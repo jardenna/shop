@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
+import SkeletonUpdateProduct from '../../components/skeleton/SkeletonUpdateProduct';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
@@ -37,22 +37,27 @@ const UpdateProductPage = () => {
   }
 
   if (isLoading || isSubCategoriesLoading) {
-    return <SkeletonFormPage />;
+    return <SkeletonUpdateProduct />;
   }
 
   return (
     product &&
     subCategories && (
-      <AdminPageContainer heading={`${language.update} ${product.productName}`}>
-        <ProductForm
-          selectedProduct={product}
-          refetch={refetch}
-          images={product.images}
-          id={id || null}
-          parentCategories={subCategories}
-          allowedSizes={product.subCategory.allowedSizes}
-        />
-      </AdminPageContainer>
+      <div className="flex flex-column">
+        <SkeletonUpdateProduct />
+        <AdminPageContainer
+          heading={`${language.update} ${product.productName}`}
+        >
+          <ProductForm
+            selectedProduct={product}
+            refetch={refetch}
+            images={product.images}
+            id={id || null}
+            parentCategories={subCategories}
+            allowedSizes={product.subCategory.allowedSizes}
+          />
+        </AdminPageContainer>
+      </div>
     )
   );
 };

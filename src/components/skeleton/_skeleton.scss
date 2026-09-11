@@ -146,30 +146,19 @@
       max-width: 100%;
     }
   }
+}
 
-  // .page-cart {
-  //   min-height: rem(360px);
+.skeleton-input-container {
+  display: flex;
+  gap: 20px;
 
-  //   @include max-size($small) {
-  //     min-height: auto;
-
-  //     .flex {
-  //       flex-direction: column;
-  //     }
-  //   }
-  // }
-
-  // &.skeleton-page {
-  //   gap: 32px;
-  // }
-
-  &.skeleton-input-container {
-    gap: 20px;
-
-    .skeleton-input {
-      gap: 8px;
-    }
+  .skeleton-input {
+    gap: 8px;
   }
+}
+
+.skeleton-flex-input-list {
+  margin-top: 20px;
 }
 
 .skeleton-list {

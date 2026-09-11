@@ -1,6 +1,8 @@
-import Skeleton from './Skeleton';
 import SkeletonAdminPage from './SkeletonAdminPage';
+import SkeletonFlexInputList from './SkeletonFlexInputList';
 import SkeletonFormCart from './SkeletonFormCart';
+import SkeletonImageUpload from './SkeletonImageUpload';
+
 import SkeletonInputList from './SkeletonInputList';
 
 const SkeletonUpdateProduct = () => (
@@ -10,11 +12,10 @@ const SkeletonUpdateProduct = () => (
         <SkeletonFormCart>
           <SkeletonInputList count={1} />
         </SkeletonFormCart>
+        <SkeletonImageUpload />
         <SkeletonFormCart>
-          <Skeleton height="2" />
-        </SkeletonFormCart>
-        <SkeletonFormCart>
-          <SkeletonInputList count={3} />
+          <SkeletonInputList count={2} />
+          <SkeletonFlexInputList />
         </SkeletonFormCart>
       </div>
       <div className="product-form-right-column">ss</div>
