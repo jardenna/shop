@@ -1,10 +1,33 @@
 @use './globals' as *;
 
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.8fr;
+
+  @include max-size($small) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(370px), 1fr));
+  }
+
+  @include max-size($mini) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(300px), 1fr));
+  }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+
+  @include max-size($mini) {
+    grid-template-columns: repeat(auto-fit, minmax(rem(360px), 1fr));
+
+    .cart-top-line {
+      display: none;
+    }
+  }
+}
+
 .admin-cart-container {
   &.two-col {
-    display: grid;
-    grid-template-columns: 1fr 0.7fr;
-
     @include max-size($small) {
       .footer {
         margin-right: 8px;
@@ -12,8 +35,15 @@
     }
 
     @include max-size($mini) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(360px), 1fr));
+      .cart-top-line {
+        display: none;
+      }
+    }
+  }
 
+  &.three-col {
+    @include max-size($small) {
+      .separator,
       .cart-top-line {
         display: none;
       }
@@ -33,24 +63,6 @@
   .admin-cart-left-title {
     margin: 0;
     font-size: rem(20px);
-  }
-
-  &.three-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr 0.8fr;
-
-    @include max-size($small) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(370px), 1fr));
-
-      .separator,
-      .cart-top-line {
-        display: none;
-      }
-    }
-
-    @include max-size($mini) {
-      grid-template-columns: repeat(auto-fit, minmax(rem(300px), 1fr));
-    }
   }
 
   .btn {
