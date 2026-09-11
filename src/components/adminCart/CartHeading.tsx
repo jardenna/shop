@@ -8,7 +8,7 @@ interface CartHeadingProps {
 }
 
 const CartHeading = ({ scheduledDate, name, status }: CartHeadingProps) => (
-  <div className="admin-cart-left-content">
+  <div className="admin-cart-heading">
     <p className="admin-cart-left-title">{name}</p>
     <AdminBadge status={status} scheduledDate={scheduledDate || null} />
   </div>

@@ -1,15 +1,12 @@
 import Skeleton from '../Skeleton';
-import SkeletonBadge from '../SkeletonBadge';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonPriceItem from '../skeletonPriceList/SkeletonPriceItem';
+import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
 const SkeletomProductCartLeft = () => (
   <div className="skeleton-view-cart">
     <Skeleton height="12" />
-    <div className="flex">
-      <SkeletonParagraph height="1.5" count={1} />
-      <SkeletonBadge />
-    </div>
+    <SkeletonAdminSubHeader />
     <SkeletonParagraph />
     <SkeletonPriceItem count={1} />
   </div>
