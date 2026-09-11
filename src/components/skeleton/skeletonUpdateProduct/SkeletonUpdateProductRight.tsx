@@ -3,7 +3,7 @@ import SkeletonFormCart from '../SkeletonFormCart';
 import SkeletonInputList from '../SkeletonInputList';
 
 const SkeletonUpdateProductRight = () => (
-  <div>
+  <div className="product-form-right-column">
     <SkeletonFormCart>
       <SkeletonInputList count={1} />
     </SkeletonFormCart>

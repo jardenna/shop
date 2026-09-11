@@ -4,7 +4,7 @@ import SkeletonImageUpload from '../SkeletonImageUpload';
 import SkeletonInputList from '../SkeletonInputList';
 
 const SkeletonUpdateProductLeft = () => (
-  <div>
+  <div className="product-form-left-column">
     <SkeletonFormCart>
       <SkeletonInputList count={1} />
     </SkeletonFormCart>
