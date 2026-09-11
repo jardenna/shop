@@ -1,8 +1,8 @@
-import Skeleton from './Skeleton';
-import SkeletonAdminPage from './SkeletonAdminPage';
-import SkeletonBadge from './SkeletonBadge';
-import SkeletonButton from './SkeletonButton';
-import SkeletonParagraph from './SkeletonParagraph';
+import Skeleton from '../Skeleton';
+import SkeletonAdminPage from '../SkeletonAdminPage';
+import SkeletonBadge from '../SkeletonBadge';
+import SkeletonButton from '../SkeletonButton';
+import SkeletonParagraph from '../SkeletonParagraph';
 
 const SkeletonTwoCarts = () => (
   <SkeletonAdminPage variant="medium" showLink>

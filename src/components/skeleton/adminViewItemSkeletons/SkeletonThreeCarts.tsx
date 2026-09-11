@@ -1,10 +1,10 @@
-import Skeleton from './Skeleton';
-import SkeletonAdminPage from './SkeletonAdminPage';
-import SkeletonBadge from './SkeletonBadge';
-import SkeletonControlList from './SkeletonControlList';
-import SkeletonFooter from './SkeletonFooter';
-import SkeletonGrid from './SkeletonGrid';
-import SkeletonParagraph from './SkeletonParagraph';
+import Skeleton from '../Skeleton';
+import SkeletonAdminPage from '../SkeletonAdminPage';
+import SkeletonBadge from '../SkeletonBadge';
+import SkeletonControlList from '../SkeletonControlList';
+import SkeletonFooter from '../SkeletonFooter';
+import SkeletonGrid from '../SkeletonGrid';
+import SkeletonParagraph from '../SkeletonParagraph';
 
 const SkeletonThreeCarts = () => (
   <SkeletonAdminPage variant="large" showLink>

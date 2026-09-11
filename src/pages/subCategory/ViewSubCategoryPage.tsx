@@ -4,7 +4,7 @@ import CategoryCart from '../../components/adminCart/CategoryCart';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonTwoCarts from '../../components/skeleton/SkeletonTwoCarts';
+import SkeletonTwoCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCarts';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
