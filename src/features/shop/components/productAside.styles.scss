@@ -5,6 +5,22 @@
   min-width: rem(300px);
 }
 
+.sale-aside {
+  .product-nav-list {
+    @include max-size($small) {
+      display: flex;
+
+      .product-nav-item {
+        width: 100%;
+
+        a {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
 .product-aside-header {
   padding: 32px;
   display: flex;

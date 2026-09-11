@@ -7,6 +7,7 @@ interface ProductAsideProps extends ProductAsideNavProps {
   ariaLabelledby: string;
   headerText: string;
   language: Record<string, string>;
+  className?: string;
 }
 
 const ProductAside = ({
@@ -17,6 +18,7 @@ const ProductAside = ({
   linkTo,
   ariaLabelledby,
   headerText,
+  className = '',
   getProductLink,
 }: ProductAsideProps) => (
   <div>
@@ -24,7 +26,7 @@ const ProductAside = ({
       headerText={headerText}
       ariaLabelledby={ariaLabelledby}
     />
-    <section className="product-aside">
+    <section className={`product-aside ${className}`}>
       <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
         <ProductAsideNav
           subMenu={subMenu}

@@ -99,6 +99,7 @@ const Salespage = () => {
         <div className="shop-product-page-container">
           {subMenu && (
             <ProductAside
+              className="sale-aside"
               ariaLabelledby={ariaLabelledby}
               subMenu={filteredSubMenu ?? []}
               headerText={pageHeading}
