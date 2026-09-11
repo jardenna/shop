@@ -4,7 +4,7 @@ import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonPriceItem from '../skeletonPriceList/SkeletonPriceItem';
 
 const SkeletomProductCartLeft = () => (
-  <div className="flex flex-column">
+  <div className="skeleton-view-cart">
     <Skeleton height="12" />
     <div className="flex">
       <SkeletonParagraph height="1.5" count={1} />
