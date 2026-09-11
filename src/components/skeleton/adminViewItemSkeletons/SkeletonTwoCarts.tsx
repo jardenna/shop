@@ -7,7 +7,7 @@ import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 const SkeletonTwoCarts = () => (
   <SkeletonAdminPage variant="medium" showLink>
     <div className="two-col admin-cart-container">
-      <article className="admin-cart ">
+      <article className="admin-cart">
         <div className="admin-cart-content">
           <SkeletonAdminSubHeader />
           <SkeletonParagraph count={2} />
