@@ -52,6 +52,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @include max-size($small) {
+    gap: 8px;
+
+    .skeleton-control-item {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .skeleton-header {
