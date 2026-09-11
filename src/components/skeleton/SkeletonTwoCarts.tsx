@@ -5,7 +5,7 @@ import SkeletonButton from './SkeletonButton';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonTwoCarts = () => (
-  <SkeletonAdminPage>
+  <SkeletonAdminPage variant="medium" showLink>
     <div className="flex">
       <div className="flex-1">
         <div

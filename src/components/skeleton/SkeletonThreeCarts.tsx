@@ -7,7 +7,7 @@ import SkeletonGrid from './SkeletonGrid';
 import SkeletonParagraph from './SkeletonParagraph';
 
 const SkeletonThreeCarts = () => (
-  <SkeletonAdminPage variant="large">
+  <SkeletonAdminPage variant="large" showLink>
     <div className="flex">
       <div className="page-cart flex-1">
         <div className="flex flex-column">
