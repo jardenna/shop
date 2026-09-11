@@ -90,7 +90,6 @@ const ViewProductPage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}
       >
-        <SkeletonThreeCarts />
         {product && (
           <AdminPageContainer
             heading={product.productName}
