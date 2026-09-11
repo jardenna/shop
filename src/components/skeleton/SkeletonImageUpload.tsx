@@ -1,42 +1,16 @@
+import Skeleton from './Skeleton';
+import SkeletonButton from './SkeletonButton';
+
 const SkeletonImageUpload = () => (
-  <div className="cart">
-    <fieldset className="fieldset ">
-      <legend className="visually-hidden">
-        Produkt billeder (Maksimalt 5)
-      </legend>
+  <>
+    <div className="upload-img-container">
+      <Skeleton width="12" height="6" />
       <div>
-        <div className="upload-img-container">
-          <ul className="img-list">
-            <li className="img-list-item ">
-              <img
-                className="img-list-img"
-                alt=""
-                width="400"
-                height="600"
-                loading="lazy"
-                fetchPriority="auto"
-                src="/images/uploads/images-1757415424103.jpg"
-              />
-            </li>
-          </ul>
-          <div>
-            <label
-              htmlFor="images"
-              className="file-upload-label btn btn-primary"
-            >
-              Tilføj produkt billeder
-            </label>
-          </div>
-        </div>
-        <span className="input-info">
-          <span>
-            Tilladte filer JPG, JPEG, PNG, WEBP, AVIF | Maksimal filstørrelse
-            1MB
-          </span>
-        </span>
+        <SkeletonButton width="12" />
       </div>
-    </fieldset>
-  </div>
+    </div>
+    <Skeleton width="28" height="1" />
+  </>
 );
 
 export default SkeletonImageUpload;

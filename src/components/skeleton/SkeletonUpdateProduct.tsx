@@ -12,7 +12,9 @@ const SkeletonUpdateProduct = () => (
         <SkeletonFormCart>
           <SkeletonInputList count={1} />
         </SkeletonFormCart>
-        <SkeletonImageUpload />
+        <SkeletonFormCart>
+          <SkeletonImageUpload />
+        </SkeletonFormCart>
         <SkeletonFormCart>
           <SkeletonInputList count={2} />
           <SkeletonFlexInputList />
