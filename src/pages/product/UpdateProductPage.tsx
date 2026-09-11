@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
+import SkeletonUpdateProduct from '../../components/skeleton/skeletonUpdateProduct/SkeletonUpdateProduct';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
@@ -37,7 +37,7 @@ const UpdateProductPage = () => {
   }
 
   if (isLoading || isSubCategoriesLoading) {
-    return <SkeletonFormPage />;
+    return <SkeletonUpdateProduct />;
   }
 
   return (
