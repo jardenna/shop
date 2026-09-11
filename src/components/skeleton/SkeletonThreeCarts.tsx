@@ -9,7 +9,7 @@ import SkeletonParagraph from './SkeletonParagraph';
 const SkeletonThreeCarts = () => (
   <SkeletonAdminPage variant="large" showLink>
     <div className="flex">
-      <div className="page-cart flex-1">
+      <div className=" flex-1">
         <div className="flex flex-column">
           <Skeleton height="12" />
           <div className="flex">
@@ -20,7 +20,7 @@ const SkeletonThreeCarts = () => (
           <SkeletonFooter />
         </div>
       </div>
-      <div className="flex flex-column page-cart flex-1">
+      <div className="flex flex-column  flex-1">
         <SkeletonGrid />
         <SkeletonControlList count={4} />
         <SkeletonControlList count={5} variant="medium" />
