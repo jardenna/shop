@@ -59,8 +59,8 @@ const ProductOptionList = ({
 
   return (
     <div>
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
-
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />{' '}
+      {language.sizeGuide}
       <ul
         className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}

@@ -4,7 +4,7 @@ const ConvertingGuide = () => {
   const { language } = useLanguage();
   return (
     <section>
-      <h2>{language.sizeGuide} </h2>
+      <h2>{language.sizeGuide}</h2>
       <p>{language.sizeGuideInfo}</p>
       <table>
         <caption>
