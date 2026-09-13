@@ -1,5 +1,5 @@
-import ConvertingGuide from '../components/ConvertingGuide';
-import SizeGuide from '../components/SizeGuide';
+import ConvertingGuide from '../components/sizeGuide/ConvertingGuide';
+import SizeGuide from '../components/sizeGuide/SizeGuide';
 import { useLanguage } from '../features/language/useLanguage';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
