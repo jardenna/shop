@@ -133,6 +133,7 @@ const SingleProductPage = () => {
             {id && currentUser && <ReviewsForm productId={id} />}
             {product.countInStock > 0 && (
               <SingleProductPurchaseSection
+                modalId="sizeGuide"
                 onReset={() => refetch}
                 src={product.images[0]}
                 productData={{

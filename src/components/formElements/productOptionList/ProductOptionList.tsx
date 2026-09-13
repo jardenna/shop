@@ -1,7 +1,5 @@
 import { useId } from 'react';
-import { useAppDispatch } from '../../../app/hooks';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { toggleModal } from '../../../features/modalSlice';
 import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type {
@@ -39,6 +37,7 @@ interface ProductOptionListProps extends BaseControlGroupProps {
   initialChecked?: string;
   modalId?: string;
   values?: string[];
+  onOpenModal?: () => void;
 }
 
 const ProductOptionList = ({
@@ -58,26 +57,20 @@ const ProductOptionList = ({
   iconSize,
   type,
   modalId,
+  onOpenModal,
   iconClassName,
 }: ProductOptionListProps) => {
   const ariaControlsId = useId();
-  const dispatch = useAppDispatch();
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
-
-  const handleOpenModal = () => {
-    if (modalId) {
-      dispatch(toggleModal(modalId));
-    }
-  };
 
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
       <Button
         variant={BtnVariant.Ghost}
-        onClick={handleOpenModal}
+        onClick={onOpenModal}
         ariaControls={ariaControlsId}
         ariaHasPopup="dialog"
       >
