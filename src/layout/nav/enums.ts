@@ -1,4 +1,4 @@
-enum AdminPath {
+export enum AdminPath {
   Admin = 'dashboard',
   AdminCategories = '/dashboard/categories',
   AdminCategoryCreate = '/dashboard/categories/create',
@@ -18,7 +18,7 @@ enum AdminPath {
   Users = 'users',
 }
 
-enum ShopPath {
+export enum ShopPath {
   AboutUs = 'about-us',
   AllProducts = '/collection/product/all-products',
   Checkout = 'checkout',
@@ -45,7 +45,7 @@ enum ShopPath {
   Women = '/collection/women',
 }
 
-enum LinkText {
+export enum LinkText {
   AboutUs = 'about',
   Categories = 'categories',
   Collection = 'collection',
@@ -75,5 +75,3 @@ enum LinkText {
   View = 'view',
   Women = 'women',
 }
-
-export { AdminPath, LinkText, ShopPath };
