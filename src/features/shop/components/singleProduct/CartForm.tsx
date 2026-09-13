@@ -112,6 +112,7 @@ const CartForm = ({
             id: 'choose-product-size',
             errorText: language[errors.size],
           }}
+          modalId="sizes-modal"
         />
         {showQuantity && productData.countInStock && (
           <NumberStep

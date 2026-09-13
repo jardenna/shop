@@ -1,6 +1,9 @@
+import { useId } from 'react';
+import { useAppDispatch } from '../../../app/hooks';
 import { useLanguage } from '../../../features/language/useLanguage';
+import { toggleModal } from '../../../features/modalSlice';
 import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
-import { IconName } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
@@ -9,6 +12,8 @@ import type {
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
+import Button from '../../Button';
+import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
 import './_product-option-list.scss';
@@ -32,6 +37,7 @@ interface ProductOptionListProps extends BaseControlGroupProps {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
+  modalId?: string;
   values?: string[];
 }
 
@@ -51,16 +57,33 @@ const ProductOptionList = ({
   variant = 'medium',
   iconSize,
   type,
+  modalId,
   iconClassName,
 }: ProductOptionListProps) => {
+  const ariaControlsId = useId();
+  const dispatch = useAppDispatch();
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
+  const handleOpenModal = () => {
+    if (modalId) {
+      dispatch(toggleModal(modalId));
+    }
+  };
+
   return (
     <div>
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />{' '}
-      {language.sizeGuide}
+      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+      <Button
+        variant={BtnVariant.Ghost}
+        onClick={handleOpenModal}
+        ariaControls={ariaControlsId}
+        ariaHasPopup="dialog"
+      >
+        {language.sizeGuide}
+      </Button>
+
       <ul
         className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}
@@ -95,6 +118,7 @@ const ProductOptionList = ({
         ))}
       </ul>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
+      {modalId && <SizeGuideModal language={language} id={modalId} />}
     </div>
   );
 };
