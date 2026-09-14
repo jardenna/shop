@@ -68,16 +68,6 @@ const ProductOptionList = ({
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      {modalId && (
-        <Button
-          variant={BtnVariant.Ghost}
-          onClick={onOpenModal}
-          ariaControls={ariaControlsId}
-          ariaHasPopup="dialog"
-        >
-          {language.sizeGuide}
-        </Button>
-      )}
 
       <ul
         className={`control-list product-option-list ${className}`}
@@ -113,6 +103,18 @@ const ProductOptionList = ({
         ))}
       </ul>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
+      {modalId && (
+        <div className="size-guide-btn">
+          <Button
+            variant={BtnVariant.Ghost}
+            onClick={onOpenModal}
+            ariaControls={ariaControlsId}
+            ariaHasPopup="dialog"
+          >
+            {language.sizeGuide}
+          </Button>
+        </div>
+      )}
       {modalId && <SizeGuideModal language={language} id={modalId} />}
     </div>
   );
