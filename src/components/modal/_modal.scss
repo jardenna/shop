@@ -32,15 +32,15 @@
     max-width: rem(400px);
 
     @include max-size($small) {
-      max-width: 90%;
+      max-width: 92%;
     }
   }
 
   &.modal-medium {
-    width: 50%;
+    max-width: rem(752px);
 
-    @include max-size($medium) {
-      min-width: 90%;
+    @include max-size($small) {
+      max-width: 92%;
     }
   }
 
