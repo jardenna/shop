@@ -14,7 +14,6 @@ const SizeGuideModal = ({ language, id }: SizeGuideModalProps) => (
       label: 'OK',
     }}
     modalHeaderText={language.sizeGuide}
-    className="size-guide-modal"
   >
     <p>{language.sizeGuideInfo}</p>
     <SizeGuide />

@@ -52,10 +52,6 @@
 }
 
 .address-modal {
-  &.modal.animate-top-center {
-    top: 15%;
-  }
-
   .address-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
