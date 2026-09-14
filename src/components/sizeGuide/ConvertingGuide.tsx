@@ -7,7 +7,7 @@ const ConvertingGuide = () => {
     <section>
       <h2>{language.convertingSize}</h2>
       <p>{language.sizeGuideInfo}</p>
-      <table>
+      <table className="size-guide">
         <VisuallyHidden as="caption">
           {language.sizeGuideCaption}
         </VisuallyHidden>
