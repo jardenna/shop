@@ -103,6 +103,7 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product.sizes.includes(size),
   );
+  console.log(product);
 
   return (
     <>
@@ -133,7 +134,11 @@ const SingleProductPage = () => {
             {id && currentUser && <ReviewsForm productId={id} />}
             {product.countInStock > 0 && (
               <SingleProductPurchaseSection
-                modalId="sizeGuide"
+                modalId={
+                  product.subCategoryName === 'Clothing'
+                    ? 'sizeGuide'
+                    : undefined
+                }
                 onReset={() => refetch}
                 src={product.images[0]}
                 productData={{
