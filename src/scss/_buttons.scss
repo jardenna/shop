@@ -28,6 +28,7 @@ a[class^='btn-'],
   min-height: rem(60px);
   letter-spacing: rem(0.5px);
   outline: transparent;
+  text-box: trim-both cap alphabetic;
 
   @include transition;
 
