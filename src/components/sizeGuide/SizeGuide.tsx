@@ -1,12 +1,11 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import VisuallyHidden from '../VisuallyHidden';
 
 const SizeGuide = () => {
   const { language } = useLanguage();
   return (
-    <table>
-      <caption>
-        <span>{language.bodyMeasurements}</span>
-      </caption>
+    <table className="size-guide">
+      <VisuallyHidden as="caption">{language.bodyMeasurements}</VisuallyHidden>
       <thead>
         <tr>
           <th scope="col">

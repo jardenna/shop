@@ -1,12 +1,11 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import VisuallyHidden from '../VisuallyHidden';
 
 const ConvertingGuide = () => {
   const { language } = useLanguage();
   return (
     <table>
-      <caption>
-        <span>{language.convertingSize}</span>
-      </caption>
+      <VisuallyHidden as="caption">{language.convertingSize}</VisuallyHidden>
       <thead>
         <tr>
           <th scope="col">
