@@ -200,7 +200,7 @@ const SingleProductPurchaseSection = ({
   );
 
   const currentProductQuantity = quantityByProductId[id];
-  console.log(modalId);
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel

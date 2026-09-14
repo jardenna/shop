@@ -1,4 +1,5 @@
 import Modal from '../modal/Modal';
+import SizeGuide from './SizeGuide';
 
 interface SizeGuideModalProps {
   id: string;
@@ -13,8 +14,10 @@ const SizeGuideModal = ({ language, id }: SizeGuideModalProps) => (
       label: 'OK',
     }}
     modalHeaderText={language.sizeGuide}
+    className="size-guide-modal"
   >
-    hello
+    <p>{language.sizeGuideInfo}</p>
+    <SizeGuide />
   </Modal>
 );
 
