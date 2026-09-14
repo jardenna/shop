@@ -1,6 +1,7 @@
+import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
 import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
-import { IconName } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
@@ -9,6 +10,8 @@ import type {
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
+import Button from '../../Button';
+import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
 import './_product-option-list.scss';
@@ -32,7 +35,9 @@ interface ProductOptionListProps extends BaseControlGroupProps {
   options: string[];
   disabledList?: string[];
   initialChecked?: string;
+  modalId?: string;
   values?: string[];
+  onOpenModal?: () => void;
 }
 
 const ProductOptionList = ({
@@ -51,8 +56,11 @@ const ProductOptionList = ({
   variant = 'medium',
   iconSize,
   type,
+  modalId,
+  onOpenModal,
   iconClassName,
 }: ProductOptionListProps) => {
+  const ariaControlsId = useId();
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
@@ -95,6 +103,19 @@ const ProductOptionList = ({
         ))}
       </ul>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
+      {modalId && (
+        <div className="size-guide-btn">
+          <Button
+            variant={BtnVariant.Ghost}
+            onClick={onOpenModal}
+            ariaControls={ariaControlsId}
+            ariaHasPopup="dialog"
+          >
+            {language.sizeGuide}
+          </Button>
+        </div>
+      )}
+      {modalId && <SizeGuideModal language={language} id={modalId} />}
     </div>
   );
 };

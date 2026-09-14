@@ -3,7 +3,7 @@ import { IconName } from '../../types/enums';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
-export type BaseControlProps = {
+export interface BaseControlProps {
   name: string;
   onChange: InputChangeHandler;
   ariaLabel?: string;
@@ -13,7 +13,7 @@ export type BaseControlProps = {
   iconClassName?: string;
   iconName?: IconName;
   type?: ControlInputType;
-};
+}
 
 type ControlInputProps = BaseControlProps & {
   checked: boolean;

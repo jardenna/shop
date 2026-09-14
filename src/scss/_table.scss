@@ -4,6 +4,7 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
+  border: $border;
 
   tbody {
     &.padding-4 {
@@ -35,7 +36,7 @@ table {
 
   th,
   td {
-    padding: 4px 8px;
+    padding: 8px;
     width: rem(180px);
   }
 
@@ -43,6 +44,7 @@ table {
     background-color: $color-white;
     line-height: rem(24px);
     font-variant-numeric: tabular-nums;
+    text-align: center;
   }
 
   th {
@@ -50,5 +52,6 @@ table {
     border-right: $border;
     border-bottom: $border;
     font-weight: normal;
+    text-transform: uppercase;
   }
 }

@@ -19,6 +19,7 @@ import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { openMiniCart } from '../../../miniCartPopupSlice';
+import { toggleModal } from '../../../modalSlice';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import CartForm, { InitialShopValues } from './CartForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -29,6 +30,7 @@ interface SingleProductPurchaseSectionProps {
   isAuthReady: boolean;
   productData: ProductFormData;
   src: string;
+  modalId?: string;
   onReset: () => void;
 }
 
@@ -39,6 +41,7 @@ const SingleProductPurchaseSection = ({
   productData,
   currentUser,
   isAuthReady,
+  modalId,
 }: SingleProductPurchaseSectionProps) => {
   const dispatch = useAppDispatch();
   const { language, selectedLanguage } = useLanguage();
@@ -82,6 +85,12 @@ const SingleProductPurchaseSection = ({
 
     onHidePanel();
     dispatch(openMiniCart());
+  };
+
+  const handleOpenModal = () => {
+    if (modalId) {
+      dispatch(toggleModal(modalId));
+    }
   };
 
   async function handleSubmitCartItem(values: InitialShopValues) {
@@ -221,6 +230,8 @@ const SingleProductPurchaseSection = ({
         isLoading={isAddCartItemLoading}
         showQuantity
         fixedFooter
+        modalId={modalId}
+        onOpenModal={handleOpenModal}
       />
     </ErrorBoundary>
   );

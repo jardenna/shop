@@ -68,6 +68,15 @@
     flex-direction: column;
     gap: 8px;
   }
+
+  .size-guide-btn {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+      text-transform: uppercase;
+    }
+  }
 }
 
 .notify {

@@ -7,11 +7,11 @@
   width: auto;
   display: flex;
   flex-direction: column;
-  z-index: 7;
+  z-index: 150;
   padding: 20px 24px;
 
   &.animate-top-center {
-    top: 30%;
+    top: 20%;
   }
 
   .control-list {
@@ -32,15 +32,15 @@
     max-width: rem(400px);
 
     @include max-size($small) {
-      max-width: 90%;
+      max-width: 92%;
     }
   }
 
   &.modal-medium {
-    width: 50%;
+    max-width: rem(752px);
 
-    @include max-size($medium) {
-      min-width: 90%;
+    @include max-size($small) {
+      max-width: 92%;
     }
   }
 

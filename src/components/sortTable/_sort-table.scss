@@ -29,9 +29,13 @@ $table-header-height: rem(320px);
   position: relative;
   width: 100%;
   margin-bottom: 12px;
-  border: $border;
+  border-top: $border;
   height: min(rem(632px), calc(100dvh - $table-header-height));
   overflow: auto;
+
+  table {
+    border-top: 0;
+  }
 
   @include max-size($large) {
     height: min(rem(1050px), calc(100dvh - $table-header-height));

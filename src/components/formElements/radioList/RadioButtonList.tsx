@@ -1,15 +1,12 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { InputChangeHandler, OptionType } from '../../../types/types';
+import { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
-import ControlInput from '../ControlInput';
+import ControlInput, { BaseControlProps } from '../ControlInput';
 import './_radio-button-list.scss';
 
-interface RadioButtonListProps {
-  name: string;
-  onChange: InputChangeHandler;
+interface RadioButtonListProps extends BaseControlProps {
   radioButtonList: OptionType[];
   value: string;
-  autoFocus?: boolean;
 }
 
 const RadioButtonList = ({

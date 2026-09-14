@@ -103,7 +103,7 @@ contact;Contact;Kontakt
 contactCustomerService;Contact customer service.;Kontakt kundeservice.
 continueShopping;Continue shopping;Fortsæt med at handle
 continueToCheckout;Continue to Checkout;Fortsæt til kassen
-convertingSize;Size conversion;Konvertering af størrelse
+convertingSize;Size conversions;Konvertering af størrelser
 copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
@@ -523,7 +523,10 @@ singleProductPanelHeading;You already have this item in another;Du har allerede 
 singleProductPanelText;Choose whether you want to replace the existing item or keep both. The size guide and product information can help you make the right choice, avoid unnecessary returns, and thereby reduce the environmental impact.;Vælg, om du vil erstatte den eksisterende vare eller beholde begge. Størrelsesguiden og produktoplysningerne kan hjælpe dig med at træffe det rigtige valg, undgå unødige returneringer og dermed mindske belastningen på miljøet.
 size;Size;Størrelse
 sizeGuide;Size guide;Størrelsesguide
-sizeGuideInfo;Compare sizes across different countries with our size guide. Please note that fit and measurements may vary between brands, so this chart should be used as a general guide when converting sizes;Sammenlign størrelser på tværs af forskellige lande med vores størrelsesguide. Bemærk, at pasform og mål kan variere mellem mærker, så tabellen bør bruges som vejledning ved konvertering af størrelser
+sizeGuideInfo;Compare sizes across countries with our size guide.;Sammenlign størrelser på tværs af lande med vores størrelsesguide.
+sizeGuideCaption;International size conversion guide.;Størrelsesguide med internationale størrelseskonverteringer.
+sizeGuideIntro;Find your size based on your body measurements.;Find din størrelse ud fra dine kropsmål.
+sizeGuideNote;Measurements are a guide and may vary between brands.;Målene er vejledende og kan variere mellem mærker.
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
 sizeLowercase;size;størrelse
 sizeRequired;Please select a size;Vælg venligst størrelse

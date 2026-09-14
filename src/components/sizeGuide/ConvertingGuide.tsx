@@ -1,15 +1,16 @@
-import { useLanguage } from '../features/language/useLanguage';
+import { useLanguage } from '../../features/language/useLanguage';
+import VisuallyHidden from '../VisuallyHidden';
 
 const ConvertingGuide = () => {
   const { language } = useLanguage();
   return (
     <section>
-      <h2>{language.sizeGuide} </h2>
+      <h2>{language.convertingSize}</h2>
       <p>{language.sizeGuideInfo}</p>
-      <table>
-        <caption>
-          <span>{language.convertingSize}</span>
-        </caption>
+      <table className="size-guide">
+        <VisuallyHidden as="caption">
+          {language.sizeGuideCaption}
+        </VisuallyHidden>
         <thead>
           <tr>
             <th scope="col">
@@ -181,108 +182,6 @@ const ConvertingGuide = () => {
             </td>
             <td>
               <span>20</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>50</span>
-            </td>
-            <td>
-              <span>5XL</span>
-            </td>
-            <td>
-              <span>52</span>
-            </td>
-            <td>
-              <span>56</span>
-            </td>
-            <td>
-              <span>22</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>52</span>
-            </td>
-            <td>
-              <span>6XL</span>
-            </td>
-            <td>
-              <span>54</span>
-            </td>
-            <td>
-              <span>58</span>
-            </td>
-            <td>
-              <span>24</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>54</span>
-            </td>
-            <td>
-              <span>7XL</span>
-            </td>
-            <td>
-              <span>56</span>
-            </td>
-            <td>
-              <span>60</span>
-            </td>
-            <td>
-              <span>26</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>56</span>
-            </td>
-            <td>
-              <span>8XL</span>
-            </td>
-            <td>
-              <span>58</span>
-            </td>
-            <td>
-              <span>62</span>
-            </td>
-            <td>
-              <span>28</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>58</span>
-            </td>
-            <td>
-              <span>9XL</span>
-            </td>
-            <td>
-              <span>60</span>
-            </td>
-            <td>
-              <span>64</span>
-            </td>
-            <td>
-              <span>30</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>60</span>
-            </td>
-            <td>
-              <span>10XL</span>
-            </td>
-            <td>
-              <span>62</span>
-            </td>
-            <td>
-              <span>66</span>
-            </td>
-            <td>
-              <span>32</span>
             </td>
           </tr>
         </tbody>
