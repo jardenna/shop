@@ -8,6 +8,7 @@ const Footer = () => (
       <article>Vores</article>
       <article>Vores</article>
       <article>
+        <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
         <IconContent iconName={IconName.Instagram} ariaLabel="Instagram" />
       </article>
     </section>
