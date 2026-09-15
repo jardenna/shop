@@ -3,6 +3,7 @@
 .main-footer {
   background-color: #191919;
   color: $color-secondary;
+  padding-block: 20px;
 
   a {
     color: $color-secondary;
@@ -10,5 +11,23 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .footer-shop-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
   }
 }

@@ -32,74 +32,74 @@ const Footer = () => {
   return (
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
       <section className="container">
-        <div>
-          Betalings metoder
-          <PaymentMethodsList paymentMethods={paymentMethods} />
+        <article className="footer-shop-info">
+          <div className="footer-payment-methods">
+            Betalings metoder
+            <PaymentMethodsList paymentMethods={paymentMethods} />
+          </div>
           forsendelses info
-        </div>
-        <article>
-          <h2>Shop</h2>
-
-          <NavContainer navList={footerSubNavList} />
         </article>
-        <article>
-          <nav aria-label="Kundeservice">
-            <h2>Kundeservice</h2>
-            <ul>
-              <li>
-                <a href="/contact">Kontakt os</a>
-              </li>
-              <li>
-                <a href="/faq">FAQ</a>
-              </li>
-              <li>
-                <a href="/shipping">Levering</a>
-              </li>
-              <li>
-                <a href="/returns">Returnering</a>
-              </li>
-            </ul>
-          </nav>
-        </article>
-        <article>
+        <article className="footer-container">
           <div>
-            <nav aria-label="Virksomhed">
-              <h2>Virksomhed</h2>
+            <h2>Shop</h2>
+            <NavContainer navList={footerSubNavList} />
+          </div>
+          <div>
+            <nav aria-label="Kundeservice">
+              <h2>Kundeservice</h2>
               <ul>
                 <li>
-                  <a href="/contact">Om os</a>
+                  <a href="/contact">Kontakt os</a>
                 </li>
                 <li>
-                  <a href="/faq">handelsbetingelser</a>
+                  <a href="/faq">FAQ</a>
                 </li>
                 <li>
-                  <a href="/shipping">privatliv</a>
+                  <a href="/shipping">Levering</a>
                 </li>
                 <li>
-                  <a href="/returns">Cookies</a>
-                </li>
-                <li>
-                  <a href="/returns">Accessibility statement</a>
+                  <a href="/returns">Returnering</a>
                 </li>
               </ul>
             </nav>
           </div>
-        </article>
-        <article>
-          <nav aria-label="Account">
-            <h2>Account</h2>
-            <ul>
-              <li>
-                <a href="/contact">Kontakt os</a>
-              </li>
-              <li>
-                <a href="/faq">Mine ordrer </a>
-              </li>
-              <li>
-                <a href="/shipping">login</a>
-              </li>
-            </ul>
-          </nav>
+          <div>
+            <div>
+              <nav aria-label="Virksomhed">
+                <h2>Virksomhed</h2>
+                <ul>
+                  <li>
+                    <a href="/contact">Om os</a>
+                  </li>
+                  <li>
+                    <a href="/faq">handelsbetingelser</a>
+                  </li>
+                  <li>
+                    <a href="/shipping">privatliv</a>
+                  </li>
+                  <li>
+                    <a href="/returns">Cookies</a>
+                  </li>
+                  <li>
+                    <a href="/returns">Accessibility statement</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div>
+            <nav aria-label="Account">
+              <h2>Account</h2>
+              <ul>
+                <li>
+                  <a href="/faq">Mine ordrer </a>
+                </li>
+                <li>
+                  <a href="/shipping">login</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </article>
         <article>
           <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
