@@ -98,15 +98,15 @@ export const footerShopNav: BaseNav[] = [
 
 export const footerServiceNav: BaseNav[] = [
   {
-    path: ShopPath.AboutUs,
+    path: ShopPath.Faq,
     linkText: LinkText.Faq,
   },
   {
-    path: ShopPath.Contact,
+    path: ShopPath.ShippingAndReturns,
     linkText: LinkText.DeliveryAndReturn,
   },
   {
-    path: ShopPath.Contact,
+    path: ShopPath.CustomerService,
     linkText: LinkText.ContactCustomerService,
   },
 ];
@@ -117,19 +117,19 @@ export const footerCompanyNav: BaseNav[] = [
     linkText: LinkText.AboutUs,
   },
   {
-    path: ShopPath.AboutUs,
+    path: ShopPath.TermsAndConditions,
     linkText: LinkText.TermsAndConditions,
   },
   {
-    path: ShopPath.AboutUs,
+    path: ShopPath.Privacy,
     linkText: LinkText.Privacy,
   },
   {
-    path: ShopPath.AboutUs,
+    path: ShopPath.Cookies,
     linkText: LinkText.Cookies,
   },
   {
-    path: ShopPath.AboutUs,
+    path: ShopPath.AccessibilityStatement,
     linkText: LinkText.AccessibilityStatement,
   },
 ];
