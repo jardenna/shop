@@ -16,17 +16,12 @@ export interface AdminNavList extends BaseNav {
   iconName: IconName;
 }
 
-export interface SubBaseNav {
+export interface SubBaseNav extends BaseNav {
   infoText: string;
-  linkText: LinkText;
-  path: string;
   className?: string;
 }
 
-export interface NavListProps {
-  linkText: LinkText;
-  path: string;
-  end?: boolean;
+export interface NavListProps extends BaseNav {
   heading?: string;
   iconName?: IconName;
   subNavList?: SubBaseNav[];
