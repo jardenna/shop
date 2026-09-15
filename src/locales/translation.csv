@@ -97,10 +97,12 @@ colorRequired;Please select a colour;Vælg venligst farve
 colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
+company;Company;Virksomhed
 completed;Completed;Gennemført
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 contactCustomerService;Contact customer service;Kontakt kundeservice
+customerService;Customer service;kundeservice
 continueShopping;Continue shopping;Fortsæt med at handle
 continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversions;Konvertering af størrelser
@@ -505,6 +507,7 @@ shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
 shipped;Shipped;Afsendt
 shoes;Shoes;Sko
+shop;Shop;Shop
 shopCart;Shopping cart;Indkøbskurv
 shopKidsHeading;Playful by Nature;Leg er liv
 shopKidsMenuText;Turn every playday into a magical adventure with our colorful and imaginative outfits;Gør hver legedag til et eventyr med vores farverige og fantasifulde outfits
