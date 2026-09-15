@@ -20,6 +20,7 @@ export enum AdminPath {
 
 export enum ShopPath {
   AboutUs = 'about-us',
+  AccessibilityStatement = 'accessibility-statement',
   AllProducts = '/collection/product/all-products',
   Checkout = 'checkout',
   Collection = 'collection',
@@ -27,7 +28,10 @@ export enum ShopPath {
   CollectionCategoryId = 'collection/:category/:categoryId',
   CollectionSingleProduct = 'collection/:category/:categoryId/:id',
   Contact = 'contact',
+  Cookies = 'cookies',
   CreateAccount = 'create-account',
+  CustomerService = 'customer-service',
+  Faq = 'faq',
   Favorites = 'favorites',
   Home = 'home',
   Kids = '/collection/kids',
@@ -37,11 +41,14 @@ export enum ShopPath {
   MyAddresses = 'my-addresses',
   MyOrder = 'order',
   MyOrders = 'my-orders',
+  Privacy = 'privacy',
   Product = 'product',
   Root = '/',
   Sale = 'sale',
   SaleCategory = 'sale/:categoryId',
+  ShippingAndReturns = 'shipping-and-returns',
   ShoppingCart = 'shopping-cart',
+  TermsAndConditions = 'terms-and-conditions',
   Women = '/collection/women',
 }
 

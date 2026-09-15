@@ -17,6 +17,7 @@ import ContactPage from '../pages/ContactPage';
 import DashboardPage from '../pages/DashboardPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
+import FaqPage from '../pages/footer/FaqPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
@@ -74,6 +75,10 @@ const routeList = [
   {
     path: ShopPath.Contact,
     element: <ContactPage />,
+  },
+  {
+    path: ShopPath.Faq,
+    element: <FaqPage />,
   },
   {
     path: ShopPath.Login,
