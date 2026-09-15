@@ -5,11 +5,11 @@ import MobileNav from '../layout/nav/MobileNav';
 import { adminNavList } from '../layout/nav/navLists';
 import Logout from './Logout';
 
-type AdminHeaderProps = {
+interface AdminHeaderProps {
   isLargeTabletSize: boolean;
   navHeading: string;
   onLogout: () => void;
-};
+}
 
 const AdminHeader = ({
   onLogout,
