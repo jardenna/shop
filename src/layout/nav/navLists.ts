@@ -103,7 +103,7 @@ export const footerServiceNav: BaseNav[] = [
   },
   {
     path: ShopPath.ShippingAndReturns,
-    linkText: LinkText.DeliveryAndReturn,
+    linkText: LinkText.ShippingAndReturns,
   },
   {
     path: ShopPath.CustomerService,
