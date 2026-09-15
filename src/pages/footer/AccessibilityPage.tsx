@@ -5,7 +5,7 @@ const AccessibilityPage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.faq}>
+    <MainPageContainer heading={language.accessibilityStatement}>
       <section>AccessibilityPage</section>
     </MainPageContainer>
   );

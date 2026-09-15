@@ -5,7 +5,7 @@ const CustomerServicePage = () => {
   const { language } = useLanguage();
 
   return (
-    <MainPageContainer heading={language.ustomerService}>
+    <MainPageContainer heading={language.contactCustomerService}>
       <section>CustomerService</section>
     </MainPageContainer>
   );
