@@ -3,8 +3,7 @@ import IconContent from '../../components/IconContent';
 import PaymentMethodsList from '../../features/cart/components/PaymentMethodsList';
 import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
-import { LinkText, ShopPath } from '../nav/enums';
-import { subNavList } from '../nav/navLists';
+import { footerShopNavList } from '../nav/navLists';
 import './_footer.scss';
 import FooterNav from './FooterNav';
 
@@ -17,17 +16,6 @@ const Footer = () => {
     'mobilepay',
   ];
 
-  const footerSubNavList = [
-    {
-      path: ShopPath.Root,
-      linkText: LinkText.Home,
-    },
-    ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
-    {
-      path: ShopPath.Sale,
-      linkText: LinkText.Sale,
-    },
-  ];
   return (
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
       <section className="container">
@@ -39,7 +27,7 @@ const Footer = () => {
           forsendelses info
         </article>
         <article className="footer-container">
-          <FooterNav navList={footerSubNavList} title="Shop" />
+          <FooterNav navList={footerShopNavList} title="Shop" />
 
           <div>
             <nav aria-label="Kundeservice">

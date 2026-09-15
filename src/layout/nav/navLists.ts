@@ -2,7 +2,7 @@ import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
 import type { BaseNav, NavListProps } from './Nav';
 
-export const subNavList = [
+const subNavList = [
   {
     path: ShopPath.Women,
     linkText: LinkText.Women,
@@ -80,5 +80,19 @@ export const accountNavList: BaseNav[] = [
   {
     path: ShopPath.MyAddresses,
     linkText: LinkText.MyAddresses,
+  },
+];
+
+// Footer nav lists
+
+export const footerShopNavList = [
+  {
+    path: ShopPath.Root,
+    linkText: LinkText.Home,
+  },
+  ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
+  {
+    path: ShopPath.Sale,
+    linkText: LinkText.Sale,
   },
 ];
