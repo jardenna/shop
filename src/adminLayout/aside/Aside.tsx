@@ -5,11 +5,11 @@ import { adminNavList } from '../../layout/nav/navLists';
 import { IconName } from '../../types/enums';
 import './_aside.scss';
 
-type AsideProps = {
+interface AsideProps {
   ariaLabel: string;
   isShown: boolean;
   onTogglePanel: () => void;
-};
+}
 
 const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
   const { currentUser } = useAuth();
