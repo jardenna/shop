@@ -1,6 +1,14 @@
 @use '../../scss/globals' as *;
 
-footer {
+.main-footer {
   background-color: #191919;
   color: $color-secondary;
+
+  a {
+    color: $color-secondary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

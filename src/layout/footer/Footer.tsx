@@ -3,6 +3,7 @@ import IconContent from '../../components/IconContent';
 import PaymentMethodsList from '../../features/cart/components/PaymentMethodsList';
 import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
+import { LinkText, ShopPath } from '../nav/enums';
 import NavContainer from '../nav/NavContainer';
 import { subNavList } from '../nav/navLists';
 import './_footer.scss';
@@ -16,29 +17,89 @@ const Footer = () => {
     'mobilepay',
   ];
 
+  const footerSubNavList = [
+    {
+      path: ShopPath.Home,
+      linkText: LinkText.Home,
+    },
+    ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
+    {
+      path: ShopPath.Sale,
+      linkText: LinkText.Sale,
+    },
+  ];
+
   return (
-    <LayoutElement ariaLabel="main" as="footer">
-      <section>
+    <LayoutElement ariaLabel="main" as="footer" className="main-footer">
+      <section className="container">
         <div>
+          Betalings metoder
           <PaymentMethodsList paymentMethods={paymentMethods} />
+          forsendelses info
         </div>
         <article>
-          Vores Kollection Tilbud home
-          <NavContainer navList={subNavList} />
+          <h2>Shop</h2>
+
+          <NavContainer navList={footerSubNavList} />
         </article>
         <article>
-          Kunde service
-          <div>Kontakt os Faq Levering Returnering</div>
+          <nav aria-label="Kundeservice">
+            <h2>Kundeservice</h2>
+            <ul>
+              <li>
+                <a href="/contact">Kontakt os</a>
+              </li>
+              <li>
+                <a href="/faq">FAQ</a>
+              </li>
+              <li>
+                <a href="/shipping">Levering</a>
+              </li>
+              <li>
+                <a href="/returns">Returnering</a>
+              </li>
+            </ul>
+          </nav>
         </article>
         <article>
-          Virksomhed
           <div>
-            om os handelsbetingelsr privatliv Cookies accessibility statement
+            <nav aria-label="Virksomhed">
+              <h2>Virksomhed</h2>
+              <ul>
+                <li>
+                  <a href="/contact">Om os</a>
+                </li>
+                <li>
+                  <a href="/faq">handelsbetingelser</a>
+                </li>
+                <li>
+                  <a href="/shipping">privatliv</a>
+                </li>
+                <li>
+                  <a href="/returns">Cookies</a>
+                </li>
+                <li>
+                  <a href="/returns">Accessibility statement</a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </article>
         <article>
-          Account
-          <div>Mine ordrer login</div>
+          <nav aria-label="Account">
+            <h2>Account</h2>
+            <ul>
+              <li>
+                <a href="/contact">Kontakt os</a>
+              </li>
+              <li>
+                <a href="/faq">Mine ordrer </a>
+              </li>
+              <li>
+                <a href="/shipping">login</a>
+              </li>
+            </ul>
+          </nav>
         </article>
         <article>
           <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
