@@ -1,6 +1,6 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type { BaseNav, NavListProps } from './Nav';
+import type { AdminNavList, BaseNav, NavListProps } from './Nav';
 
 const subNavList = [
   {
@@ -43,7 +43,7 @@ export const navList: NavListProps[] = [
   },
 ];
 
-export const adminNavList: BaseNav[] = [
+export const adminNavList: AdminNavList[] = [
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
@@ -84,8 +84,7 @@ export const accountNavList: BaseNav[] = [
 ];
 
 // Footer nav lists
-
-export const footerShopNavList = [
+export const footerShopNavList: BaseNav[] = [
   {
     path: ShopPath.Root,
     linkText: LinkText.Home,

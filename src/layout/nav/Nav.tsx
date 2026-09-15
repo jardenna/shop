@@ -6,25 +6,32 @@ import { FocusEventType } from '../../types/types';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
 
-export type BaseNav = {
+export interface BaseNav {
+  linkText: LinkText;
+  path: string;
+  end?: boolean;
+}
+
+export interface AdminNavList extends BaseNav {
+  iconName: IconName;
+}
+
+export interface SubBaseNav {
+  infoText: string;
   linkText: LinkText;
   path: string;
   className?: string;
+}
+
+export interface NavListProps {
+  linkText: LinkText;
+  path: string;
   end?: boolean;
   heading?: string;
   iconName?: IconName;
-  type?: string;
-};
-
-type OmittedBaseNav = Omit<BaseNav, 'end' | 'heading' | 'iconName'>;
-
-export type SubBaseNav = OmittedBaseNav & {
-  infoText: string;
-};
-
-export type NavListProps = BaseNav & {
   subNavList?: SubBaseNav[];
-};
+  type?: string;
+}
 
 export type NavProps = {
   navList: NavListProps[];
