@@ -129,6 +129,7 @@ export enum IconName {
   SubCategories = 'subCategories',
   Subtract = 'subtract',
   Success = 'success',
+  Tiktok = 'tiktok',
   Trash = 'trach',
   Undo = 'undo',
   Upload = 'upload',

@@ -53,6 +53,7 @@ import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
 import FacebookIcon from './socials/FacebookIcon';
 import InstagramIcon from './socials/InstagramIcon';
+import TiktokIcon from './socials/TiktokIcon';
 import StarIcon from './StarIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
@@ -127,6 +128,7 @@ const iconMapping = {
   subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,
+  tiktok: TiktokIcon,
   trach: TrashIcon,
   undo: UndoIcon,
   upload: UploadIcon,

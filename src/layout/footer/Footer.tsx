@@ -10,6 +10,7 @@ const Footer = () => (
       <article>
         <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
         <IconContent iconName={IconName.Instagram} ariaLabel="Instagram" />
+        <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
       </article>
     </section>
   </LayoutElement>
