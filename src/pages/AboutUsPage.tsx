@@ -3,6 +3,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const AboutUsPage = () => {
   const { language } = useLanguage();
+
   return (
     <MainPageContainer heading={language.about}>
       <section>about</section>
