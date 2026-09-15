@@ -37,6 +37,24 @@ $animation-distance: 500px;
   background-color: $color-white;
   margin-bottom: 20px;
 
+  .main-nav-container {
+    .nav-list {
+      @include min-size($small) {
+        .nav-link {
+          padding: 8px;
+          text-transform: uppercase;
+
+          &:hover,
+          &.active {
+            color: $color-gray-70;
+            border-bottom: 2px solid currentcolor;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
   .toggle-panel {
     @include max-size($mini) {
       top: calc($header-height + rem(20px));
