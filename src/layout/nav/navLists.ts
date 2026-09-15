@@ -2,29 +2,31 @@ import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
 import type { BaseNav, NavListProps } from './Nav';
 
+export const subNavList = [
+  {
+    path: ShopPath.Women,
+    linkText: LinkText.Women,
+    infoText: 'collectionSubWomenText',
+  },
+  {
+    path: ShopPath.Men,
+    linkText: LinkText.Men,
+    infoText: 'collectionSubMenText',
+    className: 'background-gray',
+  },
+  {
+    path: ShopPath.Kids,
+    linkText: LinkText.Kids,
+    infoText: 'collectionSubKidsText',
+  },
+];
+
 export const navList: NavListProps[] = [
   {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
     heading: 'discoverLatestTrends',
-    subNavList: [
-      {
-        path: ShopPath.Women,
-        linkText: LinkText.Women,
-        infoText: 'collectionSubWomenText',
-      },
-      {
-        path: ShopPath.Men,
-        linkText: LinkText.Men,
-        infoText: 'collectionSubMenText',
-        className: 'background-gray',
-      },
-      {
-        path: ShopPath.Kids,
-        linkText: LinkText.Kids,
-        infoText: 'collectionSubKidsText',
-      },
-    ],
+    subNavList,
   },
   {
     path: ShopPath.Sale,
