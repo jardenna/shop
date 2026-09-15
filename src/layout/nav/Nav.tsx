@@ -28,11 +28,11 @@ export interface NavListProps extends BaseNav {
   type?: string;
 }
 
-export type NavProps = {
+export interface NavProps {
   navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
-};
+}
 
 const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
   const location = useLocation();
