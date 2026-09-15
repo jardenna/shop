@@ -30,4 +30,25 @@
     justify-content: space-between;
     gap: 20px;
   }
+
+  .footer-nav-container {
+    .footer-nav-title {
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-size: $font-medium;
+      font-family: $font-primary-semibold;
+    }
+
+    .footer-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-nav-item {
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
 }

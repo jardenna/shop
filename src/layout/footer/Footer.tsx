@@ -4,9 +4,9 @@ import PaymentMethodsList from '../../features/cart/components/PaymentMethodsLis
 import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
 import { LinkText, ShopPath } from '../nav/enums';
-import NavContainer from '../nav/NavContainer';
 import { subNavList } from '../nav/navLists';
 import './_footer.scss';
+import FooterNav from './FooterNav';
 
 const Footer = () => {
   // Make endpoint
@@ -19,7 +19,7 @@ const Footer = () => {
 
   const footerSubNavList = [
     {
-      path: ShopPath.Home,
+      path: ShopPath.Root,
       linkText: LinkText.Home,
     },
     ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
@@ -28,7 +28,6 @@ const Footer = () => {
       linkText: LinkText.Sale,
     },
   ];
-
   return (
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
       <section className="container">
@@ -40,10 +39,8 @@ const Footer = () => {
           forsendelses info
         </article>
         <article className="footer-container">
-          <div>
-            <h2>Shop</h2>
-            <NavContainer navList={footerSubNavList} />
-          </div>
+          <FooterNav navList={footerSubNavList} title="Shop" />
+
           <div>
             <nav aria-label="Kundeservice">
               <h2>Kundeservice</h2>
