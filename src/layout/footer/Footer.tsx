@@ -3,7 +3,7 @@ import IconContent from '../../components/IconContent';
 import PaymentMethodsList from '../../features/cart/components/PaymentMethodsList';
 import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
-import { footerShopNavList } from '../nav/navLists';
+import { footerServiceNav, footerShopNav } from '../nav/navLists';
 import './_footer.scss';
 import FooterNav from './FooterNav';
 
@@ -27,27 +27,8 @@ const Footer = () => {
           forsendelses info
         </article>
         <article className="footer-container">
-          <FooterNav navList={footerShopNavList} title="Shop" />
-
-          <div>
-            <nav aria-label="Kundeservice">
-              <h2>Kundeservice</h2>
-              <ul>
-                <li>
-                  <a href="/contact">Kontakt os</a>
-                </li>
-                <li>
-                  <a href="/faq">FAQ</a>
-                </li>
-                <li>
-                  <a href="/shipping">Levering</a>
-                </li>
-                <li>
-                  <a href="/returns">Returnering</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+          <FooterNav navList={footerShopNav} title="Shop" />
+          <FooterNav navList={footerServiceNav} title="Kundeservice" />
           <div>
             <div>
               <nav aria-label="Virksomhed">

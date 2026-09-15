@@ -84,7 +84,7 @@ export const accountNavList: BaseNav[] = [
 ];
 
 // Footer nav lists
-export const footerShopNavList: BaseNav[] = [
+export const footerShopNav: BaseNav[] = [
   {
     path: ShopPath.Root,
     linkText: LinkText.Home,
@@ -93,5 +93,20 @@ export const footerShopNavList: BaseNav[] = [
   {
     path: ShopPath.Sale,
     linkText: LinkText.Sale,
+  },
+];
+
+export const footerServiceNav: BaseNav[] = [
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.Faq,
+  },
+  {
+    path: ShopPath.Contact,
+    linkText: LinkText.DeliveryAndReturn,
+  },
+  {
+    path: ShopPath.Contact,
+    linkText: LinkText.ContactCustomerService,
   },
 ];

@@ -100,7 +100,7 @@ compact;Compact;Kompakt
 completed;Completed;Gennemført
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
-contactCustomerService;Contact customer service.;Kontakt kundeservice.
+contactCustomerService;Contact customer service;Kontakt kundeservice
 continueShopping;Continue shopping;Fortsæt med at handle
 continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversions;Konvertering af størrelser
@@ -141,6 +141,7 @@ deleteProduct;Delete product;Slet produkt
 deleteUser;Delete user;Slet bruger
 delivered;Delivered;Leveret
 delivery;Delivery;Levering
+deliveryAndReturn;Delivery & return;Levering & returnering
 deliveryText;We offer secure delivery with careful packaging. All orders are processed within 1–2 business days, and you'll receive a tracking link as soon as your order is shipped.;Vi tilbyder sikker levering med omhyggelig emballering. Alle ordrer behandles inden for 1-2 hverdage, og du modtager et trackinglink, så snart din ordre er afsendt.
 descending;descending;faldende
 describeProduct;Describe the product;Fortæl om produktet
@@ -169,6 +170,7 @@ expandMenu;Expand menu;Udvid menu
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
+faq;FAQ;FAQ
 failed;Failed;Mislykket
 fashionGridKidsAltText;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress.";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole."
 fashionGridKidsLink;Shop kids;Shop børn
