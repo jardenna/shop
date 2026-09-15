@@ -36,12 +36,6 @@ const CookiesPage = () => {
           cannot be disabled through our cookie settings.
         </p>
 
-        <h3>Analytics cookies</h3>
-        <p>
-          These cookies help us understand how visitors interact with our
-          website so we can improve its functionality and performance.
-        </p>
-
         <h3>Preference cookies</h3>
         <p>
           These cookies remember choices you make, such as language or other
@@ -64,6 +58,14 @@ const CookiesPage = () => {
           We may update this Cookie Policy from time to time to reflect changes
           to our website or the way we use cookies. Any updates will be
           published on this page.
+        </p>
+      </section>
+      <section>
+        <h2>Your privacy</h2>
+        <p>
+          We never sell your personal information or cookie data to third
+          parties. Any information collected through cookies is only used for
+          the purposes described in this policy.
         </p>
       </section>
     </MainPageContainer>

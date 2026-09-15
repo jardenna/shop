@@ -7,6 +7,15 @@ const PrivacyPage = () => {
   return (
     <MainPageContainer heading={language.privacy}>
       <section>
+        <h2>Your privacy</h2>
+        <p>
+          We never sell your personal information to third parties. We only
+          share your information with trusted service providers when necessary
+          to provide our services, process your orders, deliver your purchases
+          or meet our legal obligations.
+        </p>
+      </section>
+      <section>
         <h2>Information we collect</h2>
         <p>
           We collect information you provide when you place an order, create an
