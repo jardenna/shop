@@ -2,16 +2,14 @@ import { IconDefaultProps } from '../Icon';
 
 const FacebookIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg
-    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
-    role="img"
-
-    fill="currentcolor"
-    fillRule="evenodd"
-    aria-hidden={ariaHidden}
     width={size}
     height={size}
     className={className}
+    viewBox="0 0 24 24"
+    fill="currentcolor"
+    fillRule="evenodd"
+    aria-hidden={ariaHidden}
   >
     <path d="M16.8196 8.27581C17.4161 8.27581 17.8996 7.79226 17.8996 7.19579C17.8996 6.59931 17.4161 6.1158 16.8196 6.1158C16.2231 6.1158 15.7396 6.59931 15.7396 7.19579C15.7396 7.79226 16.2231 8.27581 16.8196 8.27581Z" />
     <path

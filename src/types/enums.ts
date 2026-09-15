@@ -94,6 +94,7 @@ export enum IconName {
   Error = 'error',
   Eye = 'eye',
   EyeOff = 'eyeOff',
+  Facebook = 'facebook',
   Filter = 'filter',
   Grid = 'grid',
   GridLarge = 'gridLarge',
