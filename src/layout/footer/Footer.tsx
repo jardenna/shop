@@ -1,9 +1,12 @@
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
-import IconContent from '../../components/IconContent';
 import PaymentMethodsList from '../../features/cart/components/PaymentMethodsList';
-import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
-import { footerServiceNav, footerShopNav } from '../nav/navLists';
+import {
+  footerAccountNav,
+  footerCompanyNav,
+  footerServiceNav,
+  footerShopNav,
+} from '../nav/navLists';
 import './_footer.scss';
 import FooterNav from './FooterNav';
 
@@ -29,49 +32,14 @@ const Footer = () => {
         <article className="footer-container">
           <FooterNav navList={footerShopNav} title="Shop" />
           <FooterNav navList={footerServiceNav} title="Kundeservice" />
-          <div>
-            <div>
-              <nav aria-label="Virksomhed">
-                <h2>Virksomhed</h2>
-                <ul>
-                  <li>
-                    <a href="/contact">Om os</a>
-                  </li>
-                  <li>
-                    <a href="/faq">handelsbetingelser</a>
-                  </li>
-                  <li>
-                    <a href="/shipping">privatliv</a>
-                  </li>
-                  <li>
-                    <a href="/returns">Cookies</a>
-                  </li>
-                  <li>
-                    <a href="/returns">Accessibility statement</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div>
-            <nav aria-label="Account">
-              <h2>Account</h2>
-              <ul>
-                <li>
-                  <a href="/faq">Mine ordrer </a>
-                </li>
-                <li>
-                  <a href="/shipping">login</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+          <FooterNav navList={footerCompanyNav} title="Virksomhed" />
+          <FooterNav navList={footerAccountNav} title="Account" />
         </article>
-        <article>
+        {/* <article>
           <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
           <IconContent iconName={IconName.Instagram} ariaLabel="Instagram" />
           <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
-        </article>
+        </article> */}
       </section>
     </LayoutElement>
   );

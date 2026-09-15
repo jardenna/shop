@@ -110,3 +110,37 @@ export const footerServiceNav: BaseNav[] = [
     linkText: LinkText.ContactCustomerService,
   },
 ];
+
+export const footerCompanyNav: BaseNav[] = [
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.AboutUs,
+  },
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.TermsAndConditions,
+  },
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.Privacy,
+  },
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.Cookies,
+  },
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.AccessibilityStatement,
+  },
+];
+
+export const footerAccountNav: BaseNav[] = [
+  {
+    path: ShopPath.MyOrders,
+    linkText: LinkText.MyOrders,
+  },
+  {
+    path: ShopPath.Login,
+    linkText: LinkText.Login,
+  },
+];

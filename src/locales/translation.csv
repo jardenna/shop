@@ -112,6 +112,10 @@ country;Country;Land
 create;Create;Opret
 createAccount;Create account;Opret konto
 created;Created;Oprettet
+termsAndConditions;Terms and Conditions;Handelsbetingelser
+privacy;Privacy;Privatliv
+cookies;Cookies;Cookies
+accessibilityStatement;Accessibility statement;Tilgængelighedserklæring
 createdAt;Created at;Tilføjet den
 createNewAccount;Create new account;Opret en ny konto
 createNewAddress;Create new address;Opret ny adresse
