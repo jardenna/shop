@@ -10,6 +10,8 @@
 
     &:hover {
       text-decoration: underline;
+      text-decoration-thickness: 1.2px;
+      text-underline-offset: 4px;
     }
   }
 
@@ -31,24 +33,24 @@
     gap: 20px;
   }
 
-  .footer-nav-container {
-    .footer-nav-title {
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      font-size: $font-medium;
-      font-family: $font-primary-semibold;
-    }
+  .footer-nav-title {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-size: $font-medium;
+    font-family: $font-primary-semibold;
+  }
 
-    .footer-nav-list {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+  .footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-    .footer-nav-item {
-      &.active {
-        text-decoration: underline;
-      }
+  .footer-nav-item {
+    &.active {
+      text-decoration: underline;
+      text-decoration-thickness: 1.2px;
+      text-underline-offset: 4px;
     }
   }
 }

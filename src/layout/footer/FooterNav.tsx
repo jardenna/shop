@@ -10,22 +10,22 @@ const FooterNav = ({ navList, title }: FooterNavProps) => {
   const { language } = useLanguage();
 
   return (
-    <div className="footer-nav-container">
-      <nav aria-label={title} className="footer-nav">
-        <h2 className="footer-nav-title">{title}</h2>
-        <ul className="footer-nav-list">
-          {navList.map((navItem) => (
+    <nav aria-label={title} className="footer-nav">
+      <h2 className="footer-nav-title">{title}</h2>
+      <ul className="footer-nav-list">
+        {navList.map(({ linkText, path }) => (
+          <li key={linkText}>
             <NavLink
-              to={navItem.path}
-              key={navItem.linkText}
+              to={path}
+
               className="footer-nav-item"
             >
-              {language[navItem.linkText]}
+              {language[linkText]}
             </NavLink>
-          ))}
-        </ul>
-      </nav>
-    </div>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
