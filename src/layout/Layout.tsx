@@ -146,6 +146,7 @@ const Layout = () => {
           <Outlet />
           <MiniCartPopup gotoCart={handleGoToCart} />
         </main>
+        <footer>Footer</footer>
       </PageErrorBoundary>
     </div>
   );
