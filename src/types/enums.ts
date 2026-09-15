@@ -104,6 +104,7 @@ export enum IconName {
   Home = 'home',
   Image = 'image',
   Info = 'info',
+  Instagram = 'instagram',
   Kid = 'kid',
   Language = 'language',
   LayoutGrid = 'layoutGrid',

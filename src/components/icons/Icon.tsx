@@ -52,6 +52,7 @@ import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
 import FacebookIcon from './socials/FacebookIcon';
+import InstagramIcon from './socials/InstagramIcon';
 import StarIcon from './StarIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
@@ -101,6 +102,7 @@ const iconMapping = {
   home: HomeIcon,
   image: ImageIcon,
   info: InfoIcon,
+  instagram: InstagramIcon,
   kid: KidIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
