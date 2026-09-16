@@ -94,7 +94,7 @@
 }
 
 .link-text {
-  text-underline-offset: 4px;
+  text-underline-offset: $text-underline-offset;
   font-family: $font-primary-semibold;
   padding-inline: 8px;
   text-transform: uppercase;

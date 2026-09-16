@@ -24,7 +24,7 @@
 
     a {
       text-decoration: underline;
-      text-underline-offset: 4px;
+      text-underline-offset: $text-underline-offset;
     }
   }
 }
