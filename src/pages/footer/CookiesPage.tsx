@@ -30,24 +30,27 @@ const CookiesPage = () => {
           preferences, and improve your experience.
         </section>
 
-        <section className="section-item-container">
+        <section>
           <h2>Types of cookies</h2>
 
-          <div>
-            <h3>Necessary cookies</h3>
-            <p>
-              These cookies are required for essential features of the website,
-              such as navigation, shopping cart functionality and secure areas.
-              They cannot be disabled through our cookie settings.
-            </p>
-          </div>
+          <div className="section-item-container">
+            <div>
+              <h3>Necessary cookies</h3>
+              <p>
+                These cookies are required for essential features of the
+                website, such as navigation, shopping cart functionality and
+                secure areas. They cannot be disabled through our cookie
+                settings.
+              </p>
+            </div>
 
-          <div>
-            <h3>Preference cookies</h3>
-            <p>
-              These cookies remember choices you make, such as language or other
-              preferences, to provide a more personalised experience.
-            </p>
+            <div>
+              <h3>Preference cookies</h3>
+              <p>
+                These cookies remember choices you make, such as language or
+                other preferences, to provide a more personalised experience.
+              </p>
+            </div>
           </div>
         </section>
 
