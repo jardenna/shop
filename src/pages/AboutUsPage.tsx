@@ -3,7 +3,6 @@ import ImageTextGrid from '../components/imageTextGrid/ImageTextGrid';
 import PageHeader from '../components/PageHeader';
 import { useLanguage } from '../features/language/useLanguage';
 import MetaTags from '../layout/MetaTags';
-import './AboutUsPage.styles.scss';
 
 const AboutUsPage = () => {
   const { language } = useLanguage();
