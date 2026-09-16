@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import PageHeader from '../components/pageHeader/PageHeader';
+import PageHeader from '../components/PageHeader';
 import Picture from '../components/Picture';
 import { useLanguage } from '../features/language/useLanguage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
