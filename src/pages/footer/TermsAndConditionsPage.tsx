@@ -9,6 +9,18 @@ const TermsAndConditionsPage = () => {
       <section>
         <h2>General information</h2>
         <p>
+          Welcome to Fashion Fusion. These Terms & Conditions apply to the
+          Fashion Fusion website located at www.fashion-fusion and all other
+          sites, mobile sites, services, applications, platforms and tools where
+          these Terms & Conditions appear or are linked (collectively, the
+          "Site").
+        </p>
+        <p>
+          As used in these Terms & Conditions, "Fashion Fusion", "us" or "we"
+          refers to Fashion Fusion Corporation and its subsidiaries and
+          affiliates.
+        </p>
+        <p>
           These terms and conditions apply to all purchases made through our
           online store. By placing an order, you agree to these terms and
           conditions.
