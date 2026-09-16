@@ -25,6 +25,7 @@ const AboutUsPage = () => {
           <div className="about-us-content">
             <section>
               <h2>Who we are</h2>
+              <h3>We believe great style should feel effortless</h3>
               <p>
                 We are an independent online fashion store offering carefully
                 selected clothing and accessories for modern wardrobes. We

@@ -122,14 +122,16 @@
 .about-us-page {
   display: flex;
   gap: 24px;
-}
 
-.about-img-container,
-.about-us-container {
-  flex: 1;
-}
+  .about-img-container,
+  .about-us-container {
+    flex: 1;
+  }
 
-.about-img-container img {
-  max-height: rem(600px);
-  object-position: top;
+  .about-img-container {
+    img {
+      max-height: rem(600px);
+      object-position: top;
+    }
+  }
 }
