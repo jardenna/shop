@@ -3,12 +3,20 @@
 .general-page {
   max-width: rem(800px);
 
-  .general-page-header {
+  .breadcrumbs-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    display: block;
     text-align: center;
   }
 
-  .general-page-title {
+  h1 {
     font-size: $font-x-large;
+    text-box: $text-box;
+    margin-top: 8px;
   }
 }
 

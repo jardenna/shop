@@ -1,13 +1,11 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CookiesPage = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="container general-page">
-      <header className="general-page-header">
-        <h1 className="general-page-title">{language.cookies}</h1>
-      </header>
+    <MainPageContainer heading={language.cookies} className="general-page">
       <div className="generel-page-content">
         <section>
           <h2>What are cookies</h2>
@@ -79,7 +77,7 @@ const CookiesPage = () => {
           </p>
         </section>
       </div>
-    </section>
+    </MainPageContainer>
   );
 };
 
