@@ -6,7 +6,7 @@ const CookiesPage = () => {
 
   return (
     <MainPageContainer heading={language.cookies} className="general-page">
-      <div className="generel-page-content">
+      <div className="generel-page-container">
         <section>
           <h2>What are cookies</h2>
           <p>
@@ -15,7 +15,6 @@ const CookiesPage = () => {
             remember information about your visit, such as your preferences and
             settings.
           </p>
-
           <p>
             When you return to a website, cookies can help it remember you and
             provide a more personalised experience. They can also help websites
@@ -23,6 +22,7 @@ const CookiesPage = () => {
             used most often, so the website can be improved over time.
           </p>
         </section>
+
         <section className="important-info">
           We respect your privacy and never sell your personal information or
           cookie data to third parties. Any information collected through
@@ -32,7 +32,6 @@ const CookiesPage = () => {
 
         <section>
           <h2>Types of cookies</h2>
-
           <div className="section-item-container">
             <div>
               <h3>Necessary cookies</h3>
@@ -43,7 +42,6 @@ const CookiesPage = () => {
                 settings.
               </p>
             </div>
-
             <div>
               <h3>Preference cookies</h3>
               <p>
@@ -63,6 +61,7 @@ const CookiesPage = () => {
             <li>Improve the performance and user experience of our website.</li>
           </ul>
         </section>
+
         <section>
           <h2>Managing cookies</h2>
           <p>
@@ -71,6 +70,7 @@ const CookiesPage = () => {
             function.
           </p>
         </section>
+
         <section>
           <h2>Changes to this policy</h2>
           <p>
