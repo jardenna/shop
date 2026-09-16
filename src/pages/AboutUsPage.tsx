@@ -13,9 +13,9 @@ const AboutUsPage = () => {
   return (
     <>
       <MetaTags metaTitle={heading} />
-      <div aria-labelledby={aboutId}>
+      <div aria-labelledby={aboutId} className="about-page">
         <PageHeader heading={heading} ariaLabelledby={aboutId} />
-        <div className="about-us-page">
+        <div className="image-text-grid-container">
           <ImageTextGrid
             heading="Who we are"
             src="/images/about/about_us"
