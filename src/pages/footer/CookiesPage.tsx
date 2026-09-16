@@ -5,8 +5,8 @@ const CookiesPage = () => {
 
   return (
     <section className="container general-page">
-      <header>
-        <h1>{language.cookies}</h1>
+      <header className="general-page-header">
+        <h1 className="general-page-title">{language.cookies}</h1>
       </header>
       <div>
         <section>

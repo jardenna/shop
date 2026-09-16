@@ -2,6 +2,14 @@
 
 .general-page {
   max-width: rem(800px);
+
+  .general-page-header {
+    text-align: center;
+  }
+
+  .general-page-title {
+    font-size: $font-x-large;
+  }
 }
 
 .about-us-page {
