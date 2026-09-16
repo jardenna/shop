@@ -8,22 +8,36 @@ const CookiesPage = () => {
       <header className="general-page-header">
         <h1 className="general-page-title">{language.cookies}</h1>
       </header>
-      <div>
+      <div className="generel-page-content">
         <section>
           <h2>What are cookies</h2>
           <p>
             Cookies are small text files stored on your device when you visit a
-            website. They help websites remember your preferences and understand
-            how the site is being used.
+            website. They allow the website to recognise your browser and
+            remember information about your visit, such as your preferences and
+            settings.
+          </p>
+
+          <p>
+            When you return to a website, cookies can help it remember you and
+            provide a more personalised experience. They can also help websites
+            understand how visitors use their pages, such as which features are
+            used most often, so the website can be improved over time.
           </p>
         </section>
+        <section className="important-info">
+          We respect your privacy and never sell your personal information or
+          cookie data to third parties. Any information collected through
+          cookies is used only to provide essential functionality, remember your
+          preferences, and improve your experience.
+        </section>
+
         <section>
           <h2>How we use cookies</h2>
           <p>We use cookies to:</p>
           <ul>
             <li>Keep the website functioning correctly.</li>
             <li>Remember your preferences and settings.</li>
-            <li>Understand how visitors use our website.</li>
             <li>Improve the performance and user experience of our website.</li>
           </ul>
         </section>
@@ -57,14 +71,6 @@ const CookiesPage = () => {
             We may update this Cookie Policy from time to time to reflect
             changes to our website or the way we use cookies. Any updates will
             be published on this page.
-          </p>
-        </section>
-        <section>
-          <h2>Your privacy</h2>
-          <p>
-            We never sell your personal information or cookie data to third
-            parties. Any information collected through cookies is only used for
-            the purposes described in this policy.
           </p>
         </section>
       </div>
