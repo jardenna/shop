@@ -1,7 +1,6 @@
-import LayoutElement from '../../layout/LayoutElement';
-import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
-import LinkButton from '../LinkButton';
-import './_page-header.scss';
+import LayoutElement from '../layout/LayoutElement';
+import Breadcrumbs from './breadcrumbs/Breadcrumbs';
+import LinkButton from './LinkButton';
 
 type PageHeaderProps = {
   ariaLabelledby: string;

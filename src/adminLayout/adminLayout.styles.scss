@@ -14,6 +14,19 @@
   width: 100%;
   z-index: 1;
   padding: 20px;
+
+  .page-header {
+    &:has(.page-header-link) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: flex-end;
+
+      @include max-size($mini) {
+        display: block;
+      }
+    }
+  }
 }
 
 .page-cart {

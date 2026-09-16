@@ -92,3 +92,16 @@
   width: rem(100px);
   height: rem(120px);
 }
+
+.link-text {
+  text-underline-offset: $text-underline-offset;
+  font-family: $font-primary-semibold;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-wrap: nowrap;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-primary;
+  }
+}

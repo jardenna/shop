@@ -63,8 +63,6 @@ h2 {
 
 h1 {
   font-size: clamp(rem(20px), $clamp-val, $font-large);
-  display: flex;
-  align-items: center;
   text-transform: uppercase;
 }
 
