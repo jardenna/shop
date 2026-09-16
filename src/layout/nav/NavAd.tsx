@@ -19,7 +19,7 @@ const NavAd = ({
   <ImageBackground
     className="sub-nav-ad"
     as="li"
-    srcSetNew={`/images/${imageName}`}
+    srcSet={`/images/${imageName}`}
     src={`/images/${imageName}.${imgExtention}`}
     alt={alt}
   >

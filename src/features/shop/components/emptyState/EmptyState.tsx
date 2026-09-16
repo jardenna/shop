@@ -41,7 +41,7 @@ const EmptyState = ({
       <div>
         <Picture
           src={`${src}.png`}
-          srcSetNew={src}
+          srcSet={src}
           alt=""
           priority
           className="empty-state-img"

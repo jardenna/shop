@@ -17,7 +17,7 @@ const Carousel = ({ carouselList }: CarouselProps) => (
     {carouselList.map(({ alt, imgName, imgExtention = 'jpg' }, index) => (
       <li className="carousel-item" key={index}>
         <Picture
-          srcSetNew={imgName}
+          srcSet={imgName}
           alt={alt}
           src={`${imgName}.${imgExtention}`}
         />

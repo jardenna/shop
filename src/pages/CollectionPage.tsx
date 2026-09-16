@@ -194,7 +194,7 @@ const CollectionPage = () => {
             <section className="shop-product-page-content">
               <Picture
                 src={`${src}.jpg`}
-                srcSetNew={src}
+                srcSet={src}
                 alt={language[altText]}
                 ratio="16:9"
                 priority

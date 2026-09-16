@@ -16,7 +16,7 @@ const ImageTextGrid = ({ children, src, alt, heading }: ImageTextGridProps) => (
       {children}
     </div>
     <div className="image">
-      <Picture src={`${src}.jpg`} srcSetNew={src} alt={alt} />
+      <Picture src={`${src}.jpg`} srcSet={src} alt={alt} />
     </div>
   </section>
 );

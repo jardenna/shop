@@ -2,7 +2,7 @@ import type { ImgProps } from './Img';
 import Img from './Img';
 
 type PictureProps = ImgProps & {
-  srcSetNew: string;
+  srcSet: string;
 };
 
 const Picture = ({
@@ -10,11 +10,11 @@ const Picture = ({
   src,
   className,
   priority,
-  srcSetNew,
+  srcSet,
   ratio,
 }: PictureProps) => (
   <picture className={className}>
-    <source srcSet={`${srcSetNew}.avif`} type="image/avif" />
+    <source srcSet={`${srcSet}.avif`} type="image/avif" />
     <Img
       className="img-fallback"
       src={src}
