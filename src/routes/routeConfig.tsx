@@ -17,6 +17,13 @@ import ContactPage from '../pages/ContactPage';
 import DashboardPage from '../pages/DashboardPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
+import AccessibilityPage from '../pages/footer/AccessibilityPage';
+import CookiesPage from '../pages/footer/CookiesPage';
+import CustomerServicePage from '../pages/footer/CustomerServicePage';
+import FaqPage from '../pages/footer/FaqPage';
+import PrivacyPage from '../pages/footer/Privacypage';
+import ShippingAndReturnsPage from '../pages/footer/ShippingAndReturnsPage';
+import TermsAndConditionsPage from '../pages/footer/TermsAndConditionsPage';
 import HomePage from '../pages/home/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
@@ -74,6 +81,34 @@ const routeList = [
   {
     path: ShopPath.Contact,
     element: <ContactPage />,
+  },
+  {
+    path: ShopPath.Faq,
+    element: <FaqPage />,
+  },
+  {
+    path: ShopPath.AccessibilityStatement,
+    element: <AccessibilityPage />,
+  },
+  {
+    path: ShopPath.CustomerService,
+    element: <CustomerServicePage />,
+  },
+  {
+    path: ShopPath.ShippingAndReturns,
+    element: <ShippingAndReturnsPage />,
+  },
+  {
+    path: ShopPath.TermsAndConditions,
+    element: <TermsAndConditionsPage />,
+  },
+  {
+    path: ShopPath.Cookies,
+    element: <CookiesPage />,
+  },
+  {
+    path: ShopPath.Privacy,
+    element: <PrivacyPage />,
   },
   {
     path: ShopPath.Login,

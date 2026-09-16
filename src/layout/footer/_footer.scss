@@ -1,0 +1,56 @@
+@use '../../scss/globals' as *;
+
+.main-footer {
+  background-color: #191919;
+  color: $color-secondary;
+  padding-block: 20px;
+
+  a {
+    color: $color-secondary;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1.2px;
+      text-underline-offset: 4px;
+    }
+  }
+
+  .footer-shop-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-nav-title {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-size: $font-medium;
+    font-family: $font-primary-semibold;
+  }
+
+  .footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-nav-item {
+    &.active {
+      text-decoration: underline;
+      text-decoration-thickness: 1.2px;
+      text-underline-offset: 4px;
+    }
+  }
+}

@@ -51,6 +51,9 @@ import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
+import FacebookIcon from './socials/FacebookIcon';
+import InstagramIcon from './socials/InstagramIcon';
+import TiktokIcon from './socials/TiktokIcon';
 import StarIcon from './StarIcon';
 import SubCategoriesIcon from './SubCategoriesIcon';
 import SubtractIcon from './SubtractIcon';
@@ -90,6 +93,7 @@ const iconMapping = {
   error: ErrorIcon,
   eye: EyeIcon,
   eyeOff: EyeOffIcon,
+  facebook: FacebookIcon,
   filter: FilterIcon,
   grid: GridIcon,
   gridLarge: GridLargeIcon,
@@ -99,6 +103,7 @@ const iconMapping = {
   home: HomeIcon,
   image: ImageIcon,
   info: InfoIcon,
+  instagram: InstagramIcon,
   kid: KidIcon,
   language: LanguageIcon,
   layoutGrid: LayoutGridIcon,
@@ -123,6 +128,7 @@ const iconMapping = {
   subCategories: SubCategoriesIcon,
   subtract: SubtractIcon,
   success: SuccessIcon,
+  tiktok: TiktokIcon,
   trach: TrashIcon,
   undo: UndoIcon,
   upload: UploadIcon,

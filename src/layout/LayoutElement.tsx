@@ -1,11 +1,11 @@
 import type { ElementType, ReactNode } from 'react';
 
-type LayoutElementProps = {
+interface LayoutElementProps {
   children: ReactNode;
   ariaLabel?: string;
   as?: ElementType;
   className?: string;
-};
+}
 
 const LayoutElement = ({
   children,

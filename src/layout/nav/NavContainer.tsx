@@ -4,10 +4,10 @@ import type { NavProps } from './Nav';
 import Nav from './Nav';
 import NavUser from './NavUser';
 
-type NavContainerProps = NavProps & {
+interface NavContainerProps extends NavProps {
   currentUser?: UserResponse | null;
   isMenuCollapsed?: boolean;
-};
+}
 
 const NavContainer = ({
   navList,

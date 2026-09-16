@@ -69,4 +69,46 @@
       }
     }
   }
+
+  .nav-heading {
+    text-transform: uppercase;
+    padding: 20px;
+    border: $border;
+    font-family: $font-primary-semibold;
+  }
+
+  .admin-nav-container {
+    flex-grow: 1;
+
+    .nav-link {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+
+      &.active {
+        background-color: $color-primary;
+        color: $color-light-gray-10;
+      }
+
+      &:hover {
+        color: $color-primary;
+        background-color: $color-light-gray-40;
+      }
+
+      &:focus-visible {
+        background-color: $color-light-gray-40;
+        outline: transparent;
+      }
+    }
+  }
+
+  .mobile-nav-panel {
+    .admin-nav-container {
+      .nav-item {
+        border-bottom: $border;
+      }
+    }
+  }
 }

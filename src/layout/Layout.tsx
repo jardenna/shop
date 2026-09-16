@@ -20,6 +20,7 @@ import englishLang from '../locales/en.json';
 import PageErrorBoundary from '../pages/PageErrorBoundary';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
+import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
 
@@ -146,6 +147,7 @@ const Layout = () => {
           <Outlet />
           <MiniCartPopup gotoCart={handleGoToCart} />
         </main>
+        <Footer />
       </PageErrorBoundary>
     </div>
   );

@@ -6,31 +6,33 @@ import { FocusEventType } from '../../types/types';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
 
-export type BaseNav = {
+export interface BaseNav {
   linkText: LinkText;
   path: string;
-  className?: string;
   end?: boolean;
+}
+
+export interface AdminNavList extends BaseNav {
+  iconName: IconName;
+}
+
+export interface SubBaseNav extends BaseNav {
+  infoText: string;
+  className?: string;
+}
+
+export interface NavListProps extends BaseNav {
   heading?: string;
   iconName?: IconName;
-  type?: string;
-};
-
-type OmittedBaseNav = Omit<BaseNav, 'end' | 'heading' | 'iconName'>;
-
-export type SubBaseNav = OmittedBaseNav & {
-  infoText: string;
-};
-
-export type NavListProps = BaseNav & {
   subNavList?: SubBaseNav[];
-};
+  type?: string;
+}
 
-export type NavProps = {
+export interface NavProps {
   navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
-};
+}
 
 const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
   const location = useLocation();

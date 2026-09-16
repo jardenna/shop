@@ -1,30 +1,32 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type { BaseNav, NavListProps } from './Nav';
+import type { AdminNavList, BaseNav, NavListProps } from './Nav';
+
+const subNavList = [
+  {
+    path: ShopPath.Women,
+    linkText: LinkText.Women,
+    infoText: 'collectionSubWomenText',
+  },
+  {
+    path: ShopPath.Men,
+    linkText: LinkText.Men,
+    infoText: 'collectionSubMenText',
+    className: 'background-gray',
+  },
+  {
+    path: ShopPath.Kids,
+    linkText: LinkText.Kids,
+    infoText: 'collectionSubKidsText',
+  },
+];
 
 export const navList: NavListProps[] = [
   {
     path: ShopPath.Collection,
     linkText: LinkText.Collection,
     heading: 'discoverLatestTrends',
-    subNavList: [
-      {
-        path: ShopPath.Women,
-        linkText: LinkText.Women,
-        infoText: 'collectionSubWomenText',
-      },
-      {
-        path: ShopPath.Men,
-        linkText: LinkText.Men,
-        infoText: 'collectionSubMenText',
-        className: 'background-gray',
-      },
-      {
-        path: ShopPath.Kids,
-        linkText: LinkText.Kids,
-        infoText: 'collectionSubKidsText',
-      },
-    ],
+    subNavList,
   },
   {
     path: ShopPath.Sale,
@@ -41,7 +43,7 @@ export const navList: NavListProps[] = [
   },
 ];
 
-export const adminNavList: BaseNav[] = [
+export const adminNavList: AdminNavList[] = [
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
@@ -78,5 +80,67 @@ export const accountNavList: BaseNav[] = [
   {
     path: ShopPath.MyAddresses,
     linkText: LinkText.MyAddresses,
+  },
+];
+
+// Footer nav lists
+export const footerShopNav: BaseNav[] = [
+  {
+    path: ShopPath.Root,
+    linkText: LinkText.Home,
+  },
+  ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
+  {
+    path: ShopPath.Sale,
+    linkText: LinkText.Sale,
+  },
+];
+
+export const footerServiceNav: BaseNav[] = [
+  {
+    path: ShopPath.Faq,
+    linkText: LinkText.Faq,
+  },
+  {
+    path: ShopPath.ShippingAndReturns,
+    linkText: LinkText.ShippingAndReturns,
+  },
+  {
+    path: ShopPath.CustomerService,
+    linkText: LinkText.ContactCustomerService,
+  },
+];
+
+export const footerCompanyNav: BaseNav[] = [
+  {
+    path: ShopPath.AboutUs,
+    linkText: LinkText.AboutUs,
+  },
+  {
+    path: ShopPath.TermsAndConditions,
+    linkText: LinkText.TermsAndConditions,
+  },
+  {
+    path: ShopPath.Privacy,
+    linkText: LinkText.Privacy,
+  },
+  {
+    path: ShopPath.Cookies,
+    linkText: LinkText.Cookies,
+  },
+  {
+    path: ShopPath.AccessibilityStatement,
+    linkText: LinkText.AccessibilityStatement,
+  },
+];
+
+export const footerAccountNav: BaseNav[] = [
+  {
+    path: ShopPath.MyOrders,
+    linkText: LinkText.MyOrders,
+  },
+  {
+    path: ShopPath.Login,
+    linkText: LinkText.Login,
   },
 ];
