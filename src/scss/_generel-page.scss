@@ -10,29 +10,42 @@
   .general-page-title {
     font-size: $font-x-large;
   }
+}
 
-  .generel-page-content {
+.generel-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  ul {
+    list-style: disc;
+    margin: auto;
+    padding-left: 40px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 8px;
 
-    .important-info {
-      font-size: 20px;
-      border-left: 8px solid $color-blue-30;
-      padding-block: 12px;
-      padding-left: 24px;
-      text-wrap: pretty;
+    li::marker {
+      color: $color-blue-30;
     }
+  }
 
-    h2 {
-      font-size: $font-large;
-      margin-bottom: 8px;
-    }
+  .important-info {
+    font-size: 20px;
+    border-left: 8px solid $color-blue-30;
+    padding-block: 12px;
+    padding-left: 24px;
+    text-wrap: pretty;
+  }
 
-    p {
-      margin-block: 8px 4px;
-      text-wrap: pretty;
-    }
+  h2 {
+    font-size: $font-large;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-block: 8px 4px;
+    text-wrap: pretty;
   }
 }
 
