@@ -29,7 +29,7 @@ const AboutUsPage = () => {
           </ImageTextGrid>
           <ImageTextGrid
             heading="Our collection"
-            src="/images/about/about_us"
+            src="/images/about/about_us_1"
             alt=""
           >
             <h3>We focus on quality</h3>
@@ -42,7 +42,7 @@ const AboutUsPage = () => {
           </ImageTextGrid>
           <ImageTextGrid
             heading="Our approach"
-            src="/images/about/about_us"
+            src="/images/about/about_us_2"
             alt=""
           >
             <h3>We aim to make every part of the experience clear</h3>
@@ -54,7 +54,7 @@ const AboutUsPage = () => {
           </ImageTextGrid>
           <ImageTextGrid
             heading="Made for everyday"
-            src="/images/about/about_us"
+            src="/images/about/about_us_3"
             alt=""
           >
             <h3>We choose pieces that are designed for real life</h3>
