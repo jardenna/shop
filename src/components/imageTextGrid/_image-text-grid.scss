@@ -1,0 +1,25 @@
+@use '../../scss/globals' as *;
+
+.about-us-page {
+  .image-text-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    img {
+      max-height: 500px;
+      border-radius: 0;
+    }
+
+    &:nth-child(even) {
+      .text {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .image {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+}
