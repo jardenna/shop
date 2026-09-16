@@ -47,11 +47,7 @@ const AccountLayout = () => {
         </section>
         {!isMobileSize && (
           <div className="account-img-container">
-            <Picture
-              src={`${src}.jpg`}
-              srcSet={`${src}.avif`}
-              alt={language[altText]}
-            />
+            <Picture src={`${src}.jpg`} srcSet={src} alt={language[altText]} />
           </div>
         )}
       </div>

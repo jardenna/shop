@@ -118,7 +118,7 @@ const Salespage = () => {
             <section className="shop-product-page-content">
               <Picture
                 src={`${src}.jpg`}
-                srcSet={`${src}.avif`}
+                srcSet={src}
                 alt={language[altText]}
                 ratio="16:9"
                 priority

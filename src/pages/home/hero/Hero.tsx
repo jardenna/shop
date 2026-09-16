@@ -12,7 +12,7 @@ const Hero = () => {
     <ImageBackground
       alt={language.heroAltText}
       src="/images/banners/home_banner.png"
-      srcSet="/images/banners/home_banner.avif"
+      srcSet="/images/banners/home_banner"
       className="hero"
       as="section"
       hidePicture={isMobileSize}

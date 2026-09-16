@@ -41,7 +41,7 @@ const EmptyState = ({
       <div>
         <Picture
           src={`${src}.png`}
-          srcSet={`${src}.avif`}
+          srcSet={src}
           alt=""
           priority
           className="empty-state-img"
