@@ -43,9 +43,23 @@
     margin-bottom: 8px;
   }
 
+  h3 {
+    font-size: $font-medium;
+  }
+
   p {
     margin-block: 8px 4px;
     text-wrap: pretty;
+  }
+
+  .section-item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+      margin-block: 4px;
+    }
   }
 }
 

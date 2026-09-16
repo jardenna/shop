@@ -32,16 +32,7 @@ const CookiesPage = () => {
           preferences, and improve your experience.
         </section>
 
-        <section>
-          <h2>How we use cookies</h2>
-          <p>We use cookies to:</p>
-          <ul>
-            <li>Keep the website functioning correctly.</li>
-            <li>Remember your preferences and settings.</li>
-            <li>Improve the performance and user experience of our website.</li>
-          </ul>
-        </section>
-        <section>
+        <section className="section-item-container">
           <h2>Types of cookies</h2>
 
           <div>
@@ -60,6 +51,16 @@ const CookiesPage = () => {
               preferences, to provide a more personalised experience.
             </p>
           </div>
+        </section>
+
+        <section>
+          <h2>How we use cookies</h2>
+          <p>We use cookies to:</p>
+          <ul>
+            <li>Keep the website functioning correctly.</li>
+            <li>Remember your preferences and settings.</li>
+            <li>Improve the performance and user experience of our website.</li>
+          </ul>
         </section>
         <section>
           <h2>Managing cookies</h2>
