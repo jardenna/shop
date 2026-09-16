@@ -96,9 +96,9 @@
 .link-text {
   text-underline-offset: $text-underline-offset;
   font-family: $font-primary-semibold;
-  padding-inline: 8px;
   text-transform: uppercase;
   text-decoration: underline;
+  text-wrap: nowrap;
 
   &:hover {
     text-decoration: none;

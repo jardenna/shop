@@ -1,3 +1,4 @@
+import CustomerServiceLink from '../../components/CustomerServiceLink';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -70,15 +71,15 @@ const ShippingAndReturnsPage = () => {
           <h2>Damaged or incorrect items</h2>
           <p>
             If your order arrives damaged or you receive an incorrect item,
-            please contact our customer service as soon as possible. We will
-            help you resolve the issue.
+            please contact our <CustomerServiceLink /> as soon as possible. We
+            will help you resolve the issue.
           </p>
         </section>
         <section>
           <h2>Need help</h2>
           <p>
             If you have any questions about delivery or returns, please contact
-            our customer service.
+            our <CustomerServiceLink />.
           </p>
         </section>
       </div>

@@ -1,3 +1,4 @@
+import CustomerServiceLink from '../../components/CustomerServiceLink';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -30,7 +31,6 @@ const TermsAndConditionsPage = () => {
             conditions.
           </p>
         </section>
-
         <section>
           <h2>Orders</h2>
           <p>
@@ -44,7 +44,6 @@ const TermsAndConditionsPage = () => {
             from fulfilling the order.
           </p>
         </section>
-
         <section>
           <h2>Prices and payment</h2>
           <p>
@@ -53,7 +52,6 @@ const TermsAndConditionsPage = () => {
             Payment is processed securely at the time of purchase.
           </p>
         </section>
-
         <section>
           <h2>Delivery</h2>
           <p>
@@ -66,7 +64,6 @@ const TermsAndConditionsPage = () => {
             dispatched, where tracking is available.
           </p>
         </section>
-
         <section>
           <h2>Returns and refunds</h2>
           <p>
@@ -79,16 +76,14 @@ const TermsAndConditionsPage = () => {
             your refund using the original payment method.
           </p>
         </section>
-
         <section>
           <h2>Defective products</h2>
           <p>
-            If you receive a defective or incorrect product, please contact our
-            customer service as soon as possible. We will help you find an
-            appropriate solution.
+            If you receive a defective or incorrect product, please contact our{' '}
+            <CustomerServiceLink /> as soon as possible. We will help you find
+            an appropriate solution.
           </p>
         </section>
-
         <section>
           <h2>Changes to these terms</h2>
           <p>
@@ -97,12 +92,11 @@ const TermsAndConditionsPage = () => {
             website at the time you place your order.
           </p>
         </section>
-
         <section>
           <h2>Contact</h2>
           <p>
             If you have any questions about these terms and conditions, please
-            contact our customer service.
+            contact our <CustomerServiceLink />.
           </p>
         </section>
       </div>

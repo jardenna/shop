@@ -1,3 +1,4 @@
+import CustomerServiceLink from '../../components/CustomerServiceLink';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -65,8 +66,8 @@ const AccessibilityPage = () => {
         <section>
           <h2>Contact</h2>
           <p>
-            Please contact our customer service if you need assistance or would
-            like to report an accessibility issue.
+            Please contact our <CustomerServiceLink /> if you need assistance or
+            would like to report an accessibility issue.
           </p>
         </section>
       </div>

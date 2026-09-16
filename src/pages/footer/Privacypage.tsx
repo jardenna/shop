@@ -1,3 +1,4 @@
+import CustomerServiceLink from '../../components/CustomerServiceLink';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -89,7 +90,7 @@ const PrivacyPage = () => {
           <h2>Contact</h2>
           <p>
             If you have questions about how we handle your personal information,
-            please contact our customer service.
+            please contact our <CustomerServiceLink />.
           </p>
         </section>
       </div>
