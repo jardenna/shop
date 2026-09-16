@@ -1,4 +1,6 @@
+import { Link } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import { ShopPath } from '../../layout/nav/enums';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const FaqPage = () => {
@@ -106,8 +108,11 @@ const FaqPage = () => {
         <section>
           <h2>Still need help</h2>
           <p>
-            If you cannot find the answer you are looking for, our customer
-            service team is happy to help.
+            If you cannot find the answer you are looking for, our
+            <Link className="link-text" to={`/${ShopPath.CustomerService}`}>
+              customer service team
+            </Link>
+            is happy to help.
           </p>
         </section>
       </div>

@@ -92,3 +92,16 @@
   width: rem(100px);
   height: rem(120px);
 }
+
+.link-text {
+  text-underline-offset: 4px;
+  font-family: $font-primary-semibold;
+  padding-inline: 8px;
+  text-transform: uppercase;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-primary;
+  }
+}
