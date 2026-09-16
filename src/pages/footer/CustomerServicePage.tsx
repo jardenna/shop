@@ -13,7 +13,7 @@ const CustomerServicePage = () => {
         <section>
           <h2>We're here to help</h2>
           <p>
-            Have a question about your order, delivery, returns or our products?
+            Have a question about your order, delivery, returns or our products
             Our customer service team is happy to help.
           </p>
         </section>

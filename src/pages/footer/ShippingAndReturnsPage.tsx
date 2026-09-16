@@ -75,7 +75,7 @@ const ShippingAndReturnsPage = () => {
           </p>
         </section>
         <section>
-          <h2>Need help?</h2>
+          <h2>Need help</h2>
           <p>
             If you have any questions about delivery or returns, please contact
             our customer service.
