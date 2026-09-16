@@ -49,7 +49,7 @@ const AccountLayout = () => {
           <div className="account-img-container">
             <Picture
               src={`${src}.jpg`}
-              srcSet={`${src}.avif`}
+              srcSetNew={src}
               alt={language[altText]}
             />
           </div>

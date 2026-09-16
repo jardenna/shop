@@ -32,7 +32,7 @@ const NotFoundError = ({
         <Picture
           className="emoji"
           src={`${src}.png`}
-          srcSet={`${src}.avif`}
+          srcSetNew={src}
           alt={language.errorAltText}
         />
 

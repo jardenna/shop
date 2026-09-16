@@ -43,7 +43,7 @@ const MainCollectionsItem = ({
           {imgList.map((imgSrc) => (
             <Picture
               key={imgSrc}
-              srcSet={`${imgPath}/${imgSrc}.avif`}
+              srcSetNew={`${imgPath}/${imgSrc}`}
               alt={language[`${imgSrc}AltText`]}
               src={`${imgPath}/${imgSrc}.${imgExtention}`}
             />

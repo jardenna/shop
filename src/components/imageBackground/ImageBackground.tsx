@@ -5,7 +5,7 @@ import './_image-background.scss';
 
 type ImageBackgroundProps = ImgProps & {
   children: ReactNode;
-  srcSet: `${string}.avif`;
+  srcSetNew: string;
   ariaLabelledby?: string;
   as?: ElementType;
   hidePicture?: boolean;
@@ -14,7 +14,6 @@ type ImageBackgroundProps = ImgProps & {
 const ImageBackground = ({
   children,
   alt,
-  srcSet,
   src,
   as: Tag = 'div',
   hidePicture,
@@ -22,6 +21,7 @@ const ImageBackground = ({
   ariaLabelledby,
   priority,
   ratio,
+  srcSetNew,
 }: ImageBackgroundProps) => (
   <Tag
     className={`image-background ${className}`}
@@ -29,7 +29,7 @@ const ImageBackground = ({
   >
     {!hidePicture && (
       <Picture
-        srcSet={srcSet}
+        srcSetNew={srcSetNew}
         alt={alt}
         src={src}
         priority={priority}

@@ -25,7 +25,7 @@ const FashionGridItem = ({
   <ImageBackground
     as="article"
     className={`fashion-grid-item  ${className}`}
-    srcSet={`/images/home/${backgroundImageName}.avif`}
+    srcSetNew={`/images/home/${backgroundImageName}`}
     src={`/images/home/${backgroundImageName}.png`}
     alt={alt}
     ariaLabelledby={ariaLabelledby}
