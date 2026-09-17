@@ -26,6 +26,10 @@
   .footer-container {
     display: flex;
     gap: 20px;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
   }
 
   .footer-shop-info {
