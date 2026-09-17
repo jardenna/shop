@@ -45,6 +45,6 @@ export const useAuth = () => {
     isEmployee,
     isLoading,
     logout: sendLogout,
-    onReset: refetch,
+    refetch,
   };
 };
