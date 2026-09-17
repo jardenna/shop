@@ -92,7 +92,10 @@ const Salespage = () => {
     <>
       {params.category && <MetaTags metaTitle={pageHeading} />}
 
-      <section className="container shop-product-page">
+      <section
+        className="container shop-product-page"
+        aria-labelledby={ariaLabelledby}
+      >
         {!noCategoryId && (
           <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
         )}

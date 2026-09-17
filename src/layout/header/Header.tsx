@@ -46,7 +46,7 @@ const Header = ({
   isMobileSize,
   localLanguage,
 }: BaseHeaderProps & MobileProps) => (
-  <LayoutElement className="main-header">
+  <LayoutElement className="main-header" ariaLabel="main">
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (

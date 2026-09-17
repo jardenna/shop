@@ -8,7 +8,7 @@ const ProductAsideHeader = ({
   headerText,
   ariaLabelledby,
 }: ProductAsideHeaderProps) => (
-  <LayoutElement className="product-aside-header">
+  <LayoutElement className="product-aside-header" ariaLabel="product-aside">
     <h1 id={ariaLabelledby}>{headerText}</h1>
   </LayoutElement>
 );
