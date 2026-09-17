@@ -85,10 +85,6 @@ export const accountNavList: BaseNav[] = [
 
 // Footer nav lists
 export const footerShopNav: BaseNav[] = [
-  {
-    path: ShopPath.Root,
-    linkText: LinkText.Home,
-  },
   ...subNavList.map(({ path, linkText }) => ({ path, linkText })),
   {
     path: ShopPath.Sale,

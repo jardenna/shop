@@ -1,9 +1,11 @@
 @use '../../scss/globals' as *;
 
 .main-footer {
-  background-color: #191919;
+  background-color: $color-primary;
   color: $color-secondary;
-  padding-block: 20px;
+  padding-block: 52px;
+  padding-right: 40px;
+  padding-bottom: 28px;
   margin-top: 40px;
 
   a {
@@ -16,22 +18,28 @@
     }
   }
 
-  .footer-shop-info {
+  .footer-nav-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-payment-methods {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    gap: 100px;
   }
 
   .footer-container {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
+  }
+
+  .footer-shop-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 2;
+  }
+
+  .footer-social-container {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
   }
 
   .footer-nav-title {

@@ -1,6 +1,8 @@
-import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
-import PaymentMethodsList from '../../features/cart/components/PaymentMethodsList';
+import IconContent from '../../components/IconContent';
+
+import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
 import {
   footerAccountNav,
@@ -13,39 +15,39 @@ import FooterNav from './FooterNav';
 
 const Footer = () => {
   const { language } = useLanguage();
-  // Make endpoint
-  const paymentMethods: PaymentMethods[] = [
-    'visa',
-    'mastercard',
-    'paypal',
-    'mobilepay',
-  ];
 
   return (
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
-      <section className="container">
-        <article className="footer-shop-info">
-          <div className="footer-payment-methods">
-            Betalings metoder
-            <PaymentMethodsList paymentMethods={paymentMethods} />
-          </div>
-          forsendelses info
-        </article>
+      <div className="container">
         <article className="footer-container">
-          <FooterNav navList={footerShopNav} title={language.shop} />
-          <FooterNav
-            navList={footerServiceNav}
-            title={language.customerService}
-          />
-          <FooterNav navList={footerCompanyNav} title={language.company} />
-          <FooterNav navList={footerAccountNav} title={language.account} />
+          <section className="footer-shop-info">
+            <Icon
+              iconName={IconName.Logo}
+              title="Fashion Fusion Logo"
+              ariaHidden={false}
+              desc="Logo"
+            />
+
+            <div className="footer-social-container">
+              <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
+              <IconContent
+                iconName={IconName.Instagram}
+                ariaLabel="Instagram"
+              />
+              <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
+            </div>
+          </section>
+          <section className="footer-nav-container">
+            <FooterNav navList={footerCompanyNav} title={language.company} />
+            <FooterNav
+              navList={footerServiceNav}
+              title={language.customerService}
+            />
+            <FooterNav navList={footerShopNav} title={language.shop} />
+            <FooterNav navList={footerAccountNav} title={language.account} />
+          </section>
         </article>
-        {/* <article>
-          <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
-          <IconContent iconName={IconName.Instagram} ariaLabel="Instagram" />
-          <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
-        </article> */}
-      </section>
+      </div>
     </LayoutElement>
   );
 };

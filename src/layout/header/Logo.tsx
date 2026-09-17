@@ -10,7 +10,7 @@ const Logo = ({ linkTo }: { linkTo: AdminPath | string }) => (
         iconName={IconName.Logo}
         title="Fashion Fusion Logo"
         ariaHidden={false}
-        desc="Logo"
+        desc="Site logo"
       />
     </Link>
   </div>
