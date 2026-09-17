@@ -1,4 +1,6 @@
+import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import LayoutElement from '../LayoutElement';
 import {
   footerAccountNav,
@@ -16,6 +18,12 @@ const Footer = () => {
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
       <section className="container">
         <article className="footer-container">
+          <Icon
+            iconName={IconName.Logo}
+            title="Fashion Fusion Logo"
+            ariaHidden={false}
+            desc="Logo"
+          />
           <FooterNav navList={footerShopNav} title={language.shop} />
           <FooterNav
             navList={footerServiceNav}

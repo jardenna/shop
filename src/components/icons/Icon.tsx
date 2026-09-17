@@ -139,26 +139,30 @@ const iconMapping = {
   woman: WomanIcon,
 };
 
-export type IconDefaultProps = {
+export interface IconDefaultProps {
   ariaHidden?: boolean;
   className?: string;
   desc?: string;
   fill?: string;
   focusable?: boolean;
+  height?: string;
   role?: 'img';
   size?: string;
   title?: string;
-};
+  width?: string;
+}
 
 const Icon = ({
   iconName,
   size = '1.5em',
   className = '',
-  ariaHidden,
+  ariaHidden = true,
   title,
   fill,
   role,
   desc,
+  width,
+  height,
   focusable = false,
 }: IconProps) => {
   const IconComponent = iconMapping[iconName];
@@ -168,8 +172,10 @@ const Icon = ({
       size={size}
       className={className}
       focusable={focusable}
-      ariaHidden={ariaHidden === undefined ? true : undefined}
+      ariaHidden={ariaHidden}
       fill={fill}
+      width={width}
+      height={height}
       title={title}
       role={role}
       desc={desc}
