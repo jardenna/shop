@@ -23,22 +23,23 @@
     gap: 100px;
   }
 
-  .footer-shop-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-payment-methods {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
   .footer-container {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
+  }
+
+  .footer-shop-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 2;
+  }
+
+  .footer-social-container {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
   }
 
   .footer-nav-title {
