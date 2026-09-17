@@ -18,9 +18,9 @@ const Footer = () => {
 
   return (
     <LayoutElement ariaLabel="main" as="footer" className="main-footer">
-      <section className="container">
+      <div className="container">
         <article className="footer-container">
-          <div className="footer-shop-info">
+          <section className="footer-shop-info">
             <Icon
               iconName={IconName.Logo}
               title="Fashion Fusion Logo"
@@ -36,8 +36,8 @@ const Footer = () => {
               />
               <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
             </div>
-          </div>
-          <div className="footer-nav-container">
+          </section>
+          <section className="footer-nav-container">
             <FooterNav navList={footerCompanyNav} title={language.company} />
             <FooterNav
               navList={footerServiceNav}
@@ -45,9 +45,9 @@ const Footer = () => {
             />
             <FooterNav navList={footerShopNav} title={language.shop} />
             <FooterNav navList={footerAccountNav} title={language.account} />
-          </div>
+          </section>
         </article>
-      </section>
+      </div>
     </LayoutElement>
   );
 };
