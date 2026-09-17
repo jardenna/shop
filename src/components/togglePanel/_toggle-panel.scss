@@ -3,11 +3,11 @@
 .toggle-panel {
   position: fixed;
   background-color: $color-white;
-  height: calc(100svh - 88px);
+  height: calc(100svh - $header-height);
   overflow: hidden auto;
   z-index: 100;
   width: 100%;
-  top: 87px;
+  top: $header-height;
   max-width: rem(500px);
   right: 0;
   transform: translateX(100%);
