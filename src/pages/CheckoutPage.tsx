@@ -60,6 +60,7 @@ const CheckoutPage = () => {
             onReset={() => refetch}
           >
             <section className="order-flow-list" ref={addressSectionRef}>
+              aaa
               <header className="order-flow-header">
                 <OrderHeading heading={language.addresses} />
                 {checkout.addresses.length === 0 && (

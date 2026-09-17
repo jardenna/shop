@@ -5,6 +5,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
+import LayoutElement from './LayoutElement';
 import MetaTags from './MetaTags';
 import NavContainer from './nav/NavContainer';
 import { accountNavList } from './nav/navLists';
@@ -39,9 +40,9 @@ const AccountLayout = () => {
         >
           <NavContainer navList={accountNavList} className="account-nav" />
           <section className="account-page-content">
-            <header>
+            <LayoutElement ariaLabel="account">
               <h1 id={adminLayoutId}>{title}</h1>
-            </header>
+            </LayoutElement>
             <Outlet />
           </section>
         </section>
