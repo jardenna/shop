@@ -69,6 +69,11 @@ export const adminNavList: AdminNavList[] = [
     linkText: LinkText.Orders,
     iconName: IconName.Orders,
   },
+  {
+    path: ShopPath.Root,
+    linkText: LinkText.Shop,
+    iconName: IconName.Basket,
+  },
 ];
 
 export const accountNavList: BaseNav[] = [

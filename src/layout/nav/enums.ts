@@ -82,6 +82,7 @@ export enum LinkText {
   Profile = 'profile',
   Sale = 'sale',
   ShippingAndReturns = 'shippingAndReturns',
+  Shop = 'shop',
   SubCategories = 'subCategories',
   TermsAndConditions = 'termsAndConditions',
   Update = 'update',
