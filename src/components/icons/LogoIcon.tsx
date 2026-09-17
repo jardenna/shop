@@ -1,9 +1,9 @@
 import type { IconDefaultProps } from './Icon';
 
 const LogoIcon = ({
-  size,
+  width = '16.25rem',
+  height = '1.5rem',
   className,
-  ariaHidden,
   title,
   desc,
 }: IconDefaultProps) => (
@@ -11,15 +11,15 @@ const LogoIcon = ({
     role="img"
     aria-describedby="site-logo"
     xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
+    width={width}
+    height={height}
     className={className}
     viewBox="0 0 155 14"
     fillRule="evenodd"
     clipRule="evenodd"
     strokeLinejoin="round"
     strokeMiterlimit="2"
-    aria-hidden={ariaHidden}
+    fill="currentcolor"
   >
     <title id="site-logo">{title}</title>
     <desc id="site-logo">{desc}</desc>
