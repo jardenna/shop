@@ -1,3 +1,5 @@
+import IconContent from '../../components/IconContent';
+
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
@@ -24,19 +26,21 @@ const Footer = () => {
             ariaHidden={false}
             desc="Logo"
           />
-          <FooterNav navList={footerShopNav} title={language.shop} />
-          <FooterNav
-            navList={footerServiceNav}
-            title={language.customerService}
-          />
-          <FooterNav navList={footerCompanyNav} title={language.company} />
-          <FooterNav navList={footerAccountNav} title={language.account} />
+          <div className="footer-nav-container">
+            <FooterNav navList={footerCompanyNav} title={language.company} />
+            <FooterNav
+              navList={footerServiceNav}
+              title={language.customerService}
+            />
+            <FooterNav navList={footerShopNav} title={language.shop} />
+            <FooterNav navList={footerAccountNav} title={language.account} />
+          </div>
         </article>
-        {/* <article>
+        <div>
           <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
           <IconContent iconName={IconName.Instagram} ariaLabel="Instagram" />
           <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
-        </article> */}
+        </div>
       </section>
     </LayoutElement>
   );

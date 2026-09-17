@@ -3,7 +3,9 @@
 .main-footer {
   background-color: $color-primary;
   color: $color-secondary;
-  padding-block: 20px;
+  padding-block: 52px;
+  padding-right: 40px;
+  padding-bottom: 28px;
   margin-top: 40px;
 
   a {
@@ -14,6 +16,11 @@
       text-decoration-thickness: 1.2px;
       text-underline-offset: 4px;
     }
+  }
+
+  .footer-nav-container {
+    display: flex;
+    gap: 100px;
   }
 
   .footer-shop-info {
