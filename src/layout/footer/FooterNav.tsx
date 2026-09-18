@@ -12,7 +12,7 @@ const FooterNav = ({ navList, heading }: FooterNavProps) => {
   const { language } = useLanguage();
 
   return (
-    <LayoutElement ariaLabel={heading} className="footer-nav">
+    <LayoutElement as="nav" ariaLabel={heading} className="footer-nav">
       <h2 className="footer-nav-heading">{heading}</h2>
       <ul className="footer-nav-list">
         {navList.map(({ linkText, path }) => (
