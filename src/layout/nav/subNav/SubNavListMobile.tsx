@@ -3,8 +3,8 @@ import Button from '../../../components/Button';
 import ProductAsideNav from '../../../features/shop/components/ProductAsideNav';
 import { BtnVariant } from '../../../types/enums';
 import { LinkText, ShopPath } from '../enums';
-import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
+import { BaseNav } from '../navLists';
 import { subNavConfig } from './subnavConfig';
 
 interface SubNavListMobileProps {

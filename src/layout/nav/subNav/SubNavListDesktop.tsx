@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
 import NavAd from '../NavAd';
-import { SubBaseNavList } from '../Nav';
+import { SubBaseNavList } from '../navLists';
 
 type SubNavListDesktoptProps = {
   heading: string;

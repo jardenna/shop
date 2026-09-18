@@ -1,45 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
-import { IconName, KeyCode } from '../../types/enums';
+import { KeyCode } from '../../types/enums';
 import { FocusEventType } from '../../types/types';
 import LayoutElement from '../LayoutElement';
-import { LinkText } from './enums';
 import NavItem from './NavItem';
-
-export interface BaseNav {
-  linkText: LinkText;
-  path: string;
-}
-
-export interface AccountNavList {
-  linkText: LinkText;
-  path: string;
-  end?: boolean;
-}
-
-export interface AdminNavList {
-  iconName: IconName;
-  linkText: LinkText;
-  path: string;
-}
-
-export interface SubBaseNavList {
-  infoText: string;
-  linkText: LinkText;
-  path: string;
-  className?: string;
-}
-
-export interface NavListProps {
-  linkText: LinkText;
-  path: string;
-  end?: boolean;
-  heading?: string;
-  iconName?: IconName;
-  subNavList?: SubBaseNavList[];
-  type?: string;
-}
+import { NavListProps } from './navLists';
 
 export interface NavProps {
   ariaLabel: string;

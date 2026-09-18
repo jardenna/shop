@@ -1,11 +1,38 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type {
-  AccountNavList,
-  AdminNavList,
-  BaseNav,
-  NavListProps,
-} from './Nav';
+export interface BaseNav {
+  linkText: LinkText;
+  path: string;
+}
+
+export interface AccountNavList {
+  linkText: LinkText;
+  path: string;
+  end?: boolean;
+}
+
+export interface AdminNavList {
+  iconName: IconName;
+  linkText: LinkText;
+  path: string;
+}
+
+export interface SubBaseNavList {
+  infoText: string;
+  linkText: LinkText;
+  path: string;
+  className?: string;
+}
+
+export interface NavListProps {
+  linkText: LinkText;
+  path: string;
+  end?: boolean;
+  heading?: string;
+  iconName?: IconName;
+  subNavList?: SubBaseNavList[];
+  type?: string;
+}
 
 const subNavList = [
   {

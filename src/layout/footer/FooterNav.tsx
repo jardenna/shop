@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../LayoutElement';
-import { BaseNav } from '../nav/Nav';
+import { BaseNav } from '../nav/navLists';
 
 interface FooterNavProps {
   heading: string;

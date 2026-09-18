@@ -2,8 +2,8 @@ import Button from '../../components/Button';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
-import { NavListProps } from './Nav';
 import NavContainer from './NavContainer';
+import { NavListProps } from './navLists';
 
 interface MobileNavProps {
   navList: NavListProps[];
