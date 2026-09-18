@@ -17,7 +17,7 @@ const PageHeader = ({
   ariaLabelledby,
   hideBreadCrumbs,
 }: PageHeaderProps) => (
-  <LayoutElement className="page-header">
+  <LayoutElement className="page-header" ariaLabel="page">
     <div>
       {!hideBreadCrumbs && <Breadcrumbs currentLabel={heading} />}
       <h1 id={ariaLabelledby}>{heading}</h1>

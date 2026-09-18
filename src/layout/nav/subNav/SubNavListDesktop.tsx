@@ -1,12 +1,12 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
-import type { SubBaseNav } from '../Nav';
 import NavAd from '../NavAd';
+import { SubBaseNavList } from '../navLists';
 
 type SubNavListDesktoptProps = {
   heading: string;
   language: Record<string, string>;
-  subNavList: SubBaseNav[];
+  subNavList: SubBaseNavList[];
 };
 
 const SubNavListDesktop = ({

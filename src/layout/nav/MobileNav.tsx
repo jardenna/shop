@@ -2,8 +2,8 @@ import Button from '../../components/Button';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
-import { NavListProps } from './Nav';
 import NavContainer from './NavContainer';
+import { NavListProps } from './navLists';
 
 interface MobileNavProps {
   navList: NavListProps[];
@@ -34,7 +34,12 @@ const MobileNav = ({
       triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
     >
       {navHeading && <div className="nav-heading">{navHeading}</div>}
-      <NavContainer navList={navList} className={className} hideAriaHasPopup />
+      <NavContainer
+        navList={navList}
+        className={className}
+        hideAriaHasPopup
+        ariaLabel="main"
+      />
       {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
     </TogglePanel>
   );

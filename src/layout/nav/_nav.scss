@@ -12,6 +12,12 @@
       margin-bottom: 32px;
     }
 
+    @include max-size($small) {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     @include min-size($small) {
       .nav-link {
         &:focus-visible {
@@ -26,6 +32,7 @@
       padding-inline: 20px;
       display: flex;
       width: 100%;
+      text-transform: uppercase;
     }
   }
 }

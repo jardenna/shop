@@ -16,8 +16,8 @@ const MyOrderHeader = ({
   language,
   orderStatus,
 }: MyOrderHeaderProps) => (
-  <header className="my-order-header">
-    <div className="my-order-meta">
+  <div className="my-order-header">
+    <div>
       <span>
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       </span>
@@ -28,6 +28,6 @@ const MyOrderHeader = ({
       />
     </div>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
-  </header>
+  </div>
 );
 export default MyOrderHeader;

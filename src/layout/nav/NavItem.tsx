@@ -2,8 +2,8 @@ import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { AriaHasPopup, FocusEventType } from '../../types/types';
-import type { NavListProps } from './Nav';
 import SubNav from './subNav/SubNav';
+import { NavListProps } from './navLists';
 
 type NavItemProps = {
   navItem: NavListProps;

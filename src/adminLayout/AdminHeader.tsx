@@ -16,7 +16,7 @@ const AdminHeader = ({
   isLargeTabletSize,
   navHeading,
 }: AdminHeaderProps) => (
-  <LayoutElement className="admin-header">
+  <LayoutElement className="admin-header" ariaLabel="page-header">
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isLargeTabletSize ? (

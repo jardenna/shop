@@ -38,13 +38,13 @@ const Footer = () => {
             </div>
           </section>
           <section className="footer-nav-container">
-            <FooterNav navList={footerCompanyNav} title={language.company} />
+            <FooterNav navList={footerCompanyNav} heading={language.company} />
             <FooterNav
               navList={footerServiceNav}
-              title={language.customerService}
+              heading={language.customerService}
             />
-            <FooterNav navList={footerShopNav} title={language.shop} />
-            <FooterNav navList={footerAccountNav} title={language.account} />
+            <FooterNav navList={footerShopNav} heading={language.shop} />
+            <FooterNav navList={footerAccountNav} heading={language.account} />
           </section>
         </article>
       </div>

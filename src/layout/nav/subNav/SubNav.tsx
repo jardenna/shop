@@ -4,7 +4,7 @@ import { useLanguage } from '../../../features/language/useLanguage';
 import { useSubMenu } from '../../../features/shop/hooks/useSubMenu';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { LinkText } from '../enums';
-import type { SubBaseNav } from '../Nav';
+import { SubBaseNavList } from '../navLists';
 import './_sub-nav.scss';
 import SubNavListDesktop from './SubNavListDesktop';
 import SubNavListMobile from './SubNavListMobile';
@@ -12,7 +12,7 @@ import SubNavListMobile from './SubNavListMobile';
 type SubNavProps = {
   heading: string;
   isSubNavShown: boolean;
-  subNavList: SubBaseNav[];
+  subNavList: SubBaseNavList[];
   ariaControls?: string;
 };
 

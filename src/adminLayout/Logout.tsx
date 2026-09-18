@@ -10,9 +10,9 @@ interface LogoutProps {
 
 const Logout = ({ onLogout }: LogoutProps) => {
   const { language } = useLanguage();
-  const { currentUser, onReset } = useAuth();
+  const { currentUser, refetch } = useAuth();
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={refetch}>
       {currentUser && (
         <p>
           {language.welcome} {currentUser.username}

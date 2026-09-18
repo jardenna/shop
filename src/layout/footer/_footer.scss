@@ -4,7 +4,6 @@
   background-color: $color-primary;
   color: $color-secondary;
   padding-block: 52px;
-  padding-right: 40px;
   padding-bottom: 28px;
   margin-top: 40px;
 
@@ -18,21 +17,14 @@
     }
   }
 
-  .footer-nav-container {
-    display: flex;
-    gap: 100px;
-  }
-
   .footer-container {
-    display: flex;
-    gap: 20px;
-  }
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
 
-  .footer-shop-info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 2;
+    @include max-size($small) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .footer-social-container {
@@ -40,6 +32,19 @@
     align-items: center;
     gap: 28px;
     flex: 1;
+    margin-top: 20px;
+  }
+
+  .footer-nav-container {
+    display: grid;
+
+    @include grid-template-column(240px);
+
+    gap: 16px;
+
+    @include max-size($medium) {
+      width: 100%;
+    }
   }
 
   .footer-nav-title {

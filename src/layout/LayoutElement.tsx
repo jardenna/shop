@@ -1,8 +1,8 @@
 import type { ElementType, ReactNode } from 'react';
 
 interface LayoutElementProps {
+  ariaLabel: string;
   children: ReactNode;
-  ariaLabel?: string;
   as?: ElementType;
   className?: string;
 }

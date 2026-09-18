@@ -25,7 +25,7 @@ const LoginPage = () => {
     isLoading: isUserLoading,
     logout,
     isAuthReady,
-    onReset,
+    refetch,
   } = useAuth();
   // const initialState = { email: '', password: '' };
   const initialState = { email: 'lisbeth@mail.com', password: 'Lisbeth123!' };
@@ -52,6 +52,8 @@ const LoginPage = () => {
     const result = await loginUser(values).unwrap();
 
     if (result.success) {
+      await refetch();
+
       if (cartList.length > 0) {
         await syncCart(cartList).unwrap();
 
@@ -83,7 +85,7 @@ const LoginPage = () => {
     <MainPageContainer heading={language[heading]} variant="small">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={() => onReset()}
+        onReset={() => refetch()}
       >
         {currentUser && isAuthReady && !mode ? (
           <AlreadyLoggedIn

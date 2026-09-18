@@ -5,6 +5,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { getPathName, titleToCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
+import LayoutElement from './LayoutElement';
 import MetaTags from './MetaTags';
 import NavContainer from './nav/NavContainer';
 import { accountNavList } from './nav/navLists';
@@ -13,7 +14,6 @@ const AccountLayout = () => {
   const adminLayoutId = useId();
   const { pathname } = useLocation();
   const { language } = useLanguage();
-
   const pathInfo = getPathName(pathname);
   const createdTitle = titleToCamelCase(pathInfo);
   const title = language[createdTitle];
@@ -32,16 +32,20 @@ const AccountLayout = () => {
   return (
     <>
       <MetaTags metaTitle={title} />
-      <div className="container account-page">
+      <div className="account-page">
         <section
           className="account-content-container"
           aria-labelledby={adminLayoutId}
         >
-          <NavContainer navList={accountNavList} className="account-nav" />
+          <NavContainer
+            navList={accountNavList}
+            className="account-nav"
+            ariaLabel={language.account}
+          />
           <section className="account-page-content">
-            <header>
+            <LayoutElement ariaLabel="account">
               <h1 id={adminLayoutId}>{title}</h1>
-            </header>
+            </LayoutElement>
             <Outlet />
           </section>
         </section>

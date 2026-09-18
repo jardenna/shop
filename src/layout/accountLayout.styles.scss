@@ -1,7 +1,6 @@
 @use '../scss/globals' as *;
 
 .account-page {
-  height: calc(100svh - $header-height);
   display: flex;
   gap: 24px;
 
@@ -14,6 +13,7 @@
     .nav-list {
       display: flex;
       gap: 12px;
+      margin-inline: 20px;
 
       .nav-link {
         text-transform: uppercase;
@@ -38,6 +38,7 @@
   .account-page-content {
     background-color: $color-background;
     padding: 42px;
+    margin-inline: 20px;
 
     @include max-size($small) {
       padding: 12px;

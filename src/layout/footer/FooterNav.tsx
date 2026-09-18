@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
-import { NavProps } from '../nav/Nav';
+import LayoutElement from '../LayoutElement';
+import { BaseNav } from '../nav/navLists';
 
-interface FooterNavProps extends NavProps {
-  title: string;
+interface FooterNavProps {
+  heading: string;
+  navList: BaseNav[];
 }
 
-const FooterNav = ({ navList, title }: FooterNavProps) => {
+const FooterNav = ({ navList, heading }: FooterNavProps) => {
   const { language } = useLanguage();
 
   return (
-    <nav aria-label={title} className="footer-nav">
-      <h2 className="footer-nav-title">{title}</h2>
+    <LayoutElement as="nav" ariaLabel={heading} className="footer-nav">
+      <h2 className="footer-nav-heading">{heading}</h2>
       <ul className="footer-nav-list">
         {navList.map(({ linkText, path }) => (
           <li key={linkText}>
@@ -25,7 +27,7 @@ const FooterNav = ({ navList, title }: FooterNavProps) => {
           </li>
         ))}
       </ul>
-    </nav>
+    </LayoutElement>
   );
 };
 

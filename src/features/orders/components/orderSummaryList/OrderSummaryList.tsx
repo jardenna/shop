@@ -1,4 +1,5 @@
 import { CartListResponse } from '../../../../app/api/apiTypes/cartApiTypes';
+import LayoutElement from '../../../../layout/LayoutElement';
 import { getCartQuantity } from '../../../../utils/reduceQty';
 import './_order-summary-list.scss';
 import OrderSummaryItem from './OrderSummaryItem';
@@ -18,9 +19,11 @@ const OrderSummaryList = ({
 }: OrderSummaryListProps) =>
   orderItems && (
     <>
-      <h2 className="order-flow-title">
-        {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
-      </h2>
+      <LayoutElement ariaLabel="order">
+        <h2 className="order-flow-title">
+          {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
+        </h2>
+      </LayoutElement>
       <ul className="order-list">
         {orderItems.cartItems.map((cartItem) => (
           <li key={cartItem.id} className="order-list-item">

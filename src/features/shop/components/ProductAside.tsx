@@ -27,7 +27,7 @@ const ProductAside = ({
       ariaLabelledby={ariaLabelledby}
     />
     <section className={`product-aside ${className}`}>
-      <LayoutElement as="nav" ariaLabel={language.categoryNavigation}>
+      <LayoutElement as="nav" ariaLabel={language.collection}>
         <ProductAsideNav
           subMenu={subMenu}
           category={category}

@@ -14,6 +14,7 @@ import OrderSummaryList from '../features/orders/components/orderSummaryList/Ord
 import TotalPrice from '../features/orders/components/TotalPrice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
 import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
@@ -60,12 +61,12 @@ const CheckoutPage = () => {
             onReset={() => refetch}
           >
             <section className="order-flow-list" ref={addressSectionRef}>
-              <header className="order-flow-header">
+              <LayoutElement ariaLabel="address" className="order-flow-header">
                 <OrderHeading heading={language.addresses} />
                 {checkout.addresses.length === 0 && (
                   <span>({language.addressRequiredToPlaceOrder})</span>
                 )}
-              </header>
+              </LayoutElement>
               <AddressList
                 addresses={checkout.addresses}
                 language={language}

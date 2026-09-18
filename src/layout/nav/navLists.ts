@@ -1,6 +1,30 @@
 import { IconName } from '../../types/enums';
 import { AdminPath, LinkText, ShopPath } from './enums';
-import type { AdminNavList, BaseNav, NavListProps } from './Nav';
+export interface BaseNav {
+  linkText: LinkText;
+  path: string;
+}
+
+export interface SubBaseNavList extends BaseNav {
+  infoText: string;
+  className?: string;
+}
+
+export interface NavListProps extends BaseNav {
+  end?: boolean;
+  heading?: string;
+  iconName?: IconName;
+  subNavList?: SubBaseNavList[];
+  type?: string;
+}
+
+interface AccountNavList extends BaseNav {
+  end?: boolean;
+}
+
+interface AdminNavList extends BaseNav {
+  iconName: IconName;
+}
 
 const subNavList = [
   {
@@ -69,9 +93,14 @@ export const adminNavList: AdminNavList[] = [
     linkText: LinkText.Orders,
     iconName: IconName.Orders,
   },
+  {
+    path: ShopPath.Root,
+    linkText: LinkText.Shop,
+    iconName: IconName.Basket,
+  },
 ];
 
-export const accountNavList: BaseNav[] = [
+export const accountNavList: AccountNavList[] = [
   {
     path: '',
     linkText: LinkText.MyAccount,
