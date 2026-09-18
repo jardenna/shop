@@ -13,6 +13,7 @@ const NavContainer = ({
   navList,
   isMenuCollapsed,
   currentUser,
+  ariaLabel,
   className = 'main-nav-container',
   hideAriaHasPopup,
 }: NavContainerProps) => (
@@ -21,6 +22,7 @@ const NavContainer = ({
       navList={navList}
       className={className || 'main-nav-container'}
       hideAriaHasPopup={hideAriaHasPopup}
+      ariaLabel={ariaLabel}
     />
     {currentUser && (
       <NavUser currentUser={currentUser} isMenuCollapsed={isMenuCollapsed} />

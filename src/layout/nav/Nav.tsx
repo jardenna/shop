@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { IconName, KeyCode } from '../../types/enums';
 import { FocusEventType } from '../../types/types';
+import LayoutElement from '../LayoutElement';
 import { LinkText } from './enums';
 import NavItem from './NavItem';
 
@@ -16,7 +17,7 @@ export interface AdminNavList extends BaseNav {
   iconName: IconName;
 }
 
-export interface SubBaseNav extends BaseNav {
+export interface SubBaseNavList extends BaseNav {
   infoText: string;
   className?: string;
 }
@@ -24,17 +25,18 @@ export interface SubBaseNav extends BaseNav {
 export interface NavListProps extends BaseNav {
   heading?: string;
   iconName?: IconName;
-  subNavList?: SubBaseNav[];
+  subNavList?: SubBaseNavList[];
   type?: string;
 }
 
 export interface NavProps {
+  ariaLabel: string;
   navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
 }
 
-const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
+const Nav = ({ navList, className, hideAriaHasPopup, ariaLabel }: NavProps) => {
   const location = useLocation();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
 
@@ -54,7 +56,7 @@ const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
   }, [KeyCode.Esc]);
 
   return (
-    <nav className={className}>
+    <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
       <ul className="nav-list">
         {navList.map((navItem) => {
           const hasSubNav = Boolean(navItem.subNavList);
@@ -84,7 +86,7 @@ const Nav = ({ navList, className, hideAriaHasPopup }: NavProps) => {
           );
         })}
       </ul>
-    </nav>
+    </LayoutElement>
   );
 };
 

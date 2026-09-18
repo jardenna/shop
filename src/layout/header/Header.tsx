@@ -50,7 +50,7 @@ const Header = ({
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />
       {!isMobileSize ? (
-        <NavContainer navList={navList} />
+        <NavContainer navList={navList} ariaLabel="main" />
       ) : (
         <MobileNav navList={navList} />
       )}

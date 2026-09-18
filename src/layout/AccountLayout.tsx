@@ -14,7 +14,6 @@ const AccountLayout = () => {
   const adminLayoutId = useId();
   const { pathname } = useLocation();
   const { language } = useLanguage();
-
   const pathInfo = getPathName(pathname);
   const createdTitle = titleToCamelCase(pathInfo);
   const title = language[createdTitle];
@@ -38,7 +37,11 @@ const AccountLayout = () => {
           className="account-content-container"
           aria-labelledby={adminLayoutId}
         >
-          <NavContainer navList={accountNavList} className="account-nav" />
+          <NavContainer
+            navList={accountNavList}
+            className="account-nav"
+            ariaLabel={language.account}
+          />
           <section className="account-page-content">
             <LayoutElement ariaLabel="account">
               <h1 id={adminLayoutId}>{title}</h1>
