@@ -10,19 +10,31 @@ import NavItem from './NavItem';
 export interface BaseNav {
   linkText: LinkText;
   path: string;
+}
+
+export interface AccountNavList {
+  linkText: LinkText;
+  path: string;
   end?: boolean;
 }
 
-export interface AdminNavList extends BaseNav {
+export interface AdminNavList {
   iconName: IconName;
+  linkText: LinkText;
+  path: string;
 }
 
-export interface SubBaseNavList extends BaseNav {
+export interface SubBaseNavList {
   infoText: string;
+  linkText: LinkText;
+  path: string;
   className?: string;
 }
 
-export interface NavListProps extends BaseNav {
+export interface NavListProps {
+  linkText: LinkText;
+  path: string;
+  end?: boolean;
   heading?: string;
   iconName?: IconName;
   subNavList?: SubBaseNavList[];

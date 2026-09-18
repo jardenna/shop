@@ -7,14 +7,14 @@ import { BaseNav } from '../Nav';
 import NavAd from '../NavAd';
 import { subNavConfig } from './subnavConfig';
 
-type SubNavListMobileProps = {
+interface SubNavListMobileProps {
   category: LinkText;
   language: Record<string, string>;
   subMenu: ProductMenuResponse[];
   subNavList: BaseNav[];
   onClick: (id: LinkText) => void;
   onReset: () => void;
-};
+}
 
 const SubNavListMobile = ({
   subNavList,
