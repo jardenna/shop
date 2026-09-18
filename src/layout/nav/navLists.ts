@@ -5,33 +5,25 @@ export interface BaseNav {
   path: string;
 }
 
-export interface AccountNavList {
-  linkText: LinkText;
-  path: string;
-  end?: boolean;
-}
-
-export interface AdminNavList {
-  iconName: IconName;
-  linkText: LinkText;
-  path: string;
-}
-
-export interface SubBaseNavList {
+export interface SubBaseNavList extends BaseNav {
   infoText: string;
-  linkText: LinkText;
-  path: string;
   className?: string;
 }
 
-export interface NavListProps {
-  linkText: LinkText;
-  path: string;
+export interface NavListProps extends BaseNav {
   end?: boolean;
   heading?: string;
   iconName?: IconName;
   subNavList?: SubBaseNavList[];
   type?: string;
+}
+
+interface AccountNavList extends BaseNav {
+  end?: boolean;
+}
+
+interface AdminNavList extends BaseNav {
+  iconName: IconName;
 }
 
 const subNavList = [
