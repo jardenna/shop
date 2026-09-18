@@ -103,7 +103,6 @@ const SingleProductPage = () => {
   const missingSizes = displaySizeList.filter(
     (size) => !product.sizes.includes(size),
   );
-  console.log(product);
 
   return (
     <>
