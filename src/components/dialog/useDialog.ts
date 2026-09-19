@@ -1,36 +1,63 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
+import { KeyCode } from '../../types/enums';
 
-export const useDialog = (modalId: string | null) => {
+export const useDialog = (
+  modalId: string | null,
+  onClearAllValues?: () => void,
+  duration?: number,
+  transitionDuration = 500,
+) => {
   const dispatch = useAppDispatch();
   const popupRef = useRef<HTMLDialogElement | null>(null);
-
-  // Stores the element that triggered the modal
   const triggerRef = useRef<HTMLElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Close modal by resetting the modalId in Redux
   const handleClosePopup = () => {
-    dispatch(toggleModal(null));
+    setIsVisible(false);
+
+    timeoutRef.current = window.setTimeout(() => {
+      dispatch(toggleModal(null));
+    }, transitionDuration);
+
+    onClearAllValues?.();
   };
 
   // Save trigger element when modal opens, restore focus when it closes
   useEffect(() => {
     if (modalId) {
       triggerRef.current = document.activeElement as HTMLElement;
+      setIsVisible(true);
+
+      if (duration) {
+        timeoutRef.current = window.setTimeout(handleClosePopup, duration);
+      }
     } else {
       triggerRef.current?.focus();
       triggerRef.current = null;
+      setIsVisible(false);
     }
-  }, [modalId]);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [modalId, duration]);
 
   useScrollLock(Boolean(modalId));
 
-  // Make background inert (unfocusable and non-interactable) while modal is open
+  // Make background inert while modal is open
   useEffect(() => {
     const root = document.getElementById('root');
+
     if (!root) {
       return;
     }
@@ -53,8 +80,20 @@ export const useDialog = (modalId: string | null) => {
     };
   }, [modalId]);
 
-  // Trap focus inside modal (keyboard users cannot tab out)
-  useTrapFocus({ id: modalId, popupRef, enabled: modalId !== null });
+  // Trap focus inside modal
+  useTrapFocus({
+    id: modalId,
+    popupRef,
+    enabled: modalId !== null,
+  });
 
-  return { closeModalState: handleClosePopup, popupRef };
+  useKeyPress(handleClosePopup, [KeyCode.Esc]);
+
+  const popupClass = isVisible ? 'is-visible' : 'dismissed';
+
+  return {
+    closeModal: handleClosePopup,
+    popupClass,
+    popupRef,
+  };
 };

@@ -8,9 +8,7 @@ import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_dialog.scss';
-
 import { useDialog } from './useDialog';
-import { useVisibility } from './useVisibility';
 
 interface DialogProps {
   children: ReactNode;
@@ -30,25 +28,17 @@ const Dialog = ({
   isAlert,
 }: DialogProps) => {
   const modalId = useAppSelector(selectModalId);
-  const { closeModalState, popupRef } = useDialog(modalId);
   const dialogId = useId();
 
-  const { closeModalAnimated, popupClass } = useVisibility(
-    modalId === id,
-    closeModalState,
+  const { closeModal, popupClass, popupRef } = useDialog(
+    modalId === id ? modalId : null,
   );
 
-  useClickOutside(popupRef, () => {
-    closeModalAnimated();
-  }, [popupRef]);
+  useClickOutside(popupRef, closeModal, [popupRef]);
 
   if (modalId !== id || !modalId) {
     return null;
   }
-
-  const handleErrorBoundaryReset = () => {
-    closeModalAnimated();
-  };
 
   return (
     <Portal portalId="modal">
@@ -61,7 +51,7 @@ const Dialog = ({
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
-          onReset={handleErrorBoundaryReset}
+          onReset={closeModal}
         >
           {children}
         </ErrorBoundary>
