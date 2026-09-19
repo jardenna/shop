@@ -1,48 +1,64 @@
 import { useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { toggleModal } from '../../features/modalSlice';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 
-export const useDialog = (modalId: string | null) => {
-  const dispatch = useAppDispatch();
+interface UseDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const useDialog = ({ isOpen, onClose }: UseDialogProps) => {
+  const [isMounted, setIsMounted] = useState(isOpen);
+  const [isVisible, setIsVisible] = useState(isOpen);
+
   const popupRef = useRef<HTMLDialogElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   const closeModal = () => {
     setIsVisible(false);
   };
 
-  const handleAnimationEnd = () => {
-    if (!isVisible) {
-      setIsMounted(false);
-      dispatch(toggleModal(null));
-    }
-  };
-
-  // Save trigger element when modal opens, restore focus when it closes
   useEffect(() => {
-    if (modalId) {
+    if (isOpen) {
       triggerRef.current = document.activeElement as HTMLElement;
       setIsMounted(true);
-      setIsVisible(true);
+      return;
     }
-  }, [modalId]);
+
+    if (isMounted) {
+      setIsVisible(false);
+    }
+  }, [isOpen, isMounted]);
 
   useEffect(() => {
-    if (!modalId && !isMounted) {
-      triggerRef.current?.focus();
-      triggerRef.current = null;
+    if (isMounted && isOpen) {
+      setIsVisible(true);
     }
-  }, [modalId, isMounted]);
+  }, [isMounted, isOpen]);
 
-  useScrollLock(Boolean(modalId));
+  const handleAnimationEnd = () => {
+    if (isVisible) {
+      return;
+    }
 
-  // Make background inert while modal is open
+    setIsMounted(false);
+    onClose();
+  };
+
+  useKeyPress(closeModal, [KeyCode.Esc]);
+  useClickOutside(popupRef, closeModal, [popupRef]);
+
+  useScrollLock(isMounted);
+
+  useTrapFocus({
+    id: isMounted ? 'dialog' : null,
+    popupRef,
+    enabled: isMounted,
+  });
+
   useEffect(() => {
     const root = document.getElementById('root');
 
@@ -52,7 +68,7 @@ export const useDialog = (modalId: string | null) => {
 
     const children = Array.from(root.children);
 
-    if (modalId) {
+    if (isMounted) {
       children.forEach((child) => {
         if (child !== popupRef.current) {
           child.setAttribute('inert', '');
@@ -61,29 +77,24 @@ export const useDialog = (modalId: string | null) => {
     }
 
     return () => {
-      // Always remove inert when effect cleans up
       children.forEach((child) => {
         child.removeAttribute('inert');
       });
     };
-  }, [modalId]);
+  }, [isMounted]);
 
-  // Trap focus inside modal
-  useTrapFocus({
-    id: modalId,
-    popupRef,
-    enabled: modalId !== null,
-  });
-
-  useKeyPress(closeModal, [KeyCode.Esc]);
-
-  const popupClass = isVisible ? 'is-visible' : 'dismissed';
+  useEffect(() => {
+    if (!isMounted && !isOpen) {
+      triggerRef.current?.focus();
+      triggerRef.current = null;
+    }
+  }, [isMounted, isOpen]);
 
   return {
     closeModal,
     handleAnimationEnd,
     isMounted,
-    popupClass,
+    popupClass: isVisible ? 'is-visible' : 'dismissed',
     popupRef,
   };
 };
