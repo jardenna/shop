@@ -4,7 +4,7 @@ import { toggleModal } from '../../features/modalSlice';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 
-export const useModal = (modalId: string | null) => {
+export const useDialog = (modalId: string | null) => {
   const dispatch = useAppDispatch();
   const popupRef = useRef<HTMLDialogElement | null>(null);
 

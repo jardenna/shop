@@ -7,8 +7,9 @@ import { SizeVariant } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
-import './_modal.scss';
-import { useModal } from './useModal';
+import './_dialog.scss';
+
+import { useDialog } from './useDialog';
 import { useVisibility } from './useVisibility';
 
 interface DialogProps {
@@ -29,7 +30,7 @@ const Dialog = ({
   isAlert,
 }: DialogProps) => {
   const modalId = useAppSelector(selectModalId);
-  const { closeModalState, popupRef } = useModal(modalId);
+  const { closeModalState, popupRef } = useDialog(modalId);
   const dialogId = useId();
 
   const { closeModalAnimated, popupClass } = useVisibility(
