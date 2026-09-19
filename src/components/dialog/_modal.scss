@@ -1,0 +1,78 @@
+@use '../../scss/globals' as *;
+
+.modal {
+  border: 0;
+  overflow-x: clip;
+  border-radius: $border-radius;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 150;
+  padding: 20px 24px;
+
+  &.animate-top-center {
+    top: 20%;
+  }
+
+  .control-list {
+    .control-item {
+      &:has(input:focus) {
+        @include outline;
+      }
+    }
+  }
+
+  .control-item {
+    &:has(input:focus) {
+      @include outline;
+    }
+  }
+
+  &.modal-small {
+    max-width: rem(400px);
+
+    @include max-size($small) {
+      max-width: 92%;
+    }
+  }
+
+  &.modal-medium {
+    max-width: rem(752px);
+
+    @include max-size($small) {
+      max-width: 92%;
+    }
+  }
+
+  &.modal-large {
+    width: 90%;
+
+    @include max-size($large) {
+      min-width: 90%;
+    }
+
+    @include max-size($small) {
+      min-width: 100%;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .modal-title {
+    margin-bottom: 12px;
+  }
+
+  .modal-content {
+    padding-block: 12px;
+  }
+
+  .modal-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
