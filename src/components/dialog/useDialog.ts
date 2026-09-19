@@ -6,51 +6,39 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 
-export const useDialog = (
-  modalId: string | null,
-  onClearAllValues?: () => void,
-  duration?: number,
-  transitionDuration = 500,
-) => {
+export const useDialog = (modalId: string | null) => {
   const dispatch = useAppDispatch();
   const popupRef = useRef<HTMLDialogElement | null>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
-  const timeoutRef = useRef<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Close modal by resetting the modalId in Redux
-  const handleClosePopup = () => {
+  const closeModal = () => {
     setIsVisible(false);
+  };
 
-    timeoutRef.current = window.setTimeout(() => {
+  const handleAnimationEnd = () => {
+    if (!isVisible) {
+      setIsMounted(false);
       dispatch(toggleModal(null));
-    }, transitionDuration);
-
-    onClearAllValues?.();
+    }
   };
 
   // Save trigger element when modal opens, restore focus when it closes
   useEffect(() => {
     if (modalId) {
       triggerRef.current = document.activeElement as HTMLElement;
+      setIsMounted(true);
       setIsVisible(true);
+    }
+  }, [modalId]);
 
-      if (duration) {
-        timeoutRef.current = window.setTimeout(handleClosePopup, duration);
-      }
-    } else {
+  useEffect(() => {
+    if (!modalId && !isMounted) {
       triggerRef.current?.focus();
       triggerRef.current = null;
-      setIsVisible(false);
     }
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
-    };
-  }, [modalId, duration]);
+  }, [modalId, isMounted]);
 
   useScrollLock(Boolean(modalId));
 
@@ -87,12 +75,14 @@ export const useDialog = (
     enabled: modalId !== null,
   });
 
-  useKeyPress(handleClosePopup, [KeyCode.Esc]);
+  useKeyPress(closeModal, [KeyCode.Esc]);
 
   const popupClass = isVisible ? 'is-visible' : 'dismissed';
 
   return {
-    closeModal: handleClosePopup,
+    closeModal,
+    handleAnimationEnd,
+    isMounted,
     popupClass,
     popupRef,
   };

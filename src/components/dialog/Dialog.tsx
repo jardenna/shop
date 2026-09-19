@@ -4,6 +4,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectModalId } from '../../features/modalSlice';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { SizeVariant } from '../../types/types';
+import Button from '../Button';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
@@ -30,13 +31,12 @@ const Dialog = ({
   const modalId = useAppSelector(selectModalId);
   const dialogId = useId();
 
-  const { closeModal, popupClass, popupRef } = useDialog(
-    modalId === id ? modalId : null,
-  );
+  const { closeModal, handleAnimationEnd, isMounted, popupClass, popupRef } =
+    useDialog(modalId === id ? modalId : null);
 
   useClickOutside(popupRef, closeModal, [popupRef]);
 
-  if (modalId !== id || !modalId) {
+  if (!isMounted) {
     return null;
   }
 
@@ -48,12 +48,14 @@ const Dialog = ({
         ref={popupRef}
         className={`modal modal-${modalSize} ${className} ${popupClass} animate-top-center`}
         role={isAlert ? 'alertdialog' : undefined}
+        onAnimationEnd={handleAnimationEnd}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={closeModal}
         >
           {children}
+          <Button onClick={closeModal}>close</Button>
         </ErrorBoundary>
       </dialog>
       <Overlay />
