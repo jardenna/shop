@@ -15,10 +15,9 @@ const PopModal = () => {
   const miniCartRef = useRef<HTMLUListElement>(null);
 
   const isModalOpen = useAppSelector(selectIsModalOpen);
-  const shouldOpenMiniCart = isModalOpen;
 
-  const { shouldRender, transitionState } = useAnimate({
-    isOpen: shouldOpenMiniCart,
+  const { shouldRender, transitionState, handleTransitionEnd } = useAnimate({
+    isOpen: isModalOpen,
   });
 
   const handleCloseModal = () => {
@@ -30,14 +29,20 @@ const PopModal = () => {
 
   useClickOutside(miniCartRef, handleCloseModal, [miniCartRef]);
 
+  if (!shouldRender) {
+    return null;
+  }
+
   return (
     <Portal portalId="newModal">
-      <div className={`pop-modal transition ${transitionState}`}>
+      <div
+        className={`pop-modal transition ${transitionState}`}
+        onTransitionEnd={handleTransitionEnd}
+      >
         This is my new modal
         <Button onClick={handleCloseModal}>Luk</Button>
       </div>
     </Portal>
   );
 };
-
 export default PopModal;
