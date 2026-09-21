@@ -25,7 +25,7 @@ const CustomerServicePage = () => {
     });
 
   const handleOpenPopM = () => {
-    dispatch(openModal());
+    dispatch(openModal('text'));
   };
   return (
     <MainPageContainer heading="customer" className="general-page">
