@@ -9,8 +9,8 @@ const initialState: MiniCartState = {
   isOpen: false,
 };
 
-const miniCartPopupSlice = createSlice({
-  name: 'miniCartPopupSlice',
+const popModalSlice = createSlice({
+  name: 'popModalSlice',
   initialState,
   reducers: {
     openMiniCart: (state) => {
@@ -25,6 +25,6 @@ const miniCartPopupSlice = createSlice({
 export const selectIsMiniCartOpen = (state: RootState) =>
   state.miniCartIsOpen.isOpen;
 
-export const { openMiniCart, closeMiniCart } = miniCartPopupSlice.actions;
+export const { openMiniCart, closeMiniCart } = popModalSlice.actions;
 
-export default miniCartPopupSlice.reducer;
+export default popModalSlice.reducer;

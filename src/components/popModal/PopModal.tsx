@@ -6,10 +6,10 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { KeyCode } from '../../types/enums';
 import Button from '../Button';
 import Portal from '../Portal';
-import { closeMiniCart, selectIsMiniCartOpen } from './miniCartPopupSlice';
+import { closeMiniCart, selectIsMiniCartOpen } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 
-const MiniCartPopup = () => {
+const PopModal = () => {
   const dispatch = useAppDispatch();
   const miniCartRef = useRef<HTMLUListElement>(null);
 
@@ -32,10 +32,11 @@ const MiniCartPopup = () => {
   return (
     <Portal portalId="newModal">
       <dialog className={`mini-cart transition ${transitionState}`}>
+        This is my new modal
         <Button onClick={handleCloseMiniCart}>Luk</Button>
       </dialog>
     </Portal>
   );
 };
 
-export default MiniCartPopup;
+export default PopModal;
