@@ -27,6 +27,7 @@ const CustomerServicePage = () => {
   const handleOpenPopM = () => {
     dispatch(openModal('text'));
   };
+
   return (
     <MainPageContainer heading="customer" className="general-page">
       <Button onClick={handleOpenPopM}>open</Button>

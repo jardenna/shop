@@ -45,4 +45,5 @@ const PopModal = () => {
     </Portal>
   );
 };
+
 export default PopModal;
