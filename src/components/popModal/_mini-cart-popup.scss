@@ -4,8 +4,10 @@
   border: 0;
   overflow-x: clip;
   border-radius: $border-radius;
+  position: fixed;
   z-index: 150;
   padding: 20px 24px;
+  margin: 0;
   top: 16px;
   left: 50%;
   display: flex;

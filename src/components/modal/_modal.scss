@@ -9,6 +9,7 @@
   flex-direction: column;
   z-index: 150;
   padding: 20px 24px;
+  position: fixed;
 
   &.animate-top-center {
     top: 20%;
