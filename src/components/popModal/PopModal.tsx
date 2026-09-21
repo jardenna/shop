@@ -6,35 +6,36 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { KeyCode } from '../../types/enums';
 import Button from '../Button';
 import Portal from '../Portal';
-import { closeMiniCart, selectIsMiniCartOpen } from './popModalSlice';
+import './_mini-cart-popup.scss';
+import { closeModal, selectIsModalOpen } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 
 const PopModal = () => {
   const dispatch = useAppDispatch();
   const miniCartRef = useRef<HTMLUListElement>(null);
 
-  const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
-  const shouldOpenMiniCart = isMiniCartOpen;
+  const isModalOpen = useAppSelector(selectIsModalOpen);
+  const shouldOpenMiniCart = isModalOpen;
 
   const { shouldRender, transitionState } = useAnimate({
     isOpen: shouldOpenMiniCart,
   });
 
-  const handleCloseMiniCart = () => {
-    dispatch(closeMiniCart());
+  const handleCloseModal = () => {
+    dispatch(closeModal());
   };
 
-  useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
+  useKeyPress(handleCloseModal, [KeyCode.Esc]);
   useScrollLock(shouldRender);
 
-  useClickOutside(miniCartRef, handleCloseMiniCart, [miniCartRef]);
+  useClickOutside(miniCartRef, handleCloseModal, [miniCartRef]);
 
   return (
     <Portal portalId="newModal">
-      <dialog className={`mini-cart transition ${transitionState}`}>
+      <div className={`pop-modal transition ${transitionState}`}>
         This is my new modal
-        <Button onClick={handleCloseMiniCart}>Luk</Button>
-      </dialog>
+        <Button onClick={handleCloseModal}>Luk</Button>
+      </div>
     </Portal>
   );
 };

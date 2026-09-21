@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-interface MiniCartState {
+interface PopModalState {
   isOpen: boolean;
 }
 
-const initialState: MiniCartState = {
+const initialState: PopModalState = {
   isOpen: false,
 };
 
@@ -13,18 +13,18 @@ const popModalSlice = createSlice({
   name: 'popModalSlice',
   initialState,
   reducers: {
-    openMiniCart: (state) => {
+    openModal: (state) => {
       state.isOpen = true;
     },
-    closeMiniCart: (state) => {
+    closeModal: (state) => {
       state.isOpen = false;
     },
   },
 });
 
-export const selectIsMiniCartOpen = (state: RootState) =>
-  state.miniCartIsOpen.isOpen;
+export const selectIsModalOpen = (state: RootState) =>
+  state.popModalIsOpen.isOpen;
 
-export const { openMiniCart, closeMiniCart } = popModalSlice.actions;
+export const { openModal, closeModal } = popModalSlice.actions;
 
 export default popModalSlice.reducer;

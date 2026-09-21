@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Button from '../../components/Button';
 import Dialog from '../../components/dialog/Dialog';
 import { useDialog } from '../../components/dialog/useDialog';
-import { openMiniCart } from '../../features/miniCartPopupSlice';
+import { openModal } from '../../components/popModal/popModalSlice';
 import { selectModalId, toggleModal } from '../../features/modalSlice';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
@@ -24,12 +24,12 @@ const CustomerServicePage = () => {
       onClose: handleCloseModal,
     });
 
-  const handleMini = () => {
-    dispatch(openMiniCart());
+  const handleOpenPopM = () => {
+    dispatch(openModal());
   };
   return (
     <MainPageContainer heading="customer" className="general-page">
-      <Button onClick={handleMini}>open</Button>
+      <Button onClick={handleOpenPopM}>open</Button>
       <div className="size-guide-btn">
         <Button
           onClick={handleOpenModal}
