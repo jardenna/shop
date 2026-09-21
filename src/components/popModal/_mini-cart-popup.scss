@@ -16,9 +16,8 @@
   box-shadow: $box-shadow;
   opacity: 0;
   transform: translate(-50%, -100%);
-  transition:
-    opacity 300ms ease,
-    transform 300ms ease;
+
+  @include transition(opacity 300ms ease, transform 300ms ease);
 
   &.entered {
     opacity: 1;
