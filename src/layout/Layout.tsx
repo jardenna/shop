@@ -117,10 +117,6 @@ const Layout = () => {
     },
   ];
 
-  const handleGoToCart = () => {
-    navigate(`/${ShopPath.ShoppingCart}`);
-  };
-
   return (
     <div className="main-container">
       {!isMobileSize && <SkipLink />}
@@ -145,7 +141,7 @@ const Layout = () => {
       <PageErrorBoundary>
         <main id="main">
           <Outlet />
-          <MiniCartPopup gotoCart={handleGoToCart} />
+          <MiniCartPopup />
         </main>
         <Footer />
       </PageErrorBoundary>
