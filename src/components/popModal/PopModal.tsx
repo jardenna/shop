@@ -4,15 +4,22 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { KeyCode } from '../../types/enums';
-import Button from '../Button';
 import Portal from '../Portal';
 import './_mini-cart-popup.scss';
 import { closeModal, selectIsModalOpen } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 
-const PopModal = () => {
+interface PopModalProps {
+  children: React.ReactNode;
+}
+
+interface PopModalProps {
+  children: React.ReactNode;
+}
+
+const PopModal = ({ children }: PopModalProps) => {
   const dispatch = useAppDispatch();
-  const miniCartRef = useRef<HTMLUListElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const isModalOpen = useAppSelector(selectIsModalOpen);
 
@@ -26,8 +33,7 @@ const PopModal = () => {
 
   useKeyPress(handleCloseModal, [KeyCode.Esc]);
   useScrollLock(shouldRender);
-
-  useClickOutside(miniCartRef, handleCloseModal, [miniCartRef]);
+  useClickOutside(modalRef, handleCloseModal, [modalRef]);
 
   if (!shouldRender) {
     return null;
@@ -36,14 +42,13 @@ const PopModal = () => {
   return (
     <Portal portalId="newModal">
       <div
+        ref={modalRef}
         className={`pop-modal transition ${transitionState}`}
         onTransitionEnd={handleTransitionEnd}
       >
-        This is my new modal
-        <Button onClick={handleCloseModal}>Luk</Button>
+        {children}
       </div>
     </Portal>
   );
 };
-
 export default PopModal;

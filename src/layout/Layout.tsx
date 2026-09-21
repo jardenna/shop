@@ -4,7 +4,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import type { PrimaryActionBtnProps } from '../components/modal/Modal';
-import PopModal from '../components/popModal/PopModal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -147,7 +146,6 @@ const Layout = () => {
         <main id="main">
           <Outlet />
           <MiniCartPopup gotoCart={handleGoToCart} />
-          <PopModal />
         </main>
         <Footer />
       </PageErrorBoundary>
