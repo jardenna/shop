@@ -2,22 +2,31 @@
 
 .pop-modal {
   position: fixed;
-  width: fit-content;
-  height: fit-content;
   top: 16px;
-  right: 16px;
-  transform: translateX(100%);
+  left: 50%;
   z-index: 10;
   display: flex;
-  gap: 4px;
   flex-direction: column;
+  gap: 4px;
+  width: fit-content;
+  min-width: rem(340px);
+  height: fit-content;
   padding: 16px;
   background-color: $color-white;
   box-shadow: $box-shadow;
-  min-width: rem(340px);
-  transition: transform 300ms ease;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
 
   &.entered {
-    transform: translateX(0);
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &.exit {
+    opacity: 0;
+    transform: translate(-50%, -100%);
   }
 }
