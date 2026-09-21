@@ -1,23 +1,25 @@
 @use '../../scss/globals' as *;
 
 .pop-modal {
-  position: fixed;
+  border: 0;
+  overflow-x: clip;
+  border-radius: $border-radius;
+  z-index: 150;
+  padding: 20px 24px;
   top: 16px;
   left: 50%;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: fit-content;
   min-width: rem(340px);
   height: fit-content;
-  padding: 16px;
   background-color: $color-white;
   box-shadow: $box-shadow;
   opacity: 0;
   transform: translate(-50%, -100%);
 
-  @include transition(opacity 300ms ease, transform 300ms ease);
+  @include transition(all, 300ms, ease);
 
   &.entered {
     opacity: 1;

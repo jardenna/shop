@@ -8,6 +8,7 @@ import Portal from '../Portal';
 import './_mini-cart-popup.scss';
 import { closeModal, selectIsModalOpen } from './popModalSlice';
 import { useAnimate } from './useAnimate';
+import Overlay from '../overlay/Overlay';
 
 interface PopModalProps {
   children: React.ReactNode;
@@ -48,6 +49,7 @@ const PopModal = ({ children }: PopModalProps) => {
       >
         {children}
       </dialog>
+      <Overlay />
     </Portal>
   );
 };
