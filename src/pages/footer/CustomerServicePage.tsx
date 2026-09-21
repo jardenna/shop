@@ -17,16 +17,6 @@ const CustomerServicePage = () => {
 
   return (
     <MainPageContainer heading="customer" className="general-page">
-      <Button onClick={handleOpenPopM}>open</Button>
-
-      <PopModal>
-        <p>Test modal</p>
-
-        <Button type="button" onClick={handleCloseModal}>
-          Luk
-        </Button>
-      </PopModal>
-
       <div className="generel-page-container">
         <section>
           <h2>We're here to help</h2>
@@ -55,7 +45,15 @@ const CustomerServicePage = () => {
           <p>Monday–Friday: 9:00–17:00</p>
           <p>We are closed on weekends and public holidays.</p>
         </section>
-      </div>
+      </div>{' '}
+      <Button onClick={handleOpenPopM}>open</Button>
+      <PopModal>
+        <p>Test modal</p>
+
+        <Button type="button" onClick={handleCloseModal}>
+          Luk
+        </Button>
+      </PopModal>
     </MainPageContainer>
   );
 };

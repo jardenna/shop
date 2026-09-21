@@ -19,7 +19,7 @@ interface PopModalProps {
 
 const PopModal = ({ children }: PopModalProps) => {
   const dispatch = useAppDispatch();
-  const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const isModalOpen = useAppSelector(selectIsModalOpen);
 
@@ -41,14 +41,15 @@ const PopModal = ({ children }: PopModalProps) => {
 
   return (
     <Portal portalId="newModal">
-      <div
+      <dialog
         ref={modalRef}
         className={`pop-modal transition ${transitionState}`}
         onTransitionEnd={handleTransitionEnd}
       >
         {children}
-      </div>
+      </dialog>
     </Portal>
   );
 };
+
 export default PopModal;
