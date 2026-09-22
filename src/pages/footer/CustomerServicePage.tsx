@@ -1,6 +1,5 @@
 import { useId } from 'react';
-import Button from '../../components/Button';
-import PopModal from '../../components/popModal/PopModal';
+import DeleteModal from '../../components/popModal/DeleteModal';
 import TriggerModalButton from '../../components/popModal/TriggerModalButton';
 import { usePopModal } from '../../components/popModal/usePopModal';
 import MainPageContainer from '../pageContainer/MainPageContainer';
@@ -43,18 +42,12 @@ const CustomerServicePage = () => {
       <TriggerModalButton ariaControlsId={ariaControlsId} modalId="delete">
         Open delete modal
       </TriggerModalButton>
-      <PopModal
+      <DeleteModal
         modalId="delete"
         headerText="Delete"
-        isAlert
-        showCloseIcon
-        ariaControls={ariaControlsId}
-      >
-        <p>Delete something?</p>
-        <Button type="button" onClick={closeModal}>
-          Annuler
-        </Button>
-      </PopModal>
+        closeModal={closeModal}
+        ariaControlsId={ariaControlsId}
+      />
     </MainPageContainer>
   );
 };
