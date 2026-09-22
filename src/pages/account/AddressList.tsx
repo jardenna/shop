@@ -1,6 +1,9 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import IconContent from '../../components/IconContent';
+import TriggerModalButton from '../../components/popModal/TriggerModalButton';
+import { BtnVariant, IconName } from '../../types/enums';
 import type { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
@@ -35,7 +38,21 @@ const AddressList = ({
           <AddressInfoListContent address={address} username={address.name} />
 
           <div className="address-footer">
-            <DeleteAddressModal id={address.id} modalMessage={address.street} />
+            <TriggerModalButton
+              ariaControlsId={address.id}
+              modalId={address.id}
+              variant={BtnVariant.Ghost}
+            >
+              <IconContent
+                iconName={IconName.Trash}
+                ariaLabel={language.deleteAddress}
+              />
+            </TriggerModalButton>
+            <DeleteAddressModal
+              id={address.id}
+              modalMessage={address.street}
+              modalId={address.id}
+            />
             <AddressFormModal
               id={address.id}
               address={address}

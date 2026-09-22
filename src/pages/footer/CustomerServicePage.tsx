@@ -51,7 +51,6 @@ const CustomerServicePage = () => {
         isLoading={false}
         modalId="delete"
         headerText="Delete"
-        closeModal={closeModal}
         ariaControlsId={ariaControlsId}
         onDelete={handleDeleteAddress}
         modalMessage="Hello"

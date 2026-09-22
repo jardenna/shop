@@ -1,20 +1,24 @@
-import IconContent from '../../components/IconContent';
+import { useId } from 'react';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
-import ModalContainer from '../../components/modal/ModalContainer';
+import DeleteModal from '../../components/popModal/DeleteModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/addressesApiSlice';
-import { BtnVariant, IconName } from '../../types/enums';
 
-export type DeleteAddressModalProps = {
+interface DeleteAddressModalProps {
   id: string;
+  modalId: string;
   modalMessage: string;
-};
+}
 
-const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
+const DeleteAddressModal = ({
+  id,
+  modalMessage,
+  modalId,
+}: DeleteAddressModalProps) => {
+  const ariaControlsId = useId();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const [deleteAddress, { reset, isLoading }] = useDeleteAddressMutation();
+  const [deleteAddress, { isLoading }] = useDeleteAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
     await deleteAddress(id).unwrap();
@@ -22,31 +26,17 @@ const DeleteAddressModal = ({ id, modalMessage }: DeleteAddressModalProps) => {
       message: language.addressDeleted,
     });
   };
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: () => {
-      handleDeleteAddress(id);
-    },
-    label: language.delete,
-    variant: BtnVariant.Danger,
-    showBtnLoader: isLoading,
-  };
 
   return (
-    <ModalContainer
-      onBoundaryReset={reset}
-      triggerModalBtnContent={
-        <IconContent
-          iconName={IconName.Trash}
-          ariaLabel={language.deleteAddress}
-        />
-      }
-      triggerModalBtnVariant={BtnVariant.Ghost}
-      id={`delete-${id}`}
-      primaryActionBtn={primaryActionBtn}
-      modalHeaderText={language.deleteAddress}
-    >
-      {language.sureToDelete} {modalMessage}
-    </ModalContainer>
+    <DeleteModal
+      isLoading={isLoading}
+      modalId={modalId}
+      headerText={language.deleteAddress}
+      ariaControlsId={ariaControlsId}
+      onDelete={handleDeleteAddress}
+      modalMessage={modalMessage}
+      id={id}
+    />
   );
 };
 
