@@ -40,14 +40,6 @@ const CustomerServicePage = () => {
         </section>
       </div>
 
-      {/* <Button
-        onClick={() => {
-          openModal('size');
-        }}
-      >
-        Open sizeguide
-      </Button> */}
-
       <Button
         ariaControls={ariaControlsId}
         onClick={() => {
@@ -56,16 +48,6 @@ const CustomerServicePage = () => {
       >
         Open delete modal
       </Button>
-
-      {/* <SizeGuideModalNew language={language} modalId="size" /> */}
-
-      {/* <PopModal modalId="text" headerText="Test" modalSize="medium">
-        <p>Test modal</p>
-        <Button type="button" onClick={closeModal}>
-          Luk
-        </Button>
-        <Button>open</Button>
-      </PopModal> */}
 
       <PopModal
         modalId="delete"
