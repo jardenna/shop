@@ -38,7 +38,6 @@ interface ProductOptionListProps extends BaseControlGroupProps {
   initialChecked?: string;
   modalId?: string;
   values?: string[];
-  onOpenModal?: () => void;
 }
 
 const ProductOptionList = ({
@@ -58,7 +57,6 @@ const ProductOptionList = ({
   iconSize,
   type,
   modalId,
-  onOpenModal,
   iconClassName,
 }: ProductOptionListProps) => {
   const ariaControlsId = useId();
@@ -67,7 +65,6 @@ const ProductOptionList = ({
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
   const { openModal } = usePopModal();
-  console.log(onOpenModal);
 
   return (
     <div>

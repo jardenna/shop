@@ -30,7 +30,6 @@ interface CartFormProps {
   modalId?: string;
   showQuantity?: boolean;
   handleSubmit: (values: InitialShopValues) => void;
-  onOpenModal?: () => void;
 }
 
 const CartForm = ({
@@ -42,7 +41,6 @@ const CartForm = ({
   showQuantity,
   fixedFooter,
   modalId,
-  onOpenModal,
 }: CartFormProps) => {
   const { language } = useLanguage();
 
@@ -110,7 +108,6 @@ const CartForm = ({
           disabledList={sizes}
           onChange={onChange}
           options={displaySizeList}
-          onOpenModal={onOpenModal}
           name="size"
           groupTitle={{
             title: titleSize,
