@@ -12,7 +12,7 @@ import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import Button from '../../Button';
 import { usePopModal } from '../../popModal/usePopModal';
-import SizeGuideModalNew from '../../sizeGuide/SizeGuideModalNew';
+import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
 import './_product-option-list.scss';
@@ -123,7 +123,7 @@ const ProductOptionList = ({
         </div>
       )}
       {modalId && (
-        <SizeGuideModalNew
+        <SizeGuideModal
           language={language}
           modalId={modalId}
           ariaControls={ariaControlsId}

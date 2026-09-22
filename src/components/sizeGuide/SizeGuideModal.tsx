@@ -1,22 +1,26 @@
-import Modal from '../modal/Modal';
+import PopModal from '../popModal/PopModal';
 import SizeGuide from './SizeGuide';
 
 interface SizeGuideModalProps {
-  id: string;
+  ariaControls: string;
   language: Record<string, string>;
+  modalId: string;
 }
 
-const SizeGuideModal = ({ language, id }: SizeGuideModalProps) => (
-  <Modal
-    id={id}
+const SizeGuideModal = ({
+  language,
+  modalId,
+  ariaControls,
+}: SizeGuideModalProps) => (
+  <PopModal
+    modalId={modalId}
+    headerText={language.sizeGuide}
     modalSize="medium"
-    primaryActionBtn={{
-      label: 'OK',
-    }}
-    modalHeaderText={language.sizeGuide}
+    showCloseIcon
+    ariaControls={ariaControls}
   >
     <SizeGuide />
-  </Modal>
+  </PopModal>
 );
 
 export default SizeGuideModal;
