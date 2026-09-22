@@ -1,21 +1,17 @@
-import { useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { KeyCode } from '../../types/enums';
+import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_mini-cart-popup.scss';
 import { closeModal, selectIsModalOpen } from './popModalSlice';
 import { useAnimate } from './useAnimate';
-import Overlay from '../overlay/Overlay';
 
 interface PopModalProps {
-  children: React.ReactNode;
-}
-
-interface PopModalProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const PopModal = ({ children }: PopModalProps) => {
