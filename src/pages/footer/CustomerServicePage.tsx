@@ -1,11 +1,9 @@
 import { useId } from 'react';
-import Button from '../../components/Button';
 import PopModal from '../../components/popModal/PopModal';
-import { usePopModal } from '../../components/popModal/usePopModal';
+import TriggerModalButton from '../../components/popModal/TriggerModalButton';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
-  const { openModal } = usePopModal();
   const ariaControlsId = useId();
 
   return (
@@ -39,16 +37,11 @@ const CustomerServicePage = () => {
           <p>We are closed on weekends and public holidays.</p>
         </section>
       </div>
-
-      <Button
-        ariaControls={ariaControlsId}
-        onClick={() => {
-          openModal('delete');
-        }}
-      >
-        Open delete modal
-      </Button>
-
+      <TriggerModalButton
+        ariaControlsId={ariaControlsId}
+        modalId="delete"
+        label="Open delete modal"
+      />
       <PopModal
         modalId="delete"
         headerText="Delete"
