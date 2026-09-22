@@ -33,7 +33,7 @@ export const useMessagePopup = (messagePopupId?: string) => {
     };
 
     if (withDelay) {
-      setTimeout(addPopup, 50);
+      setTimeout(addPopup, 500);
       return;
     }
 

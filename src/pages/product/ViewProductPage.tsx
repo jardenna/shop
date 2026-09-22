@@ -1,12 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CartFooter from '../../components/adminCart/CartFooter';
+import CartFooterNew from '../../components/adminCart/CartFooterNew';
 import CartRight from '../../components/adminCart/CartRight';
 import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
 import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonThreeCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCarts';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -15,7 +14,6 @@ import {
   useGetProductByIdQuery,
 } from '../../features/products/productApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
-import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -35,7 +33,8 @@ const ViewProductPage = () => {
     error,
   } = useGetProductByIdQuery(id || '');
 
-  const [deleteProduct] = useDeleteProductMutation();
+  const [deleteProduct, { isLoading: isDeleteLoading }] =
+    useDeleteProductMutation();
 
   if (isError) {
     return (
@@ -64,13 +63,6 @@ const ViewProductPage = () => {
         componentType: 'notification',
       });
     }
-  };
-
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: handleDeleteProduct,
-    label: language.delete,
-    variant: BtnVariant.Danger,
-    showBtnLoader: isLoading,
   };
 
   const mainCategory = product ? product.categoryName : '';
@@ -124,12 +116,13 @@ const ViewProductPage = () => {
                 }
                 statusMessage={statusMessage}
               />
-              <CartFooter
+              <CartFooterNew
+                isLoading={isDeleteLoading}
                 id={product.id}
-                primaryActionBtn={primaryActionBtn}
                 name={product.productName}
                 modalHeaderText={language.deleteProduct}
                 linkTo={`${AdminPath.AdminProductUpdate}/${id}`}
+                onDelete={handleDeleteProduct}
               />
             </section>
           </AdminPageContainer>
