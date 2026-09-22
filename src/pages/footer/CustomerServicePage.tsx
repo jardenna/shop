@@ -4,7 +4,7 @@ import { usePopModal } from '../../components/popModal/usePopModal';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
-  const { closeModal, openModal } = usePopModal();
+  const { openModal } = usePopModal();
 
   return (
     <MainPageContainer heading="customer" className="general-page">
@@ -38,13 +38,13 @@ const CustomerServicePage = () => {
         </section>
       </div>
 
-      <Button
+      {/* <Button
         onClick={() => {
-          openModal('text');
+          openModal('size');
         }}
       >
-        Open text modal
-      </Button>
+        Open sizeguide
+      </Button> */}
 
       <Button
         onClick={() => {
@@ -54,13 +54,15 @@ const CustomerServicePage = () => {
         Open delete modal
       </Button>
 
-      <PopModal modalId="text" headerText="Test" modalSize="medium">
+      {/* <SizeGuideModalNew language={language} modalId="size" /> */}
+
+      {/* <PopModal modalId="text" headerText="Test" modalSize="medium">
         <p>Test modal</p>
         <Button type="button" onClick={closeModal}>
           Luk
         </Button>
         <Button>open</Button>
-      </PopModal>
+      </PopModal> */}
 
       <PopModal modalId="delete" headerText="Delete" isAlert showCloseIcon>
         <p>Delete something?</p>

@@ -11,7 +11,8 @@ import type {
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import Button from '../../Button';
-import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
+import { usePopModal } from '../../popModal/usePopModal';
+import SizeGuideModalNew from '../../sizeGuide/SizeGuideModalNew';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
 import './_product-option-list.scss';
@@ -65,6 +66,9 @@ const ProductOptionList = ({
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
+  const { openModal } = usePopModal();
+  console.log(onOpenModal);
+
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
@@ -103,19 +107,22 @@ const ProductOptionList = ({
         ))}
       </ul>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
+
       {modalId && (
         <div className="size-guide-btn">
           <Button
-            variant={BtnVariant.Ghost}
-            onClick={onOpenModal}
             ariaControls={ariaControlsId}
             ariaHasPopup="dialog"
+            variant={BtnVariant.Ghost}
+            onClick={() => {
+              openModal(modalId);
+            }}
           >
             {language.sizeGuide}
           </Button>
         </div>
       )}
-      {modalId && <SizeGuideModal language={language} id={modalId} />}
+      {modalId && <SizeGuideModalNew language={language} modalId={modalId} />}
     </div>
   );
 };
