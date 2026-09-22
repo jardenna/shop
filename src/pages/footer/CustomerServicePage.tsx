@@ -1,14 +1,15 @@
-import { useLanguage } from '../../features/language/useLanguage';
+import { useId } from 'react';
+import Button from '../../components/Button';
+import PopModal from '../../components/popModal/PopModal';
+import { usePopModal } from '../../components/popModal/usePopModal';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
-  const { language } = useLanguage();
+  const { openModal } = usePopModal();
+  const ariaControlsId = useId();
 
   return (
-    <MainPageContainer
-      heading={language.contactCustomerService}
-      className="general-page"
-    >
+    <MainPageContainer heading="customer" className="general-page">
       <div className="generel-page-container">
         <section>
           <h2>We're here to help</h2>
@@ -38,8 +39,26 @@ const CustomerServicePage = () => {
           <p>We are closed on weekends and public holidays.</p>
         </section>
       </div>
+
+      <Button
+        ariaControls={ariaControlsId}
+        onClick={() => {
+          openModal('delete');
+        }}
+      >
+        Open delete modal
+      </Button>
+
+      <PopModal
+        modalId="delete"
+        headerText="Delete"
+        isAlert
+        showCloseIcon
+        ariaControls={ariaControlsId}
+      >
+        <p>Delete something?</p>
+      </PopModal>
     </MainPageContainer>
   );
 };
-
 export default CustomerServicePage;

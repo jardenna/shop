@@ -11,6 +11,7 @@ import type {
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import Button from '../../Button';
+import { usePopModal } from '../../popModal/usePopModal';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';
@@ -37,7 +38,6 @@ interface ProductOptionListProps extends BaseControlGroupProps {
   initialChecked?: string;
   modalId?: string;
   values?: string[];
-  onOpenModal?: () => void;
 }
 
 const ProductOptionList = ({
@@ -57,7 +57,6 @@ const ProductOptionList = ({
   iconSize,
   type,
   modalId,
-  onOpenModal,
   iconClassName,
 }: ProductOptionListProps) => {
   const ariaControlsId = useId();
@@ -65,10 +64,11 @@ const ProductOptionList = ({
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
+  const { openModal } = usePopModal();
+
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
-
       <ul
         className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}
@@ -103,19 +103,28 @@ const ProductOptionList = ({
         ))}
       </ul>
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
+
       {modalId && (
         <div className="size-guide-btn">
           <Button
-            variant={BtnVariant.Ghost}
-            onClick={onOpenModal}
             ariaControls={ariaControlsId}
             ariaHasPopup="dialog"
+            variant={BtnVariant.Ghost}
+            onClick={() => {
+              openModal(modalId);
+            }}
           >
             {language.sizeGuide}
           </Button>
         </div>
       )}
-      {modalId && <SizeGuideModal language={language} id={modalId} />}
+      {modalId && (
+        <SizeGuideModal
+          language={language}
+          modalId={modalId}
+          ariaControls={ariaControlsId}
+        />
+      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router';
 import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
+import { useLocation } from 'react-router';
 
 export const useModal = (modalId: string | null) => {
   const location = useLocation();

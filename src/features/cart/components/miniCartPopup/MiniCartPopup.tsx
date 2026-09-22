@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
@@ -8,6 +9,7 @@ import { useAnimatedMount } from '../../../../components/transition/useAnimatedM
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
+import { ShopPath } from '../../../../layout/nav/enums';
 import { KeyCode } from '../../../../types/enums';
 import { selectUser } from '../../../auth/authSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -21,12 +23,9 @@ import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 import MiniCartInfo from './MiniCartInfo';
 
-interface MiniCartPopupProps {
-  gotoCart: () => void;
-}
-
-const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
+const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
@@ -47,6 +46,10 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
 
   const handleCloseMiniCart = () => {
     dispatch(closeMiniCart());
+  };
+
+  const handleGoToCart = () => {
+    navigate(`/${ShopPath.ShoppingCart}`);
   };
 
   useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
@@ -77,7 +80,7 @@ const MiniCartPopup = ({ gotoCart }: MiniCartPopupProps) => {
           />
           <OrderList orders={cartItems} language={language} />
           <TotalPrice price={summary.totalPrice} />
-          <Button onClick={gotoCart}>{language.bag}</Button>
+          <Button onClick={handleGoToCart}>{language.bag}</Button>
         </section>
       </ErrorBoundary>
     </Portal>

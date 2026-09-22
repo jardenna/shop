@@ -16,6 +16,18 @@
   box-shadow: $box-shadow;
   min-width: rem(340px);
 
+  &.enter {
+    transform: translateX(100%);
+  }
+
+  &.entered {
+    transform: translateX(0);
+  }
+
+  &.exit {
+    transform: translateX(100%);
+  }
+
   .total-price {
     box-shadow: none;
   }
@@ -30,18 +42,6 @@
       width: rem(68px);
       height: rem(112px);
     }
-  }
-
-  &.enter {
-    transform: translateX(100%);
-  }
-
-  &.entered {
-    transform: translateX(0);
-  }
-
-  &.exit {
-    transform: translateX(100%);
   }
 
   .order-cart {

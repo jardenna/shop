@@ -19,7 +19,6 @@ import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { openMiniCart } from '../../../miniCartPopupSlice';
-import { toggleModal } from '../../../modalSlice';
 import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
 import CartForm, { InitialShopValues } from './CartForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
@@ -85,12 +84,6 @@ const SingleProductPurchaseSection = ({
 
     onHidePanel();
     dispatch(openMiniCart());
-  };
-
-  const handleOpenModal = () => {
-    if (modalId) {
-      dispatch(toggleModal(modalId));
-    }
   };
 
   async function handleSubmitCartItem(values: InitialShopValues) {
@@ -231,7 +224,6 @@ const SingleProductPurchaseSection = ({
         showQuantity
         fixedFooter
         modalId={modalId}
-        onOpenModal={handleOpenModal}
       />
     </ErrorBoundary>
   );
