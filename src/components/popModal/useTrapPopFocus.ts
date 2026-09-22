@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface UseTrapFocusProps {
   enabled: boolean;
@@ -6,6 +6,8 @@ interface UseTrapFocusProps {
 }
 
 export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
+  const triggerRef = useRef<HTMLElement | null>(null);
+
   const getFocusableElements = () => {
     if (!popupRef.current) {
       return [];
@@ -22,6 +24,8 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
     if (!enabled) {
       return;
     }
+
+    triggerRef.current = document.activeElement as HTMLElement;
 
     const focusModal = () => {
       const focusableElements = getFocusableElements();
@@ -79,5 +83,14 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
     return () => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
+  }, [enabled]);
+
+  useEffect(() => {
+    if (enabled) {
+      return;
+    }
+
+    triggerRef.current?.focus();
+    triggerRef.current = null;
   }, [enabled]);
 };
