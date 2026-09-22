@@ -69,7 +69,6 @@ const ProductOptionList = ({
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
-
       <ul
         className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}
