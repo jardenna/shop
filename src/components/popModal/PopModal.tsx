@@ -10,6 +10,7 @@ import './_mini-cart-popup.scss';
 import { selectModalId } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 import { usePopModal } from './usePopModal';
+import { useTrapPopFocus } from './useTrapPopFocus';
 
 interface PopModalProps {
   children: ReactNode;
@@ -32,6 +33,10 @@ const PopModal = ({ children, modalId }: PopModalProps) => {
   useKeyPress(closeModal, [KeyCode.Esc]);
   useScrollLock(shouldRender);
   useClickOutside(modalRef, closeModal, [modalRef]);
+  useTrapPopFocus({
+    popupRef: modalRef,
+    enabled: shouldRender,
+  });
 
   if (!shouldRender) {
     return null;
