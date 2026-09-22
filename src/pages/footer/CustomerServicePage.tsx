@@ -1,28 +1,14 @@
-import { useAppDispatch } from '../../app/hooks';
 import Button from '../../components/Button';
 import PopModal from '../../components/popModal/PopModal';
-import { closeModal, openModal } from '../../components/popModal/popModalSlice';
+import { usePopModal } from '../../components/popModal/usePopModal';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
-  const dispatch = useAppDispatch();
-
-  const handleOpenTextModal = () => {
-    dispatch(openModal('text'));
-  };
-
-  const handleOpenDeleteModal = () => {
-    dispatch(openModal('delete'));
-  };
-
-  const handleCloseModal = () => {
-    dispatch(closeModal());
-  };
+  const { closeModal, openModal } = usePopModal();
 
   return (
     <MainPageContainer heading="customer" className="general-page">
       <div className="generel-page-container">
-        {' '}
         <section>
           <h2>We're here to help</h2>
           <p>
@@ -52,20 +38,33 @@ const CustomerServicePage = () => {
         </section>
       </div>
 
-      <Button onClick={handleOpenTextModal}>Open text modal</Button>
+      <Button
+        onClick={() => {
+          openModal('text');
+        }}
+      >
+        Open text modal
+      </Button>
 
-      <Button onClick={handleOpenDeleteModal}>Open delete modal</Button>
+      <Button
+        onClick={() => {
+          openModal('delete');
+        }}
+      >
+        Open delete modal
+      </Button>
 
       <PopModal modalId="text">
         <p>Test modal</p>
-        <Button type="button" onClick={handleCloseModal}>
+        <Button type="button" onClick={closeModal}>
           Luk
         </Button>
+        <Button>open</Button>
       </PopModal>
 
       <PopModal modalId="delete">
         <p>Delete something?</p>
-        <Button type="button" onClick={handleCloseModal}>
+        <Button type="button" onClick={closeModal}>
           Luk
         </Button>
       </PopModal>
