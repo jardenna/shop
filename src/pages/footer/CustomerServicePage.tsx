@@ -54,7 +54,7 @@ const CustomerServicePage = () => {
         Open delete modal
       </Button>
 
-      <PopModal modalId="text">
+      <PopModal modalId="text" headerText="Test" modalSize="medium">
         <p>Test modal</p>
         <Button type="button" onClick={closeModal}>
           Luk
@@ -62,11 +62,8 @@ const CustomerServicePage = () => {
         <Button>open</Button>
       </PopModal>
 
-      <PopModal modalId="delete">
+      <PopModal modalId="delete" headerText="Delete" isAlert showCloseIcon>
         <p>Delete something?</p>
-        <Button type="button" onClick={closeModal}>
-          Luk
-        </Button>
       </PopModal>
     </MainPageContainer>
   );
