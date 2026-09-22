@@ -6,8 +6,12 @@ import PopModal from './PopModal';
 interface DeleteModalProps {
   ariaControlsId: string;
   headerText: string;
+  id: string;
+  isLoading: boolean;
   modalId: string;
+  modalMessage: string;
   closeModal: () => void;
+  onDelete: (id: string) => void;
 }
 
 const DeleteModal = ({
@@ -15,8 +19,16 @@ const DeleteModal = ({
   closeModal,
   ariaControlsId,
   headerText,
+  onDelete,
+  modalMessage,
+  isLoading,
+  id,
 }: DeleteModalProps) => {
   const { language } = useLanguage();
+
+  const handleDeleteItem = () => {
+    onDelete(id);
+  };
 
   return (
     <PopModal
@@ -24,7 +36,7 @@ const DeleteModal = ({
       headerText={headerText}
       ariaControls={ariaControlsId}
     >
-      {language.sureToDelete}
+      {language.sureToDelete} {modalMessage}
       <footer className="footer">
         <Button
           type="button"
@@ -33,7 +45,12 @@ const DeleteModal = ({
         >
           {language.cancel}
         </Button>
-        <Button type="button" onClick={closeModal} variant={BtnVariant.Danger}>
+        <Button
+          showBtnLoader={isLoading}
+          type="button"
+          onClick={handleDeleteItem}
+          variant={BtnVariant.Danger}
+        >
           {language.delete}
         </Button>
       </footer>

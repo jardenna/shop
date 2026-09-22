@@ -8,6 +8,11 @@ const CustomerServicePage = () => {
   const ariaControlsId = useId();
   const { closeModal } = usePopModal();
 
+  const handleDeleteAddress = (id: string) => {
+    console.log(id);
+    closeModal();
+  };
+
   return (
     <MainPageContainer heading="customer" className="general-page">
       <div className="generel-page-container">
@@ -43,10 +48,14 @@ const CustomerServicePage = () => {
         Open delete modal
       </TriggerModalButton>
       <DeleteModal
+        isLoading={false}
         modalId="delete"
         headerText="Delete"
         closeModal={closeModal}
         ariaControlsId={ariaControlsId}
+        onDelete={handleDeleteAddress}
+        modalMessage="Hello"
+        id="id"
       />
     </MainPageContainer>
   );
