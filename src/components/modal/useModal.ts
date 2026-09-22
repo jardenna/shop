@@ -3,9 +3,10 @@ import { useAppDispatch } from '../../app/hooks';
 import { toggleModal } from '../../features/modalSlice';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
+import { useLocation } from 'react-router';
 
 export const useModal = (modalId: string | null) => {
-  // const location = useLocation();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const popupRef = useRef<HTMLDialogElement | null>(null);
 
@@ -28,11 +29,11 @@ export const useModal = (modalId: string | null) => {
   }, [modalId]);
 
   // Close modal whenever the route/location changes
-  // useEffect(() => {
-  //   if (modalId) {
-  //     handleClosePopup();
-  //   }
-  // }, [location, dispatch]);
+  useEffect(() => {
+    if (modalId) {
+      handleClosePopup();
+    }
+  }, [location, dispatch]);
 
   useScrollLock(Boolean(modalId));
 
