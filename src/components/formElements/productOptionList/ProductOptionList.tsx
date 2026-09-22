@@ -58,7 +58,7 @@ const ProductOptionList = ({
   modalId,
   iconClassName,
 }: ProductOptionListProps) => {
-  const ariaControlsId = useId();
+  const ariaControls = useId();
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
@@ -104,18 +104,19 @@ const ProductOptionList = ({
       {modalId && (
         <div className="size-guide-btn">
           <TriggerModalButton
-            ariaControlsId={ariaControlsId}
+            ariaControls={ariaControls}
             variant={BtnVariant.Ghost}
             modalId={modalId}
-            label={language.sizeGuide}
-          />
+          >
+            {language.sizeGuide}
+          </TriggerModalButton>
         </div>
       )}
       {modalId && (
         <SizeGuideModal
           language={language}
           modalId={modalId}
-          ariaControls={ariaControlsId}
+          ariaControls={ariaControls}
         />
       )}
     </div>
