@@ -15,7 +15,7 @@ import { useAnimate } from './useAnimate';
 import { usePopModal } from './usePopModal';
 import { useTrapPopFocus } from './useTrapPopFocus';
 
-interface PopModalProps {
+export interface PopModalProps {
   ariaControls: string;
   children: ReactNode;
   headerText: string;

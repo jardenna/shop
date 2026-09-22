@@ -1,12 +1,17 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { DeleteAddressModalProps } from '../../pages/account/DeleteAddressModal';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import PopModal from './PopModal';
 import { usePopModal } from './usePopModal';
 
-interface DeleteModalProps extends DeleteAddressModalProps {
+export interface BaseDeleteModalProps {
   ariaControls: string;
+  itemId: string;
+  modalId: string;
+  modalMessage: string;
+}
+
+export interface DeleteModalProps extends BaseDeleteModalProps {
   headerText: string;
   isLoading: boolean;
   onDelete: (id: string) => void;
