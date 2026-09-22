@@ -11,8 +11,10 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
       return [];
     }
 
-    return popupRef.current.querySelectorAll<HTMLElement>(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    return Array.from(
+      popupRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
     );
   };
 
@@ -23,6 +25,11 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
     const focusModal = () => {
       const focusableElements = getFocusableElements();
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
       const firstFocusableElement = focusableElements[0];
 
       firstFocusableElement.focus();
@@ -46,6 +53,11 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
       }
 
       const focusableElements = getFocusableElements();
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
       const firstFocusableElement = focusableElements[0];
       const lastFocusableElement =
         focusableElements[focusableElements.length - 1];
