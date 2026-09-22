@@ -1,33 +1,31 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import { DeleteAddressModalProps } from '../../pages/account/DeleteAddressModal';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import PopModal from './PopModal';
 import { usePopModal } from './usePopModal';
 
-interface DeleteModalProps {
-  ariaControlsId: string;
+interface DeleteModalProps extends DeleteAddressModalProps {
+  ariaControls: string;
   headerText: string;
-  id: string;
   isLoading: boolean;
-  modalId: string;
-  modalMessage: string;
   onDelete: (id: string) => void;
 }
 
 const DeleteModal = ({
   modalId,
-  ariaControlsId,
+  ariaControls,
   headerText,
   onDelete,
   modalMessage,
   isLoading,
-  id,
+  itemId,
 }: DeleteModalProps) => {
   const { language } = useLanguage();
   const { closeModal } = usePopModal();
 
   const handleDeleteItem = () => {
-    onDelete(id);
+    onDelete(itemId);
     closeModal();
   };
 
@@ -35,7 +33,7 @@ const DeleteModal = ({
     <PopModal
       modalId={modalId}
       headerText={headerText}
-      ariaControls={ariaControlsId}
+      ariaControls={ariaControls}
     >
       {language.sureToDelete} {modalMessage}
       <footer className="footer">

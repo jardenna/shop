@@ -5,7 +5,7 @@ import { usePopModal } from '../../components/popModal/usePopModal';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
-  const ariaControlsId = useId();
+  const ariaControls = useId();
   const { closeModal } = usePopModal();
 
   const handleDeleteAddress = (id: string) => {
@@ -44,17 +44,17 @@ const CustomerServicePage = () => {
           <p>We are closed on weekends and public holidays.</p>
         </section>
       </div>
-      <TriggerModalButton ariaControlsId={ariaControlsId} modalId="delete">
+      <TriggerModalButton ariaControls={ariaControls} modalId="delete">
         Open delete modal
       </TriggerModalButton>
       <DeleteModal
         isLoading={false}
         modalId="delete"
         headerText="Delete"
-        ariaControlsId={ariaControlsId}
+        ariaControls={ariaControls}
         onDelete={handleDeleteAddress}
         modalMessage="Hello"
-        id="id"
+        itemId="id"
       />
     </MainPageContainer>
   );

@@ -47,7 +47,7 @@ const AddressList = ({
 
             <div className="address-footer">
               <TriggerModalButton
-                ariaControlsId={address.id}
+                ariaControls={address.id}
                 modalId="address"
                 variant={BtnVariant.Ghost}
                 onClick={() => {
@@ -86,7 +86,8 @@ const AddressList = ({
       </ul>
       {selectedAddress && (
         <DeleteAddressModal
-          id={selectedAddress.id}
+          ariaControls={selectedAddress.id}
+          itemId={selectedAddress.id}
           modalMessage={selectedAddress.street}
           modalId="address"
         />

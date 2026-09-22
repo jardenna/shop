@@ -1,21 +1,21 @@
-import { useId } from 'react';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import DeleteModal from '../../components/popModal/DeleteModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/addressesApiSlice';
 
-interface DeleteAddressModalProps {
-  id: string;
+export interface DeleteAddressModalProps {
+  ariaControls: string;
+  itemId: string;
   modalId: string;
   modalMessage: string;
 }
 
 const DeleteAddressModal = ({
-  id,
+  itemId,
   modalMessage,
   modalId,
+  ariaControls,
 }: DeleteAddressModalProps) => {
-  const ariaControlsId = useId();
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
   const [deleteAddress, { isLoading }] = useDeleteAddressMutation();
@@ -32,10 +32,10 @@ const DeleteAddressModal = ({
       isLoading={isLoading}
       modalId={modalId}
       headerText={language.deleteAddress}
-      ariaControlsId={ariaControlsId}
+      ariaControls={ariaControls}
       onDelete={handleDeleteAddress}
       modalMessage={modalMessage}
-      id={id}
+      itemId={itemId}
     />
   );
 };

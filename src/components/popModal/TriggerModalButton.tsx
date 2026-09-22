@@ -4,7 +4,7 @@ import Button from '../Button';
 import { usePopModal } from './usePopModal';
 
 interface TriggerModalButtonProps {
-  ariaControlsId: string;
+  ariaControls: string;
   children: ReactNode;
   modalId: string;
   className?: string;
@@ -16,7 +16,7 @@ interface TriggerModalButtonProps {
 const TriggerModalButton = ({
   children,
   modalId,
-  ariaControlsId,
+  ariaControls,
   onClick,
   disabled,
   className = '',
@@ -28,7 +28,7 @@ const TriggerModalButton = ({
     <Button
       className={className}
       disabled={disabled}
-      ariaControls={ariaControlsId}
+      ariaControls={ariaControls}
       ariaHasPopup="dialog"
       variant={variant}
       onClick={() => {
