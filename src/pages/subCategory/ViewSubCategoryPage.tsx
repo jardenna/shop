@@ -32,7 +32,8 @@ const ViewSubCategoryPage = () => {
     refetchOnMountOrArgChange: true,
   });
 
-  const [deleteSubCategory] = useDeleteSubCategoryMutation();
+  const [deleteSubCategory, { isLoading: isDeleteLoading }] =
+    useDeleteSubCategoryMutation();
 
   const handleDeleteSubCategory = async () => {
     const result = await deleteSubCategory(id || '').unwrap();
@@ -81,7 +82,7 @@ const ViewSubCategoryPage = () => {
           variant="medium"
         >
           <CategoryCart
-            isLoading={isLoading}
+            isDeleteLoading={isDeleteLoading}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
             subCategoryName={subCategoryName || category.subCategoryName}

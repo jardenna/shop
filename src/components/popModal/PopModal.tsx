@@ -62,7 +62,7 @@ const PopModal = ({
   }
 
   return (
-    <Portal portalId="newModal">
+    <Portal portalId="modal">
       <dialog
         id={ariaControls}
         aria-labelledby={dialogId}
