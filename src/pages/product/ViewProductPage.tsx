@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CartFooterNew from '../../components/adminCart/CartFooterNew';
+import CartFooter from '../../components/adminCart/CartFooter';
 import CartRight from '../../components/adminCart/CartRight';
 import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
 import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
@@ -116,7 +116,7 @@ const ViewProductPage = () => {
                 }
                 statusMessage={statusMessage}
               />
-              <CartFooterNew
+              <CartFooter
                 isLoading={isDeleteLoading}
                 id={product.id}
                 name={product.productName}

@@ -1,9 +1,7 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
-import { BtnVariant } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
-import type { PrimaryActionBtnProps } from '../modal/Modal';
 import CartFooter from './CartFooter';
 
 import CartRight from './CartRight';
@@ -12,14 +10,13 @@ import CategoryCartLeft from './CategoryCartLeft';
 interface CategoryCartProps {
   categoryId: string;
   categoryName: string;
-  isLoading: boolean;
+  isDeleteLoading: boolean;
   productsInSubcategory: number;
   scheduledDate: Date | null;
   showStatusMessage: boolean;
   status: Status;
   statusMessage: string;
   subCategoryName: string;
-  triggerModalDisabled?: boolean;
   onDeleteSubCategory: () => void;
 }
 
@@ -33,17 +30,9 @@ const CategoryCart = ({
   status,
   categoryId,
   onDeleteSubCategory,
-  isLoading,
-  triggerModalDisabled,
+  isDeleteLoading,
 }: CategoryCartProps) => {
   const { language } = useLanguage();
-
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: onDeleteSubCategory,
-    label: language.delete,
-    variant: BtnVariant.Danger,
-    showBtnLoader: isLoading,
-  };
 
   return (
     <section className="two-col admin-cart-container">
@@ -61,12 +50,12 @@ const CategoryCart = ({
         statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
       />
       <CartFooter
+        isLoading={isDeleteLoading}
         id={categoryId}
-        primaryActionBtn={primaryActionBtn}
         name={subCategoryName}
         modalHeaderText={language.deleteCategory}
         linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
-        triggerModalDisabled={triggerModalDisabled}
+        onDelete={onDeleteSubCategory}
       />
     </section>
   );
