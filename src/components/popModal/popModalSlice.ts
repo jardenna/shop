@@ -22,7 +22,7 @@ const popModalSlice = createSlice({
   },
 });
 
-export const selectModalId = (state: RootState) => state.popModalIsOpen.modalId;
+export const selectModalId = (state: RootState) => state.popModal.modalId;
 
 export const { openModal, closeModal } = popModalSlice.actions;
 

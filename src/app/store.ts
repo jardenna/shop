@@ -61,8 +61,8 @@ export const store = configureStore({
     messagePopup: messagePopupReducer,
     language: languageReducer,
     modal: modalSlice,
-    miniCartIsOpen: miniCartReducer,
-    popModalIsOpen: popModalReducer,
+    miniCart: miniCartReducer,
+    popModal: popModalReducer,
     cartList: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>
