@@ -7,18 +7,21 @@ import { KeyCode } from '../../types/enums';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_mini-cart-popup.scss';
-import { closeModal, selectIsModalOpen } from './popModalSlice';
+import { closeModal, selectModalId } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 
 interface PopModalProps {
   children: ReactNode;
+  modalId: string;
 }
 
-const PopModal = ({ children }: PopModalProps) => {
+const PopModal = ({ children, modalId }: PopModalProps) => {
   const dispatch = useAppDispatch();
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  const isModalOpen = useAppSelector(selectIsModalOpen);
+  const currentModalId = useAppSelector(selectModalId);
+
+  const isModalOpen = currentModalId === modalId;
 
   const { shouldRender, transitionState, handleTransitionEnd } = useAnimate({
     isOpen: isModalOpen,
@@ -45,9 +48,9 @@ const PopModal = ({ children }: PopModalProps) => {
       >
         {children}
       </dialog>
+
       <Overlay />
     </Portal>
   );
 };
-
 export default PopModal;

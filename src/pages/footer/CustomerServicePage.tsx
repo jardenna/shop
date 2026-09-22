@@ -7,8 +7,12 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 const CustomerServicePage = () => {
   const dispatch = useAppDispatch();
 
-  const handleOpenPopM = () => {
+  const handleOpenTextModal = () => {
     dispatch(openModal('text'));
+  };
+
+  const handleOpenDeleteModal = () => {
+    dispatch(openModal('delete'));
   };
 
   const handleCloseModal = () => {
@@ -18,6 +22,7 @@ const CustomerServicePage = () => {
   return (
     <MainPageContainer heading="customer" className="general-page">
       <div className="generel-page-container">
+        {' '}
         <section>
           <h2>We're here to help</h2>
           <p>
@@ -45,11 +50,21 @@ const CustomerServicePage = () => {
           <p>Monday–Friday: 9:00–17:00</p>
           <p>We are closed on weekends and public holidays.</p>
         </section>
-      </div>{' '}
-      <Button onClick={handleOpenPopM}>open</Button>
-      <PopModal>
-        <p>Test modal</p>
+      </div>
 
+      <Button onClick={handleOpenTextModal}>Open text modal</Button>
+
+      <Button onClick={handleOpenDeleteModal}>Open delete modal</Button>
+
+      <PopModal modalId="text">
+        <p>Test modal</p>
+        <Button type="button" onClick={handleCloseModal}>
+          Luk
+        </Button>
+      </PopModal>
+
+      <PopModal modalId="delete">
+        <p>Delete something?</p>
         <Button type="button" onClick={handleCloseModal}>
           Luk
         </Button>
@@ -57,5 +72,4 @@ const CustomerServicePage = () => {
     </MainPageContainer>
   );
 };
-
 export default CustomerServicePage;
