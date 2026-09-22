@@ -5,7 +5,7 @@
   background-color: $color-white;
   height: calc(100svh - $header-height);
   overflow: hidden auto;
-  z-index: 100;
+  z-index: 120;
   width: 100%;
   top: $header-height;
   max-width: rem(500px);
