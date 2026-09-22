@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -27,57 +28,71 @@ const AddressList = ({
   language,
   className = '',
   triggerModalClassName,
-}: AddressListProps) => (
-  <ErrorBoundary
-    FallbackComponent={ErrorBoundaryFallback}
-    onReset={() => refetch}
-  >
-    <ul className={`address-list ${className}`}>
-      {addresses.map((address) => (
-        <li key={address.id} className="address-item">
-          <AddressInfoListContent address={address} username={address.name} />
+}: AddressListProps) => {
+  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
-          <div className="address-footer">
-            <TriggerModalButton
-              ariaControlsId={address.id}
-              modalId={address.id}
-              variant={BtnVariant.Ghost}
-            >
-              <IconContent
-                iconName={IconName.Trash}
-                ariaLabel={language.deleteAddress}
+  const handleSelectAddress = (address: Address) => {
+    setSelectedAddress(address);
+  };
+
+  return (
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => refetch}
+    >
+      <ul className={`address-list ${className}`}>
+        {addresses.map((address) => (
+          <li key={address.id} className="address-item">
+            <AddressInfoListContent address={address} username={address.name} />
+
+            <div className="address-footer">
+              <TriggerModalButton
+                ariaControlsId={address.id}
+                modalId="address"
+                variant={BtnVariant.Ghost}
+                onClick={() => {
+                  handleSelectAddress(address);
+                }}
+              >
+                <IconContent
+                  iconName={IconName.Trash}
+                  ariaLabel={language.deleteAddress}
+                />
+              </TriggerModalButton>
+
+              <AddressFormModal
+                id={address.id}
+                address={address}
+                username={address.name}
+                modalHeaderText={language.updateAddress}
+                primaryActionBtnLabel={language.update}
+                popupMessage={language.addressUpdated}
               />
-            </TriggerModalButton>
-            <DeleteAddressModal
-              id={address.id}
-              modalMessage={address.street}
-              modalId={address.id}
-            />
-            <AddressFormModal
-              id={address.id}
-              address={address}
-              username={address.name}
-              modalHeaderText={language.updateAddress}
-              primaryActionBtnLabel={language.update}
-              popupMessage={language.addressUpdated}
-            />
-          </div>
+            </div>
+          </li>
+        ))}
+        <li className="address-item add-address">
+          <AddressFormModal
+            id={null}
+            username={username}
+            modalHeaderText={language.createNewAddress}
+            primaryActionBtnLabel={language.createNewAddress}
+            popupMessage={language.addressCreated}
+            triggerModalDisabled={addresses.length === 4}
+            addAddressButtonRef={addAddressButtonRef}
+            triggerModalClassName={triggerModalClassName}
+          />
         </li>
-      ))}
-      <li className="address-item add-address">
-        <AddressFormModal
-          id={null}
-          username={username}
-          modalHeaderText={language.createNewAddress}
-          primaryActionBtnLabel={language.createNewAddress}
-          popupMessage={language.addressCreated}
-          triggerModalDisabled={addresses.length === 4}
-          addAddressButtonRef={addAddressButtonRef}
-          triggerModalClassName={triggerModalClassName}
+      </ul>
+      {selectedAddress && (
+        <DeleteAddressModal
+          id={selectedAddress.id}
+          modalMessage={selectedAddress.street}
+          modalId="address"
         />
-      </li>
-    </ul>
-  </ErrorBoundary>
-);
+      )}
+    </ErrorBoundary>
+  );
+};
 
 export default AddressList;

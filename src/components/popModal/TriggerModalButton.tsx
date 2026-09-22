@@ -10,17 +10,20 @@ interface TriggerModalButtonProps {
   className?: string;
   disabled?: boolean;
   variant?: BtnVariant;
+  onClick?: () => void;
 }
 
 const TriggerModalButton = ({
   children,
   modalId,
   ariaControlsId,
+  onClick,
   disabled,
   className = '',
   variant = BtnVariant.Primary,
 }: TriggerModalButtonProps) => {
   const { openModal } = usePopModal();
+
   return (
     <Button
       className={className}
@@ -30,6 +33,7 @@ const TriggerModalButton = ({
       variant={variant}
       onClick={() => {
         openModal(modalId);
+        onClick?.();
       }}
     >
       {children}
