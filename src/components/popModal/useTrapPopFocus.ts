@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import { useEffect } from 'react';
 
 interface UseTrapFocusProps {
@@ -23,7 +22,7 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
       const firstFocusableElement = focusableElements[0];
 
-      firstFocusableElement?.focus();
+      firstFocusableElement.focus();
     };
 
     const animationFrameId = requestAnimationFrame(focusModal);
@@ -53,13 +52,13 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
       if (event.shiftKey && document.activeElement === firstFocusableElement) {
         event.preventDefault();
-        lastFocusableElement?.focus();
+        lastFocusableElement.focus();
         return;
       }
 
       if (!event.shiftKey && document.activeElement === lastFocusableElement) {
         event.preventDefault();
-        firstFocusableElement?.focus();
+        firstFocusableElement.focus();
       }
     };
 
