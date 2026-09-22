@@ -107,8 +107,9 @@ const ProductOptionList = ({
             ariaControlsId={ariaControlsId}
             variant={BtnVariant.Ghost}
             modalId={modalId}
-            label={language.sizeGuide}
-          />
+          >
+            {language.sizeGuide}
+          </TriggerModalButton>
         </div>
       )}
       {modalId && (

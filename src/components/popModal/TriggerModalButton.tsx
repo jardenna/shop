@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import { usePopModal } from './usePopModal';
 
 interface TriggerModalButtonProps {
   ariaControlsId: string;
-  label: string;
+  children: ReactNode;
   modalId: string;
   className?: string;
   disabled?: boolean;
@@ -12,7 +13,7 @@ interface TriggerModalButtonProps {
 }
 
 const TriggerModalButton = ({
-  label,
+  children,
   modalId,
   ariaControlsId,
   disabled,
@@ -31,7 +32,7 @@ const TriggerModalButton = ({
         openModal(modalId);
       }}
     >
-      {label}
+      {children}
     </Button>
   );
 };
