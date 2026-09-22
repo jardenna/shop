@@ -6,20 +6,23 @@ interface UseTrapFocusProps {
 }
 
 export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
+  const getFocusableElements = () => {
+    if (!popupRef.current) {
+      return [];
+    }
+
+    return popupRef.current.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+  };
+
   useEffect(() => {
     if (!enabled) {
       return;
     }
 
     const focusModal = () => {
-      if (!popupRef.current) {
-        return;
-      }
-
-      const focusableElements = popupRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-
+      const focusableElements = getFocusableElements();
       const firstFocusableElement = focusableElements[0];
 
       firstFocusableElement.focus();
@@ -30,7 +33,7 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [enabled, popupRef]);
+  }, [enabled]);
 
   useEffect(() => {
     if (!enabled) {
@@ -38,14 +41,11 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
     }
 
     const handleTabKeyPress = (event: KeyboardEvent) => {
-      if (!popupRef.current || event.key !== 'Tab') {
+      if (event.key !== 'Tab') {
         return;
       }
 
-      const focusableElements = popupRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-
+      const focusableElements = getFocusableElements();
       const firstFocusableElement = focusableElements[0];
       const lastFocusableElement =
         focusableElements[focusableElements.length - 1];
@@ -67,5 +67,5 @@ export const useTrapPopFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
     return () => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
-  }, [enabled, popupRef]);
+  }, [enabled]);
 };
