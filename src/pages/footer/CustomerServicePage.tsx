@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import Button from '../../components/Button';
 import PopModal from '../../components/popModal/PopModal';
 import { usePopModal } from '../../components/popModal/usePopModal';
@@ -5,6 +6,7 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { openModal } = usePopModal();
+  const ariaControlsId = useId();
 
   return (
     <MainPageContainer heading="customer" className="general-page">
@@ -47,6 +49,7 @@ const CustomerServicePage = () => {
       </Button> */}
 
       <Button
+        ariaControls={ariaControlsId}
         onClick={() => {
           openModal('delete');
         }}
@@ -64,7 +67,13 @@ const CustomerServicePage = () => {
         <Button>open</Button>
       </PopModal> */}
 
-      <PopModal modalId="delete" headerText="Delete" isAlert showCloseIcon>
+      <PopModal
+        modalId="delete"
+        headerText="Delete"
+        isAlert
+        showCloseIcon
+        ariaControls={ariaControlsId}
+      >
         <p>Delete something?</p>
       </PopModal>
     </MainPageContainer>

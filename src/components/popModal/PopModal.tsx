@@ -16,6 +16,7 @@ import { usePopModal } from './usePopModal';
 import { useTrapPopFocus } from './useTrapPopFocus';
 
 interface PopModalProps {
+  ariaControls: string;
   children: ReactNode;
   headerText: string;
   modalId: string;
@@ -33,6 +34,7 @@ const PopModal = ({
   showCloseIcon,
   modalSize = 'small',
   className = '',
+  ariaControls,
 }: PopModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const dialogId = useId();
@@ -62,6 +64,7 @@ const PopModal = ({
   return (
     <Portal portalId="newModal">
       <dialog
+        id={ariaControls}
         aria-labelledby={dialogId}
         ref={modalRef}
         className={`pop-modal transition modal-${modalSize} ${className} ${transitionState}`}

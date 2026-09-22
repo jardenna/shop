@@ -122,7 +122,13 @@ const ProductOptionList = ({
           </Button>
         </div>
       )}
-      {modalId && <SizeGuideModalNew language={language} modalId={modalId} />}
+      {modalId && (
+        <SizeGuideModalNew
+          language={language}
+          modalId={modalId}
+          ariaControls={ariaControlsId}
+        />
+      )}
     </div>
   );
 };
