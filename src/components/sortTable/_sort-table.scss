@@ -33,10 +33,6 @@ $table-header-height: rem(320px);
   height: min(rem(632px), calc(100dvh - $table-header-height));
   overflow: auto;
 
-  table {
-    border-top: 0;
-  }
-
   @include max-size($large) {
     height: min(rem(1050px), calc(100dvh - $table-header-height));
   }
@@ -67,6 +63,12 @@ $table-header-height: rem(320px);
   }
 
   table {
+    border-top: 0;
+
+    td {
+      text-align: left;
+    }
+
     th {
       position: sticky;
       top: 0;

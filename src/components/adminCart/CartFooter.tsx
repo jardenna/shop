@@ -35,7 +35,6 @@ const CartFooter = ({
       >
         {language.sureToDelete} {name}
       </ModalContainer>
-
       <LinkButton
         linkTo={linkTo}
         linkText={language.update}
