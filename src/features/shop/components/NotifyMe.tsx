@@ -11,7 +11,7 @@ import { BtnVariant } from '../../../types/enums';
 import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
-import NotifyMeForm from './NotifyMeForm';
+import NotifyMeFormFields from './NotifyMeFormFields';
 
 export interface InitialNotifyValues {
   email: string;
@@ -91,7 +91,7 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
           {successMessage ? (
             <p>{successMessage}</p>
           ) : (
-            <NotifyMeForm
+            <NotifyMeFormFields
               options={options}
               values={values}
               errors={errors}

@@ -5,7 +5,7 @@ import ProductOptionList from '../../../components/formElements/productOptionLis
 import type { InputChangeHandler } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 
-type NotifyMeFormProps = {
+type NotifyMeFormFieldsProps = {
   errors: Record<string, string>;
   onChange: InputChangeHandler;
   options: string[];
@@ -13,13 +13,13 @@ type NotifyMeFormProps = {
   sizesIsRequered?: boolean;
 };
 
-const NotifyMeForm = ({
+const NotifyMeFormFields = ({
   options,
   values,
   errors,
   onChange,
   sizesIsRequered,
-}: NotifyMeFormProps) => {
+}: NotifyMeFormFieldsProps) => {
   const { language } = useLanguage();
 
   return (
@@ -65,4 +65,4 @@ const NotifyMeForm = ({
   );
 };
 
-export default NotifyMeForm;
+export default NotifyMeFormFields;
