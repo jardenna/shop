@@ -7,7 +7,7 @@ import type { BaseHeaderProps } from '../Header';
 
 type OmittedHeaderProps = OmitChecked<
   BaseHeaderProps,
-  'primaryActionBtn' | 'dropdownBtnList' | 'currentUser' | 'isAuthReady'
+  'dropdownBtnList' | 'onSubmit' | 'currentUser' | 'isAuthReady'
 >;
 
 const LanguageCurrencyPreferences = ({

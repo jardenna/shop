@@ -1,6 +1,5 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -28,15 +27,13 @@ export type BaseHeaderProps = {
   isAuthReady: boolean;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
-  primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
-  onSubmit?: () => void;
+  onSubmit: () => void;
 };
 
 const Header = ({
   dropdownBtnList,
-  primaryActionBtn,
   onChange,
   values,
   currencyOptions,
@@ -58,7 +55,6 @@ const Header = ({
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
-        primaryActionBtn={primaryActionBtn}
         onChange={onChange}
         values={values}
         currencyOptions={currencyOptions}

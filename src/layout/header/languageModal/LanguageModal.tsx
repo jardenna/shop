@@ -12,9 +12,9 @@ interface LanguageProps {
   defaultValue: OptionType;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
-  onSubmit: any;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
+  onSubmit: () => void;
 }
 
 const LanguageModal = ({
