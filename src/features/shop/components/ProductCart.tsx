@@ -96,10 +96,8 @@ const ProductCart = ({
             <div className="in-stock-container">
               <NotifyMe
                 options={[]}
-                id="notifyMe"
                 isOutOfStock
                 currentUser={currentUser ?? null}
-                btnVariant={BtnVariant.Secondary}
               />
             </div>
           ) : (

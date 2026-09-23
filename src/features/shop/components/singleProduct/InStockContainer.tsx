@@ -19,7 +19,6 @@ const InStockContainer = ({
     {(missingSizes.length > 0 || countInStock === 0) && (
       <NotifyMe
         options={missingSizes}
-        id="notifyMe"
         isOutOfStock={countInStock === 0}
         currentUser={currentUser}
       />
