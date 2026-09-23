@@ -25,14 +25,13 @@ import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
 type AddressFormModalProps = {
+  headerText: string;
   id: string | null;
-  modalHeaderText: string;
   popupMessage: string;
-  primaryActionBtnLabel: string;
+  submitLabel: string;
   username: string;
   address?: Address;
-  triggerModalClassName?: string;
-  triggerModalDisabled?: boolean;
+  disabled?: boolean;
 };
 
 type AddressField = keyof AddressFields;
@@ -55,11 +54,10 @@ const AddressFormModal = ({
   id,
   address,
   username,
-  modalHeaderText,
-  primaryActionBtnLabel,
+  headerText,
+  submitLabel,
   popupMessage,
-  triggerModalDisabled,
-  triggerModalClassName,
+  disabled,
 }: AddressFormModalProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
@@ -126,8 +124,7 @@ const AddressFormModal = ({
         modalId={modalId}
         ariaControls={ariaControls}
         variant={BtnVariant.Ghost}
-        disabled={triggerModalDisabled}
-        className={triggerModalClassName}
+        disabled={disabled}
       >
         {id ? (
           <IconContent
@@ -146,12 +143,12 @@ const AddressFormModal = ({
       <FormModal
         modalId={modalId}
         ariaControls={ariaControls}
-        headerText={modalHeaderText}
+        headerText={headerText}
         modalSize="medium"
         isLoading={isLoading || addIsLoading}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}
-        submitLabel={primaryActionBtnLabel}
+        submitLabel={submitLabel}
         className="address-modal"
       >
         <FieldSet legendText={language.address}>

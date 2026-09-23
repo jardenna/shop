@@ -14,7 +14,6 @@ interface AddressListProps {
   language: Record<string, string>;
   username: string;
   className?: string;
-  triggerModalClassName?: string;
   refetch: () => void;
 }
 
@@ -24,7 +23,6 @@ const AddressList = ({
   username,
   language,
   className = '',
-  triggerModalClassName,
 }: AddressListProps) => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
@@ -61,8 +59,8 @@ const AddressList = ({
                 id={address.id}
                 address={address}
                 username={address.name}
-                modalHeaderText={language.updateAddress}
-                primaryActionBtnLabel={language.update}
+                headerText={language.updateAddress}
+                submitLabel={language.update}
                 popupMessage={language.addressUpdated}
               />
             </div>
@@ -72,11 +70,10 @@ const AddressList = ({
           <AddressFormModal
             id={null}
             username={username}
-            modalHeaderText={language.createNewAddress}
-            primaryActionBtnLabel={language.createNewAddress}
+            headerText={language.createNewAddress}
+            submitLabel={language.createNewAddress}
             popupMessage={language.addressCreated}
-            triggerModalDisabled={addresses.length === 4}
-            triggerModalClassName={triggerModalClassName}
+            disabled={addresses.length === 4}
           />
         </li>
       </ul>
