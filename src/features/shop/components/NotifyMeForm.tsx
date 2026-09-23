@@ -23,7 +23,7 @@ const NotifyMeForm = ({
   const { language } = useLanguage();
 
   return (
-    <div className="notify">
+    <>
       {sizesIsRequered ? (
         <FieldSet legendText={language.sizes}>
           <p>
@@ -61,7 +61,7 @@ const NotifyMeForm = ({
           inputMode="email"
         />
       </FieldSet>
-    </div>
+    </>
   );
 };
 
