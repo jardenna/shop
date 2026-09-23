@@ -10,9 +10,10 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
+import LanguageCurrencyPreferences from '../header/languageModal/LanguageCurrencyPreferences';
+import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
-import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -43,6 +44,7 @@ const HeaderIcons = ({
   const totalQuantity = qty?.totalQuantity ?? 0;
 
   const cartListItemText = totalQuantity === 1 ? language.item : language.items;
+  console.log(primaryActionBtn);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -71,6 +73,15 @@ const HeaderIcons = ({
           />
         </li>
         <li>
+          <LanguageModal
+            values={values}
+            onChange={onChange}
+            currencyOptions={currencyOptions}
+            defaultValue={defaultValue}
+            onSelectCurrency={onSelectCurrency}
+            localLanguage={localLanguage}
+            onSubmit={primaryActionBtn.onClick}
+          />
           <ModalContainer
             secondaryActionBtn={{
               label: localLanguage.cancel,

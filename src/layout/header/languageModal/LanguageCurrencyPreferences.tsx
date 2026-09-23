@@ -1,9 +1,9 @@
-import FieldSet from '../../components/fieldset/FieldSet';
-import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
-import CurrencySelect from '../../features/currency/components/CurrencySelect';
-import { languageOptions } from '../../features/language/useLanguage';
-import type { OmitChecked } from '../../types/types';
-import type { BaseHeaderProps } from '../header/Header';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
+import CurrencySelect from '../../../features/currency/components/CurrencySelect';
+import { languageOptions } from '../../../features/language/useLanguage';
+import type { OmitChecked } from '../../../types/types';
+import type { BaseHeaderProps } from '../Header';
 
 type OmittedHeaderProps = OmitChecked<
   BaseHeaderProps,
