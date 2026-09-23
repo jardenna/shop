@@ -34,7 +34,6 @@ const AddressList = ({
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
   };
-  console.log(123);
 
   return (
     <ErrorBoundary
