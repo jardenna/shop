@@ -152,7 +152,6 @@ const AdminOrderDetailsPage = () => {
                 )}
               />
             </Cart>
-
             <Cart>
               <OrderSummary language={language} order={order} />
             </Cart>

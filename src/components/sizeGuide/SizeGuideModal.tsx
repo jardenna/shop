@@ -19,7 +19,7 @@ const SizeGuideModal = ({
     showCloseIcon
     ariaControls={ariaControls}
   >
-    <SizeGuide />
+    <SizeGuide language={language} />
   </PopModal>
 );
 

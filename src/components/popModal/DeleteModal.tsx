@@ -1,12 +1,17 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { DeleteAddressModalProps } from '../../pages/account/DeleteAddressModal';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import PopModal from './PopModal';
 import { usePopModal } from './usePopModal';
 
-interface DeleteModalProps extends DeleteAddressModalProps {
+export interface BaseDeleteModalProps {
   ariaControls: string;
+  itemId: string;
+  modalId: string;
+  modalMessage: string;
+}
+
+export interface DeleteModalProps extends BaseDeleteModalProps {
   headerText: string;
   isLoading: boolean;
   onDelete: (id: string) => void;
@@ -37,16 +42,11 @@ const DeleteModal = ({
     >
       {language.sureToDelete} {modalMessage}
       <footer className="footer">
-        <Button
-          type="button"
-          onClick={closeModal}
-          variant={BtnVariant.Secondary}
-        >
+        <Button onClick={closeModal} variant={BtnVariant.Secondary}>
           {language.cancel}
         </Button>
         <Button
           showBtnLoader={isLoading}
-          type="button"
           onClick={handleDeleteItem}
           variant={BtnVariant.Danger}
         >

@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import type {
   BaseProfile,
   PreferredFashion,
@@ -7,9 +8,8 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
-import ModalContainer from '../../components/modal/ModalContainer';
-import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
+import FormModal from '../../components/popModal/FormModal';
+import TriggerModalButton from '../../components/popModal/TriggerModalButton';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -17,10 +17,10 @@ import type { OptionType } from '../../types/types';
 import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
-type AccountFormModalProps = {
+interface AccountFormModalProps {
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
-};
+}
 
 const preferredFashion: PreferredFashion[] = [
   'mensFashion',
@@ -33,9 +33,10 @@ const AccountFormModal = ({
   profile,
   profileFieldList,
 }: AccountFormModalProps) => {
+  const ariaControls = useId();
+  const modalId = 'account-form';
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { resultSuccess, setResultSuccess } = useSubmitStatus();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({
@@ -75,58 +76,48 @@ const AccountFormModal = ({
       message: language.yourDetailsUpdated,
     });
 
-    setResultSuccess(true);
     onClearAllValues();
     reset();
   }
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
-    label: language.update,
-    buttonType: 'submit',
-    disabled: !isFormDirty,
-    showBtnLoader: isLoading,
-    resultSuccess,
-    isForm: true,
-  };
-
   return (
-    <ModalContainer
-      triggerModalBtnContent={language.update}
-      onClearAllValues={onClearAllValues}
-      id="id"
-      modalSize="medium"
-      primaryActionBtn={primaryActionBtn}
-      modalHeaderText={language.updateYourInfo}
-      onBoundaryReset={() => {
-        reset();
-      }}
-      className="my-account"
-    >
-      <FieldSet legendText={language.userInfo}>
-        {profileFieldList.map(({ name, label, type, required }) => (
-          <Input
-            key={name}
-            value={values[name]}
-            name={name}
-            id={name}
-            labelText={language[label]}
+    <>
+      <TriggerModalButton modalId={modalId} ariaControls={ariaControls}>
+        {language.update}
+      </TriggerModalButton>
+      <FormModal
+        isLoading={isLoading}
+        onSubmit={onSubmit}
+        modalId={modalId}
+        ariaControls={ariaControls}
+        headerText={language.updateYourInfo}
+        disabled={!isFormDirty}
+      >
+        <FieldSet legendText={language.userInfo}>
+          {profileFieldList.map(({ name, label, type, required }) => (
+            <Input
+              key={name}
+              value={values[name]}
+              name={name}
+              id={name}
+              labelText={language[label]}
+              onChange={onChange}
+              type={type}
+              required={required}
+              errorText={language[errors[name]]}
+            />
+          ))}
+        </FieldSet>
+        <FieldSet legendText={language.fashionPreference}>
+          <RadioTileList
+            radioButtonList={preferredFashionList}
+            name="preferredFashion"
+            checked={values.preferredFashion}
             onChange={onChange}
-            type={type}
-            required={required}
-            errorText={language[errors[name]]}
           />
-        ))}
-      </FieldSet>
-      <FieldSet legendText={language.fashionPreference}>
-        <RadioTileList
-          radioButtonList={preferredFashionList}
-          name="preferredFashion"
-          checked={values.preferredFashion}
-          onChange={onChange}
-        />
-      </FieldSet>
-    </ModalContainer>
+        </FieldSet>
+      </FormModal>
+    </>
   );
 };
 
