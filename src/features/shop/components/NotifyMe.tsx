@@ -8,10 +8,10 @@ import TriggerModalButton from '../../../components/popModal/TriggerModalButton'
 import { usePopModal } from '../../../components/popModal/usePopModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
-import { validateNEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
 import NotifyMeForm from './NotifyMeForm';
+import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 
 export interface InitialNotifyValues {
   email: string;
@@ -45,7 +45,7 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
   }>({
     initialState,
     callback: handleNotifyMe,
-    validate: hasMissingSizes ? validateNotityMe : validateNEmail,
+    validate: hasMissingSizes ? validateNotityMe : validateNotefyEmail,
   });
 
   function handleNotifyMe() {
