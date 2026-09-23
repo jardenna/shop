@@ -2,11 +2,11 @@ import { useLanguage } from '../features/language/useLanguage';
 import Button from './Button';
 import Picture from './Picture';
 
-type ErrorContentProps = {
+interface ErrorContentProps {
   btnLabel: string;
   errorText: string;
   onClick: () => void;
-};
+}
 
 const ErrorContent = ({ onClick, errorText, btnLabel }: ErrorContentProps) => {
   const { language } = useLanguage();

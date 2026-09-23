@@ -44,7 +44,12 @@ const HeaderIcons = ({
   const cartListItemText = totalQuantity === 1 ? language.item : language.items;
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+    <ErrorBoundary
+      FallbackComponent={(props) => (
+        <ErrorBoundaryFallback {...props} variant="small" />
+      )}
+      onReset={onReset}
+    >
       <ul className="header-icon-list">
         <li>
           <DropdownBtn
