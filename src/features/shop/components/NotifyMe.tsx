@@ -8,10 +8,10 @@ import TriggerModalButton from '../../../components/popModal/TriggerModalButton'
 import { usePopModal } from '../../../components/popModal/usePopModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
+import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
 import NotifyMeForm from './NotifyMeForm';
-import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 
 export interface InitialNotifyValues {
   email: string;
@@ -28,7 +28,7 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
   const ariaControls = useId();
   const modalId = 'notify';
   const { language } = useLanguage();
-  const { closeModal } = usePopModal();
+  const { closeModal, openModal } = usePopModal();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const hasMissingSizes = !isOutOfStock && options.length > 0;
@@ -39,14 +39,21 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
     email: currentUser?.email ?? '',
   };
 
-  const { onChange, values, onSubmit, errors } = useFormValidation<{
-    email: string;
-    sizes: Size[];
-  }>({
-    initialState,
-    callback: handleNotifyMe,
-    validate: hasMissingSizes ? validateNotityMe : validateNotefyEmail,
-  });
+  const { onChange, values, onSubmit, errors, onClearAllValues } =
+    useFormValidation<{
+      email: string;
+      sizes: Size[];
+    }>({
+      initialState,
+      callback: handleNotifyMe,
+      validate: hasMissingSizes ? validateNotityMe : validateNotefyEmail,
+    });
+
+  function handleOpenModal() {
+    setSuccessMessage(null);
+    openModal(modalId);
+    onClearAllValues();
+  }
 
   function handleNotifyMe() {
     setSuccessMessage(language.notifySuccessMeMessage);
@@ -58,6 +65,7 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
         ariaControls={ariaControls}
         modalId={modalId}
         variant={BtnVariant.Ghost}
+        onClick={handleOpenModal}
       >
         {hasMissingSizes
           ? language.currentlyUnavailableSizes
