@@ -4,20 +4,18 @@ import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
-import ModalContainer from '../../components/modal/ModalContainer';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { BtnVariant, IconName } from '../../types/enums';
+import { IconName } from '../../types/enums';
 import type { BaseHeaderProps } from '../header/Header';
-import LanguageCurrencyPreferences from '../header/languageModal/LanguageCurrencyPreferences';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
 
 const HeaderIcons = ({
   dropdownBtnList,
-  primaryActionBtn,
+  onSubmit,
   onChange,
   values,
   currencyOptions,
@@ -44,7 +42,6 @@ const HeaderIcons = ({
   const totalQuantity = qty?.totalQuantity ?? 0;
 
   const cartListItemText = totalQuantity === 1 ? language.item : language.items;
-  console.log(primaryActionBtn);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
@@ -80,33 +77,8 @@ const HeaderIcons = ({
             defaultValue={defaultValue}
             onSelectCurrency={onSelectCurrency}
             localLanguage={localLanguage}
-            onSubmit={primaryActionBtn.onClick}
+            onSubmit={onSubmit}
           />
-          <ModalContainer
-            secondaryActionBtn={{
-              label: localLanguage.cancel,
-            }}
-            triggerModalBtnContent={
-              <IconContent
-                iconName={IconName.Language}
-                ariaLabel={localLanguage.selectPreferences}
-              />
-            }
-            triggerModalBtnVariant={BtnVariant.Ghost}
-            id="languageId"
-            primaryActionBtn={primaryActionBtn}
-            modalSize="medium"
-            modalHeaderText={localLanguage.preferences}
-          >
-            <LanguageCurrencyPreferences
-              values={values}
-              onChange={onChange}
-              currencyOptions={currencyOptions}
-              defaultValue={defaultValue}
-              onSelectCurrency={onSelectCurrency}
-              localLanguage={localLanguage}
-            />
-          </ModalContainer>
         </li>
         <li>
           <HeaderBadgeLinks

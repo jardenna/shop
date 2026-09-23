@@ -31,6 +31,7 @@ export type BaseHeaderProps = {
   primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
+  onSubmit?: () => void;
 };
 
 const Header = ({
@@ -44,6 +45,7 @@ const Header = ({
   currentUser,
   isAuthReady,
   isMobileSize,
+  onSubmit,
   localLanguage,
 }: BaseHeaderProps & MobileProps) => (
   <LayoutElement className="main-header" ariaLabel="main">
@@ -65,6 +67,7 @@ const Header = ({
         localLanguage={localLanguage}
         currentUser={currentUser}
         isAuthReady={isAuthReady}
+        onSubmit={onSubmit}
       />
     </div>
   </LayoutElement>

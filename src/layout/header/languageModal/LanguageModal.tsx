@@ -36,7 +36,6 @@ const LanguageModal = ({
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
-        New
         <IconContent
           iconName={IconName.Language}
           ariaLabel={localLanguage.selectPreferences}

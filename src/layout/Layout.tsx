@@ -130,6 +130,7 @@ const Layout = () => {
           value: exchangeRate,
         }}
         onChange={onChange}
+        onSubmit={handleChangePreferences}
         values={values}
         currencyOptions={currencyOptions}
         currentUser={currentUser}
