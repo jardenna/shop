@@ -19,18 +19,21 @@ type MobileProps = {
   isMobileSize: boolean;
 };
 
-export type BaseHeaderProps = {
+export interface BaseHeaderProps {
   currencyOptions: OptionType[];
-  currentUser: UserResponse | null;
   defaultValue: OptionType;
-  dropdownBtnList: DropdownItem[];
-  isAuthReady: boolean;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
+}
+
+export interface HeaderProps extends BaseHeaderProps {
+  currentUser: UserResponse | null;
+  dropdownBtnList: DropdownItem[];
+  isAuthReady: boolean;
   onSubmit: () => void;
-};
+}
 
 const Header = ({
   dropdownBtnList,
@@ -44,7 +47,7 @@ const Header = ({
   isMobileSize,
   onSubmit,
   localLanguage,
-}: BaseHeaderProps & MobileProps) => (
+}: HeaderProps & MobileProps) => (
   <LayoutElement className="main-header" ariaLabel="main">
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />

@@ -1,14 +1,12 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
-import type { BaseHeaderProps } from '../../../layout/header/Header';
+import { OptionType } from '../../../types/types';
 
-type PickedHeaderProps = Pick<
-  BaseHeaderProps,
-  'currencyOptions' | 'defaultValue' | 'onSelectCurrency'
->;
-
-type CurrencySelectProps = PickedHeaderProps & {
+interface CurrencySelectProps {
+  currencyOptions: OptionType[];
+  defaultValue: OptionType;
   labelText: string;
-};
+  onSelectCurrency: (selectedOptions: OptionType) => void;
+}
 
 const CurrencySelect = ({
   currencyOptions,

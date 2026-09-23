@@ -8,7 +8,7 @@ import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { IconName } from '../../types/enums';
-import type { BaseHeaderProps } from '../header/Header';
+import type { HeaderProps } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
@@ -23,7 +23,7 @@ const HeaderIcons = ({
   onSelectCurrency,
   localLanguage,
   currentUser,
-}: BaseHeaderProps) => {
+}: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
   const [cartItems] = useLocalStorage<CartItem[]>(
