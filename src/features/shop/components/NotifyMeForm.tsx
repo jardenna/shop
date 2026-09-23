@@ -18,13 +18,17 @@ export interface InitialNotifyValues {
   sizes: Size[];
 }
 
-interface NotifiMeProps {
+interface NotifyMeFormProps {
   currentUser: UserResponse | null;
   isOutOfStock: boolean;
   options: string[];
 }
 
-const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
+const NotifyMeForm = ({
+  options,
+  currentUser,
+  isOutOfStock,
+}: NotifyMeFormProps) => {
   const ariaControls = useId();
   const modalId = 'notify';
   const { language } = useLanguage();
@@ -113,4 +117,4 @@ const NotifyMe = ({ options, currentUser, isOutOfStock }: NotifiMeProps) => {
   );
 };
 
-export default NotifyMe;
+export default NotifyMeForm;

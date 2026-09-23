@@ -1,4 +1,4 @@
-import type { InitialNotifyValues } from '../../features/shop/components/NotifyMe';
+import type { InitialNotifyValues } from '../../features/shop/components/NotifyMeForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { validateEmail } from './CommonFieldValidation';
 
