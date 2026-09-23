@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import {
   Address,
   AddressFields,
@@ -9,12 +10,9 @@ import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import {
-  PrimaryActionBtnProps,
-  SecondaryActionBtnProps,
-} from '../../components/modal/Modal';
-import ModalContainer from '../../components/modal/ModalContainer';
-import { useSubmitStatus } from '../../components/modal/useSubmitStatus';
+import FormModal from '../../components/popModal/FormModal';
+import TriggerModalButton from '../../components/popModal/TriggerModalButton';
+import { usePopModal } from '../../components/popModal/usePopModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -22,7 +20,7 @@ import {
 } from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
-import type { InputType, RefBtnType } from '../../types/types';
+import type { InputType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
@@ -32,9 +30,7 @@ type AddressFormModalProps = {
   popupMessage: string;
   primaryActionBtnLabel: string;
   username: string;
-  addAddressButtonRef?: RefBtnType;
   address?: Address;
-  secondaryActionBtn?: SecondaryActionBtnProps | null;
   triggerModalClassName?: string;
   triggerModalDisabled?: boolean;
 };
@@ -63,13 +59,13 @@ const AddressFormModal = ({
   primaryActionBtnLabel,
   popupMessage,
   triggerModalDisabled,
-  secondaryActionBtn,
-  addAddressButtonRef,
   triggerModalClassName,
 }: AddressFormModalProps) => {
+  const ariaControls = useId();
+  const modalId = id ? `update-${id}` : 'create';
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { resultSuccess, setResultSuccess } = useSubmitStatus();
+  const { closeModal } = usePopModal();
 
   const standardAddressList: StandardAddress[] = [
     'addressBilling',
@@ -86,18 +82,18 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit, errors, onClearAllValues, isFormDirty } =
-    useFormValidation({
+  const { values, onChange, onSubmit, errors, isFormDirty } = useFormValidation(
+    {
       initialState,
       callback: handleSubmitAddress,
       validate: validateAddress,
-    });
+    },
+  );
 
-  const [updateAddress, { isLoading, reset }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addIsLoading, reset: addReset }] =
-    useAddAddressMutation();
+  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
+  const [addAddress, { isLoading: addIsLoading }] = useAddAddressMutation();
 
-  const updatedAddress = id ? { ...values, id } : { ...values };
+  const updatedAddress = id ? { ...values, id } : values;
 
   async function handleSubmitAddress() {
     if (!isFormDirty) {
@@ -110,40 +106,30 @@ const AddressFormModal = ({
     try {
       if (id) {
         await updateAddress({ address: updatedAddress, id }).unwrap();
-        setResultSuccess(true);
       } else {
         await addAddress({ address: updatedAddress }).unwrap();
-        setResultSuccess(true);
       }
 
-      onAddMessagePopup({ message: popupMessage });
+      onAddMessagePopup({
+        message: popupMessage,
+      });
+
+      closeModal();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
-      setResultSuccess(false);
-      onClearAllValues();
     }
   }
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onSubmit,
-    buttonType: 'submit',
-    label: primaryActionBtnLabel,
-    disabled: !!id && !isFormDirty,
-    showBtnLoader: isLoading || addIsLoading,
-    resultSuccess,
-    isForm: true,
-  };
-
   return (
-    <ModalContainer
-      triggerButtonRef={addAddressButtonRef}
-      triggerModalDisabled={triggerModalDisabled}
-      triggerModalClassName={triggerModalClassName ?? ''}
-      // onClearAllValues={onClearAllValues}
-      onBoundaryReset={id ? reset : addReset}
-      modalSize="medium"
-      triggerModalBtnContent={
-        id ? (
+    <>
+      <TriggerModalButton
+        modalId={modalId}
+        ariaControls={ariaControls}
+        variant={BtnVariant.Ghost}
+        disabled={triggerModalDisabled}
+        className={triggerModalClassName}
+      >
+        {id ? (
           <IconContent
             iconName={IconName.Pencil}
             ariaLabel={language.updateAddress}
@@ -154,41 +140,47 @@ const AddressFormModal = ({
             ariaLabel={language.createNewAddress}
             showLabel
           />
-        )
-      }
-      triggerModalBtnVariant={BtnVariant.Ghost}
-      id={id ? `update-${id}` : 'create'}
-      primaryActionBtn={primaryActionBtn}
-      secondaryActionBtn={secondaryActionBtn}
-      modalHeaderText={modalHeaderText}
-      className="address-modal"
-    >
-      <FieldSet legendText={language.address}>
-        <div className="address-form">
-          {addressInputList.map(({ name, required, type }) => (
-            <Input
-              key={name}
-              onChange={onChange}
-              required={required}
-              name={name}
-              id={name}
-              value={values[name]}
-              labelText={language[name]}
-              type={type}
-              errorText={language[errors[name]]}
-            />
-          ))}
+        )}
+      </TriggerModalButton>
 
-          <CheckboxList
-            checkBoxList={standardAddressList}
-            name="standardAddress"
-            onChange={onChange}
-            values={values.standardAddress}
-            language={language}
-          />
-        </div>
-      </FieldSet>
-    </ModalContainer>
+      <FormModal
+        modalId={modalId}
+        ariaControls={ariaControls}
+        headerText={modalHeaderText}
+        modalSize="medium"
+        isLoading={isLoading || addIsLoading}
+        onSubmit={onSubmit}
+        disabled={!!id && !isFormDirty}
+        submitLabel={primaryActionBtnLabel}
+        className="address-modal"
+      >
+        <FieldSet legendText={language.address}>
+          <div className="address-form">
+            {addressInputList.map(({ name, required, type }) => (
+              <Input
+                key={name}
+                onChange={onChange}
+                required={required}
+                name={name}
+                id={name}
+                value={values[name]}
+                labelText={language[name]}
+                type={type}
+                errorText={language[errors[name]]}
+              />
+            ))}
+
+            <CheckboxList
+              checkBoxList={standardAddressList}
+              name="standardAddress"
+              onChange={onChange}
+              values={values.standardAddress}
+              language={language}
+            />
+          </div>
+        </FieldSet>
+      </FormModal>
+    </>
   );
 };
 

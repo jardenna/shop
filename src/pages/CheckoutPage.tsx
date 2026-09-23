@@ -73,7 +73,6 @@ const CheckoutPage = () => {
                 username={currentUser?.username ?? ''}
                 refetch={refetch}
                 className="checkout-address-list"
-                addAddressButtonRef={addAddressButtonRef}
                 triggerModalClassName={
                   checkout.addresses.length === 0 ? 'add-new-btn' : undefined
                 }
