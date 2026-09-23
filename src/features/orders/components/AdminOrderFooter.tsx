@@ -1,6 +1,8 @@
+import { useId } from 'react';
 import Button from '../../../components/Button';
-import { PrimaryActionBtnProps } from '../../../components/modal/Modal';
-import ModalContainer from '../../../components/modal/ModalContainer';
+import PopModal from '../../../components/popModal/PopModal';
+import TriggerModalButton from '../../../components/popModal/TriggerModalButton';
+import { usePopModal } from '../../../components/popModal/usePopModal';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
@@ -18,26 +20,45 @@ const AdminOrderFooter = ({
   onCancelOrder,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: onCancelOrder,
-    label: language.cancelOrder,
-    variant: BtnVariant.Danger,
-    showBtnLoader: isLoading,
+  const ariaControls = useId();
+  const modalId = 'cancel-order';
+
+  const { closeModal } = usePopModal();
+  const handleCancelOrder = () => {
+    onCancelOrder();
+    closeModal();
   };
 
   return (
     <footer className="footer">
-      <ModalContainer
-        triggerModalBtnContent={language.cancelOrder}
-        triggerModalBtnVariant={BtnVariant.Danger}
-        secondaryActionBtnLabel={language.dismiss}
-        id={id}
-        primaryActionBtn={primaryActionBtn}
-        modalHeaderText={language.cancelOrder}
-        triggerModalDisabled={triggerModalDisabled}
+      <TriggerModalButton
+        variant={BtnVariant.Danger}
+        ariaControls={ariaControls}
+        modalId={modalId}
+        disabled={triggerModalDisabled}
+      >
+        {language.cancelOrder}
+      </TriggerModalButton>
+      <PopModal
+        ariaControls={ariaControls}
+        modalId={modalId}
+        headerText={language.cancelOrder}
       >
         {language.cancel} # {id}
-      </ModalContainer>
+        <footer className="footer">
+          <Button variant={BtnVariant.Secondary} onClick={closeModal}>
+            {language.dismiss}
+          </Button>
+          <Button
+            variant={BtnVariant.Danger}
+            onClick={handleCancelOrder}
+            showBtnLoader={isLoading}
+          >
+            {language.cancelOrder}
+          </Button>
+        </footer>
+      </PopModal>
+
       <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button>
     </footer>
   );
