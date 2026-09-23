@@ -1,8 +1,8 @@
-import type { InitialNotifyValues } from '../../features/shop/components/NotifyMe';
+import type { InitialNotifyValues } from '../../features/shop/components/NotifyMeForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { validateEmail } from './CommonFieldValidation';
 
-export function validateNEmail(values: InitialNotifyValues) {
+export function validateNotefyEmail(values: InitialNotifyValues) {
   const errors: ValidationErrors<InitialNotifyValues> = {};
   const { email } = values;
 

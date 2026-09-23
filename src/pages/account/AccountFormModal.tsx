@@ -10,6 +10,7 @@ import RadioTileList from '../../components/formElements/radioTileList/RadioTile
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import FormModal from '../../components/popModal/FormModal';
 import TriggerModalButton from '../../components/popModal/TriggerModalButton';
+import { usePopModal } from '../../components/popModal/usePopModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -37,6 +38,7 @@ const AccountFormModal = ({
   const modalId = 'account-form';
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
+  const { closeModal } = usePopModal();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({
@@ -78,6 +80,7 @@ const AccountFormModal = ({
 
     onClearAllValues();
     reset();
+    closeModal();
   }
 
   return (

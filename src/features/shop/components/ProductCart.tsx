@@ -12,7 +12,7 @@ import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
-import NotifyMe from './NotifyMe';
+import NotifyMeForm from './NotifyMeForm';
 import './productCart.styles.scss';
 import ProductCartGridContent from './ProductCartGridContent';
 import ProductCartListContent from './ProductCartListContent';
@@ -94,12 +94,10 @@ const ProductCart = ({
         {onOpenPanel &&
           (isOutOfStock ? (
             <div className="in-stock-container">
-              <NotifyMe
+              <NotifyMeForm
                 options={[]}
-                id="notifyMe"
                 isOutOfStock
                 currentUser={currentUser ?? null}
-                btnVariant={BtnVariant.Secondary}
               />
             </div>
           ) : (

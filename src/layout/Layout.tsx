@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
-import type { PrimaryActionBtnProps } from '../components/modal/Modal';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -79,12 +78,6 @@ const Layout = () => {
   const localLanguage =
     values.languageOption === 'da' ? danishLang : englishLang;
 
-  const primaryActionBtn: PrimaryActionBtnProps = {
-    onClick: handleChangePreferences,
-    label: localLanguage.updatePreferences,
-    isForm: true,
-  };
-
   const accountDropdownList: DropdownItem[] = [
     {
       label: language.myAccount,
@@ -123,13 +116,13 @@ const Layout = () => {
       <Header
         localLanguage={localLanguage}
         dropdownBtnList={accountDropdownList}
-        primaryActionBtn={primaryActionBtn}
         isMobileSize={isMobileSize}
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,
         }}
         onChange={onChange}
+        onSubmit={handleChangePreferences}
         values={values}
         currencyOptions={currencyOptions}
         currentUser={currentUser}

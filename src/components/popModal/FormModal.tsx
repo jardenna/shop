@@ -38,7 +38,6 @@ const FormModal = ({
         onSubmit={(event) => {
           event.preventDefault();
           onSubmit();
-          closeModal();
         }}
       >
         {children}

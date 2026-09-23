@@ -1,7 +1,7 @@
 import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import InStock from '../InStock';
-import NotifyMe from '../NotifyMe';
+import NotifyMeForm from '../NotifyMeForm';
 
 interface InStockContainerProps {
   countInStock: number;
@@ -17,9 +17,8 @@ const InStockContainer = ({
   <div className="in-stock-container">
     <InStock stock={countInStock} />
     {(missingSizes.length > 0 || countInStock === 0) && (
-      <NotifyMe
+      <NotifyMeForm
         options={missingSizes}
-        id="notifyMe"
         isOutOfStock={countInStock === 0}
         currentUser={currentUser}
       />

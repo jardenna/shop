@@ -1,6 +1,5 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
-import type { PrimaryActionBtnProps } from '../../components/modal/Modal';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -20,22 +19,24 @@ type MobileProps = {
   isMobileSize: boolean;
 };
 
-export type BaseHeaderProps = {
+export interface BaseHeaderProps {
   currencyOptions: OptionType[];
-  currentUser: UserResponse | null;
   defaultValue: OptionType;
-  dropdownBtnList: DropdownItem[];
-  isAuthReady: boolean;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
-  primaryActionBtn: PrimaryActionBtnProps;
   values: Values;
   onSelectCurrency: (selectedOptions: OptionType) => void;
-};
+}
+
+export interface HeaderProps extends BaseHeaderProps {
+  currentUser: UserResponse | null;
+  dropdownBtnList: DropdownItem[];
+  isAuthReady: boolean;
+  onSubmit: () => void;
+}
 
 const Header = ({
   dropdownBtnList,
-  primaryActionBtn,
   onChange,
   values,
   currencyOptions,
@@ -44,8 +45,9 @@ const Header = ({
   currentUser,
   isAuthReady,
   isMobileSize,
+  onSubmit,
   localLanguage,
-}: BaseHeaderProps & MobileProps) => (
+}: HeaderProps & MobileProps) => (
   <LayoutElement className="main-header" ariaLabel="main">
     <div className="container main-header-content">
       <Logo linkTo={ShopPath.Root} />
@@ -56,7 +58,6 @@ const Header = ({
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
-        primaryActionBtn={primaryActionBtn}
         onChange={onChange}
         values={values}
         currencyOptions={currencyOptions}
@@ -65,6 +66,7 @@ const Header = ({
         localLanguage={localLanguage}
         currentUser={currentUser}
         isAuthReady={isAuthReady}
+        onSubmit={onSubmit}
       />
     </div>
   </LayoutElement>

@@ -4,19 +4,18 @@ import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
-import ModalContainer from '../../components/modal/ModalContainer';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { BtnVariant, IconName } from '../../types/enums';
-import type { BaseHeaderProps } from '../header/Header';
+import { IconName } from '../../types/enums';
+import type { HeaderProps } from '../header/Header';
+import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
-import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 const HeaderIcons = ({
   dropdownBtnList,
-  primaryActionBtn,
+  onSubmit,
   onChange,
   values,
   currencyOptions,
@@ -24,7 +23,7 @@ const HeaderIcons = ({
   onSelectCurrency,
   localLanguage,
   currentUser,
-}: BaseHeaderProps) => {
+}: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
   const [cartItems] = useLocalStorage<CartItem[]>(
@@ -45,7 +44,12 @@ const HeaderIcons = ({
   const cartListItemText = totalQuantity === 1 ? language.item : language.items;
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+    <ErrorBoundary
+      FallbackComponent={(props) => (
+        <ErrorBoundaryFallback {...props} variant="small" />
+      )}
+      onReset={onReset}
+    >
       <ul className="header-icon-list">
         <li>
           <DropdownBtn
@@ -71,31 +75,15 @@ const HeaderIcons = ({
           />
         </li>
         <li>
-          <ModalContainer
-            secondaryActionBtn={{
-              label: localLanguage.cancel,
-            }}
-            triggerModalBtnContent={
-              <IconContent
-                iconName={IconName.Language}
-                ariaLabel={localLanguage.selectPreferences}
-              />
-            }
-            triggerModalBtnVariant={BtnVariant.Ghost}
-            id="languageId"
-            primaryActionBtn={primaryActionBtn}
-            modalSize="medium"
-            modalHeaderText={localLanguage.preferences}
-          >
-            <LanguageCurrencyPreferences
-              values={values}
-              onChange={onChange}
-              currencyOptions={currencyOptions}
-              defaultValue={defaultValue}
-              onSelectCurrency={onSelectCurrency}
-              localLanguage={localLanguage}
-            />
-          </ModalContainer>
+          <LanguageModal
+            values={values}
+            onChange={onChange}
+            currencyOptions={currencyOptions}
+            defaultValue={defaultValue}
+            onSelectCurrency={onSelectCurrency}
+            localLanguage={localLanguage}
+            onSubmit={onSubmit}
+          />
         </li>
         <li>
           <HeaderBadgeLinks
