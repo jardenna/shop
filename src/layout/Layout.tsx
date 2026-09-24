@@ -1,6 +1,11 @@
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
+import {
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
 import SkipLink from '../components/skipLinks/SkipLinks';
@@ -138,6 +143,7 @@ const Layout = () => {
         </main>
         <Footer />
       </PageErrorBoundary>
+      <ScrollRestoration />
     </div>
   );
 };
