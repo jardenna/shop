@@ -24,10 +24,12 @@
   padding: 52px;
   padding-bottom: 20px;
   padding-right: 20px;
+}
 
-  &.add-address {
-    place-content: center;
-  }
+.add-address {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
 
 .address-content {

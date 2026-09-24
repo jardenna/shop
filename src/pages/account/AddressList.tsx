@@ -66,16 +66,6 @@ const AddressList = ({
             </div>
           </li>
         ))}
-        <li className="address-item add-address">
-          <AddressFormModal
-            id={null}
-            username={username}
-            headerText={language.createNewAddress}
-            submitLabel={language.createNewAddress}
-            popupMessage={language.addressCreated}
-            disabled={addresses.length === 4}
-          />
-        </li>
       </ul>
       {selectedAddress && (
         <DeleteAddressModal
@@ -85,6 +75,16 @@ const AddressList = ({
           modalId="address"
         />
       )}
+      <div className="add-address">
+        <AddressFormModal
+          id={null}
+          username={username}
+          headerText={language.createNewAddress}
+          submitLabel={language.createNewAddress}
+          popupMessage={language.addressCreated}
+          disabled={addresses.length === 4}
+        />
+      </div>
     </ErrorBoundary>
   );
 };
