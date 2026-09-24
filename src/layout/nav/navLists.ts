@@ -61,10 +61,6 @@ export const navList: NavListProps[] = [
     path: ShopPath.AboutUs,
     linkText: LinkText.AboutUs,
   },
-  {
-    path: ShopPath.Contact,
-    linkText: LinkText.Contact,
-  },
 ];
 
 export const adminNavList: AdminNavList[] = [

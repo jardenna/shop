@@ -18,7 +18,7 @@ const AboutUsPage = () => {
           <ImageTextGrid
             heading="Who we are"
             src="/images/about/about_us"
-            alt=""
+            alt="Woman in a black dress relaxing beside a plant, reading a magazine."
           >
             <h3>We believe great style should feel effortless</h3>
             <p>
@@ -30,7 +30,7 @@ const AboutUsPage = () => {
           <ImageTextGrid
             heading="Our collection"
             src="/images/about/about_us_1"
-            alt=""
+            alt="Man in exclusive baggy jeans balancing on rocks beside a rushing waterfall."
           >
             <h3>We focus on quality</h3>
             <p>
@@ -43,7 +43,7 @@ const AboutUsPage = () => {
           <ImageTextGrid
             heading="Our approach"
             src="/images/about/about_us_2"
-            alt=""
+            alt="Woman in a white outfit posing confidently"
           >
             <h3>We aim to make every part of the experience clear</h3>
             <p>
@@ -55,7 +55,7 @@ const AboutUsPage = () => {
           <ImageTextGrid
             heading="Made for everyday"
             src="/images/about/about_us_3"
-            alt=""
+            alt="Two women in colorful polka-dot outfits smiling."
           >
             <h3>We choose pieces that are designed for real life</h3>
             <p>
