@@ -15,7 +15,7 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
     return Array.from(
       popupRef.current.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
       ),
     );
   };
