@@ -1,13 +1,9 @@
-import { ReactNode } from 'react';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
+import { BaseModalProps } from './Modal';
 import { useModal } from './useModal';
 
-interface TriggerModalButtonProps {
-  ariaControls: string;
-  children: ReactNode;
-  modalId: string;
-  className?: string;
+interface TriggerModalButtonProps extends BaseModalProps {
   disabled?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
