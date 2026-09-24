@@ -41,7 +41,7 @@
       border-radius: 50%;
       transform: scale(0);
 
-      @include transition($time: 0.12s);
+      @include transition($duration: 0.12s);
 
       box-shadow: inset 16px 0 $color-blue-30;
     }

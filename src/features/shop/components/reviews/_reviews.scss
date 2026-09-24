@@ -64,7 +64,7 @@
     }
 
     svg {
-      @include transition($time: 0.2s);
+      @include transition($duration: 0.2s);
 
       &.filled {
         color: $color-yellow;

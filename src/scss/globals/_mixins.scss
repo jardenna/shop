@@ -31,10 +31,14 @@ $animation-timing-function: ease-in-out;
   }
 }
 
-@mixin transition($what: all, $time: 0.5s, $how: $animation-timing-function) {
+@mixin transition(
+  $what: all,
+  $duration: $animation-duration,
+  $timing: $animation-timing-function
+) {
   @media (prefers-reduced-motion: no-preference) {
     & {
-      transition: $what $time $how;
+      transition: $what $duration $timing;
     }
   }
 }

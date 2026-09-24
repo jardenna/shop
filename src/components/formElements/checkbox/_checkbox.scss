@@ -54,7 +54,7 @@
       transform: scale(0) rotate(45deg);
       margin-bottom: 5px;
 
-      @include transition($time: 0.2s);
+      @include transition($duration: 0.2s);
     }
 
     &:checked::before {

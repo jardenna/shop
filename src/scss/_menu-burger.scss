@@ -32,7 +32,7 @@ $burger-expanded-width: rem(20px);
       display: flex;
 
       @extend %burger-basic;
-      @include transition($time: 0.6s);
+      @include transition($duration: 0.6s);
     }
 
     &::before {
