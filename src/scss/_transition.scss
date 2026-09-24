@@ -14,4 +14,37 @@
   &.exit {
     opacity: 0;
   }
+
+  &.from-top-center {
+    &.enter,
+    &.exit {
+      transform: translate(-50%, -100%);
+    }
+
+    &.entered {
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &.from-right {
+    &.enter,
+    &.exit {
+      transform: translateX(100%);
+    }
+
+    &.entered {
+      transform: translateX(0);
+    }
+  }
+
+  &.from-bottom-center {
+    &.enter,
+    &.exit {
+      transform: translate(-50%, 100%);
+    }
+
+    &.entered {
+      transform: translate(-50%, 0);
+    }
+  }
 }

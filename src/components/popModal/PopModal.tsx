@@ -74,7 +74,7 @@ const PopModal = ({
         id={ariaControls}
         aria-labelledby={dialogId}
         ref={modalRef}
-        className={`pop-modal transition modal-${modalSize} ${className} ${transitionState}`}
+        className={`pop-modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
         onTransitionEnd={handleTransitionEnd}
         role={isAlert ? 'alertdialog' : undefined}
       >

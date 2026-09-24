@@ -16,18 +16,6 @@
   min-width: rem(340px);
   transform: translateX(-50%);
 
-  &.enter {
-    transform: translateX(100%);
-  }
-
-  &.entered {
-    transform: translateX(0);
-  }
-
-  &.exit {
-    transform: translateX(100%);
-  }
-
   .total-price {
     box-shadow: none;
   }
