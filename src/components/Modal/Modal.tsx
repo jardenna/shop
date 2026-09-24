@@ -4,6 +4,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 import { SizeVariant } from '../../types/types';
 import BtnClose from '../BtnClose';
@@ -13,7 +14,6 @@ import './_modal.scss';
 import { selectModalId } from './ModalSlice';
 import { useAnimate } from './useAnimate';
 import { useModal } from './useModal';
-import { useTrapPopFocus } from './useTrapPopFocus';
 
 export interface ModalProps {
   ariaControls: string;
@@ -59,7 +59,7 @@ const Modal = ({
   useKeyPress(handleClose, [KeyCode.Esc], isModalOpen);
   useScrollLock(shouldRender);
   useClickOutside(modalRef, handleClose, [modalRef]);
-  useTrapPopFocus({
+  useTrapFocus({
     popupRef: modalRef,
     enabled: shouldRender,
   });

@@ -1,43 +1,80 @@
-import { RefObject, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-type UseTrapFocusProps = {
-  id: string | null;
-  popupRef: RefObject<HTMLElement | null>;
-  enabled?: boolean;
-};
+interface UseTrapFocusProps {
+  enabled: boolean;
+  popupRef: React.RefObject<HTMLElement | null>;
+}
 
-export const useTrapFocus = ({ id, popupRef, enabled }: UseTrapFocusProps) => {
+export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const getFocusableElements = () => {
+    if (!popupRef.current) {
+      return [];
+    }
+
+    return Array.from(
+      popupRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
+    );
+  };
+
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
+    triggerRef.current = document.activeElement as HTMLElement;
+
+    const focusModal = () => {
+      const focusableElements = getFocusableElements();
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
+      const firstFocusableElement = focusableElements[0];
+
+      firstFocusableElement.focus();
+    };
+
+    const animationFrameId = requestAnimationFrame(focusModal);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [enabled]);
+
   useEffect(() => {
     if (!enabled) {
       return;
     }
 
     const handleTabKeyPress = (event: KeyboardEvent) => {
-      if (popupRef.current && id) {
-        const focusableElements =
-          popupRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-          );
+      if (event.key !== 'Tab') {
+        return;
+      }
 
-        const firstFocusableElement = focusableElements[0];
-        const lastFocusableElement =
-          focusableElements[focusableElements.length - 1];
+      const focusableElements = getFocusableElements();
 
-        if (event.key === 'Tab') {
-          if (
-            event.shiftKey &&
-            document.activeElement === firstFocusableElement
-          ) {
-            event.preventDefault();
-            lastFocusableElement.focus();
-          } else if (
-            !event.shiftKey &&
-            document.activeElement === lastFocusableElement
-          ) {
-            event.preventDefault();
-            firstFocusableElement.focus();
-          }
-        }
+      if (focusableElements.length === 0) {
+        return;
+      }
+
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstFocusableElement) {
+        event.preventDefault();
+        lastFocusableElement.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+        event.preventDefault();
+        firstFocusableElement.focus();
       }
     };
 
@@ -46,5 +83,14 @@ export const useTrapFocus = ({ id, popupRef, enabled }: UseTrapFocusProps) => {
     return () => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
-  }, [enabled, id, popupRef]);
+  }, [enabled]);
+
+  useEffect(() => {
+    if (enabled) {
+      return;
+    }
+
+    triggerRef.current?.focus();
+    triggerRef.current = null;
+  }, [enabled]);
 };
