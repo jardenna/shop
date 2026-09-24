@@ -22,13 +22,13 @@ const FormModal = ({
   className,
   submitLabel,
   disabled,
-  onClose,
+  onClearAllValues,
 }: FormModalProps) => {
   const { language } = useLanguage();
   const { closeModal } = usePopModal();
 
   const handleClose = () => {
-    onClose?.();
+    onClearAllValues?.();
     closeModal();
   };
 
@@ -39,7 +39,7 @@ const FormModal = ({
       modalSize={modalSize}
       ariaControls={ariaControls}
       className={className}
-      onClose={onClose}
+      onClearAllValues={onClearAllValues}
     >
       <form
         onSubmit={(event) => {

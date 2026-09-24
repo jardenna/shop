@@ -24,7 +24,7 @@ export interface PopModalProps {
   isAlert?: boolean;
   modalSize?: SizeVariant;
   showCloseIcon?: boolean;
-  onClose?: () => void;
+  onClearAllValues?: () => void;
 }
 
 const PopModal = ({
@@ -36,7 +36,7 @@ const PopModal = ({
   modalSize = 'small',
   className = '',
   ariaControls,
-  onClose,
+  onClearAllValues,
 }: PopModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const dialogId = useId();
@@ -52,7 +52,7 @@ const PopModal = ({
   const { closeModal } = usePopModal();
 
   const handleClose = () => {
-    onClose?.();
+    onClearAllValues?.();
     closeModal();
   };
 

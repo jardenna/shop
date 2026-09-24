@@ -111,7 +111,6 @@ const AddressFormModal = ({
         message: popupMessage,
       });
 
-      // onClearAllValues();
       closeModal();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -150,7 +149,7 @@ const AddressFormModal = ({
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}
         className="address-modal"
-        onClose={onClearAllValues}
+        onClearAllValues={onClearAllValues}
       >
         <FieldSet legendText={language.address}>
           <div className="address-form">
