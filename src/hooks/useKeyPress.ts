@@ -1,34 +1,45 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { KeyCode } from '../types/enums';
 
 export function useKeyPress(
   callback: () => void,
   keyCombination: KeyCode[],
+  enabled = true,
 ): void {
-  const pressedKeysRef = useRef<Set<KeyCode>>(new Set());
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
 
-  const downHandler = (event: KeyboardEvent) => {
-    if (keyCombination.includes(event.code as KeyCode)) {
+    const pressedKeys = new Set<KeyCode>();
+
+    const downHandler = (event: KeyboardEvent) => {
+      if (!keyCombination.includes(event.code as KeyCode)) {
+        return;
+      }
+
+      if (event.repeat) {
+        return;
+      }
+
       event.preventDefault();
-      pressedKeysRef.current.add(event.code as KeyCode);
+      pressedKeys.add(event.code as KeyCode);
 
-      // Check if all keys in the combination are pressed
-      if (keyCombination.every((key) => pressedKeysRef.current.has(key))) {
+      if (keyCombination.every((key) => pressedKeys.has(key))) {
         callback();
       }
-    }
-  };
+    };
 
-  const upHandler = (event: KeyboardEvent) => {
-    pressedKeysRef.current.delete(event.code as KeyCode);
-  };
+    const upHandler = (event: KeyboardEvent) => {
+      pressedKeys.delete(event.code as KeyCode);
+    };
 
-  useEffect(() => {
     window.addEventListener('keydown', downHandler);
     window.addEventListener('keyup', upHandler);
+
     return () => {
       window.removeEventListener('keydown', downHandler);
       window.removeEventListener('keyup', upHandler);
     };
-  }, [keyCombination, callback]);
+  }, [callback, enabled, ...keyCombination]);
 }
