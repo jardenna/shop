@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { KeyCode } from '../types/enums';
 
 export function useKeyPress(
@@ -6,6 +6,12 @@ export function useKeyPress(
   keyCombination: KeyCode[],
   enabled = true,
 ): void {
+  const callbackRef = useRef(callback);
+
+  useEffect(() => {
+    callbackRef.current = callback;
+  }, [callback]);
+
   useEffect(() => {
     if (!enabled) {
       return;
@@ -26,7 +32,7 @@ export function useKeyPress(
       pressedKeys.add(event.code as KeyCode);
 
       if (keyCombination.every((key) => pressedKeys.has(key))) {
-        callback();
+        callbackRef.current();
       }
     };
 
@@ -41,5 +47,5 @@ export function useKeyPress(
       window.removeEventListener('keydown', downHandler);
       window.removeEventListener('keyup', upHandler);
     };
-  }, [callback, enabled, ...keyCombination]);
+  }, [enabled, ...keyCombination]);
 }
