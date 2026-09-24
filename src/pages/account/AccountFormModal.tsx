@@ -55,12 +55,13 @@ const AccountFormModal = ({
     preferredFashion: profile.preferredFashion,
   };
 
-  const { values, onChange, onSubmit, onClearAllValues, errors, isFormDirty } =
-    useFormValidation({
+  const { values, onChange, onSubmit, errors, isFormDirty } = useFormValidation(
+    {
       initialState,
       callback: handleSubmit,
       validate: validateProfile,
-    });
+    },
+  );
 
   const [updateProfile, { isLoading, reset }] = useUpdateUserProfileMutation();
 
@@ -78,7 +79,6 @@ const AccountFormModal = ({
       message: language.yourDetailsUpdated,
     });
 
-    onClearAllValues();
     reset();
     closeModal();
   }
