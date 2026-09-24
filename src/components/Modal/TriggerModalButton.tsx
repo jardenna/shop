@@ -1,9 +1,11 @@
 import { BtnVariant } from '../../types/enums';
+import { RefBtnType } from '../../types/types';
 import Button from '../Button';
 import { BaseModalProps } from './Modal';
 import { useModal } from './useModal';
 
 interface TriggerModalButtonProps extends BaseModalProps {
+  buttonRef?: RefBtnType;
   disabled?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
@@ -16,6 +18,7 @@ const TriggerModalButton = ({
   onClick,
   disabled,
   className = '',
+  buttonRef,
   variant = BtnVariant.Primary,
 }: TriggerModalButtonProps) => {
   const { openModal } = useModal();
@@ -27,6 +30,7 @@ const TriggerModalButton = ({
       ariaControls={ariaControls}
       ariaHasPopup="dialog"
       variant={variant}
+      ref={buttonRef}
       onClick={() => {
         openModal(modalId);
         onClick?.();

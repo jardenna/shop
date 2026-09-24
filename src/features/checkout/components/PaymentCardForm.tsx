@@ -103,7 +103,12 @@ const PaymentCardForm = ({
         block: 'start',
       });
 
-      addAddressButtonRef.current?.focus();
+      const addAddressButton = addAddressButtonRef.current;
+
+      if (addAddressButton) {
+        addAddressButton.dataset.initialFocus = 'true';
+        addAddressButton.focus();
+      }
 
       return;
     }
