@@ -20,7 +20,7 @@ import {
 } from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
-import type { InputType } from '../../types/types';
+import type { InputType, RefBtnType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
@@ -31,6 +31,7 @@ interface AddressFormModalProps {
   submitLabel: string;
   username: string;
   address?: Address;
+  buttonRef?: RefBtnType;
   disabled?: boolean;
 }
 
@@ -58,6 +59,7 @@ const AddressFormModal = ({
   submitLabel,
   popupMessage,
   disabled,
+  buttonRef,
 }: AddressFormModalProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
@@ -124,6 +126,7 @@ const AddressFormModal = ({
         ariaControls={ariaControls}
         variant={BtnVariant.Ghost}
         disabled={disabled}
+        buttonRef={buttonRef}
       >
         {id ? (
           <IconContent

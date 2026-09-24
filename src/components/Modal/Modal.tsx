@@ -15,12 +15,15 @@ import { selectModalId } from './ModalSlice';
 import { useAnimate } from './useAnimate';
 import { useModal } from './useModal';
 
-export interface ModalProps {
+export interface BaseModalProps {
   ariaControls: string;
   children: ReactNode;
-  headerText: string;
   modalId: string;
   className?: string;
+}
+
+export interface ModalProps extends BaseModalProps {
+  headerText: string;
   isAlert?: boolean;
   modalSize?: SizeVariant;
   showCloseIcon?: boolean;

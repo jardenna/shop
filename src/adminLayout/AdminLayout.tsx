@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router';
+import {
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
@@ -65,6 +70,7 @@ const AdminLayout = () => {
           </main>
         </PageErrorBoundary>
       </div>
+      <ScrollRestoration />
     </div>
   );
 };

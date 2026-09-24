@@ -5,6 +5,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { BtnVariant, IconName } from '../../types/enums';
+import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
@@ -13,6 +14,7 @@ interface AddressListProps {
   addresses: Address[];
   language: Record<string, string>;
   username: string;
+  buttonRef?: RefBtnType;
   className?: string;
   refetch: () => void;
 }
@@ -23,6 +25,7 @@ const AddressList = ({
   username,
   language,
   className = '',
+  buttonRef,
 }: AddressListProps) => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
@@ -54,7 +57,6 @@ const AddressList = ({
                   ariaLabel={language.deleteAddress}
                 />
               </TriggerModalButton>
-
               <AddressFormModal
                 id={address.id}
                 address={address}
@@ -66,16 +68,6 @@ const AddressList = ({
             </div>
           </li>
         ))}
-        <li className="address-item add-address">
-          <AddressFormModal
-            id={null}
-            username={username}
-            headerText={language.createNewAddress}
-            submitLabel={language.createNewAddress}
-            popupMessage={language.addressCreated}
-            disabled={addresses.length === 4}
-          />
-        </li>
       </ul>
       {selectedAddress && (
         <DeleteAddressModal
@@ -85,6 +77,17 @@ const AddressList = ({
           modalId="address"
         />
       )}
+      <div className="add-address">
+        <AddressFormModal
+          id={null}
+          username={username}
+          headerText={language.createNewAddress}
+          submitLabel={language.createNewAddress}
+          popupMessage={language.addressCreated}
+          disabled={addresses.length === 4}
+          buttonRef={buttonRef}
+        />
+      </div>
     </ErrorBoundary>
   );
 };

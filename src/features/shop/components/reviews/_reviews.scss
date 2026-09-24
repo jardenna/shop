@@ -46,6 +46,12 @@
     padding-top: 8px;
     gap: 0;
 
+    &.radio-tile-list {
+      .control-label {
+        padding: 0;
+      }
+    }
+
     .control-item {
       height: auto;
       background-color: transparent;

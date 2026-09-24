@@ -26,6 +26,7 @@ interface CartFormProps {
   displaySizeList: Size[];
   isLoading: boolean;
   productData: BaseProductFormData;
+  className?: string;
   fixedFooter?: boolean;
   modalId?: string;
   showQuantity?: boolean;
@@ -41,6 +42,7 @@ const CartForm = ({
   showQuantity,
   fixedFooter,
   modalId,
+  className = '',
 }: CartFormProps) => {
   const { language } = useLanguage();
 
@@ -82,6 +84,7 @@ const CartForm = ({
       submitBtnLabel={language.addToBag}
       isLoading={isLoading}
       fixedFooter={fixedFooter}
+      className={className}
     >
       <FieldSet legendText={language.productVariants}>
         <ProductOptionList

@@ -113,6 +113,7 @@ const FavoritePage = () => {
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
               <CartForm
+                className="favorites-form"
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}
                 key={selectedProduct.id}
