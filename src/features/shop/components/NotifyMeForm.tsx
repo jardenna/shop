@@ -2,10 +2,9 @@ import { useId, useState } from 'react';
 import type { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Button from '../../../components/Button';
-import PopModal from '../../../components/popModal/PopModal';
-
-import TriggerModalButton from '../../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../../components/popModal/usePopModal';
+import Modal from '../../../components/Modal/Modal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useModal } from '../../../components/Modal/useModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { BtnVariant } from '../../../types/enums';
 import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
@@ -32,7 +31,7 @@ const NotifyMeForm = ({
   const ariaControls = useId();
   const modalId = 'notify';
   const { language } = useLanguage();
-  const { closeModal, openModal } = usePopModal();
+  const { closeModal, openModal } = useModal();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const hasMissingSizes = !isOutOfStock && options.length > 0;
@@ -76,7 +75,7 @@ const NotifyMeForm = ({
           : language.notifyMe}
       </TriggerModalButton>
 
-      <PopModal
+      <Modal
         modalId={modalId}
         showCloseIcon
         headerText={
@@ -112,7 +111,7 @@ const NotifyMeForm = ({
             )}
           </footer>
         </form>
-      </PopModal>
+      </Modal>
     </>
   );
 };

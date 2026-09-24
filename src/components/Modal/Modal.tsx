@@ -4,18 +4,18 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 import { SizeVariant } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
-import './_pop-modal.scss';
-import { selectModalId } from './popModalSlice';
+import './_modal.scss';
+import { selectModalId } from './ModalSlice';
 import { useAnimate } from './useAnimate';
-import { usePopModal } from './usePopModal';
-import { useTrapPopFocus } from './useTrapPopFocus';
+import { useModal } from './useModal';
 
-export interface PopModalProps {
+export interface ModalProps {
   ariaControls: string;
   children: ReactNode;
   headerText: string;
@@ -27,7 +27,7 @@ export interface PopModalProps {
   onClearAllValues?: () => void;
 }
 
-const PopModal = ({
+const Modal = ({
   children,
   isAlert,
   modalId,
@@ -37,7 +37,7 @@ const PopModal = ({
   className = '',
   ariaControls,
   onClearAllValues,
-}: PopModalProps) => {
+}: ModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const dialogId = useId();
   const { language } = useLanguage();
@@ -49,7 +49,7 @@ const PopModal = ({
     isOpen: isModalOpen,
   });
 
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleClose = () => {
     onClearAllValues?.();
@@ -59,7 +59,7 @@ const PopModal = ({
   useKeyPress(handleClose, [KeyCode.Esc], isModalOpen);
   useScrollLock(shouldRender);
   useClickOutside(modalRef, handleClose, [modalRef]);
-  useTrapPopFocus({
+  useTrapFocus({
     popupRef: modalRef,
     enabled: shouldRender,
   });
@@ -74,7 +74,7 @@ const PopModal = ({
         id={ariaControls}
         aria-labelledby={dialogId}
         ref={modalRef}
-        className={`pop-modal transition modal-${modalSize} ${className} ${transitionState}`}
+        className={`pop-modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
         onTransitionEnd={handleTransitionEnd}
         role={isAlert ? 'alertdialog' : undefined}
       >
@@ -95,4 +95,4 @@ const PopModal = ({
   );
 };
 
-export default PopModal;
+export default Modal;

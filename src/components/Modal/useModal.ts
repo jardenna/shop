@@ -1,7 +1,7 @@
 import { useAppDispatch } from '../../app/hooks';
-import { closeModal, openModal } from './popModalSlice';
+import { closeModal, openModal } from './ModalSlice';
 
-export const usePopModal = () => {
+export const useModal = () => {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = (modalId: string) => {

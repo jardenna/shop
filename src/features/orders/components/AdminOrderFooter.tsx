@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import Button from '../../../components/Button';
-import PopModal from '../../../components/popModal/PopModal';
-import TriggerModalButton from '../../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../../components/popModal/usePopModal';
+import Modal from '../../../components/Modal/Modal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useModal } from '../../../components/Modal/useModal';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
@@ -23,7 +23,7 @@ const AdminOrderFooter = ({
   const ariaControls = useId();
   const modalId = 'cancel-order';
 
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
   const handleCancelOrder = () => {
     onCancelOrder();
     closeModal();
@@ -39,7 +39,7 @@ const AdminOrderFooter = ({
       >
         {language.cancelOrder}
       </TriggerModalButton>
-      <PopModal
+      <Modal
         ariaControls={ariaControls}
         modalId={modalId}
         headerText={language.cancelOrder}
@@ -57,7 +57,7 @@ const AdminOrderFooter = ({
             {language.cancelOrder}
           </Button>
         </footer>
-      </PopModal>
+      </Modal>
 
       <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button>
     </footer>

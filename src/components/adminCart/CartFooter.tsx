@@ -1,8 +1,8 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
-import DeleteModal from '../popModal/DeleteModal';
-import TriggerModalButton from '../popModal/TriggerModalButton';
+import DeleteModal from '../Modal/DeleteModal';
+import TriggerModalButton from '../Modal/TriggerModalButton';
 
 interface CartFooterProps {
   id: string;

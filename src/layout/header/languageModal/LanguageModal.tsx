@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import IconContent from '../../../components/IconContent';
-import FormModal from '../../../components/popModal/FormModal';
-import TriggerModalButton from '../../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../../components/popModal/usePopModal';
+import FormModal from '../../../components/Modal/FormModal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useModal } from '../../../components/Modal/useModal';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { InputChangeHandler, OptionType } from '../../../types/types';
 import { Values } from '../Header';
@@ -30,7 +30,7 @@ const LanguageModal = ({
   const ariaControls = useId();
   const modalId = 'language';
 
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleSubmit = () => {
     onSubmit();

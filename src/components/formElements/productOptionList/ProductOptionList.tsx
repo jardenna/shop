@@ -10,7 +10,7 @@ import type {
 } from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
-import TriggerModalButton from '../../popModal/TriggerModalButton';
+import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import ControlGroupInput from './ProductOptionInput';

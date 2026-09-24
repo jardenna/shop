@@ -6,7 +6,6 @@
   height: fit-content;
   top: 16px;
   right: 16px;
-  transform: translateX(-50%);
   z-index: 10;
   display: flex;
   gap: 4px;
@@ -15,18 +14,7 @@
   background-color: $color-white;
   box-shadow: $box-shadow;
   min-width: rem(340px);
-
-  &.enter {
-    transform: translateX(100%);
-  }
-
-  &.entered {
-    transform: translateX(0);
-  }
-
-  &.exit {
-    transform: translateX(100%);
-  }
+  transform: translateX(-50%);
 
   .total-price {
     box-shadow: none;

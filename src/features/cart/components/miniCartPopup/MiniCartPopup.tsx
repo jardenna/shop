@@ -70,7 +70,7 @@ const MiniCartPopup = () => {
         onReset={() => refetchCart()}
       >
         <section
-          className={`mini-cart transition ${transitionState}`}
+          className={`mini-cart transition from-right ${transitionState}`}
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>

@@ -11,7 +11,7 @@
     &.auto-animation {
       background-color: $color-border;
 
-      @include animation(progress-bar, 5s, linear);
+      @include animation(progress-bar, linear);
     }
 
     @include transition($what: width);

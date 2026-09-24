@@ -47,7 +47,6 @@ export const useTogglePanel = ({
   };
 
   useTrapFocus({
-    id: 'togglePanel',
     popupRef: panelRef,
     enabled: isPanelShown,
   });

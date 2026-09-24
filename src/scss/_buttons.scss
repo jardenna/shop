@@ -59,7 +59,10 @@ a[class^='btn-'],
   color: $color-primary;
   border: $border-dark;
 
-  &:focus-visible,
+  &:focus-visible {
+    @include outline;
+  }
+
   &:hover {
     color: $color-gray-60;
     border-color: $color-primary;

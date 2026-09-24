@@ -8,9 +8,9 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import FormModal from '../../components/popModal/FormModal';
-import TriggerModalButton from '../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../components/popModal/usePopModal';
+import FormModal from '../../components/Modal/FormModal';
+import TriggerModalButton from '../../components/Modal/TriggerModalButton';
+import { useModal } from '../../components/Modal/useModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -38,7 +38,7 @@ const AccountFormModal = ({
   const modalId = 'account-form';
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
     (fashion) => ({

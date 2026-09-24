@@ -17,7 +17,7 @@
     right: -12px;
   }
 
-  @include transition($what: width, $time: 0.2s);
+  @include transition($what: width, $duration: 0.2s);
 
   &.collapsed {
     width: rem(68px);

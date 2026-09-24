@@ -1,10 +1,10 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import PopModal, { PopModalProps } from './PopModal';
-import { usePopModal } from './usePopModal';
+import Modal, { ModalProps } from './Modal';
+import { useModal } from './useModal';
 
-interface FormModalProps extends PopModalProps {
+interface FormModalProps extends ModalProps {
   isLoading: boolean;
   disabled?: boolean;
   submitLabel?: string;
@@ -25,7 +25,7 @@ const FormModal = ({
   onClearAllValues,
 }: FormModalProps) => {
   const { language } = useLanguage();
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleClose = () => {
     onClearAllValues?.();
@@ -33,7 +33,7 @@ const FormModal = ({
   };
 
   return (
-    <PopModal
+    <Modal
       modalId={modalId}
       headerText={headerText}
       modalSize={modalSize}
@@ -58,7 +58,7 @@ const FormModal = ({
           </Button>
         </footer>
       </form>
-    </PopModal>
+    </Modal>
   );
 };
 
