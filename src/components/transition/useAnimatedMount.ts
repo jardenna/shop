@@ -28,7 +28,7 @@ export const useAnimatedMount = ({
       requestAnimationFrame(() => {
         setTransitionState('entered');
       });
-    } else if (shouldRender) {
+    } else {
       setTransitionState('exit');
 
       timer = setTimeout(() => {
@@ -40,7 +40,7 @@ export const useAnimatedMount = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [duration, isOpen, shouldRender]);
+  }, [duration, isOpen]);
 
   return {
     shouldRender,
