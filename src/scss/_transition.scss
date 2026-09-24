@@ -1,7 +1,7 @@
+@use './globals/mixins' as *;
+
 .transition {
-  transition:
-    transform 300ms ease,
-    opacity 300ms ease;
+  @include transition(all, 300ms, ease);
 
   &.enter {
     opacity: 0;
