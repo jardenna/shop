@@ -22,9 +22,15 @@ const FormModal = ({
   className,
   submitLabel,
   disabled,
+  onClose,
 }: FormModalProps) => {
   const { language } = useLanguage();
   const { closeModal } = usePopModal();
+
+  const handleClose = () => {
+    onClose?.();
+    closeModal();
+  };
 
   return (
     <PopModal
@@ -33,6 +39,7 @@ const FormModal = ({
       modalSize={modalSize}
       ariaControls={ariaControls}
       className={className}
+      onClose={onClose}
     >
       <form
         onSubmit={(event) => {
@@ -43,7 +50,7 @@ const FormModal = ({
         {children}
 
         <footer className="footer">
-          <Button onClick={closeModal} variant={BtnVariant.Secondary}>
+          <Button onClick={handleClose} variant={BtnVariant.Secondary}>
             {language.cancel}
           </Button>
           <Button showBtnLoader={isLoading} type="submit" disabled={disabled}>

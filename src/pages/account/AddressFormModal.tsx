@@ -24,7 +24,7 @@ import type { InputType } from '../../types/types';
 import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
-type AddressFormModalProps = {
+interface AddressFormModalProps {
   headerText: string;
   id: string | null;
   popupMessage: string;
@@ -32,7 +32,7 @@ type AddressFormModalProps = {
   username: string;
   address?: Address;
   disabled?: boolean;
-};
+}
 
 type AddressField = keyof AddressFields;
 
@@ -80,13 +80,12 @@ const AddressFormModal = ({
     id: id || null,
   };
 
-  const { values, onChange, onSubmit, errors, isFormDirty } = useFormValidation(
-    {
+  const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
+    useFormValidation({
       initialState,
       callback: handleSubmitAddress,
       validate: validateAddress,
-    },
-  );
+    });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
   const [addAddress, { isLoading: addIsLoading }] = useAddAddressMutation();
@@ -112,6 +111,7 @@ const AddressFormModal = ({
         message: popupMessage,
       });
 
+      // onClearAllValues();
       closeModal();
     } catch (error) {
       handleApiError(error, onAddMessagePopup);
@@ -150,6 +150,7 @@ const AddressFormModal = ({
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}
         className="address-modal"
+        onClose={onClearAllValues}
       >
         <FieldSet legendText={language.address}>
           <div className="address-form">

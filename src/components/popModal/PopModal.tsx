@@ -24,6 +24,7 @@ export interface PopModalProps {
   isAlert?: boolean;
   modalSize?: SizeVariant;
   showCloseIcon?: boolean;
+  onClose?: () => void;
 }
 
 const PopModal = ({
@@ -35,6 +36,7 @@ const PopModal = ({
   modalSize = 'small',
   className = '',
   ariaControls,
+  onClose,
 }: PopModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const dialogId = useId();
@@ -49,9 +51,15 @@ const PopModal = ({
 
   const { closeModal } = usePopModal();
 
-  useKeyPress(closeModal, [KeyCode.Esc]);
+  const handleClose = () => {
+    onClose?.();
+    closeModal();
+  };
+
+  useKeyPress(handleClose, [KeyCode.Esc]);
+
   useScrollLock(shouldRender);
-  useClickOutside(modalRef, closeModal, [modalRef]);
+  useClickOutside(modalRef, handleClose, [modalRef]);
   useTrapPopFocus({
     popupRef: modalRef,
     enabled: shouldRender,
@@ -76,10 +84,11 @@ const PopModal = ({
             {headerText}
           </h2>
           {showCloseIcon && (
-            <BtnClose onClick={closeModal} ariaLabel={language.closeDialog} />
+            <BtnClose onClick={handleClose} ariaLabel={language.closeDialog} />
           )}
         </header>
-        <div className=" modal-content">{children}</div>
+
+        <div className="modal-content">{children}</div>
       </dialog>
 
       <Overlay />
