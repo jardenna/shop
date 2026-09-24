@@ -10,7 +10,7 @@ import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
-import { selectModalId } from './popModalSlice';
+import { selectModalId } from './ModalSlice';
 import { useAnimate } from './useAnimate';
 import { useModal } from './useModal';
 import { useTrapPopFocus } from './useTrapPopFocus';

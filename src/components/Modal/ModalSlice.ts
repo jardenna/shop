@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-interface PopModalState {
+interface ModalState {
   modalId: string | null;
 }
 
-const initialState: PopModalState = {
+const initialState: ModalState = {
   modalId: null,
 };
 
-const popModalSlice = createSlice({
-  name: 'popModalSlice',
+const ModalSlice = createSlice({
+  name: 'ModalSlice',
   initialState,
   reducers: {
     openModal: (state, action: PayloadAction<string | null>) => {
@@ -22,8 +22,8 @@ const popModalSlice = createSlice({
   },
 });
 
-export const selectModalId = (state: RootState) => state.popModal.modalId;
+export const selectModalId = (state: RootState) => state.Modal.modalId;
 
-export const { openModal, closeModal } = popModalSlice.actions;
+export const { openModal, closeModal } = ModalSlice.actions;
 
-export default popModalSlice.reducer;
+export default ModalSlice.reducer;

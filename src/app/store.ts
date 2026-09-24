@@ -1,6 +1,6 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
-import popModalReducer from '../components/Modal/popModalSlice';
+import ModalReducer from '../components/Modal/ModalSlice';
 import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
@@ -60,7 +60,7 @@ export const store = configureStore({
     messagePopup: messagePopupReducer,
     language: languageReducer,
     miniCart: miniCartReducer,
-    popModal: popModalReducer,
+    Modal: ModalReducer,
     cartList: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>
