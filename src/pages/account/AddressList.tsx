@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
-import TriggerModalButton from '../../components/popModal/TriggerModalButton';
+import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { BtnVariant, IconName } from '../../types/enums';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';

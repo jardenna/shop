@@ -1,10 +1,11 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import PopModal, { PopModalProps } from './PopModal';
+import Modal, { ModalProps } from './Modal';
+
 import { usePopModal } from './usePopModal';
 
-interface FormModalProps extends PopModalProps {
+interface FormModalProps extends ModalProps {
   isLoading: boolean;
   disabled?: boolean;
   submitLabel?: string;
@@ -33,7 +34,7 @@ const FormModal = ({
   };
 
   return (
-    <PopModal
+    <Modal
       modalId={modalId}
       headerText={headerText}
       modalSize={modalSize}
@@ -58,7 +59,7 @@ const FormModal = ({
           </Button>
         </footer>
       </form>
-    </PopModal>
+    </Modal>
   );
 };
 

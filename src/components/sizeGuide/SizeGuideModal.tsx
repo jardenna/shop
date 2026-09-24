@@ -1,4 +1,4 @@
-import PopModal from '../popModal/PopModal';
+import Modal from '../Modal/Modal';
 import SizeGuide from './SizeGuide';
 
 interface SizeGuideModalProps {
@@ -12,7 +12,7 @@ const SizeGuideModal = ({
   modalId,
   ariaControls,
 }: SizeGuideModalProps) => (
-  <PopModal
+  <Modal
     modalId={modalId}
     headerText={language.sizeGuide}
     modalSize="medium"
@@ -20,7 +20,7 @@ const SizeGuideModal = ({
     ariaControls={ariaControls}
   >
     <SizeGuide language={language} />
-  </PopModal>
+  </Modal>
 );
 
 export default SizeGuideModal;

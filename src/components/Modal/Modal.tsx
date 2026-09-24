@@ -9,13 +9,13 @@ import { SizeVariant } from '../../types/types';
 import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
-import './_pop-modal.scss';
+import './_modal.scss';
 import { selectModalId } from './popModalSlice';
 import { useAnimate } from './useAnimate';
 import { usePopModal } from './usePopModal';
 import { useTrapPopFocus } from './useTrapPopFocus';
 
-export interface PopModalProps {
+export interface ModalProps {
   ariaControls: string;
   children: ReactNode;
   headerText: string;
@@ -27,7 +27,7 @@ export interface PopModalProps {
   onClearAllValues?: () => void;
 }
 
-const PopModal = ({
+const Modal = ({
   children,
   isAlert,
   modalId,
@@ -37,7 +37,7 @@ const PopModal = ({
   className = '',
   ariaControls,
   onClearAllValues,
-}: PopModalProps) => {
+}: ModalProps) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const dialogId = useId();
   const { language } = useLanguage();
@@ -95,4 +95,4 @@ const PopModal = ({
   );
 };
 
-export default PopModal;
+export default Modal;

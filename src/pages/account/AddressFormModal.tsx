@@ -10,9 +10,9 @@ import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
-import FormModal from '../../components/popModal/FormModal';
-import TriggerModalButton from '../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../components/popModal/usePopModal';
+import FormModal from '../../components/Modal/FormModal';
+import TriggerModalButton from '../../components/Modal/TriggerModalButton';
+import { usePopModal } from '../../components/Modal/usePopModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,

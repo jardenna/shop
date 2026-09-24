@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import IconContent from '../../../components/IconContent';
-import FormModal from '../../../components/popModal/FormModal';
-import TriggerModalButton from '../../../components/popModal/TriggerModalButton';
-import { usePopModal } from '../../../components/popModal/usePopModal';
+import FormModal from '../../../components/Modal/FormModal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { usePopModal } from '../../../components/Modal/usePopModal';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { InputChangeHandler, OptionType } from '../../../types/types';
 import { Values } from '../Header';

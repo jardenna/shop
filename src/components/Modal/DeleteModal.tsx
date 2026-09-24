@@ -1,7 +1,7 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import PopModal from './PopModal';
+import PopModal from './Modal';
 import { usePopModal } from './usePopModal';
 
 export interface BaseDeleteModalProps {

@@ -1,7 +1,7 @@
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import DeleteModal, {
   BaseDeleteModalProps,
-} from '../../components/popModal/DeleteModal';
+} from '../../components/Modal/DeleteModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/addressesApiSlice';
 
