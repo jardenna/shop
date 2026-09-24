@@ -9,11 +9,11 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
-type AccountInfoListProps = {
+interface AccountInfoListProps {
   profile: UserProfileResponse;
   profileFieldList: ProfileFieldListProps[];
   onReset: () => void;
-};
+}
 
 const AccountInfoList = ({
   profile,

@@ -1,10 +1,10 @@
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 
-type AddressInforListProps = {
+interface AddressInforListProps {
   address: Address;
   username?: string;
-};
+}
 
 const AddressInfoListContent = ({
   address,
