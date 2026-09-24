@@ -74,7 +74,8 @@
 
 .in-stock-container {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 4px;
 
   @include max-size($small) {
     flex-direction: column;
