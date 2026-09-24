@@ -12,7 +12,7 @@ import Portal from '../Portal';
 import './_modal.scss';
 import { selectModalId } from './popModalSlice';
 import { useAnimate } from './useAnimate';
-import { usePopModal } from './usePopModal';
+import { useModal } from './useModal';
 import { useTrapPopFocus } from './useTrapPopFocus';
 
 export interface ModalProps {
@@ -49,7 +49,7 @@ const Modal = ({
     isOpen: isModalOpen,
   });
 
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleClose = () => {
     onClearAllValues?.();

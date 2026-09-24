@@ -2,7 +2,7 @@ import { useId } from 'react';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
-import { usePopModal } from '../../../components/Modal/usePopModal';
+import { useModal } from '../../../components/Modal/useModal';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
@@ -23,7 +23,7 @@ const AdminOrderFooter = ({
   const ariaControls = useId();
   const modalId = 'cancel-order';
 
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
   const handleCancelOrder = () => {
     onCancelOrder();
     closeModal();

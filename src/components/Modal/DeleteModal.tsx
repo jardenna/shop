@@ -2,7 +2,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import PopModal from './Modal';
-import { usePopModal } from './usePopModal';
+import { useModal } from './useModal';
 
 export interface BaseDeleteModalProps {
   ariaControls: string;
@@ -27,7 +27,7 @@ const DeleteModal = ({
   itemId,
 }: DeleteModalProps) => {
   const { language } = useLanguage();
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleDeleteItem = () => {
     onDelete(itemId);

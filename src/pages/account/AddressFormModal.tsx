@@ -12,7 +12,7 @@ import IconContent from '../../components/IconContent';
 import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { usePopModal } from '../../components/Modal/usePopModal';
+import { useModal } from '../../components/Modal/useModal';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -63,7 +63,7 @@ const AddressFormModal = ({
   const modalId = id ? `update-${id}` : 'create';
   const { language } = useLanguage();
   const { onAddMessagePopup } = useMessagePopup();
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const standardAddressList: StandardAddress[] = [
     'addressBilling',

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import { usePopModal } from './usePopModal';
+import { useModal } from './useModal';
 
 interface TriggerModalButtonProps {
   ariaControls: string;
@@ -22,7 +22,7 @@ const TriggerModalButton = ({
   className = '',
   variant = BtnVariant.Primary,
 }: TriggerModalButtonProps) => {
-  const { openModal } = usePopModal();
+  const { openModal } = useModal();
 
   return (
     <Button

@@ -3,7 +3,7 @@ import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { ModalProps } from './Modal';
 
-import { usePopModal } from './usePopModal';
+import { useModal } from './useModal';
 
 interface FormModalProps extends ModalProps {
   isLoading: boolean;
@@ -26,7 +26,7 @@ const FormModal = ({
   onClearAllValues,
 }: FormModalProps) => {
   const { language } = useLanguage();
-  const { closeModal } = usePopModal();
+  const { closeModal } = useModal();
 
   const handleClose = () => {
     onClearAllValues?.();
