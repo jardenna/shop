@@ -1,17 +1,17 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { CartItem } from '../../app/api/apiTypes/cartApiTypes';
 import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { IconName } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
+import { useAppSelector } from '../../app/hooks';
+import { selectCartList } from '../../features/cartSlice';
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -26,10 +26,7 @@ const HeaderIcons = ({
 }: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
-  const [cartItems] = useLocalStorage<CartItem[]>(
-    localStorageKeys.cartItems,
-    [],
-  );
+  const cartItems = useAppSelector(selectCartList);
 
   const cartItemsLength = cartItems.length;
   const favoriteItemText =
