@@ -27,7 +27,7 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
     triggerRef.current = document.activeElement as HTMLElement;
 
-    const focusModal = () => {
+    const focusPopup = () => {
       const focusableElements = getFocusableElements();
 
       if (focusableElements.length === 0) {
@@ -39,7 +39,7 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
       firstFocusableElement.focus();
     };
 
-    const animationFrameId = requestAnimationFrame(focusModal);
+    const animationFrameId = requestAnimationFrame(focusPopup);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
