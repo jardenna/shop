@@ -105,3 +105,8 @@
     color: $color-primary;
   }
 }
+
+:focus-visible,
+[data-initial-focus='true']:focus {
+  @include outline;
+}

@@ -36,6 +36,7 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
 
       const firstFocusableElement = focusableElements[0];
 
+      firstFocusableElement.dataset.initialFocus = 'true';
       firstFocusableElement.focus();
     };
 
