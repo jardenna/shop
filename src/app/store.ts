@@ -9,7 +9,6 @@ import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
-import modalSlice from '../features/modalSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
 
@@ -60,7 +59,6 @@ export const store = configureStore({
     auth: authSliceReducer,
     messagePopup: messagePopupReducer,
     language: languageReducer,
-    modal: modalSlice,
     miniCart: miniCartReducer,
     popModal: popModalReducer,
     cartList: cartSlice,
