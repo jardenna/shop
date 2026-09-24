@@ -56,8 +56,7 @@ const PopModal = ({
     closeModal();
   };
 
-  useKeyPress(handleClose, [KeyCode.Esc]);
-
+  useKeyPress(handleClose, [KeyCode.Esc], isModalOpen);
   useScrollLock(shouldRender);
   useClickOutside(modalRef, handleClose, [modalRef]);
   useTrapPopFocus({
