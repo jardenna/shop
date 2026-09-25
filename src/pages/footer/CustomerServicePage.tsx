@@ -1,27 +1,20 @@
-import { useAppDispatch } from '../../app/hooks';
 import Button from '../../components/Button';
+import { useToast } from '../../components/toast/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
-import { addToast } from '../../features/toastSlice';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
-  const dispatch = useAppDispatch();
-
-  const handleAddToast = () => {
-    dispatch(
-      addToast({
-        message: 'We aim to respond to all enquiries within 1–2 business days.',
-      }),
-    );
-  };
+  const { onAddToast } = useToast({
+    message: 'Error',
+  });
 
   return (
     <MainPageContainer
       heading={language.contactCustomerService}
       className="general-page"
     >
-      <Button onClick={handleAddToast}>Add toast</Button>
+      <Button onClick={onAddToast}>Add toast</Button>
 
       {/* <div className="generel-page-container">
         <section>
