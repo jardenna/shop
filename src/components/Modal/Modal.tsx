@@ -11,7 +11,7 @@ import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
-import { selectModalId } from './ModalSlice';
+import { selectModalId } from './testmodalSlice';
 import { useAnimate } from './useAnimate';
 import { useModal } from './useModal';
 

@@ -9,8 +9,8 @@ const initialState: ModalState = {
   modalId: null,
 };
 
-const ModalSlice = createSlice({
-  name: 'ModalSlice',
+const testmodalSlice = createSlice({
+  name: 'testmodalSlice',
   initialState,
   reducers: {
     openModal: (state, action: PayloadAction<string | null>) => {
@@ -22,8 +22,8 @@ const ModalSlice = createSlice({
   },
 });
 
-export const selectModalId = (state: RootState) => state.Modal.modalId;
+export const selectModalId = (state: RootState) => state.modal.modalId;
 
-export const { openModal, closeModal } = ModalSlice.actions;
+export const { openModal, closeModal } = testmodalSlice.actions;
 
-export default ModalSlice.reducer;
+export default testmodalSlice.reducer;
