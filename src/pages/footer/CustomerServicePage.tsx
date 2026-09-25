@@ -12,9 +12,8 @@ const CustomerServicePage = () => {
   const handleAddToast = () => {
     dispatch(
       addToast({
-        message: 'hello',
-        id: 'toast-id',
-        type: 'success',
+        message: 'We aim to respond to all enquiries within 1–2 business days.',
+        type: 'error',
       }),
     );
   };

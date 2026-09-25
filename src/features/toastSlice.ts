@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
 
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 
-interface Toastprops {
-  id: string;
+export interface Toastprops {
   message: string;
-  type: ToastTypes;
   count?: number;
+  id?: string;
+  type?: ToastTypes;
 }
 
 export interface ToastState {
@@ -23,8 +23,11 @@ const toastSlice = createSlice({
   initialState,
   reducers: {
     addToast: (state, action: PayloadAction<Toastprops>) => {
+      console.log(action.payload);
+
       state.toastList.unshift({
         ...action.payload,
+        id: nanoid(),
       });
     },
     dismissToast: (state, action: PayloadAction<string>) => {
