@@ -29,7 +29,9 @@ const toastSlice = createSlice({
       });
     },
     dismissToast: (state, action: PayloadAction<string>) => {
-      state.toastList.filter((toast) => toast.id !== action.payload);
+      state.toastList = state.toastList.filter(
+        (toast) => toast.id !== action.payload,
+      );
     },
     clearToasts: (state) => {
       state.toastList = [];
