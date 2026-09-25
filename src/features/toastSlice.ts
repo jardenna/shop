@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../app/store';
 
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 
@@ -11,13 +12,11 @@ interface Toastprops {
 }
 
 export interface ToastState {
-  count: number;
   toastList: Toastprops[];
 }
 
 const initialState: ToastState = {
   toastList: [],
-  count: 1,
 };
 
 const toastSlice = createSlice({
@@ -38,7 +37,7 @@ const toastSlice = createSlice({
   },
 });
 
-// export const selectToastList = (state:RootState) => state.to
+export const selectToastList = (state: RootState) => state.toast.toastList;
 
 export const { addToast, dismissToast, clearToasts } = toastSlice.actions;
 
