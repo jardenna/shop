@@ -2,15 +2,19 @@ import { useAppSelector } from '../../app/hooks';
 import { selectToastList } from '../../features/toastSlice';
 import Portal from '../Portal';
 import './_toast-list.scss';
+import ToastItem from './ToastItem';
 
 const ToastList = () => {
   const toastList = useAppSelector(selectToastList);
+  const deleteToast = () => {
+    console.log(123);
+  };
 
   return (
     <Portal portalId="toasts">
       {toastList.map((toast) => (
         <ul className="toast-list" key={toast.id}>
-          <li className="toast-item">{toast.message}</li>
+          <ToastItem toast={toast} deleteToast={deleteToast} />
         </ul>
       ))}
     </Portal>
