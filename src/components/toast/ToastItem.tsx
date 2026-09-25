@@ -11,15 +11,17 @@ interface ToastItemProps {
 
 const ToastItem = ({ toast }: ToastItemProps) => {
   const dispatch = useAppDispatch();
-  const { iconName, role } = toastTypeConfig[toast.type ?? 'success'];
+  const type = toast.type ?? 'success';
+  const id = toast.id ?? '';
+  const { iconName, role } = toastTypeConfig[type];
 
   const { onMouseEnter, onMouseLeave } = useToastTimer({
-    id: toast.id ?? '',
-    type: toast.type ?? 'success',
+    id,
+    type,
   });
 
   const handleDeleteToast = () => {
-    dispatch(dismissToast(toast.id ?? ''));
+    dispatch(dismissToast(id));
   };
 
   return (
