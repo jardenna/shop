@@ -6,8 +6,8 @@ import ToastItem from './ToastItem';
 
 const ToastList = () => {
   const toastList = useAppSelector(selectToastList);
-  const deleteToast = () => {
-    console.log(123);
+  const deleteToast = (id: string) => {
+    console.log(id);
   };
 
   return (

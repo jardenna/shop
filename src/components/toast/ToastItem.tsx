@@ -1,11 +1,12 @@
 import { Toastprops } from '../../features/toastSlice';
-import BtnClose from '../BtnClose';
+import { BtnVariant } from '../../types/enums';
+import Button from '../Button';
 import Icon from '../icons/Icon';
 import { toastTypeConfig } from './toastConfig';
 
 interface ToastItemProps {
   toast: Toastprops;
-  deleteToast: () => void;
+  deleteToast: (id: string) => void;
 }
 
 const ToastItem = ({ toast, deleteToast }: ToastItemProps) => {
@@ -20,7 +21,15 @@ const ToastItem = ({ toast, deleteToast }: ToastItemProps) => {
         </p>
       </div>
 
-      <BtnClose onClick={deleteToast} />
+      <Button
+        variant={BtnVariant.Ghost}
+        onClick={() => {
+          console.log('Clicked ID:', toast.id);
+          deleteToast(toast.id ?? '');
+        }}
+      >
+        Delete {toast.id}
+      </Button>
     </li>
   );
 };
