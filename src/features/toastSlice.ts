@@ -4,11 +4,10 @@ import { RootState } from '../app/store';
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 
 interface Toastprops {
-  count: number;
   id: string;
   message: string;
-  toastId: string;
   type: ToastTypes;
+  count?: number;
 }
 
 export interface ToastState {

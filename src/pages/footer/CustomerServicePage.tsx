@@ -1,14 +1,32 @@
+import { useAppDispatch } from '../../app/hooks';
+import Button from '../../components/Button';
+import ToastList from '../../components/toast/ToastList';
 import { useLanguage } from '../../features/language/useLanguage';
+import { addToast } from '../../features/toastSlice';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
+  const dispatch = useAppDispatch();
+
+  const handleAddToast = () => {
+    dispatch(
+      addToast({
+        message: 'hello',
+        id: 'toast-id',
+        type: 'success',
+      }),
+    );
+  };
+
   return (
     <MainPageContainer
       heading={language.contactCustomerService}
       className="general-page"
     >
-      <div className="generel-page-container">
+      <Button onClick={handleAddToast}>add toast</Button>
+      <ToastList />
+      {/* <div className="generel-page-container">
         <section>
           <h2>We're here to help</h2>
           <p>
@@ -36,7 +54,7 @@ const CustomerServicePage = () => {
           <p>Monday–Friday: 9:00–17:00</p>
           <p>We are closed on weekends and public holidays.</p>
         </section>
-      </div>
+      </div> */}
     </MainPageContainer>
   );
 };

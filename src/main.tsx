@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { store } from './app/store';
 import MessagePopupList from './components/messagePopup/MessagePopupList';
+import ToastList from './components/toast/ToastList';
 import CurrencyProvider from './features/currency/CurrencyProvider';
 import './scss/style.scss';
 
@@ -16,6 +17,7 @@ root.render(
         <App />
       </CurrencyProvider>
       <MessagePopupList />
+      <ToastList />
     </Provider>
   </React.StrictMode>,
 );
