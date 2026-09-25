@@ -2,7 +2,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { dismissToast, startToastExit } from '../../features/toastSlice';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
-import { useAnimatedMount } from '../transition/useAnimatedMount';
+import { useAnimate } from '../Modal/useAnimate';
 import { ToastTimerProps, useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
 
@@ -25,9 +25,8 @@ const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
     dispatch(startToastExit(id));
   };
 
-  const { shouldRender, transitionState } = useAnimatedMount({
+  const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: !isExiting,
-    duration: 300,
     onExited: () => dispatch(dismissToast(id)),
   });
 
@@ -38,9 +37,14 @@ const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
   return (
     <li
       role={role}
-      className={`toast-item ${type} transition  ${transitionState} from-bottom-center`}
+      className={`toast-item ${type} transition ${transitionState} from-bottom-center`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onTransitionEnd={(event) => {
+        if (event.target === event.currentTarget) {
+          onTransitionEnd();
+        }
+      }}
     >
       <div className="toast-content">
         <Icon iconName={iconName} />

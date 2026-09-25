@@ -15,7 +15,7 @@ export const useAnimate = ({
 }: UseAnimateProps) => {
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [transitionState, setTransitionState] = useState<TransitionState>(
-    isOpen ? 'entered' : 'unmounted',
+    isOpen ? 'enter' : 'unmounted',
   );
 
   useEffect(() => {
