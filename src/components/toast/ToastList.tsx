@@ -1,14 +1,16 @@
-import { useAppSelector } from '../../app/hooks';
-import { selectToastList } from '../../features/toastSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { dismissToast, selectToastList } from '../../features/toastSlice';
 import Portal from '../Portal';
 import './_toast-list.scss';
 import ToastItem from './ToastItem';
 
 const ToastList = () => {
+  const dispatch = useAppDispatch();
   const toastList = useAppSelector(selectToastList);
   const deleteToast = (id: string) => {
-    console.log(id);
+    dispatch(dismissToast(id));
   };
+  console.log(toastList);
 
   return (
     <Portal portalId="toasts">
