@@ -1,14 +1,16 @@
 import { useAppDispatch } from '../../app/hooks';
-import {
-  dismissToast,
-  startToastExit,
-  ToastItemProps,
-} from '../../features/toastSlice';
+import { dismissToast, startToastExit } from '../../features/toastSlice';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
 import { useAnimatedMount } from '../transition/useAnimatedMount';
-import { useToastTimer } from './hooks/useToastTimer';
+import { ToastTimerProps, useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
+
+export interface ToastItemProps extends ToastTimerProps {
+  isExiting: boolean;
+  message: string;
+  count?: number;
+}
 
 const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
   const dispatch = useAppDispatch();

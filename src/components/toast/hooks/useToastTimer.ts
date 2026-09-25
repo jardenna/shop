@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
-import {
-  startToastExit,
-  ToastTimerProps,
-} from './../../../features/toastSlice';
+import { ToastTypes } from '../toastConfig';
+import { startToastExit } from './../../../features/toastSlice';
+
+export interface ToastTimerProps {
+  id: string;
+  type: ToastTypes;
+}
 
 export const useToastTimer = ({ id, type }: ToastTimerProps) => {
   const dispatch = useAppDispatch();

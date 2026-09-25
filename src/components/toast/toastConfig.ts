@@ -1,6 +1,7 @@
-import { ToastTypes } from '../../features/toastSlice';
 import { IconName } from '../../types/enums';
 import { ToastRole } from '../../types/types';
+
+export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 
 export const toastTypeConfig: Record<
   ToastTypes,

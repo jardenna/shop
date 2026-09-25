@@ -1,7 +1,6 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/store';
-
-export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
+import { ToastTypes } from '../components/toast/toastConfig';
 
 export interface Toastprops {
   message: string;
@@ -9,17 +8,6 @@ export interface Toastprops {
   id?: string;
   isExiting?: boolean;
   type?: ToastTypes;
-}
-
-export interface ToastTimerProps {
-  id: string;
-  type: ToastTypes;
-}
-
-export interface ToastItemProps extends ToastTimerProps {
-  isExiting: boolean;
-  message: string;
-  count?: number;
 }
 
 export interface ToastState {
