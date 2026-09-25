@@ -21,7 +21,7 @@ const initialState: ToastState = {
 };
 
 const toastSlice = createSlice({
-  name: 'ToastSlice',
+  name: 'toast',
   initialState,
   reducers: {
     addToast: (state, action: PayloadAction<Toastprops>) => {
