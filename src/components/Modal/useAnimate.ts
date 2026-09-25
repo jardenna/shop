@@ -50,6 +50,6 @@ export const useAnimate = ({
   return {
     shouldRender,
     transitionState,
-    handleTransitionEnd,
+    onTransitionEnd: handleTransitionEnd,
   };
 };

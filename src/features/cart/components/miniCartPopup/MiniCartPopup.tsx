@@ -2,10 +2,11 @@ import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import BtnClose from '../../../../components/BtnClose';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import { useAnimate } from '../../../../components/Modal/useAnimate';
 import Portal from '../../../../components/Portal';
-import { useAnimatedMount } from '../../../../components/transition/useAnimatedMount';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
@@ -39,9 +40,8 @@ const MiniCartPopup = () => {
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
   const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
 
-  const { shouldRender, transitionState } = useAnimatedMount({
+  const { shouldRender, transitionState } = useAnimate({
     isOpen: shouldOpenMiniCart,
-    duration: 300,
   });
 
   const handleCloseMiniCart = () => {
@@ -74,6 +74,7 @@ const MiniCartPopup = () => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
+          <BtnClose onClick={handleCloseMiniCart} />
           <MiniCartInfo
             remainingForFreeShipping={summary.remainingForFreeShipping}
             language={language}

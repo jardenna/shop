@@ -48,7 +48,7 @@ const Modal = ({
   const currentModalId = useAppSelector(selectModalId);
   const isModalOpen = currentModalId === modalId;
 
-  const { shouldRender, transitionState, handleTransitionEnd } = useAnimate({
+  const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: isModalOpen,
   });
 
@@ -78,7 +78,7 @@ const Modal = ({
         aria-labelledby={dialogId}
         ref={modalRef}
         className={`pop-modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
-        onTransitionEnd={handleTransitionEnd}
+        onTransitionEnd={onTransitionEnd}
         role={isAlert ? 'alertdialog' : undefined}
       >
         <header className="modal-header">
