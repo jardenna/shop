@@ -78,7 +78,11 @@ const Modal = ({
         aria-labelledby={dialogId}
         ref={modalRef}
         className={`pop-modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
-        onTransitionEnd={onTransitionEnd}
+        onTransitionEnd={(event) => {
+          if (event.target === event.currentTarget) {
+            onTransitionEnd();
+          }
+        }}
         role={isAlert ? 'alertdialog' : undefined}
       >
         <header className="modal-header">
