@@ -11,6 +11,7 @@
   flex-direction: column;
 
   .toast-item {
+    position: relative;
     display: flex;
     justify-content: space-between;
     min-width: rem(300px);
@@ -20,10 +21,6 @@
     border-radius: 6px;
     padding: 16px 8px;
     padding-left: 12px;
-
-    .btn-close {
-      position: static;
-    }
 
     &.error {
       border-left-color: $color-danger;
