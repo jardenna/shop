@@ -12,11 +12,11 @@ const ToastList = () => {
 
   return (
     <Portal portalId="toasts">
-      {toastList.map((toast) => (
-        <ul className="toast-list" key={toast.id}>
-          <ToastItem toast={toast} deleteToast={deleteToast} />
-        </ul>
-      ))}
+      <ul className="toast-list">
+        {toastList.map((toast) => (
+          <ToastItem toast={toast} deleteToast={deleteToast} key={toast.id} />
+        ))}
+      </ul>
     </Portal>
   );
 };
