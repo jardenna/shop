@@ -23,8 +23,6 @@ const toastSlice = createSlice({
   initialState,
   reducers: {
     addToast: (state, action: PayloadAction<Toastprops>) => {
-      console.log(action.payload);
-
       state.toastList.unshift({
         ...action.payload,
         id: nanoid(),

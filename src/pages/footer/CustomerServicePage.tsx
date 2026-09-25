@@ -1,6 +1,5 @@
 import { useAppDispatch } from '../../app/hooks';
 import Button from '../../components/Button';
-import ToastList from '../../components/toast/ToastList';
 import { useLanguage } from '../../features/language/useLanguage';
 import { addToast } from '../../features/toastSlice';
 import MainPageContainer from '../pageContainer/MainPageContainer';
@@ -24,7 +23,7 @@ const CustomerServicePage = () => {
       className="general-page"
     >
       <Button onClick={handleAddToast}>add toast</Button>
-      <ToastList />
+
       {/* <div className="generel-page-container">
         <section>
           <h2>We're here to help</h2>
