@@ -10,7 +10,6 @@ const ToastList = () => {
   const deleteToast = (id: string) => {
     dispatch(dismissToast(id));
   };
-  console.log(toastList);
 
   return (
     <Portal portalId="toasts">
