@@ -7,6 +7,7 @@ const CustomerServicePage = () => {
   const { language } = useLanguage();
   const { onAddToast } = useToast({
     message: 'Error',
+    type: 'error',
   });
 
   return (
