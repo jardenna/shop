@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export type TransitionState = 'unmounted' | 'enter' | 'entered' | 'exit';
+
 interface UseAnimateProps {
   isOpen: boolean;
   onEntered?: () => void;
