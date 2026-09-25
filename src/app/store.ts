@@ -1,6 +1,5 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
-import modalReducer from '../components/Modal/testmodalSlice';
 import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
@@ -8,8 +7,8 @@ import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
-
 import miniCartReducer from '../features/miniCartPopupSlice';
+import modalReducer from '../features/modalSlice';
 import toastReducer from '../features/toastSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
