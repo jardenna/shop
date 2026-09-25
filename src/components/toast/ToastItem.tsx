@@ -1,6 +1,7 @@
+import { useLanguage } from '../../features/language/useLanguage';
 import { Toastprops } from '../../features/toastSlice';
-import { BtnVariant } from '../../types/enums';
-import Button from '../Button';
+import { IconName } from '../../types/enums';
+import IconBtn from '../IconBtn';
 import Icon from '../icons/Icon';
 import { toastTypeConfig } from './toastConfig';
 
@@ -10,7 +11,12 @@ interface ToastItemProps {
 }
 
 const ToastItem = ({ toast, deleteToast }: ToastItemProps) => {
+  const { language } = useLanguage();
   const { iconName, role } = toastTypeConfig[toast.type ?? 'success'];
+
+  const handleDeleteToast = () => {
+    deleteToast(toast.id ?? '');
+  };
 
   return (
     <li role={role} className={`toast-item ${toast.type}`}>
@@ -21,15 +27,11 @@ const ToastItem = ({ toast, deleteToast }: ToastItemProps) => {
         </p>
       </div>
 
-      <Button
-        variant={BtnVariant.Ghost}
-        onClick={() => {
-          console.log('Clicked ID:', toast.id);
-          deleteToast(toast.id ?? '');
-        }}
-      >
-        Delete {toast.id}
-      </Button>
+      <IconBtn
+        iconName={IconName.Close}
+        ariaLabel={language.close}
+        onClick={handleDeleteToast}
+      />
     </li>
   );
 };
