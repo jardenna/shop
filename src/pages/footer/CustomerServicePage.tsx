@@ -1,5 +1,5 @@
 import Button from '../../components/Button';
-import { useToast } from '../../components/toast/useToast';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 

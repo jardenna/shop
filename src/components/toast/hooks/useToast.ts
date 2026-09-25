@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
+  Toastprops,
   addToast,
   selectToastList,
-  Toastprops,
-} from '../../features/toastSlice';
+} from '../../../features/toastSlice';
 
 export const useToast = ({ message, type }: Toastprops) => {
   const dispatch = useAppDispatch();
