@@ -10,6 +10,11 @@ export interface Toastprops {
   type?: ToastTypes;
 }
 
+export interface ToastTimerProps {
+  id: string;
+  type: ToastTypes;
+}
+
 export interface ToastState {
   toastList: Toastprops[];
 }

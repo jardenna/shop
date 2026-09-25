@@ -15,7 +15,7 @@ const ToastItem = ({ toast }: ToastItemProps) => {
 
   const { onMouseEnter, onMouseLeave } = useToastTimer({
     id: toast.id ?? '',
-    type: toast.type,
+    type: toast.type ?? 'success',
   });
 
   const handleDeleteToast = () => {

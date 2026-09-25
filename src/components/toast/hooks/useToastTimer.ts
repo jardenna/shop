@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
-import { dismissToast } from './../../../features/toastSlice';
+import { dismissToast, ToastTimerProps } from './../../../features/toastSlice';
 
-export const useToastTimer = ({ id, type }: any) => {
+export const useToastTimer = ({ id, type }: ToastTimerProps) => {
   const dispatch = useAppDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const autoHideDuration = 5000;
