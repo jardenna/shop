@@ -7,6 +7,7 @@ export interface Toastprops {
   message: string;
   count?: number;
   id?: string;
+  isExiting?: boolean;
   type?: ToastTypes;
 }
 
@@ -16,6 +17,7 @@ export interface ToastTimerProps {
 }
 
 export interface ToastItemProps extends ToastTimerProps {
+  isExiting: boolean;
   message: string;
   count?: number;
 }
@@ -38,6 +40,15 @@ const toastSlice = createSlice({
         id: nanoid(),
       });
     },
+    startToastExit: (state, action: PayloadAction<string>) => {
+      const toastItem = state.toastList.find(
+        (toast) => toast.id === action.payload,
+      );
+
+      if (toastItem) {
+        toastItem.isExiting = true;
+      }
+    },
     dismissToast: (state, action: PayloadAction<string>) => {
       state.toastList = state.toastList.filter(
         (toast) => toast.id !== action.payload,
@@ -51,6 +62,7 @@ const toastSlice = createSlice({
 
 export const selectToastList = (state: RootState) => state.toast.toastList;
 
-export const { addToast, dismissToast, clearToasts } = toastSlice.actions;
+export const { addToast, dismissToast, clearToasts, startToastExit } =
+  toastSlice.actions;
 
 export default toastSlice.reducer;

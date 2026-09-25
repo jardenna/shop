@@ -1,11 +1,16 @@
 import { useAppDispatch } from '../../app/hooks';
-import { dismissToast, ToastItemProps } from '../../features/toastSlice';
+import {
+  dismissToast,
+  startToastExit,
+  ToastItemProps,
+} from '../../features/toastSlice';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
+import { useAnimatedMount } from '../transition/useAnimatedMount';
 import { useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
 
-const ToastItem = ({ id, type, count, message }: ToastItemProps) => {
+const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
   const dispatch = useAppDispatch();
   const { iconName, role } = toastTypeConfig[type];
 
@@ -15,13 +20,23 @@ const ToastItem = ({ id, type, count, message }: ToastItemProps) => {
   });
 
   const handleDeleteToast = () => {
-    dispatch(dismissToast(id));
+    dispatch(startToastExit(id));
   };
+
+  const { shouldRender, transitionState } = useAnimatedMount({
+    isOpen: !isExiting,
+    duration: 300,
+    onExited: () => dispatch(dismissToast(id)),
+  });
+
+  if (!shouldRender) {
+    return null;
+  }
 
   return (
     <li
       role={role}
-      className={`toast-item ${type}`}
+      className={`toast-item ${type} transition  ${transitionState} from-bottom-center`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

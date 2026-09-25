@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
-import { dismissToast, ToastTimerProps } from './../../../features/toastSlice';
+import {
+  startToastExit,
+  ToastTimerProps,
+} from './../../../features/toastSlice';
 
 export const useToastTimer = ({ id, type }: ToastTimerProps) => {
   const dispatch = useAppDispatch();
@@ -13,7 +16,7 @@ export const useToastTimer = ({ id, type }: ToastTimerProps) => {
     }
 
     const timer = setTimeout(() => {
-      dispatch(dismissToast(id));
+      dispatch(startToastExit(id));
     }, autoHideDuration);
 
     return () => {

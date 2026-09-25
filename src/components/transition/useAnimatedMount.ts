@@ -12,10 +12,11 @@ interface UseAnimatedMountProps {
 export const useAnimatedMount = ({
   isOpen,
   duration = 300,
+  onExited,
 }: UseAnimatedMountProps) => {
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [transitionState, setTransitionState] = useState<TransitionState>(
-    isOpen ? 'entered' : 'unmounted',
+    isOpen ? 'enter' : 'unmounted',
   );
 
   useEffect(() => {
@@ -34,6 +35,7 @@ export const useAnimatedMount = ({
       timer = setTimeout(() => {
         setShouldRender(false);
         setTransitionState('unmounted');
+        onExited?.();
       }, duration);
     }
 

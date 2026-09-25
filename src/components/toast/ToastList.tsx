@@ -21,6 +21,7 @@ const ToastList = () => {
             id={toast.id ?? ''}
             type={toast.type ?? 'success'}
             count={toast.count}
+            isExiting={toast.isExiting ?? false}
           />
         ))}
       </ul>
