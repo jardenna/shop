@@ -8,6 +8,8 @@ import languageReducer from '../features/language/languageSlice';
 import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
+
+import toastReducer from '../components/toast/toastSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
@@ -58,6 +60,7 @@ export const store = configureStore({
     currency: currencyReducer,
     auth: authSliceReducer,
     messagePopup: messagePopupReducer,
+    toast: toastReducer,
     language: languageReducer,
     miniCart: miniCartReducer,
     Modal: ModalReducer,
