@@ -12,7 +12,6 @@ const CustomerServicePage = () => {
     dispatch(
       addToast({
         message: 'We aim to respond to all enquiries within 1–2 business days.',
-        type: 'error',
       }),
     );
   };
@@ -22,7 +21,7 @@ const CustomerServicePage = () => {
       heading={language.contactCustomerService}
       className="general-page"
     >
-      <Button onClick={handleAddToast}>add toast</Button>
+      <Button onClick={handleAddToast}>Add toast</Button>
 
       {/* <div className="generel-page-container">
         <section>
