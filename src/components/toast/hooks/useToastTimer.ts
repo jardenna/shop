@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
 import {
   startToastExit,
@@ -8,19 +8,25 @@ import {
 export const useToastTimer = ({ id, type }: ToastTimerProps) => {
   const dispatch = useAppDispatch();
   const [isHovered, setIsHovered] = useState(false);
-  const autoHideDuration = 5000;
+  const remainingTime = useRef(5000);
 
   useEffect(() => {
     if (type === 'error' || isHovered) {
       return;
     }
 
+    const startTime = Date.now();
+
     const timer = setTimeout(() => {
       dispatch(startToastExit(id));
-    }, autoHideDuration);
+    }, remainingTime.current);
 
     return () => {
       clearTimeout(timer);
+
+      const elapsedTime = Date.now() - startTime;
+      // On hover count seconds before closing
+      remainingTime.current = Math.max(0, remainingTime.current - elapsedTime);
     };
   }, [dispatch, isHovered, id, type]);
 
@@ -32,5 +38,8 @@ export const useToastTimer = ({ id, type }: ToastTimerProps) => {
     setIsHovered(false);
   };
 
-  return { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave };
+  return {
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+  };
 };
