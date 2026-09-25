@@ -2,6 +2,7 @@ import { ReactNode, useId, useRef } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
+import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -12,7 +13,6 @@ import BtnClose from '../BtnClose';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
-import { useAnimate } from './useAnimate';
 import { useModal } from './useModal';
 
 export interface BaseModalProps {
