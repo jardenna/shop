@@ -3,12 +3,12 @@ import { BtnVariant, IconName } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';
 
-type BtnCloseProps = {
+interface BtnCloseProps {
   ariaLabel?: string;
   autoFocus?: boolean;
   size?: string;
   onClick: () => void;
-};
+}
 
 const BtnClose = ({
   onClick,
