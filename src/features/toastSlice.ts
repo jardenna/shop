@@ -35,9 +35,23 @@ const toastSlice = createSlice({
   initialState,
   reducers: {
     addToast: (state, action: PayloadAction<Toastprops>) => {
+      const toastType = action.payload.type ?? 'success';
+
+      const existingToast = state.toastList.find(
+        (toast) =>
+          toast.message === action.payload.message &&
+          (toast.type ?? 'success') === toastType,
+      );
+
+      if (existingToast) {
+        existingToast.count = (existingToast.count ?? 1) + 1;
+        return;
+      }
+
       state.toastList.unshift({
         ...action.payload,
         id: nanoid(),
+        type: toastType,
       });
     },
     startToastExit: (state, action: PayloadAction<string>) => {
