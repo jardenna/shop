@@ -1,11 +1,26 @@
-import { useAppSelector } from '../../app/hooks';
-import { selectToastList } from '../../features/toastSlice';
+import { useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectToastList, startToastExit } from '../../features/toastSlice';
+import { useKeyPress } from '../../hooks/useKeyPress';
+import { KeyCode } from '../../types/enums';
 import Portal from '../Portal';
 import './_toast-list.scss';
 import ToastItem from './ToastItem';
 
 const ToastList = () => {
   const toastList = useAppSelector(selectToastList);
+  const dispatch = useAppDispatch();
+  const toastListRef = useRef<HTMLUListElement>(null);
+
+  const handleCloseAllToasts = () => {
+    toastList.forEach((toast) => {
+      if (!toast.isExiting && toast.id) {
+        dispatch(startToastExit(toast.id));
+      }
+    });
+  };
+
+  useKeyPress(handleCloseAllToasts, [KeyCode.Esc]);
 
   if (toastList.length === 0) {
     return null;
@@ -13,7 +28,7 @@ const ToastList = () => {
 
   return (
     <Portal portalId="toasts">
-      <ul className="toast-list">
+      <ul className="toast-list" ref={toastListRef}>
         {toastList.map((toast) => (
           <ToastItem
             message={toast.message}
