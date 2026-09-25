@@ -1,18 +1,12 @@
 import { useAppDispatch } from '../../app/hooks';
-import { dismissToast, Toastprops } from '../../features/toastSlice';
+import { dismissToast, ToastItemProps } from '../../features/toastSlice';
 import BtnClose from '../BtnClose';
 import Icon from '../icons/Icon';
 import { useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
 
-interface ToastItemProps {
-  toast: Toastprops;
-}
-
-const ToastItem = ({ toast }: ToastItemProps) => {
+const ToastItem = ({ id, type, count, message }: ToastItemProps) => {
   const dispatch = useAppDispatch();
-  const type = toast.type ?? 'success';
-  const id = toast.id ?? '';
   const { iconName, role } = toastTypeConfig[type];
 
   const { onMouseEnter, onMouseLeave } = useToastTimer({
@@ -27,14 +21,14 @@ const ToastItem = ({ toast }: ToastItemProps) => {
   return (
     <li
       role={role}
-      className={`toast-item ${toast.type}`}
+      className={`toast-item ${type}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <div className="toast-content">
         <Icon iconName={iconName} />
         <p className="toast-message">
-          {toast.message} {toast.count && toast.count > 1 && toast.count}
+          {message} {count && count > 1 && count}
         </p>
       </div>
 
@@ -42,4 +36,5 @@ const ToastItem = ({ toast }: ToastItemProps) => {
     </li>
   );
 };
+
 export default ToastItem;

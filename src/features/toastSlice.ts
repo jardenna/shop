@@ -15,6 +15,11 @@ export interface ToastTimerProps {
   type: ToastTypes;
 }
 
+export interface ToastItemProps extends ToastTimerProps {
+  message: string;
+  count?: number;
+}
+
 export interface ToastState {
   toastList: Toastprops[];
 }

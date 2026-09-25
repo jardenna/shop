@@ -15,7 +15,13 @@ const ToastList = () => {
     <Portal portalId="toasts">
       <ul className="toast-list">
         {toastList.map((toast) => (
-          <ToastItem toast={toast} key={toast.id} />
+          <ToastItem
+            message={toast.message}
+            key={toast.id}
+            id={toast.id ?? ''}
+            type={toast.type ?? 'success'}
+            count={toast.count}
+          />
         ))}
       </ul>
     </Portal>
