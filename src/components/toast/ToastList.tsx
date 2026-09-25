@@ -7,6 +7,11 @@ import ToastItem from './ToastItem';
 const ToastList = () => {
   const dispatch = useAppDispatch();
   const toastList = useAppSelector(selectToastList);
+
+  if (toastList.length === 0) {
+    return null;
+  }
+
   const deleteToast = (id: string) => {
     dispatch(dismissToast(id));
   };
