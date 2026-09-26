@@ -6,7 +6,7 @@ import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../../../../components/messagePopup/useMessagePopup';
+import { useToast } from '../../../../components/toast/hooks/useToast';
 import Panel from '../../../../components/togglePanel/Panel';
 import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
 import { handleApiError } from '../../../../utils/handleApiError';
@@ -50,7 +50,7 @@ const SingleProductPurchaseSection = ({
   });
   const { id, countInStock } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
     useTogglePanel();
 
@@ -75,7 +75,7 @@ const SingleProductPurchaseSection = ({
       );
 
       if (countInStock < totalCount) {
-        handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
+        handleApiError(language.temporarilyOutOfStock, onAddToast);
         return;
       }
 
@@ -131,7 +131,7 @@ const SingleProductPurchaseSection = ({
           );
 
           if (countInStock < totalCount) {
-            handleApiError(language.temporarilyOutOfStock, onAddMessagePopup);
+            handleApiError(language.temporarilyOutOfStock, onAddToast);
             return;
           }
 
