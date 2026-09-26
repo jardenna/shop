@@ -5,9 +5,9 @@ import CartRight from '../../components/adminCart/CartRight';
 import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
 import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonThreeCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCarts';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteProductMutation,
@@ -22,7 +22,7 @@ const ViewProductPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
 
   // Redux hooks
   const {
@@ -50,17 +50,15 @@ const ViewProductPage = () => {
     const result = await deleteProduct(id || '').unwrap();
 
     if (result.success) {
-      onAddMessagePopup({
+      onAddToast({
         message: result.message,
-        withDelay: true,
       });
 
       navigate(AdminPath.AdminProducts);
     } else {
-      onAddMessagePopup({
-        messagePopupType: 'error',
+      onAddToast({
+        type: 'error',
         message: language.productNotFound,
-        componentType: 'notification',
       });
     }
   };
