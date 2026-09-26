@@ -1,0 +1,18 @@
+@use '../../../../scss/globals' as *;
+
+.panel-popup {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  top: 16px;
+  right: 16px;
+  z-index: 15;
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  padding: 16px;
+  background-color: $color-white;
+  box-shadow: $box-shadow;
+  min-width: rem(340px);
+  transform: translateX(-50%);
+}
