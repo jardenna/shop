@@ -56,15 +56,17 @@ const toastSlice = createSlice({
         (toast) => toast.id !== action.payload,
       );
     },
-    clearToasts: (state) => {
-      state.toastList = [];
+    clearErrorToasts: (state) => {
+      state.toastList = state.toastList.filter(
+        (toast) => (toast.type ?? 'success') !== 'error',
+      );
     },
   },
 });
 
 export const selectToastList = (state: RootState) => state.toast.toastList;
 
-export const { addToast, dismissToast, clearToasts, startToastExit } =
+export const { addToast, dismissToast, clearErrorToasts, startToastExit } =
   toastSlice.actions;
 
 export default toastSlice.reducer;
