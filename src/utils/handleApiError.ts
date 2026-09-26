@@ -1,31 +1,32 @@
-import type { MessagePopupWithoutId } from '../features/messagePopupSlice';
+import { ToastTypes } from '../components/toast/toastConfig';
 
-type AddMessagePopupFn = ({
-  message,
-  messagePopupType,
-  componentType,
-}: MessagePopupWithoutId) => void;
+interface AddMessage {
+  message: string;
+  type: ToastTypes;
+}
+
+interface AddMessagePopupFn {
+  (message: AddMessage): void;
+}
 
 // Global error handler for try/catch and manual API responses
 export const handleApiError = (
   error: any,
-  onAddMessagePopup: AddMessagePopupFn,
+  onAddToast: AddMessagePopupFn,
 ): void => {
   // If a simple string or message object is passed
   if (typeof error === 'string') {
-    onAddMessagePopup({
-      messagePopupType: 'error',
+    onAddToast({
+      type: 'error',
       message: error,
-      componentType: 'notification',
     });
     return;
   }
 
   if (error?.message && !error.status) {
-    onAddMessagePopup({
-      messagePopupType: 'error',
+    onAddToast({
+      type: 'error',
       message: error.message,
-      componentType: 'notification',
     });
     return;
   }
@@ -39,10 +40,9 @@ export const handleApiError = (
 
   // Expected errors (< 500) → handled locally
   if (status < 500) {
-    onAddMessagePopup({
-      messagePopupType: 'error',
+    onAddToast({
+      type: 'error',
       message: error.data?.message ?? 'An error occurred',
-      componentType: 'notification',
     });
     return;
   }
