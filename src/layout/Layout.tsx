@@ -16,7 +16,6 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { closeMiniCart } from '../features/miniCartPopupSlice';
-import { clearToasts } from '../features/toastSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
@@ -27,6 +26,7 @@ import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
+import { clearErrorToasts } from '../features/toastSlice';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -37,7 +37,7 @@ const Layout = () => {
   // Clear all popups whenever the user navigates
   useEffect(() => {
     dispatch(closeMiniCart());
-    dispatch(clearToasts());
+    dispatch(clearErrorToasts());
   }, [pathname, dispatch]);
 
   // Hooks

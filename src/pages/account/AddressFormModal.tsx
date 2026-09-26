@@ -21,7 +21,6 @@ import {
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { InputType, RefBtnType } from '../../types/types';
-import { handleApiError } from '../../utils/handleApiError';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
 interface AddressFormModalProps {
@@ -90,7 +89,7 @@ const AddressFormModal = ({
     });
 
   const [updateAddress, { isLoading }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addIsLoading }] = useAddAddressMutation();
+  const [addAddress, { isLoading: addressIsLoading }] = useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : values;
 
@@ -102,21 +101,17 @@ const AddressFormModal = ({
       return;
     }
 
-    try {
-      if (id) {
-        await updateAddress({ address: updatedAddress, id }).unwrap();
-      } else {
-        await addAddress({ address: updatedAddress }).unwrap();
-      }
-
-      onAddToast({
-        message: popupMessage,
-      });
-
-      closeModal();
-    } catch (error) {
-      handleApiError(error, onAddToast);
+    if (id) {
+      await updateAddress({ address: updatedAddress, id }).unwrap();
+    } else {
+      await addAddress({ address: updatedAddress }).unwrap();
     }
+
+    onAddToast({
+      message: popupMessage,
+    });
+
+    closeModal();
   }
 
   return (
@@ -147,7 +142,7 @@ const AddressFormModal = ({
         ariaControls={ariaControls}
         headerText={headerText}
         modalSize="medium"
-        isLoading={isLoading || addIsLoading}
+        isLoading={isLoading || addressIsLoading}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}
