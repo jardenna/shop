@@ -14,7 +14,6 @@ import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import { ProductQuantityMap } from '../../../cart/components/CartList';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -32,6 +31,8 @@ interface SingleProductPurchaseSectionProps {
   modalId?: string;
   onReset: () => void;
 }
+
+export type ProductQuantityMap = Partial<Record<string, number>>;
 
 const SingleProductPurchaseSection = ({
   src,

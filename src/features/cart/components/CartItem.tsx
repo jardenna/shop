@@ -9,7 +9,8 @@ import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { BaseCartProps, ProductQuantityMap } from './CartList';
+import { ProductQuantityMap } from '../../shop/components/singleProduct/SingleProductPurchaseSection';
+import { BaseCartProps } from './CartList';
 
 interface CartItemProps extends BaseCartProps {
   cart: Order;

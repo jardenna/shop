@@ -2,12 +2,9 @@ import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
+import { ProductQuantityMap } from '../../shop/components/singleProduct/SingleProductPurchaseSection';
 import './_cart-list.scss';
 import CartItem from './CartItem';
-
-export interface ProductQuantityMap {
-  [productId: string]: number;
-}
 
 export interface BaseCartProps {
   isLoading: boolean;
