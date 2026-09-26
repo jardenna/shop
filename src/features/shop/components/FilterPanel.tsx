@@ -101,8 +101,6 @@ const FilterPanel = ({
   const countsByKey = filtersCount.countsByKey;
   const totalFiltersCount = filtersCount.totalCount;
 
-  console.log(totalFiltersCount);
-
   const accordionConfig: AccordionConfigItem[] = [
     {
       key: 'colors',
@@ -147,6 +145,7 @@ const FilterPanel = ({
         variant={BtnVariant.Ghost}
       >
         <>
+          {totalFiltersCount > 0 && `[${totalFiltersCount}]`}
           <Icon iconName={IconName.Filter} />
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
