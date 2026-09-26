@@ -1,23 +1,15 @@
-import Button from '../../components/Button';
-import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
-  const { onAddToast } = useToast({
-    message: 'Error',
-    type: 'error',
-  });
 
   return (
     <MainPageContainer
       heading={language.contactCustomerService}
       className="general-page"
     >
-      <Button onClick={onAddToast}>Add toast</Button>
-
-      {/* <div className="generel-page-container">
+      <div className="generel-page-container">
         <section>
           <h2>We're here to help</h2>
           <p>
@@ -45,7 +37,7 @@ const CustomerServicePage = () => {
           <p>Monday–Friday: 9:00–17:00</p>
           <p>We are closed on weekends and public holidays.</p>
         </section>
-      </div> */}
+      </div>
     </MainPageContainer>
   );
 };
