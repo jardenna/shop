@@ -1,8 +1,8 @@
 import { Roles } from '../../app/api/apiTypes/adminApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
+import { useToast } from '../../components/toast/hooks/useToast';
 import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import { useAuth } from '../../features/auth/hooks/useAuth';
@@ -28,7 +28,8 @@ export type ColumnKey = (typeof columnKeys)[number];
 
 const UserPage = () => {
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
+
   const { isAdmin } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
@@ -76,10 +77,9 @@ const UserPage = () => {
     const validation = validateUpdateUser(editValues);
 
     if (validation) {
-      onAddMessagePopup({
-        messagePopupType: 'error',
+      onAddToast({
+        type: 'error',
         message: language[validation],
-        componentType: 'notification',
       });
       return;
     }
@@ -88,7 +88,7 @@ const UserPage = () => {
       id,
       user: editValues,
     }).unwrap();
-    onAddMessagePopup({
+    onAddToast({
       message: language.userUpdated,
     });
   }
@@ -96,7 +96,7 @@ const UserPage = () => {
   async function handleDeleteUser(id: string, username: string) {
     await deleteUser(id).unwrap();
 
-    onAddMessagePopup({
+    onAddToast({
       message: `${username} ${language.deleted}`,
     });
   }
