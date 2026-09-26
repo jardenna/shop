@@ -10,6 +10,7 @@ import './_panel-popup.scss';
 interface PanelPopupProps {
   children: ReactNode;
   isOpen: boolean;
+  ariaControls?: string;
   className?: string;
   onClosePanel: () => void;
 }
@@ -19,6 +20,7 @@ const PanelPopup = ({
   onClosePanel,
   isOpen,
   className = '',
+  ariaControls,
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -37,6 +39,7 @@ const PanelPopup = ({
   return (
     <Portal portalId="panel">
       <section
+        id={ariaControls}
         className={`panel-popup transition from-right ${transitionState} ${className}`}
         ref={panelRef}
       >

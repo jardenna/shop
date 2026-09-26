@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
@@ -73,6 +73,7 @@ const FilterPanel = ({
   onClearSingleFilter,
   onClearAllFilters,
 }: FilterPanelProps) => {
+  const ariaControls = useId();
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
 
@@ -143,6 +144,9 @@ const FilterPanel = ({
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
         variant={BtnVariant.Ghost}
+        ariaLabel={language.filterProducts}
+        ariaHasPopup
+        ariaControls={ariaControls}
       >
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`}
@@ -154,6 +158,7 @@ const FilterPanel = ({
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         className="filter-panel"
+        ariaControls={ariaControls}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
