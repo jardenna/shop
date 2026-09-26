@@ -7,10 +7,10 @@ import type {
 import FieldSet from '../../components/fieldset/FieldSet';
 import Input from '../../components/formElements/Input';
 import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -37,7 +37,7 @@ const AccountFormModal = ({
   const ariaControls = useId();
   const modalId = 'account-form';
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const { closeModal } = useModal();
 
   const preferredFashionList: OptionType[] = preferredFashion.map(
@@ -67,7 +67,7 @@ const AccountFormModal = ({
 
   async function handleSubmit() {
     if (!isFormDirty) {
-      onAddMessagePopup({
+      onAddToast({
         message: language.noChanges,
       });
       return;
@@ -75,7 +75,7 @@ const AccountFormModal = ({
 
     await updateProfile(values).unwrap();
 
-    onAddMessagePopup({
+    onAddToast({
       message: language.yourDetailsUpdated,
     });
 

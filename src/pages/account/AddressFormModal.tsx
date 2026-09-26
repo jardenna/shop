@@ -9,10 +9,10 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -64,7 +64,7 @@ const AddressFormModal = ({
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const { closeModal } = useModal();
 
   const standardAddressList: StandardAddress[] = [
@@ -96,7 +96,7 @@ const AddressFormModal = ({
 
   async function handleSubmitAddress() {
     if (!isFormDirty) {
-      onAddMessagePopup({
+      onAddToast({
         message: language.noChanges,
       });
       return;
@@ -109,13 +109,13 @@ const AddressFormModal = ({
         await addAddress({ address: updatedAddress }).unwrap();
       }
 
-      onAddMessagePopup({
+      onAddToast({
         message: popupMessage,
       });
 
       closeModal();
     } catch (error) {
-      handleApiError(error, onAddMessagePopup);
+      handleApiError(error, onAddToast);
     }
   }
 
