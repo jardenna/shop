@@ -10,12 +10,49 @@ const PrivacyPage = () => {
       <div className="generel-page-container">
         <section>
           <h2>Your privacy</h2>
+          <section className="important-info">
+            We may share relevant personal information with trusted service
+            providers who help us operate our website, process payments, deliver
+            orders, and provide customer support. These providers only receive
+            the information necessary to perform their services and are required
+            to handle your information securely.
+          </section>
+        </section>
+
+        <section>
+          <h2>Sharing your information</h2>
           <p>
-            We never sell your personal information to third parties. We only
-            share your information with trusted service providers when necessary
-            to provide our services, process your orders, deliver your purchases
-            or meet our legal obligations.
+            Personal information with the following categories of service
+            providers:
           </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Providers</th>
+                <th>Which information</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Payment providers</td>
+                <td>Payment and order information</td>
+              </tr>
+              <tr>
+                <td>Shipping providers</td>
+                <td>Name, address, and contact information</td>
+              </tr>
+              <tr>
+                <td>Email service providers</td>
+                <td>
+                  Email address and, where applicable, order confirmations
+                </td>
+              </tr>
+              <tr>
+                <td>Website hosting providers</td>
+                <td>IP address and technical data</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <section>
           <h2>Information we collect</h2>
@@ -38,15 +75,7 @@ const PrivacyPage = () => {
             <li>Protect our website and prevent fraudulent activity.</li>
           </ul>
         </section>
-        <section>
-          <h2>Sharing your information</h2>
-          <p>
-            We may share relevant information with trusted service providers who
-            help us operate our website, process payments, deliver orders and
-            provide customer support. These providers only receive the
-            information necessary to perform their services.
-          </p>
-        </section>
+
         <section>
           <h2>Payment information</h2>
           <p>

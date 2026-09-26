@@ -27,6 +27,7 @@ import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
+import { clearToasts } from '../features/toastSlice';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ const Layout = () => {
   useEffect(() => {
     dispatch(clearMessagePopups());
     dispatch(closeMiniCart());
+    dispatch(clearToasts());
   }, [pathname, dispatch]);
 
   // Hooks

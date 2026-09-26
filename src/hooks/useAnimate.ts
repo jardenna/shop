@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export type TransitionState = 'unmounted' | 'enter' | 'entered' | 'exit';
+
 interface UseAnimateProps {
   isOpen: boolean;
   onEntered?: () => void;
@@ -12,16 +13,19 @@ export const useAnimate = ({
   onEntered,
   onExited,
 }: UseAnimateProps) => {
+  // Initialize the render state and transition state based on whether the element is open.
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [transitionState, setTransitionState] = useState<TransitionState>(
-    isOpen ? 'entered' : 'unmounted',
+    isOpen ? 'enter' : 'unmounted',
   );
 
   useEffect(() => {
     if (isOpen) {
+      // Ensure the element is mounted before starting the enter transition.
       setShouldRender(true);
       setTransitionState('enter');
 
+      // Defer the transition to the next animation frame so the browser can apply the initial state.
       requestAnimationFrame(() => {
         setTransitionState('entered');
       });
@@ -36,13 +40,17 @@ export const useAnimate = ({
 
   const handleTransitionEnd = () => {
     if (transitionState === 'entered') {
+      // Call the callback when the enter transition has completed.
       onEntered?.();
       return;
     }
 
     if (transitionState === 'exit') {
+      // Unmount the element after the exit transition has completed.
       setShouldRender(false);
       setTransitionState('unmounted');
+
+      // Run callback when exit transition has finished
       onExited?.();
     }
   };
@@ -50,6 +58,6 @@ export const useAnimate = ({
   return {
     shouldRender,
     transitionState,
-    handleTransitionEnd,
+    onTransitionEnd: handleTransitionEnd,
   };
 };

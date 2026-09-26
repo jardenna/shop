@@ -1,8 +1,13 @@
 @use '../scss/globals' as *;
 
 .size-guide-table {
-  td {
+  td,
+  th {
     text-align: center;
+  }
+
+  th {
+    text-transform: uppercase;
   }
 }
 

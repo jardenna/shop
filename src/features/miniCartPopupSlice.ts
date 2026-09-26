@@ -10,7 +10,7 @@ const initialState: MiniCartState = {
 };
 
 const miniCartPopupSlice = createSlice({
-  name: 'miniCartPopupSlice',
+  name: 'miniCartPopup',
   initialState,
   reducers: {
     openMiniCart: (state) => {

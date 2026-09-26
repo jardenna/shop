@@ -1,6 +1,5 @@
 import type { Middleware } from '@reduxjs/toolkit';
 import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
-import ModalReducer from '../components/Modal/ModalSlice';
 import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
@@ -9,6 +8,8 @@ import messagePopupReducer, {
   addMessagePopup,
 } from '../features/messagePopupSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
+import modalReducer from '../features/modalSlice';
+import toastReducer from '../features/toastSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
 
@@ -58,9 +59,10 @@ export const store = configureStore({
     currency: currencyReducer,
     auth: authSliceReducer,
     messagePopup: messagePopupReducer,
+    toast: toastReducer,
     language: languageReducer,
     miniCart: miniCartReducer,
-    Modal: ModalReducer,
+    modal: modalReducer,
     cartList: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>
@@ -72,7 +74,5 @@ export const store = configureStore({
   devTools: true,
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

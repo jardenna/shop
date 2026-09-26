@@ -1,33 +1,24 @@
 import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant, IconName } from '../types/enums';
-import Button from './Button';
-import Icon from './icons/Icon';
+import { IconName } from '../types/enums';
+import IconBtn from './IconBtn';
 
-type BtnCloseProps = {
+interface BtnCloseProps {
   ariaLabel?: string;
-  autoFocus?: boolean;
   size?: string;
   onClick: () => void;
-};
+}
 
-const BtnClose = ({
-  onClick,
-  ariaLabel = 'Close',
-  autoFocus,
-  size,
-}: BtnCloseProps) => {
+const BtnClose = ({ onClick, ariaLabel, size }: BtnCloseProps) => {
   const { language } = useLanguage();
 
   return (
-    <Button
-      variant={BtnVariant.Ghost}
+    <IconBtn
+      iconName={IconName.Close}
+      ariaLabel={ariaLabel ?? language.close}
       onClick={onClick}
-      ariaLabel={ariaLabel || language.close}
-      autoFocus={autoFocus}
       className="btn-close"
-    >
-      <Icon iconName={IconName.Close} size={size} />
-    </Button>
+      size={size}
+    />
   );
 };
 

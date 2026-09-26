@@ -3,6 +3,7 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
+
   return (
     <MainPageContainer
       heading={language.contactCustomerService}
@@ -40,4 +41,5 @@ const CustomerServicePage = () => {
     </MainPageContainer>
   );
 };
+
 export default CustomerServicePage;

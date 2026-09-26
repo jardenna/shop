@@ -81,3 +81,5 @@ export type FiltersCountResult = {
 };
 
 export type SizeVariant = 'mini' | 'small' | 'medium' | 'large' | 'x-large';
+
+export type ToastRole = 'alert' | 'status';
