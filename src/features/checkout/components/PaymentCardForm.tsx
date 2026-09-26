@@ -4,11 +4,10 @@ import {
   PaymentMethodField,
   PaymentMethods,
 } from '../../../app/api/apiTypes/paymentApiTypes';
-
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { ChangeInputType, InputType } from '../../../types/types';
@@ -37,7 +36,7 @@ const PaymentCardForm = ({
   additionalFooterInfo,
 }: PaymentCardFormProps) => {
   const navigate = useNavigate();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const initialValues: PaymentFormValues = {
     paymentMethod: paymentMethod as PaymentMethods,
     cardNumber: '',
@@ -124,7 +123,7 @@ const PaymentCardForm = ({
 
     navigate(`/${ShopPath.MyOrder}/${order.id}`);
 
-    onAddMessagePopup({
+    onAddToast({
       message: language.orderCreated,
     });
   }
