@@ -23,6 +23,7 @@ export const useDeleteCartItem = () => {
       type: 'error',
     });
   };
+
   return {
     deleteCartItem,
   };
