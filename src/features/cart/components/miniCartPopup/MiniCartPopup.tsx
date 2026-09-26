@@ -5,13 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import BtnClose from '../../../../components/BtnClose';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import Portal from '../../../../components/Portal';
 import { useAnimate } from '../../../../hooks/useAnimate';
-import { useClickOutside } from '../../../../hooks/useClickOutside';
-import { useKeyPress } from '../../../../hooks/useKeyPress';
-import { useScrollLock } from '../../../../hooks/useScrollLock';
 import { ShopPath } from '../../../../layout/nav/enums';
-import { KeyCode } from '../../../../types/enums';
 import { selectUser } from '../../../auth/authSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import {
@@ -23,6 +18,7 @@ import TotalPrice from '../../../orders/components/TotalPrice';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 import MiniCartInfo from './MiniCartInfo';
+import PanelPopup from './PanelPopup';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
@@ -52,11 +48,6 @@ const MiniCartPopup = () => {
     navigate(`/${ShopPath.ShoppingCart}`);
   };
 
-  useKeyPress(handleCloseMiniCart, [KeyCode.Esc]);
-  useScrollLock(shouldRender);
-
-  useClickOutside(miniCartRef, handleCloseMiniCart, [miniCartRef]);
-
   if (!cartData || !shouldRender) {
     return null;
   }
@@ -64,7 +55,11 @@ const MiniCartPopup = () => {
   const { cartItems, summary } = cartData;
 
   return (
-    <Portal portalId="miniCart">
+    <PanelPopup
+      className="mini-cart"
+      onClosePanel={handleCloseMiniCart}
+      isOpen={shouldOpenMiniCart}
+    >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
@@ -84,7 +79,7 @@ const MiniCartPopup = () => {
           <Button onClick={handleGoToCart}>{language.bag}</Button>
         </section>
       </ErrorBoundary>
-    </Portal>
+    </PanelPopup>
   );
 };
 

@@ -4,7 +4,6 @@ import Portal from '../../../../components/Portal';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
-import { useScrollLock } from '../../../../hooks/useScrollLock';
 import { KeyCode } from '../../../../types/enums';
 import './_panel-popup.scss';
 
@@ -28,7 +27,6 @@ const PanelPopup = ({
   });
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);
-  useScrollLock(shouldRender);
 
   useClickOutside(panelRef, onClosePanel, [panelRef]);
 
