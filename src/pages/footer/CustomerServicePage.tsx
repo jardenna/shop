@@ -1,11 +1,11 @@
 import Button from '../../components/Button';
-import { useToast } from '../../components/toast/hooks/useToast';
+import { useToastNew } from '../../components/toast/hooks/useToastNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
-  const { onAddToast } = useToast({
+  const { onAddToast } = useToastNew({
     message: 'Error',
     type: 'error',
   });

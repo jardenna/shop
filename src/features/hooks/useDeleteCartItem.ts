@@ -1,30 +1,28 @@
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useDeleteCartItemMutation } from '../cart/cartApiSlice';
 import { useLanguage } from '../language/useLanguage';
 
 export const useDeleteCartItem = () => {
   const { language } = useLanguage();
   const [deleteCartItemMutation] = useDeleteCartItemMutation();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
 
   const deleteCartItem = async (cartItemId: string) => {
     const result = await deleteCartItemMutation(cartItemId).unwrap();
 
     if (result.success) {
-      onAddMessagePopup({
+      onAddToast({
         message: result.message,
       });
 
       return;
     }
 
-    onAddMessagePopup({
-      messagePopupType: 'error',
+    onAddToast({
       message: language.productNotFound,
-      componentType: 'notification',
+      type: 'error',
     });
   };
-
   return {
     deleteCartItem,
   };
