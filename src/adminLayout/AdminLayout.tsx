@@ -9,7 +9,7 @@ import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { clearMessagePopups } from '../features/messagePopupSlice';
+import { clearToasts } from '../features/toastSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
@@ -29,7 +29,7 @@ const AdminLayout = () => {
 
   // Clear all popups whenever the user navigates
   useEffect(() => {
-    dispatch(clearMessagePopups());
+    dispatch(clearToasts());
   }, [pathname, dispatch]);
 
   const [isMenuCollapsed, setIsMenuCollapsed] = useLocalStorage(

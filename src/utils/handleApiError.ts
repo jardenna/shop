@@ -5,14 +5,14 @@ interface AddMessage {
   type: ToastTypes;
 }
 
-interface AddMessagePopupFn {
+interface AddToastCallback {
   (message: AddMessage): void;
 }
 
 // Global error handler for try/catch and manual API responses
 export const handleApiError = (
   error: any,
-  onAddToast: AddMessagePopupFn,
+  onAddToast: AddToastCallback,
 ): void => {
   // If a simple string or message object is passed
   if (typeof error === 'string') {

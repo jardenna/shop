@@ -4,7 +4,6 @@ import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
-import messagePopupReducer from '../features/messagePopupSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
 import modalReducer from '../features/modalSlice';
 import toastReducer, { addToast } from '../features/toastSlice';
@@ -55,7 +54,6 @@ export const store = configureStore({
     [currencyApiSlice.reducerPath]: currencyApiSlice.reducer,
     currency: currencyReducer,
     auth: authSliceReducer,
-    messagePopup: messagePopupReducer,
     toast: toastReducer,
     language: languageReducer,
     miniCart: miniCartReducer,
