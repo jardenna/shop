@@ -150,12 +150,16 @@ const FilterPanel = ({
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       </Button>
-      <PanelPopup onClosePanel={onHidePanel} isOpen={isPanelShown}>
+      <PanelPopup
+        onClosePanel={onHidePanel}
+        isOpen={isPanelShown}
+        className="filter-panel"
+      >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
         >
-          <section className="filter-panel">
+          <>
             <VisuallyHidden as="header">
               <h2>{language.filterHeading}</h2>
             </VisuallyHidden>
@@ -219,7 +223,7 @@ const FilterPanel = ({
                 <Accordion accordionList={accordionList} name="filter" />
               </FieldSet>
             </Form>
-          </section>
+          </>
         </ErrorBoundary>
       </PanelPopup>
     </>
