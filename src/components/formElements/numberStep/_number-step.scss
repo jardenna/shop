@@ -1,19 +1,13 @@
 @use '../../../scss/globals' as *;
 
 .number-step {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-
   .read-only {
-    padding-inline: 20px;
-    min-width: fit-content;
+    padding-block: 12px;
   }
 
   .number-step-container {
     display: flex;
-    gap: 2px;
+    gap: 20px;
   }
 
   .input-container {
@@ -31,6 +25,12 @@
   }
 
   .btn-ghost {
-    padding-inline: 12px;
+    width: 20px;
+    display: flex;
+  }
+
+  .spinner {
+    width: rem(16px);
+    height: rem(16px);
   }
 }

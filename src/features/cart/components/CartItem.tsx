@@ -7,9 +7,10 @@ import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
+import { ProductQuantityMap } from '../../shop/cartUtils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { BaseCartProps, ProductQuantityMap } from './CartList';
+import { BaseCartProps } from './CartList';
 
 interface CartItemProps extends BaseCartProps {
   cart: Order;
@@ -29,6 +30,7 @@ const CartItem = ({
   onDeleteCartItem,
   linkTo,
   isLoading,
+  loadingId,
 }: CartItemProps) => (
   <article className="cart-item">
     <Link to={linkTo} className="cart-item-image">
@@ -71,6 +73,7 @@ const CartItem = ({
         name={cart.id}
         displayOnly
         isLoading={isLoading}
+        loadingId={loadingId}
         disabled={quantityByProductId[cart.productId] === cart.countInStock}
       />
     </div>

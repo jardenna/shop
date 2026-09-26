@@ -14,12 +14,15 @@ import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import { ProductQuantityMap } from '../../../cart/components/CartList';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { openMiniCart } from '../../../miniCartPopupSlice';
-import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
+import {
+  cartUtils,
+  getTotalCartQuantity,
+  ProductQuantityMap,
+} from '../../cartUtils';
 import CartForm, { InitialShopValues } from './CartForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
@@ -192,7 +195,7 @@ const SingleProductPurchaseSection = ({
     {},
   );
 
-  const currentProductQuantity = quantityByProductId[id];
+  const currentProductQuantity = quantityByProductId[id] ?? 0;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>

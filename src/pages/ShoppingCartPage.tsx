@@ -42,7 +42,9 @@ const ShoppingCartPage = () => {
 
   const cartItems = cartData?.cartItems;
 
-  const [updateQty, { isLoading: isUpdateQtyLoading }] = useUpdateQtyMutation();
+  const [updateQty, { isLoading: isUpdateQtyLoading, originalArgs }] =
+    useUpdateQtyMutation();
+
   const [applyPromoCode, { isLoading: isPromoCodeLoading }] =
     useApplyPromoCodeMutation();
   const { deleteCartItem } = useDeleteCartItem();
@@ -108,6 +110,7 @@ const ShoppingCartPage = () => {
               cartList={cartData.cartItems}
               language={language}
               isLoading={isUpdateQtyLoading}
+              loadingId={originalArgs?.cartItemId}
               onDeleteCartItem={
                 currentUser ? deleteCartItem : handleDeleteGuestCart
               }

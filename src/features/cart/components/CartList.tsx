@@ -2,16 +2,14 @@ import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
+import { ProductQuantityMap } from '../../shop/cartUtils';
 import './_cart-list.scss';
 import CartItem from './CartItem';
-
-export interface ProductQuantityMap {
-  [productId: string]: number;
-}
 
 export interface BaseCartProps {
   isLoading: boolean;
   language: Record<string, string>;
+  loadingId?: string;
   onDeleteCartItem: (cartItemId: string) => void;
   onUpdateQty: (cartItemId: string, qty: number) => void;
 }
@@ -26,6 +24,7 @@ const CartList = ({
   onDeleteCartItem,
   onUpdateQty,
   isLoading,
+  loadingId,
 }: CartListProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
@@ -39,7 +38,7 @@ const CartList = ({
     (result, cartItem) => {
       // eslint-disable-next-line no-param-reassign
       result[cartItem.productId] =
-        result[cartItem.productId] + values[cartItem.id];
+        (result[cartItem.productId] ?? 0) + values[cartItem.id];
 
       return result;
     },
@@ -62,6 +61,7 @@ const CartList = ({
           </VisuallyHidden>
           <CartItem
             isLoading={isLoading}
+            loadingId={loadingId}
             cart={cart}
             language={language}
             quantityByProductId={quantityByProductId}
