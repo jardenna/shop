@@ -40,7 +40,6 @@ const NumberStep = ({
 }: NumberStepProps) => {
   const { language } = useLanguage();
   const isCurrentLoading = isLoading && loadingId === id;
-  console.log({ loadingId, id });
 
   const handleNumberStepClick = (amount: number) => {
     onNumberStepChange(id, amount);
