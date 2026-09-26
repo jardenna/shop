@@ -7,9 +7,9 @@ import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
+import { ProductQuantityMap } from '../../shop/cartUtils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { ProductQuantityMap } from '../../shop/components/singleProduct/SingleProductPurchaseSection';
 import { BaseCartProps } from './CartList';
 
 interface CartItemProps extends BaseCartProps {

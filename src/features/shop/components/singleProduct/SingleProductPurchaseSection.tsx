@@ -18,7 +18,11 @@ import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import { openMiniCart } from '../../../miniCartPopupSlice';
-import { cartUtils, getTotalCartQuantity } from '../../cartUtils';
+import {
+  cartUtils,
+  getTotalCartQuantity,
+  ProductQuantityMap,
+} from '../../cartUtils';
 import CartForm, { InitialShopValues } from './CartForm';
 import SingleProductPanel, { PopupData } from './SingleProductPanel';
 
@@ -31,8 +35,6 @@ interface SingleProductPurchaseSectionProps {
   modalId?: string;
   onReset: () => void;
 }
-
-export type ProductQuantityMap = Partial<Record<string, number>>;
 
 const SingleProductPurchaseSection = ({
   src,

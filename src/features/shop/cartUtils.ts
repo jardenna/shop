@@ -3,6 +3,10 @@ import { ShopPath } from '../../layout/nav/enums';
 
 export type ChangedAttribute = 'size' | 'color';
 
+export interface ProductQuantityMap {
+  [productId: string]: number | undefined;
+}
+
 interface CartUtilsParams {
   cartItem: CartItem;
   cartList: CartItem[];
