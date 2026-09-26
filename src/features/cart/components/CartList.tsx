@@ -12,6 +12,7 @@ export interface ProductQuantityMap {
 export interface BaseCartProps {
   isLoading: boolean;
   language: Record<string, string>;
+  loadingId?: string;
   onDeleteCartItem: (cartItemId: string) => void;
   onUpdateQty: (cartItemId: string, qty: number) => void;
 }
@@ -26,6 +27,7 @@ const CartList = ({
   onDeleteCartItem,
   onUpdateQty,
   isLoading,
+  loadingId,
 }: CartListProps) => {
   const initialState = Object.fromEntries(
     cartList.map((cart) => [cart.id, cart.qty]),
@@ -62,6 +64,7 @@ const CartList = ({
           </VisuallyHidden>
           <CartItem
             isLoading={isLoading}
+            loadingId={loadingId}
             cart={cart}
             language={language}
             quantityByProductId={quantityByProductId}

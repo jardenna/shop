@@ -29,6 +29,7 @@ const CartItem = ({
   onDeleteCartItem,
   linkTo,
   isLoading,
+  loadingId,
 }: CartItemProps) => (
   <article className="cart-item">
     <Link to={linkTo} className="cart-item-image">
@@ -71,6 +72,7 @@ const CartItem = ({
         name={cart.id}
         displayOnly
         isLoading={isLoading}
+        loadingId={loadingId}
         disabled={quantityByProductId[cart.productId] === cart.countInStock}
       />
     </div>
