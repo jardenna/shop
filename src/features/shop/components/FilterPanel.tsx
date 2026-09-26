@@ -5,6 +5,7 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
 } from '../../../components/accordion/Accordion';
+import Button from '../../../components/Button';
 import ColorItem from '../../../components/ColorItem';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
@@ -13,14 +14,14 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
-import TogglePanel from '../../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
-import { IconName } from '../../../types/enums';
+import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
+import PanelPopup from '../../cart/components/miniCartPopup/PanelPopup';
 import { useCurrency } from '../../currency/useCurrency';
 import ClearFiltersBtn from './ClearFiltersBtn';
 import './filterPanel.styles.scss';
@@ -74,8 +75,8 @@ const FilterPanel = ({
 }: FilterPanelProps) => {
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
-    useTogglePanel();
+
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const primaryBtnText =
     productCount > 0
@@ -99,6 +100,8 @@ const FilterPanel = ({
   const filtersCount = getFilterSummary(values);
   const countsByKey = filtersCount.countsByKey;
   const totalFiltersCount = filtersCount.totalCount;
+
+  console.log(totalFiltersCount);
 
   const accordionConfig: AccordionConfigItem[] = [
     {
@@ -137,90 +140,90 @@ const FilterPanel = ({
   }));
 
   return (
-    <TogglePanel
-      onTogglePanel={onTogglePanel}
-      onHidePanel={onHidePanel}
-      isPanelShown={isPanelShown}
-      panelRef={panelRef}
-      triggerBtnContent={
+    <>
+      <Button
+        ariaExpanded={isPanelShown}
+        onClick={onTogglePanel}
+        variant={BtnVariant.Ghost}
+      >
         <>
-          {totalFiltersCount > 0 && `[${totalFiltersCount}]`} {language.filter}{' '}
           <Icon iconName={IconName.Filter} />
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
-      }
-    >
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
-      >
-        <section className="filter-panel">
-          <VisuallyHidden as="header">
-            <h2>{language.filterHeading}</h2>
-          </VisuallyHidden>
+      </Button>
+      <PanelPopup onClosePanel={onHidePanel} isOpen={isPanelShown}>
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
+          <section className="filter-panel">
+            <VisuallyHidden as="header">
+              <h2>{language.filterHeading}</h2>
+            </VisuallyHidden>
 
-          <Form
-            className="filter-form"
-            submitBtnLabel={primaryBtnText}
-            onSubmit={onHidePanel}
-            cancelBtnProps={{
-              btnLabel: language.clearAllFilters,
-              isDisabled: isClearFiltersDisabled,
-              onCancel: onClearAllFilters,
-            }}
-          >
-            <FieldSet
-              legendText={language.filterProducts}
-              className="filter-fieldset"
-              showLegendText
+            <Form
+              className="filter-form"
+              submitBtnLabel={primaryBtnText}
+              onSubmit={onHidePanel}
+              cancelBtnProps={{
+                btnLabel: language.clearAllFilters,
+                isDisabled: isClearFiltersDisabled,
+                onCancel: onClearAllFilters,
+              }}
             >
-              {filteredEntries.length > 0 && (
-                <div className="toggle-content">
-                  {filteredEntries.map(([key, values]) => (
-                    <TagList
-                      key={key}
-                      language={language}
-                      tagList={values.map((value) => ({
-                        key: key as FilterKeys,
-                        value,
-                      }))}
-                      onClick={onRemoveFilterTag}
-                    />
-                  ))}
-                </div>
-              )}
               <FieldSet
-                legendText={language.priceRange}
-                className="dural-range-fieldset"
+                legendText={language.filterProducts}
+                className="filter-fieldset"
                 showLegendText
               >
-                <DualRange
-                  minValue={values.minPrice}
-                  maxValue={values.maxPrice}
-                  inputNames={{
-                    min: 'minPrice',
-                    max: 'maxPrice',
-                  }}
-                  inputLabels={{
-                    min: language.priceFrom,
-                    max: language.priceTo,
-                  }}
-                  onChange={setValue}
-                  unitLabel={currencyText}
-                />
-                <ClearFiltersBtn
-                  onClick={() => {
-                    onClearSingleFilter(['minPrice', 'maxPrice']);
-                  }}
-                  disabled={isClearPriceBtnDisabled}
-                />
+                {filteredEntries.length > 0 && (
+                  <div className="toggle-content">
+                    {filteredEntries.map(([key, values]) => (
+                      <TagList
+                        key={key}
+                        language={language}
+                        tagList={values.map((value) => ({
+                          key: key as FilterKeys,
+                          value,
+                        }))}
+                        onClick={onRemoveFilterTag}
+                      />
+                    ))}
+                  </div>
+                )}
+                <FieldSet
+                  legendText={language.priceRange}
+                  className="dural-range-fieldset"
+                  showLegendText
+                >
+                  <DualRange
+                    minValue={values.minPrice}
+                    maxValue={values.maxPrice}
+                    inputNames={{
+                      min: 'minPrice',
+                      max: 'maxPrice',
+                    }}
+                    inputLabels={{
+                      min: language.priceFrom,
+                      max: language.priceTo,
+                    }}
+                    onChange={setValue}
+                    unitLabel={currencyText}
+                  />
+                  <ClearFiltersBtn
+                    onClick={() => {
+                      onClearSingleFilter(['minPrice', 'maxPrice']);
+                    }}
+                    disabled={isClearPriceBtnDisabled}
+                  />
+                </FieldSet>
+                <Accordion accordionList={accordionList} name="filter" />
               </FieldSet>
-              <Accordion accordionList={accordionList} name="filter" />
-            </FieldSet>
-          </Form>
-        </section>
-      </ErrorBoundary>
-    </TogglePanel>
+            </Form>
+          </section>
+        </ErrorBoundary>
+      </PanelPopup>
+    </>
   );
 };
 

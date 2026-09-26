@@ -6,15 +6,21 @@ import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useScrollLock } from '../../../../hooks/useScrollLock';
 import { KeyCode } from '../../../../types/enums';
-import './_mini-cart-popup.scss';
+import './_panel-popup.scss';
 
 interface PanelPopupProps {
   children: ReactNode;
   isOpen: boolean;
+  clasName?: string;
   onClosePanel: () => void;
 }
 
-const PanelPopup = ({ children, onClosePanel, isOpen }: PanelPopupProps) => {
+const PanelPopup = ({
+  children,
+  onClosePanel,
+  isOpen,
+  clasName = '',
+}: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
   const { shouldRender, transitionState } = useAnimate({
@@ -33,7 +39,7 @@ const PanelPopup = ({ children, onClosePanel, isOpen }: PanelPopupProps) => {
   return (
     <Portal portalId="panel">
       <section
-        className={`mini-cart transition from-right ${transitionState}`}
+        className={`panel-popup transition from-right ${transitionState} ${clasName}`}
         ref={panelRef}
       >
         {children}
