@@ -47,6 +47,7 @@ const CartList = ({
     },
     {},
   );
+
   const handleUpdateQty = (cartItemId: string, value: number) => {
     const nextQuantity = values[cartItemId] + value;
 
