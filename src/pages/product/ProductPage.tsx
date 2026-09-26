@@ -1,10 +1,10 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import { tableHeaders } from '../../features/products/components/productTableHeaders';
 import ProductTableRow from '../../features/products/components/ProductTableRow';
@@ -24,7 +24,7 @@ import './productPage.styles.scss';
 
 const ProductPage = () => {
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
 
   // Redux hooks
   const { data: hasScheduledData } = useGetHasScheduledDataQuery(undefined, {
@@ -107,7 +107,7 @@ const ProductPage = () => {
   // Copy row handler
   async function handleCopyProduct(id: string) {
     await dublicateProduct(id).unwrap();
-    onAddMessagePopup({
+    onAddToast({
       message: language.productCopied,
     });
   }

@@ -1,7 +1,7 @@
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import DeleteModal, {
   BaseDeleteModalProps,
 } from '../../components/Modal/DeleteModal';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDeleteAddressMutation } from '../../features/profile/addressesApiSlice';
 
@@ -12,12 +12,12 @@ const DeleteAddressModal = ({
   ariaControls,
 }: BaseDeleteModalProps) => {
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const [deleteAddress, { isLoading }] = useDeleteAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
     await deleteAddress(id).unwrap();
-    onAddMessagePopup({
+    onAddToast({
       message: language.addressDeleted,
     });
   };

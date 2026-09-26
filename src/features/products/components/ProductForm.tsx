@@ -17,11 +17,11 @@ import ProductOptionList from '../../../components/formElements/productOptionLis
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
-import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import StatusInputs from '../../../components/StatusInputs';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
   localStorageKeys,
@@ -168,8 +168,8 @@ const ProductForm = ({
     localStorageKeys.showPrice,
     false,
   );
+  const { onAddToast } = useToast();
 
-  const { onAddMessagePopup } = useMessagePopup();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
   const { currencyText } = useCurrency();
@@ -194,7 +194,7 @@ const ProductForm = ({
   // Submit handler
   async function handleSubmitProduct() {
     if (!isSubmitActive) {
-      onAddMessagePopup({
+      onAddToast({
         message: language.noChanges,
       });
       return;
@@ -231,9 +231,8 @@ const ProductForm = ({
       await createProduct(productData).unwrap();
     }
 
-    onAddMessagePopup({
+    onAddToast({
       message: id ? language.productUpdated : language.productCreated,
-      withDelay: true,
     });
 
     navigate(AdminPath.AdminProducts);

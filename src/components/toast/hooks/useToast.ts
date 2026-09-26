@@ -5,11 +5,11 @@ import {
   selectToastList,
 } from '../../../features/toastSlice';
 
-export const useToast = ({ message, type }: Toastprops) => {
+export const useToast = () => {
   const dispatch = useAppDispatch();
   const toastList = useAppSelector(selectToastList);
 
-  const handleAddToast = () => {
+  const handleAddToast = ({ message, type }: Toastprops) => {
     dispatch(
       addToast({
         message,

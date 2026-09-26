@@ -2,9 +2,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
 import CategoryCart from '../../components/adminCart/CategoryCart';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCarts';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
@@ -19,7 +19,7 @@ const ViewSubCategoryPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
 
   // Redux hooks
   const {
@@ -40,15 +40,13 @@ const ViewSubCategoryPage = () => {
 
     if (result.success) {
       navigate(AdminPath.AdminSubCategories);
-      onAddMessagePopup({
+      onAddToast({
         message: language.categoryDeleted,
-        withDelay: true,
       });
     } else {
-      onAddMessagePopup({
-        messagePopupType: 'error',
+      onAddToast({
+        type: 'error',
         message: language.categoryNotFound,
-        componentType: 'notification',
       });
     }
   };

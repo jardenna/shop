@@ -5,8 +5,8 @@ import { useDatePicker } from '../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import SharedCategoryInputs from '../../components/SharedCategoryInputs';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/enums';
 import type { OptionType } from '../../types/types';
@@ -18,12 +18,12 @@ import {
   useUpdateCategoryMutation,
 } from './categoriyApiSlice';
 
-type CategoryFormProps = {
+interface CategoryFormProps {
   id: string | null;
   popupMessage: string;
   selectedCategory: CreateCategoryRequest | null;
   onReset?: () => void;
-};
+}
 
 const CategoryForm = ({
   selectedCategory,
@@ -59,7 +59,7 @@ const CategoryForm = ({
       callback: handleSubmitCategory,
     });
 
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
@@ -71,7 +71,7 @@ const CategoryForm = ({
   // Submit handler
   async function handleSubmitCategory() {
     if (!isFormDirty) {
-      onAddMessagePopup({
+      onAddToast({
         message: language.noChanges,
       });
       return;
@@ -88,9 +88,8 @@ const CategoryForm = ({
         scheduledDate: selectedDate,
       }).unwrap();
     }
-    onAddMessagePopup({
+    onAddToast({
       message: popupMessage,
-      withDelay: true,
     });
     navigate(AdminPath.AdminCategories);
   }

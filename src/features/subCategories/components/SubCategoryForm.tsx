@@ -11,10 +11,10 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import { useMessagePopup } from '../../../components/messagePopup/useMessagePopup';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
 import type { OptionType } from '../../../types/types';
@@ -79,7 +79,7 @@ const SubCategoryForm = ({
       callback: handleSubmitCategory,
     });
 
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
@@ -91,7 +91,7 @@ const SubCategoryForm = ({
   // Submit handler
   async function handleSubmitCategory() {
     if (!isFormDirty) {
-      onAddMessagePopup({
+      onAddToast({
         message: language.noChanges,
       });
       return;
@@ -107,7 +107,7 @@ const SubCategoryForm = ({
         },
       }).unwrap();
 
-      onAddMessagePopup({
+      onAddToast({
         message: language.categoryUpdated,
       });
     } else {
@@ -118,9 +118,8 @@ const SubCategoryForm = ({
       }).unwrap();
     }
 
-    onAddMessagePopup({
+    onAddToast({
       message: popupMessage,
-      withDelay: true,
     });
 
     navigate(AdminPath.AdminSubCategories);

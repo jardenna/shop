@@ -5,10 +5,10 @@ import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import { useMessagePopup } from '../../components/messagePopup/useMessagePopup';
 import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
+import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -29,7 +29,8 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-  const { onAddMessagePopup } = useMessagePopup();
+  const { onAddToast } = useToast();
+
   const {
     data: order,
     refetch,
@@ -49,7 +50,7 @@ const AdminOrderDetailsPage = () => {
     }).unwrap();
 
     if (result.success) {
-      onAddMessagePopup({
+      onAddToast({
         message: result.message,
       });
     }
@@ -59,7 +60,7 @@ const AdminOrderDetailsPage = () => {
     const result = await shipOrder(id ?? '').unwrap();
 
     if (result.success) {
-      onAddMessagePopup({
+      onAddToast({
         message: result.message,
       });
     }
@@ -69,7 +70,7 @@ const AdminOrderDetailsPage = () => {
     const result = await cancelOrder(id ?? '').unwrap();
 
     if (result.success) {
-      onAddMessagePopup({
+      onAddToast({
         message: result.message,
       });
     }

@@ -4,12 +4,9 @@ import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
-import messagePopupReducer, {
-  addMessagePopup,
-} from '../features/messagePopupSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
 import modalReducer from '../features/modalSlice';
-import toastReducer from '../features/toastSlice';
+import toastReducer, { addToast } from '../features/toastSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
 
@@ -40,10 +37,9 @@ export const rtkQueryErrorLogger: Middleware =
             : 'An error occurred';
 
         dispatch(
-          addMessagePopup({
-            messagePopupType: 'error',
+          addToast({
+            type: 'error',
             message: errorMessage,
-            componentType: 'notification',
           }),
         );
       }
@@ -58,7 +54,6 @@ export const store = configureStore({
     [currencyApiSlice.reducerPath]: currencyApiSlice.reducer,
     currency: currencyReducer,
     auth: authSliceReducer,
-    messagePopup: messagePopupReducer,
     toast: toastReducer,
     language: languageReducer,
     miniCart: miniCartReducer,
