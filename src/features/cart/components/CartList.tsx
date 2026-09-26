@@ -9,8 +9,6 @@ export interface ProductQuantityMap {
   [productId: string]: number;
 }
 
-type QuantityValues = Record<string, number>;
-
 export interface BaseCartProps {
   isLoading: boolean;
   language: Record<string, string>;
@@ -41,14 +39,9 @@ const CartList = ({
 
   const quantityByProductId = cartList.reduce<ProductQuantityMap>(
     (result, cartItem) => {
-      const quantity: QuantityValues[string] = values[cartItem.id];
-
-      if (!Number.isFinite(quantity)) {
-        throw new Error(`Quantity must be a finite number: ${cartItem.id}`);
-      }
-
       // eslint-disable-next-line no-param-reassign
-      result[cartItem.productId] = (result[cartItem.productId] ?? 0) + quantity;
+      result[cartItem.productId] =
+        (result[cartItem.productId] ?? 0) + values[cartItem.id];
 
       return result;
     },

@@ -192,7 +192,7 @@ const SingleProductPurchaseSection = ({
     {},
   );
 
-  const currentProductQuantity = quantityByProductId[id];
+  const currentProductQuantity = quantityByProductId[id] ?? 0;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
