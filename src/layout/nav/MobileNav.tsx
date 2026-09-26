@@ -1,7 +1,8 @@
 import Button from '../../components/Button';
-import TogglePanel from '../../components/togglePanel/TogglePanel';
 import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
+import PanelPopup from '../../features/cart/components/miniCartPopup/PanelPopup';
 import { useLanguage } from '../../features/language/useLanguage';
+import { BtnVariant } from '../../types/enums';
 import NavContainer from './NavContainer';
 import { NavListProps } from './navLists';
 
@@ -19,29 +20,36 @@ const MobileNav = ({
   navHeading,
 }: MobileNavProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel({
     preventClickOutside: true,
   });
 
   return (
-    <TogglePanel
-      onTogglePanel={onTogglePanel}
-      isPanelShown={isPanelShown}
-      className="mobile-nav-panel"
-      panelRef={panelRef}
-      ariaLabel={language.mainMenu}
-      triggerBtnClassName="menu-burger"
-      triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
-    >
-      {navHeading && <div className="nav-heading">{navHeading}</div>}
-      <NavContainer
-        navList={navList}
-        className={className}
-        hideAriaHasPopup
-        ariaLabel="main"
-      />
-      {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
-    </TogglePanel>
+    <>
+      <Button
+        ariaExpanded={isPanelShown}
+        onClick={onTogglePanel}
+        variant={BtnVariant.Ghost}
+        className="menu-burger"
+      >
+        <span className="menu-burger-item" aria-hidden />
+      </Button>
+
+      <PanelPopup
+        onClosePanel={onHidePanel}
+        isOpen={isPanelShown}
+        className="mobile-nav-panel"
+      >
+        {navHeading && <div className="nav-heading">{navHeading}</div>}
+        <NavContainer
+          navList={navList}
+          className={className}
+          hideAriaHasPopup
+          ariaLabel="main"
+        />
+        {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
+      </PanelPopup>
+    </>
   );
 };
 
