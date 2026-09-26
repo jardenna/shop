@@ -10,6 +10,7 @@ import CategoryCartLeft from './CategoryCartLeft';
 interface CategoryCartProps {
   categoryId: string;
   categoryName: string;
+  isAdmin: boolean;
   isDeleteLoading: boolean;
   productsInSubcategory: number;
   scheduledDate: Date | null;
@@ -31,6 +32,7 @@ const CategoryCart = ({
   categoryId,
   onDeleteSubCategory,
   isDeleteLoading,
+  isAdmin,
 }: CategoryCartProps) => {
   const { language } = useLanguage();
 
@@ -56,6 +58,7 @@ const CategoryCart = ({
         modalHeaderText={language.deleteCategory}
         linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
         onDelete={onDeleteSubCategory}
+        isAdmin={isAdmin}
       />
     </section>
   );

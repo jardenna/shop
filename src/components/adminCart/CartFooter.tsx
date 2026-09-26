@@ -10,6 +10,7 @@ interface CartFooterProps {
   linkTo: string;
   modalHeaderText: string;
   name: string;
+  isAdmin?: boolean;
   onDelete: () => void;
 }
 
@@ -20,27 +21,32 @@ const CartFooter = ({
   modalHeaderText,
   linkTo,
   onDelete,
+  isAdmin,
 }: CartFooterProps) => {
   const { language } = useLanguage();
   return (
     <footer className="footer">
-      <TriggerModalButton
-        ariaControls="delete-product"
-        modalId="delete-product"
-        variant={BtnVariant.Danger}
-      >
-        {language.delete}
-      </TriggerModalButton>
+      {isAdmin && (
+        <>
+          <TriggerModalButton
+            ariaControls="delete-product"
+            modalId="delete-product"
+            variant={BtnVariant.Danger}
+          >
+            {language.delete}
+          </TriggerModalButton>
+          <DeleteModal
+            isLoading={isLoading}
+            modalId="delete-product"
+            headerText={modalHeaderText}
+            ariaControls="ariaControls"
+            onDelete={onDelete}
+            modalMessage={name}
+            itemId={id}
+          />
+        </>
+      )}
 
-      <DeleteModal
-        isLoading={isLoading}
-        modalId="delete-product"
-        headerText={modalHeaderText}
-        ariaControls="ariaControls"
-        onDelete={onDelete}
-        modalMessage={name}
-        itemId={id}
-      />
       <LinkButton
         linkTo={linkTo}
         linkText={language.update}

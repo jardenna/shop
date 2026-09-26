@@ -5,6 +5,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCarts';
 import { useToast } from '../../components/toast/hooks/useToast';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteSubCategoryMutation,
@@ -18,6 +19,7 @@ const ViewSubCategoryPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
 
   const { onAddToast } = useToast();
 
@@ -81,6 +83,7 @@ const ViewSubCategoryPage = () => {
         >
           <CategoryCart
             isDeleteLoading={isDeleteLoading}
+            isAdmin={isAdmin}
             onDeleteSubCategory={handleDeleteSubCategory}
             categoryId={category.id}
             subCategoryName={subCategoryName || category.subCategoryName}
