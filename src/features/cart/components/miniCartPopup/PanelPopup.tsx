@@ -13,6 +13,7 @@ interface PanelPopupProps {
   isOpen: boolean;
   ariaControls?: string;
   className?: string;
+  hideBtnClose?: boolean;
   trapFocus?: boolean;
   onClosePanel: () => void;
 }
@@ -24,6 +25,7 @@ const PanelPopup = ({
   className = '',
   ariaControls,
   trapFocus,
+  hideBtnClose,
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -54,7 +56,7 @@ const PanelPopup = ({
       >
         {children}
 
-        <BtnClose onClick={onClosePanel} />
+        {!hideBtnClose && <BtnClose onClick={onClosePanel} />}
       </section>
     </Portal>
   );

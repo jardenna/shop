@@ -47,6 +47,7 @@ const MobileNav = ({
         ariaControls={ariaControls}
         trapFocus
         className={`mobile-nav ${className}`}
+        hideBtnClose
       >
         {navHeading && <div className="nav-heading">{navHeading}</div>}
         <NavContainer navList={navList} hideAriaHasPopup ariaLabel="main" />
