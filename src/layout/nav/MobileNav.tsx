@@ -18,7 +18,7 @@ interface MobileNavProps {
 
 const MobileNav = ({
   navList,
-  className,
+  className = '',
   onLogout,
   navHeading,
 }: MobileNavProps) => {
@@ -46,7 +46,7 @@ const MobileNav = ({
         isOpen={isPanelShown}
         ariaControls={ariaControls}
         trapFocus
-        className={className}
+        className={`mobile-nav ${className}`}
       >
         {navHeading && <div className="nav-heading">{navHeading}</div>}
         <NavContainer navList={navList} hideAriaHasPopup ariaLabel="main" />

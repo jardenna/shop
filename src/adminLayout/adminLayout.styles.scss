@@ -57,6 +57,10 @@
     padding-inline: 20px;
     justify-content: space-between;
 
+    .overlay {
+      top: 72px;
+    }
+
     .btn-primary {
       max-width: rem(100px);
       padding-block: 12px;

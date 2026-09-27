@@ -27,20 +27,17 @@
     }
   }
 
-  .nav-link {
-    @include max-size($small) {
-      padding-inline: 20px;
-      display: flex;
-      width: 100%;
-      text-transform: uppercase;
-    }
-  }
+  // .nav-link {
+  //   @include max-size($small) {
+  //     padding-inline: 20px;
+  //     display: flex;
+  //     width: 100%;
+  //     text-transform: uppercase;
+  //   }
+  // }
 }
 
-.mobile-nav-panel {
-  &.toggle-panel {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-  }
+.mobile-nav {
+  padding: 0;
+  top: 88px;
 }
