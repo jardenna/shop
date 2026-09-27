@@ -9,7 +9,11 @@
 
 .mobile-nav {
   padding: 0;
-  top: 88px;
+  top: $header-height-mobile;
+
+  @include min-size($mini) {
+    top: $header-height;
+  }
 }
 
 .main-nav-container {
