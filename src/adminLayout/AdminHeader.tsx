@@ -24,7 +24,6 @@ const AdminHeader = ({
       ) : (
         <MobileNav
           navList={adminNavList}
-          className="admin-nav-container"
           onLogout={onLogout}
           navHeading={navHeading}
         />

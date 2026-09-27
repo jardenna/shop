@@ -74,7 +74,14 @@
   }
 }
 
-.admin-nav-container {
+.nav-heading {
+  text-transform: uppercase;
+  padding: 20px;
+  border-bottom: $border;
+  font-family: $font-primary-semibold;
+}
+
+.nav-container {
   &.mobile-nav {
     top: $admin-header-height;
     height: calc(100dvh - $admin-header-height);
@@ -88,23 +95,13 @@
     }
   }
 
-  .main-nav-container {
-    flex-grow: 1;
-  }
-
-  .nav-heading {
-    text-transform: uppercase;
-    padding: 20px;
-    border-bottom: $border;
-    font-family: $font-primary-semibold;
-  }
-
   .nav-link {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 20px;
+    text-transform: none;
 
     &.active {
       background-color: $color-primary;

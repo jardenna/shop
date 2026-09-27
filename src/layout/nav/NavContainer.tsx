@@ -14,13 +14,13 @@ const NavContainer = ({
   isMenuCollapsed,
   currentUser,
   ariaLabel,
-  className = 'main-nav-container',
+  className = '',
   hideAriaHasPopup,
 }: NavContainerProps) => (
   <>
     <Nav
       navList={navList}
-      className={className || 'main-nav-container'}
+      className={`nav-container ${className}`}
       hideAriaHasPopup={hideAriaHasPopup}
       ariaLabel={ariaLabel}
     />
