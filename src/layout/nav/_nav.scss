@@ -30,10 +30,6 @@
       }
 
       @include max-size($small) {
-        &.active {
-          background-color: red;
-        }
-
         display: flex;
         width: 100%;
       }
