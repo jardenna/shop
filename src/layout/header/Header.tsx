@@ -55,10 +55,10 @@ const Header = ({
         <NavContainer
           navList={navList}
           ariaLabel="main"
-          className="m-nav-container"
+          className="main-nav-container"
         />
       ) : (
-        <MobileNav navList={navList} className="m-nav-container" />
+        <MobileNav navList={navList} className="main-nav-container" />
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
