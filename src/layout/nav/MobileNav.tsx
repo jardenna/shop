@@ -19,16 +19,15 @@ const MobileNav = ({
   navHeading,
 }: MobileNavProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel({
     preventClickOutside: true,
   });
 
   return (
     <TogglePanel
       onTogglePanel={onTogglePanel}
+      onHidePanel={onHidePanel}
       isPanelShown={isPanelShown}
-      className="mobile-nav-panel"
-      panelRef={panelRef}
       ariaLabel={language.mainMenu}
       triggerBtnClassName="menu-burger"
       triggerBtnContent={<span className="menu-burger-item" aria-hidden />}

@@ -1,16 +1,14 @@
-import { ReactNode, RefObject, useId } from 'react';
+import { ReactNode, useId } from 'react';
+import PanelPopup from '../../features/cart/components/miniCartPopup/PanelPopup';
 import { BtnVariant } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_toggle-panel.scss';
-import Panel from './Panel';
 
 export interface BaseTogglePanelProps {
   children: ReactNode;
   isPanelShown: boolean;
-  panelRef: RefObject<HTMLDivElement | null>;
-  className?: string;
-  onHidePanel?: () => void;
+  onHidePanel: () => void;
 }
 
 interface TogglePanelProps extends BaseTogglePanelProps {
@@ -29,10 +27,8 @@ const TogglePanel = ({
   onTogglePanel,
   isPanelShown,
   btnVariant = BtnVariant.Ghost,
-  className = '',
   triggerBtnContent,
   ariaHasPopup,
-  panelRef,
   onHidePanel,
 }: TogglePanelProps) => {
   const togglePanelId = useId();
@@ -49,15 +45,9 @@ const TogglePanel = ({
       >
         {triggerBtnContent}
       </Button>
-      <Panel
-        isPanelShown={isPanelShown}
-        panelRef={panelRef}
-        togglePanelId={togglePanelId}
-        className={className}
-        onHidePanel={onHidePanel}
-      >
+      <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
         {children}
-      </Panel>
+      </PanelPopup>
     </>
   );
 };
