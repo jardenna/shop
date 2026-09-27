@@ -65,7 +65,7 @@ $animation-distance: 500px;
   }
 
   .overlay {
-    top: 88px;
+    top: $header-height;
 
     @include max-size($mini) {
       top: calc($header-height + rem(20px));

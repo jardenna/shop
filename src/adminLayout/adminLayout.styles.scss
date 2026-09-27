@@ -58,7 +58,7 @@
     justify-content: space-between;
 
     .overlay {
-      top: 72px;
+      top: $admin-header-height;
     }
 
     .btn-primary {
@@ -75,17 +75,22 @@
 }
 
 .admin-nav-container {
+  &.mobile-nav {
+    top: $admin-header-height;
+    height: calc(100dvh - $admin-header-height);
+
+    .nav-item {
+      border-bottom: $border;
+    }
+
+    .btn-primary {
+      border-radius: 0;
+    }
+  }
+
   .main-nav-container {
     flex-grow: 1;
   }
-
-  // .mobile-nav-panel {
-  //   .admin-nav-container {
-  //     .nav-item {
-  //       border-bottom: $border;
-  //     }
-  //   }
-  // }
 
   .nav-heading {
     text-transform: uppercase;
