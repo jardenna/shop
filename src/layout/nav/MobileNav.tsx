@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, useRef } from 'react';
 import Button from '../../components/Button';
 import Overlay from '../../components/overlay/Overlay';
 import { useToggle } from '../../components/togglePanel/useToggle';
@@ -23,6 +23,7 @@ const MobileNav = ({
   navHeading,
 }: MobileNavProps) => {
   const ariaControls = useId();
+  const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
@@ -30,22 +31,26 @@ const MobileNav = ({
 
   return (
     <>
-      <Button
-        variant={BtnVariant.Ghost}
-        ariaExpanded={isPanelShown}
-        onClick={onTogglePanel}
-        ariaLabel={language.mainMenu}
-        ariaHasPopup
-        ariaControls={ariaControls}
-        className="menu-burger"
-      >
-        <span className="menu-burger-item" aria-hidden />
-      </Button>
+      <div ref={menuButtonRef}>
+        <Button
+          variant={BtnVariant.Ghost}
+          ariaExpanded={isPanelShown}
+          onClick={onTogglePanel}
+          ariaLabel={language.mainMenu}
+          ariaHasPopup
+          ariaControls={ariaControls}
+          className="menu-burger"
+        >
+          <span className="menu-burger-item" aria-hidden />
+        </Button>
+      </div>
+
       <PanelPopup
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         ariaControls={ariaControls}
         trapFocus
+        ignoreRefs={[menuButtonRef]}
         className={`mobile-nav ${className}`}
         hideBtnClose
       >

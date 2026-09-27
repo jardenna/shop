@@ -7,6 +7,7 @@ import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useTrapFocus } from '../../../../hooks/useTrapFocus';
 import { KeyCode } from '../../../../types/enums';
 import './_panel-popup.scss';
+import { RefElementType } from '../../../../types/types';
 
 interface PanelPopupProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ interface PanelPopupProps {
   ariaControls?: string;
   className?: string;
   hideBtnClose?: boolean;
+  ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
   onClosePanel: () => void;
 }
@@ -26,6 +28,7 @@ const PanelPopup = ({
   ariaControls,
   trapFocus,
   hideBtnClose,
+  ignoreRefs = [],
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -40,7 +43,7 @@ const PanelPopup = ({
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);
 
-  useClickOutside(panelRef, onClosePanel, [panelRef]);
+  useClickOutside(panelRef, onClosePanel, [panelRef, ...ignoreRefs]);
 
   if (!shouldRender) {
     return null;
