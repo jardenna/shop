@@ -7,13 +7,13 @@ import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import { useToast } from '../../../../components/toast/hooks/useToast';
-import Panel from '../../../../components/togglePanel/Panel';
-import { useTogglePanel } from '../../../../components/togglePanel/useTogglePanel';
+import { useToggle } from '../../../../components/togglePanel/useToggle';
 import { handleApiError } from '../../../../utils/handleApiError';
 import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
+import PanelPopup from '../../../cart/components/miniCartPopup/PanelPopup';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -54,8 +54,7 @@ const SingleProductPurchaseSection = ({
   const { id, countInStock } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddToast } = useToast();
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
-    useTogglePanel();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -199,11 +198,7 @@ const SingleProductPurchaseSection = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <Panel
-        isPanelShown={isPanelShown}
-        panelRef={panelRef}
-        onHidePanel={onHidePanel}
-      >
+      <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
         {popupData && (
           <SingleProductPanel
             popupData={popupData}
@@ -217,7 +212,7 @@ const SingleProductPurchaseSection = ({
             isReplaceCartItemLoading={isReplaceCartItemLoading}
           />
         )}
-      </Panel>
+      </PanelPopup>
       <CartForm
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}

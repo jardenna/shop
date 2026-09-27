@@ -14,7 +14,7 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
-import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
+import { useToggle } from '../../../components/togglePanel/useToggle';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
@@ -77,7 +77,7 @@ const FilterPanel = ({
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
 
-  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
   const primaryBtnText =
     productCount > 0

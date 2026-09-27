@@ -4,10 +4,10 @@ import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
-import Panel from '../components/togglePanel/Panel';
-import { useTogglePanel } from '../components/togglePanel/useTogglePanel';
+import { useToggle } from '../components/togglePanel/useToggle';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import PanelPopup from '../features/cart/components/miniCartPopup/PanelPopup';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
@@ -27,8 +27,9 @@ const FavoritePage = () => {
   const dispatch = useAppDispatch();
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
-  const { isPanelShown, onTogglePanel, panelRef, onHidePanel } =
-    useTogglePanel();
+
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+
   const pageHeading = language.favorites;
   const [productId, setProductId] = useState<string | null>();
 
@@ -104,11 +105,7 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <Panel
-          isPanelShown={isPanelShown}
-          panelRef={panelRef}
-          onHidePanel={onHidePanel}
-        >
+        <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
           {selectedProduct && (
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
@@ -127,7 +124,7 @@ const FavoritePage = () => {
               />
             </section>
           )}
-        </Panel>
+        </PanelPopup>
         <ProductCartList
           products={sortedFavorites}
           productView="grid"
