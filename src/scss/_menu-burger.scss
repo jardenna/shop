@@ -12,9 +12,9 @@ $burger-expanded-width: rem(20px);
 
 .menu-burger {
   position: absolute;
-  padding: 40px;
-  top: 0;
-  right: 0;
+  padding: 20px;
+  top: 4px;
+  right: 10px;
   color: $color-dust-red-30;
 
   &.btn-ghost {
