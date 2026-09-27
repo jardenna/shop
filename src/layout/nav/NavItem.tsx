@@ -2,10 +2,10 @@ import { NavLink } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { AriaHasPopup, FocusEventType } from '../../types/types';
-import SubNav from './subNav/SubNav';
 import { NavListProps } from './navLists';
+import SubNav from './subNav/SubNav';
 
-type NavItemProps = {
+interface NavItemProps {
   navItem: NavListProps;
   ariaControls?: string;
   ariaExpanded?: boolean;
@@ -14,7 +14,7 @@ type NavItemProps = {
   onFocus?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-};
+}
 
 const NavItem = ({
   navItem,
@@ -30,7 +30,7 @@ const NavItem = ({
 
   return (
     <li
-      className={`nav-item ${navItem.subNavList ? 'has-sub-nav' : ''}`}
+      className="nav-item"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={onFocus}
