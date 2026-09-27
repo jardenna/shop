@@ -55,6 +55,11 @@ body {
   interpolate-size: allow-keywords;
 }
 
+:focus-visible,
+[data-initial-focus='true']:focus {
+  @include outline;
+}
+
 h1,
 h2 {
   margin: 0;
@@ -88,10 +93,6 @@ a {
     content: '';
     position: absolute;
     inset: -9px;
-  }
-
-  &:focus-visible {
-    outline: 2px solid currentcolor;
   }
 }
 

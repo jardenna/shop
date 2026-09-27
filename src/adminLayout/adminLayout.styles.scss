@@ -109,13 +109,8 @@
     }
 
     &:hover {
+      background-color: $color-light-gray-40;
       color: $color-primary;
-      background-color: $color-light-gray-40;
-    }
-
-    &:focus-visible {
-      background-color: $color-light-gray-40;
-      outline: transparent;
     }
   }
 }
