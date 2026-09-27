@@ -57,10 +57,6 @@
     padding-inline: 20px;
     justify-content: space-between;
 
-    .menu-burger {
-      top: 30px;
-    }
-
     .toggle-panel {
       overflow: hidden;
       height: calc(100svh - $admin-header-height);
