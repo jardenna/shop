@@ -8,7 +8,7 @@ export const useToggle = () => {
   };
 
   const handleTogglePanel = () => {
-    setIsPanelShown(!isPanelShown);
+    setIsPanelShown(true);
   };
 
   return {
