@@ -1,6 +1,6 @@
 import Button from '../../components/Button';
 import TogglePanel from '../../components/togglePanel/TogglePanel';
-import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
+import { useToggle } from '../../components/togglePanel/useToggle';
 import { useLanguage } from '../../features/language/useLanguage';
 import NavContainer from './NavContainer';
 import { NavListProps } from './navLists';
@@ -19,9 +19,7 @@ const MobileNav = ({
   navHeading,
 }: MobileNavProps) => {
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel({
-    preventClickOutside: true,
-  });
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
   return (
     <TogglePanel
