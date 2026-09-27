@@ -21,6 +21,7 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
         isMenuCollapsed={isShown}
         currentUser={currentUser}
         ariaLabel="main"
+        className="admin-nav"
       />
       <IconBtn
         onClick={onTogglePanel}

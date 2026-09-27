@@ -37,12 +37,7 @@ $animation-distance: 500px;
   background-color: $color-white;
   margin-bottom: 20px;
 
-  .toggle-panel {
-    @include max-size($mini) {
-      top: calc($header-height + rem(20px));
-    }
-  }
-
+  .toggle-panel,
   .overlay {
     top: $header-height-mobile;
 

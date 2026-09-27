@@ -81,17 +81,13 @@
   font-family: $font-primary-semibold;
 }
 
-.nav-container {
+.admin-nav {
   &.mobile-nav {
     top: $admin-header-height;
     height: calc(100dvh - $admin-header-height);
 
     .nav-item {
       border-bottom: $border;
-    }
-
-    .btn-primary {
-      border-radius: 0;
     }
   }
 

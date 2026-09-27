@@ -26,6 +26,7 @@ const AdminHeader = ({
           navList={adminNavList}
           onLogout={onLogout}
           navHeading={navHeading}
+          className="admin-nav"
         />
       )}
     </>
