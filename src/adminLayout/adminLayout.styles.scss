@@ -82,6 +82,8 @@
 }
 
 .admin-nav {
+  flex-grow: 1;
+
   &.mobile-nav {
     top: $admin-header-height;
     height: calc(100dvh - $admin-header-height);

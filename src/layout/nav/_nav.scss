@@ -22,7 +22,9 @@
   }
 
   &:has(.admin-nav) {
-    top: 72px;
+    top: $admin-header-height;
+    overflow: hidden;
+    height: calc(100svh - $admin-header-height);
   }
 }
 
