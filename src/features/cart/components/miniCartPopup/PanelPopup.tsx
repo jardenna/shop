@@ -27,7 +27,7 @@ const PanelPopup = ({
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
-  const { shouldRender, transitionState } = useAnimate({
+  const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen,
   });
 
@@ -48,7 +48,8 @@ const PanelPopup = ({
     <Portal portalId="panel">
       <section
         id={ariaControls}
-        className={`panel-popup transition from-right ${transitionState} ${className}`}
+        onTransitionEnd={onTransitionEnd}
+        className={`panel-popup ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
         {children}
