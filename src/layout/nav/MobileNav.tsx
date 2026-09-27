@@ -46,14 +46,10 @@ const MobileNav = ({
         isOpen={isPanelShown}
         ariaControls={ariaControls}
         trapFocus
+        className={className}
       >
         {navHeading && <div className="nav-heading">{navHeading}</div>}
-        <NavContainer
-          navList={navList}
-          className={className}
-          hideAriaHasPopup
-          ariaLabel="main"
-        />
+        <NavContainer navList={navList} hideAriaHasPopup ariaLabel="main" />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </PanelPopup>
 
