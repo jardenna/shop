@@ -4,6 +4,7 @@ import Portal from '../../../../components/Portal';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
+import { useTrapFocus } from '../../../../hooks/useTrapFocus';
 import { KeyCode } from '../../../../types/enums';
 import './_panel-popup.scss';
 
@@ -12,6 +13,7 @@ interface PanelPopupProps {
   isOpen: boolean;
   ariaControls?: string;
   className?: string;
+  trapFocus?: boolean;
   onClosePanel: () => void;
 }
 
@@ -21,11 +23,17 @@ const PanelPopup = ({
   isOpen,
   className = '',
   ariaControls,
+  trapFocus,
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
   const { shouldRender, transitionState } = useAnimate({
     isOpen,
+  });
+
+  useTrapFocus({
+    popupRef: panelRef,
+    enabled: Boolean(trapFocus && isOpen),
   });
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);

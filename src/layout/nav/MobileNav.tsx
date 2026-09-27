@@ -1,8 +1,10 @@
 import { useId } from 'react';
 import Button from '../../components/Button';
+import Overlay from '../../components/overlay/Overlay';
 import { useToggle } from '../../components/togglePanel/useToggle';
 import PanelPopup from '../../features/cart/components/miniCartPopup/PanelPopup';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useScrollLock } from '../../hooks/useScrollLock';
 import { BtnVariant } from '../../types/enums';
 import NavContainer from './NavContainer';
 import { NavListProps } from './navLists';
@@ -24,6 +26,8 @@ const MobileNav = ({
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
+  useScrollLock(isPanelShown);
+
   return (
     <>
       <Button
@@ -41,6 +45,7 @@ const MobileNav = ({
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         ariaControls={ariaControls}
+        trapFocus
       >
         {navHeading && <div className="nav-heading">{navHeading}</div>}
         <NavContainer
@@ -51,6 +56,8 @@ const MobileNav = ({
         />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </PanelPopup>
+
+      {isPanelShown && <Overlay />}
     </>
   );
 };
