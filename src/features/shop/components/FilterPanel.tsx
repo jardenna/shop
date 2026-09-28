@@ -13,7 +13,7 @@ import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
-import PanelPopup from '../../../components/panel/PanelPopup';
+import Panel from '../../../components/panel/Panel';
 import { useToggle } from '../../../components/panel/useToggle';
 import TagList from '../../../components/tags/TagList';
 import VisuallyHidden from '../../../components/VisuallyHidden';
@@ -154,7 +154,7 @@ const FilterPanel = ({
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       </Button>
-      <PanelPopup
+      <Panel
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         className="filter-panel"
@@ -230,7 +230,7 @@ const FilterPanel = ({
             </Form>
           </>
         </ErrorBoundary>
-      </PanelPopup>
+      </Panel>
     </>
   );
 };

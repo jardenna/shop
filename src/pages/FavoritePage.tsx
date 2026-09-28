@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
-import PanelPopup from '../components/panel/PanelPopup';
+import Panel from '../components/panel/Panel';
 import { useToggle } from '../components/panel/useToggle';
 import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -105,7 +105,7 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
+        <Panel isOpen={isPanelShown} onClosePanel={onHidePanel}>
           {selectedProduct && (
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
@@ -124,7 +124,7 @@ const FavoritePage = () => {
               />
             </section>
           )}
-        </PanelPopup>
+        </Panel>
         <ProductCartList
           products={sortedFavorites}
           productView="grid"

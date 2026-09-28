@@ -6,7 +6,7 @@ import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import PanelPopup from '../../../../components/panel/PanelPopup';
+import Panel from '../../../../components/panel/Panel';
 import { useToggle } from '../../../../components/panel/useToggle';
 import { useToast } from '../../../../components/toast/hooks/useToast';
 import { handleApiError } from '../../../../utils/handleApiError';
@@ -198,7 +198,7 @@ const SingleProductPurchaseSection = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
+      <Panel isOpen={isPanelShown} onClosePanel={onHidePanel}>
         {popupData && (
           <SingleProductPanel
             popupData={popupData}
@@ -212,7 +212,7 @@ const SingleProductPurchaseSection = ({
             isReplaceCartItemLoading={isReplaceCartItemLoading}
           />
         )}
-      </PanelPopup>
+      </Panel>
       <CartForm
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}

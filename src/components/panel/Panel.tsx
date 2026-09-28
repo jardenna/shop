@@ -10,7 +10,7 @@ import BtnClose from '../BtnClose';
 import Portal from '../Portal';
 import './_panel.scss';
 
-interface PanelPopupProps {
+interface PanelProps {
   children: ReactNode;
   isOpen: boolean;
   ariaControls?: string;
@@ -21,7 +21,7 @@ interface PanelPopupProps {
   onClosePanel: () => void;
 }
 
-const PanelPopup = ({
+const Panel = ({
   children,
   onClosePanel,
   isOpen,
@@ -30,7 +30,7 @@ const PanelPopup = ({
   trapFocus,
   hideBtnClose,
   ignoreRefs = [],
-}: PanelPopupProps) => {
+}: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
@@ -71,4 +71,4 @@ const PanelPopup = ({
   );
 };
 
-export default PanelPopup;
+export default Panel;

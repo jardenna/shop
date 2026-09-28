@@ -2,7 +2,7 @@ import { useEffect, useId, useRef } from 'react';
 import { useLocation } from 'react-router';
 import Button from '../../components/Button';
 import Overlay from '../../components/overlay/Overlay';
-import PanelPopup from '../../components/panel/PanelPopup';
+import Panel from '../../components/panel/Panel';
 import { useToggle } from '../../components/panel/useToggle';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -51,7 +51,7 @@ const MobileNav = ({
         </Button>
       </div>
 
-      <PanelPopup
+      <Panel
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         ariaControls={ariaControls}
@@ -68,7 +68,7 @@ const MobileNav = ({
           ariaLabel="main"
         />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
-      </PanelPopup>
+      </Panel>
 
       <Overlay isOpen={isPanelShown} />
     </>

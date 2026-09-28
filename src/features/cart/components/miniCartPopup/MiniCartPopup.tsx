@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
-import PanelPopup from '../../../../components/panel/PanelPopup';
+import Panel from '../../../../components/panel/Panel';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { selectUser } from '../../../auth/authSlice';
@@ -54,7 +54,7 @@ const MiniCartPopup = () => {
   const { cartItems, summary } = cartData;
 
   return (
-    <PanelPopup
+    <Panel
       className="mini-cart"
       onClosePanel={handleCloseMiniCart}
       isOpen={shouldOpenMiniCart}
@@ -77,7 +77,7 @@ const MiniCartPopup = () => {
           <Button onClick={handleGoToCart}>{language.bag}</Button>
         </section>
       </ErrorBoundary>
-    </PanelPopup>
+    </Panel>
   );
 };
 
