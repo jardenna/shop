@@ -41,6 +41,7 @@ const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
+
   const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
 
   const [productView, setProductView] = useLocalStorage(
