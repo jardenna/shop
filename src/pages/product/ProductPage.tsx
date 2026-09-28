@@ -148,7 +148,7 @@ const ProductPage = () => {
       heading={language.products}
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
-      variant="x-large"
+      variant="full"
     >
       <SortTable
         btnLabel="products"
