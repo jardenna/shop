@@ -4,7 +4,7 @@ import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import Panel from '../components/panel/Panel';
-import { useToggle } from '../components/panel/useToggle';
+import { useTogglePanel } from '../components/panel/useTogglePanel';
 import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
@@ -28,7 +28,7 @@ const FavoritePage = () => {
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
 
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const pageHeading = language.favorites;
   const [productId, setProductId] = useState<string | null>();

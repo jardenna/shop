@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useToggle = () => {
+export const useTogglePanel = () => {
   const [isPanelShown, setIsPanelShown] = useState(false);
 
   const handleHidePanel = () => {

@@ -7,7 +7,7 @@ import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Panel from '../../../../components/panel/Panel';
-import { useToggle } from '../../../../components/panel/useToggle';
+import { useTogglePanel } from '../../../../components/panel/useTogglePanel';
 import { useToast } from '../../../../components/toast/hooks/useToast';
 import { handleApiError } from '../../../../utils/handleApiError';
 import {
@@ -54,7 +54,7 @@ const SingleProductPurchaseSection = ({
   const { id, countInStock } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddToast } = useToast();
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();

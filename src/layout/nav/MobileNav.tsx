@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import Button from '../../components/Button';
 import Overlay from '../../components/overlay/Overlay';
 import Panel from '../../components/panel/Panel';
-import { useToggle } from '../../components/panel/useToggle';
+import { useTogglePanel } from '../../components/panel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { BtnVariant } from '../../types/enums';
@@ -26,7 +26,7 @@ const MobileNav = ({
   const ariaControls = useId();
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
   const location = useLocation();
 
   useScrollLock(isPanelShown);
