@@ -12,7 +12,7 @@ import './_panel.scss';
 
 interface PanelProps {
   children: ReactNode;
-  isOpen: boolean;
+  isPanelShown: boolean;
   ariaControls?: string;
   className?: string;
   hideBtnClose?: boolean;
@@ -24,7 +24,7 @@ interface PanelProps {
 const Panel = ({
   children,
   onClosePanel,
-  isOpen,
+  isPanelShown,
   className = '',
   ariaControls,
   trapFocus,
@@ -34,17 +34,17 @@ const Panel = ({
   const panelRef = useRef<HTMLElement>(null);
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
-    isOpen,
+    isOpen: isPanelShown,
   });
 
   useInitialFocus({
     popupRef: panelRef,
-    enabled: isOpen && shouldRender,
+    enabled: isPanelShown && shouldRender,
   });
 
   useTrapFocus({
     popupRef: panelRef,
-    enabled: Boolean(trapFocus && isOpen),
+    enabled: Boolean(trapFocus && isPanelShown),
   });
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);

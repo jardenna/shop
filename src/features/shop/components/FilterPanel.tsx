@@ -156,7 +156,7 @@ const FilterPanel = ({
       </Button>
       <Panel
         onClosePanel={onHidePanel}
-        isOpen={isPanelShown}
+        isPanelShown={isPanelShown}
         className="filter-panel"
         ariaControls={ariaControls}
       >

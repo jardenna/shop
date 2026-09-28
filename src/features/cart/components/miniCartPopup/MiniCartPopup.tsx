@@ -57,7 +57,7 @@ const MiniCartPopup = () => {
     <Panel
       className="mini-cart"
       onClosePanel={handleCloseMiniCart}
-      isOpen={shouldOpenMiniCart}
+      isPanelShown={shouldOpenMiniCart}
     >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

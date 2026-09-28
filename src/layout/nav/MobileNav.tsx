@@ -53,7 +53,7 @@ const MobileNav = ({
 
       <Panel
         onClosePanel={onHidePanel}
-        isOpen={isPanelShown}
+        isPanelShown={isPanelShown}
         ariaControls={ariaControls}
         trapFocus
         ignoreRefs={[menuButtonRef]}

@@ -198,7 +198,7 @@ const SingleProductPurchaseSection = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <Panel isOpen={isPanelShown} onClosePanel={onHidePanel}>
+      <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
         {popupData && (
           <SingleProductPanel
             popupData={popupData}
