@@ -6,14 +6,14 @@ import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import PanelPopup from '../../../../components/panel/PanelPopup';
+import { useToggle } from '../../../../components/panel/useToggle';
 import { useToast } from '../../../../components/toast/hooks/useToast';
-import { useToggle } from '../../../../components/togglePanel/useToggle';
 import { handleApiError } from '../../../../utils/handleApiError';
 import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import PanelPopup from '../../../cart/components/miniCartPopup/PanelPopup';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';

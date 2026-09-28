@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import PanelPopup from '../../../../components/panel/PanelPopup';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { selectUser } from '../../../auth/authSlice';
@@ -17,7 +18,6 @@ import TotalPrice from '../../../orders/components/TotalPrice';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 import MiniCartInfo from './MiniCartInfo';
-import PanelPopup from './PanelPopup';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();

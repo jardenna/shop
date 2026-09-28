@@ -1,13 +1,13 @@
 import { ReactNode, useRef } from 'react';
-import BtnClose from '../../../../components/BtnClose';
-import Portal from '../../../../components/Portal';
-import { useAnimate } from '../../../../hooks/useAnimate';
-import { useClickOutside } from '../../../../hooks/useClickOutside';
-import { useInitialFocus } from '../../../../hooks/useInitialFocus';
-import { useKeyPress } from '../../../../hooks/useKeyPress';
-import { useTrapFocus } from '../../../../hooks/useTrapFocus';
-import { KeyCode } from '../../../../types/enums';
-import { RefElementType } from '../../../../types/types';
+import { useAnimate } from '../../hooks/useAnimate';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useInitialFocus } from '../../hooks/useInitialFocus';
+import { useKeyPress } from '../../hooks/useKeyPress';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
+import { KeyCode } from '../../types/enums';
+import { RefElementType } from '../../types/types';
+import BtnClose from '../BtnClose';
+import Portal from '../Portal';
 import './_panel.scss';
 
 interface PanelPopupProps {
