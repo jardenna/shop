@@ -70,7 +70,7 @@ const MobileNav = ({
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </Panel>
 
-      <Overlay isOpen={isPanelShown} />
+      <Overlay isOverlayShown={isPanelShown} />
     </>
   );
 };

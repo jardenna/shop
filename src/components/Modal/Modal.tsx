@@ -97,7 +97,7 @@ const Modal = ({
         <div className="modal-content">{children}</div>
       </dialog>
 
-      <Overlay isOpen={shouldRender} />
+      <Overlay isOverlayShown={shouldRender} />
     </Portal>
   );
 };
