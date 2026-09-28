@@ -60,7 +60,7 @@ const Panel = ({
       <section
         id={ariaControls}
         onTransitionEnd={onTransitionEnd}
-        className={`panel-popup ${className} transition from-right ${transitionState}`}
+        className={`panel ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
         {children}
