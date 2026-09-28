@@ -1,4 +1,5 @@
-import { useId, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
+import { useLocation } from 'react-router';
 import Button from '../../components/Button';
 import Overlay from '../../components/overlay/Overlay';
 import { useToggle } from '../../components/togglePanel/useToggle';
@@ -26,8 +27,13 @@ const MobileNav = ({
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const location = useLocation();
 
   useScrollLock(isPanelShown);
+
+  useEffect(() => {
+    onHidePanel();
+  }, [location.pathname]);
 
   return (
     <>
