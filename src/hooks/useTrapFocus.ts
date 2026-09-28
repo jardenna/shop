@@ -66,6 +66,21 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
       const firstFocusableElement = focusableElements[0];
       const lastFocusableElement =
         focusableElements[focusableElements.length - 1];
+      const isFocusOutsidePopup = !popupRef.current?.contains(
+        document.activeElement,
+      );
+
+      if (isFocusOutsidePopup) {
+        event.preventDefault();
+
+        if (event.shiftKey) {
+          lastFocusableElement.focus();
+        } else {
+          firstFocusableElement.focus();
+        }
+
+        return;
+      }
 
       if (event.shiftKey && document.activeElement === firstFocusableElement) {
         event.preventDefault();
