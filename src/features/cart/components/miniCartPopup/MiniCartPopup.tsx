@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -25,7 +24,6 @@ const MiniCartPopup = () => {
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const miniCartRef = useRef<HTMLUListElement>(null);
 
   const { cartData, isFetching, refetchCart } = useActiveCart({
     currentUser,
@@ -35,7 +33,7 @@ const MiniCartPopup = () => {
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
   const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
 
-  const { shouldRender, transitionState } = useAnimate({
+  const { shouldRender } = useAnimate({
     isOpen: shouldOpenMiniCart,
   });
 
@@ -63,19 +61,14 @@ const MiniCartPopup = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        <section
-          className={`mini-cart transition from-right ${transitionState}`}
-          ref={miniCartRef}
-        >
-          <h2 className="mini-cart-title">{language.myBag}</h2>
-          <MiniCartInfo
-            remainingForFreeShipping={summary.remainingForFreeShipping}
-            language={language}
-          />
-          <OrderList orders={cartItems} language={language} />
-          <TotalPrice price={summary.totalPrice} />
-          <Button onClick={handleGoToCart}>{language.bag}</Button>
-        </section>
+        <h2 className="mini-cart-title">{language.myBag}</h2>
+        <MiniCartInfo
+          remainingForFreeShipping={summary.remainingForFreeShipping}
+          language={language}
+        />
+        <OrderList orders={cartItems} language={language} />
+        <TotalPrice price={summary.totalPrice} />
+        <Button onClick={handleGoToCart}>{language.bag}</Button>
       </ErrorBoundary>
     </Panel>
   );
