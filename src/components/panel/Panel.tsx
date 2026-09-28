@@ -1,18 +1,18 @@
 import { ReactNode, useRef } from 'react';
-import BtnClose from '../../../../components/BtnClose';
-import Portal from '../../../../components/Portal';
-import { useAnimate } from '../../../../hooks/useAnimate';
-import { useClickOutside } from '../../../../hooks/useClickOutside';
-import { useInitialFocus } from '../../../../hooks/useInitialFocus';
-import { useKeyPress } from '../../../../hooks/useKeyPress';
-import { useTrapFocus } from '../../../../hooks/useTrapFocus';
-import { KeyCode } from '../../../../types/enums';
-import { RefElementType } from '../../../../types/types';
-import './_panel-popup.scss';
+import { useAnimate } from '../../hooks/useAnimate';
+import { useClickOutside } from '../../hooks/useClickOutside';
+import { useInitialFocus } from '../../hooks/useInitialFocus';
+import { useKeyPress } from '../../hooks/useKeyPress';
+import { useTrapFocus } from '../../hooks/useTrapFocus';
+import { KeyCode } from '../../types/enums';
+import { RefElementType } from '../../types/types';
+import BtnClose from '../BtnClose';
+import Portal from '../Portal';
+import './_panel.scss';
 
-interface PanelPopupProps {
+interface PanelProps {
   children: ReactNode;
-  isOpen: boolean;
+  isPanelShown: boolean;
   ariaControls?: string;
   className?: string;
   hideBtnClose?: boolean;
@@ -21,30 +21,30 @@ interface PanelPopupProps {
   onClosePanel: () => void;
 }
 
-const PanelPopup = ({
+const Panel = ({
   children,
   onClosePanel,
-  isOpen,
+  isPanelShown,
   className = '',
   ariaControls,
   trapFocus,
   hideBtnClose,
   ignoreRefs = [],
-}: PanelPopupProps) => {
+}: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
-    isOpen,
+    isOpen: isPanelShown,
   });
 
   useInitialFocus({
     popupRef: panelRef,
-    enabled: isOpen && shouldRender,
+    enabled: isPanelShown && shouldRender,
   });
 
   useTrapFocus({
     popupRef: panelRef,
-    enabled: Boolean(trapFocus && isOpen),
+    enabled: Boolean(trapFocus && isPanelShown),
   });
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);
@@ -60,7 +60,7 @@ const PanelPopup = ({
       <section
         id={ariaControls}
         onTransitionEnd={onTransitionEnd}
-        className={`panel-popup ${className} transition from-right ${transitionState}`}
+        className={`panel ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
         {children}
@@ -71,4 +71,4 @@ const PanelPopup = ({
   );
 };
 
-export default PanelPopup;
+export default Panel;

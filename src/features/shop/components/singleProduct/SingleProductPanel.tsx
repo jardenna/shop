@@ -51,7 +51,7 @@ const SingleProductPanel = ({
   return (
     <section className="single-product-panel">
       <div className="panel-content">
-        <h2>
+        <h2 className="panel-heading">
           {language.singleProductPanelHeading} {changedValue}
         </h2>
         <p className="panel-content-info">{language.singleProductPanelText}</p>

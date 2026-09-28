@@ -2,12 +2,12 @@ import { useAnimate } from '../../hooks/useAnimate';
 import './_overlay.scss';
 
 interface OverlayProps {
-  isOpen: boolean;
+  isOverlayShown: boolean;
 }
 
-const Overlay = ({ isOpen }: OverlayProps) => {
+const Overlay = ({ isOverlayShown }: OverlayProps) => {
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
-    isOpen,
+    isOpen: isOverlayShown,
   });
 
   if (!shouldRender) {

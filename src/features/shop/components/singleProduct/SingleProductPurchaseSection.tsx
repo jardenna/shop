@@ -6,14 +6,14 @@ import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import Panel from '../../../../components/panel/Panel';
+import { useTogglePanel } from '../../../../components/panel/useTogglePanel';
 import { useToast } from '../../../../components/toast/hooks/useToast';
-import { useToggle } from '../../../../components/togglePanel/useToggle';
 import { handleApiError } from '../../../../utils/handleApiError';
 import {
   useAddToCartMutation,
   useReplaceCartMutation,
 } from '../../../cart/cartApiSlice';
-import PanelPopup from '../../../cart/components/miniCartPopup/PanelPopup';
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
@@ -54,7 +54,7 @@ const SingleProductPurchaseSection = ({
   const { id, countInStock } = productData;
   const [popupData, setPopupData] = useState<PopupData | null>(null);
   const { onAddToast } = useToast();
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
@@ -198,7 +198,7 @@ const SingleProductPurchaseSection = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
+      <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
         {popupData && (
           <SingleProductPanel
             popupData={popupData}
@@ -212,7 +212,7 @@ const SingleProductPurchaseSection = ({
             isReplaceCartItemLoading={isReplaceCartItemLoading}
           />
         )}
-      </PanelPopup>
+      </Panel>
       <CartForm
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}

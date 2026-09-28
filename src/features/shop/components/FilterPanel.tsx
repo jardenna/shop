@@ -13,15 +13,15 @@ import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
+import Panel from '../../../components/panel/Panel';
+import { useTogglePanel } from '../../../components/panel/useTogglePanel';
 import TagList from '../../../components/tags/TagList';
-import { useToggle } from '../../../components/togglePanel/useToggle';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
-import PanelPopup from '../../cart/components/miniCartPopup/PanelPopup';
 import { useCurrency } from '../../currency/useCurrency';
 import ClearFiltersBtn from './ClearFiltersBtn';
 import './filterPanel.styles.scss';
@@ -77,7 +77,7 @@ const FilterPanel = ({
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
 
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const primaryBtnText =
     productCount > 0
@@ -154,9 +154,9 @@ const FilterPanel = ({
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
       </Button>
-      <PanelPopup
+      <Panel
         onClosePanel={onHidePanel}
-        isOpen={isPanelShown}
+        isPanelShown={isPanelShown}
         className="filter-panel"
         ariaControls={ariaControls}
       >
@@ -230,7 +230,7 @@ const FilterPanel = ({
             </Form>
           </>
         </ErrorBoundary>
-      </PanelPopup>
+      </Panel>
     </>
   );
 };

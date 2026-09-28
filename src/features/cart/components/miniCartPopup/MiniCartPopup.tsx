@@ -1,9 +1,9 @@
-import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import Panel from '../../../../components/panel/Panel';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { selectUser } from '../../../auth/authSlice';
@@ -17,7 +17,6 @@ import TotalPrice from '../../../orders/components/TotalPrice';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 import MiniCartInfo from './MiniCartInfo';
-import PanelPopup from './PanelPopup';
 
 const MiniCartPopup = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +24,6 @@ const MiniCartPopup = () => {
   const loggedInUser = useAppSelector(selectUser);
   const { language } = useLanguage();
   const currentUser = loggedInUser?.user ?? null;
-  const miniCartRef = useRef<HTMLUListElement>(null);
 
   const { cartData, isFetching, refetchCart } = useActiveCart({
     currentUser,
@@ -35,7 +33,7 @@ const MiniCartPopup = () => {
   const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
   const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
 
-  const { shouldRender, transitionState } = useAnimate({
+  const { shouldRender } = useAnimate({
     isOpen: shouldOpenMiniCart,
   });
 
@@ -54,30 +52,25 @@ const MiniCartPopup = () => {
   const { cartItems, summary } = cartData;
 
   return (
-    <PanelPopup
+    <Panel
       className="mini-cart"
       onClosePanel={handleCloseMiniCart}
-      isOpen={shouldOpenMiniCart}
+      isPanelShown={shouldOpenMiniCart}
     >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        <section
-          className={`mini-cart transition from-right ${transitionState}`}
-          ref={miniCartRef}
-        >
-          <h2 className="mini-cart-title">{language.myBag}</h2>
-          <MiniCartInfo
-            remainingForFreeShipping={summary.remainingForFreeShipping}
-            language={language}
-          />
-          <OrderList orders={cartItems} language={language} />
-          <TotalPrice price={summary.totalPrice} />
-          <Button onClick={handleGoToCart}>{language.bag}</Button>
-        </section>
+        <h2 className="mini-cart-title">{language.myBag}</h2>
+        <MiniCartInfo
+          remainingForFreeShipping={summary.remainingForFreeShipping}
+          language={language}
+        />
+        <OrderList orders={cartItems} language={language} />
+        <TotalPrice price={summary.totalPrice} />
+        <Button onClick={handleGoToCart}>{language.bag}</Button>
       </ErrorBoundary>
-    </PanelPopup>
+    </Panel>
   );
 };
 

@@ -12,7 +12,7 @@
 
   .input-container {
     margin-bottom: 0;
-    flex-direction: row;
+    max-width: rem(40px);
 
     input {
       text-align: center;

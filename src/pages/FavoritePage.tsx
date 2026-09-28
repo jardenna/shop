@@ -3,11 +3,11 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
+import Panel from '../components/panel/Panel';
+import { useTogglePanel } from '../components/panel/useTogglePanel';
 import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
-import { useToggle } from '../components/togglePanel/useToggle';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
-import PanelPopup from '../features/cart/components/miniCartPopup/PanelPopup';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
@@ -28,7 +28,7 @@ const FavoritePage = () => {
   const { favorites, isLoading, onReset, isError } = useFavorites({});
   const sortedFavorites = favorites ? [...favorites].reverse() : [];
 
-  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const pageHeading = language.favorites;
   const [productId, setProductId] = useState<string | null>();
@@ -105,7 +105,7 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <PanelPopup isOpen={isPanelShown} onClosePanel={onHidePanel}>
+        <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
           {selectedProduct && (
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
@@ -124,7 +124,7 @@ const FavoritePage = () => {
               />
             </section>
           )}
-        </PanelPopup>
+        </Panel>
         <ProductCartList
           products={sortedFavorites}
           productView="grid"
