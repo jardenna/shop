@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-interface UseTrapFocusProps {
+export interface UseTrapFocusProps {
   enabled: boolean;
   popupRef: React.RefObject<HTMLElement | null>;
 }

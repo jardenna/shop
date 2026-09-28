@@ -3,11 +3,12 @@ import BtnClose from '../../../../components/BtnClose';
 import Portal from '../../../../components/Portal';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
+import { useInitialFocus } from '../../../../hooks/useInitialFocus';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useTrapFocus } from '../../../../hooks/useTrapFocus';
 import { KeyCode } from '../../../../types/enums';
-import './_panel-popup.scss';
 import { RefElementType } from '../../../../types/types';
+import './_panel-popup.scss';
 
 interface PanelPopupProps {
   children: ReactNode;
@@ -34,6 +35,11 @@ const PanelPopup = ({
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen,
+  });
+
+  useInitialFocus({
+    popupRef: panelRef,
+    enabled: isOpen && shouldRender,
   });
 
   useTrapFocus({

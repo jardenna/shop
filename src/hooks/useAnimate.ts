@@ -25,12 +25,19 @@ export const useAnimate = ({
       setShouldRender(true);
       setTransitionState('enter');
 
+      let secondFrame = 0;
+
       // Defer the transition to the next animation frame so the browser can apply the initial state.
-      requestAnimationFrame(() => {
-        setTransitionState('entered');
+      const firstFrame = requestAnimationFrame(() => {
+        secondFrame = requestAnimationFrame(() => {
+          setTransitionState('entered');
+        });
       });
 
-      return;
+      return () => {
+        cancelAnimationFrame(firstFrame);
+        cancelAnimationFrame(secondFrame);
+      };
     }
 
     if (shouldRender) {

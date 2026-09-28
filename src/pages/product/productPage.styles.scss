@@ -4,7 +4,7 @@
   th,
   td {
     &:first-child {
-      width: rem(300px);
+      width: rem(260px);
     }
   }
 }
@@ -13,6 +13,8 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  line-height: rem(18px);
+  text-wrap: pretty;
 
   @include max-size($large) {
     flex-direction: column;

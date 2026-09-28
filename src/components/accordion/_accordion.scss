@@ -3,7 +3,6 @@
 .accordion {
   details {
     border-block-end: 1px solid $color-border-dark;
-    overflow: clip;
   }
 
   .accordion-content {
@@ -58,6 +57,10 @@
 
     &::marker {
       content: '';
+    }
+
+    &:hover {
+      background-color: $color-background;
     }
   }
 }
