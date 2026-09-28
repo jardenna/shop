@@ -2,16 +2,16 @@ import type { ReactNode } from 'react';
 import './_accordion.scss';
 import AccordionItem from './AccordionItem';
 
-export type AccordionList = {
+export interface AccordionList {
   content: ReactNode;
   title: string;
   additionalTitle?: string | number;
-};
+}
 
-type AccordionProps = {
+interface AccordionProps {
   accordionList: AccordionList[];
   name?: string; // undefined = independent toggle, same name = native accordion group
-};
+}
 
 const Accordion = ({ accordionList, name }: AccordionProps) => (
   <div className="accordion">
