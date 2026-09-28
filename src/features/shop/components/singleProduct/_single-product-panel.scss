@@ -18,6 +18,11 @@
     gap: 12px;
   }
 
+  .panel-heading {
+    max-width: rem(400px);
+    text-wrap: pretty;
+  }
+
   .panel-content-info {
     margin: 0;
   }
