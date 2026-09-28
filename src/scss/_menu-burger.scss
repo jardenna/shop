@@ -6,17 +6,18 @@ $burger-expanded-width: rem(20px);
 %burger-basic {
   width: rem(32px);
   height: rem(3px);
-  background-color: $color-dust-red-30;
+  background-color: currentcolor;
   position: absolute;
 }
 
 .menu-burger {
   position: absolute;
-  top: 40px;
-  right: 28px;
+  padding: 20px;
+  top: 4px;
+  right: 10px;
+  color: $color-dust-red-30;
 
   &.btn-ghost {
-    &:hover,
     &:focus-visible {
       outline-offset: 20px;
     }

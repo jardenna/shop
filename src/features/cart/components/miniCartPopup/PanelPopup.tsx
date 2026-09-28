@@ -4,13 +4,19 @@ import Portal from '../../../../components/Portal';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { useClickOutside } from '../../../../hooks/useClickOutside';
 import { useKeyPress } from '../../../../hooks/useKeyPress';
+import { useTrapFocus } from '../../../../hooks/useTrapFocus';
 import { KeyCode } from '../../../../types/enums';
 import './_panel-popup.scss';
+import { RefElementType } from '../../../../types/types';
 
 interface PanelPopupProps {
   children: ReactNode;
   isOpen: boolean;
+  ariaControls?: string;
   className?: string;
+  hideBtnClose?: boolean;
+  ignoreRefs?: RefElementType[];
+  trapFocus?: boolean;
   onClosePanel: () => void;
 }
 
@@ -19,16 +25,25 @@ const PanelPopup = ({
   onClosePanel,
   isOpen,
   className = '',
+  ariaControls,
+  trapFocus,
+  hideBtnClose,
+  ignoreRefs = [],
 }: PanelPopupProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
-  const { shouldRender, transitionState } = useAnimate({
+  const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen,
+  });
+
+  useTrapFocus({
+    popupRef: panelRef,
+    enabled: Boolean(trapFocus && isOpen),
   });
 
   useKeyPress(onClosePanel, [KeyCode.Esc]);
 
-  useClickOutside(panelRef, onClosePanel, [panelRef]);
+  useClickOutside(panelRef, onClosePanel, [panelRef, ...ignoreRefs]);
 
   if (!shouldRender) {
     return null;
@@ -37,12 +52,14 @@ const PanelPopup = ({
   return (
     <Portal portalId="panel">
       <section
-        className={`panel-popup transition from-right ${transitionState} ${className}`}
+        id={ariaControls}
+        onTransitionEnd={onTransitionEnd}
+        className={`panel-popup ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
         {children}
 
-        <BtnClose onClick={onClosePanel} />
+        {!hideBtnClose && <BtnClose onClick={onClosePanel} />}
       </section>
     </Portal>
   );

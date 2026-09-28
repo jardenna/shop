@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import BtnClose from '../../../../components/BtnClose';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import { useAnimate } from '../../../../hooks/useAnimate';
@@ -69,7 +68,6 @@ const MiniCartPopup = () => {
           ref={miniCartRef}
         >
           <h2 className="mini-cart-title">{language.myBag}</h2>
-          <BtnClose onClick={handleCloseMiniCart} />
           <MiniCartInfo
             remainingForFreeShipping={summary.remainingForFreeShipping}
             language={language}

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
 import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
@@ -14,7 +14,7 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
 import TagList from '../../../components/tags/TagList';
-import { useTogglePanel } from '../../../components/togglePanel/useTogglePanel';
+import { useToggle } from '../../../components/togglePanel/useToggle';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { BtnVariant, IconName } from '../../../types/enums';
@@ -73,10 +73,11 @@ const FilterPanel = ({
   onClearSingleFilter,
   onClearAllFilters,
 }: FilterPanelProps) => {
+  const ariaControls = useId();
   const [searchParams] = useSearchParams();
   const { currencyText } = useCurrency();
 
-  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
 
   const primaryBtnText =
     productCount > 0
@@ -143,6 +144,9 @@ const FilterPanel = ({
         ariaExpanded={isPanelShown}
         onClick={onTogglePanel}
         variant={BtnVariant.Ghost}
+        ariaLabel={language.filterProducts}
+        ariaHasPopup
+        ariaControls={ariaControls}
       >
         <>
           {totalFiltersCount > 0 && `[${totalFiltersCount}]`}
@@ -154,6 +158,7 @@ const FilterPanel = ({
         onClosePanel={onHidePanel}
         isOpen={isPanelShown}
         className="filter-panel"
+        ariaControls={ariaControls}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}

@@ -1,7 +1,11 @@
+import { useId, useRef } from 'react';
 import Button from '../../components/Button';
-import TogglePanel from '../../components/togglePanel/TogglePanel';
-import { useTogglePanel } from '../../components/togglePanel/useTogglePanel';
+import Overlay from '../../components/overlay/Overlay';
+import { useToggle } from '../../components/togglePanel/useToggle';
+import PanelPopup from '../../features/cart/components/miniCartPopup/PanelPopup';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useScrollLock } from '../../hooks/useScrollLock';
+import { BtnVariant } from '../../types/enums';
 import NavContainer from './NavContainer';
 import { NavListProps } from './navLists';
 
@@ -14,34 +18,54 @@ interface MobileNavProps {
 
 const MobileNav = ({
   navList,
-  className,
+  className = '',
   onLogout,
   navHeading,
 }: MobileNavProps) => {
+  const ariaControls = useId();
+  const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
-  const { isPanelShown, onTogglePanel, panelRef } = useTogglePanel({
-    preventClickOutside: true,
-  });
+  const { isPanelShown, onTogglePanel, onHidePanel } = useToggle();
+
+  useScrollLock(isPanelShown);
 
   return (
-    <TogglePanel
-      onTogglePanel={onTogglePanel}
-      isPanelShown={isPanelShown}
-      className="mobile-nav-panel"
-      panelRef={panelRef}
-      ariaLabel={language.mainMenu}
-      triggerBtnClassName="menu-burger"
-      triggerBtnContent={<span className="menu-burger-item" aria-hidden />}
-    >
-      {navHeading && <div className="nav-heading">{navHeading}</div>}
-      <NavContainer
-        navList={navList}
-        className={className}
-        hideAriaHasPopup
-        ariaLabel="main"
-      />
-      {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
-    </TogglePanel>
+    <>
+      <div ref={menuButtonRef}>
+        <Button
+          variant={BtnVariant.Ghost}
+          ariaExpanded={isPanelShown}
+          onClick={onTogglePanel}
+          ariaLabel={language.mainMenu}
+          ariaHasPopup
+          ariaControls={ariaControls}
+          className="menu-burger"
+        >
+          <span className="menu-burger-item" aria-hidden />
+        </Button>
+      </div>
+
+      <PanelPopup
+        onClosePanel={onHidePanel}
+        isOpen={isPanelShown}
+        ariaControls={ariaControls}
+        trapFocus
+        ignoreRefs={[menuButtonRef]}
+        className="mobile-nav"
+        hideBtnClose
+      >
+        {navHeading && <div className="nav-heading">{navHeading}</div>}
+        <NavContainer
+          className={className}
+          navList={navList}
+          hideAriaHasPopup
+          ariaLabel="main"
+        />
+        {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
+      </PanelPopup>
+
+      {isPanelShown && <Overlay />}
+    </>
   );
 };
 
