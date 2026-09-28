@@ -8,7 +8,7 @@ import { useKeyPress } from '../../../../hooks/useKeyPress';
 import { useTrapFocus } from '../../../../hooks/useTrapFocus';
 import { KeyCode } from '../../../../types/enums';
 import { RefElementType } from '../../../../types/types';
-import './_panel-popup.scss';
+import './_panel.scss';
 
 interface PanelPopupProps {
   children: ReactNode;
