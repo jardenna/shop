@@ -4,7 +4,7 @@ import { IconName } from '../../types/enums';
 import { AdminPath } from '../nav/enums';
 
 const Logo = ({ linkTo }: { linkTo: AdminPath | string }) => (
-  <div className="logo">
+  <div className="main-logo">
     <Link to={linkTo}>
       <Icon
         iconName={IconName.Logo}
