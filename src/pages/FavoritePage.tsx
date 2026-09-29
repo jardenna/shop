@@ -101,14 +101,15 @@ const FavoritePage = () => {
       {isLoading && (
         <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
       )}
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
+
+      <Panel
+        isPanelShown={isPanelShown}
+        onClosePanel={onHidePanel}
+        portalId="favorites"
       >
-        <Panel
-          isPanelShown={isPanelShown}
-          onClosePanel={onHidePanel}
-          portalId="favorites"
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
         >
           {selectedProduct && (
             <section className="favorite-panel">
@@ -128,16 +129,16 @@ const FavoritePage = () => {
               />
             </section>
           )}
-        </Panel>
-        <ProductCartList
-          products={sortedFavorites}
-          productView="grid"
-          onOpenPanel={handleOpenPanel}
-          currentUser={currentUser}
-          showSizeOverlay
-          getProductLink={getProductLink}
-        />
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </Panel>
+      <ProductCartList
+        products={sortedFavorites}
+        productView="grid"
+        onOpenPanel={handleOpenPanel}
+        currentUser={currentUser}
+        showSizeOverlay
+        getProductLink={getProductLink}
+      />
     </MainPageContainer>
   );
 };
