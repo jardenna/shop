@@ -12,7 +12,7 @@ import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import EmptyStateNew from '../features/shop/components/emptyState/EmptyStateNew';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
@@ -138,22 +138,22 @@ const CollectionPage = () => {
     return <SkeletonShopProducts count={4} />;
   }
 
-  if (itemCount === 0) {
-    return (
-      <EmptyState
-        emptyStateText={language.noProductText}
-        emptyStateTitle={language.noProductTitle}
-        onClick={onClearAllFilters}
-        emptyStateCtaText={language.clearAllFilters}
-        src="/images/shoppingBags/collection_shopping_bag"
-        pageHeading={
-          category
-            ? `${language.collection} ${language[category]}`
-            : language.collection
-        }
-      />
-    );
-  }
+  // if (itemCount === 0) {
+  //   return (
+  //     <EmptyState
+  //       emptyStateText={language.noProductText}
+  //       emptyStateTitle={language.noProductTitle}
+  //       onClick={onClearAllFilters}
+  //       emptyStateCtaText={language.clearAllFilters}
+  //       src="/images/shoppingBags/collection_shopping_bag"
+  //       pageHeading={
+  //         category
+  //           ? `${language.collection} ${language[category]}`
+  //           : language.collection
+  //       }
+  //     />
+  //   );
+  // }
 
   return (
     <>
@@ -252,6 +252,13 @@ const CollectionPage = () => {
             </section>
           </ErrorBoundary>
         </div>
+        <EmptyStateNew
+          emptyStateText={language.noProductText}
+          emptyStateTitle={language.noProductTitle}
+          onClick={onClearAllFilters}
+          emptyStateCtaText={language.clearAllFilters}
+          src="/images/shoppingBags/collection_shopping_bag"
+        />
       </section>
     </>
   );
