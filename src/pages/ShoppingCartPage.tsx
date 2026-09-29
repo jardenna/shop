@@ -83,14 +83,14 @@ const ShoppingCartPage = () => {
 
   if (cartItems.length === 0) {
     return (
-      <EmptyState
-        emptyStateText={language.shoppingBagEmptyText}
-        emptyStateTitle={language.shoppingBagEmptyTitle}
-        src="/images/shoppingBags/cart_shopping_bag"
-        linkTo={`/${ShopPath.Collection}`}
-        emptyStateCtaText={language.getInspired}
-        pageHeading={pageHeading}
-      />
+      <MainPageContainer heading={pageHeading}>
+        <EmptyState
+          emptyStateText={language.shoppingBagEmptyText}
+          emptyStateTitle={language.shoppingBagEmptyTitle}
+          src="/images/shoppingBags/cart_shopping_bag"
+          emptyStateCtaText={language.getInspired}
+        />
+      </MainPageContainer>
     );
   }
 

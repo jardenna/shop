@@ -7,7 +7,6 @@ interface EmptyStateProps {
   emptyStateText: string;
   emptyStateTitle: string;
   src: string;
-
   onClick: () => void;
 }
 

@@ -17,7 +17,6 @@ import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
-import { ShopPath } from '../layout/nav/enums';
 import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -81,14 +80,14 @@ const FavoritePage = () => {
 
   if (favorites.length === 0) {
     return (
-      <EmptyState
-        emptyStateTitle={language.noFavoritesTitle}
-        emptyStateText={language.noFavoritesText}
-        src="/images/shoppingBags/favorites_shopping_bag"
-        linkTo={`/${ShopPath.Collection}`}
-        emptyStateCtaText={language.getInspired}
-        pageHeading={pageHeading}
-      />
+      <MainPageContainer heading={pageHeading}>
+        <EmptyState
+          emptyStateTitle={language.noFavoritesTitle}
+          emptyStateText={language.noFavoritesText}
+          src="/images/shoppingBags/favorites_shopping_bag"
+          emptyStateCtaText={language.getInspired}
+        />
+      </MainPageContainer>
     );
   }
 
