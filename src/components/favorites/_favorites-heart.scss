@@ -5,6 +5,10 @@
   border-radius: 8px;
   line-height: 1px;
 
+  .favorite-label {
+    display: flex;
+  }
+
   &:not(.product-cart-favorites) {
     &:hover {
       @include animation(heartbeat, 0.3s);
@@ -23,7 +27,6 @@
   }
 
   .heart-icon {
-    font-size: $font-medium;
     background: none;
     border: 0;
     cursor: pointer;
