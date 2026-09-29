@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
@@ -12,7 +13,7 @@ import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyState from '../features/shop/components/emptyState/EmptyState';
+import EmptyStateContent from '../features/shop/components/emptyState/EmptyStateContent';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
@@ -138,23 +139,6 @@ const CollectionPage = () => {
     return <SkeletonShopProducts count={4} />;
   }
 
-  if (itemCount === 0) {
-    return (
-      <EmptyState
-        emptyStateText={language.noProductText}
-        emptyStateTitle={language.noProductTitle}
-        onClick={onClearAllFilters}
-        emptyStateCtaText={language.clearAllFilters}
-        src="/images/shoppingBags/collection_shopping_bag"
-        pageHeading={
-          category
-            ? `${language.collection} ${language[category]}`
-            : language.collection
-        }
-      />
-    );
-  }
-
   return (
     <>
       {category && (
@@ -252,6 +236,15 @@ const CollectionPage = () => {
             </section>
           </ErrorBoundary>
         </div>
+        <EmptyStateContent
+          emptyStateText={language.noProductText}
+          emptyStateTitle={language.noProductTitle}
+          src="/images/shoppingBags/collection_shopping_bag"
+        >
+          <Button onClick={onClearAllFilters}>
+            {language.clearAllFilters}
+          </Button>
+        </EmptyStateContent>
       </section>
     </>
   );

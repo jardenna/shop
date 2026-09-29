@@ -1,6 +1,7 @@
 import type { Placement } from '@popperjs/core';
 import { type ReactNode, useId } from 'react';
 import { createPortal } from 'react-dom';
+import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -33,6 +34,11 @@ const Popup = ({
 
   const { popupRef, buttonRef, popupIsOpen, togglePopupList, arrowRef } =
     usePopup({ placement });
+
+  useInitialFocus({
+    popupRef,
+    enabled: popupIsOpen,
+  });
 
   const buttonAriaProps =
     popupType === 'tooltip'

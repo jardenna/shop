@@ -3,10 +3,10 @@ import { useLocation } from 'react-router';
 import Button from '../../components/Button';
 import Overlay from '../../components/overlay/Overlay';
 import Panel from '../../components/panel/Panel';
+import TriggerPanelButton from '../../components/panel/TriggerPanelButton';
 import { useTogglePanel } from '../../components/panel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useScrollLock } from '../../hooks/useScrollLock';
-import { BtnVariant } from '../../types/enums';
 import NavContainer from './NavContainer';
 import { NavListProps } from './navLists';
 
@@ -38,20 +38,19 @@ const MobileNav = ({
   return (
     <>
       <div ref={menuButtonRef}>
-        <Button
-          variant={BtnVariant.Ghost}
+        <TriggerPanelButton
           ariaExpanded={isPanelShown}
-          onClick={onTogglePanel}
+          onTogglePanel={onTogglePanel}
           ariaLabel={language.mainMenu}
-          ariaHasPopup
           ariaControls={ariaControls}
           className="menu-burger"
         >
           <span className="menu-burger-item" aria-hidden />
-        </Button>
+        </TriggerPanelButton>
       </div>
 
       <Panel
+        portalId="mobile-nav"
         onClosePanel={onHidePanel}
         isPanelShown={isPanelShown}
         ariaControls={ariaControls}

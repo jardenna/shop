@@ -5,7 +5,6 @@ import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
 } from '../../../components/accordion/Accordion';
-import Button from '../../../components/Button';
 import ColorItem from '../../../components/ColorItem';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
@@ -14,11 +13,12 @@ import CheckboxList from '../../../components/formElements/checkbox/CheckboxList
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import Icon from '../../../components/icons/Icon';
 import Panel from '../../../components/panel/Panel';
+import TriggerPanelButton from '../../../components/panel/TriggerPanelButton';
 import { useTogglePanel } from '../../../components/panel/useTogglePanel';
 import TagList from '../../../components/tags/TagList';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
@@ -140,12 +140,10 @@ const FilterPanel = ({
 
   return (
     <>
-      <Button
+      <TriggerPanelButton
         ariaExpanded={isPanelShown}
-        onClick={onTogglePanel}
-        variant={BtnVariant.Ghost}
+        onTogglePanel={onTogglePanel}
         ariaLabel={language.filterProducts}
-        ariaHasPopup
         ariaControls={ariaControls}
       >
         <>
@@ -153,8 +151,9 @@ const FilterPanel = ({
           <Icon iconName={IconName.Filter} />
           <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
         </>
-      </Button>
+      </TriggerPanelButton>
       <Panel
+        portalId="filter-products"
         onClosePanel={onHidePanel}
         isPanelShown={isPanelShown}
         className="filter-panel"

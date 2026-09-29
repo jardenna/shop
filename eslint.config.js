@@ -125,6 +125,7 @@ export default defineConfig(
       ],
       'react-refresh/only-export-components': 'warn',
       curly: ['error', 'all'],
+      eqeqeq: ['error', 'always'],
       'arrow-body-style': 'warn',
       'react/no-multi-comp': ['error', { ignoreStateless: false }],
       'react/no-unescaped-entities': 0,

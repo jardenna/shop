@@ -59,14 +59,14 @@ const Salespage = () => {
 
   if (products.length === 0) {
     return (
-      <EmptyState
-        emptyStateTitle={language.noSaleTitle}
-        emptyStateText={language.noSaleText}
-        src="/images/shoppingBags/sale_shopping_bag"
-        linkTo={`/${ShopPath.Collection}`}
-        emptyStateCtaText={language.noSaleCta}
-        pageHeading={language.sale}
-      />
+      <MainPageContainer heading={language.sale}>
+        <EmptyState
+          emptyStateTitle={language.noSaleTitle}
+          emptyStateText={language.noSaleText}
+          src="/images/shoppingBags/sale_shopping_bag"
+          emptyStateCtaText={language.noSaleCta}
+        />
+      </MainPageContainer>
     );
   }
 

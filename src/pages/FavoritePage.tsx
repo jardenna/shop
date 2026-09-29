@@ -17,7 +17,6 @@ import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
-import { ShopPath } from '../layout/nav/enums';
 import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -81,14 +80,14 @@ const FavoritePage = () => {
 
   if (favorites.length === 0) {
     return (
-      <EmptyState
-        emptyStateTitle={language.noFavoritesTitle}
-        emptyStateText={language.noFavoritesText}
-        src="/images/shoppingBags/favorites_shopping_bag"
-        linkTo={`/${ShopPath.Collection}`}
-        emptyStateCtaText={language.getInspired}
-        pageHeading={pageHeading}
-      />
+      <MainPageContainer heading={pageHeading}>
+        <EmptyState
+          emptyStateTitle={language.noFavoritesTitle}
+          emptyStateText={language.noFavoritesText}
+          src="/images/shoppingBags/favorites_shopping_bag"
+          emptyStateCtaText={language.getInspired}
+        />
+      </MainPageContainer>
     );
   }
 
@@ -101,11 +100,16 @@ const FavoritePage = () => {
       {isLoading && (
         <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
       )}
-      <ErrorBoundary
-        FallbackComponent={ErrorBoundaryFallback}
-        onReset={onReset}
+
+      <Panel
+        isPanelShown={isPanelShown}
+        onClosePanel={onHidePanel}
+        portalId="favorites"
       >
-        <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
+        <ErrorBoundary
+          FallbackComponent={ErrorBoundaryFallback}
+          onReset={onReset}
+        >
           {selectedProduct && (
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
@@ -124,16 +128,16 @@ const FavoritePage = () => {
               />
             </section>
           )}
-        </Panel>
-        <ProductCartList
-          products={sortedFavorites}
-          productView="grid"
-          onOpenPanel={handleOpenPanel}
-          currentUser={currentUser}
-          showSizeOverlay
-          getProductLink={getProductLink}
-        />
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </Panel>
+      <ProductCartList
+        products={sortedFavorites}
+        productView="grid"
+        onOpenPanel={handleOpenPanel}
+        currentUser={currentUser}
+        showSizeOverlay
+        getProductLink={getProductLink}
+      />
     </MainPageContainer>
   );
 };
