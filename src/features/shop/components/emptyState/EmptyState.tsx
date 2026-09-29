@@ -2,13 +2,10 @@ import { Link } from 'react-router';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { BtnVariant } from '../../../../types/enums';
 import './_empty-state.scss';
-import EmptyStateContent from './EmptyStateContent';
+import EmptyStateContent, { BaseEmptyStateProps } from './EmptyStateContent';
 
-interface BaseEmptyStateProps {
+interface EmptyStateProps extends BaseEmptyStateProps {
   emptyStateCtaText: string;
-  emptyStateText: string;
-  emptyStateTitle: string;
-  src: string;
 }
 
 const EmptyState = ({
@@ -16,7 +13,7 @@ const EmptyState = ({
   emptyStateTitle,
   emptyStateCtaText,
   src,
-}: BaseEmptyStateProps) => (
+}: EmptyStateProps) => (
   <EmptyStateContent
     emptyStateTitle={emptyStateTitle}
     emptyStateText={emptyStateText}
