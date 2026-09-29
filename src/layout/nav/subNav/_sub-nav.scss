@@ -73,6 +73,10 @@
 
     .btn {
       text-transform: none;
+
+      &::after {
+        inset: -4px;
+      }
     }
 
     p {
@@ -157,7 +161,6 @@
 
     .sub-nav-ad {
       grid-column: span 3;
-      margin-bottom: 8px;
     }
   }
 }

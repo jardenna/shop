@@ -6,7 +6,7 @@
   }
 
   .dural-range-fieldset {
-    border-block-end: 1px solid $color-border-dark;
+    border-block-end: $border-dark;
     padding-bottom: 12px;
 
     legend {
@@ -67,10 +67,4 @@
   justify-content: flex-end;
   width: 100%;
   padding-top: 8px;
-}
-
-.toggle-content {
-  overflow: auto;
-  max-height: calc(4 * rem(32px) + rem(12px));
-  margin-bottom: 8px;
 }

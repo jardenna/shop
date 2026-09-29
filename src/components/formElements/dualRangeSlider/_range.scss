@@ -33,6 +33,14 @@ $color-range-primary: $color-blue-30;
 }
 
 .dual-range {
+  .range-slider-input[data-initial-focus='true']:focus {
+    outline: transparent;
+  }
+
+  &:focus-visible {
+    outline: transparent;
+  }
+
   position: relative;
   display: flex;
   align-items: center;
@@ -161,7 +169,11 @@ $color-range-primary: $color-blue-30;
     input {
       height: rem(48px);
       background-color: $color-white;
-      border: $color-border;
+      border: $border;
+
+      &:focus-visible {
+        outline: transparent;
+      }
     }
   }
 }

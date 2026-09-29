@@ -2,7 +2,7 @@
 
 .accordion {
   details {
-    border-block-end: 1px solid $color-border-dark;
+    border-block-end: $border-dark;
   }
 
   .accordion-content {

@@ -154,7 +154,7 @@ export interface IconDefaultProps {
 
 const Icon = ({
   iconName,
-  size = '1.5em',
+  size = '1.5rem',
   className = '',
   ariaHidden = true,
   title,

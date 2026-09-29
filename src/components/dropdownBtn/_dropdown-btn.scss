@@ -1,8 +1,8 @@
 @use '../../scss/globals' as *;
 
 .dropdown-item {
-  padding: 8px;
-  border-bottom: 1px solid $color-border;
+  padding: 10px 8px;
+  border-bottom: $border;
   border-left: 6px solid transparent;
   min-height: rem(52px);
   display: flex;

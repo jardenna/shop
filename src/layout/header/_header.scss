@@ -3,30 +3,6 @@
 $animation-starts-after: 20vh;
 $animation-distance: 500px;
 
-.main-header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid $color-border;
-
-  .header-icon-btn > svg {
-    height: rem(24px);
-    width: rem(24px);
-  }
-
-  @include max-size($small) {
-    justify-content: flex-start;
-    gap: 20px;
-  }
-
-  @include max-size($mini) {
-    flex-direction: column;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-}
-
 .main-header {
   display: flex;
   width: 100%;
@@ -55,6 +31,35 @@ $animation-distance: 500px;
   }
 }
 
+.main-logo {
+  a {
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -14px;
+    }
+  }
+}
+
+.main-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: $border;
+
+  @include max-size($small) {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  @include max-size($mini) {
+    flex-direction: column;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
 .main-panel {
   top: 84px;
 }
@@ -67,7 +72,7 @@ $animation-distance: 500px;
 
 .header-icon-list {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
 .preferences {

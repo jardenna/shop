@@ -185,7 +185,7 @@ const FilterPanel = ({
                 showLegendText
               >
                 {filteredEntries.length > 0 && (
-                  <div className="toggle-content">
+                  <div>
                     {filteredEntries.map(([key, values]) => (
                       <TagList
                         key={key}

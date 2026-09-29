@@ -2,7 +2,7 @@
 
 .order-flow-list {
   .order-flow-list-item {
-    border-bottom: 1px solid $color-border;
+    border-bottom: $border;
     padding-block: 16px;
 
     &:first-child {
@@ -86,7 +86,7 @@
       place-self: end end;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
   }
 }

@@ -5,21 +5,10 @@
   gap: 4px;
   flex-wrap: wrap;
 
-  .tag-item {
-    display: flex;
-    max-width: fit-content;
-    align-items: baseline;
-    border: $border-dark;
-    padding: 4px 8px;
+  .btn-ghost {
     text-transform: uppercase;
-    gap: 8px;
-    white-space: nowrap;
-    max-height: fit-content;
-  }
-
-  .btn-close {
-    position: relative;
-    top: auto;
-    right: auto;
+    padding: 4px;
+    border: $border-dark;
+    gap: 12px;
   }
 }

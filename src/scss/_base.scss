@@ -88,12 +88,6 @@ a {
   position: relative;
 
   @include transition;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: -9px;
-  }
 }
 
 img {
