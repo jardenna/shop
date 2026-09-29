@@ -65,7 +65,7 @@
 }
 
 .size-list {
-  border-inline-start: 1px solid $color-border;
+  border-inline-start: $border;
 
   .control-item {
     @extend %stacked-item-border;

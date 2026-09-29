@@ -2,7 +2,7 @@
 
 .order-flow-list {
   .order-flow-list-item {
-    border-bottom: 1px solid $color-border;
+    border-bottom: $border;
     padding-block: 16px;
 
     &:first-child {

@@ -22,7 +22,7 @@
   .modal-header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $color-border;
+    border-bottom: $border;
   }
 
   .modal-title {

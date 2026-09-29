@@ -45,7 +45,7 @@ $animation-distance: 500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $color-border;
+  border-bottom: $border;
 
   @include max-size($small) {
     justify-content: flex-start;
