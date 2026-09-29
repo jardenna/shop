@@ -88,14 +88,6 @@ a {
   position: relative;
 
   @include transition;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: red;
-    opacity: 0.4;
-  }
 }
 
 img {
