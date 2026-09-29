@@ -1,6 +1,6 @@
 import type { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../components/icons/Icon';
-import MailTo from '../../components/MailTo';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import { IconName } from '../../types/enums';
 
 type NavUserProps = {
@@ -9,17 +9,19 @@ type NavUserProps = {
 };
 
 const NavUser = ({ currentUser, isMenuCollapsed }: NavUserProps) => (
-  <div className="user-container">
-    <span className="user">
-      <span className="user-icon">
-        <Icon iconName={IconName.User} />
-      </span>
-      <span className="user-text nav-text">
+  <a href={`mailto:${currentUser.email}`} className="user-container">
+    <Icon iconName={IconName.User} />
+
+    {isMenuCollapsed && (
+      <VisuallyHidden>{`Send e-mail til ${currentUser.email}`}</VisuallyHidden>
+    )}
+    {!isMenuCollapsed && (
+      <span className="user-text">
         <span className="text-bold">{currentUser.username}</span>
-        {!isMenuCollapsed && <MailTo email={currentUser.email} />}
+        <span>{currentUser.email}</span>
       </span>
-    </span>
-  </div>
+    )}
+  </a>
 );
 
 export default NavUser;
