@@ -13,7 +13,7 @@ interface DualRangeProps {
   unitLabel: string;
   max?: number;
   min?: number;
-  standAlone?: boolean;
+  showInput?: boolean;
   step?: number;
   onChange: (event: ChangeInputType) => void;
 }
@@ -28,7 +28,7 @@ const DualRange = ({
   inputNames,
   inputLabels,
   unitLabel,
-  standAlone = false,
+  showInput,
 }: DualRangeProps) => {
   const { currencyText } = useCurrency();
 
@@ -43,7 +43,7 @@ const DualRange = ({
 
   return (
     <div role="group">
-      {!standAlone && (
+      {showInput && (
         <div className="dual-number-range">
           <RangeNumberInput
             inputHasNoLabel
