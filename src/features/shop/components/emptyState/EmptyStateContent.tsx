@@ -1,22 +1,22 @@
-import Button from '../../../../components/Button';
+import { ReactNode } from 'react';
 import Picture from '../../../../components/Picture';
-import './_empty-state.scss';
 
-interface EmptyStateProps {
-  emptyStateCtaText: string;
+export interface BaseEmptyStateProps {
   emptyStateText: string;
   emptyStateTitle: string;
   src: string;
-  onClick: () => void;
 }
 
-const EmptyStateNew = ({
-  onClick,
+interface EmptyStateContentProps extends BaseEmptyStateProps {
+  children: ReactNode;
+}
+
+const EmptyStateContent = ({
+  children,
   emptyStateText,
   emptyStateTitle,
-  emptyStateCtaText,
   src,
-}: EmptyStateProps) => (
+}: EmptyStateContentProps) => (
   <section className="empty-state">
     <div>
       <Picture
@@ -33,9 +33,9 @@ const EmptyStateNew = ({
         {emptyStateText}.
       </p>
 
-      <Button onClick={onClick}>{emptyStateCtaText}</Button>
+      {children}
     </div>
   </section>
 );
 
-export default EmptyStateNew;
+export default EmptyStateContent;

@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
+import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
@@ -12,7 +13,7 @@ import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyStateNew from '../features/shop/components/emptyState/EmptyStateNew';
+import EmptyStateContent from '../features/shop/components/emptyState/EmptyStateContent';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/FilterPanel';
@@ -235,13 +236,15 @@ const CollectionPage = () => {
             </section>
           </ErrorBoundary>
         </div>
-        <EmptyStateNew
+        <EmptyStateContent
           emptyStateText={language.noProductText}
           emptyStateTitle={language.noProductTitle}
-          onClick={onClearAllFilters}
-          emptyStateCtaText={language.clearAllFilters}
           src="/images/shoppingBags/collection_shopping_bag"
-        />
+        >
+          <Button onClick={onClearAllFilters}>
+            {language.clearAllFilters}
+          </Button>
+        </EmptyStateContent>
       </section>
     </>
   );
