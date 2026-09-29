@@ -155,6 +155,7 @@ const FilterPanel = ({
         </>
       </Button>
       <Panel
+        portalId="filter-products"
         onClosePanel={onHidePanel}
         isPanelShown={isPanelShown}
         className="filter-panel"

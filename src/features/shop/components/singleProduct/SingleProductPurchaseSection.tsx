@@ -198,7 +198,11 @@ const SingleProductPurchaseSection = ({
 
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
-      <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
+      <Panel
+        isPanelShown={isPanelShown}
+        onClosePanel={onHidePanel}
+        portalId="single-product"
+      >
         {popupData && (
           <SingleProductPanel
             popupData={popupData}

@@ -13,6 +13,7 @@ import './_panel.scss';
 interface PanelProps {
   children: ReactNode;
   isPanelShown: boolean;
+  portalId: string;
   ariaControls?: string;
   className?: string;
   hideBtnClose?: boolean;
@@ -30,6 +31,7 @@ const Panel = ({
   trapFocus,
   hideBtnClose,
   ignoreRefs = [],
+  portalId,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -56,7 +58,7 @@ const Panel = ({
   }
 
   return (
-    <Portal portalId="panel">
+    <Portal portalId={portalId}>
       <section
         id={ariaControls}
         onTransitionEnd={onTransitionEnd}

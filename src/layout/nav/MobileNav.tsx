@@ -52,6 +52,7 @@ const MobileNav = ({
       </div>
 
       <Panel
+        portalId="mobile-nav"
         onClosePanel={onHidePanel}
         isPanelShown={isPanelShown}
         ariaControls={ariaControls}

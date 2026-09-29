@@ -105,7 +105,11 @@ const FavoritePage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={onReset}
       >
-        <Panel isPanelShown={isPanelShown} onClosePanel={onHidePanel}>
+        <Panel
+          isPanelShown={isPanelShown}
+          onClosePanel={onHidePanel}
+          portalId="favorites"
+        >
           {selectedProduct && (
             <section className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
