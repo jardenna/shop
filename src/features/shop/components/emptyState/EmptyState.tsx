@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import Button from '../../../../components/Button';
 import Picture from '../../../../components/Picture';
 import MainPageContainer from '../../../../pages/pageContainer/MainPageContainer';
 import { BtnVariant } from '../../../../types/enums';
@@ -9,25 +8,13 @@ interface BaseEmptyStateProps {
   emptyStateCtaText: string;
   emptyStateText: string;
   emptyStateTitle: string;
+  linkTo: string;
   pageHeading: string;
   src: string;
   btnVariant?: BtnVariant;
 }
 
-interface LinkVariant {
-  linkTo: string;
-  onClick?: never;
-}
-
-interface ActionVariant {
-  linkTo?: never;
-  onClick: () => void;
-}
-
-type EmptyStateProps = BaseEmptyStateProps & (LinkVariant | ActionVariant);
-
 const EmptyState = ({
-  onClick,
   emptyStateText,
   emptyStateTitle,
   emptyStateCtaText,
@@ -35,7 +22,7 @@ const EmptyState = ({
   linkTo,
   pageHeading,
   btnVariant = BtnVariant.Primary,
-}: EmptyStateProps) => (
+}: BaseEmptyStateProps) => (
   <MainPageContainer heading={pageHeading}>
     <section className="empty-state">
       <div>
@@ -52,13 +39,9 @@ const EmptyState = ({
         <p role="status" aria-atomic="true">
           {emptyStateText}.
         </p>
-        {linkTo ? (
-          <Link to={linkTo} className={`btn btn-${btnVariant}`}>
-            {emptyStateCtaText}
-          </Link>
-        ) : (
-          <Button onClick={onClick}>{emptyStateCtaText}</Button>
-        )}
+        <Link to={linkTo} className={`btn btn-${btnVariant}`}>
+          {emptyStateCtaText}
+        </Link>
       </div>
     </section>
   </MainPageContainer>

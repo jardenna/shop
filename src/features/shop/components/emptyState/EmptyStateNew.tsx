@@ -1,6 +1,5 @@
 import Button from '../../../../components/Button';
 import Picture from '../../../../components/Picture';
-import { BtnVariant } from '../../../../types/enums';
 import './_empty-state.scss';
 
 interface EmptyStateProps {
@@ -8,7 +7,7 @@ interface EmptyStateProps {
   emptyStateText: string;
   emptyStateTitle: string;
   src: string;
-  btnVariant?: BtnVariant;
+
   onClick: () => void;
 }
 
@@ -18,7 +17,6 @@ const EmptyStateNew = ({
   emptyStateTitle,
   emptyStateCtaText,
   src,
-  btnVariant = BtnVariant.Primary,
 }: EmptyStateProps) => (
   <section className="empty-state">
     <div>
@@ -36,9 +34,7 @@ const EmptyStateNew = ({
         {emptyStateText}.
       </p>
 
-      <Button onClick={onClick} variant={btnVariant}>
-        {emptyStateCtaText}
-      </Button>
+      <Button onClick={onClick}>{emptyStateCtaText}</Button>
     </div>
   </section>
 );

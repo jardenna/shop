@@ -138,23 +138,6 @@ const CollectionPage = () => {
     return <SkeletonShopProducts count={4} />;
   }
 
-  // if (itemCount === 0) {
-  //   return (
-  //     <EmptyState
-  //       emptyStateText={language.noProductText}
-  //       emptyStateTitle={language.noProductTitle}
-  //       onClick={onClearAllFilters}
-  //       emptyStateCtaText={language.clearAllFilters}
-  //       src="/images/shoppingBags/collection_shopping_bag"
-  //       pageHeading={
-  //         category
-  //           ? `${language.collection} ${language[category]}`
-  //           : language.collection
-  //       }
-  //     />
-  //   );
-  // }
-
   return (
     <>
       {category && (
