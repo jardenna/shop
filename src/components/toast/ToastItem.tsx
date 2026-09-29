@@ -53,7 +53,7 @@ const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
         </p>
       </div>
 
-      <BtnClose onClick={handleDeleteToast} size="1em" />
+      <BtnClose onClick={handleDeleteToast} size="1.2em" />
     </li>
   );
 };
