@@ -92,7 +92,9 @@ a {
   &::after {
     content: '';
     position: absolute;
-    inset: -9px;
+    inset: 0;
+    background-color: red;
+    opacity: 0.4;
   }
 }
 

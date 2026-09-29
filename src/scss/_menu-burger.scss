@@ -13,13 +13,13 @@ $burger-expanded-width: rem(20px);
 .menu-burger {
   position: absolute;
   padding: 20px;
-  top: 4px;
+  top: 13px;
   right: 10px;
   color: $color-dust-red-30;
 
   &.btn-ghost {
     &:focus-visible {
-      outline-offset: 20px;
+      outline-offset: 10px;
     }
   }
 

@@ -9,6 +9,9 @@
 
   a {
     color: $color-secondary;
+    min-height: rem(44px);
+    display: flex;
+    align-items: center;
 
     &:hover {
       text-decoration: underline;
@@ -52,12 +55,6 @@
     margin-bottom: 8px;
     font-size: $font-medium;
     font-family: $font-primary-semibold;
-  }
-
-  .footer-nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
   }
 
   .footer-nav-item {

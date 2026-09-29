@@ -9,11 +9,6 @@ $animation-distance: 500px;
   align-items: center;
   border-bottom: 1px solid $color-border;
 
-  .header-icon-btn > svg {
-    height: rem(24px);
-    width: rem(24px);
-  }
-
   @include max-size($small) {
     justify-content: flex-start;
     gap: 20px;
@@ -67,7 +62,7 @@ $animation-distance: 500px;
 
 .header-icon-list {
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
 .preferences {

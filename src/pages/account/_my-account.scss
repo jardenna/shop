@@ -4,6 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  .account-info-btn {
+    &::after {
+      inset: -15px;
+    }
+  }
 }
 
 .address-list {

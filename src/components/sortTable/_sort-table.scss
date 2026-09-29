@@ -97,7 +97,7 @@ $table-header-height: rem(320px);
 
       @include max-size($large) {
         flex-direction: column;
-        gap: 8px;
+        gap: 19px;
       }
     }
 
