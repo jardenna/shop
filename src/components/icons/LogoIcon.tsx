@@ -19,7 +19,7 @@ const LogoIcon = ({
     clipRule="evenodd"
     strokeLinejoin="round"
     strokeMiterlimit="2"
-    fill="currentcolor"
+    fill="#000"
   >
     <title id="site-logo">{title}</title>
     <desc id="site-logo">{desc}</desc>
