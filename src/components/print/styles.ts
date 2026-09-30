@@ -3,8 +3,11 @@ import './pdfFonts';
 
 export const styles = StyleSheet.create({
   page: {
-    padding: 40,
     fontFamily: 'Outfit',
+  },
+  header: {
+    padding: 40,
+    backgroundColor: '#f9f9f9',
   },
   heading: {
     fontSize: 24,

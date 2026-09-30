@@ -1,0 +1,100 @@
+{
+  "shippingAddress": {
+    "name": "Silvan",
+    "street": "Vandtårnsvej 23",
+    "zipCode": "2200",
+    "city": "Kbh N",
+    "country": "Danmark"
+  },
+  "billingAddress": {
+    "name": "Helle Bjørnum",
+    "street": "Sydstien 24",
+    "zipCode": "8000",
+    "city": "aalborg",
+    "country": "Danmark"
+  },
+  "payment": {
+    "result": {
+      "transactionId": "5957b1aa-2ac1-4115-b678-70a2542b81be",
+      "status": "COMPLETED",
+      "updateTime": "2026-08-05T17:53:45.820Z",
+      "email": "helle@mail.com"
+    },
+    "method": "mobilepay",
+    "status": "COMPLETED",
+    "paidAt": "2026-08-05T17:53:45.820Z"
+  },
+  "summary": {
+    "subTotal": 899,
+    "taxPrice": 179.8,
+    "shippingPrice": 49,
+    "totalPrice": 813.15,
+    "discountPrice": 0,
+    "promoDiscount": 134.85
+  },
+  "discount": {
+    "code": "",
+    "label": "employeeDiscount",
+    "percent": 15
+  },
+  "delivery": {
+    "status": "delivered",
+    "shippedAt": "2026-08-16T13:38:59.778Z",
+    "statusHistory": [
+      {
+        "status": "created",
+        "changedAt": "2026-08-05T17:53:45.279Z",
+        "changedBy": {
+          "username": "Helle Bjørnum",
+          "id": "67c7094be192fbb4ee3890c3"
+        },
+        "actorType": "customer",
+        "_id": "6abcf34b2dcc7dfabdbb5d16",
+        "id": "6abcf34b2dcc7dfabdbb5d16"
+      },
+      {
+        "status": "shipped",
+        "changedAt": "2026-08-16T13:38:59.778Z",
+        "changedBy": {
+          "isAdmin": false,
+          "preferredFashion": "noPreference",
+          "role": "User",
+          "favorites": [],
+          "username": "Helle Bjørnum",
+          "id": "67c7094be192fbb4ee3890c3",
+          "addresses": []
+        },
+        "actorType": "employee",
+        "_id": "6a81bd73469060286af7876c",
+        "id": "6a81bd73469060286af7876c"
+      },
+      {
+        "status": "delivered",
+        "changedAt": "2026-08-19T13:38:59.778Z",
+        "actorType": "system",
+        "_id": "6a8d40bb71bbd13f44757aba",
+        "id": "6a8d40bb71bbd13f44757aba"
+      }
+    ],
+    "deliveredAt": "2026-08-19T13:38:59.778Z"
+  },
+  "user": {
+    "username": "Helle Bjørnum",
+    "id": "67c7094be192fbb4ee3890c3"
+  },
+  "orderItems": [
+    {
+      "id": "6a7378a9105fa94ba1b18a7f",
+      "productName": "Moonlight Tulle Dress",
+      "qty": 1,
+      "color": "yellow",
+      "size": "M",
+      "image": "/images/uploads/images-1757412068895.jpg",
+      "price": 899,
+      "productId": "6851220be5d1e20900c9ad87"
+    }
+  ],
+  "createdAt": "2026-08-05T17:53:45.279Z",
+  "updatedAt": "2026-08-25T07:14:03.692Z",
+  "id": "6a7378a9105fa94ba1b18a7e"
+}

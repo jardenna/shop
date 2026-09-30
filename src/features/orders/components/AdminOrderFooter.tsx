@@ -31,7 +31,6 @@ const AdminOrderFooter = ({
     onCancelOrder();
     closeModal();
   };
-  console.log(order);
 
   return (
     <footer className="footer">

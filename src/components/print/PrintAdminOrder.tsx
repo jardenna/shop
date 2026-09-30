@@ -18,11 +18,6 @@ const PrintAdminOrder = ({ order }: PrintAdminOrderProps) => (
     </View>
 
     <View style={styles.section}>
-      <Text style={styles.label}>Customer</Text>
-      <Text style={styles.text}>{order.message}</Text>
-    </View>
-
-    <View style={styles.section}>
       <Text style={styles.label}>Order</Text>
     </View>
   </PdfContainer>

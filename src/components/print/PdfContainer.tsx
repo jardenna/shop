@@ -10,8 +10,12 @@ interface PdfContainerProps {
 const PdfContainer = ({ children }: PdfContainerProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <OrderLogo />
-      <Text style={styles.heading}>Invoice</Text>
+      <View style={styles.header}>
+        <OrderLogo />
+
+        <Text style={styles.heading}>Invoice</Text>
+      </View>
+
       <View style={styles.section}>{children}</View>
     </Page>
   </Document>
