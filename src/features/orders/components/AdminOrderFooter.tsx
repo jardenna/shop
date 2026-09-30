@@ -1,8 +1,10 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import { useId } from 'react';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
+import MyDocument from '../../../components/print/MyDocument';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
@@ -58,8 +60,19 @@ const AdminOrderFooter = ({
           </Button>
         </footer>
       </Modal>
-
-      <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button>
+      <PDFDownloadLink
+        document={<MyDocument order="hello" />}
+        fileName="order.pdf"
+        className="pdf-link"
+      >
+        {({ loading }) => (
+          <Button variant={BtnVariant.Secondary} disabled={loading}>
+            {loading ? 'Generating PDF...' : language.printOrder}
+          </Button>
+        )}
+      </PDFDownloadLink>
+      {/* 
+      <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button> */}
     </footer>
   );
 };
