@@ -5,15 +5,16 @@ import { styles } from './styles';
 
 interface PdfContainerProps {
   children: ReactNode;
+  language: Record<string, string>;
 }
 
-const PdfContainer = ({ children }: PdfContainerProps) => (
+const PdfContainer = ({ children, language }: PdfContainerProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
         <OrderLogo />
 
-        <Text style={styles.heading}>Invoice</Text>
+        <Text style={styles.heading}>{language.order}</Text>
       </View>
 
       <View style={styles.section}>{children}</View>

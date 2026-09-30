@@ -16,7 +16,7 @@ const PrintAdminOrder = ({
   selectedLanguage,
   language,
 }: PrintAdminOrderProps) => (
-  <PdfContainer>
+  <PdfContainer language={language}>
     <View style={styles.section}>
       <Text>{formatDate(order.createdAt, selectedLanguage)}</Text>
       {order.orderItems.map((orderitem) => (
