@@ -170,7 +170,7 @@ const AdminOrderDetailsPage = () => {
               language={language}
               onCancelOrder={handleCancelOrder}
               isLoading={isLoading}
-              id={order.id}
+              order={order}
               triggerModalDisabled={
                 orderStatus.status !== 'created' &&
                 orderStatus.status !== 'processing'
