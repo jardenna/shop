@@ -4,7 +4,7 @@ import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import MyDocument from '../../../components/print/MyDocument';
+import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
@@ -61,7 +61,7 @@ const AdminOrderFooter = ({
         </footer>
       </Modal>
       <PDFDownloadLink
-        document={<MyDocument order="hello" />}
+        document={<PrintAdminOrder order="hello" />}
         fileName="order.pdf"
         className="pdf-link"
       >
