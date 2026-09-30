@@ -1,6 +1,6 @@
 import { Text, View } from '@react-pdf/renderer';
 import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
-import PrintContainer from './PrintContainer';
+import PdfContainer from './PdfContainer';
 import { styles } from './styles';
 
 interface PrintAdminOrderProps {
@@ -8,7 +8,7 @@ interface PrintAdminOrderProps {
 }
 
 const PrintAdminOrder = ({ order }: PrintAdminOrderProps) => (
-  <PrintContainer>
+  <PdfContainer>
     <View style={styles.section}>
       {order.orderItems.map((orderitem) => (
         <Text key={orderitem.id} style={styles.label}>
@@ -25,7 +25,7 @@ const PrintAdminOrder = ({ order }: PrintAdminOrderProps) => (
     <View style={styles.section}>
       <Text style={styles.label}>Order</Text>
     </View>
-  </PrintContainer>
+  </PdfContainer>
 );
 
 export default PrintAdminOrder;

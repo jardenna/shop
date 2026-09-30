@@ -3,11 +3,11 @@ import { ReactNode } from 'react';
 import OrderLogo from './OrderLogo';
 import { styles } from './styles';
 
-interface PrintContainerProps {
+interface PdfContainerProps {
   children: ReactNode;
 }
 
-const PrintContainer = ({ children }: PrintContainerProps) => (
+const PdfContainer = ({ children }: PdfContainerProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <OrderLogo />
@@ -16,4 +16,4 @@ const PrintContainer = ({ children }: PrintContainerProps) => (
   </Document>
 );
 
-export default PrintContainer;
+export default PdfContainer;
