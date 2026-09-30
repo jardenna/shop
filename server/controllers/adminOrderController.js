@@ -85,7 +85,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate([
     {
       path: 'user',
-      select: '_id username',
+      select: '_id username email phoneNo',
     },
     {
       path: 'delivery.statusHistory.changedBy',
