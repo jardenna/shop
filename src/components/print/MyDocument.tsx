@@ -1,11 +1,5 @@
-import {
-  Document,
-  Image,
-  Page,
-  StyleSheet,
-  Text,
-  View,
-} from '@react-pdf/renderer';
+import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
+import OrderLogo from './OrderLogo';
 
 interface MyDocumentProps {
   order: string;
@@ -30,17 +24,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 12,
   },
-  logo: {
-    width: 120,
-    height: 'auto',
-    marginBottom: 30,
-  },
 });
 
 const MyDocument = ({ order }: MyDocumentProps) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Image src="/images/logo.svg" style={styles.logo} />
+      <OrderLogo />
+
       <View style={styles.section}>
         <Text style={styles.label}>Customer</Text>
         <Text style={styles.text}>{order}</Text>
