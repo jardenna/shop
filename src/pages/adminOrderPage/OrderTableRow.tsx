@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
@@ -30,7 +31,9 @@ const OrderTableRow = ({
 }: OrderTableRowProps) => (
   <tr>
     <td>
-      <span className="text-ellipsis">{id}</span>
+      <Link to={`${AdminPath.AdminOrderById}/${id}`}>
+        <span className="text-ellipsis">{id}</span>
+      </Link>
     </td>
     <td className="text-no-wrap">
       <DateDisplay date={createdAt} />
