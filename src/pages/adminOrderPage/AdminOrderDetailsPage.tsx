@@ -25,6 +25,7 @@ import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import PdfPreview from '../../components/print/PdfPreview';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
@@ -111,6 +112,7 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
+      {order && <PdfPreview order={order} />}
       {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

@@ -12,7 +12,7 @@ const PrintAdminOrder = ({ order }: PrintAdminOrderProps) => (
     <View style={styles.section}>
       {order.orderItems.map((orderitem) => (
         <Text key={orderitem.id} style={styles.label}>
-          {orderitem.countInStock}
+          {orderitem.productName}
         </Text>
       ))}
     </View>
