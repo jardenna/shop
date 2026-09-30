@@ -11,14 +11,8 @@ const PrintAdminOrder = ({ order }: PrintAdminOrderProps) => (
   <PdfContainer>
     <View style={styles.section}>
       {order.orderItems.map((orderitem) => (
-        <Text key={orderitem.id} style={styles.label}>
-          {orderitem.productName}
-        </Text>
+        <Text key={orderitem.id}>{orderitem.productName}</Text>
       ))}
-    </View>
-
-    <View style={styles.section}>
-      <Text style={styles.label}>Order</Text>
     </View>
   </PdfContainer>
 );

@@ -4,6 +4,7 @@ import './pdfFonts';
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
+    fontSize: 12,
   },
   header: {
     padding: 40,
@@ -15,13 +16,5 @@ export const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 16,
-  },
-  label: {
-    fontSize: 10,
-    color: '#666666',
-    marginBottom: 4,
-  },
-  text: {
-    fontSize: 12,
   },
 });
