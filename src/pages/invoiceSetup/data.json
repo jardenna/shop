@@ -1,100 +1,128 @@
 {
   "shippingAddress": {
-    "name": "Silvan",
-    "street": "Vandtårnsvej 23",
-    "zipCode": "2200",
-    "city": "Kbh N",
+    "name": "Mogens Pedersen",
+    "street": "Næstved hovedgade 23",
+    "zipCode": "4700",
+    "city": "Næstved",
     "country": "Danmark"
   },
   "billingAddress": {
-    "name": "Helle Bjørnum",
-    "street": "Sydstien 24",
-    "zipCode": "8000",
-    "city": "aalborg",
+    "name": "Mogens Pedersen",
+    "street": "Næstved hovedgade 23",
+    "zipCode": "4700",
+    "city": "Næstved",
     "country": "Danmark"
   },
   "payment": {
     "result": {
-      "transactionId": "5957b1aa-2ac1-4115-b678-70a2542b81be",
+      "transactionId": "9fa93fab-cf5c-43fd-b992-35254d0075a8",
       "status": "COMPLETED",
-      "updateTime": "2026-08-05T17:53:45.820Z",
-      "email": "helle@mail.com"
+      "updateTime": "2026-08-06T10:17:47.192Z",
+      "email": "mogens@mail.com"
     },
     "method": "mobilepay",
     "status": "COMPLETED",
-    "paidAt": "2026-08-05T17:53:45.820Z"
+    "paidAt": "2026-08-06T10:17:47.188Z"
   },
   "summary": {
-    "subTotal": 899,
-    "taxPrice": 179.8,
+    "subTotal": 798,
+    "taxPrice": 159.6,
     "shippingPrice": 49,
-    "totalPrice": 813.15,
+    "totalPrice": 847,
     "discountPrice": 0,
-    "promoDiscount": 134.85
+    "promoDiscount": 0
   },
   "discount": {
     "code": "",
-    "label": "employeeDiscount",
-    "percent": 15
+    "label": "",
+    "percent": 0
   },
   "delivery": {
-    "status": "delivered",
-    "shippedAt": "2026-08-16T13:38:59.778Z",
+    "status": "cancelled",
+    "shippedAt": null,
     "statusHistory": [
       {
         "status": "created",
-        "changedAt": "2026-08-05T17:53:45.279Z",
+        "changedAt": "2026-08-06T10:17:46.642Z",
         "changedBy": {
-          "username": "Helle Bjørnum",
-          "id": "67c7094be192fbb4ee3890c3"
+          "username": "Mogens Pedersen",
+          "email": "mogens@mail.com",
+          "phoneNo": "47506565",
+          "id": "6a745dfcf0ffe916d6c5ca69"
         },
         "actorType": "customer",
-        "_id": "6abcf34b2dcc7dfabdbb5d16",
-        "id": "6abcf34b2dcc7dfabdbb5d16"
+        "_id": "6abd10659232c6ab8f5e2c37",
+        "id": "6abd10659232c6ab8f5e2c37"
       },
       {
         "status": "shipped",
-        "changedAt": "2026-08-16T13:38:59.778Z",
+        "changedAt": "2026-08-27T07:10:21.453Z",
         "changedBy": {
           "isAdmin": false,
           "preferredFashion": "noPreference",
           "role": "User",
           "favorites": [],
-          "username": "Helle Bjørnum",
-          "id": "67c7094be192fbb4ee3890c3",
+          "username": "Lisbeth Hauptman",
+          "id": "68cfb389e4d331039e30aedc",
           "addresses": []
         },
         "actorType": "employee",
-        "_id": "6a81bd73469060286af7876c",
-        "id": "6a81bd73469060286af7876c"
+        "_id": "6a8fe2dde553611a4138b1fd",
+        "id": "6a8fe2dde553611a4138b1fd"
       },
       {
-        "status": "delivered",
-        "changedAt": "2026-08-19T13:38:59.778Z",
-        "actorType": "system",
-        "_id": "6a8d40bb71bbd13f44757aba",
-        "id": "6a8d40bb71bbd13f44757aba"
+        "status": "processing",
+        "changedAt": "2026-08-27T07:12:56.008Z",
+        "changedBy": {
+          "isAdmin": false,
+          "preferredFashion": "noPreference",
+          "role": "User",
+          "favorites": [],
+          "username": "Lisbeth Hauptman",
+          "id": "68cfb389e4d331039e30aedc",
+          "addresses": []
+        },
+        "actorType": "employee",
+        "_id": "6a8fe378e553611a4138b283",
+        "id": "6a8fe378e553611a4138b283"
+      },
+      {
+        "status": "cancelled",
+        "changedAt": "2026-08-27T07:13:02.200Z",
+        "changedBy": {
+          "isAdmin": false,
+          "preferredFashion": "noPreference",
+          "role": "User",
+          "favorites": [],
+          "username": "Lisbeth Hauptman",
+          "id": "68cfb389e4d331039e30aedc",
+          "addresses": []
+        },
+        "actorType": "employee",
+        "_id": "6a8fe37ee553611a4138b293",
+        "id": "6a8fe37ee553611a4138b293"
       }
-    ],
-    "deliveredAt": "2026-08-19T13:38:59.778Z"
+    ]
   },
   "user": {
-    "username": "Helle Bjørnum",
-    "id": "67c7094be192fbb4ee3890c3"
+    "username": "Mogens Pedersen",
+    "email": "mogens@mail.com",
+    "phoneNo": "47506565",
+    "id": "6a745dfcf0ffe916d6c5ca69"
   },
   "orderItems": [
     {
-      "id": "6a7378a9105fa94ba1b18a7f",
-      "productName": "Moonlight Tulle Dress",
+      "id": "6a745f4af0ffe916d6c5ca80",
+      "productName": "Monochrome Street Tailoring",
       "qty": 1,
-      "color": "yellow",
-      "size": "M",
-      "image": "/images/uploads/images-1757412068895.jpg",
-      "price": 899,
-      "productId": "6851220be5d1e20900c9ad87"
+      "color": "brown",
+      "size": "S",
+      "image": "/images/uploads/images-1778921331064.jpg",
+      "price": 798,
+      "productId": "6a082d2309deac1184d4f54e"
     }
   ],
-  "createdAt": "2026-08-05T17:53:45.279Z",
-  "updatedAt": "2026-08-25T07:14:03.692Z",
-  "id": "6a7378a9105fa94ba1b18a7e"
+  "createdAt": "2026-08-06T10:17:46.642Z",
+  "updatedAt": "2026-08-27T07:13:02.201Z",
+  "id": "6a745f4af0ffe916d6c5ca7f"
 }
