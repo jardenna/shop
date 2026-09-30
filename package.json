@@ -34,6 +34,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.29.7",
     "@popperjs/core": "^2.11.8",
+    "@react-pdf/renderer": "^4.9.0",
     "csv-parser": "^3.2.1",
     "date-fns": "^4.4.0",
     "express": "^5.2.1",
