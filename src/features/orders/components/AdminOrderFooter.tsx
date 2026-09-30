@@ -1,25 +1,26 @@
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import { useId } from 'react';
+import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
+import PdfDownloadButton from '../../../components/print/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
 
 interface AdminOrderFooterProps {
-  id: string;
   isLoading: boolean;
   language: Record<string, string>;
+  order: OrderResponse;
   triggerModalDisabled: boolean;
   onCancelOrder: () => void;
 }
 
 const AdminOrderFooter = ({
   language,
-  id,
   isLoading,
   onCancelOrder,
+  order,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
   const ariaControls = useId();
@@ -30,6 +31,7 @@ const AdminOrderFooter = ({
     onCancelOrder();
     closeModal();
   };
+  console.log(order);
 
   return (
     <footer className="footer">
@@ -46,7 +48,7 @@ const AdminOrderFooter = ({
         modalId={modalId}
         headerText={language.cancelOrder}
       >
-        {language.cancel} # {id}
+        {language.cancel} # {order.id}
         <footer className="footer">
           <Button variant={BtnVariant.Secondary} onClick={closeModal}>
             {language.dismiss}
@@ -60,19 +62,11 @@ const AdminOrderFooter = ({
           </Button>
         </footer>
       </Modal>
-      <PDFDownloadLink
-        document={<PrintAdminOrder order="hello" />}
-        fileName="order.pdf"
-        className="pdf-link"
-      >
-        {({ loading }) => (
-          <Button variant={BtnVariant.Secondary} disabled={loading}>
-            {loading ? 'Generating PDF...' : language.printOrder}
-          </Button>
-        )}
-      </PDFDownloadLink>
-      {/* 
-      <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button> */}
+      <PdfDownloadButton
+        document={<PrintAdminOrder order={order} />}
+        fileName={`order-${order.id}.pdf`}
+        label={language.printOrder}
+      />
     </footer>
   );
 };
