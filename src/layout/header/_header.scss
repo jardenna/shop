@@ -32,6 +32,10 @@ $animation-distance: 500px;
 
 .main-logo {
   a {
+    color: $color-black;
+    display: flex;
+    height: 100%;
+
     &::after {
       content: '';
       position: absolute;
