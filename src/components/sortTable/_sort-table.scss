@@ -92,13 +92,8 @@ $table-header-height: rem(320px);
       display: flex;
       justify-content: space-between;
       white-space: nowrap;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
-
-      @include max-size($large) {
-        flex-direction: column;
-        gap: 19px;
-      }
     }
 
     .dot {
