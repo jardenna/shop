@@ -348,6 +348,7 @@ orange;Orange;Orange
 order;Order;Ordre
 orderDetails;Order details;Ordre detaljer
 orderNo;Order Number;Ordrenummer
+orderDate;Order Date;Ordre dato
 backToOrderList;Back to order list;Tilbage til ordrelisten
 orderActions;Order actions;Ordrehandlinger
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
@@ -380,6 +381,7 @@ page;Page;Side
 pagesBack;pages back;sider tilbage
 pagesForward;pages forward;sider tilbage
 pagination;Pagination;Sideinddeling
+paid;Paid;Betalt
 panel;Panel;Panel
 parentCategoryIs;Parent category is;Hovedkategori er
 password;Password;Adgangskode
