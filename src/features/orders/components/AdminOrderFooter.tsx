@@ -7,17 +7,16 @@ import { useModal } from '../../../components/Modal/useModal';
 import PdfDownloadButton from '../../../components/print/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
+import { useLanguage } from '../../language/useLanguage';
 
 interface AdminOrderFooterProps {
   isLoading: boolean;
-  language: Record<string, string>;
   order: OrderResponse;
   triggerModalDisabled: boolean;
   onCancelOrder: () => void;
 }
 
 const AdminOrderFooter = ({
-  language,
   isLoading,
   onCancelOrder,
   order,
@@ -32,6 +31,7 @@ const AdminOrderFooter = ({
     closeModal();
   };
 
+  const { selectedLanguage, language } = useLanguage();
   return (
     <footer className="footer">
       <TriggerModalButton
@@ -62,7 +62,13 @@ const AdminOrderFooter = ({
         </footer>
       </Modal>
       <PdfDownloadButton
-        document={<PrintAdminOrder order={order} />}
+        document={
+          <PrintAdminOrder
+            order={order}
+            selectedLanguage={selectedLanguage}
+            language={language}
+          />
+        }
         fileName={`order-${order.id}.pdf`}
         label={language.printOrder}
       />
