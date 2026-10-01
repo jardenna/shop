@@ -17,4 +17,45 @@ export const styles = StyleSheet.create({
   section: {
     marginBottom: 16,
   },
+  table: {
+    width: '100%',
+    marginTop: 30,
+  },
+
+  tableHeader: {
+    flexDirection: 'row',
+    paddingBottom: 8,
+    borderBottom: 1,
+    borderBottomColor: '#000000',
+  },
+
+  tableRow: {
+    flexDirection: 'row',
+    paddingVertical: 8,
+    borderBottom: 1,
+    borderBottomColor: '#dddddd',
+  },
+
+  description: {
+    flex: 1,
+    fontSize: 9,
+  },
+
+  quantity: {
+    width: 60,
+    fontSize: 9,
+    textAlign: 'right',
+  },
+
+  price: {
+    width: 80,
+    fontSize: 9,
+    textAlign: 'right',
+  },
+
+  amount: {
+    width: 80,
+    fontSize: 9,
+    textAlign: 'right',
+  },
 });
