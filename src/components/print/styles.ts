@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
   },
   heading: {
-    fontSize: 24,
-    marginBottom: 20,
+    fontSize: 30,
+    textBox: 'trim-both cap alphabetic',
   },
   section: {
     marginBottom: 16,

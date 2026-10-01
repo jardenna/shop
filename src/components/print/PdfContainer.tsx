@@ -14,10 +14,10 @@ const PdfContainer = ({ children, language }: PdfContainerProps) => (
       <View style={styles.header}>
         <OrderLogo />
 
-        <Text style={styles.heading}>{language.order}</Text>
+        <Text>{language.order}</Text>
       </View>
 
-      <View style={styles.section}>{children}</View>
+      {children}
     </Page>
   </Document>
 );
