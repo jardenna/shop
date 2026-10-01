@@ -57,6 +57,11 @@ const orderModelSchema = new Schema(
         enum: PAYMENT_METHODS_LIST,
         required: true,
       },
+      currency: {
+        type: String,
+        required: true,
+        default: 'DKK',
+      },
       status: {
         type: String,
         enum: PAYMENT_STATUS_ENUM,
