@@ -20,6 +20,7 @@
       "updateTime": "2026-08-06T10:17:47.192Z",
       "email": "mogens@mail.com"
     },
+    "currency": "DKK",
     "method": "mobilepay",
     "status": "COMPLETED",
     "paidAt": "2026-08-06T10:17:47.188Z"
@@ -51,8 +52,8 @@
           "id": "6a745dfcf0ffe916d6c5ca69"
         },
         "actorType": "customer",
-        "_id": "6abd10659232c6ab8f5e2c37",
-        "id": "6abd10659232c6ab8f5e2c37"
+        "_id": "6abe69f1b22e3f4bbe64e1dd",
+        "id": "6abe69f1b22e3f4bbe64e1dd"
       },
       {
         "status": "shipped",
