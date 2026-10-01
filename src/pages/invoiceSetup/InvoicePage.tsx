@@ -7,6 +7,7 @@ import orders from './data.json';
 
 const InvoicePage = () => {
   const { language } = useLanguage();
+  console.log(orders);
 
   return (
     <article className="page">
