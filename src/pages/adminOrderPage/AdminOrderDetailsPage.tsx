@@ -2,6 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
+import { useAppSelector } from '../../app/hooks';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -10,6 +11,7 @@ import PdfPreview from '../../components/print/PdfPreview';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
 import { useToast } from '../../components/toast/hooks/useToast';
+import { selectCurrency } from '../../features/currency/currencySlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -30,6 +32,8 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language, selectedLanguage } = useLanguage();
+  const { rates } = useAppSelector(selectCurrency);
+
   const { onAddToast } = useToast();
 
   const {
@@ -103,7 +107,6 @@ const AdminOrderDetailsPage = () => {
     { label: 'dateAndTime' },
     { label: 'performedBy' },
   ];
-
   return (
     <AdminPageContainer
       heading={language.orderDetails}
@@ -117,6 +120,7 @@ const AdminOrderDetailsPage = () => {
           order={order}
           selectedLanguage={selectedLanguage}
           language={language}
+          rates={rates}
         />
       )}
       {isLoading && <SkeletonAdminOrderDetailsPage />}
