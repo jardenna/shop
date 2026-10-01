@@ -1,15 +1,18 @@
-import { Text, View } from '@react-pdf/renderer';
+import { View } from '@react-pdf/renderer';
 import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
+import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
 import { SelectedLanguage } from '../../features/language/languageSlice';
-import { formatDate } from './formatdate';
 import PdfContainer from './PdfContainer';
 import PrintOrdertable from './PrintOrdertable';
-import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
+import { styles } from './styles';
 
-interface PrintAdminOrderProps {
+export interface BasePrintOrderProps {
   language: Record<string, string>;
   order: OrderResponse;
   rates: Record<CurrencyCode, number>;
+}
+
+interface PrintAdminOrderProps extends BasePrintOrderProps {
   selectedLanguage: SelectedLanguage;
 }
 
@@ -18,18 +21,21 @@ const PrintAdminOrder = ({
   selectedLanguage,
   language,
   rates,
-}: PrintAdminOrderProps) => (
-  <PdfContainer language={language}>
-    <View>
-      <Text>{formatDate(order.createdAt, selectedLanguage)}</Text>
-      <PrintOrdertable
-        language={language}
-        orders={order.orderItems}
-        currency={order.payment.currency}
-        rates={rates}
-      />
-    </View>
-  </PdfContainer>
-);
+}: PrintAdminOrderProps) => {
+  console.log(selectedLanguage);
+
+  return (
+    <PdfContainer language={language}>
+      <View style={styles.content}>
+        <PrintOrdertable
+          language={language}
+          orders={order.orderItems}
+          currency={order.payment.currency}
+          rates={rates}
+        />
+      </View>
+    </PdfContainer>
+  );
+};
 
 export default PrintAdminOrder;

@@ -4,13 +4,14 @@ import {
   CurrencyCode,
   getFormattedPrice,
 } from '../../features/currency/currencyConverterUtil';
+import { BasePrintOrderProps } from './PrintAdminOrder';
 import { styles } from './styles';
 
-interface PrintOrdertableProps {
+type PrintOrdertableBaseProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;
+
+interface PrintOrdertableProps extends PrintOrdertableBaseProps {
   currency: CurrencyCode;
-  language: Record<string, string>;
   orders: Order[];
-  rates: Record<CurrencyCode, number>;
 }
 
 const PrintOrdertable = ({
@@ -24,7 +25,7 @@ const PrintOrdertable = ({
       <Text style={styles.description}>{language.description}</Text>
       <Text style={styles.quantity}>{language.quantity}</Text>
       <Text style={styles.price}>{language.price}</Text>
-      <Text style={styles.amount}>{language.amount}</Text>
+      <Text style={styles.amount}>{language.subTotal}</Text>
     </View>
 
     {orders.map((item) => {

@@ -1,13 +1,8 @@
 import { BlobProvider } from '@react-pdf/renderer';
-import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import { SelectedLanguage } from '../../features/language/languageSlice';
-import PrintAdminOrder from './PrintAdminOrder';
-import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
+import PrintAdminOrder, { BasePrintOrderProps } from './PrintAdminOrder';
 
-interface PdfPreviewProps {
-  language: Record<string, string>;
-  order: OrderResponse;
-  rates: Record<CurrencyCode, number>;
+interface PdfPreviewProps extends BasePrintOrderProps {
   selectedLanguage: SelectedLanguage;
 }
 

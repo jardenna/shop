@@ -1,13 +1,18 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import './pdfFonts';
 
+const contentPadding = '30 20';
+
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
     fontSize: 12,
   },
+  content: {
+    padding: contentPadding,
+  },
   header: {
-    padding: 40,
+    padding: contentPadding,
     backgroundColor: '#f9f9f9',
   },
   heading: {
@@ -17,7 +22,6 @@ export const styles = StyleSheet.create({
 
   table: {
     width: '100%',
-    marginTop: 30,
   },
 
   tableHeader: {
@@ -40,19 +44,16 @@ export const styles = StyleSheet.create({
 
   quantity: {
     width: 60,
-
     textAlign: 'right',
   },
 
   price: {
     width: 80,
-
     textAlign: 'right',
   },
 
   amount: {
     width: 80,
-
     textAlign: 'right',
   },
 });
