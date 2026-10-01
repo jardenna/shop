@@ -38,5 +38,6 @@ export const useCurrency = (price?: number) => {
     exchangeRate,
     currencyText,
     selectedCurrency,
+    rates,
   };
 };

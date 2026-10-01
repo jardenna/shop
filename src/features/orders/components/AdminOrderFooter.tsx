@@ -8,8 +8,7 @@ import PdfDownloadButton from '../../../components/print/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
-import { useAppSelector } from '../../../app/hooks';
-import { selectCurrency } from '../../currency/currencySlice';
+import { useCurrency } from '../../currency/useCurrency';
 
 interface AdminOrderFooterProps {
   isLoading: boolean;
@@ -34,7 +33,7 @@ const AdminOrderFooter = ({
   };
 
   const { selectedLanguage, language } = useLanguage();
-  const { rates } = useAppSelector(selectCurrency);
+  const { rates } = useCurrency();
 
   return (
     <footer className="footer">
