@@ -28,7 +28,7 @@ const InvoicePage = () => {
             {orders.billingAddress.country}
           </div>
 
-          <div className="text">
+          <div className="text margin-top">
             {language.email}: {orders.user.email}
           </div>
           <div className="text">
