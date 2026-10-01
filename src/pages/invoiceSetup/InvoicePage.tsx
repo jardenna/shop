@@ -6,7 +6,6 @@ import './_invoice-page.scss';
 import orders from './data.json';
 
 const InvoicePage = () => {
-  console.log(orders);
   const { language } = useLanguage();
 
   return (
