@@ -13,23 +13,17 @@ const InvoicePage = () => {
   // ├── Invoice date
 
   return (
-    <section className="page">
-      <div className="header">
+    <article className="page">
+      <section className="header">
         <Icon iconName={IconName.Logo} />
-        <div className="section">
-          <div className="heading">{language.order}</div>
-          <div>{language.orderNo}</div>
-          {orders.id}
-          <div>{language.orderDate}</div>
-          <DateDisplay date={orders.createdAt} />
-          <div>
-            {language.paid} <DateDisplay date={orders.payment.paidAt} />
+        <section className="user-info">
+          <div className="title">{orders.user.username}</div>
+          <div className="text">{orders.billingAddress.street}</div>
+          <div className="text">
+            {orders.billingAddress.zipCode} {orders.billingAddress.city}{' '}
+            {orders.billingAddress.country}
           </div>
-        </div>
-        <div className="section">
-          <div className="heading">{language.order}</div>
 
-          <div className="bold">{orders.user.username}</div>
           <div className="text">
             {language.email}: {orders.user.email}
           </div>
@@ -37,15 +31,21 @@ const InvoicePage = () => {
             {language.phone}:{' '}
             {orders.user.phoneNo === '' ? ' not oplyst' : orders.user.phoneNo}
           </div>
-          <div className="text">{orders.billingAddress.street}</div>
-          <div className="text">
-            {orders.billingAddress.zipCode} {orders.billingAddress.city}
+        </section>
+        <section className="section">
+          <div className="heading">{language.order}</div>
+          <div>{language.orderNo}</div>
+          {orders.id}
+          <div>{language.orderDate}</div>
+          <div className="title">
+            <DateDisplay date={orders.createdAt} />
           </div>
-
-          <div className="text">{orders.billingAddress.country}</div>
-        </div>
-      </div>
-    </section>
+          <div>
+            {language.paid} <DateDisplay date={orders.payment.paidAt} />
+          </div>
+        </section>
+      </section>
+    </article>
   );
 };
 
