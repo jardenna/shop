@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
+import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -32,7 +33,7 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
 
-  const initialState = {
+  const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
   };
 

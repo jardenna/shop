@@ -25,7 +25,7 @@ interface PaymentProps extends BasePaymentProps {
   onChange: InputChangeHandler;
   paymentMethod: PaymentMethods[];
   values: {
-    paymentMethod: string;
+    paymentMethod: PaymentMethods;
   };
 }
 

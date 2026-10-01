@@ -13,6 +13,7 @@ import { ShopPath } from '../../../layout/nav/enums';
 import { ChangeInputType, InputType } from '../../../types/types';
 import { validatePayment } from '../../../utils/validation/validatePayment';
 import { useDeleteCartMutation } from '../../cart/cartApiSlice';
+import { useCurrency } from '../../currency/useCurrency';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,
@@ -22,7 +23,7 @@ import { BasePaymentProps } from './Payment';
 
 interface PaymentCardFormProps extends BasePaymentProps {
   fields: PaymentMethodField[];
-  paymentMethod: string;
+  paymentMethod: PaymentMethods;
 }
 
 const PaymentCardForm = ({
@@ -37,8 +38,9 @@ const PaymentCardForm = ({
 }: PaymentCardFormProps) => {
   const navigate = useNavigate();
   const { onAddToast } = useToast();
+  const { selectedCurrency } = useCurrency();
   const initialValues: PaymentFormValues = {
-    paymentMethod: paymentMethod as PaymentMethods,
+    paymentMethod,
     cardNumber: '',
     expiryDate: '',
     cvvCode: '',
@@ -81,7 +83,7 @@ const PaymentCardForm = ({
     shippingAddressId: shippingAddressId ?? '',
     billingAddressId: billingAddressId ?? '',
     payment: {
-      method: paymentMethod as PaymentMethods,
+      method: paymentMethod,
     },
   };
 
@@ -116,7 +118,14 @@ const PaymentCardForm = ({
     await payOrder({
       orderId: order.id,
       method: paymentMethod,
-      ...values,
+      currency: selectedCurrency,
+      cardholderName: values.cardholderName,
+      cardNumber: values.cardNumber,
+      cvvCode: values.cvvCode,
+      expiryDate: values.expiryDate,
+      mobilePhoneNumber: values.mobilePhoneNumber,
+      paypalEmail: values.paypalEmail,
+      paypalPassword: values.paypalPassword,
     }).unwrap();
 
     await deleteCart().unwrap();

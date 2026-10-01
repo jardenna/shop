@@ -4,6 +4,7 @@ import {
   MyOrdersResponse,
   OrderResponse,
 } from '../../app/api/apiTypes/orderApiTypes';
+import { PayOrderRequest } from '../../app/api/apiTypes/paymentApiTypes';
 import { ordersUrl, userOrdersUrl } from '../../app/endpoints';
 
 export const orderApiSlice = apiSlice.injectEndpoints({
@@ -16,7 +17,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Order],
     }),
-    payOrder: builder.mutation({
+    payOrder: builder.mutation<OrderResponse, PayOrderRequest>({
       query: ({ orderId, ...payment }) => ({
         url: `${ordersUrl}/${orderId}/pay`,
         method: 'PUT',
