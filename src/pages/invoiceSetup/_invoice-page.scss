@@ -1,13 +1,36 @@
 @use '../../scss/globals' as *;
 
 .page {
-  padding: 40px;
+  padding: 12px;
   font-family: outfit, sans-serif;
+  width: 794px;
+  height: 1123px;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  .info-uppercase {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.1rem;
+  }
+
+  .info-bold {
+    font-family: outfit-Semibold, sans-serif;
+    letter-spacing: 0.05rem;
+  }
 
   .header {
-    padding: 40px;
+    padding: 20px;
     background-color: #f9f9f9;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .top {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 8px;
     justify-content: space-between;
   }
 
@@ -24,5 +47,11 @@
 
   .user-info {
     line-height: 20px;
+  }
+
+  .order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

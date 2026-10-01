@@ -9,14 +9,18 @@ const InvoicePage = () => {
   console.log(orders);
   const { language } = useLanguage();
 
-  //    Order number
-  // ├── Invoice date
-
   return (
     <article className="page">
-      <section className="header">
+      <section className="top">
         <Icon iconName={IconName.Logo} />
+        <div>
+          <span className="info-uppercase">{language.orderNo}:</span>{' '}
+          <span className="info-bold">{orders.id}</span>
+        </div>
+      </section>
+      <section className="header">
         <section className="user-info">
+          <h2 className="info-uppercase">Invoice to:</h2>
           <div className="title">{orders.user.username}</div>
           <div className="text">{orders.billingAddress.street}</div>
           <div className="text">
@@ -32,16 +36,18 @@ const InvoicePage = () => {
             {orders.user.phoneNo === '' ? ' not oplyst' : orders.user.phoneNo}
           </div>
         </section>
-        <section className="section">
-          <div className="heading">{language.order}</div>
-          <div>{language.orderNo}</div>
-          {orders.id}
-          <div>{language.orderDate}</div>
-          <div className="title">
-            <DateDisplay date={orders.createdAt} />
+        <section className="order-info">
+          <div>
+            <div className="info-uppercase">{language.orderDate}:</div>
+            <div className="info-bold">
+              <DateDisplay date={orders.createdAt} />
+            </div>
           </div>
           <div>
-            {language.paid} <DateDisplay date={orders.payment.paidAt} />
+            <div className="info-uppercase">{language.paid}:</div>
+            <div className="info-bold">
+              <DateDisplay date={orders.payment.paidAt} />
+            </div>
           </div>
         </section>
       </section>
