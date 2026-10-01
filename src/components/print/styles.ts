@@ -14,9 +14,7 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     textBox: 'trim-both cap alphabetic',
   },
-  section: {
-    marginBottom: 16,
-  },
+
   table: {
     width: '100%',
     marginTop: 30,
