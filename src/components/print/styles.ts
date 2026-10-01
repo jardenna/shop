@@ -38,24 +38,23 @@ export const styles = StyleSheet.create({
 
   description: {
     flex: 1,
-    fontSize: 9,
   },
 
   quantity: {
     width: 60,
-    fontSize: 9,
+
     textAlign: 'right',
   },
 
   price: {
     width: 80,
-    fontSize: 9,
+
     textAlign: 'right',
   },
 
   amount: {
     width: 80,
-    fontSize: 9,
+
     textAlign: 'right',
   },
 });
