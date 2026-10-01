@@ -66,10 +66,6 @@ export interface OrderResponse extends DefaultResponseType {
   user: User;
 }
 
-export interface SummaryK {
-  totalPrice: number;
-}
-
 export interface MyOrdersResponse {
   createdAt: Date;
   delivery: Delivery;
