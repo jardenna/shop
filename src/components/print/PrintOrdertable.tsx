@@ -5,7 +5,7 @@ import {
   getFormattedPrice,
 } from '../../features/currency/currencyConverterUtil';
 import { BasePrintOrderProps } from './PrintAdminOrder';
-import { styles } from './styles';
+import { tableStyles } from './tableStyles.';
 
 type BasePrintOrdertableProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;
 
@@ -20,12 +20,12 @@ const PrintOrdertable = ({
   currency,
   rates,
 }: PrintOrdertableProps) => (
-  <View style={styles.table}>
-    <View style={styles.tableHeader}>
-      <Text style={styles.description}>{language.description}</Text>
-      <Text style={styles.quantity}>{language.quantity}</Text>
-      <Text style={styles.price}>{language.price}</Text>
-      <Text style={styles.amount}>{language.subTotal}</Text>
+  <View style={tableStyles.table}>
+    <View style={tableStyles.tableHeader}>
+      <Text style={tableStyles.description}>{language.description}</Text>
+      <Text style={tableStyles.quantity}>{language.quantity}</Text>
+      <Text style={tableStyles.price}>{language.price}</Text>
+      <Text style={tableStyles.amount}>{language.subTotal}</Text>
     </View>
 
     {orders.map((item) => {
@@ -38,11 +38,11 @@ const PrintOrdertable = ({
       );
 
       return (
-        <View key={item.productName} style={styles.tableRow}>
-          <Text style={styles.description}>{item.productName}</Text>
-          <Text style={styles.quantity}>{item.qty}</Text>
-          <Text style={styles.price}>{convertedPrice}</Text>
-          <Text style={styles.amount}>{convertedAmount}</Text>
+        <View key={item.productName} style={tableStyles.tableRow}>
+          <Text style={tableStyles.description}>{item.productName}</Text>
+          <Text style={tableStyles.quantity}>{item.qty}</Text>
+          <Text style={tableStyles.price}>{convertedPrice}</Text>
+          <Text style={tableStyles.amount}>{convertedAmount}</Text>
         </View>
       );
     })}
