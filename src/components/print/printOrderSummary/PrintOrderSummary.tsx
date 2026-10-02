@@ -23,46 +23,48 @@ const PrintOrderSummary = ({
   summary,
 }: PrintOrderSummaryProps) => (
   <View style={summaryStyles.summary}>
-    <View style={summaryStyles.summaryRow}>
-      <Text style={summaryStyles.label}>{language.subTotal}</Text>
-      <Text style={summaryStyles.value}>
-        {getFormattedPrice(summary.subTotal, currency, rates)}
-      </Text>
-    </View>
-
-    {summary.promoDiscount > 0 && (
+    <View style={summaryStyles.summaryTable}>
       <View style={summaryStyles.summaryRow}>
-        <Text style={summaryStyles.label}>{language.employeeDiscount}</Text>
+        <Text style={summaryStyles.label}>{language.subTotal}</Text>
         <Text style={summaryStyles.value}>
-          - {getFormattedPrice(summary.promoDiscount, currency, rates)}
+          {getFormattedPrice(summary.subTotal, currency, rates)}
         </Text>
       </View>
-    )}
-    {summary.discountPrice > 0 && (
+
+      {summary.promoDiscount > 0 && (
+        <View style={summaryStyles.summaryRow}>
+          <Text style={summaryStyles.label}>{language.employeeDiscount}</Text>
+          <Text style={summaryStyles.value}>
+            - {getFormattedPrice(summary.promoDiscount, currency, rates)}
+          </Text>
+        </View>
+      )}
+      {summary.discountPrice > 0 && (
+        <View style={summaryStyles.summaryRow}>
+          <Text style={summaryStyles.label}>{language.discount}</Text>
+          <Text style={summaryStyles.value}>
+            - {getFormattedPrice(summary.discountPrice, currency, rates)}
+          </Text>
+        </View>
+      )}
+
       <View style={summaryStyles.summaryRow}>
-        <Text style={summaryStyles.label}>{language.discount}</Text>
+        <Text style={summaryStyles.label}>{language.estimatedShipping}</Text>
         <Text style={summaryStyles.value}>
-          - {getFormattedPrice(summary.discountPrice, currency, rates)}
+          {getFormattedPrice(summary.shippingPrice, currency, rates)}
         </Text>
       </View>
-    )}
 
-    <View style={summaryStyles.summaryRow}>
-      <Text style={summaryStyles.label}>{language.estimatedShipping}</Text>
-      <Text style={summaryStyles.value}>
-        {getFormattedPrice(summary.shippingPrice, currency, rates)}
-      </Text>
-    </View>
-
-    <View style={summaryStyles.summaryRow}>
-      <Text style={summaryStyles.label}>{`${language.vat} (${vat}%)`}</Text>
-      <Text style={summaryStyles.value}>
-        {getFormattedPrice(summary.taxPrice, currency, rates)}
-      </Text>
+      <View style={summaryStyles.summaryRow}>
+        <Text style={summaryStyles.label}>{`${language.vat} (${vat}%)`}</Text>
+        <Text style={summaryStyles.value}>
+          {getFormattedPrice(summary.taxPrice, currency, rates)}
+        </Text>
+      </View>
     </View>
 
     <View style={summaryStyles.totalRow}>
-      <Text style={summaryStyles.totalLabel}>{language.total}</Text>
+      <Text style={summaryStyles.totalLabel}>{language.totalPrice}</Text>
       <Text style={summaryStyles.totalValue}>
         {getFormattedPrice(summary.totalPrice, currency, rates)}
       </Text>
