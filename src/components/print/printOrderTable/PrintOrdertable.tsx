@@ -1,10 +1,10 @@
 import { Text, View } from '@react-pdf/renderer';
-import { Order } from '../../app/api/apiTypes/cartApiTypes';
+import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import {
   CurrencyCode,
   getFormattedPrice,
-} from '../../features/currency/currencyConverterUtil';
-import { BasePrintOrderProps } from './PrintAdminOrder';
+} from '../../../features/currency/currencyConverterUtil';
+import { BasePrintOrderProps } from '../PrintAdminOrder';
 import { tableStyles } from './tableStyles.';
 
 type BasePrintOrdertableProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;

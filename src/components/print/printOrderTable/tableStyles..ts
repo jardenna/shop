@@ -1,5 +1,5 @@
 import { StyleSheet } from '@react-pdf/renderer';
-import './pdfFonts';
+import '../pdfFonts';
 
 export const tableStyles = StyleSheet.create({
   table: {

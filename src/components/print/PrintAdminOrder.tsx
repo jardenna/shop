@@ -4,7 +4,7 @@ import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import PdfContainer from './PdfContainer';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
-import PrintOrdertable from './PrintOrdertable';
+import PrintOrdertable from './printOrderTable/PrintOrdertable';
 
 export interface BasePrintOrderProps {
   language: Record<string, string>;
