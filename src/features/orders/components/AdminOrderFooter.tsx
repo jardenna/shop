@@ -32,7 +32,7 @@ const AdminOrderFooter = ({
     closeModal();
   };
 
-  const { language } = useLanguage();
+  const { selectedLanguage, language } = useLanguage();
   const { rates } = useCurrency();
 
   return (
@@ -66,7 +66,12 @@ const AdminOrderFooter = ({
       </Modal>
       <PdfDownloadButton
         document={
-          <PrintAdminOrder order={order} language={language} rates={rates} />
+          <PrintAdminOrder
+            order={order}
+            selectedLanguage={selectedLanguage}
+            language={language}
+            rates={rates}
+          />
         }
         fileName={`order-${order.id}.pdf`}
         label={language.printOrder}

@@ -30,7 +30,7 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
   const { rates } = useCurrency();
 
   const { onAddToast } = useToast();
@@ -114,7 +114,14 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
-      {order && <PdfPreview order={order} language={language} rates={rates} />}
+      {order && (
+        <PdfPreview
+          order={order}
+          selectedLanguage={selectedLanguage}
+          language={language}
+          rates={rates}
+        />
+      )}
       {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

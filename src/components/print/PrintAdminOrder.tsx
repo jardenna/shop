@@ -1,6 +1,7 @@
 import { View } from '@react-pdf/renderer';
 import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
+import { SelectedLanguage } from '../../features/language/languageSlice';
 import PdfContainer from './PdfContainer';
 import PrintOrdertable from './PrintOrdertable';
 import { styles } from './styles';
@@ -11,8 +12,21 @@ export interface BasePrintOrderProps {
   rates: Record<CurrencyCode, number>;
 }
 
-const PrintAdminOrder = ({ order, language, rates }: BasePrintOrderProps) => (
-  <PdfContainer language={language} order={order}>
+interface PrintAdminOrderProps extends BasePrintOrderProps {
+  selectedLanguage: SelectedLanguage;
+}
+
+const PrintAdminOrder = ({
+  order,
+  selectedLanguage,
+  language,
+  rates,
+}: PrintAdminOrderProps) => (
+  <PdfContainer
+    language={language}
+    order={order}
+    selectedLanguage={selectedLanguage}
+  >
     <View style={styles.content}>
       <PrintOrdertable
         language={language}
