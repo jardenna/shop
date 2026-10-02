@@ -41,16 +41,22 @@ const PrintOrderSummary = ({
       )}
       {summary.discountPrice > 0 && (
         <View style={summaryStyles.summaryRow}>
-          <Text style={summaryStyles.label}>{language.discount}</Text>
-          <Text style={summaryStyles.value}>
+          <Text style={[summaryStyles.label, summaryStyles.discount]}>
+            {language.discount}
+          </Text>
+
+          <Text style={[summaryStyles.value, summaryStyles.discount]}>
             - {getFormattedPrice(summary.discountPrice, currency, rates)}
           </Text>
         </View>
       )}
 
       <View style={summaryStyles.summaryRow}>
-        <Text style={summaryStyles.label}>{language.estimatedShipping}</Text>
-        <Text style={summaryStyles.value}>
+        <Text style={[summaryStyles.label, summaryStyles.discount]}>
+          {language.estimatedShipping}
+        </Text>
+
+        <Text style={[summaryStyles.value, summaryStyles.discount]}>
           {getFormattedPrice(summary.shippingPrice, currency, rates)}
         </Text>
       </View>

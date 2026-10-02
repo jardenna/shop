@@ -15,17 +15,17 @@ export const summaryStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 3,
   },
-
   label: {
     flex: 1,
   },
-
   value: {
     width: 90,
     fontWeight: 500,
     textAlign: 'right',
   },
-
+  discount: {
+    color: 'red',
+  },
   totalRow: {
     flexDirection: 'row',
     marginTop: 12,
@@ -36,10 +36,8 @@ export const summaryStyles = StyleSheet.create({
     alignItems: 'center',
     width: summaryTableWidth,
   },
-
   totalLabel: {
     flex: 1,
-
     fontWeight: 500,
     color: '#FFFFFF',
     textTransform: 'uppercase',
