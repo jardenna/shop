@@ -1,5 +1,5 @@
 import { StyleSheet } from '@react-pdf/renderer';
-import { colors } from '../printOrderFooter/footerStyles';
+import { colors } from '../styles';
 
 const summaryTableWidth = '40%';
 

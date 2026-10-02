@@ -1,6 +1,6 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import '../pdfFonts';
-import { colors } from '../printOrderFooter/footerStyles';
+import { colors } from '../styles';
 
 export const tableStyles = StyleSheet.create({
   table: {
