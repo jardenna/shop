@@ -3,6 +3,7 @@ import IconContent from '../../components/IconContent';
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
+import { contactInformation } from '../../utils/contactInformation';
 import LayoutElement from '../LayoutElement';
 import {
   footerAccountNav,
@@ -27,7 +28,11 @@ const Footer = () => {
               ariaHidden={false}
               desc="Logo"
             />
-
+            <div className="contact-info">
+              {contactInformation.map((info) => (
+                <div key={info}>{info}</div>
+              ))}
+            </div>
             <div className="footer-social-container">
               <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
               <IconContent

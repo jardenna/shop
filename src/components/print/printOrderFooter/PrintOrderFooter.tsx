@@ -1,6 +1,7 @@
 import { Text, View } from '@react-pdf/renderer';
 import { paymentMethodLabels } from '../../../app/api/apiConstants';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
+import { contactInformation } from '../../../utils/contactInformation';
 import { footerStyles } from './footerStyles';
 
 interface PrintOrderFooterProps {
@@ -19,9 +20,9 @@ const PrintOrderFooter = ({ language, method }: PrintOrderFooterProps) => (
 
     <View>
       <Text style={footerStyles.heading}>{language.contact}</Text>
-      <Text>contact@fashionfusion.com</Text>
-      <Text>+45 12 34 56 78</Text>
-      <Text>www.fashionfusion.com</Text>
+      {contactInformation.map((contact) => (
+        <Text key={contact}>{contact}</Text>
+      ))}
     </View>
 
     <View>
