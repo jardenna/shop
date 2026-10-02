@@ -10,8 +10,7 @@ const PrintOrderFooter = ({ language }: PrintOrderFooterProps) => (
     <View style={footerStyles.column}>
       <Text style={footerStyles.heading}>Fashion Fusion</Text>
       <Text>Street 12</Text>
-      <Text>2100 Copenhagen</Text>
-      <Text>Denmark</Text>
+      <Text>2100 Copenhagen, Denmark</Text>
       <Text>CVR: 12345678</Text>
     </View>
 
