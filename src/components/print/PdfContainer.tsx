@@ -35,6 +35,7 @@ const PdfContainer = ({
         selectedLanguage={selectedLanguage}
         billingAddress={order.billingAddress}
         user={order.user}
+        createdAt={order.createdAt}
       />
       {children}
     </Page>

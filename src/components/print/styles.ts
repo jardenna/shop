@@ -36,7 +36,10 @@ export const styles = StyleSheet.create({
   userInfo: { flexDirection: 'column', gap: 1 },
   orderInfo: { flexDirection: 'column', gap: 1 },
   heading: {
-    fontSize: 30,
-    textBox: 'trim-both cap alphabetic',
+    fontWeight: 500,
+    textTransform: 'uppercase',
+  },
+  marginTop6: {
+    marginTop: 6,
   },
 });
