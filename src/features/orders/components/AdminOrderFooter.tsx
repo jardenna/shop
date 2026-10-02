@@ -7,8 +7,8 @@ import { useModal } from '../../../components/Modal/useModal';
 import PdfDownloadButton from '../../../components/print/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
-import { useLanguage } from '../../language/useLanguage';
 import { useCurrency } from '../../currency/useCurrency';
+import { useLanguage } from '../../language/useLanguage';
 
 interface AdminOrderFooterProps {
   isLoading: boolean;
@@ -32,7 +32,7 @@ const AdminOrderFooter = ({
     closeModal();
   };
 
-  const { selectedLanguage, language } = useLanguage();
+  const { language } = useLanguage();
   const { rates } = useCurrency();
 
   return (
@@ -66,12 +66,7 @@ const AdminOrderFooter = ({
       </Modal>
       <PdfDownloadButton
         document={
-          <PrintAdminOrder
-            order={order}
-            selectedLanguage={selectedLanguage}
-            language={language}
-            rates={rates}
-          />
+          <PrintAdminOrder order={order} language={language} rates={rates} />
         }
         fileName={`order-${order.id}.pdf`}
         label={language.printOrder}

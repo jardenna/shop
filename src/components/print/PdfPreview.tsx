@@ -1,25 +1,10 @@
 import { BlobProvider } from '@react-pdf/renderer';
-import { SelectedLanguage } from '../../features/language/languageSlice';
 import PrintAdminOrder, { BasePrintOrderProps } from './PrintAdminOrder';
 
-interface PdfPreviewProps extends BasePrintOrderProps {
-  selectedLanguage: SelectedLanguage;
-}
-
-const PdfPreview = ({
-  order,
-  selectedLanguage,
-  language,
-  rates,
-}: PdfPreviewProps) => (
+const PdfPreview = ({ order, language, rates }: BasePrintOrderProps) => (
   <BlobProvider
     document={
-      <PrintAdminOrder
-        order={order}
-        selectedLanguage={selectedLanguage}
-        language={language}
-        rates={rates}
-      />
+      <PrintAdminOrder order={order} language={language} rates={rates} />
     }
   >
     {({ url, loading, error }) => {
