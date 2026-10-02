@@ -24,15 +24,15 @@ const PrintOrderHeader = ({
     <View style={styles.userInfo}>
       <Text style={styles.infoUppercase}>Invoise to:</Text>
       <Text>{billingAddress.name}</Text>
-      <Text style={styles.text}>{billingAddress.street}</Text>
-      <Text style={styles.text}>
+      <Text>{billingAddress.street}</Text>
+      <Text>
         {billingAddress.zipCode} {billingAddress.city} {billingAddress.country}
       </Text>
 
-      <Text style={styles.text}>
+      <Text>
         {language.email}: {user.email}
       </Text>
-      <Text style={styles.text}>
+      <Text>
         {language.phone}: {user.phoneNo === '' ? ' not oplyst' : user.phoneNo}
       </Text>
     </View>

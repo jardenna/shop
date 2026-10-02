@@ -6,7 +6,7 @@ const contentPadding = '30 20';
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
-    fontSize: 12,
+    fontSize: 11,
   },
   flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
   top: {
@@ -28,17 +28,18 @@ export const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#f9f9f9',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 20,
     alignItems: 'center',
   },
-  userInfo: { lineHeight: 2 },
-  orderInfo: { flexDirection: 'column' },
+  userInfo: { flexDirection: 'column', gap: 1 },
+  orderInfo: { flexDirection: 'column', gap: 1 },
   heading: {
     fontSize: 30,
     textBox: 'trim-both cap alphabetic',
   },
-  text: { padding: 20 },
+
   table: {
     width: '100%',
   },
