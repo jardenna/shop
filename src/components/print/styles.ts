@@ -32,6 +32,8 @@ export const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
+  userInfo: { lineHeight: 2 },
+  orderInfo: { flexDirection: 'column' },
   heading: {
     fontSize: 30,
     textBox: 'trim-both cap alphabetic',
