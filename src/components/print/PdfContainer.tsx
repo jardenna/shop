@@ -38,7 +38,7 @@ const PdfContainer = ({
         user={order.user}
         createdAt={order.createdAt}
       />
-      {children}
+      <View style={styles.flexGrow}>{children}</View>
       <PrintOrderFooter language={language} />
     </Page>
   </Document>
