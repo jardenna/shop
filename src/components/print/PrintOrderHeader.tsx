@@ -16,7 +16,6 @@ const PrintOrderHeader = ({
 }: PrintOrderHeaderProps) => (
   <View style={styles.header}>
     <Text>{language.paid}</Text>
-
     <Text>{formatDate(paidAt, selectedLanguage)}</Text>
   </View>
 );
