@@ -30,7 +30,9 @@ export type PaymentMethodFilterValues =
   (typeof paymentMethodFilterValues)[number];
 
 export interface User {
+  email: string;
   id: string;
+  phoneNo: string;
   username: string;
 }
 
