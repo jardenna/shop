@@ -1,10 +1,10 @@
 import { useId } from 'react';
 import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../components/Button';
+import DownloadPdfBtn from '../../../components/DownloadPdfBtn';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import PdfDownloadButton from '../../../components/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
 import { useCurrency } from '../../currency/useCurrency';
@@ -64,7 +64,7 @@ const AdminOrderFooter = ({
           </Button>
         </footer>
       </Modal>
-      <PdfDownloadButton
+      <DownloadPdfBtn
         document={
           <PrintAdminOrder
             order={order}

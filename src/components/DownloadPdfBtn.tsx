@@ -3,17 +3,13 @@ import { ReactElement } from 'react';
 import { BtnVariant } from '../types/enums';
 import Button from './Button';
 
-interface PdfDownloadButtonProps {
+interface DownloadPdfBtnProps {
   document: ReactElement<DocumentProps>;
   fileName: string;
   label: string;
 }
 
-const PdfDownloadButton = ({
-  document,
-  fileName,
-  label,
-}: PdfDownloadButtonProps) => (
+const DownloadPdfBtn = ({ document, fileName, label }: DownloadPdfBtnProps) => (
   <PDFDownloadLink document={document} fileName={fileName} className="pdf-link">
     {({ loading }) => (
       <Button variant={BtnVariant.Secondary} disabled={loading}>
@@ -23,4 +19,4 @@ const PdfDownloadButton = ({
   </PDFDownloadLink>
 );
 
-export default PdfDownloadButton;
+export default DownloadPdfBtn;
