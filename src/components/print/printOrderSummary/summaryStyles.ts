@@ -10,21 +10,19 @@ export const summaryStyles = StyleSheet.create({
   summaryTable: {
     paddingRight: 60,
     width: summaryTableWidth,
+    flexDirection: 'column',
+    gap: 6,
   },
   summaryRow: {
     flexDirection: 'row',
-    paddingVertical: 3,
+    justifyContent: 'space-between',
   },
-  label: {
-    flex: 1,
-  },
+
   value: {
-    width: 90,
     fontWeight: 500,
-    textAlign: 'right',
   },
   discount: {
-    color: 'red',
+    color: '#b82845',
   },
   totalRow: {
     flexDirection: 'row',
@@ -35,11 +33,11 @@ export const summaryStyles = StyleSheet.create({
     backgroundColor: '#1e211d',
     alignItems: 'center',
     width: summaryTableWidth,
+    color: '#f4f4f5',
   },
   totalLabel: {
     flex: 1,
     fontWeight: 500,
-    color: '#f4f4f5',
     textTransform: 'uppercase',
   },
 
@@ -47,7 +45,6 @@ export const summaryStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 600,
     paddingRight: 40,
-    color: '#FFFFFF',
     textAlign: 'right',
   },
 });

@@ -18,7 +18,7 @@ const PrintSummaryItem = ({
       isDiscount ? summaryStyles.discount : undefined,
     ]}
   >
-    <Text style={summaryStyles.label}>{label}</Text>
+    <Text>{label}</Text>
     <Text style={summaryStyles.value}>{isDiscount ? `- ${value}` : value}</Text>
   </View>
 );
