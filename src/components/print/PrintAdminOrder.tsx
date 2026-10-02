@@ -37,6 +37,7 @@ const PrintAdminOrder = ({
       <PrintOrderSummary
         language={language}
         summary={order.summary}
+        discount={order.discount}
         currency={order.payment.currency}
         rates={rates}
       />

@@ -1,5 +1,5 @@
 import { Text, View } from '@react-pdf/renderer';
-import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
+import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
 import {
   CurrencyCode,
   getFormattedPrice,
@@ -13,6 +13,7 @@ interface PrintOrderSummaryProps extends Pick<
   'language' | 'rates'
 > {
   currency: CurrencyCode;
+  discount: Discount;
   summary: Summary;
 }
 
@@ -21,6 +22,7 @@ const PrintOrderSummary = ({
   rates,
   currency,
   summary,
+  discount,
 }: PrintOrderSummaryProps) => (
   <View style={summaryStyles.summary}>
     <View style={summaryStyles.summaryTable}>
@@ -33,7 +35,7 @@ const PrintOrderSummary = ({
 
       {summary.promoDiscount > 0 && (
         <View style={[summaryStyles.summaryRow, summaryStyles.discount]}>
-          <Text style={summaryStyles.label}>{language.employeeDiscount}</Text>
+          <Text style={summaryStyles.label}>{language[discount.label]}</Text>
           <Text style={summaryStyles.value}>
             - {getFormattedPrice(summary.promoDiscount, currency, rates)}
           </Text>
@@ -41,7 +43,7 @@ const PrintOrderSummary = ({
       )}
       {summary.discountPrice > 0 && (
         <View style={[summaryStyles.summaryRow, summaryStyles.discount]}>
-          <Text style={summaryStyles.label}>{language.discount}</Text>
+          <Text style={summaryStyles.label}>{language.sale}</Text>
 
           <Text style={summaryStyles.value}>
             - {getFormattedPrice(summary.discountPrice, currency, rates)}
