@@ -26,7 +26,7 @@ export interface ModalProps extends BaseModalProps {
   headerText: string;
   isAlert?: boolean;
   modalSize?: SizeVariant;
-  showCloseIcon?: boolean;
+  showCloseBtn?: boolean;
   onClearAllValues?: () => void;
 }
 
@@ -35,7 +35,7 @@ const Modal = ({
   isAlert,
   modalId,
   headerText,
-  showCloseIcon,
+  showCloseBtn,
   modalSize = 'small',
   className = '',
   ariaControls,
@@ -89,7 +89,7 @@ const Modal = ({
           <h2 className="modal-title" id={dialogId}>
             {headerText}
           </h2>
-          {showCloseIcon && (
+          {showCloseBtn && (
             <CloseBtn onClick={handleClose} ariaLabel={language.closeDialog} />
           )}
         </header>

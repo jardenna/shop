@@ -77,7 +77,7 @@ const NotifyMeForm = ({
 
       <Modal
         modalId={modalId}
-        showCloseIcon
+        showCloseBtn
         headerText={
           hasMissingSizes
             ? language.currentlyUnavailableSizes

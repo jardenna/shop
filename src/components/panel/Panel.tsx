@@ -16,7 +16,7 @@ interface PanelProps {
   portalId: string;
   ariaControls?: string;
   className?: string;
-  hideBtnClose?: boolean;
+  hideCloseBtn?: boolean;
   ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
   onClosePanel: () => void;
@@ -29,7 +29,7 @@ const Panel = ({
   className = '',
   ariaControls,
   trapFocus,
-  hideBtnClose,
+  hideCloseBtn,
   ignoreRefs = [],
   portalId,
 }: PanelProps) => {
@@ -67,7 +67,7 @@ const Panel = ({
       >
         {children}
 
-        {!hideBtnClose && <CloseBtn onClick={onClosePanel} />}
+        {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}
       </section>
     </Portal>
   );
