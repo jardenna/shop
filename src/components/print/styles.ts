@@ -27,9 +27,6 @@ export const styles = StyleSheet.create({
     letterSpacing: 1.6,
   },
   infoBold: { fontWeight: 600, letterSpacing: 0.8, fontSize: 9 },
-  content: {
-    padding: '30 20',
-  },
   userInfo: { flexDirection: 'column', gap: 1 },
   orderInfo: { flexDirection: 'column', gap: 1 },
   heading: {

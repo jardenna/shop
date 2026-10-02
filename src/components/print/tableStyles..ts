@@ -4,6 +4,8 @@ import './pdfFonts';
 export const tableStyles = StyleSheet.create({
   table: {
     width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
 
   tableHeader: {

@@ -2,13 +2,14 @@ import { StyleSheet } from '@react-pdf/renderer';
 
 export const summaryStyles = StyleSheet.create({
   summary: {
-    marginTop: 24,
+    marginTop: 18,
     alignItems: 'flex-end',
+    paddingRight: 20,
   },
 
   summaryRow: {
     flexDirection: 'row',
-    width: '45%',
+    width: '34%',
     paddingVertical: 5,
   },
 
@@ -18,18 +19,16 @@ export const summaryStyles = StyleSheet.create({
 
   value: {
     width: 90,
-
     fontWeight: 500,
     textAlign: 'right',
   },
 
   totalRow: {
     flexDirection: 'row',
-    width: '100%',
     marginTop: 12,
     paddingVertical: 12,
     paddingHorizontal: 16,
-    backgroundColor: '#292929',
+    backgroundColor: '#1e211d',
     alignItems: 'center',
   },
 

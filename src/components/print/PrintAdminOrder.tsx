@@ -3,9 +3,8 @@ import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import PdfContainer from './PdfContainer';
-import PrintOrdertable from './PrintOrdertable';
-import { styles } from './styles';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
+import PrintOrdertable from './PrintOrdertable';
 
 export interface BasePrintOrderProps {
   language: Record<string, string>;
@@ -28,7 +27,7 @@ const PrintAdminOrder = ({
     order={order}
     selectedLanguage={selectedLanguage}
   >
-    <View style={styles.content}>
+    <View>
       <PrintOrdertable
         language={language}
         orders={order.orderItems}
