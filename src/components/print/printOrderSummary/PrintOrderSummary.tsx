@@ -1,5 +1,5 @@
 import { Text, View } from '@react-pdf/renderer';
-import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
+import { Summary } from '../../../app/api/apiTypes/sharedApiTypes';
 import {
   CurrencyCode,
   getFormattedPrice,
@@ -13,7 +13,7 @@ interface PrintOrderSummaryProps extends Pick<
   'language' | 'rates'
 > {
   currency: CurrencyCode;
-  summary: OrderResponse['summary'];
+  summary: Summary;
 }
 
 const PrintOrderSummary = ({

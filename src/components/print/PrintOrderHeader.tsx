@@ -24,7 +24,6 @@ const PrintOrderHeader = ({
 }: PrintOrderHeaderProps) => (
   <View style={styles.header}>
     <View style={styles.userInfo}>
-      <Text style={styles.infoUppercase}>Invoise to:</Text>
       <Text style={styles.heading}>{billingAddress.name}</Text>
       <Text>{billingAddress.street}</Text>
       <Text>
