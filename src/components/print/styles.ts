@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     textBox: 'trim-both cap alphabetic',
   },
-
+  text: { padding: 20 },
   table: {
     width: '100%',
   },

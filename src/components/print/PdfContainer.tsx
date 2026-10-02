@@ -33,6 +33,8 @@ const PdfContainer = ({
         language={language}
         paidAt={order.payment.paidAt}
         selectedLanguage={selectedLanguage}
+        billingAddress={order.billingAddress}
+        user={order.user}
       />
       {children}
     </Page>
