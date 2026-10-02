@@ -8,12 +8,29 @@ export const styles = StyleSheet.create({
     fontFamily: 'Outfit',
     fontSize: 12,
   },
+  flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
+  top: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    justifyContent: 'space-between',
+    marginBottom: 8,
+    marginTop: 20,
+    alignItems: 'flex-end',
+  },
+  infoUppercase: {
+    textTransform: 'uppercase',
+    fontSize: 9,
+    letterSpacing: 1.6,
+  },
+  infoBold: { fontWeight: 600, letterSpacing: 0.8, fontSize: 9 },
   content: {
     padding: contentPadding,
   },
   header: {
-    padding: contentPadding,
     backgroundColor: '#f9f9f9',
+    justifyContent: 'space-between',
+    padding: 20,
+    alignItems: 'center',
   },
   heading: {
     fontSize: 30,
@@ -26,16 +43,18 @@ export const styles = StyleSheet.create({
 
   tableHeader: {
     flexDirection: 'row',
-    paddingBottom: 8,
+    paddingBottom: 6,
     borderBottom: 1,
-    borderBottomColor: '#000000',
+    borderBottomColor: '#99a4a9',
+    borderBottomWidth: 1,
   },
 
   tableRow: {
     flexDirection: 'row',
-    paddingVertical: 8,
+    paddingVertical: 6,
     borderBottom: 1,
-    borderBottomColor: '#dddddd',
+    borderBottomColor: '#e5e5e5',
+    borderBottomWidth: 1,
   },
 
   description: {
@@ -44,16 +63,13 @@ export const styles = StyleSheet.create({
 
   quantity: {
     width: 60,
-    textAlign: 'right',
   },
 
   price: {
     width: 80,
-    textAlign: 'right',
   },
 
   amount: {
     width: 80,
-    textAlign: 'right',
   },
 });
