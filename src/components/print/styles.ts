@@ -1,5 +1,6 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import './pdfFonts';
+import { colors } from './printOrderFooter/footerStyles';
 
 export const styles = StyleSheet.create({
   page: {
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
     fontSize: 10,
   },
   header: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: colors.colorBackground,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 30,

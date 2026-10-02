@@ -1,4 +1,5 @@
 import { StyleSheet } from '@react-pdf/renderer';
+import { colors } from '../printOrderFooter/footerStyles';
 
 const summaryTableWidth = '40%';
 
@@ -22,7 +23,7 @@ export const summaryStyles = StyleSheet.create({
     fontWeight: 500,
   },
   discount: {
-    color: '#b82845',
+    color: colors.textDangerColor,
   },
   totalRow: {
     flexDirection: 'row',
@@ -30,10 +31,10 @@ export const summaryStyles = StyleSheet.create({
     paddingRight: 60,
     padding: 12,
     paddingHorizontal: 16,
-    backgroundColor: '#1e211d',
+    backgroundColor: colors.colorBackgroundDark,
     alignItems: 'center',
     width: summaryTableWidth,
-    color: '#f4f4f5',
+    color: colors.colorTextLight,
   },
   totalLabel: {
     flex: 1,
