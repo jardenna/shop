@@ -33,8 +33,7 @@ const PrintOrderHeader = ({
         {language.email}: {user.email}
       </Text>
       <Text>
-        {language.phone}:{' '}
-        {user.phoneNo === '' ? language.notProvided : user.phoneNo}
+        {language.phone}: {user.phoneNo}
       </Text>
     </View>
 
