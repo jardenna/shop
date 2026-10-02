@@ -39,7 +39,7 @@ export const summaryStyles = StyleSheet.create({
   totalLabel: {
     flex: 1,
     fontWeight: 500,
-    color: '#FFFFFF',
+    color: '#f4f4f5',
     textTransform: 'uppercase',
   },
 
