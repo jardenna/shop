@@ -39,7 +39,7 @@ const PdfContainer = ({
         createdAt={order.createdAt}
       />
       <View style={styles.flexGrow}>{children}</View>
-      <PrintOrderFooter language={language} />
+      <PrintOrderFooter language={language} method={order.payment.method} />
     </Page>
   </Document>
 );

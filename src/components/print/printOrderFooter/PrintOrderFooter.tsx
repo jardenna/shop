@@ -1,11 +1,14 @@
 import { Text, View } from '@react-pdf/renderer';
+import { paymentMethodLabels } from '../../../app/api/apiConstants';
+import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import { footerStyles } from './footerStyles';
 
 interface PrintOrderFooterProps {
   language: Record<string, string>;
+  method: PaymentMethods;
 }
 
-const PrintOrderFooter = ({ language }: PrintOrderFooterProps) => (
+const PrintOrderFooter = ({ language, method }: PrintOrderFooterProps) => (
   <View style={footerStyles.footer}>
     <View style={footerStyles.column}>
       <Text style={footerStyles.heading}>Fashion Fusion</Text>
@@ -23,8 +26,12 @@ const PrintOrderFooter = ({ language }: PrintOrderFooterProps) => (
 
     <View>
       <Text style={footerStyles.heading}>{language.payment}</Text>
-      <Text>Payment method: Visa</Text>
-      <Text>Payment status: Paid</Text>
+      <Text>
+        {language.paymentMethod}: {paymentMethodLabels[method]}
+      </Text>
+      <Text>
+        {language.paymentStatus}: {language.paid}
+      </Text>
     </View>
   </View>
 );
