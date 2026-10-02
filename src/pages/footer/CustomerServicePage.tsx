@@ -1,4 +1,6 @@
+import MailTo from '../../components/MailTo';
 import { useLanguage } from '../../features/language/useLanguage';
+import { contactInformation } from '../../utils/contactInformation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
@@ -20,8 +22,7 @@ const CustomerServicePage = () => {
         <section>
           <h2>Contact us</h2>
           <p>
-            Email us at{' '}
-            <a href="mailto:support@example.com">support@example.com</a>.
+            Email us at <MailTo email={contactInformation.email} />
           </p>
           <p>We aim to respond to all enquiries within 1–2 business days.</p>
         </section>

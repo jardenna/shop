@@ -1,8 +1,8 @@
 import { Text, View } from '@react-pdf/renderer';
 import { paymentMethodLabels } from '../../../app/api/apiConstants';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import { contactInformation } from '../../../utils/contactInformation';
 import { footerStyles } from './footerStyles';
+import { contactInformationList } from '../../../utils/contactInformation';
 
 interface PrintOrderFooterProps {
   language: Record<string, string>;
@@ -20,7 +20,7 @@ const PrintOrderFooter = ({ language, method }: PrintOrderFooterProps) => (
 
     <View>
       <Text style={footerStyles.heading}>{language.contact}</Text>
-      {contactInformation.map((contact) => (
+      {contactInformationList.map((contact) => (
         <Text key={contact}>{contact}</Text>
       ))}
     </View>
