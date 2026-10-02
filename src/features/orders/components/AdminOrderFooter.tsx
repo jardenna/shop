@@ -1,23 +1,26 @@
 import { useId } from 'react';
+import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../components/Button';
+import DownloadPdfBtn from '../../../components/DownloadPdfBtn';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
+import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
+import { useCurrency } from '../../currency/useCurrency';
+import { useLanguage } from '../../language/useLanguage';
 
 interface AdminOrderFooterProps {
-  id: string;
   isLoading: boolean;
-  language: Record<string, string>;
+  order: OrderResponse;
   triggerModalDisabled: boolean;
   onCancelOrder: () => void;
 }
 
 const AdminOrderFooter = ({
-  language,
-  id,
   isLoading,
   onCancelOrder,
+  order,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
   const ariaControls = useId();
@@ -28,6 +31,9 @@ const AdminOrderFooter = ({
     onCancelOrder();
     closeModal();
   };
+
+  const { selectedLanguage, language } = useLanguage();
+  const { rates } = useCurrency();
 
   return (
     <footer className="footer">
@@ -44,7 +50,7 @@ const AdminOrderFooter = ({
         modalId={modalId}
         headerText={language.cancelOrder}
       >
-        {language.cancel} # {id}
+        {language.cancel} # {order.id}
         <footer className="footer">
           <Button variant={BtnVariant.Secondary} onClick={closeModal}>
             {language.dismiss}
@@ -58,8 +64,18 @@ const AdminOrderFooter = ({
           </Button>
         </footer>
       </Modal>
-
-      <Button variant={BtnVariant.Secondary}>{language.printOrder}</Button>
+      <DownloadPdfBtn
+        document={
+          <PrintAdminOrder
+            order={order}
+            selectedLanguage={selectedLanguage}
+            language={language}
+            rates={rates}
+          />
+        }
+        fileName={`order-${order.id}.pdf`}
+        label={language.printOrder}
+      />
     </footer>
   );
 };

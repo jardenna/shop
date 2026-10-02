@@ -24,7 +24,7 @@ export const createSummaryItemList = ({
 }: CreateSummaryItemListProps): SummaryItemProps[] => {
   const summaryItemList: SummaryItemProps[] = [
     {
-      label: language.subtotal,
+      label: language.subTotal,
       price: summary.subTotal,
     },
   ];

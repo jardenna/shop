@@ -30,7 +30,9 @@ export type PaymentMethodFilterValues =
   (typeof paymentMethodFilterValues)[number];
 
 export interface User {
+  email: string;
   id: string;
+  phoneNo: string;
   username: string;
 }
 
@@ -64,10 +66,6 @@ export interface OrderResponse extends DefaultResponseType {
   shippingAddress: BaseAddress;
   summary: Summary;
   user: User;
-}
-
-export interface SummaryK {
-  totalPrice: number;
 }
 
 export interface MyOrdersResponse {

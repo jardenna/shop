@@ -16,7 +16,7 @@ const SizeGuideModal = ({
     modalId={modalId}
     headerText={language.sizeGuide}
     modalSize="medium"
-    showCloseIcon
+    showCloseBtn
     ariaControls={ariaControls}
   >
     <SizeGuide language={language} />

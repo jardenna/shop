@@ -2,13 +2,13 @@ import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import IconBtn from './IconBtn';
 
-interface BtnCloseProps {
+interface CloseBtnProps {
   ariaLabel?: string;
   size?: string;
   onClick: () => void;
 }
 
-const BtnClose = ({ onClick, ariaLabel, size }: BtnCloseProps) => {
+const CloseBtn = ({ onClick, ariaLabel, size }: CloseBtnProps) => {
   const { language } = useLanguage();
 
   return (
@@ -22,4 +22,4 @@ const BtnClose = ({ onClick, ariaLabel, size }: BtnCloseProps) => {
   );
 };
 
-export default BtnClose;
+export default CloseBtn;

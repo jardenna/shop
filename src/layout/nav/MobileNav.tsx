@@ -57,7 +57,7 @@ const MobileNav = ({
         trapFocus
         ignoreRefs={[menuButtonRef]}
         className="mobile-nav"
-        hideBtnClose
+        hideCloseBtn
       >
         {navHeading && <div className="nav-heading">{navHeading}</div>}
         <NavContainer

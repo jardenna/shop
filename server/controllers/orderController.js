@@ -293,6 +293,7 @@ const payOrder = asyncHandler(async (req, res) => {
 
   order.payment.method = payment.method;
   order.payment.status = PAYMENT_STATUS.COMPLETED;
+  order.payment.currency = payment.currency ?? 'DKK';
   order.payment.paidAt = new Date();
   order.payment.result = {
     transactionId: crypto.randomUUID(),

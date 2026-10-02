@@ -6,7 +6,7 @@ import { useKeyPress } from '../../hooks/useKeyPress';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 import { RefElementType } from '../../types/types';
-import BtnClose from '../BtnClose';
+import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
 import './_panel.scss';
 
@@ -16,7 +16,7 @@ interface PanelProps {
   portalId: string;
   ariaControls?: string;
   className?: string;
-  hideBtnClose?: boolean;
+  hideCloseBtn?: boolean;
   ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
   onClosePanel: () => void;
@@ -29,7 +29,7 @@ const Panel = ({
   className = '',
   ariaControls,
   trapFocus,
-  hideBtnClose,
+  hideCloseBtn,
   ignoreRefs = [],
   portalId,
 }: PanelProps) => {
@@ -67,7 +67,7 @@ const Panel = ({
       >
         {children}
 
-        {!hideBtnClose && <BtnClose onClick={onClosePanel} />}
+        {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}
       </section>
     </Portal>
   );

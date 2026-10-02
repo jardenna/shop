@@ -37,5 +37,7 @@ export const useCurrency = (price?: number) => {
     onChangePrice: handleChangePrice,
     exchangeRate,
     currencyText,
+    selectedCurrency,
+    rates,
   };
 };

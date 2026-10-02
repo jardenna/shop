@@ -85,7 +85,7 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate([
     {
       path: 'user',
-      select: '_id username',
+      select: '_id username email phoneNo',
     },
     {
       path: 'delivery.statusHistory.changedBy',
@@ -97,6 +97,10 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
     return res
       .status(404)
       .json({ success: false, message: t('orderNotFound', req.lang) });
+  }
+
+  if (order.user && !order.user.phoneNo) {
+    order.user.phoneNo = t('notProvided', req.lang);
   }
 
   await deliveryService(order);

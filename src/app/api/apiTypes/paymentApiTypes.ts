@@ -1,4 +1,5 @@
 import { HTMLInputTypeAttribute } from 'react';
+import { CurrencyCode } from '../../../features/currency/currencyConverterUtil';
 import { KeyValuePair } from '../../../hooks/useFormValidation';
 import { InputMode } from '../../../types/types';
 import { paymentMethodsValues } from '../apiConstants';
@@ -33,12 +34,26 @@ export interface PaymentFormValues extends KeyValuePair<string> {
   paypalPassword: string;
 }
 
-export type ValidatePayment = PaymentFormValues;
-
-export type PaymentStatus = 'completed' | 'pending' | 'failed';
-
 export interface Payment {
+  currency: CurrencyCode;
   method: PaymentMethods;
   paidAt: Date;
   status: PaymentStatus;
 }
+
+export interface PayOrderRequest {
+  cardholderName: string;
+  cardNumber: string;
+  currency: CurrencyCode;
+  cvvCode: string;
+  expiryDate: string;
+  method: PaymentMethods;
+  mobilePhoneNumber: string;
+  orderId: string;
+  paypalEmail: string;
+  paypalPassword: string;
+}
+
+export type ValidatePayment = PaymentFormValues;
+
+export type PaymentStatus = 'completed' | 'pending' | 'failed';
