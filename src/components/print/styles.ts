@@ -1,13 +1,22 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import './pdfFonts';
 
+export const colors = {
+  colorBorder: '#e5e5e5',
+  ColorborderDark: '#99a4a9',
+  textDangerColor: '#b82845',
+  colorBackground: '#f9f9f9',
+  colorBackgroundDark: '#1e211d',
+  colorTextLight: '#f4f4f5',
+};
+
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
     fontSize: 10,
   },
   header: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: colors.colorBackground,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 30,

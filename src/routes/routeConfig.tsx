@@ -24,7 +24,6 @@ import PrivacyPage from '../pages/footer/Privacypage';
 import ShippingAndReturnsPage from '../pages/footer/ShippingAndReturnsPage';
 import TermsAndConditionsPage from '../pages/footer/TermsAndConditionsPage';
 import HomePage from '../pages/home/HomePage';
-import InvoicePage from '../pages/invoiceSetup/InvoicePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
@@ -61,10 +60,6 @@ const routeList = [
   {
     path: ShopPath.CollectionCategoryId,
     element: <CollectionPage />,
-  },
-  {
-    path: 'invoice',
-    element: <InvoicePage />,
   },
   {
     path: ShopPath.CollectionSingleProduct,

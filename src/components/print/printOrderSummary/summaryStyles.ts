@@ -1,4 +1,5 @@
 import { StyleSheet } from '@react-pdf/renderer';
+import { colors } from '../styles';
 
 const summaryTableWidth = '40%';
 
@@ -10,21 +11,19 @@ export const summaryStyles = StyleSheet.create({
   summaryTable: {
     paddingRight: 60,
     width: summaryTableWidth,
+    flexDirection: 'column',
+    gap: 6,
   },
   summaryRow: {
     flexDirection: 'row',
-    paddingVertical: 3,
+    justifyContent: 'space-between',
   },
-  label: {
-    flex: 1,
-  },
+
   value: {
-    width: 90,
     fontWeight: 500,
-    textAlign: 'right',
   },
   discount: {
-    color: 'red',
+    color: colors.textDangerColor,
   },
   totalRow: {
     flexDirection: 'row',
@@ -32,14 +31,14 @@ export const summaryStyles = StyleSheet.create({
     paddingRight: 60,
     padding: 12,
     paddingHorizontal: 16,
-    backgroundColor: '#1e211d',
+    backgroundColor: colors.colorBackgroundDark,
     alignItems: 'center',
     width: summaryTableWidth,
+    color: colors.colorTextLight,
   },
   totalLabel: {
     flex: 1,
     fontWeight: 500,
-    color: '#FFFFFF',
     textTransform: 'uppercase',
   },
 
@@ -47,7 +46,6 @@ export const summaryStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 600,
     paddingRight: 40,
-    color: '#FFFFFF',
     textAlign: 'right',
   },
 });

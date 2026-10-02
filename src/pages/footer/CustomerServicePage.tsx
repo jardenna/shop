@@ -1,6 +1,10 @@
 import MailTo from '../../components/MailTo';
 import { useLanguage } from '../../features/language/useLanguage';
-import { contactInformation } from '../../utils/contactInformation';
+import {
+  contactInformation,
+  shopInformationList,
+  shopName,
+} from '../../utils/contactInformation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
@@ -18,6 +22,13 @@ const CustomerServicePage = () => {
             Have a question about your order, delivery, returns or our products
             Our customer service team is happy to help.
           </p>
+        </section>
+        <section>
+          <h2>Address</h2>
+          <h3>{shopName}</h3>
+          {shopInformationList.map((shopInfo) => (
+            <div key={shopInfo.cvr}>{shopInfo}</div>
+          ))}
         </section>
         <section>
           <h2>Contact us</h2>

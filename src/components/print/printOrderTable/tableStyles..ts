@@ -1,5 +1,6 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import '../pdfFonts';
+import { colors } from '../styles';
 
 export const tableStyles = StyleSheet.create({
   table: {
@@ -12,7 +13,7 @@ export const tableStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingBottom: 6,
     borderBottom: 1,
-    borderBottomColor: '#99a4a9',
+    borderBottomColor: colors.ColorborderDark,
     borderBottomWidth: 1,
     fontWeight: 500,
   },
@@ -21,7 +22,7 @@ export const tableStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 6,
     borderBottom: 1,
-    borderBottomColor: '#e5e5e5',
+    borderBottomColor: colors.colorBorder,
     borderBottomWidth: 1,
   },
 
