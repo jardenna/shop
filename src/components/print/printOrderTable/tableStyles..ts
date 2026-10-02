@@ -14,6 +14,7 @@ export const tableStyles = StyleSheet.create({
     borderBottom: 1,
     borderBottomColor: '#99a4a9',
     borderBottomWidth: 1,
+    fontWeight: 500,
   },
 
   tableRow: {
