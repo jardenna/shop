@@ -6,7 +6,7 @@ import { useKeyPress } from '../../hooks/useKeyPress';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 import { RefElementType } from '../../types/types';
-import BtnClose from '../BtnClose';
+import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
 import './_panel.scss';
 
@@ -67,7 +67,7 @@ const Panel = ({
       >
         {children}
 
-        {!hideBtnClose && <BtnClose onClick={onClosePanel} />}
+        {!hideBtnClose && <CloseBtn onClick={onClosePanel} />}
       </section>
     </Portal>
   );

@@ -1,7 +1,7 @@
 import { useAppDispatch } from '../../app/hooks';
 import { dismissToast, startToastExit } from '../../features/toastSlice';
 import { useAnimate } from '../../hooks/useAnimate';
-import BtnClose from '../BtnClose';
+import CloseBtn from '../CloseBtn';
 import Icon from '../icons/Icon';
 import { ToastTimerProps, useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
@@ -53,7 +53,7 @@ const ToastItem = ({ id, type, count, message, isExiting }: ToastItemProps) => {
         </p>
       </div>
 
-      <BtnClose onClick={handleDeleteToast} size="1.2em" />
+      <CloseBtn onClick={handleDeleteToast} size="1.2em" />
     </li>
   );
 };

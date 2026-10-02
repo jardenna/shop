@@ -9,7 +9,7 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
 import { KeyCode } from '../../types/enums';
 import { SizeVariant } from '../../types/types';
-import BtnClose from '../BtnClose';
+import CloseBtn from '../CloseBtn';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';
 import './_modal.scss';
@@ -90,7 +90,7 @@ const Modal = ({
             {headerText}
           </h2>
           {showCloseIcon && (
-            <BtnClose onClick={handleClose} ariaLabel={language.closeDialog} />
+            <CloseBtn onClick={handleClose} ariaLabel={language.closeDialog} />
           )}
         </header>
 
