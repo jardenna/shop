@@ -32,7 +32,7 @@ const PrintOrderSummary = ({
       </View>
 
       {summary.promoDiscount > 0 && (
-        <View style={summaryStyles.summaryRow}>
+        <View style={[summaryStyles.summaryRow, summaryStyles.discount]}>
           <Text style={summaryStyles.label}>{language.employeeDiscount}</Text>
           <Text style={summaryStyles.value}>
             - {getFormattedPrice(summary.promoDiscount, currency, rates)}
@@ -40,23 +40,19 @@ const PrintOrderSummary = ({
         </View>
       )}
       {summary.discountPrice > 0 && (
-        <View style={summaryStyles.summaryRow}>
-          <Text style={[summaryStyles.label, summaryStyles.discount]}>
-            {language.discount}
-          </Text>
+        <View style={[summaryStyles.summaryRow, summaryStyles.discount]}>
+          <Text style={summaryStyles.label}>{language.discount}</Text>
 
-          <Text style={[summaryStyles.value, summaryStyles.discount]}>
+          <Text style={summaryStyles.value}>
             - {getFormattedPrice(summary.discountPrice, currency, rates)}
           </Text>
         </View>
       )}
 
       <View style={summaryStyles.summaryRow}>
-        <Text style={[summaryStyles.label, summaryStyles.discount]}>
-          {language.estimatedShipping}
-        </Text>
+        <Text style={summaryStyles.label}>{language.estimatedShipping}</Text>
 
-        <Text style={[summaryStyles.value, summaryStyles.discount]}>
+        <Text style={summaryStyles.value}>
           {getFormattedPrice(summary.shippingPrice, currency, rates)}
         </Text>
       </View>
