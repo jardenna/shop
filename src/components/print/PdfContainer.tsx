@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import OrderLogo from './OrderLogo';
+import PrintOrderFooter from './printOrderFooter/PrintOrderFooter';
 import PrintOrderHeader from './PrintOrderHeader';
 import { styles } from './styles';
 
@@ -38,6 +39,7 @@ const PdfContainer = ({
         createdAt={order.createdAt}
       />
       {children}
+      <PrintOrderFooter language={language} />
     </Page>
   </Document>
 );
