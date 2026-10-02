@@ -32,7 +32,6 @@ const PrintOrderSummary = ({
           {getFormattedPrice(summary.subTotal, currency, rates)}
         </Text>
       </View>
-
       {summary.promoDiscount > 0 && (
         <View style={[summaryStyles.summaryRow, summaryStyles.discount]}>
           <Text style={summaryStyles.label}>{language[discount.label]}</Text>

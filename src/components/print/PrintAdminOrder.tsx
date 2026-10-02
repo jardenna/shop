@@ -5,6 +5,7 @@ import { SelectedLanguage } from '../../features/language/languageSlice';
 import PdfContainer from './PdfContainer';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
 import PrintOrdertable from './printOrderTable/PrintOrdertable';
+import { styles } from './styles';
 
 export interface BasePrintOrderProps {
   language: Record<string, string>;
@@ -27,7 +28,7 @@ const PrintAdminOrder = ({
     order={order}
     selectedLanguage={selectedLanguage}
   >
-    <View>
+    <View style={styles.alignContentCenter}>
       <PrintOrdertable
         language={language}
         orders={order.orderItems}

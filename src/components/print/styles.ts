@@ -40,5 +40,11 @@ export const styles = StyleSheet.create({
   marginTop6: {
     marginTop: 6,
   },
+  alignContentCenter: {
+    flexDirection: 'column',
+    minHeight: '40%',
+    justifyContent: 'center',
+  },
+
   flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
 });
