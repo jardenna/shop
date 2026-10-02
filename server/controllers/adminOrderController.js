@@ -99,6 +99,10 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
       .json({ success: false, message: t('orderNotFound', req.lang) });
   }
 
+  if (order.user && !order.user.phoneNo) {
+    order.user.phoneNo = t('notProvided', req.lang);
+  }
+
   await deliveryService(order);
 
   const createdHistory = {
