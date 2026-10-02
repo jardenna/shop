@@ -9,7 +9,7 @@
   }
 
   header {
-    margin-bottom: 40px;
+    margin-block: 20px 40px;
     text-align: center;
   }
 
@@ -73,6 +73,7 @@
 
 .about-page {
   .page-header {
+    margin-top: 20px;
     padding-left: 20px;
   }
 }
