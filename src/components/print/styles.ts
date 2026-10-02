@@ -1,14 +1,18 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import './pdfFonts';
 
-const contentPadding = '30 20';
-
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
-    fontSize: 11,
+    fontSize: 10,
   },
-  flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
+  header: {
+    backgroundColor: '#f9f9f9',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+    alignItems: 'center',
+  },
   top: {
     flexDirection: 'row',
     paddingHorizontal: 20,
@@ -24,14 +28,7 @@ export const styles = StyleSheet.create({
   },
   infoBold: { fontWeight: 600, letterSpacing: 0.8, fontSize: 9 },
   content: {
-    padding: contentPadding,
-  },
-  header: {
-    backgroundColor: '#f9f9f9',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 20,
-    alignItems: 'center',
+    padding: '30 20',
   },
   userInfo: { flexDirection: 'column', gap: 1 },
   orderInfo: { flexDirection: 'column', gap: 1 },
@@ -42,4 +39,5 @@ export const styles = StyleSheet.create({
   marginTop6: {
     marginTop: 6,
   },
+  flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
 });

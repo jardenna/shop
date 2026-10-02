@@ -5,6 +5,7 @@ import { SelectedLanguage } from '../../features/language/languageSlice';
 import PdfContainer from './PdfContainer';
 import PrintOrdertable from './PrintOrdertable';
 import { styles } from './styles';
+import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
 
 export interface BasePrintOrderProps {
   language: Record<string, string>;
@@ -31,6 +32,12 @@ const PrintAdminOrder = ({
       <PrintOrdertable
         language={language}
         orders={order.orderItems}
+        currency={order.payment.currency}
+        rates={rates}
+      />
+      <PrintOrderSummary
+        language={language}
+        summary={order.summary}
         currency={order.payment.currency}
         rates={rates}
       />
