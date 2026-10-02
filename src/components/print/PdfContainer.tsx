@@ -34,7 +34,6 @@ const PdfContainer = ({
         paidAt={order.payment.paidAt}
         selectedLanguage={selectedLanguage}
       />
-
       {children}
     </Page>
   </Document>

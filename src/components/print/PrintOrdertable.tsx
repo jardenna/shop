@@ -7,9 +7,9 @@ import {
 import { BasePrintOrderProps } from './PrintAdminOrder';
 import { styles } from './styles';
 
-type PrintOrdertableBaseProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;
+type BasePrintOrdertableProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;
 
-interface PrintOrdertableProps extends PrintOrdertableBaseProps {
+interface PrintOrdertableProps extends BasePrintOrdertableProps {
   currency: CurrencyCode;
   orders: Order[];
 }
