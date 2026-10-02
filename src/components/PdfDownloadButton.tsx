@@ -1,7 +1,7 @@
 import { PDFDownloadLink, type DocumentProps } from '@react-pdf/renderer';
 import { ReactElement } from 'react';
-import { BtnVariant } from '../../types/enums';
-import Button from '../Button';
+import { BtnVariant } from '../types/enums';
+import Button from './Button';
 
 interface PdfDownloadButtonProps {
   document: ReactElement<DocumentProps>;

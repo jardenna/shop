@@ -4,7 +4,7 @@ import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import PdfDownloadButton from '../../../components/print/PdfDownloadButton';
+import PdfDownloadButton from '../../../components/PdfDownloadButton';
 import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
 import { BtnVariant } from '../../../types/enums';
 import { useCurrency } from '../../currency/useCurrency';
