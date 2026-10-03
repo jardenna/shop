@@ -6,9 +6,11 @@ import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
+import PdfPreview from '../../components/print/PdfPreview';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
 import { useToast } from '../../components/toast/hooks/useToast';
+import { useCurrency } from '../../features/currency/useCurrency';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
@@ -28,7 +30,8 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
+  const { rates } = useCurrency();
 
   const { onAddToast } = useToast();
 
@@ -111,6 +114,14 @@ const AdminOrderDetailsPage = () => {
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >
+      {order && (
+        <PdfPreview
+          order={order}
+          selectedLanguage={selectedLanguage}
+          language={language}
+          rates={rates}
+        />
+      )}
       {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
