@@ -13,7 +13,7 @@ export const colors = {
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
-    fontSize: 10,
+    fontSize: 11,
   },
   header: {
     backgroundColor: colors.colorBackground,
@@ -30,15 +30,11 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'flex-end',
   },
-  infoUppercase: {
-    textTransform: 'uppercase',
-    fontSize: 9,
-    letterSpacing: 1.6,
-  },
+
   flexGrow: {
     flexGrow: 1,
   },
-  infoBold: { fontWeight: 600, letterSpacing: 0.8, fontSize: 9 },
+  infoBold: { fontWeight: 600, letterSpacing: 0.8 },
   userInfo: { flexDirection: 'column', gap: 1 },
   orderInfo: { flexDirection: 'column', gap: 1 },
   heading: {

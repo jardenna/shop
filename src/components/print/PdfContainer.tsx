@@ -25,7 +25,7 @@ const PdfContainer = ({
       <View style={styles.top}>
         <OrderLogo />
         <View style={styles.flexRow}>
-          <Text style={styles.infoUppercase}>{language.orderNo}:</Text>
+          <Text style={styles.heading}>{language.orderNo}:</Text>
           <Text style={styles.infoBold}>{order.id}</Text>
         </View>
       </View>

@@ -39,13 +39,13 @@ const PrintOrderHeader = ({
 
     <View style={styles.orderInfo}>
       <View>
-        <Text style={styles.infoUppercase}>{language.orderDate}:</Text>
+        <Text style={styles.heading}>{language.orderDate}:</Text>
         <Text style={styles.infoBold}>
           {formatDate(createdAt, selectedLanguage)}
         </Text>
       </View>
       <View style={styles.marginTop6}>
-        <Text style={styles.infoUppercase}>{language.paid}:</Text>
+        <Text style={styles.heading}>{language.paid}:</Text>
         <Text style={styles.infoBold}>
           {formatDate(paidAt, selectedLanguage)}
         </Text>
