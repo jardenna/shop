@@ -5,7 +5,8 @@ import {
   getFormattedPrice,
 } from '../../../features/currency/currencyConverterUtil';
 import { vat } from '../../../utils/utils';
-import { BasePrintOrderProps } from '../PrintAdminOrder';
+import { BasePrintOrderProps } from '../PrintOrder';
+import { styles } from '../styles';
 import PrintSummaryItem from './PrintSummaryItem';
 import { summaryStyles } from './summaryStyles';
 
@@ -13,6 +14,7 @@ interface PrintOrderSummaryProps extends Pick<
   BasePrintOrderProps,
   'language' | 'rates'
 > {
+  cancelled: boolean;
   currency: CurrencyCode;
   discount: Discount;
   summary: Summary;
@@ -24,6 +26,7 @@ const PrintOrderSummary = ({
   currency,
   summary,
   discount,
+  cancelled,
 }: PrintOrderSummaryProps) => (
   <View style={summaryStyles.summary}>
     <View style={summaryStyles.summaryTable}>
@@ -58,7 +61,12 @@ const PrintOrderSummary = ({
 
     <View style={summaryStyles.totalRow}>
       <Text style={summaryStyles.totalLabel}>{language.totalPrice}</Text>
-      <Text style={summaryStyles.totalValue}>
+      <Text
+        style={[
+          summaryStyles.totalValue,
+          ...(cancelled ? [styles.lineThrough] : []),
+        ]}
+      >
         {getFormattedPrice(summary.totalPrice, currency, rates)}
       </Text>
     </View>

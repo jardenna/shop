@@ -4,7 +4,7 @@ import {
   CurrencyCode,
   getFormattedPrice,
 } from '../../../features/currency/currencyConverterUtil';
-import { BasePrintOrderProps } from '../PrintAdminOrder';
+import { BasePrintOrderProps } from '../PrintOrder';
 import { tableStyles } from './tableStyles.';
 
 type BasePrintOrdertableProps = Pick<BasePrintOrderProps, 'language' | 'rates'>;

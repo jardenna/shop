@@ -23,7 +23,7 @@ export const summaryStyles = StyleSheet.create({
     fontWeight: 500,
   },
   discount: {
-    color: colors.textDangerColor,
+    color: colors.colorRed,
   },
   totalRow: {
     flexDirection: 'row',

@@ -4,7 +4,7 @@ import './pdfFonts';
 export const colors = {
   colorBorder: '#e5e5e5',
   ColorborderDark: '#99a4a9',
-  textDangerColor: '#b82845',
+  colorRed: '#88001b',
   colorBackground: '#f9f9f9',
   colorBackgroundDark: '#1e211d',
   colorTextLight: '#f4f4f5',
@@ -13,7 +13,7 @@ export const colors = {
 export const styles = StyleSheet.create({
   page: {
     fontFamily: 'Outfit',
-    fontSize: 10,
+    fontSize: 11,
   },
   header: {
     backgroundColor: colors.colorBackground,
@@ -30,15 +30,11 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'flex-end',
   },
-  infoUppercase: {
-    textTransform: 'uppercase',
-    fontSize: 9,
-    letterSpacing: 1.6,
-  },
+
   flexGrow: {
     flexGrow: 1,
   },
-  infoBold: { fontWeight: 600, letterSpacing: 0.8, fontSize: 9 },
+  infoBold: { fontWeight: 600, letterSpacing: 0.8 },
   userInfo: { flexDirection: 'column', gap: 1 },
   orderInfo: { flexDirection: 'column', gap: 1 },
   heading: {
@@ -56,4 +52,19 @@ export const styles = StyleSheet.create({
   },
 
   flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
+
+  cancelled: {
+    padding: 12,
+    backgroundColor: colors.colorRed,
+  },
+
+  cancelledText: {
+    color: colors.colorTextLight,
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  },
+  lineThrough: {
+    textDecoration: 'line-through',
+  },
 });

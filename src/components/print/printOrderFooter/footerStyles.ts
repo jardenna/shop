@@ -9,16 +9,6 @@ export const footerStyles = StyleSheet.create({
     padding: 32,
     borderTopWidth: 1,
     borderTopColor: colors.colorBorder,
-    fontSize: 8,
-  },
-  column: {
-    flexDirection: 'column',
-    gap: 1.4,
-  },
-
-  heading: {
-    marginBottom: 1,
-    fontWeight: 600,
-    textTransform: 'uppercase',
+    fontSize: 10,
   },
 });

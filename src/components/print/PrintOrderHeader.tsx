@@ -7,6 +7,7 @@ import { styles } from './styles';
 
 interface PrintOrderHeaderProps {
   billingAddress: BaseAddress;
+  cancelled: boolean;
   createdAt: Date;
   language: Record<string, string>;
   paidAt: Date;
@@ -20,6 +21,7 @@ const PrintOrderHeader = ({
   user,
   createdAt,
   language,
+  cancelled,
   selectedLanguage,
 }: PrintOrderHeaderProps) => (
   <View style={styles.header}>
@@ -39,16 +41,22 @@ const PrintOrderHeader = ({
 
     <View style={styles.orderInfo}>
       <View>
-        <Text style={styles.infoUppercase}>{language.orderDate}:</Text>
+        <Text style={styles.heading}>{language.orderDate}:</Text>
         <Text style={styles.infoBold}>
           {formatDate(createdAt, selectedLanguage)}
         </Text>
       </View>
       <View style={styles.marginTop6}>
-        <Text style={styles.infoUppercase}>{language.paid}:</Text>
-        <Text style={styles.infoBold}>
-          {formatDate(paidAt, selectedLanguage)}
-        </Text>
+        {cancelled ? (
+          <Text>{language.cancelled}</Text>
+        ) : (
+          <View>
+            <Text style={styles.heading}>{language.paid}:</Text>
+            <Text style={styles.infoBold}>
+              {formatDate(paidAt, selectedLanguage)}
+            </Text>
+          </View>
+        )}
       </View>
     </View>
   </View>
