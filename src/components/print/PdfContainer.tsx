@@ -29,7 +29,11 @@ const PdfContainer = ({
           <Text style={styles.infoBold}>{order.id}</Text>
         </View>
       </View>
-
+      {order.delivery.status === 'cancelled' && (
+        <View style={styles.cancelled}>
+          <Text style={styles.cancelledText}>{language.orderCancelled}</Text>
+        </View>
+      )}
       <PrintOrderHeader
         language={language}
         paidAt={order.payment.paidAt}

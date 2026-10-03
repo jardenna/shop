@@ -52,4 +52,16 @@ export const styles = StyleSheet.create({
   },
 
   flexRow: { flexDirection: 'row', gap: 4, alignItems: 'center' },
+
+  cancelled: {
+    padding: 12,
+    backgroundColor: colors.textDangerColor,
+  },
+
+  cancelledText: {
+    color: colors.colorTextLight,
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  },
 });
