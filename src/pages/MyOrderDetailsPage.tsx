@@ -1,9 +1,12 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import DownloadPdfBtn from '../components/DownloadPdfBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
+import PrintOrder from '../components/print/PrintOrder';
 import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
+import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
 import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
 import MyOrderInfo from '../features/orders/components/MyOrderInfo';
@@ -17,7 +20,8 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const MyOrderDetailsPage = () => {
   const { id } = useParams();
-  const { language } = useLanguage();
+  const { language, selectedLanguage } = useLanguage();
+  const { rates } = useCurrency();
 
   const {
     data: order,
@@ -86,6 +90,18 @@ const MyOrderDetailsPage = () => {
 
               <OrderAddressList addresses={addressList} refetch={refetch} />
             </section>
+            <DownloadPdfBtn
+              document={
+                <PrintOrder
+                  order={order}
+                  selectedLanguage={selectedLanguage}
+                  language={language}
+                  rates={rates}
+                />
+              }
+              fileName={`order-${order.id}.pdf`}
+              label={language.printOrder}
+            />
           </div>
         )}
       </ErrorBoundary>
