@@ -63,12 +63,15 @@
       align-items: center;
       padding-inline: 20px 60px;
 
-      p {
-        max-width: rem(300px);
+      @include min-size($large) {
+        p {
+          max-width: rem(300px);
+        }
       }
 
       @include max-size($small) {
         padding: 0;
+        padding-right: 12px;
       }
     }
 

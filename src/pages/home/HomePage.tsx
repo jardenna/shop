@@ -2,7 +2,7 @@ import FashionGrid from './fashionGrid/FashionGrid';
 import Hero from './hero/Hero';
 
 const HomePage = () => (
-  <div className="container">
+  <div>
     <Hero />
     <FashionGrid />
   </div>
