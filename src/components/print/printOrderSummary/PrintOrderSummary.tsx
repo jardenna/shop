@@ -5,7 +5,7 @@ import {
   getFormattedPrice,
 } from '../../../features/currency/currencyConverterUtil';
 import { vat } from '../../../utils/utils';
-import { BasePrintOrderProps } from '../PrintAdminOrder';
+import { BasePrintOrderProps } from '../PrintOrder';
 import { styles } from '../styles';
 import PrintSummaryItem from './PrintSummaryItem';
 import { summaryStyles } from './summaryStyles';

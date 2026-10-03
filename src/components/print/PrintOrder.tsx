@@ -13,16 +13,16 @@ export interface BasePrintOrderProps {
   rates: Record<CurrencyCode, number>;
 }
 
-interface PrintAdminOrderProps extends BasePrintOrderProps {
+interface PrintOrderProps extends BasePrintOrderProps {
   selectedLanguage: SelectedLanguage;
 }
 
-const PrintAdminOrder = ({
+const PrintOrder = ({
   order,
   selectedLanguage,
   language,
   rates,
-}: PrintAdminOrderProps) => (
+}: PrintOrderProps) => (
   <PdfContainer
     language={language}
     order={order}
@@ -47,4 +47,4 @@ const PrintAdminOrder = ({
   </PdfContainer>
 );
 
-export default PrintAdminOrder;
+export default PrintOrder;

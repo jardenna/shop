@@ -5,7 +5,7 @@ import DownloadPdfBtn from '../../../components/DownloadPdfBtn';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import PrintAdminOrder from '../../../components/print/PrintAdminOrder';
+import PrintOrder from '../../../components/print/PrintOrder';
 import { BtnVariant } from '../../../types/enums';
 import { useCurrency } from '../../currency/useCurrency';
 import { useLanguage } from '../../language/useLanguage';
@@ -66,7 +66,7 @@ const AdminOrderFooter = ({
       </Modal>
       <DownloadPdfBtn
         document={
-          <PrintAdminOrder
+          <PrintOrder
             order={order}
             selectedLanguage={selectedLanguage}
             language={language}
