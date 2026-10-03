@@ -41,6 +41,7 @@ const PrintAdminOrder = ({
         discount={order.discount}
         currency={order.payment.currency}
         rates={rates}
+        cancelled={order.delivery.status === 'cancelled'}
       />
     </View>
   </PdfContainer>

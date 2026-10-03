@@ -4,7 +4,7 @@ import './pdfFonts';
 export const colors = {
   colorBorder: '#e5e5e5',
   ColorborderDark: '#99a4a9',
-  textDangerColor: '#b82845',
+  colorRed: '#88001b',
   colorBackground: '#f9f9f9',
   colorBackgroundDark: '#1e211d',
   colorTextLight: '#f4f4f5',
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
 
   cancelled: {
     padding: 12,
-    backgroundColor: colors.textDangerColor,
+    backgroundColor: colors.colorRed,
   },
 
   cancelledText: {
@@ -63,5 +63,8 @@ export const styles = StyleSheet.create({
     fontWeight: 600,
     textTransform: 'uppercase',
     textAlign: 'center',
+  },
+  cancelledValue: {
+    textDecoration: 'line-through',
   },
 });
