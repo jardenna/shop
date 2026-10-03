@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
     textAlign: 'center',
   },
-  cancelledValue: {
+  lineThrough: {
     textDecoration: 'line-through',
   },
 });

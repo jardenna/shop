@@ -64,7 +64,7 @@ const PrintOrderSummary = ({
       <Text
         style={[
           summaryStyles.totalValue,
-          ...(cancelled ? [styles.cancelledValue] : []),
+          ...(cancelled ? [styles.lineThrough] : []),
         ]}
       >
         {getFormattedPrice(summary.totalPrice, currency, rates)}

@@ -10,11 +10,16 @@ import { styles } from '../styles';
 import { footerStyles } from './footerStyles';
 
 interface PrintOrderFooterProps {
+  cancelled: boolean;
   language: Record<string, string>;
   method: PaymentMethods;
 }
 
-const PrintOrderFooter = ({ language, method }: PrintOrderFooterProps) => (
+const PrintOrderFooter = ({
+  language,
+  method,
+  cancelled,
+}: PrintOrderFooterProps) => (
   <View style={footerStyles.footer}>
     <View>
       <Text style={styles.heading}>{shopName}</Text>
@@ -32,12 +37,18 @@ const PrintOrderFooter = ({ language, method }: PrintOrderFooterProps) => (
 
     <View>
       <Text style={styles.heading}>{language.payment}</Text>
-      <Text>
-        {language.paymentMethod}: {paymentMethodLabels[method]}
-      </Text>
-      <Text>
-        {language.paymentStatus}: {language.paid}
-      </Text>
+      {cancelled ? (
+        <Text>{language.cancelled}</Text>
+      ) : (
+        <View>
+          <Text>
+            {language.paymentMethod}: {paymentMethodLabels[method]}
+          </Text>
+          <Text>
+            {language.paymentStatus}: {language.paid}
+          </Text>
+        </View>
+      )}
     </View>
   </View>
 );
