@@ -71,7 +71,7 @@ categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategoriliste
 categoryName;Category name;Kategori navn
-categoryNotFound;Category not found;Kategorien findes ikke
+categoryNotFound;Category not found.;Kategorien findes ikke
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
@@ -319,7 +319,6 @@ noOrdersText;Once you've placed your first order, it will appear here so you can
 noOrdersTitle;No orders yet;Ingen ordrer endnu
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
-noProduct;Product not found;Produkt blev ikke fundet
 noProductText;No products match your filters. Try removing some filters or reset to see all products again;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen
 noProductTitle;No product match your filters;Ingen produkter matcher dine filtre
 noPromoCode;We couldn't recognize the discount code Please try again;Vi kunne desværre ikke genkende rabatkoden Prøv venligst igen
@@ -557,6 +556,8 @@ subCategoryName;Subcategory name;Underkategori navn
 subTotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
+originalProductNotFound;Original product not found;Det originale produkt blev ikke fundet
+subcategoryDoesNotExist;Subcategory does not exist;Underkategorien findes ikke
 summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
