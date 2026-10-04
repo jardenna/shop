@@ -135,7 +135,6 @@ const AddressFormModal = ({
         modalId={modalId}
         ariaControls={ariaControls}
         headerText={headerText}
-        modalSize="medium"
         isLoading={isLoading || addressIsLoading}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}

@@ -13,7 +13,7 @@ const SkeletonAddressList = () => (
 
     <SkeletonActions />
     <div className="add-address-row">
-      <Skeleton />
+      <Skeleton count={2} />
     </div>
   </div>
 );
