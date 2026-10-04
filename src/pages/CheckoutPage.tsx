@@ -73,7 +73,6 @@ const CheckoutPage = () => {
                 language={language}
                 username={currentUser?.username ?? ''}
                 refetch={refetch}
-                className="checkout-address-list"
                 buttonRef={addAddressButtonRef}
               />
               <Payment
