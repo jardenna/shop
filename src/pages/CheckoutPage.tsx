@@ -35,13 +35,14 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
 
-  const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
+  const selectPaymentMethodState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
   };
 
-  const { values, onChange } = useFormValidation({
-    initialState,
-  });
+  const { values: paymentMethodValue, onChange: onChangePaymentMethod } =
+    useFormValidation({
+      initialState: selectPaymentMethodState,
+    });
 
   useEffect(() => {
     if (checkout && checkout.cartItems.length === 0) {
@@ -87,15 +88,15 @@ const CheckoutPage = () => {
                 buttonRef={addAddressButtonRef}
               />
               <SelectPaymentMethod
-                onChange={onChange}
-                value={values.paymentMethod}
+                onChange={onChangePaymentMethod}
+                value={paymentMethodValue.paymentMethod}
                 paymentMethods={checkout.paymentMethods}
                 paymentMethodList={paymentMethodList}
               />
 
               <Payment
                 paymentMethod={checkout.paymentMethods}
-                value={values.paymentMethod}
+                value={paymentMethodValue.paymentMethod}
                 language={language}
                 checkout={checkout}
                 addressLength={checkout.addresses.length}
