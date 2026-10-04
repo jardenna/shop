@@ -14,7 +14,6 @@ const ChangeToStandardAddressModal = ({
 }: ChangeToStandardAddressModalProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
-  console.log(addresses);
 
   return (
     <section>
