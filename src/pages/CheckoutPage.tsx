@@ -9,7 +9,6 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
-import { formatExpiryDate } from '../features/checkout/components/formatExpiryDateUtil';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
@@ -25,8 +24,6 @@ import {
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
-import { ChangeInputType } from '../types/types';
-import { validatePayment } from '../utils/validation/validatePayment';
 import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -53,26 +50,9 @@ const CheckoutPage = () => {
       initialState: selectPaymentMethodState,
     });
 
-  const initialValues: PaymentFormValues = {
-    paymentMethod: paymentMethodValue.paymentMethod,
-    cardNumber: '',
-    expiryDate: '',
-    cvvCode: '',
-    cardholderName: '',
-    paypalEmail: '',
-    paypalPassword: '',
-    mobilePhoneNumber: '',
-  };
-
-  const { values, onChange, errors, onSubmit } = useFormValidation({
-    initialState: initialValues,
-    callback: handleSubmit,
-    validate: validatePayment,
-  });
-  console.log(errors);
-
-  const [createOrder] = useCreateOrderMutation();
-  const [payOrder] = usePayOrderMutation();
+  const [createOrder, { isLoading: isCreateOrderLoading }] =
+    useCreateOrderMutation();
+  const [payOrder, { isLoading: isPayOrderLoading }] = usePayOrderMutation();
   const [deleteCart] = useDeleteCartMutation();
 
   const orderItems =
@@ -93,36 +73,7 @@ const CheckoutPage = () => {
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
-  const orderPayload = {
-    orderItems,
-    shippingAddressId,
-    billingAddressId,
-    payment: {
-      method: paymentMethodValue.paymentMethod,
-    },
-  };
-
-  const availablePaymentMethods = paymentMethodsList.filter((method) =>
-    checkout?.paymentMethods.includes(method.id),
-  );
-
-  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
-    label,
-    value: id,
-    id,
-  }));
-
-  const handleChange = (event: ChangeInputType) => {
-    const currentTarget = event.currentTarget;
-
-    if (currentTarget.name === 'expiryDate') {
-      currentTarget.value = formatExpiryDate(currentTarget.value);
-    }
-
-    onChange(event);
-  };
-
-  async function handleSubmit(paymentValues: PaymentFormValues) {
+  const handleSubmit = async (paymentValues: PaymentFormValues) => {
     if (!checkout) {
       return;
     }
@@ -143,11 +94,18 @@ const CheckoutPage = () => {
       return;
     }
 
-    const order = await createOrder(orderPayload).unwrap();
+    const order = await createOrder({
+      orderItems,
+      shippingAddressId,
+      billingAddressId,
+      payment: {
+        method: paymentValues.paymentMethod,
+      },
+    }).unwrap();
 
     await payOrder({
       orderId: order.id,
-      method: paymentMethodValue.paymentMethod,
+      method: paymentValues.paymentMethod,
       currency: selectedCurrency,
       cardholderName: paymentValues.cardholderName,
       cardNumber: paymentValues.cardNumber,
@@ -163,11 +121,21 @@ const CheckoutPage = () => {
     onAddToast({
       message: language.orderCreated,
     });
-  }
+  };
 
   if (checkout && checkout.cartItems.length === 0) {
     return null;
   }
+
+  const availablePaymentMethods = paymentMethodsList.filter((method) =>
+    checkout?.paymentMethods.includes(method.id),
+  );
+
+  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
+    label,
+    value: id,
+    id,
+  }));
 
   return (
     <MainPageContainer heading={language.checkout} variant="large">
@@ -205,13 +173,12 @@ const CheckoutPage = () => {
               />
 
               <Payment
-                onSubmit={onSubmit}
-                onChange={handleChange}
+                key={paymentMethodValue.paymentMethod}
                 paymentMethod={checkout.paymentMethods}
                 value={paymentMethodValue.paymentMethod}
                 language={language}
-                errors={errors}
-                values={values}
+                onSubmit={handleSubmit}
+                isLoading={isCreateOrderLoading || isPayOrderLoading}
                 additionalFooterInfo={
                   isMobileSize ? (
                     <TotalPrice price={checkout.summary.totalPrice} />
@@ -240,4 +207,5 @@ const CheckoutPage = () => {
     </MainPageContainer>
   );
 };
+
 export default CheckoutPage;
