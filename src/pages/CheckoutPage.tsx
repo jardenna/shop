@@ -9,7 +9,7 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import Payment from '../features/checkout/components/Payment';
-import SelectPaymenMethod from '../features/checkout/components/SelectPaymenMethod';
+import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
@@ -56,11 +56,6 @@ const CheckoutPage = () => {
     checkout?.paymentMethods.includes(method.id),
   );
 
-  const methodToShow = availablePaymentMethods.find(
-    (method) => method.id === values.paymentMethod,
-  );
-  console.log(methodToShow);
-
   const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
     label,
     value: id,
@@ -91,7 +86,7 @@ const CheckoutPage = () => {
                 refetch={refetch}
                 buttonRef={addAddressButtonRef}
               />
-              <SelectPaymenMethod
+              <SelectPaymentMethod
                 onChange={onChange}
                 value={values.paymentMethod}
                 paymentMethods={checkout.paymentMethods}

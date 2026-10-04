@@ -9,19 +9,19 @@ interface PaymentMethodList {
   value: PaymentMethods;
 }
 
-interface SelectPaymenMethodProps {
+interface SelectPaymentMethodProps {
   onChange: InputChangeHandler;
   paymentMethodList: PaymentMethodList[];
   paymentMethods: PaymentMethods[];
   value: PaymentMethods;
 }
 
-const SelectPaymenMethod = ({
+const SelectPaymentMethod = ({
   value,
   onChange,
   paymentMethodList,
   paymentMethods,
-}: SelectPaymenMethodProps) => (
+}: SelectPaymentMethodProps) => (
   <form className="select-payment-method" noValidate>
     <RadioButtonList
       onChange={onChange}
@@ -32,4 +32,4 @@ const SelectPaymenMethod = ({
     <PaymentMethodsList paymentMethods={paymentMethods} />
   </form>
 );
-export default SelectPaymenMethod;
+export default SelectPaymentMethod;
