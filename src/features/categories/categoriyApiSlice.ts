@@ -29,6 +29,9 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
     getCategoryById: builder.query<UpdateCategoryRequest, string>({
       query: (id) => `${categoryUrl}/${id}`,
       providesTags: [TagTypesEnum.Categories],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     getPublishedCategories: builder.query<string[], void>({
       query: () => `${categoryUrl}/published`,
