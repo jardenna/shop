@@ -3,10 +3,8 @@ import {
   Address,
   AddressFields,
   AddressInput,
-  StandardAddress,
 } from '../../app/api/apiTypes/addressApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
-import CheckboxList from '../../components/formElements/checkbox/CheckboxList';
 import Input from '../../components/formElements/Input';
 import IconContent from '../../components/IconContent';
 import FormModal from '../../components/Modal/FormModal';
@@ -66,11 +64,6 @@ const AddressFormModal = ({
   const { onAddToast } = useToast();
   const { closeModal } = useModal();
 
-  const standardAddressList: StandardAddress[] = [
-    'addressBilling',
-    'addressDelivery',
-  ];
-
   const initialState: AddressInput = {
     name: address?.name || username,
     street: address?.street ?? '',
@@ -105,6 +98,7 @@ const AddressFormModal = ({
       await updateAddress({ address: updatedAddress, id }).unwrap();
     } else {
       await addAddress({ address: updatedAddress }).unwrap();
+      onClearAllValues();
     }
 
     onAddToast({
@@ -164,14 +158,6 @@ const AddressFormModal = ({
                 errorText={language[errors[name]]}
               />
             ))}
-
-            <CheckboxList
-              checkBoxList={standardAddressList}
-              name="standardAddress"
-              onChange={onChange}
-              values={values.standardAddress}
-              language={language}
-            />
           </div>
         </FieldSet>
       </FormModal>
