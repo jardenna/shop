@@ -8,6 +8,7 @@ import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
+import ChangeToStandardAddressModal from './ChangeToStandardAddressModal';
 import DeleteAddressModal from './DeleteAddressModal';
 
 interface AddressListProps {
@@ -77,7 +78,8 @@ const AddressList = ({
           modalId="address"
         />
       )}
-      <div className="add-address">
+      <div className="add-address-actions">
+        <ChangeToStandardAddressModal />
         <AddressFormModal
           id={null}
           username={username}
