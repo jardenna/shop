@@ -5,20 +5,6 @@ const errorHandler = (error, req, res, next) => {
     error.statusCode || (res.statusCode === 200 ? 500 : res.statusCode);
   let message = error.message;
 
-  // Handle CastError (e.g. invalid ObjectId)
-  if (error.name === 'CastError') {
-    if (error.path === '_id') {
-      statusCode = 404;
-      message = t('resourceNotFound', req.lang);
-    } else {
-      console.warn(
-        `[CastError] Path: ${error.path} | Value: ${error.value} | Route: ${req.originalUrl}`,
-      );
-      statusCode = 400;
-      message = t('resourceNotFound', req.lang);
-    }
-  }
-
   // Duplicate key error
   if (error.code === 11000) {
     statusCode = 400;
