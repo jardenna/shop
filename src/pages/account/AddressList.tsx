@@ -79,7 +79,7 @@ const AddressList = ({
         />
       )}
       <div className="add-address-actions">
-        <ChangeToStandardAddressModal />
+        <ChangeToStandardAddressModal addresses={addresses} />
         <AddressFormModal
           id={null}
           username={username}
