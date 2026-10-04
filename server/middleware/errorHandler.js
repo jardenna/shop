@@ -10,7 +10,7 @@ const errorHandler = (error, req, res, next) => {
   if (error.name === 'CastError') {
     if (error.path === '_id') {
       statusCode = 404;
-      message = t('resourceNotFound', req.lang);
+      message = 'from errorhandler';
       hideToast = true;
     } else {
       console.warn(

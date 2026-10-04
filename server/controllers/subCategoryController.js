@@ -221,7 +221,8 @@ const getSubCategoryById = asyncHandler(async (req, res) => {
   if (!subCategory) {
     return res.status(404).json({
       success: false,
-      message: t('couldNotFindInfo', req.lang),
+      message: t('resourceNotFound', req.lang),
+      hideToast: true,
     });
   }
 
@@ -431,13 +432,13 @@ const deleteSubCategory = asyncHandler(async (req, res) => {
   if (!subCategory) {
     return res.status(404).json({
       success: false,
-      message: t('categoryNotFound', req.lang),
+      message: t('resourceNotFound', req.lang),
     });
   }
 
   res.status(200).json({
     success: true,
-    message: 'SubCategory deleted successfully',
+    message: t('subCategoryDeleted', req.lang),
   });
 });
 

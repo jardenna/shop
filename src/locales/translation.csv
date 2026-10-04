@@ -458,7 +458,7 @@ productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
-promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
+promoCodeApplied;Discount code applied.;Rabatkoden er blevet anvendt.
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
@@ -551,6 +551,7 @@ sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
 subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
+subCategoryDeleted;Subcategory deleted;Subkategori blev slettet
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 subTotal;Subtotal;Subtotal
