@@ -10,7 +10,7 @@ interface CartFooterProps {
   linkTo: string;
   modalHeaderText: string;
   name: string;
-  isAdmin?: boolean;
+  hideDeleteBtn?: boolean;
   onDelete: () => void;
 }
 
@@ -21,12 +21,12 @@ const CartFooter = ({
   modalHeaderText,
   linkTo,
   onDelete,
-  isAdmin,
+  hideDeleteBtn,
 }: CartFooterProps) => {
   const { language } = useLanguage();
   return (
     <footer className="footer">
-      {isAdmin && (
+      {!hideDeleteBtn && (
         <>
           <TriggerModalButton
             ariaControls="delete-product"
