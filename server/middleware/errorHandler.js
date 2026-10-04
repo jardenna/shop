@@ -4,14 +4,12 @@ const errorHandler = (error, req, res, next) => {
   let statusCode =
     error.statusCode || (res.statusCode === 200 ? 500 : res.statusCode);
   let message = error.message;
-  let hideToast = false;
 
   // Handle CastError (e.g. invalid ObjectId)
   if (error.name === 'CastError') {
     if (error.path === '_id') {
       statusCode = 404;
       message = t('resourceNotFound', req.lang);
-      hideToast = true;
     } else {
       console.warn(
         `[CastError] Path: ${error.path} | Value: ${error.value} | Route: ${req.originalUrl}`,
@@ -43,7 +41,6 @@ const errorHandler = (error, req, res, next) => {
   res.status(statusCode).json({
     success: false,
     message,
-    ...(hideToast && { hideToast: true }),
     stack: process.env.NODE_ENV === 'production' ? null : error.stack,
   });
 };
