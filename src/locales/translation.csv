@@ -71,7 +71,7 @@ categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategoriliste
 categoryName;Category name;Kategori navn
-categoryNotFound;Category not found;Kategorien findes ikke
+categoryNotFound;This category is no longer available.;Denne kategori er ikke længere tilgængelig
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
@@ -313,13 +313,12 @@ noFavoritesText;Find your must-haves and save them here, so you can easily come 
 noFavoritesTitle;No favorites yet;Ingen favoritter endnu
 noImagesProvided;No images provided;Ingen billeder
 noItemsToShow;No items to show;Ingen varer at vise
-noMatchingAddressData;No matching address found;Ingen matchende adresse
+noMatchingAddressData;No matching address found;Adressen blev ikke fundet
 noOptions;No options;Ingen valgmuligheder
 noOrdersText;Once you've placed your first order, it will appear here so you can easily track and review your purchases.;Når du har afgivet din første ordre, vises den her, så du nemt kan følge og se dine køb
 noOrdersTitle;No orders yet;Ingen ordrer endnu
 noPassword;Please enter a password;Indtast venligst en adgangskode
 noPreference;No preference;Ingen præference
-noProduct;Product not found;Produkt blev ikke fundet
 noProductText;No products match your filters. Try removing some filters or reset to see all products again;Der er ingen produkter, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle produkter igen
 noProductTitle;No product match your filters;Ingen produkter matcher dine filtre
 noPromoCode;We couldn't recognize the discount code Please try again;Vi kunne desværre ikke genkende rabatkoden Prøv venligst igen
@@ -363,7 +362,7 @@ orderHistory;Order history;Ordrehistorik
 orderList;Order list;Ordreliste
 orderMustBeProcessingFirst;Order must be processing before it can be shipped.;Ordren skal være under behandling, før den kan sendes.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
-orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
+orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde den ordre, du leder efter.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orders;Orders;Ordrer
@@ -446,7 +445,6 @@ productList;Product list;Produktliste
 productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNavigation;Produkt navigation;Produkt navigation
-productNotFound;Product not found;Produktet findes ikke
 productNotFound;This product is no longer available;Dette produkt er ikke længere tilgængeligt
 productPerPage;products per page;produkter pr. side
 productQuantity;Product quantity;Produkt antal
@@ -458,7 +456,7 @@ productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
-promoCodeApplied;Discount code applied successfully.;Rabatkoden er blevet anvendt.
+promoCodeApplied;Discount code applied.;Rabatkoden er blevet anvendt.
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
@@ -551,11 +549,14 @@ sub;Sub;Sekundær
 subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
 subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
+subCategoryDeleted;Subcategory deleted;Subkategori blev slettet
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 subTotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
+originalProductNotFound;Original product not found;Det originale produkt blev ikke fundet
+subcategoryDoesNotExist;Subcategory does not exist;Underkategorien findes ikke
 summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger

@@ -65,20 +65,23 @@ const createProduct = [
 // @access  Private for admin and employees
 const duplicateProduct = asyncHandler(async (req, res) => {
   const original = await Product.findById(req.params.id);
+  //       message: t('productNotFound', req.lang),
 
   if (!original) {
-    return res
-      .status(404)
-      .json({ success: false, message: 'Original product not found' });
+    return res.status(404).json({
+      success: false,
+      message: t('originalProductNotFound', req.lang),
+    });
   }
 
   const { _id, ...rest } = original.toObject();
 
   const subCategoryExists = await SubCategory.findById(original.subCategory);
   if (!subCategoryExists) {
-    return res
-      .status(400)
-      .json({ success: false, message: 'Subcategory does not exist' });
+    return res.status(400).json({
+      success: false,
+      message: t('subcategoryDoesNotExist', req.lang),
+    });
   }
 
   const countInStock = Number(rest.quantity) || 0;
@@ -124,12 +127,11 @@ const updateProduct = [
         .status(400)
         .json({ success: false, message: 'Invalid subCategory ID' });
     }
-
     const existingProduct = await Product.findById(req.params.id);
     if (!existingProduct) {
       return res
         .status(404)
-        .json({ success: false, message: 'Product not found' });
+        .json({ success: false, message: t('productNotFound', req.lang) });
     }
 
     if (images && Array.isArray(images)) {
@@ -423,7 +425,8 @@ const getProductById = asyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json({
       success: false,
-      message: t('couldNotFindInfo', req.lang),
+      message: t('resourceNotFound', req.lang),
+      hideToast: true,
     });
   }
 

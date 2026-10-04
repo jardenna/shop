@@ -18,6 +18,7 @@ export const rtkQueryErrorLogger: Middleware =
       const payload = action.payload as
         | {
             data?: {
+              hideToast?: boolean;
               message?: string;
             };
             status?: number;
@@ -25,11 +26,12 @@ export const rtkQueryErrorLogger: Middleware =
         | undefined;
 
       const errorStatus = payload?.status;
+      const shouldHideToast = payload?.data?.hideToast ?? false;
 
       if (
         typeof errorStatus === 'number' &&
         errorStatus < 500 &&
-        errorStatus !== 404
+        !shouldHideToast
       ) {
         const errorMessage =
           typeof payload?.data?.message === 'string'
