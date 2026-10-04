@@ -185,7 +185,6 @@ const CollectionPage = () => {
                 priority
                 className="shop-product-banner"
               />
-
               <div className="product-toolbar">
                 <ProductToolbar
                   setProductView={setProductView}
@@ -233,18 +232,21 @@ const CollectionPage = () => {
                   }}
                 />
               )}
+              {itemCount === 0 && (
+                <EmptyStateContent
+                  className="collection"
+                  emptyStateText={language.noProductText}
+                  emptyStateTitle={language.noProductTitle}
+                  src="/images/shoppingBags/collection_shopping_bag"
+                >
+                  <Button onClick={onClearAllFilters}>
+                    {language.clearAllFilters}
+                  </Button>
+                </EmptyStateContent>
+              )}
             </section>
           </ErrorBoundary>
         </div>
-        <EmptyStateContent
-          emptyStateText={language.noProductText}
-          emptyStateTitle={language.noProductTitle}
-          src="/images/shoppingBags/collection_shopping_bag"
-        >
-          <Button onClick={onClearAllFilters}>
-            {language.clearAllFilters}
-          </Button>
-        </EmptyStateContent>
       </section>
     </>
   );

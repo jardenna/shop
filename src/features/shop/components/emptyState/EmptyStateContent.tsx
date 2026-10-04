@@ -5,6 +5,7 @@ export interface BaseEmptyStateProps {
   emptyStateText: string;
   emptyStateTitle: string;
   src: string;
+  className?: string;
 }
 
 interface EmptyStateContentProps extends BaseEmptyStateProps {
@@ -16,8 +17,9 @@ const EmptyStateContent = ({
   emptyStateText,
   emptyStateTitle,
   src,
+  className = '',
 }: EmptyStateContentProps) => (
-  <section className="empty-state">
+  <section className={`empty-state ${className}`}>
     <div>
       <Picture
         src={`${src}.png`}

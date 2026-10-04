@@ -58,7 +58,7 @@ const CategoryCart = ({
         modalHeaderText={language.deleteCategory}
         linkTo={`${AdminPath.AdminSubCategoryUpdate}/${categoryId}`}
         onDelete={onDeleteSubCategory}
-        isAdmin={isAdmin}
+        hideDeleteBtn={!isAdmin}
       />
     </section>
   );
