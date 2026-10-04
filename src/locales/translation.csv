@@ -71,7 +71,7 @@ categoryDeleted;Category deleted;Kategori blev slettet
 categoryIs;Category is;Kategori er
 categoryList;Category list;Kategoriliste
 categoryName;Category name;Kategori navn
-categoryNotFound;Category not found.;Kategorien findes ikke
+categoryNotFound;This category is no longer available.;Denne kategori er ikke længere tilgængelig
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
