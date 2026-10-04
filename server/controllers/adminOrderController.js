@@ -224,6 +224,7 @@ const shipOrder = asyncHandler(async (req, res) => {
     return res.status(404).json({
       success: false,
       message: t('orderNotFound', req.lang),
+      hideToast: true,
     });
   }
 

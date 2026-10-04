@@ -424,6 +424,7 @@ const getProductById = asyncHandler(async (req, res) => {
     return res.status(404).json({
       success: false,
       message: t('couldNotFindInfo', req.lang),
+      hideToast: true,
     });
   }
 
