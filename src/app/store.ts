@@ -1,54 +1,13 @@
-import type { Middleware } from '@reduxjs/toolkit';
-import { configureStore, isRejectedWithValue } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
 import miniCartReducer from '../features/miniCartPopupSlice';
 import modalReducer from '../features/modalSlice';
-import toastReducer, { addToast } from '../features/toastSlice';
+import toastReducer from '../features/toastSlice';
 import apiSlice from './api/apiSlice';
 import { currencyApiSlice } from './api/currencyApiSlice';
-
-export const rtkQueryErrorLogger: Middleware =
-  ({ dispatch }) =>
-  (next) =>
-  (action) => {
-    if (isRejectedWithValue(action)) {
-      const payload = action.payload as
-        | {
-            data?: {
-              hideToast?: boolean;
-              message?: string;
-            };
-            status?: number;
-          }
-        | undefined;
-
-      const errorStatus = payload?.status;
-      const shouldHideToast = payload?.data?.hideToast ?? false;
-
-      if (
-        typeof errorStatus === 'number' &&
-        errorStatus < 500 &&
-        !shouldHideToast
-      ) {
-        const errorMessage =
-          typeof payload?.data?.message === 'string'
-            ? payload.data.message
-            : 'An error occurred';
-
-        dispatch(
-          addToast({
-            type: 'error',
-            message: errorMessage,
-          }),
-        );
-      }
-    }
-
-    return next(action);
-  };
 
 export const store = configureStore({
   reducer: {
@@ -65,7 +24,6 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       apiSlice.middleware,
-      rtkQueryErrorLogger,
       currencyApiSlice.middleware,
     ),
   devTools: true,

@@ -94,13 +94,10 @@ const getAdminOrderById = asyncHandler(async (req, res) => {
   ]);
 
   if (!order) {
-    return res
-      .status(404)
-      .json({
-        success: false,
-        message: t('orderNotFound', req.lang),
-        hideToast: true,
-      });
+    return res.status(404).json({
+      success: false,
+      message: t('orderNotFound', req.lang),
+    });
   }
 
   if (order.user && !order.user.phoneNo) {
@@ -228,7 +225,6 @@ const shipOrder = asyncHandler(async (req, res) => {
     return res.status(404).json({
       success: false,
       message: t('orderNotFound', req.lang),
-      hideToast: true,
     });
   }
 

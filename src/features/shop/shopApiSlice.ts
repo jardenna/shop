@@ -28,6 +28,9 @@ export const shopApiSlice = apiSlice.injectEndpoints({
     getSingleProduct: builder.query<BaseShopProduct, string>({
       query: (id) => `${productUrl}/shop/${id}`,
       providesTags: [TagTypesEnum.Products],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     getShopMenu: builder.query<ProductMenuResponse[], string>({
       query: (params) => `${subCategoryMenuUrl}${params}`,

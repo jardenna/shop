@@ -29,6 +29,9 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     }),
     getOrderById: builder.query<OrderResponse, string>({
       query: (id) => `${ordersUrl}/${id}`,
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
   }),
 });

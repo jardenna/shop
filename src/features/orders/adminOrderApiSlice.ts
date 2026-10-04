@@ -23,6 +23,9 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
       providesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },
       ],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     updateOrder: builder.mutation<DefaultResponse, UpdateOrderRequest>({
       query: ({ orderId, status }) => ({
