@@ -362,7 +362,7 @@ orderHistory;Order history;Ordrehistorik
 orderList;Order list;Ordreliste
 orderMustBeProcessingFirst;Order must be processing before it can be shipped.;Ordren skal være under behandling, før den kan sendes.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
-orderNotFound;We couldn't find the order you're looking for. It may have been removed or the link is no longer valid.;Vi kunne ikke finde den ordre, du leder efter. Den kan være blevet fjernet, eller linket er ikke længere gyldigt.
+orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde den ordre, du leder efter.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orders;Orders;Ordrer
@@ -445,7 +445,6 @@ productList;Product list;Produktliste
 productName;Product name;Produkt navn
 productNameRequired;Please insert product name;Indsæt venligst produktnavn
 productNavigation;Produkt navigation;Produkt navigation
-productNotFound;Product not found;Produktet findes ikke
 productNotFound;This product is no longer available;Dette produkt er ikke længere tilgængeligt
 productPerPage;products per page;produkter pr. side
 productQuantity;Product quantity;Produkt antal
