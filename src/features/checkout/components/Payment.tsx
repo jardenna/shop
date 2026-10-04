@@ -1,14 +1,8 @@
 import { ReactNode } from 'react';
 import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import RadioButtonList from '../../../components/formElements/radioList/RadioButtonList';
 import { paymentMethodsList } from '../../../config/paymentConfig';
-import type {
-  InputChangeHandler,
-  RefBtnType,
-  RefElementType,
-} from '../../../types/types';
-import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
+import type { RefBtnType, RefElementType } from '../../../types/types';
 import PaymentCardForm from './PaymentCardForm';
 
 export interface BasePaymentProps {
@@ -21,18 +15,12 @@ export interface BasePaymentProps {
 }
 
 interface PaymentProps extends BasePaymentProps {
-  name: string;
-  onChange: InputChangeHandler;
   paymentMethod: PaymentMethods[];
-  values: {
-    paymentMethod: PaymentMethods;
-  };
+  value: PaymentMethods;
 }
 
 const Payment = ({
-  onChange,
-  values,
-  name,
+  value,
   checkout,
   addressLength,
   paymentMethod,
@@ -46,41 +34,23 @@ const Payment = ({
   );
 
   const methodToShow = availablePaymentMethods.find(
-    (method) => method.id === values.paymentMethod,
+    (method) => method.id === value,
   );
 
-  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
-    label,
-    value: id,
-    id,
-  }));
-
   return (
-    <div>
-      <form className="select-payment-method" noValidate>
-        <RadioButtonList
-          onChange={onChange}
-          value={values.paymentMethod}
-          radioButtonList={paymentMethodList}
-          name={name}
-        />
-        <PaymentMethodsList paymentMethods={paymentMethod} />
-      </form>
-
-      {methodToShow && (
-        <PaymentCardForm
-          additionalFooterInfo={additionalFooterInfo}
-          addressSectionRef={addressSectionRef}
-          fields={methodToShow.fields}
-          key={methodToShow.id}
-          language={language}
-          checkout={checkout}
-          paymentMethod={values.paymentMethod}
-          addressLength={addressLength}
-          addAddressButtonRef={addAddressButtonRef}
-        />
-      )}
-    </div>
+    methodToShow && (
+      <PaymentCardForm
+        additionalFooterInfo={additionalFooterInfo}
+        addressSectionRef={addressSectionRef}
+        fields={methodToShow.fields}
+        key={methodToShow.id}
+        language={language}
+        checkout={checkout}
+        paymentMethod={value}
+        addressLength={addressLength}
+        addAddressButtonRef={addAddressButtonRef}
+      />
+    )
   );
 };
 

@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router';
 import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
+import { paymentMethodsList } from '../config/paymentConfig';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import Payment from '../features/checkout/components/Payment';
+import SelectPaymenMethod from '../features/checkout/components/SelectPaymenMethod';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
@@ -50,6 +52,20 @@ const CheckoutPage = () => {
   if (checkout && checkout.cartItems.length === 0) {
     return null;
   }
+  const availablePaymentMethods = paymentMethodsList.filter((method) =>
+    checkout?.paymentMethods.includes(method.id),
+  );
+
+  const methodToShow = availablePaymentMethods.find(
+    (method) => method.id === values.paymentMethod,
+  );
+  console.log(methodToShow);
+
+  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
+    label,
+    value: id,
+    id,
+  }));
 
   return (
     <MainPageContainer heading={language.checkout} variant="large">
@@ -75,11 +91,16 @@ const CheckoutPage = () => {
                 refetch={refetch}
                 buttonRef={addAddressButtonRef}
               />
+              <SelectPaymenMethod
+                onChange={onChange}
+                value={values.paymentMethod}
+                paymentMethods={checkout.paymentMethods}
+                paymentMethodList={paymentMethodList}
+              />
+
               <Payment
                 paymentMethod={checkout.paymentMethods}
-                values={values}
-                onChange={onChange}
-                name="paymentMethod"
+                value={values.paymentMethod}
                 language={language}
                 checkout={checkout}
                 addressLength={checkout.addresses.length}
