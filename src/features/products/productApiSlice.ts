@@ -20,8 +20,11 @@ export const productApiSlice = apiSlice.injectEndpoints({
       providesTags: [TagTypesEnum.Products],
     }),
     getProductById: builder.query<Product, string>({
-      query: (id) => `${productUrl}/${id}`,
+      query: (productId) => `${productUrl}/${productId}`,
       providesTags: [TagTypesEnum.Products],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     getHasScheduledData: builder.query<ScheduledResponse, void>({
       query: () => `${productUrl}/scheduled`,

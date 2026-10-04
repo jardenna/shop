@@ -118,7 +118,6 @@ const getShopProductById = asyncHandler(async (req, res) => {
     return res.status(404).json({
       success: false,
       message: t('resourceNotFound', req.lang),
-      hideToast: true,
     });
   }
 
