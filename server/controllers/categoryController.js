@@ -100,9 +100,11 @@ const getCategoryById = asyncHandler(async (req, res) => {
   const category = await Category.findById(req.params.id).lean();
 
   if (!category) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('couldNotFindInfo', req.lang) });
+    return res.status(404).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
+      hideToast: true,
+    });
   }
 
   const formattedCategory = formatMongoData(category);
@@ -153,10 +155,9 @@ const updateCategory = [
     const category = await Category.findById(req.params.id);
 
     if (!category) {
-      return res.status(404).json({
-        success: false,
-        message: 'Category not found',
-      });
+      return res
+        .status(404)
+        .json({ message: t('categoryNotFound', req.lang), hideToast: true });
     }
 
     category.categoryName = categoryName;
