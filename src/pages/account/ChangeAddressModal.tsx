@@ -14,14 +14,19 @@ const ChangeAddressModal = ({
   shippingAddressId,
   billingAddressId,
   language,
+  onSelectAddress,
 }: BaseAddressListProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
 
-  const initialState = { shippingAddressId, billingAddressId };
+  const initialState: any = {
+    billingAddressId,
+    shippingAddressId,
+  };
 
-  const { onChange, values } = useFormValidation({
+  const { onChange, values, onSubmit } = useFormValidation({
     initialState,
+    callback: handleSubmit,
   });
 
   const getAddressOptions = (addressType: StandardAddress): OptionTypeNew[] =>
@@ -30,6 +35,10 @@ const ChangeAddressModal = ({
       label: `${address.street}, ${address.zipCode} ${address.city}`,
       value: address.id,
     }));
+
+  function handleSubmit() {
+    onSelectAddress(values);
+  }
 
   return (
     <section>
@@ -46,9 +55,7 @@ const ChangeAddressModal = ({
         ariaControls={ariaControls}
         headerText={language.changeStandardAddress}
         isLoading={false}
-        onSubmit={() => {
-          console.log(23);
-        }}
+        onSubmit={onSubmit}
         disabled={false}
         submitLabel="change"
       >

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
+import {
+  Address,
+  StandardAddress,
+} from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
@@ -84,6 +87,9 @@ const AddressList = ({
           billingAddressId="billingAddressId"
           shippingAddressId="shippingAddressId"
           language={language}
+          onSelectAddress={function (address: StandardAddress): void {
+            console.log(address);
+          }}
         />
         <AddressFormModal
           id={null}

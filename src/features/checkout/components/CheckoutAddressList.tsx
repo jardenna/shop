@@ -1,4 +1,7 @@
-import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import {
+  Address,
+  StandardAddress,
+} from '../../../app/api/apiTypes/addressApiTypes';
 import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
 import ChangeAddressModal from '../../../pages/account/ChangeAddressModal';
@@ -9,6 +12,7 @@ export interface BaseAddressListProps {
   billingAddressId: string;
   language: Record<string, string>;
   shippingAddressId: string;
+  onSelectAddress: (address: StandardAddress) => void;
 }
 
 interface CheckoutAddressListProps extends BaseAddressListProps {
@@ -23,6 +27,7 @@ const CheckoutAddressList = ({
   buttonRef,
   shippingAddressId,
   billingAddressId,
+  onSelectAddress,
 }: CheckoutAddressListProps) => (
   <>
     <ul className="address-list">
@@ -39,6 +44,7 @@ const CheckoutAddressList = ({
           billingAddressId={billingAddressId}
           shippingAddressId={shippingAddressId}
           language={language}
+          onSelectAddress={onSelectAddress}
         />
       )}
       <AddressFormModal
