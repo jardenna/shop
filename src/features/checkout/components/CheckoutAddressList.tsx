@@ -6,7 +6,9 @@ import { RefBtnType } from '../../../types/types';
 
 interface CheckoutAddressListProps {
   addresses: Address[];
+  billingAddressId: string;
   language: Record<string, string>;
+  shippingAddressId: string;
   username: string;
   buttonRef?: RefBtnType;
 }
@@ -16,6 +18,8 @@ const CheckoutAddressList = ({
   username,
   language,
   buttonRef,
+  shippingAddressId,
+  billingAddressId,
 }: CheckoutAddressListProps) => (
   <>
     <ul className="address-list">
@@ -26,7 +30,11 @@ const CheckoutAddressList = ({
       ))}
     </ul>
     <div className="add-address-actions">
-      <ChangeAddressModal addresses={addresses} />
+      <ChangeAddressModal
+        addresses={addresses}
+        billingAddressId={billingAddressId}
+        shippingAddressId={shippingAddressId}
+      />
       <AddressFormModal
         id={null}
         username={username}

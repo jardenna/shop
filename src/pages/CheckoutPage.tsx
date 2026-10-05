@@ -165,6 +165,8 @@ const CheckoutPage = () => {
                 language={language}
                 username={currentUser?.username ?? ''}
                 buttonRef={addAddressButtonRef}
+                billingAddressId={billingAddressId}
+                shippingAddressId={shippingAddressId}
               />
 
               <SelectPaymentMethod
