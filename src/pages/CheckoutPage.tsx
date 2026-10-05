@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
-import { StandardAddress } from '../app/api/apiTypes/addressApiTypes';
 import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
@@ -44,8 +43,7 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [selectedAddress, setSelectedAddress] =
-    useState<StandardAddress | null>(null);
+  const [selectedAddress, setSelectedAddress] = useState<any>(null);
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
   };
@@ -77,7 +75,7 @@ const CheckoutPage = () => {
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
-  const handleSelectAddress = (address: StandardAddress) => {
+  const handleSelectAddress = (address: any) => {
     setSelectedAddress(address);
   };
 
@@ -104,8 +102,9 @@ const CheckoutPage = () => {
 
     const order = await createOrder({
       orderItems,
-      shippingAddressId,
-      billingAddressId,
+      shippingAddressId:
+        selectedAddress?.shippingAddressId ?? shippingAddressId,
+      billingAddressId: selectedAddress?.billingAddressId ?? billingAddressId,
       payment: {
         method: paymentValues.paymentMethod,
       },
@@ -145,7 +144,6 @@ const CheckoutPage = () => {
     value: id,
     id,
   }));
-  console.log(selectedAddress);
 
   return (
     <MainPageContainer heading={language.checkout} variant="large">
