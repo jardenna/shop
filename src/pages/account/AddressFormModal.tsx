@@ -34,11 +34,11 @@ interface AddressFormModalProps {
 
 type AddressField = keyof AddressFields;
 
-type AddressFieldListProps = {
+interface AddressFieldListProps {
   name: AddressField;
   required?: boolean;
   type?: InputType;
-};
+}
 
 const addressInputList: AddressFieldListProps[] = [
   { name: 'name' },

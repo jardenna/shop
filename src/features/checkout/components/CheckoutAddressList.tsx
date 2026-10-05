@@ -1,7 +1,7 @@
 import { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
-import ChangeToStandardAddressModal from '../../../pages/account/ChangeToStandardAddressModal';
+import ChangeAddressModal from '../../../pages/account/ChangeAddressModal';
 import { RefBtnType } from '../../../types/types';
 
 interface CheckoutAddressListProps {
@@ -26,7 +26,7 @@ const CheckoutAddressList = ({
       ))}
     </ul>
     <div className="add-address-actions">
-      <ChangeToStandardAddressModal addresses={addresses} />
+      <ChangeAddressModal addresses={addresses} />
       <AddressFormModal
         id={null}
         username={username}

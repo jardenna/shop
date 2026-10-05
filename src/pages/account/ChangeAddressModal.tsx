@@ -5,13 +5,11 @@ import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { BtnVariant } from '../../types/enums';
 
-interface ChangeToStandardAddressModalProps {
+interface ChangeAddressModalProps {
   addresses: Address[];
 }
 
-const ChangeToStandardAddressModal = ({
-  addresses,
-}: ChangeToStandardAddressModalProps) => {
+const ChangeAddressModal = ({ addresses }: ChangeAddressModalProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
 
@@ -61,4 +59,4 @@ const ChangeToStandardAddressModal = ({
   );
 };
 
-export default ChangeToStandardAddressModal;
+export default ChangeAddressModal;
