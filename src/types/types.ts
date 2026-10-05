@@ -16,6 +16,7 @@ export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 export type OptionType<T = string> = {
   label: string;
   value: T;
+  id?: string;
 };
 
 export type AriaLabelData = {
