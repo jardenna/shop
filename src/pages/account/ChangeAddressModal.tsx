@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButtonList from '../../components/formElements/radioList/RadioButtonList';
 import FormModal from '../../components/Modal/FormModal';
@@ -23,9 +24,7 @@ const ChangeAddressModal = ({
     initialState,
   });
 
-  const getAddressOptions = (
-    addressType: 'billing' | 'shipping',
-  ): OptionTypeNew[] =>
+  const getAddressOptions = (addressType: StandardAddress): OptionTypeNew[] =>
     addresses.map((address) => ({
       id: `${address.id}-${addressType}`,
       label: `${address.street}, ${address.zipCode} ${address.city}`,
@@ -55,7 +54,7 @@ const ChangeAddressModal = ({
       >
         <FieldSet legendText={language.addressBilling} showLegendText>
           <RadioButtonList
-            radioButtonList={getAddressOptions('billing')}
+            radioButtonList={getAddressOptions('addressBilling')}
             value={values.billingAddressId}
             name="billingAddressId"
             onChange={onChange}
@@ -64,7 +63,7 @@ const ChangeAddressModal = ({
 
         <FieldSet legendText={language.addressDelivery} showLegendText>
           <RadioButtonList
-            radioButtonList={getAddressOptions('shipping')}
+            radioButtonList={getAddressOptions('addressDelivery')}
             value={values.shippingAddressId}
             name="shippingAddressId"
             onChange={onChange}
