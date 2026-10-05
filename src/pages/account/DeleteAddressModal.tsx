@@ -49,7 +49,7 @@ const DeleteAddressModal = ({
         headerText={language.deleteAddress}
         ariaControls={ariaControls}
         onDelete={handleDeleteAddress}
-        modalMessage={selectedAddress?.city ?? ''}
+        modalMessage={selectedAddress?.street ?? ''}
         itemId={selectedAddress?.id ?? ''}
       />
     </>
