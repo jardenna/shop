@@ -4,6 +4,7 @@ import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
+import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
 import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
@@ -29,10 +30,17 @@ const AddressList = ({
   buttonRef,
 }: AddressListProps) => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+  const [changedAddress, setChangedAddress] =
+    useState<AddressSelectionNew | null>(null);
 
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
   };
+
+  const handleChangeAddress = (address: AddressSelectionNew) => {
+    setChangedAddress(address);
+  };
+  console.log(changedAddress);
 
   return (
     <ErrorBoundary
@@ -84,9 +92,7 @@ const AddressList = ({
           billingAddressId="billingAddressId"
           shippingAddressId="shippingAddressId"
           language={language}
-          onSelectAddress={function (address: any): void {
-            console.log(address);
-          }}
+          onSelectAddress={handleChangeAddress}
         />
         <AddressFormModal
           id={null}
