@@ -24,11 +24,14 @@ import {
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
+import { ShopPath } from '../layout/nav/enums';
 import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import { useNavigate } from 'react-router';
 
 const CheckoutPage = () => {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const { currentUser } = useAuth();
   const { isMobileSize } = useMediaQuery();
@@ -117,6 +120,7 @@ const CheckoutPage = () => {
     }).unwrap();
 
     await deleteCart().unwrap();
+    navigate(`/${ShopPath.MyOrder}/${order.id}`);
 
     onAddToast({
       message: language.orderCreated,
