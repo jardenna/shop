@@ -2,11 +2,8 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import IconContent from '../../components/IconContent';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
 import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
-import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
@@ -115,20 +112,14 @@ const AddressList = ({
 
             <div className="address-footer">
               {address.standardAddress.length === 0 && (
-                <TriggerModalButton
-                  ariaControls={address.id}
-                  modalId="delete-address"
-                  variant={BtnVariant.Ghost}
+                <DeleteAddressModal
+                  selectedAddress={selectedAddress}
                   onClick={() => {
                     handleSelectAddress(address);
                   }}
-                >
-                  <IconContent
-                    iconName={IconName.Trash}
-                    ariaLabel={language.deleteAddress}
-                  />
-                </TriggerModalButton>
+                />
               )}
+
               <AddressFormModalNew
                 id={address.id}
                 address={address}
@@ -142,15 +133,6 @@ const AddressList = ({
           </li>
         ))}
       </ul>
-
-      {selectedAddress && (
-        <DeleteAddressModal
-          ariaControls={selectedAddress.id}
-          itemId={selectedAddress.id}
-          modalMessage={selectedAddress.street}
-          modalId="delete-address"
-        />
-      )}
 
       <div className="add-address-actions">
         <ChangeAddressModal
