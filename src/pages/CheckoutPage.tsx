@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useNavigate } from 'react-router';
 import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
@@ -9,6 +10,7 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
+import CheckoutAddressList from '../features/checkout/components/CheckoutAddressList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
@@ -25,10 +27,8 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
-import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import { useNavigate } from 'react-router';
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -44,14 +44,13 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
 
-  const selectPaymentMethodState: Pick<PaymentFormValues, 'paymentMethod'> = {
+  const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
   };
 
-  const { values: paymentMethodValue, onChange: onChangePaymentMethod } =
-    useFormValidation({
-      initialState: selectPaymentMethodState,
-    });
+  const { values, onChange } = useFormValidation({
+    initialState,
+  });
 
   const [createOrder, { isLoading: isCreateOrderLoading }] =
     useCreateOrderMutation();
@@ -161,25 +160,24 @@ const CheckoutPage = () => {
                 )}
               </LayoutElement>
 
-              <AddressList
+              <CheckoutAddressList
                 addresses={checkout.addresses}
                 language={language}
                 username={currentUser?.username ?? ''}
-                refetch={refetch}
                 buttonRef={addAddressButtonRef}
               />
 
               <SelectPaymentMethod
-                onChange={onChangePaymentMethod}
-                value={paymentMethodValue.paymentMethod}
+                onChange={onChange}
+                value={values.paymentMethod}
                 paymentMethods={checkout.paymentMethods}
                 paymentMethodList={paymentMethodList}
               />
 
               <Payment
-                key={paymentMethodValue.paymentMethod}
+                key={values.paymentMethod}
                 paymentMethod={checkout.paymentMethods}
-                value={paymentMethodValue.paymentMethod}
+                value={values.paymentMethod}
                 language={language}
                 onSubmit={handleSubmit}
                 isLoading={isCreateOrderLoading || isPayOrderLoading}
