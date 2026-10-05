@@ -40,7 +40,6 @@ const AddressList = ({
   const handleChangeAddress = (address: AddressSelectionNew) => {
     setChangedAddress(address);
   };
-  console.log(changedAddress);
 
   return (
     <ErrorBoundary
@@ -73,6 +72,7 @@ const AddressList = ({
                 headerText={language.updateAddress}
                 submitLabel={language.update}
                 popupMessage={language.addressUpdated}
+                changedAddress={changedAddress}
               />
             </div>
           </li>
@@ -102,6 +102,7 @@ const AddressList = ({
           popupMessage={language.addressCreated}
           disabled={addresses.length === 4}
           buttonRef={buttonRef}
+          changedAddress={null}
         />
       </div>
     </ErrorBoundary>
