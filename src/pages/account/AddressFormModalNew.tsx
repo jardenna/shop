@@ -12,10 +12,6 @@ import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
-import {
-  useAddAddressMutation,
-  useUpdateAddressMutation,
-} from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { InputType, RefBtnType } from '../../types/types';
@@ -30,6 +26,7 @@ interface AddressFormModalNewProps {
   address?: Address;
   buttonRef?: RefBtnType;
   disabled?: boolean;
+  onSubmitAddress: (address: AddressInput) => Promise<void>;
 }
 
 type AddressField = keyof AddressFields;
@@ -57,6 +54,7 @@ const AddressFormModalNew = ({
   popupMessage,
   disabled,
   buttonRef,
+  onSubmitAddress,
 }: AddressFormModalNewProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
@@ -71,7 +69,7 @@ const AddressFormModalNew = ({
     city: address?.city ?? '',
     country: address?.country ?? 'Danmark',
     standardAddress: address?.standardAddress ?? [],
-    id: id || null,
+    id: id ?? null,
   };
 
   const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
@@ -81,10 +79,6 @@ const AddressFormModalNew = ({
       validate: validateAddress,
     });
 
-  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addressIsLoading }] = useAddAddressMutation();
-
-  const updatedAddress = id ? { ...values, id } : values;
   async function handleSubmitAddress() {
     if (!isFormDirty) {
       onAddToast({
@@ -93,10 +87,9 @@ const AddressFormModalNew = ({
       return;
     }
 
-    if (id) {
-      await updateAddress({ address: updatedAddress, id }).unwrap();
-    } else {
-      await addAddress({ address: updatedAddress }).unwrap();
+    await onSubmitAddress(values);
+
+    if (!id) {
       onClearAllValues();
     }
 
@@ -134,7 +127,7 @@ const AddressFormModalNew = ({
         modalId={modalId}
         ariaControls={ariaControls}
         headerText={headerText}
-        isLoading={isLoading || addressIsLoading}
+        isLoading={false}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}

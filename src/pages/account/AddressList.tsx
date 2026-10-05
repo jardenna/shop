@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
+import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
+import {
+  useAddAddressMutation,
+  useUpdateAddressMutation,
+} from '../../features/profile/addressesApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
-import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
 import ChangeAddressModal from './ChangeAddressModal';
@@ -18,7 +21,6 @@ interface AddressListProps {
   language: Record<string, string>;
   username: string;
   buttonRef?: RefBtnType;
-  className?: string;
   refetch: () => void;
 }
 
@@ -27,21 +29,16 @@ const AddressList = ({
   addresses,
   username,
   language,
-  className = '',
   buttonRef,
 }: AddressListProps) => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
-  const [changedAddress, setChangedAddress] =
-    useState<AddressSelectionNew | null>(null);
+
+  const [updateAddress] = useUpdateAddressMutation();
+  const [addAddress] = useAddAddressMutation();
 
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
   };
-
-  const handleChangeAddress = (address: AddressSelectionNew) => {
-    setChangedAddress(address);
-  };
-  console.log(changedAddress);
 
   const shippingAddressId =
     addresses.find((address) =>
@@ -53,12 +50,76 @@ const AddressList = ({
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
+  const handleUpdateAddress = async (address: AddressInput) => {
+    if (!address.id) {
+      return;
+    }
+
+    await updateAddress({
+      id: address.id,
+      address,
+    }).unwrap();
+  };
+
+  const handleAddAddress = async (address: AddressInput) => {
+    await addAddress({
+      address,
+    }).unwrap();
+  };
+
+  const handleChangeAddress = async ({
+    shippingAddressId,
+    billingAddressId,
+  }: AddressSelectionNew) => {
+    const shippingAddress = addresses.find(
+      (address) => address.id === shippingAddressId,
+    );
+
+    const billingAddress = addresses.find(
+      (address) => address.id === billingAddressId,
+    );
+
+    if (!shippingAddress || !billingAddress) {
+      return;
+    }
+
+    if (shippingAddressId === billingAddressId) {
+      await updateAddress({
+        id: shippingAddress.id,
+        address: {
+          ...shippingAddress,
+          standardAddress: ['addressDelivery', 'addressBilling'],
+        },
+      }).unwrap();
+
+      return;
+    }
+
+    await Promise.all([
+      updateAddress({
+        id: shippingAddress.id,
+        address: {
+          ...shippingAddress,
+          standardAddress: ['addressDelivery'],
+        },
+      }).unwrap(),
+
+      updateAddress({
+        id: billingAddress.id,
+        address: {
+          ...billingAddress,
+          standardAddress: ['addressBilling'],
+        },
+      }).unwrap(),
+    ]);
+  };
+
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
       onReset={() => refetch}
     >
-      <ul className={`address-list ${className}`}>
+      <ul className="address-list">
         {addresses.map((address) => (
           <li key={address.id} className="address-item">
             <AddressInfoListContent address={address} username={address.name} />
@@ -77,6 +138,7 @@ const AddressList = ({
                   ariaLabel={language.deleteAddress}
                 />
               </TriggerModalButton>
+
               <AddressFormModalNew
                 id={address.id}
                 address={address}
@@ -84,11 +146,13 @@ const AddressList = ({
                 headerText={language.updateAddress}
                 submitLabel={language.update}
                 popupMessage={language.addressUpdated}
+                onSubmitAddress={handleUpdateAddress}
               />
             </div>
           </li>
         ))}
       </ul>
+
       {selectedAddress && (
         <DeleteAddressModal
           ariaControls={selectedAddress.id}
@@ -97,6 +161,7 @@ const AddressList = ({
           modalId="delete-address"
         />
       )}
+
       <div className="add-address-actions">
         <ChangeAddressModal
           addresses={addresses}
@@ -105,7 +170,8 @@ const AddressList = ({
           language={language}
           onSelectAddress={handleChangeAddress}
         />
-        <AddressFormModal
+
+        <AddressFormModalNew
           id={null}
           username={username}
           headerText={language.createNewAddress}
@@ -113,7 +179,7 @@ const AddressList = ({
           popupMessage={language.addressCreated}
           disabled={addresses.length === 4}
           buttonRef={buttonRef}
-          changedAddress={null}
+          onSubmitAddress={handleAddAddress}
         />
       </div>
     </ErrorBoundary>

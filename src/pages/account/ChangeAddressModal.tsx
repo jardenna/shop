@@ -4,6 +4,7 @@ import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButtonList from '../../components/formElements/radioList/RadioButtonList';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
+import { useModal } from '../../components/Modal/useModal';
 import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
@@ -18,6 +19,7 @@ const ChangeAddressModal = ({
 }: BaseAddressListProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
+  const { closeModal } = useModal();
 
   const initialState = {
     billingAddressId,
@@ -38,6 +40,7 @@ const ChangeAddressModal = ({
 
   function handleSubmit() {
     onSelectAddress(values);
+    closeModal();
   }
 
   return (
