@@ -102,6 +102,7 @@ const AddressList = ({
       },
     }).unwrap();
   };
+
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
@@ -113,20 +114,21 @@ const AddressList = ({
             <AddressInfoListContent address={address} username={address.name} />
 
             <div className="address-footer">
-              <TriggerModalButton
-                ariaControls={address.id}
-                modalId="delete-address"
-                variant={BtnVariant.Ghost}
-                onClick={() => {
-                  handleSelectAddress(address);
-                }}
-              >
-                <IconContent
-                  iconName={IconName.Trash}
-                  ariaLabel={language.deleteAddress}
-                />
-              </TriggerModalButton>
-
+              {address.standardAddress.length === 0 && (
+                <TriggerModalButton
+                  ariaControls={address.id}
+                  modalId="delete-address"
+                  variant={BtnVariant.Ghost}
+                  onClick={() => {
+                    handleSelectAddress(address);
+                  }}
+                >
+                  <IconContent
+                    iconName={IconName.Trash}
+                    ariaLabel={language.deleteAddress}
+                  />
+                </TriggerModalButton>
+              )}
               <AddressFormModalNew
                 id={address.id}
                 address={address}
