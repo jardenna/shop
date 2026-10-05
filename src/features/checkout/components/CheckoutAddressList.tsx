@@ -4,11 +4,14 @@ import AddressInfoListContent from '../../../pages/account/AddressInfoListConten
 import ChangeAddressModal from '../../../pages/account/ChangeAddressModal';
 import { RefBtnType } from '../../../types/types';
 
-interface CheckoutAddressListProps {
+export interface BaseAddressListProps {
   addresses: Address[];
   billingAddressId: string;
   language: Record<string, string>;
   shippingAddressId: string;
+}
+
+interface CheckoutAddressListProps extends BaseAddressListProps {
   username: string;
   buttonRef?: RefBtnType;
 }
@@ -35,6 +38,7 @@ const CheckoutAddressList = ({
           addresses={addresses}
           billingAddressId={billingAddressId}
           shippingAddressId={shippingAddressId}
+          language={language}
         />
       )}
       <AddressFormModal

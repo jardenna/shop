@@ -1,24 +1,19 @@
 import { useId } from 'react';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
 import RadioButtonList from '../../components/formElements/radioList/RadioButtonList';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
+import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
 import { OptionTypeNew } from '../../types/types';
-
-interface ChangeAddressModalProps {
-  addresses: Address[];
-  billingAddressId: string;
-  shippingAddressId: string;
-}
 
 const ChangeAddressModal = ({
   addresses,
   shippingAddressId,
   billingAddressId,
-}: ChangeAddressModalProps) => {
+  language,
+}: BaseAddressListProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
 
@@ -44,13 +39,13 @@ const ChangeAddressModal = ({
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
-        Vælg standard addresse
+        {language.changeStandardAddress}
       </TriggerModalButton>
 
       <FormModal
         modalId={modalId}
         ariaControls={ariaControls}
-        headerText="Vælg standard addresse"
+        headerText={language.changeStandardAddress}
         isLoading={false}
         onSubmit={() => {
           console.log(23);
@@ -58,7 +53,7 @@ const ChangeAddressModal = ({
         disabled={false}
         submitLabel="change"
       >
-        <FieldSet legendText="Faktureringsadresse" showLegendText>
+        <FieldSet legendText={language.addressBilling} showLegendText>
           <RadioButtonList
             radioButtonList={getAddressOptions('billing')}
             value={values.billingAddressId}
@@ -67,7 +62,7 @@ const ChangeAddressModal = ({
           />
         </FieldSet>
 
-        <FieldSet legendText="Leveringsadresse" showLegendText>
+        <FieldSet legendText={language.addressDelivery} showLegendText>
           <RadioButtonList
             radioButtonList={getAddressOptions('shipping')}
             value={values.shippingAddressId}

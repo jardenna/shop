@@ -83,6 +83,7 @@ const AddressList = ({
           addresses={addresses}
           billingAddressId="billingAddressId"
           shippingAddressId="shippingAddressId"
+          language={language}
         />
         <AddressFormModal
           id={null}
