@@ -95,25 +95,22 @@ const AddressList = ({
       return;
     }
 
-    await Promise.all([
-      updateAddress({
-        id: shippingAddress.id,
-        address: {
-          ...shippingAddress,
-          standardAddress: ['addressDelivery'],
-        },
-      }).unwrap(),
+    await updateAddress({
+      id: shippingAddress.id,
+      address: {
+        ...shippingAddress,
+        standardAddress: ['addressDelivery'],
+      },
+    }).unwrap();
 
-      updateAddress({
-        id: billingAddress.id,
-        address: {
-          ...billingAddress,
-          standardAddress: ['addressBilling'],
-        },
-      }).unwrap(),
-    ]);
+    await updateAddress({
+      id: billingAddress.id,
+      address: {
+        ...billingAddress,
+        standardAddress: ['addressBilling'],
+      },
+    }).unwrap();
   };
-
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
