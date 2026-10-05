@@ -5,12 +5,10 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import IconContent from '../../components/IconContent';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
-import {
-  useAddAddressMutation,
-  useUpdateAddressMutation,
-} from '../../features/profile/addressesApiSlice';
+import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
+import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
 import ChangeAddressModal from './ChangeAddressModal';
@@ -34,7 +32,6 @@ const AddressList = ({
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
   const [updateAddress] = useUpdateAddressMutation();
-  const [addAddress] = useAddAddressMutation();
 
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
@@ -57,12 +54,6 @@ const AddressList = ({
 
     await updateAddress({
       id: address.id,
-      address,
-    }).unwrap();
-  };
-
-  const handleAddAddress = async (address: AddressInput) => {
-    await addAddress({
       address,
     }).unwrap();
   };
@@ -168,7 +159,7 @@ const AddressList = ({
           onSelectAddress={handleChangeAddress}
         />
 
-        <AddressFormModalNew
+        <AddressFormModal
           id={null}
           username={username}
           headerText={language.createNewAddress}
@@ -176,7 +167,6 @@ const AddressList = ({
           popupMessage={language.addressCreated}
           disabled={addresses.length === 4}
           buttonRef={buttonRef}
-          onSubmitAddress={handleAddAddress}
         />
       </div>
     </ErrorBoundary>
