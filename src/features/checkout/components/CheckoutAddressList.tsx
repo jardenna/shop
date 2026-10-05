@@ -1,19 +1,17 @@
 import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import { AddressSelection } from '../../../app/api/apiTypes/orderApiTypes';
 import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
 import ChangeAddressModal from '../../../pages/account/ChangeAddressModal';
 import { RefBtnType } from '../../../types/types';
 
-export interface AddressSelection {
+export interface AddressSelectionNew {
   billingAddressId: string;
   shippingAddressId: string;
 }
-
-export interface BaseAddressListProps {
+export interface BaseAddressListProps extends AddressSelection {
   addresses: Address[];
-  billingAddressId: string;
   language: Record<string, string>;
-  shippingAddressId: string;
   onSelectAddress: (address: AddressSelection) => void;
 }
 

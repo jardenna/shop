@@ -11,7 +11,7 @@ import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
 import CheckoutAddressList, {
-  AddressSelection,
+  AddressSelectionNew,
 } from '../features/checkout/components/CheckoutAddressList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
@@ -46,7 +46,7 @@ const CheckoutPage = () => {
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
   const [selectedAddress, setSelectedAddress] =
-    useState<AddressSelection | null>(null);
+    useState<AddressSelectionNew | null>(null);
 
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
@@ -79,7 +79,7 @@ const CheckoutPage = () => {
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
-  const handleSelectAddress = (address: AddressSelection) => {
+  const handleSelectAddress = (address: AddressSelectionNew) => {
     setSelectedAddress(address);
   };
 

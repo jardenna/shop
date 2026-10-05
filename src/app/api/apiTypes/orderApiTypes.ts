@@ -8,13 +8,16 @@ import { BaseOrder, Order } from './cartApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
 import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
-export interface CreateOrderRequest {
+export interface AddressSelection {
   billingAddressId: string;
+  shippingAddressId: string;
+}
+
+export interface CreateOrderRequest extends AddressSelection {
   orderItems: BaseOrder[];
   payment: {
     method: PaymentMethods;
   };
-  shippingAddressId: string;
 }
 
 export type DeliveryStatus =
