@@ -11,7 +11,6 @@ import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
 import { useToast } from '../../components/toast/hooks/useToast';
-import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
   useAddAddressMutation,
@@ -23,7 +22,6 @@ import type { InputType, RefBtnType } from '../../types/types';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
 interface AddressFormModalProps {
-  changedAddress: AddressSelectionNew | null;
   headerText: string;
   id: string | null;
   popupMessage: string;
@@ -59,7 +57,6 @@ const AddressFormModal = ({
   popupMessage,
   disabled,
   buttonRef,
-  changedAddress,
 }: AddressFormModalProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
@@ -88,7 +85,6 @@ const AddressFormModal = ({
   const [addAddress, { isLoading: addressIsLoading }] = useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : values;
-  console.log({ changedAddress, address });
   async function handleSubmitAddress() {
     if (!isFormDirty) {
       onAddToast({

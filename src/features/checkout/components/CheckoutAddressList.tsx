@@ -56,7 +56,6 @@ const CheckoutAddressList = ({
         popupMessage={language.addressCreated}
         disabled={addresses.length === 4}
         buttonRef={buttonRef}
-        changedAddress={null}
       />
     </div>
   </>
