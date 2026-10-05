@@ -8,6 +8,7 @@ import { AddressSelectionNew } from '../../features/checkout/components/Checkout
 import { BtnVariant, IconName } from '../../types/enums';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
+import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
 import ChangeAddressModal from './ChangeAddressModal';
 import DeleteAddressModal from './DeleteAddressModal';
@@ -40,6 +41,7 @@ const AddressList = ({
   const handleChangeAddress = (address: AddressSelectionNew) => {
     setChangedAddress(address);
   };
+  console.log(changedAddress);
 
   const shippingAddressId =
     addresses.find((address) =>
@@ -64,7 +66,7 @@ const AddressList = ({
             <div className="address-footer">
               <TriggerModalButton
                 ariaControls={address.id}
-                modalId="address"
+                modalId="delete-address"
                 variant={BtnVariant.Ghost}
                 onClick={() => {
                   handleSelectAddress(address);
@@ -75,14 +77,13 @@ const AddressList = ({
                   ariaLabel={language.deleteAddress}
                 />
               </TriggerModalButton>
-              <AddressFormModal
+              <AddressFormModalNew
                 id={address.id}
                 address={address}
                 username={address.name}
                 headerText={language.updateAddress}
                 submitLabel={language.update}
                 popupMessage={language.addressUpdated}
-                changedAddress={changedAddress}
               />
             </div>
           </li>
@@ -93,7 +94,7 @@ const AddressList = ({
           ariaControls={selectedAddress.id}
           itemId={selectedAddress.id}
           modalMessage={selectedAddress.street}
-          modalId="address"
+          modalId="delete-address"
         />
       )}
       <div className="add-address-actions">
