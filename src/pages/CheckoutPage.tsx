@@ -45,7 +45,7 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [selectedAddress, setSelectedAddress] =
+  const [changedAddress, setChangedAddress] =
     useState<AddressSelectionNew | null>(null);
 
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
@@ -79,8 +79,8 @@ const CheckoutPage = () => {
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
-  const handleSelectAddress = (address: AddressSelectionNew) => {
-    setSelectedAddress(address);
+  const handleChangeAddress = (address: AddressSelectionNew) => {
+    setChangedAddress(address);
   };
 
   const handleSubmit = async (paymentValues: PaymentFormValues) => {
@@ -106,9 +106,8 @@ const CheckoutPage = () => {
 
     const order = await createOrder({
       orderItems,
-      shippingAddressId:
-        selectedAddress?.shippingAddressId ?? shippingAddressId,
-      billingAddressId: selectedAddress?.billingAddressId ?? billingAddressId,
+      shippingAddressId: changedAddress?.shippingAddressId ?? shippingAddressId,
+      billingAddressId: changedAddress?.billingAddressId ?? billingAddressId,
       payment: {
         method: paymentValues.paymentMethod,
       },
@@ -176,7 +175,7 @@ const CheckoutPage = () => {
                 buttonRef={addAddressButtonRef}
                 billingAddressId={billingAddressId}
                 shippingAddressId={shippingAddressId}
-                onSelectAddress={handleSelectAddress}
+                onSelectAddress={handleChangeAddress}
               />
 
               <SelectPaymentMethod
