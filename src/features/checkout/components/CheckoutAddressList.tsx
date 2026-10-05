@@ -30,11 +30,13 @@ const CheckoutAddressList = ({
       ))}
     </ul>
     <div className="add-address-actions">
-      <ChangeAddressModal
-        addresses={addresses}
-        billingAddressId={billingAddressId}
-        shippingAddressId={shippingAddressId}
-      />
+      {addresses.length > 1 && (
+        <ChangeAddressModal
+          addresses={addresses}
+          billingAddressId={billingAddressId}
+          shippingAddressId={shippingAddressId}
+        />
+      )}
       <AddressFormModal
         id={null}
         username={username}
