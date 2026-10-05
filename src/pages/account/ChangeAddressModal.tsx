@@ -57,7 +57,7 @@ const ChangeAddressModal = ({
         isLoading={false}
         onSubmit={onSubmit}
         disabled={false}
-        submitLabel="change"
+        submitLabel={language.save}
       >
         <FieldSet legendText={language.addressBilling} showLegendText>
           <RadioButtonList
