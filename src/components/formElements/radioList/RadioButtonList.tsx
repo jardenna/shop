@@ -21,11 +21,11 @@ const RadioButtonList = ({
   return (
     <ul className="radio-button-list">
       {radioButtonList.map((radio) => (
-        <li key={radio.label} className="radio-button-item">
+        <li key={radio.id ?? radio.value} className="radio-button-item">
           <ControlInput
             type="radio"
             name={name}
-            id={radio.label}
+            id={radio.id ?? radio.value}
             value={radio.value}
             checked={value === radio.value}
             onChange={onChange}

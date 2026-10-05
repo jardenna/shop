@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
 import FieldSet from '../../components/fieldset/FieldSet';
+import RadioButtonList from '../../components/formElements/radioList/RadioButtonList';
 import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -25,6 +26,7 @@ const ChangeAddressModal = ({
   const { onChange, values } = useFormValidation({
     initialState,
   });
+  console.log(addresses);
 
   return (
     <section>
@@ -48,47 +50,29 @@ const ChangeAddressModal = ({
         submitLabel="change"
       >
         <FieldSet legendText="Faktureringsadresse" showLegendText>
-          <ul className="radio-button-list">
-            {addresses.map((address) => (
-              <li
-                key={`${address.id}billingAddressId`}
-                className="radio-button-item"
-              >
-                <input
-                  type="radio"
-                  name="billingAddressId"
-                  value={values.billingAddressId}
-                  id={`${address.id}billingAddressId`}
-                  onChange={onChange}
-                  // checked={address.id === values.billingAddressId}
-                />
-                <label htmlFor={`${address.id}billingAddressId`}>
-                  {address.street}, {address.zipCode} {address.city}
-                </label>
-              </li>
-            ))}
-          </ul>
+          <RadioButtonList
+            radioButtonList={addresses.map((address) => ({
+              id: `${address.id}-billing`,
+              label: `${address.street}, ${address.zipCode} ${address.city}`,
+              value: address.id,
+            }))}
+            value={values.billingAddressId}
+            name="billingAddressId"
+            onChange={onChange}
+          />
         </FieldSet>
+
         <FieldSet legendText="Leveringsadresse" showLegendText>
-          <ul className="radio-button-list">
-            {addresses.map((address) => (
-              <li
-                key={`${address.id}shippingAddressId`}
-                className="radio-button-item"
-              >
-                <input
-                  type="radio"
-                  name="shippingAddressId"
-                  value={values.shippingAddressId}
-                  id={`${address.id}shippingAddressId`}
-                  onChange={onChange}
-                />
-                <label htmlFor={`${address.id}shippingAddressId`}>
-                  {address.street}, {address.zipCode} {address.city}
-                </label>
-              </li>
-            ))}
-          </ul>
+          <RadioButtonList
+            radioButtonList={addresses.map((address) => ({
+              id: `${address.id}-shipping`,
+              label: `${address.street}, ${address.zipCode} ${address.city}`,
+              value: address.id,
+            }))}
+            value={values.shippingAddressId}
+            name="shippingAddressId"
+            onChange={onChange}
+          />
         </FieldSet>
       </FormModal>
     </section>
