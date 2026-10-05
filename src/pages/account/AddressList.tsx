@@ -41,6 +41,16 @@ const AddressList = ({
     setChangedAddress(address);
   };
 
+  const shippingAddressId =
+    addresses.find((address) =>
+      address.standardAddress.includes('addressDelivery'),
+    )?.id ?? '';
+
+  const billingAddressId =
+    addresses.find((address) =>
+      address.standardAddress.includes('addressBilling'),
+    )?.id ?? '';
+
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
@@ -89,8 +99,8 @@ const AddressList = ({
       <div className="add-address-actions">
         <ChangeAddressModal
           addresses={addresses}
-          billingAddressId="billingAddressId"
-          shippingAddressId="shippingAddressId"
+          billingAddressId={billingAddressId}
+          shippingAddressId={shippingAddressId}
           language={language}
           onSelectAddress={handleChangeAddress}
         />
