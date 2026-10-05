@@ -6,6 +6,7 @@ import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
+import { OptionType } from '../../types/types';
 
 interface ChangeAddressModalProps {
   addresses: Address[];
@@ -26,7 +27,15 @@ const ChangeAddressModal = ({
   const { onChange, values } = useFormValidation({
     initialState,
   });
-  console.log(addresses);
+
+  const getAddressOptions = (
+    addressType: 'billing' | 'shipping',
+  ): OptionType[] =>
+    addresses.map((address) => ({
+      id: `${address.id}-${addressType}`,
+      label: `${address.street}, ${address.zipCode} ${address.city}`,
+      value: address.id,
+    }));
 
   return (
     <section>
@@ -51,11 +60,7 @@ const ChangeAddressModal = ({
       >
         <FieldSet legendText="Faktureringsadresse" showLegendText>
           <RadioButtonList
-            radioButtonList={addresses.map((address) => ({
-              id: `${address.id}-billing`,
-              label: `${address.street}, ${address.zipCode} ${address.city}`,
-              value: address.id,
-            }))}
+            radioButtonList={getAddressOptions('billing')}
             value={values.billingAddressId}
             name="billingAddressId"
             onChange={onChange}
@@ -64,11 +69,7 @@ const ChangeAddressModal = ({
 
         <FieldSet legendText="Leveringsadresse" showLegendText>
           <RadioButtonList
-            radioButtonList={addresses.map((address) => ({
-              id: `${address.id}-shipping`,
-              label: `${address.street}, ${address.zipCode} ${address.city}`,
-              value: address.id,
-            }))}
+            radioButtonList={getAddressOptions('shipping')}
             value={values.shippingAddressId}
             name="shippingAddressId"
             onChange={onChange}
