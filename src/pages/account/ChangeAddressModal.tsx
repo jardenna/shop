@@ -19,7 +19,7 @@ const ChangeAddressModal = ({
   const ariaControls = useId();
   const modalId = 'changeAddress';
 
-  const initialState: any = {
+  const initialState = {
     billingAddressId,
     shippingAddressId,
   };

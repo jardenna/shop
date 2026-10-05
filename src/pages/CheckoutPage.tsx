@@ -10,7 +10,9 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
-import CheckoutAddressList from '../features/checkout/components/CheckoutAddressList';
+import CheckoutAddressList, {
+  AddressSelection,
+} from '../features/checkout/components/CheckoutAddressList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
@@ -43,7 +45,9 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [selectedAddress, setSelectedAddress] = useState<any>(null);
+  const [selectedAddress, setSelectedAddress] =
+    useState<AddressSelection | null>(null);
+
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
   };
@@ -75,7 +79,7 @@ const CheckoutPage = () => {
       address.standardAddress.includes('addressBilling'),
     )?.id ?? '';
 
-  const handleSelectAddress = (address: any) => {
+  const handleSelectAddress = (address: AddressSelection) => {
     setSelectedAddress(address);
   };
 

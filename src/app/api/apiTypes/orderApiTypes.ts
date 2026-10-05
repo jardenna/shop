@@ -3,18 +3,18 @@ import {
   paymentMethodFilterValues,
   paymentStatusFilterValues,
 } from '../apiConstants';
-import { BaseAddress, StandardAddress } from './addressApiTypes';
+import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
 import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
 export interface CreateOrderRequest {
-  billingAddressId: StandardAddress;
+  billingAddressId: string;
   orderItems: BaseOrder[];
   payment: {
     method: PaymentMethods;
   };
-  shippingAddressId: StandardAddress;
+  shippingAddressId: string;
 }
 
 export type DeliveryStatus =
