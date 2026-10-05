@@ -19,6 +19,12 @@ export type OptionType<T = string> = {
   id?: string;
 };
 
+export interface OptionTypeNew<T = string> {
+  id: string;
+  label: string;
+  value: T;
+}
+
 export type AriaLabelData = {
   ariaLabels: string[];
   unit: string;

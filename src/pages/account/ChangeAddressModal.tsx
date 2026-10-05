@@ -6,7 +6,7 @@ import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
-import { OptionType } from '../../types/types';
+import { OptionTypeNew } from '../../types/types';
 
 interface ChangeAddressModalProps {
   addresses: Address[];
@@ -30,7 +30,7 @@ const ChangeAddressModal = ({
 
   const getAddressOptions = (
     addressType: 'billing' | 'shipping',
-  ): OptionType[] =>
+  ): OptionTypeNew[] =>
     addresses.map((address) => ({
       id: `${address.id}-${addressType}`,
       label: `${address.street}, ${address.zipCode} ${address.city}`,
