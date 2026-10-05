@@ -1,22 +1,26 @@
 import { useId } from 'react';
 import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
-import FieldSet from '../../components/fieldset/FieldSet';
-import RadioButtonList from '../../components/formElements/radioList/RadioButtonList';
-import FormModal from '../../components/Modal/FormModal';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { useModal } from '../../components/Modal/useModal';
 import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant } from '../../types/enums';
 import { OptionTypeNew } from '../../types/types';
+import FieldSet from '../fieldset/FieldSet';
+import RadioButtonList from '../formElements/radioList/RadioButtonList';
+import FormModal from './FormModal';
+import TriggerModalButton from './TriggerModalButton';
+import { useModal } from './useModal';
 
+interface ChangeAddressModalProps extends BaseAddressListProps {
+  text?: string;
+}
 const ChangeAddressModal = ({
   addresses,
   shippingAddressId,
   billingAddressId,
   language,
   onSelectAddress,
-}: BaseAddressListProps) => {
+  text,
+}: ChangeAddressModalProps) => {
   const ariaControls = useId();
   const modalId = 'changeAddress';
   const { closeModal } = useModal();
@@ -50,34 +54,41 @@ const ChangeAddressModal = ({
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
-        {language.changeStandardAddress}
+        {text ?? language.changeStandardAddress}
       </TriggerModalButton>
 
       <FormModal
         modalId={modalId}
         ariaControls={ariaControls}
-        headerText={language.changeStandardAddress}
+        headerText={text ?? language.changeStandardAddress}
         isLoading={false}
         onSubmit={onSubmit}
         disabled={false}
         submitLabel={language.save}
       >
-        <FieldSet legendText={language.addressBilling} showLegendText>
-          <RadioButtonList
-            radioButtonList={getAddressOptions('addressBilling')}
-            value={values.billingAddressId}
-            name="billingAddressId"
-            onChange={onChange}
-          />
-        </FieldSet>
+        <FieldSet
+          legendText={text ?? language.changeStandardAddress}
+          className="change-address-modal"
+        >
+          <div>
+            <h3 className="change-address-title">Skift faktureringsadresse</h3>
+            <RadioButtonList
+              radioButtonList={getAddressOptions('addressBilling')}
+              value={values.billingAddressId}
+              name="billingAddressId"
+              onChange={onChange}
+            />
+          </div>
 
-        <FieldSet legendText={language.addressDelivery} showLegendText>
-          <RadioButtonList
-            radioButtonList={getAddressOptions('addressDelivery')}
-            value={values.shippingAddressId}
-            name="shippingAddressId"
-            onChange={onChange}
-          />
+          <div>
+            <h3 className="change-address-title">Skift leveringsadresse</h3>
+            <RadioButtonList
+              radioButtonList={getAddressOptions('addressDelivery')}
+              value={values.shippingAddressId}
+              name="shippingAddressId"
+              onChange={onChange}
+            />
+          </div>
         </FieldSet>
       </FormModal>
     </section>

@@ -1,8 +1,8 @@
 import { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import { AddressSelection } from '../../../app/api/apiTypes/orderApiTypes';
+import ChangeAddressModal from '../../../components/Modal/ChangeAddressModal';
 import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
-import ChangeAddressModal from '../../../pages/account/ChangeAddressModal';
 import { RefBtnType } from '../../../types/types';
 
 export interface AddressSelectionNew {
@@ -46,6 +46,7 @@ const CheckoutAddressList = ({
           shippingAddressId={shippingAddressId}
           language={language}
           onSelectAddress={onSelectAddress}
+          text="Skift addresse for denne ordre"
         />
       )}
       <AddressFormModal

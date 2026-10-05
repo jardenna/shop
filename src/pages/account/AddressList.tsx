@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
 import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
 import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
-import ChangeAddressModal from './ChangeAddressModal';
 import DeleteAddressModal from './DeleteAddressModal';
 
 interface AddressListProps {

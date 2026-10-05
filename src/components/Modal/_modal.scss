@@ -1,6 +1,6 @@
 @use '../../scss/globals' as *;
 
-.pop-modal {
+.modal {
   border: 0;
   overflow-x: clip;
   border-radius: $border-radius;
@@ -27,6 +27,23 @@
 
   .modal-title {
     margin-bottom: 12px;
+  }
+
+  .change-address-modal {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: 32px;
+
+    label {
+      padding: 14px 8px;
+    }
+  }
+
+  .change-address-title {
+    font-family: $font-primary-semibold;
+    text-transform: uppercase;
+    padding-block: 12px 4px;
   }
 
   &.modal-small {
