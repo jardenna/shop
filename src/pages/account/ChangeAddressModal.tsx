@@ -48,36 +48,47 @@ const ChangeAddressModal = ({
         submitLabel="change"
       >
         <FieldSet legendText="Faktureringsadresse" showLegendText>
-          {addresses.map((address) => (
-            <>
-              <input
-                type="radio"
-                name="billingAddressId"
-                value={values.billingAddressId}
-                id={address.id}
-                onChange={onChange}
-              />
-              <label key={address.id} htmlFor={address.id}>
-                {address.street}, {address.zipCode} {address.city}
-              </label>
-            </>
-          ))}
+          <ul className="radio-button-list">
+            {addresses.map((address) => (
+              <li
+                key={`${address.id}billingAddressId`}
+                className="radio-button-item"
+              >
+                <input
+                  type="radio"
+                  name="billingAddressId"
+                  value={values.billingAddressId}
+                  id={`${address.id}billingAddressId`}
+                  onChange={onChange}
+                  // checked={address.id === values.billingAddressId}
+                />
+                <label htmlFor={`${address.id}billingAddressId`}>
+                  {address.street}, {address.zipCode} {address.city}
+                </label>
+              </li>
+            ))}
+          </ul>
         </FieldSet>
         <FieldSet legendText="Leveringsadresse" showLegendText>
-          {addresses.map((address) => (
-            <>
-              <input
-                type="radio"
-                name="shippingAddressId"
-                value={values.shippingAddressId}
-                id={address.id}
-                onChange={onChange}
-              />
-              <label key={address.id} htmlFor={address.id}>
-                {address.street}, {address.zipCode} {address.city}
-              </label>
-            </>
-          ))}
+          <ul className="radio-button-list">
+            {addresses.map((address) => (
+              <li
+                key={`${address.id}shippingAddressId`}
+                className="radio-button-item"
+              >
+                <input
+                  type="radio"
+                  name="shippingAddressId"
+                  value={values.shippingAddressId}
+                  id={`${address.id}shippingAddressId`}
+                  onChange={onChange}
+                />
+                <label htmlFor={`${address.id}shippingAddressId`}>
+                  {address.street}, {address.zipCode} {address.city}
+                </label>
+              </li>
+            ))}
+          </ul>
         </FieldSet>
       </FormModal>
     </section>
