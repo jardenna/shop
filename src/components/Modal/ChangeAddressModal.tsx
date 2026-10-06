@@ -14,6 +14,7 @@ import { useModal } from './useModal';
 interface ChangeAddressModalProps extends BaseAddressListProps {
   text?: string;
 }
+
 const ChangeAddressModal = ({
   addresses,
   shippingAddressId,
