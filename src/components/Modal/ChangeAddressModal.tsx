@@ -56,7 +56,8 @@ const ChangeAddressModal = ({
         variant={BtnVariant.Ghost}
       >
         <IconContent
-          iconName={IconName.Pencil}
+          iconName={IconName.Refresh}
+          size="1rem"
           ariaLabel={text ?? language.changeStandardAddress}
           showLabel
         />

@@ -123,6 +123,7 @@ export enum IconName {
   PayPal = 'payPal',
   Pencil = 'pencil',
   Products = 'products',
+  Refresh = 'refresh',
   Search = 'search',
   ShoppingBag = 'shoppingBag',
   Star = 'star',
