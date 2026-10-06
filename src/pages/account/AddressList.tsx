@@ -134,7 +134,7 @@ const AddressList = ({
         ))}
       </ul>
 
-      <div className="add-address-actions">
+      <div className="address-actions">
         <ChangeAddressModal
           addresses={addresses}
           billingAddressId={billingAddressId}

@@ -38,7 +38,7 @@ const CheckoutAddressList = ({
         </li>
       ))}
     </ul>
-    <div className="add-address-actions">
+    <div className="address-actions">
       {addresses.length > 1 && (
         <ChangeAddressModal
           addresses={addresses}
