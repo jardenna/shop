@@ -71,7 +71,9 @@ const ChangeAddressModal = ({
           className="change-address-modal"
         >
           <div>
-            <h3 className="change-address-title">Skift faktureringsadresse</h3>
+            <h3 className="change-address-title">
+              {language.changeBillingAddress}
+            </h3>
             <RadioButtonList
               radioButtonList={getAddressOptions('addressBilling')}
               value={values.billingAddressId}
@@ -81,7 +83,9 @@ const ChangeAddressModal = ({
           </div>
 
           <div>
-            <h3 className="change-address-title">Skift leveringsadresse</h3>
+            <h3 className="change-address-title">
+              {language.changeDeliveryAddress}
+            </h3>
             <RadioButtonList
               radioButtonList={getAddressOptions('addressDelivery')}
               value={values.shippingAddressId}
