@@ -29,7 +29,7 @@ import {
 } from '../../../hooks/useLocalStorage';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
-import type { OptionType } from '../../../types/types';
+import type { OptionTypeNew } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import {
   maxDiscount,
@@ -76,6 +76,7 @@ const ProductForm = ({
     ({ label, parentCategoryName, categoryId, categoryStatus }) => ({
       label: `${parentCategoryName} / ${label}`,
       value: categoryId,
+      id: categoryId,
       status: categoryStatus,
     }),
   );
@@ -85,7 +86,10 @@ const ProductForm = ({
     borderColor: variables.colorIconBorder,
   });
 
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
+  const handleSelectCategory = (
+    name: string,
+    selectedOptions: OptionTypeNew,
+  ) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -107,6 +111,7 @@ const ProductForm = ({
   const defaultColorValue = selectedProduct?.colors.map((color) => ({
     label: language[color],
     value: color,
+    id: color,
   }));
 
   const defaultCategoryValue = parentCategoryOptions.find(
@@ -135,11 +140,14 @@ const ProductForm = ({
     (img) => !disabledImages.includes(img),
   );
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+  const handleSelectStatus = (name: string, selectedOptions: OptionTypeNew) => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
+  const handleSelectColors = (
+    name: string,
+    selectedOptions: OptionTypeNew[],
+  ) => {
     const selectedValues = selectedOptions.map((option) => option.value);
     onCustomChange(name, selectedValues);
   };
@@ -288,7 +296,7 @@ const ProductForm = ({
                 components={{ Option: StatusOptions }}
                 defaultValue={defaultCategoryValue}
                 isSearchable
-                onChange={(selectedOptions: OptionType) => {
+                onChange={(selectedOptions: OptionTypeNew) => {
                   handleSelectCategory('subCategory', selectedOptions);
                 }}
                 required
@@ -362,7 +370,7 @@ const ProductForm = ({
                 isSearchable
                 defaultValue={defaultColorValue}
                 isMulti
-                onChange={(values: OptionType[]) => {
+                onChange={(values: OptionTypeNew[]) => {
                   handleSelectColors('colors', values);
                 }}
                 required
@@ -439,8 +447,9 @@ const ProductForm = ({
                 defaultStatusValue={{
                   label: translateKey(values.productStatus, language),
                   value: values.productStatus,
+                  id: values.productStatus,
                 }}
-                onSelectStatus={(selectedOptions: OptionType) => {
+                onSelectStatus={(selectedOptions: OptionTypeNew) => {
                   handleSelectStatus('productStatus', selectedOptions);
                 }}
                 status={values.productStatus}

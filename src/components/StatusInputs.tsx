@@ -3,7 +3,7 @@ import { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import type {
   InputChangeHandler,
-  OptionType,
+  OptionTypeNew,
   RefElementType,
 } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
@@ -11,6 +11,7 @@ import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
 
 interface StatusOptionsValues {
+  id: string;
   label: string;
   value: Status;
 }
@@ -26,7 +27,7 @@ export type StatusInputsProps = {
   min?: number;
   ref?: RefElementType;
   onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionType) => void;
+  onSelectStatus: (selectedOptions: OptionTypeNew) => void;
 };
 
 const StatusInputs = ({
@@ -48,14 +49,17 @@ const StatusInputs = ({
     {
       label: language.inactive,
       value: 'Inactive',
+      id: 'inactive',
     },
     {
       label: language.scheduled,
       value: 'Scheduled',
+      id: 'scheduled',
     },
     {
       label: language.published,
       value: 'Published',
+      id: 'published',
     },
   ];
 

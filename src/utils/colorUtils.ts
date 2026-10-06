@@ -1,5 +1,6 @@
 export type ColorOption = {
   color: string;
+  id: string;
   label: string;
   value: string;
   border?: string;
@@ -53,6 +54,7 @@ const getColorOptions = ({
     .map((color) => ({
       label: language[color],
       value: color,
+      id: color,
       color: colorMap[color],
       ...(colorMap[color] === '#fff' && borderColor && { border: borderColor }),
     }))

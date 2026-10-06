@@ -9,7 +9,7 @@ import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/enums';
-import type { OptionType } from '../../types/types';
+import type { OptionTypeNew } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import { validateCategory } from '../../utils/validation/validateCategory';
 import { useLanguage } from '../language/useLanguage';
@@ -39,7 +39,7 @@ const CategoryForm = ({
     navigate(-1);
   };
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
+  const handleSelectStatus = (name: string, selectedOptions: OptionTypeNew) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -114,8 +114,9 @@ const CategoryForm = ({
             defaultStatusValue={{
               label: translateKey(values.categoryStatus, language),
               value: values.categoryStatus,
+              id: values.categoryStatus,
             }}
-            onSelectStatus={(selectedOptions: OptionType) => {
+            onSelectStatus={(selectedOptions: OptionTypeNew) => {
               handleSelectStatus('categoryStatus', selectedOptions);
             }}
             status={values.categoryStatus}

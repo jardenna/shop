@@ -29,6 +29,7 @@ const PaginationSelect = ({
     .map((count) => ({
       value: count,
       label: count,
+      id: count,
     }));
 
   return (

@@ -29,7 +29,7 @@ const CheckboxList = ({
           ariaLabel={ariaLabel}
           name={name}
           iconName={iconName}
-          id={`${name}-${index}`}
+          id={`${name}-${checkbox}`}
           value={checkbox}
           onChange={onChange}
           autoFocus={autoFocus && index === 0}

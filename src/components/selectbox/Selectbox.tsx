@@ -6,20 +6,20 @@ import type {
 } from 'react-select';
 import Select from 'react-select';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { OptionType, RefElementType } from '../../types/types';
+import type { OptionTypeNew, RefElementType } from '../../types/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
-type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
+type SelectedOption = SingleValue<OptionTypeNew> | MultiValue<OptionTypeNew>;
 
 type SelectboxProps = {
   id: string;
   labelText: string;
   name: string;
-  options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
+  options: OptionsOrGroups<OptionTypeNew, GroupBase<OptionTypeNew>>;
   closeMenuOnSelect?: boolean;
   components?: any;
-  defaultValue?: OptionType | OptionType[];
+  defaultValue?: OptionTypeNew | OptionTypeNew[];
   errorText?: string;
   inputHasNoLabel?: boolean;
   isClearable?: boolean;
