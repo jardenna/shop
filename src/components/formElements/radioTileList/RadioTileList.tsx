@@ -27,7 +27,7 @@ const RadioTileList = ({
         <li key={radio.value} className="control-item">
           <ControlInput
             type="radio"
-            id={radio.label}
+            id={radio.id}
             name={name}
             value={radio.value}
             checked={checked === radio.value}

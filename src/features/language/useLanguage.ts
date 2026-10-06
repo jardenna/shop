@@ -10,8 +10,8 @@ import {
 } from './languageSlice';
 
 export const languageOptions: OptionType[] = [
-  { value: 'da', label: 'Dansk' },
-  { value: 'en', label: 'English' },
+  { value: 'da', label: 'Dansk', id: 'da' },
+  { value: 'en', label: 'English', id: 'en' },
 ];
 
 export const useLanguage = () => {

@@ -229,6 +229,7 @@ const CollectionPage = () => {
                   defaultValue={{
                     value: itemsPerPage.toString(),
                     label: itemsPerPage.toString(),
+                    id: itemsPerPage.toString(),
                   }}
                 />
               )}

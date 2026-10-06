@@ -13,13 +13,7 @@ export type AutoComplete = 'on' | 'off';
 
 export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
-export type OptionType<T = string> = {
-  label: string;
-  value: T;
-  id?: string;
-};
-
-export interface OptionTypeNew<T = string> {
+export interface OptionType<T = string> {
   id: string;
   label: string;
   value: T;

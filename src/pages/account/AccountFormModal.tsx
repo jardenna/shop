@@ -44,6 +44,7 @@ const AccountFormModal = ({
     (fashion) => ({
       value: fashion,
       label: fashion,
+      id: fashion,
     }),
   );
 

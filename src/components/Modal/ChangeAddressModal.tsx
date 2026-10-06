@@ -3,7 +3,7 @@ import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
-import { OptionTypeNew } from '../../types/types';
+import { OptionType } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
 import IconContent from '../IconContent';
@@ -36,7 +36,7 @@ const ChangeAddressModal = ({
     callback: handleSubmit,
   });
 
-  const getAddressOptions = (addressType: StandardAddress): OptionTypeNew[] =>
+  const getAddressOptions = (addressType: StandardAddress): OptionType[] =>
     addresses.map((address) => ({
       id: `${address.id}-${addressType}`,
       label: `${address.street}, ${address.zipCode} ${address.city}`,

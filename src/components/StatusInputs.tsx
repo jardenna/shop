@@ -11,6 +11,7 @@ import TimeInput from './formElements/timeInput/TimeInput';
 import Selectbox from './selectbox/Selectbox';
 
 interface StatusOptionsValues {
+  id: string;
   label: string;
   value: Status;
 }
@@ -48,14 +49,17 @@ const StatusInputs = ({
     {
       label: language.inactive,
       value: 'Inactive',
+      id: 'inactive',
     },
     {
       label: language.scheduled,
       value: 'Scheduled',
+      id: 'scheduled',
     },
     {
       label: language.published,
       value: 'Published',
+      id: 'published',
     },
   ];
 

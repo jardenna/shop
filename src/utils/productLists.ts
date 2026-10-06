@@ -7,6 +7,7 @@ const sizeList: Size[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 const roleList: OptionType[] = roleValues.map((role) => ({
   value: role,
   label: role.toLowerCase(),
+  id: role,
 }));
 
 const createRatingList = (count: number): OptionType[] =>
@@ -15,6 +16,7 @@ const createRatingList = (count: number): OptionType[] =>
     return {
       value,
       label: `rating${value}`,
+      id: value,
     };
   });
 

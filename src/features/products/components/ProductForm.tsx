@@ -76,6 +76,7 @@ const ProductForm = ({
     ({ label, parentCategoryName, categoryId, categoryStatus }) => ({
       label: `${parentCategoryName} / ${label}`,
       value: categoryId,
+      id: categoryId,
       status: categoryStatus,
     }),
   );
@@ -107,6 +108,7 @@ const ProductForm = ({
   const defaultColorValue = selectedProduct?.colors.map((color) => ({
     label: language[color],
     value: color,
+    id: color,
   }));
 
   const defaultCategoryValue = parentCategoryOptions.find(
@@ -439,6 +441,7 @@ const ProductForm = ({
                 defaultStatusValue={{
                   label: translateKey(values.productStatus, language),
                   value: values.productStatus,
+                  id: values.productStatus,
                 }}
                 onSelectStatus={(selectedOptions: OptionType) => {
                   handleSelectStatus('productStatus', selectedOptions);

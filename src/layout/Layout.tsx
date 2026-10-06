@@ -16,6 +16,7 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { closeMiniCart } from '../features/miniCartPopupSlice';
+import { clearErrorToasts } from '../features/toastSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
@@ -26,7 +27,6 @@ import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
-import { clearErrorToasts } from '../features/toastSlice';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -125,6 +125,7 @@ const Layout = () => {
         defaultValue={{
           label: exchangeRate,
           value: exchangeRate,
+          id: exchangeRate,
         }}
         onChange={onChange}
         onSubmit={handleChangePreferences}

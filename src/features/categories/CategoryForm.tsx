@@ -114,6 +114,7 @@ const CategoryForm = ({
             defaultStatusValue={{
               label: translateKey(values.categoryStatus, language),
               value: values.categoryStatus,
+              id: values.categoryStatus,
             }}
             onSelectStatus={(selectedOptions: OptionType) => {
               handleSelectStatus('categoryStatus', selectedOptions);

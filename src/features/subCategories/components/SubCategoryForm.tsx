@@ -58,6 +58,7 @@ const SubCategoryForm = ({
     ({ categoryName, id, categoryStatus }) => ({
       label: translateKey(categoryName, language) || categoryName,
       value: id,
+      id,
       status: categoryStatus,
     }),
   );
@@ -128,6 +129,7 @@ const SubCategoryForm = ({
   const selectedCategoryOption = parentCategoriesOptions.find(
     (option) => option.value === values.category,
   );
+
   return (
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
@@ -173,6 +175,7 @@ const SubCategoryForm = ({
             defaultStatusValue={{
               label: translateKey(values.categoryStatus, language),
               value: values.categoryStatus,
+              id: values.categoryStatus,
             }}
             onSelectStatus={(selectedOptions: OptionType) => {
               handleSelectStatus('categoryStatus', selectedOptions);

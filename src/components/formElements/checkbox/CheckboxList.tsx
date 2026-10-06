@@ -4,12 +4,12 @@ import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
 import './_checkbox.scss';
 
-type CheckboxListProps = BaseControlProps & {
+interface CheckboxListProps extends BaseControlProps {
   checkBoxList: string[];
   language: Record<string, string>;
   values: string[];
   renderExtra?: (checkbox: string) => ReactNode;
-};
+}
 
 const CheckboxList = ({
   checkBoxList,
@@ -29,7 +29,7 @@ const CheckboxList = ({
           ariaLabel={ariaLabel}
           name={name}
           iconName={iconName}
-          id={`${name}-${index}`}
+          id={`${name}-${checkbox}`}
           value={checkbox}
           onChange={onChange}
           autoFocus={autoFocus && index === 0}
