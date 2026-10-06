@@ -2,10 +2,11 @@ import { useId } from 'react';
 import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnVariant } from '../../types/enums';
+import { BtnVariant, IconName } from '../../types/enums';
 import { OptionTypeNew } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
+import IconContent from '../IconContent';
 import FormModal from './FormModal';
 import TriggerModalButton from './TriggerModalButton';
 import { useModal } from './useModal';
@@ -48,13 +49,17 @@ const ChangeAddressModal = ({
   }
 
   return (
-    <section>
+    <>
       <TriggerModalButton
         ariaControls={ariaControls}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
-        {text ?? language.changeStandardAddress}
+        <IconContent
+          iconName={IconName.Pencil}
+          ariaLabel={text ?? language.changeStandardAddress}
+          showLabel
+        />
       </TriggerModalButton>
 
       <FormModal
@@ -95,7 +100,7 @@ const ChangeAddressModal = ({
           </div>
         </FieldSet>
       </FormModal>
-    </section>
+    </>
   );
 };
 
