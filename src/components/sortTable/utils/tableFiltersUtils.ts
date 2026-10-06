@@ -18,7 +18,7 @@ import {
   MainCategoryNames,
   SubCategoryNames,
 } from '../../../app/api/apiTypes/sharedApiTypes';
-import { OptionType } from '../../../types/types';
+import { OptionTypeNew } from '../../../types/types';
 import { Column } from '../SortTable';
 
 export interface ListsMap {
@@ -43,13 +43,14 @@ const listsMap: ListsMap = {
 
 type ListName = keyof ListsMap | 'categoryStatus';
 
-const createOptions = (items: readonly string[]): OptionType[] =>
+const createOptions = (items: readonly string[]): OptionTypeNew[] =>
   items.map((item) => ({
     label: item,
     value: item,
+    id: item,
   }));
 
-export const getListByName = (name: ListName): OptionType[] => {
+export const getListByName = (name: ListName): OptionTypeNew[] => {
   if (name === 'categoryStatus') {
     return createOptions(statusValues);
   }

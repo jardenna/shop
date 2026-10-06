@@ -77,7 +77,7 @@ const Modal = ({
         id={ariaControls}
         aria-labelledby={dialogId}
         ref={modalRef}
-        className={`pop-modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
+        className={`modal transition from-top-center modal-${modalSize} ${className} ${transitionState}`}
         onTransitionEnd={(event) => {
           if (event.target === event.currentTarget) {
             onTransitionEnd();

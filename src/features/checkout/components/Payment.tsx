@@ -1,86 +1,114 @@
 import { ReactNode } from 'react';
-import { CheckoutResponse } from '../../../app/api/apiTypes/cartApiTypes';
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import RadioButtonList from '../../../components/formElements/radioList/RadioButtonList';
+import {
+  PaymentFormValues,
+  PaymentMethods,
+} from '../../../app/api/apiTypes/paymentApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/Form';
+import Input from '../../../components/formElements/Input';
 import { paymentMethodsList } from '../../../config/paymentConfig';
-import type {
-  InputChangeHandler,
-  RefBtnType,
-  RefElementType,
-} from '../../../types/types';
-import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
-import PaymentCardForm from './PaymentCardForm';
+import { useFormValidation } from '../../../hooks/useFormValidation';
+import type { ChangeInputType, InputType } from '../../../types/types';
+import { validatePayment } from '../../../utils/validation/validatePayment';
+import { formatExpiryDate } from './formatExpiryDateUtil';
 
-export interface BasePaymentProps {
-  addAddressButtonRef: RefBtnType;
-  addressLength: number;
-  addressSectionRef: RefElementType;
-  checkout: CheckoutResponse;
+interface PaymentProps {
+  additionalFooterInfo: ReactNode;
   language: Record<string, string>;
-  additionalFooterInfo?: ReactNode;
-}
-
-interface PaymentProps extends BasePaymentProps {
-  name: string;
-  onChange: InputChangeHandler;
   paymentMethod: PaymentMethods[];
-  values: {
-    paymentMethod: PaymentMethods;
-  };
+  value: PaymentMethods;
+  isLoading?: boolean;
+  onSubmit: (values: PaymentFormValues) => void;
 }
 
 const Payment = ({
-  onChange,
-  values,
-  name,
-  checkout,
-  addressLength,
+  value,
   paymentMethod,
   language,
-  addAddressButtonRef,
-  addressSectionRef,
   additionalFooterInfo,
+  onSubmit,
+  isLoading,
 }: PaymentProps) => {
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
     paymentMethod.includes(method.id),
   );
 
   const methodToShow = availablePaymentMethods.find(
-    (method) => method.id === values.paymentMethod,
+    (method) => method.id === value,
   );
 
-  const paymentMethodList = availablePaymentMethods.map(({ id, label }) => ({
-    label,
-    value: id,
-    id,
-  }));
+  const initialValues: PaymentFormValues = {
+    paymentMethod: value,
+    cardNumber: '',
+    expiryDate: '',
+    cvvCode: '',
+    cardholderName: '',
+    paypalEmail: '',
+    paypalPassword: '',
+    mobilePhoneNumber: '',
+  };
+
+  const {
+    values,
+    onChange,
+    onSubmit: handleSubmit,
+    errors,
+  } = useFormValidation({
+    initialState: initialValues,
+    callback: onSubmit,
+    validate: validatePayment,
+    isLoading,
+  });
+
+  const handleChange = (event: ChangeInputType) => {
+    const currentTarget = event.currentTarget;
+
+    if (currentTarget.name === 'expiryDate') {
+      currentTarget.value = formatExpiryDate(currentTarget.value);
+    }
+
+    onChange(event);
+  };
+
+  if (!methodToShow) {
+    return null;
+  }
 
   return (
-    <div>
-      <form className="select-payment-method" noValidate>
-        <RadioButtonList
-          onChange={onChange}
-          value={values.paymentMethod}
-          radioButtonList={paymentMethodList}
-          name={name}
-        />
-        <PaymentMethodsList paymentMethods={paymentMethod} />
-      </form>
-
-      {methodToShow && (
-        <PaymentCardForm
-          additionalFooterInfo={additionalFooterInfo}
-          addressSectionRef={addressSectionRef}
-          fields={methodToShow.fields}
-          key={methodToShow.id}
-          language={language}
-          checkout={checkout}
-          paymentMethod={values.paymentMethod}
-          addressLength={addressLength}
-          addAddressButtonRef={addAddressButtonRef}
-        />
-      )}
-    </div>
+    <Form
+      className="payment-form"
+      onSubmit={handleSubmit}
+      submitBtnLabel={language.placeOrder}
+      isLoading={isLoading}
+      additionalFooterInfo={additionalFooterInfo}
+      fixedFooter
+    >
+      <FieldSet
+        legendText={language.payment}
+        showLegendText
+        legendClassname="order-flow-title"
+      >
+        <div className="payment-card-form">
+          {methodToShow.fields.map((field) => (
+            <Input
+              key={field.name}
+              labelText={language[field.label]}
+              name={field.name}
+              id={field.name}
+              onChange={handleChange}
+              value={values[field.name]}
+              type={field.type as InputType}
+              inputMode={field.inputMode}
+              className={field.name}
+              required
+              errorText={
+                errors[field.name] ? language[errors[field.name]] : undefined
+              }
+            />
+          ))}
+        </div>
+      </FieldSet>
+    </Form>
   );
 };
 

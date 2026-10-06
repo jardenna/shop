@@ -32,19 +32,6 @@
     }
   }
 
-  .address-list {
-    grid-auto-rows: rem(168px) auto;
-
-    .address-item {
-      grid-row: span 1;
-      padding: 20px;
-    }
-
-    .address-title {
-      margin: 0;
-    }
-  }
-
   .payment-form {
     margin-top: 12px;
   }

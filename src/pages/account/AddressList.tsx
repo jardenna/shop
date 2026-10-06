@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
+import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import IconContent from '../../components/IconContent';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { BtnVariant, IconName } from '../../types/enums';
+import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
+import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
+import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
+import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
 import DeleteAddressModal from './DeleteAddressModal';
 
@@ -15,7 +16,6 @@ interface AddressListProps {
   language: Record<string, string>;
   username: string;
   buttonRef?: RefBtnType;
-  className?: string;
   refetch: () => void;
 }
 
@@ -24,13 +24,80 @@ const AddressList = ({
   addresses,
   username,
   language,
-  className = '',
   buttonRef,
 }: AddressListProps) => {
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
+  const [updateAddress] = useUpdateAddressMutation();
+
   const handleSelectAddress = (address: Address) => {
     setSelectedAddress(address);
+  };
+
+  const shippingAddressId =
+    addresses.find((address) =>
+      address.standardAddress.includes('addressDelivery'),
+    )?.id ?? '';
+
+  const billingAddressId =
+    addresses.find((address) =>
+      address.standardAddress.includes('addressBilling'),
+    )?.id ?? '';
+
+  const handleUpdateAddress = async (address: AddressInput) => {
+    if (!address.id) {
+      return;
+    }
+
+    await updateAddress({
+      id: address.id,
+      address,
+    }).unwrap();
+  };
+
+  const handleChangeAddress = async ({
+    shippingAddressId,
+    billingAddressId,
+  }: AddressSelectionNew) => {
+    const shippingAddress = addresses.find(
+      (address) => address.id === shippingAddressId,
+    );
+
+    const billingAddress = addresses.find(
+      (address) => address.id === billingAddressId,
+    );
+
+    if (!shippingAddress || !billingAddress) {
+      return;
+    }
+
+    if (shippingAddressId === billingAddressId) {
+      await updateAddress({
+        id: shippingAddress.id,
+        address: {
+          ...shippingAddress,
+          standardAddress: ['addressDelivery', 'addressBilling'],
+        },
+      }).unwrap();
+
+      return;
+    }
+
+    await updateAddress({
+      id: shippingAddress.id,
+      address: {
+        ...shippingAddress,
+        standardAddress: ['addressDelivery'],
+      },
+    }).unwrap();
+
+    await updateAddress({
+      id: billingAddress.id,
+      address: {
+        ...billingAddress,
+        standardAddress: ['addressBilling'],
+      },
+    }).unwrap();
   };
 
   return (
@@ -38,46 +105,44 @@ const AddressList = ({
       FallbackComponent={ErrorBoundaryFallback}
       onReset={() => refetch}
     >
-      <ul className={`address-list ${className}`}>
+      <ul className="address-list">
         {addresses.map((address) => (
           <li key={address.id} className="address-item">
             <AddressInfoListContent address={address} username={address.name} />
 
             <div className="address-footer">
-              <TriggerModalButton
-                ariaControls={address.id}
-                modalId="address"
-                variant={BtnVariant.Ghost}
-                onClick={() => {
-                  handleSelectAddress(address);
-                }}
-              >
-                <IconContent
-                  iconName={IconName.Trash}
-                  ariaLabel={language.deleteAddress}
+              {address.standardAddress.length === 0 && (
+                <DeleteAddressModal
+                  selectedAddress={selectedAddress}
+                  onClick={() => {
+                    handleSelectAddress(address);
+                  }}
                 />
-              </TriggerModalButton>
-              <AddressFormModal
+              )}
+
+              <AddressFormModalNew
                 id={address.id}
                 address={address}
                 username={address.name}
                 headerText={language.updateAddress}
                 submitLabel={language.update}
                 popupMessage={language.addressUpdated}
+                onSubmitAddress={handleUpdateAddress}
               />
             </div>
           </li>
         ))}
       </ul>
-      {selectedAddress && (
-        <DeleteAddressModal
-          ariaControls={selectedAddress.id}
-          itemId={selectedAddress.id}
-          modalMessage={selectedAddress.street}
-          modalId="address"
+
+      <div className="address-actions">
+        <ChangeAddressModal
+          addresses={addresses}
+          billingAddressId={billingAddressId}
+          shippingAddressId={shippingAddressId}
+          language={language}
+          onSelectAddress={handleChangeAddress}
         />
-      )}
-      <div className="add-address">
+
         <AddressFormModal
           id={null}
           username={username}

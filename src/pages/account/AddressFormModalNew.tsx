@@ -12,16 +12,12 @@ import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
-import {
-  useAddAddressMutation,
-  useUpdateAddressMutation,
-} from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { InputType, RefBtnType } from '../../types/types';
 import { validateAddress } from '../../utils/validation/validateAddress';
 
-interface AddressFormModalProps {
+interface AddressFormModalNewProps {
   headerText: string;
   id: string | null;
   popupMessage: string;
@@ -30,6 +26,7 @@ interface AddressFormModalProps {
   address?: Address;
   buttonRef?: RefBtnType;
   disabled?: boolean;
+  onSubmitAddress: (address: AddressInput) => Promise<void>;
 }
 
 type AddressField = keyof AddressFields;
@@ -48,7 +45,7 @@ const addressInputList: AddressFieldListProps[] = [
   { name: 'country' },
 ];
 
-const AddressFormModal = ({
+const AddressFormModalNew = ({
   id,
   address,
   username,
@@ -57,7 +54,8 @@ const AddressFormModal = ({
   popupMessage,
   disabled,
   buttonRef,
-}: AddressFormModalProps) => {
+  onSubmitAddress,
+}: AddressFormModalNewProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
   const { language } = useLanguage();
@@ -71,7 +69,7 @@ const AddressFormModal = ({
     city: address?.city ?? '',
     country: address?.country ?? 'Danmark',
     standardAddress: address?.standardAddress ?? [],
-    id: id || null,
+    id: id ?? null,
   };
 
   const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
@@ -81,10 +79,6 @@ const AddressFormModal = ({
       validate: validateAddress,
     });
 
-  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
-  const [addAddress, { isLoading: addressIsLoading }] = useAddAddressMutation();
-
-  const updatedAddress = id ? { ...values, id } : values;
   async function handleSubmitAddress() {
     if (!isFormDirty) {
       onAddToast({
@@ -93,10 +87,9 @@ const AddressFormModal = ({
       return;
     }
 
-    if (id) {
-      await updateAddress({ address: updatedAddress, id }).unwrap();
-    } else {
-      await addAddress({ address: updatedAddress }).unwrap();
+    await onSubmitAddress(values);
+
+    if (!id) {
       onClearAllValues();
     }
 
@@ -126,7 +119,6 @@ const AddressFormModal = ({
             iconName={IconName.Add}
             ariaLabel={language.createNewAddress}
             showLabel
-            size="1.2rem"
           />
         )}
       </TriggerModalButton>
@@ -135,7 +127,7 @@ const AddressFormModal = ({
         modalId={modalId}
         ariaControls={ariaControls}
         headerText={headerText}
-        isLoading={isLoading || addressIsLoading}
+        isLoading={false}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}
@@ -164,4 +156,4 @@ const AddressFormModal = ({
   );
 };
 
-export default AddressFormModal;
+export default AddressFormModalNew;

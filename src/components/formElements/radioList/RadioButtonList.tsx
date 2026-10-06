@@ -1,11 +1,11 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { OptionType } from '../../../types/types';
+import { OptionTypeNew } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { BaseControlProps } from '../ControlInput';
 import './_radio-button-list.scss';
 
 interface RadioButtonListProps extends BaseControlProps {
-  radioButtonList: OptionType[];
+  radioButtonList: OptionTypeNew[];
   value: string;
 }
 
@@ -21,11 +21,11 @@ const RadioButtonList = ({
   return (
     <ul className="radio-button-list">
       {radioButtonList.map((radio) => (
-        <li key={radio.label} className="radio-button-item">
+        <li key={radio.id} className="radio-button-item">
           <ControlInput
             type="radio"
             name={name}
-            id={radio.label}
+            id={radio.id}
             value={radio.value}
             checked={value === radio.value}
             onChange={onChange}

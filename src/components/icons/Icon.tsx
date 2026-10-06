@@ -49,6 +49,7 @@ import PayPalIcon from './payments/PayPalIcon';
 import VisaIcon from './payments/VisaIcon';
 import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
+import RefreshIcon from './RefreshIcon';
 import SearchIcon from './SearchIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
 import FacebookIcon from './socials/FacebookIcon';
@@ -122,6 +123,7 @@ const iconMapping = {
   payPal: PayPalIcon,
   pencil: PencilIcon,
   products: ProductsIcon,
+  refresh: RefreshIcon,
   search: SearchIcon,
   shoppingBag: ShoppingBagIcon,
   star: StarIcon,

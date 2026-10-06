@@ -76,6 +76,11 @@ categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
 checkout;Checkout;Kasse
+cannotDeleteAssignedAddress;This address cannot be deleted because it is assigned as a delivery or billing address.;Denne adresse kan ikke slettes, fordi den er valgt som leverings- eller faktureringsadresse.
+changeStandardAddress;Change standard address;Skift standard adresse
+changeOrderAddress;Change address for this order;Skift adresse for denne ordre
+changeBillingAddress;Change billing address;Skift faktureringsadresse
+changeDeliveryAddress;Change delivery address;Skift leveringsadresse
 chest;Chest;Bryst
 circleChevronRight;Circle chevron right;Circle chevron right
 city;City;By
