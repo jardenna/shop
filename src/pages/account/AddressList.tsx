@@ -1,7 +1,5 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import { AddressSelection } from '../../app/api/apiTypes/orderApiTypes';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
 import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { RefBtnType } from '../../types/types';
@@ -17,11 +15,9 @@ interface AddressListProps {
   shippingAddressId: string;
   username: string;
   buttonRef?: RefBtnType;
-  refetch: () => void;
 }
 
 const AddressList = ({
-  refetch,
   addresses,
   username,
   language,
@@ -88,10 +84,7 @@ const AddressList = ({
   };
 
   return (
-    <ErrorBoundary
-      FallbackComponent={ErrorBoundaryFallback}
-      onReset={() => refetch}
-    >
+    <>
       <ul className="address-list">
         {addresses.map((address) => (
           <li key={address.id} className="address-item">
@@ -136,7 +129,7 @@ const AddressList = ({
           buttonRef={buttonRef}
         />
       </div>
-    </ErrorBoundary>
+    </>
   );
 };
 

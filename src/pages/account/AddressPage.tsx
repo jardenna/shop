@@ -1,3 +1,5 @@
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCartList from '../../components/skeleton/skeletonCartList/SkeletonCartList';
 import { useAuth } from '../../features/auth/hooks/useAuth';
@@ -29,17 +31,20 @@ const AddressPage = () => {
           <Skeleton />
         </SkeletonCartList>
       )}
-
-      {addresses && (
-        <AddressList
-          addresses={addresses}
-          language={language}
-          username={currentUser?.username ?? ''}
-          refetch={refetch}
-          billingAddressId={billingAddressId}
-          shippingAddressId={shippingAddressId}
-        />
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        {addresses && (
+          <AddressList
+            addresses={addresses}
+            language={language}
+            username={currentUser?.username ?? ''}
+            billingAddressId={billingAddressId}
+            shippingAddressId={shippingAddressId}
+          />
+        )}
+      </ErrorBoundary>
     </>
   );
 };
