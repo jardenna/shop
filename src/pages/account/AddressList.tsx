@@ -12,7 +12,9 @@ import DeleteAddressModal from './DeleteAddressModal';
 
 interface AddressListProps {
   addresses: Address[];
+  billingAddressId: string;
   language: Record<string, string>;
+  shippingAddressId: string;
   username: string;
   buttonRef?: RefBtnType;
   refetch: () => void;
@@ -24,18 +26,10 @@ const AddressList = ({
   username,
   language,
   buttonRef,
+  billingAddressId,
+  shippingAddressId,
 }: AddressListProps) => {
   const [updateAddress] = useUpdateAddressMutation();
-
-  const shippingAddressId =
-    addresses.find((address) =>
-      address.standardAddress.includes('addressDelivery'),
-    )?.id ?? '';
-
-  const billingAddressId =
-    addresses.find((address) =>
-      address.standardAddress.includes('addressBilling'),
-    )?.id ?? '';
 
   const handleUpdateAddress = async (address: AddressInput) => {
     if (!address.id) {

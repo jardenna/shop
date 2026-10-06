@@ -3,12 +3,22 @@ import SkeletonCartList from '../../components/skeleton/skeletonCartList/Skeleto
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAddressesQuery } from '../../features/profile/addressesApiSlice';
+import { findStandardAddress } from '../../utils/addressUtils';
 import AddressList from './AddressList';
 
 const AddressPage = () => {
   const { language } = useLanguage();
   const { data: addresses, isLoading, refetch } = useGetAddressesQuery();
   const { currentUser } = useAuth();
+  const shippingAddressId = findStandardAddress({
+    id: 'addressDelivery',
+    addresses,
+  });
+
+  const billingAddressId = findStandardAddress({
+    id: 'addressBilling',
+    addresses,
+  });
 
   return (
     <>
@@ -25,6 +35,8 @@ const AddressPage = () => {
           language={language}
           username={currentUser?.username ?? ''}
           refetch={refetch}
+          billingAddressId={billingAddressId}
+          shippingAddressId={shippingAddressId}
         />
       )}
     </>

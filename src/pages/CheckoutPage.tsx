@@ -29,6 +29,7 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
+import { findStandardAddress } from '../utils/addressUtils';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -69,21 +70,21 @@ const CheckoutPage = () => {
       size,
     })) ?? [];
 
-  const shippingAddressId =
-    checkout?.addresses.find((address) =>
-      address.standardAddress.includes('addressDelivery'),
-    )?.id ?? '';
+  const shippingAddressId = findStandardAddress({
+    id: 'addressDelivery',
+    addresses: checkout?.addresses,
+  });
 
-  const billingAddressId =
-    checkout?.addresses.find((address) =>
-      address.standardAddress.includes('addressBilling'),
-    )?.id ?? '';
+  const billingAddressId = findStandardAddress({
+    id: 'addressBilling',
+    addresses: checkout?.addresses,
+  });
 
   const handleChangeAddress = (address: AddressSelectionNew) => {
     setChangedAddress(address);
   };
 
-  const handleSubmit = async (paymentValues: PaymentFormValues) => {
+  const handleCheckout = async (paymentValues: PaymentFormValues) => {
     if (!checkout) {
       return;
     }
@@ -190,7 +191,7 @@ const CheckoutPage = () => {
                 paymentMethod={checkout.paymentMethods}
                 value={values.paymentMethod}
                 language={language}
-                onSubmit={handleSubmit}
+                onSubmit={handleCheckout}
                 isLoading={isCreateOrderLoading || isPayOrderLoading}
                 additionalFooterInfo={
                   isMobileSize ? (
