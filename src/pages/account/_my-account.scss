@@ -15,7 +15,7 @@
 .address-list {
   @include grid-template-column;
 
-  gap: 12px;
+  gap: 20px;
 }
 
 .address-item {
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
-  gap: 8px;
+  gap: 12px;
 }
 
 .address-content {
