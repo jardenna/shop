@@ -20,6 +20,7 @@ import { validateAddress } from '../../utils/validation/validateAddress';
 interface AddressFormModalNewProps {
   headerText: string;
   id: string | null;
+  isLoading: boolean;
   popupMessage: string;
   submitLabel: string;
   username: string;
@@ -55,6 +56,7 @@ const AddressFormModalNew = ({
   disabled,
   buttonRef,
   onSubmitAddress,
+  isLoading,
 }: AddressFormModalNewProps) => {
   const ariaControls = useId();
   const modalId = id ? `update-${id}` : 'create';
@@ -128,7 +130,7 @@ const AddressFormModalNew = ({
         modalId={modalId}
         ariaControls={ariaControls}
         headerText={headerText}
-        isLoading={false}
+        isLoading={isLoading}
         onSubmit={onSubmit}
         disabled={!!id && !isFormDirty}
         submitLabel={submitLabel}

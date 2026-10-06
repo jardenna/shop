@@ -10,6 +10,7 @@ const AddressPage = () => {
   const { language } = useLanguage();
   const { data: addresses, isLoading, refetch } = useGetAddressesQuery();
   const { currentUser } = useAuth();
+
   const shippingAddressId = findStandardAddress({
     id: 'addressDelivery',
     addresses,

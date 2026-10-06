@@ -29,7 +29,7 @@ const AddressList = ({
   billingAddressId,
   shippingAddressId,
 }: AddressListProps) => {
-  const [updateAddress] = useUpdateAddressMutation();
+  const [updateAddress, { isLoading }] = useUpdateAddressMutation();
 
   const handleUpdateAddress = async (address: AddressInput) => {
     if (!address.id) {
@@ -110,6 +110,7 @@ const AddressList = ({
                 submitLabel={language.update}
                 popupMessage={language.addressUpdated}
                 onSubmitAddress={handleUpdateAddress}
+                isLoading={isLoading}
               />
             </div>
           </li>
