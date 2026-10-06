@@ -3,6 +3,7 @@ import { AddressSelection } from '../../app/api/apiTypes/orderApiTypes';
 import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
 import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { RefBtnType } from '../../types/types';
+import { getAddressUpdates } from '../../utils/addressUtils';
 import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
@@ -37,50 +38,30 @@ const AddressList = ({
       address,
     }).unwrap();
   };
-
   const handleChangeAddress = async ({
     shippingAddressId,
     billingAddressId,
   }: AddressSelection) => {
-    const shippingAddress = addresses.find(
-      (address) => address.id === shippingAddressId,
-    );
+    const addressUpdates = getAddressUpdates({
+      shippingAddressId,
+      billingAddressId,
+    });
 
-    const billingAddress = addresses.find(
-      (address) => address.id === billingAddressId,
-    );
+    for (const { addressId, standardAddress } of addressUpdates) {
+      const address = addresses.find((item) => item.id === addressId);
 
-    if (!shippingAddress || !billingAddress) {
-      return;
-    }
+      if (!address) {
+        return;
+      }
 
-    if (shippingAddressId === billingAddressId) {
       await updateAddress({
-        id: shippingAddress.id,
+        id: address.id,
         address: {
-          ...shippingAddress,
-          standardAddress: ['addressDelivery', 'addressBilling'],
+          ...address,
+          standardAddress,
         },
       }).unwrap();
-
-      return;
     }
-
-    await updateAddress({
-      id: shippingAddress.id,
-      address: {
-        ...shippingAddress,
-        standardAddress: ['addressDelivery'],
-      },
-    }).unwrap();
-
-    await updateAddress({
-      id: billingAddress.id,
-      address: {
-        ...billingAddress,
-        standardAddress: ['addressBilling'],
-      },
-    }).unwrap();
   };
 
   return (
