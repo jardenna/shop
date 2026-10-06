@@ -119,6 +119,7 @@ const AddressFormModalNew = ({
             iconName={IconName.Add}
             ariaLabel={language.createNewAddress}
             showLabel
+            size="1.2rem"
           />
         )}
       </TriggerModalButton>
