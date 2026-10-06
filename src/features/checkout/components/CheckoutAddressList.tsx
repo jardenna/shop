@@ -5,11 +5,6 @@ import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
 import { RefBtnType } from '../../../types/types';
 
-export interface AddressSelectionNew {
-  billingAddressId: string;
-  shippingAddressId: string;
-}
-
 export interface BaseAddressListProps extends AddressSelection {
   addresses: Address[];
   language: Record<string, string>;

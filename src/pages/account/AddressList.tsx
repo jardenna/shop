@@ -1,8 +1,8 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
+import { AddressSelection } from '../../app/api/apiTypes/orderApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
-import { AddressSelectionNew } from '../../features/checkout/components/CheckoutAddressList';
 import { useUpdateAddressMutation } from '../../features/profile/addressesApiSlice';
 import { RefBtnType } from '../../types/types';
 import AddressFormModal from './AddressFormModal';
@@ -45,7 +45,7 @@ const AddressList = ({
   const handleChangeAddress = async ({
     shippingAddressId,
     billingAddressId,
-  }: AddressSelectionNew) => {
+  }: AddressSelection) => {
     const shippingAddress = addresses.find(
       (address) => address.id === shippingAddressId,
     );
