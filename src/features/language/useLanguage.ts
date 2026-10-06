@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import type { OptionType } from '../../types/types';
+import type { OptionTypeNew } from '../../types/types';
 import {
   SelectedLanguage,
   selectLanguage,
@@ -9,9 +9,9 @@ import {
   setLanguage,
 } from './languageSlice';
 
-export const languageOptions: OptionType[] = [
-  { value: 'da', label: 'Dansk' },
-  { value: 'en', label: 'English' },
+export const languageOptions: OptionTypeNew[] = [
+  { value: 'da', label: 'Dansk', id: 'da' },
+  { value: 'en', label: 'English', id: 'en' },
 ];
 
 export const useLanguage = () => {

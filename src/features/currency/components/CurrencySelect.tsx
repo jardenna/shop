@@ -1,11 +1,11 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
-import { OptionType } from '../../../types/types';
+import { OptionTypeNew } from '../../../types/types';
 
 interface CurrencySelectProps {
-  currencyOptions: OptionType[];
-  defaultValue: OptionType;
+  currencyOptions: OptionTypeNew[];
+  defaultValue: OptionTypeNew;
   labelText: string;
-  onSelectCurrency: (selectedOptions: OptionType) => void;
+  onSelectCurrency: (selectedOptions: OptionTypeNew) => void;
 }
 
 const CurrencySelect = ({

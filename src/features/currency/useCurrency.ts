@@ -18,6 +18,7 @@ export const useCurrency = (price?: number) => {
   const currencyOptions = Object.keys(rates).map((currency) => ({
     label: currency,
     value: currency,
+    id: currency,
   }));
 
   const currencyText = currencyToText[selectedCurrency];

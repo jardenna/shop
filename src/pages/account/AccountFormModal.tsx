@@ -14,7 +14,7 @@ import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import type { OptionType } from '../../types/types';
+import type { OptionTypeNew } from '../../types/types';
 import { validateProfile } from '../../utils/validation/validateProfile';
 import type { ProfileFieldListProps } from './MyAccountPage';
 
@@ -40,10 +40,11 @@ const AccountFormModal = ({
   const { onAddToast } = useToast();
   const { closeModal } = useModal();
 
-  const preferredFashionList: OptionType[] = preferredFashion.map(
+  const preferredFashionList: OptionTypeNew[] = preferredFashion.map(
     (fashion) => ({
       value: fashion,
       label: fashion,
+      id: fashion,
     }),
   );
 

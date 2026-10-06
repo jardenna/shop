@@ -4,17 +4,17 @@ import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler, OptionType } from '../../../types/types';
+import { InputChangeHandler, OptionTypeNew } from '../../../types/types';
 import { Values } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 interface LanguageProps {
-  currencyOptions: OptionType[];
-  defaultValue: OptionType;
+  currencyOptions: OptionTypeNew[];
+  defaultValue: OptionTypeNew;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   values: Values;
-  onSelectCurrency: (selectedOptions: OptionType) => void;
+  onSelectCurrency: (selectedOptions: OptionTypeNew) => void;
   onSubmit: () => void;
 }
 
