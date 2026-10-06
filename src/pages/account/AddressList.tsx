@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -26,13 +25,7 @@ const AddressList = ({
   language,
   buttonRef,
 }: AddressListProps) => {
-  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
-
   const [updateAddress] = useUpdateAddressMutation();
-
-  const handleSelectAddress = (address: Address) => {
-    setSelectedAddress(address);
-  };
 
   const shippingAddressId =
     addresses.find((address) =>
@@ -112,12 +105,7 @@ const AddressList = ({
 
             <div className="address-footer">
               {address.standardAddress.length === 0 && (
-                <DeleteAddressModal
-                  selectedAddress={selectedAddress}
-                  onClick={() => {
-                    handleSelectAddress(address);
-                  }}
-                />
+                <DeleteAddressModal address={address} />
               )}
 
               <AddressFormModalNew
