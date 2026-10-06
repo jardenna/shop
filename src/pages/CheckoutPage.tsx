@@ -176,7 +176,7 @@ const CheckoutPage = () => {
                 buttonRef={addAddressButtonRef}
                 billingAddressId={billingAddressId}
                 shippingAddressId={shippingAddressId}
-                onSelectAddress={handleChangeAddress}
+                onChangeAddress={handleChangeAddress}
               />
 
               <SelectPaymentMethod

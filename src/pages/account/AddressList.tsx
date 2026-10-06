@@ -123,7 +123,7 @@ const AddressList = ({
           billingAddressId={billingAddressId}
           shippingAddressId={shippingAddressId}
           language={language}
-          onSelectAddress={handleChangeAddress}
+          onChangeAddress={handleChangeAddress}
         />
 
         <AddressFormModal

@@ -19,7 +19,7 @@ const ChangeAddressModal = ({
   shippingAddressId,
   billingAddressId,
   language,
-  onSelectAddress,
+  onChangeAddress,
   text,
 }: ChangeAddressModalProps) => {
   const ariaControls = useId();
@@ -44,7 +44,7 @@ const ChangeAddressModal = ({
     }));
 
   function handleSubmit() {
-    onSelectAddress(values);
+    onChangeAddress(values);
     closeModal();
   }
 

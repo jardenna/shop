@@ -8,7 +8,7 @@ import { RefBtnType } from '../../../types/types';
 export interface BaseAddressListProps extends AddressSelection {
   addresses: Address[];
   language: Record<string, string>;
-  onSelectAddress: (address: AddressSelection) => void;
+  onChangeAddress: (address: AddressSelection) => void;
 }
 
 interface CheckoutAddressListProps extends BaseAddressListProps {
@@ -23,7 +23,7 @@ const CheckoutAddressList = ({
   buttonRef,
   shippingAddressId,
   billingAddressId,
-  onSelectAddress,
+  onChangeAddress,
 }: CheckoutAddressListProps) => (
   <>
     <ul className="address-list">
@@ -40,7 +40,7 @@ const CheckoutAddressList = ({
           billingAddressId={billingAddressId}
           shippingAddressId={shippingAddressId}
           language={language}
-          onSelectAddress={onSelectAddress}
+          onChangeAddress={onChangeAddress}
           text={language.changeOrderAddress}
         />
       )}
