@@ -46,7 +46,7 @@ const CheckoutAddressList = ({
           shippingAddressId={shippingAddressId}
           language={language}
           onSelectAddress={onSelectAddress}
-          text="Skift addresse for denne ordre"
+          text={language.changeOrderAddress}
         />
       )}
       <AddressFormModal
