@@ -151,6 +151,7 @@ const AdminOrderPage = () => {
         defaultValue={{
           value: itemsPerPage.toString(),
           label: itemsPerPage.toString(),
+          id: itemsPerPage.toString(),
         }}
       />
     </AdminPageContainer>
