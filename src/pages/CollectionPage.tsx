@@ -55,9 +55,9 @@ const CollectionPage = () => {
 
   // Redux hooks
   const initialFilters: InitialFilters = {
-    sizes: [] as string[],
-    colors: [] as string[],
-    brand: [] as string[],
+    sizes: [],
+    colors: [],
+    brand: [],
     minPrice: '',
     maxPrice: '',
   };
