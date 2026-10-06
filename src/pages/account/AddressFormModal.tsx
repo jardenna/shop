@@ -71,7 +71,7 @@ const AddressFormModal = ({
     city: address?.city ?? '',
     country: address?.country ?? 'Danmark',
     standardAddress: address?.standardAddress ?? [],
-    id: id || null,
+    id: id ?? null,
   };
 
   const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
