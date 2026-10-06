@@ -29,7 +29,7 @@ import {
 } from '../../../hooks/useLocalStorage';
 import { AdminPath } from '../../../layout/nav/enums';
 import variables from '../../../scss/variables.module.scss';
-import type { OptionTypeNew } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';
 import {
   maxDiscount,
@@ -86,10 +86,7 @@ const ProductForm = ({
     borderColor: variables.colorIconBorder,
   });
 
-  const handleSelectCategory = (
-    name: string,
-    selectedOptions: OptionTypeNew,
-  ) => {
+  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -140,14 +137,11 @@ const ProductForm = ({
     (img) => !disabledImages.includes(img),
   );
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionTypeNew) => {
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
-  const handleSelectColors = (
-    name: string,
-    selectedOptions: OptionTypeNew[],
-  ) => {
+  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
     const selectedValues = selectedOptions.map((option) => option.value);
     onCustomChange(name, selectedValues);
   };
@@ -296,7 +290,7 @@ const ProductForm = ({
                 components={{ Option: StatusOptions }}
                 defaultValue={defaultCategoryValue}
                 isSearchable
-                onChange={(selectedOptions: OptionTypeNew) => {
+                onChange={(selectedOptions: OptionType) => {
                   handleSelectCategory('subCategory', selectedOptions);
                 }}
                 required
@@ -370,7 +364,7 @@ const ProductForm = ({
                 isSearchable
                 defaultValue={defaultColorValue}
                 isMulti
-                onChange={(values: OptionTypeNew[]) => {
+                onChange={(values: OptionType[]) => {
                   handleSelectColors('colors', values);
                 }}
                 required
@@ -449,7 +443,7 @@ const ProductForm = ({
                   value: values.productStatus,
                   id: values.productStatus,
                 }}
-                onSelectStatus={(selectedOptions: OptionTypeNew) => {
+                onSelectStatus={(selectedOptions: OptionType) => {
                   handleSelectStatus('productStatus', selectedOptions);
                 }}
                 status={values.productStatus}

@@ -23,7 +23,7 @@ import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import PageErrorBoundary from '../pages/PageErrorBoundary';
 import { IconName } from '../types/enums';
-import type { OptionTypeNew } from '../types/types';
+import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/enums';
@@ -61,10 +61,7 @@ const Layout = () => {
     navigate(ShopPath.Root);
   };
 
-  const handleSelectCurrency = (
-    name: string,
-    selectedOptions: OptionTypeNew,
-  ) => {
+  const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -136,7 +133,7 @@ const Layout = () => {
         currencyOptions={currencyOptions}
         currentUser={currentUser}
         isAuthReady={isAuthReady}
-        onSelectCurrency={(selectedOptions: OptionTypeNew) => {
+        onSelectCurrency={(selectedOptions: OptionType) => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />

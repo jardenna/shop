@@ -28,7 +28,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText, ShopPath } from '../layout/nav/enums';
-import { OptionTypeNew } from '../types/types';
+import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { productViewIconList } from '../utils/productViewIconList';
 import { sortSizesDynamic } from '../utils/sizeUtils';
@@ -112,7 +112,7 @@ const CollectionPage = () => {
     isLoading,
   });
 
-  const handleSelectCount = (option: OptionTypeNew) => {
+  const handleSelectCount = (option: OptionType) => {
     const newCount = Number(option.value);
     updatePagination(1, newCount);
     setShouldScroll(true);

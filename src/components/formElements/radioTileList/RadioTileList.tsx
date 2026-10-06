@@ -1,5 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { OptionTypeNew } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
@@ -7,7 +7,7 @@ import './_radio-tile-list.scss';
 
 interface RadioTileListProps extends BaseControlProps {
   checked: string;
-  radioButtonList: OptionTypeNew[];
+  radioButtonList: OptionType[];
 }
 
 const RadioTileList = ({

@@ -1,7 +1,7 @@
 import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import type { InputChangeHandler, OptionTypeNew } from '../../types/types';
+import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import { ShopPath } from '../nav/enums';
@@ -20,12 +20,12 @@ type MobileProps = {
 };
 
 export interface BaseHeaderProps {
-  currencyOptions: OptionTypeNew[];
-  defaultValue: OptionTypeNew;
+  currencyOptions: OptionType[];
+  defaultValue: OptionType;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   values: Values;
-  onSelectCurrency: (selectedOptions: OptionTypeNew) => void;
+  onSelectCurrency: (selectedOptions: OptionType) => void;
 }
 
 export interface HeaderProps extends BaseHeaderProps {

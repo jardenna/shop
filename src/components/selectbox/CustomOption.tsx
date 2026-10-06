@@ -1,18 +1,18 @@
 import type { ReactNode } from 'react';
 import { OptionProps } from 'react-select';
 
-type CustomOptionProps<OptionTypeNew> = OptionProps<OptionTypeNew> & {
-  render: (data: OptionTypeNew) => ReactNode;
+type CustomOptionProps<OptionType> = OptionProps<OptionType> & {
+  render: (data: OptionType) => ReactNode;
 };
 
-const CustomOption = <OptionTypeNew,>({
+const CustomOption = <OptionType,>({
   data,
   innerRef,
   innerProps,
   isFocused,
   isSelected,
   render,
-}: CustomOptionProps<OptionTypeNew>) => {
+}: CustomOptionProps<OptionType>) => {
   const className = `select-box-menu-list-item  ${
     isSelected ? 'selected' : ''
   } ${isFocused ? 'focused' : ''}`;

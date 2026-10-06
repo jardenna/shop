@@ -3,7 +3,7 @@ import { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import type {
   InputChangeHandler,
-  OptionTypeNew,
+  OptionType,
   RefElementType,
 } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
@@ -27,7 +27,7 @@ export type StatusInputsProps = {
   min?: number;
   ref?: RefElementType;
   onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionTypeNew) => void;
+  onSelectStatus: (selectedOptions: OptionType) => void;
 };
 
 const StatusInputs = ({

@@ -17,7 +17,7 @@ import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
-import type { OptionTypeNew } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import { validateSubcategory } from '../../../utils/validation/validateSubcategory';
 import { useLanguage } from '../../language/useLanguage';
@@ -49,7 +49,7 @@ const SubCategoryForm = ({
     navigate(-1);
   };
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionTypeNew) => {
+  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
     onCustomChange(name, selectedOptions.value);
   };
 
@@ -147,7 +147,7 @@ const SubCategoryForm = ({
             defaultValue={selectedCategoryOption}
             options={parentCategoriesOptions}
             components={{ Option: StatusOptions }}
-            onChange={(selectedOptions: OptionTypeNew) => {
+            onChange={(selectedOptions: OptionType) => {
               handleSelectStatus('category', selectedOptions);
             }}
             name="category"
@@ -177,7 +177,7 @@ const SubCategoryForm = ({
               value: values.categoryStatus,
               id: values.categoryStatus,
             }}
-            onSelectStatus={(selectedOptions: OptionTypeNew) => {
+            onSelectStatus={(selectedOptions: OptionType) => {
               handleSelectStatus('categoryStatus', selectedOptions);
             }}
             status={values.categoryStatus}
