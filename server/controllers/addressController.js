@@ -122,14 +122,25 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
   const { addressId } = req.params;
 
   const existingAddress = user.addresses.id(addressId);
+
   if (!existingAddress) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('noMatchingAddressData', req.lang) });
+    return res.status(404).json({
+      success: false,
+      message: t('noMatchingAddressData', req.lang),
+    });
   }
+
+  if (existingAddress.standardAddress.length > 0) {
+    return res.status(400).json({
+      success: false,
+      message: t('cannotDeleteAssignedAddress', req.lang),
+    });
+  }
+
   existingAddress.deleteOne();
 
   await user.save();
+
   res.status(200).json(formatAddresses(user.addresses));
 });
 
