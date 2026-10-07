@@ -1,5 +1,9 @@
 import { Address, StandardAddress } from '../app/api/apiTypes/addressApiTypes';
-import { AddressSelection } from '../app/api/apiTypes/orderApiTypes';
+
+export interface StandardAddressIds {
+  billingAddressId: string;
+  shippingAddressId: string;
+}
 
 interface FindStandardAddress {
   id: StandardAddress;
@@ -12,7 +16,7 @@ export const findStandardAddress = ({ id, addresses }: FindStandardAddress) =>
 export const getAddressUpdates = ({
   shippingAddressId,
   billingAddressId,
-}: AddressSelection) => {
+}: StandardAddressIds) => {
   if (shippingAddressId === billingAddressId) {
     return [
       {

@@ -1,6 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { AddressInput } from '../../app/api/apiTypes/addressApiTypes';
-import { AddressSelection } from '../../app/api/apiTypes/orderApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCartList from '../../components/skeleton/skeletonCartList/SkeletonCartList';
@@ -13,6 +12,7 @@ import {
 import {
   findStandardAddress,
   getAddressUpdates,
+  StandardAddressIds,
 } from '../../utils/addressUtils';
 import AddressList from './AddressList';
 
@@ -37,7 +37,7 @@ const AddressPage = () => {
   const handleChangeAddress = async ({
     shippingAddressId,
     billingAddressId,
-  }: AddressSelection) => {
+  }: StandardAddressIds) => {
     const addressUpdates = getAddressUpdates({
       shippingAddressId,
       billingAddressId,

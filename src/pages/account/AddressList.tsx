@@ -1,7 +1,7 @@
 import { Address, AddressInput } from '../../app/api/apiTypes/addressApiTypes';
-import { AddressSelection } from '../../app/api/apiTypes/orderApiTypes';
 import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
 import { RefBtnType } from '../../types/types';
+import { StandardAddressIds } from '../../utils/addressUtils';
 import AddressFormModal from './AddressFormModal';
 import AddressFormModalNew from './AddressFormModalNew';
 import AddressInfoListContent from './AddressInfoListContent';
@@ -15,7 +15,7 @@ interface AddressListProps {
   shippingAddressId: string;
   username: string;
   buttonRef?: RefBtnType;
-  onChangeAddress: (address: AddressSelection) => void;
+  onChangeAddress: (address: StandardAddressIds) => void;
   onUpdateAddress: (address: AddressInput) => Promise<void>;
 }
 

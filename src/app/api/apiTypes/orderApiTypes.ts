@@ -1,3 +1,4 @@
+import { StandardAddressIds } from '../../../utils/addressUtils';
 import {
   deliveryStatusFilterValues,
   paymentMethodFilterValues,
@@ -8,12 +9,7 @@ import { BaseOrder, Order } from './cartApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
 import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
 
-export interface AddressSelection {
-  billingAddressId: string;
-  shippingAddressId: string;
-}
-
-export interface CreateOrderRequest extends AddressSelection {
+export interface CreateOrderRequest extends StandardAddressIds {
   orderItems: BaseOrder[];
   payment: {
     method: PaymentMethods;

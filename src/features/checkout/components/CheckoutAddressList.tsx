@@ -1,14 +1,14 @@
 import { Address } from '../../../app/api/apiTypes/addressApiTypes';
-import { AddressSelection } from '../../../app/api/apiTypes/orderApiTypes';
 import ChangeAddressModal from '../../../components/Modal/ChangeAddressModal';
 import AddressFormModal from '../../../pages/account/AddressFormModal';
 import AddressInfoListContent from '../../../pages/account/AddressInfoListContent';
 import { RefBtnType } from '../../../types/types';
+import { StandardAddressIds } from '../../../utils/addressUtils';
 
-export interface BaseAddressListProps extends AddressSelection {
+export interface BaseAddressListProps extends StandardAddressIds {
   addresses: Address[];
   language: Record<string, string>;
-  onChangeAddress: (address: AddressSelection) => void;
+  onChangeAddress: (address: StandardAddressIds) => void;
 }
 
 interface CheckoutAddressListProps extends BaseAddressListProps {

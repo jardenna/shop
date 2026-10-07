@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
-import { AddressSelection } from '../app/api/apiTypes/orderApiTypes';
 import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
@@ -28,7 +27,7 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
-import { findStandardAddress } from '../utils/addressUtils';
+import { findStandardAddress, StandardAddressIds } from '../utils/addressUtils';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -45,9 +44,8 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [changedAddress, setChangedAddress] = useState<AddressSelection | null>(
-    null,
-  );
+  const [changedAddress, setChangedAddress] =
+    useState<StandardAddressIds | null>(null);
 
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
@@ -80,7 +78,7 @@ const CheckoutPage = () => {
     addresses: checkout?.addresses,
   });
 
-  const handleChangeAddress = (address: AddressSelection) => {
+  const handleChangeAddress = (address: StandardAddressIds) => {
     setChangedAddress(address);
   };
 
