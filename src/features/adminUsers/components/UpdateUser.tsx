@@ -6,7 +6,7 @@ import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
 import EditUserInput from './EditUserInput';
 
-type UpdateUserProps = {
+interface UpdateUserProps {
   ariaLabel: string;
   id: ColumnKey;
   isFormDirty: boolean;
@@ -16,7 +16,7 @@ type UpdateUserProps = {
   onEditChange: (event: ChangeInputType) => void;
   onOpenPopup: () => void;
   onSaveEdit: () => void;
-};
+}
 
 const UpdateUser = ({
   onOpenPopup,
