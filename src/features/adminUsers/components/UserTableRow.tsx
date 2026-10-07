@@ -5,6 +5,7 @@ import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { InputChangeHandler } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
+import UserRowText from './UserRowText';
 
 export interface BaseUserTableRowProps {
   id: ColumnKey;
@@ -19,6 +20,7 @@ export interface BaseUserTableRowProps {
 interface UserTableRowProps extends BaseUserTableRowProps {
   ariaLabel: string;
   onUpdateChange: InputChangeHandler;
+  text: string;
   onOpenPopup: () => void;
 }
 
@@ -33,32 +35,36 @@ const UserTableRow = ({
   isFormDirty,
   roleValue,
   submitBtnLabel,
+  text,
 }: UserTableRowProps) => (
-  <Popup
-    className="update-user-popup"
-    onOpenPopup={onOpenPopup}
-    popupContent={({ close }) => (
-      <UpdateUserInput
-        submitBtnLabel={submitBtnLabel}
-        labelText={id}
-        language={language}
-        onSave={() => {
-          onSave();
-          close();
-        }}
-        onCancel={close}
-        onUpdateChange={onUpdateChange}
-        id={id}
-        value={value}
-        roleValue={roleValue}
-        isFormDirty={isFormDirty}
-      />
-    )}
-    triggerBtnVariant={BtnVariant.Ghost}
-    ariaLabel={ariaLabel}
-  >
-    <Icon iconName={IconName.Pencil} />
-  </Popup>
+  <>
+    <UserRowText text={text} language={language} />
+    <Popup
+      className="update-user-popup"
+      onOpenPopup={onOpenPopup}
+      popupContent={({ close }) => (
+        <UpdateUserInput
+          submitBtnLabel={submitBtnLabel}
+          labelText={id}
+          language={language}
+          onSave={() => {
+            onSave();
+            close();
+          }}
+          onCancel={close}
+          onUpdateChange={onUpdateChange}
+          id={id}
+          value={value}
+          roleValue={roleValue}
+          isFormDirty={isFormDirty}
+        />
+      )}
+      triggerBtnVariant={BtnVariant.Ghost}
+      ariaLabel={ariaLabel}
+    >
+      <Icon iconName={IconName.Pencil} />
+    </Popup>
+  </>
 );
 
 export default UserTableRow;
