@@ -18,7 +18,7 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import './userPage.styles.scss';
+import './_userPage.scss';
 import { tableHeaders } from './userTableHeaders';
 import { useUserEditField } from './useUserEditField';
 
