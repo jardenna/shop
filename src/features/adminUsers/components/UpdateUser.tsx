@@ -18,7 +18,6 @@ export interface BaseUpdateUserProps {
 
 interface UpdateUserProps extends BaseUpdateUserProps {
   ariaLabel: string;
-
   onEditChange: (event: ChangeInputType) => void;
   onOpenPopup: () => void;
 }
