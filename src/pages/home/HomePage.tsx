@@ -1,5 +1,5 @@
+import Hero from '../../components/hero/Hero';
 import FashionGrid from './fashionGrid/FashionGrid';
-import Hero from './hero/Hero';
 
 const HomePage = () => (
   <div>
