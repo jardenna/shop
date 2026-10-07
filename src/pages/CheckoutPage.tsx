@@ -10,9 +10,6 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
-import CheckoutAddressList, {
-  AddressSelectionNew,
-} from '../features/checkout/components/CheckoutAddressList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
@@ -29,6 +26,12 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
+import {
+  findStandardAddress,
+  getUpdatedAddresses,
+  StandardAddressIds,
+} from '../utils/addressUtils';
+import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -45,8 +48,10 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [changedAddress, setChangedAddress] =
-    useState<AddressSelectionNew | null>(null);
+  const [changedAddress, setChangedAddress] = useState<StandardAddressIds>({
+    shippingAddressId: '',
+    billingAddressId: '',
+  });
 
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
@@ -69,21 +74,33 @@ const CheckoutPage = () => {
       size,
     })) ?? [];
 
-  const shippingAddressId =
-    checkout?.addresses.find((address) =>
-      address.standardAddress.includes('addressDelivery'),
-    )?.id ?? '';
+  const shippingAddressId = findStandardAddress({
+    id: 'addressDelivery',
+    addresses: checkout?.addresses,
+  });
 
-  const billingAddressId =
-    checkout?.addresses.find((address) =>
-      address.standardAddress.includes('addressBilling'),
-    )?.id ?? '';
+  const billingAddressId = findStandardAddress({
+    id: 'addressBilling',
+    addresses: checkout?.addresses,
+  });
 
-  const handleChangeAddress = (address: AddressSelectionNew) => {
+  const selectedShippingAddressId =
+    changedAddress.shippingAddressId || shippingAddressId;
+
+  const selectedBillingAddressId =
+    changedAddress.billingAddressId || billingAddressId;
+
+  const handleChangeAddress = (address: StandardAddressIds) => {
     setChangedAddress(address);
   };
 
-  const handleSubmit = async (paymentValues: PaymentFormValues) => {
+  const displayedAddresses = getUpdatedAddresses({
+    addresses: checkout?.addresses ?? [],
+    shippingAddressId: selectedShippingAddressId,
+    billingAddressId: selectedBillingAddressId,
+  });
+
+  const handleCheckout = async (paymentValues: PaymentFormValues) => {
     if (!checkout) {
       return;
     }
@@ -106,8 +123,8 @@ const CheckoutPage = () => {
 
     const order = await createOrder({
       orderItems,
-      shippingAddressId: changedAddress?.shippingAddressId ?? shippingAddressId,
-      billingAddressId: changedAddress?.billingAddressId ?? billingAddressId,
+      shippingAddressId: selectedShippingAddressId,
+      billingAddressId: selectedBillingAddressId,
       payment: {
         method: paymentValues.paymentMethod,
       },
@@ -168,14 +185,14 @@ const CheckoutPage = () => {
                 )}
               </LayoutElement>
 
-              <CheckoutAddressList
-                addresses={checkout.addresses}
+              <AddressList
+                addresses={displayedAddresses}
                 language={language}
                 username={currentUser?.username ?? ''}
                 buttonRef={addAddressButtonRef}
-                billingAddressId={billingAddressId}
-                shippingAddressId={shippingAddressId}
-                onSelectAddress={handleChangeAddress}
+                billingAddressId={selectedBillingAddressId}
+                shippingAddressId={selectedShippingAddressId}
+                onChangeAddress={handleChangeAddress}
               />
 
               <SelectPaymentMethod
@@ -190,7 +207,7 @@ const CheckoutPage = () => {
                 paymentMethod={checkout.paymentMethods}
                 value={values.paymentMethod}
                 language={language}
-                onSubmit={handleSubmit}
+                onSubmit={handleCheckout}
                 isLoading={isCreateOrderLoading || isPayOrderLoading}
                 additionalFooterInfo={
                   isMobileSize ? (

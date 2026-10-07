@@ -1,14 +1,62 @@
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCartList from '../../components/skeleton/skeletonCartList/SkeletonCartList';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAddressesQuery } from '../../features/profile/addressesApiSlice';
+import {
+  useGetAddressesQuery,
+  useUpdateAddressMutation,
+} from '../../features/profile/addressesApiSlice';
+import {
+  findStandardAddress,
+  getAddressUpdates,
+  StandardAddressIds,
+} from '../../utils/addressUtils';
 import AddressList from './AddressList';
+import AddressListFooter from './AddressListFooter';
 
 const AddressPage = () => {
   const { language } = useLanguage();
   const { data: addresses, isLoading, refetch } = useGetAddressesQuery();
   const { currentUser } = useAuth();
+  const [updateAddress] = useUpdateAddressMutation();
+
+  const handleChangeAddress = async ({
+    shippingAddressId,
+    billingAddressId,
+  }: StandardAddressIds) => {
+    const addressUpdates = getAddressUpdates({
+      shippingAddressId,
+      billingAddressId,
+    });
+
+    for (const { addressId, standardAddress } of addressUpdates) {
+      const address = addresses?.find((item) => item.id === addressId);
+
+      if (!address) {
+        return;
+      }
+
+      await updateAddress({
+        id: address.id,
+        address: {
+          ...address,
+          standardAddress,
+        },
+      }).unwrap();
+    }
+  };
+
+  const shippingAddressId = findStandardAddress({
+    id: 'addressDelivery',
+    addresses,
+  });
+
+  const billingAddressId = findStandardAddress({
+    id: 'addressBilling',
+    addresses,
+  });
 
   return (
     <>
@@ -18,15 +66,24 @@ const AddressPage = () => {
           <Skeleton />
         </SkeletonCartList>
       )}
-
-      {addresses && (
-        <AddressList
-          addresses={addresses}
-          language={language}
-          username={currentUser?.username ?? ''}
-          refetch={refetch}
-        />
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => refetch}
+      >
+        {addresses && (
+          <AddressList
+            onChangeAddress={handleChangeAddress}
+            addresses={addresses}
+            language={language}
+            username={currentUser?.username ?? ''}
+            billingAddressId={billingAddressId}
+            shippingAddressId={shippingAddressId}
+            renderAddressFooter={(address) => (
+              <AddressListFooter address={address} language={language} />
+            )}
+          />
+        )}
+      </ErrorBoundary>
     </>
   );
 };

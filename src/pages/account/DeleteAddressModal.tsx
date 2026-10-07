@@ -9,14 +9,10 @@ import { useDeleteAddressMutation } from '../../features/profile/addressesApiSli
 import { BtnVariant, IconName } from '../../types/enums';
 
 interface DeleteAddressModalProps {
-  selectedAddress: Address | null;
-  onClick: () => void;
+  address: Address;
 }
 
-const DeleteAddressModal = ({
-  selectedAddress,
-  onClick,
-}: DeleteAddressModalProps) => {
+const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
   const ariaControls = useId();
   const modalId = 'delete-address';
   const { language } = useLanguage();
@@ -36,7 +32,6 @@ const DeleteAddressModal = ({
         ariaControls={ariaControls}
         modalId={modalId}
         variant={BtnVariant.Ghost}
-        onClick={onClick}
       >
         <IconContent
           iconName={IconName.Trash}
@@ -49,8 +44,8 @@ const DeleteAddressModal = ({
         headerText={language.deleteAddress}
         ariaControls={ariaControls}
         onDelete={handleDeleteAddress}
-        modalMessage={selectedAddress?.street ?? ''}
-        itemId={selectedAddress?.id ?? ''}
+        modalMessage={address.street}
+        itemId={address.id}
       />
     </>
   );

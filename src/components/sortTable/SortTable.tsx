@@ -164,7 +164,7 @@ const SortTable = <T,>({
                 <tr>
                   {columns.map((col) => (
                     <th
-                      key={col.key as string}
+                      key={col.key}
                       scope="col"
                       style={{ paddingBlock: Number(padding) }}
                       aria-sort={sortField === col.name ? ariaSort : 'none'}

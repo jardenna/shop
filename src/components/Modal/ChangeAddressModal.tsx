@@ -1,9 +1,9 @@
 import { useId } from 'react';
 import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
-import { BaseAddressListProps } from '../../features/checkout/components/CheckoutAddressList';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import { OptionType } from '../../types/types';
+import { BaseAddressListProps } from '../../utils/addressUtils';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
 import IconContent from '../IconContent';
@@ -14,12 +14,13 @@ import { useModal } from './useModal';
 interface ChangeAddressModalProps extends BaseAddressListProps {
   text?: string;
 }
+
 const ChangeAddressModal = ({
   addresses,
   shippingAddressId,
   billingAddressId,
   language,
-  onSelectAddress,
+  onChangeAddress,
   text,
 }: ChangeAddressModalProps) => {
   const ariaControls = useId();
@@ -39,12 +40,12 @@ const ChangeAddressModal = ({
   const getAddressOptions = (addressType: StandardAddress): OptionType[] =>
     addresses.map((address) => ({
       id: `${address.id}-${addressType}`,
-      label: `${address.street}, ${address.zipCode} ${address.city}`,
+      label: `${address.name}, ${address.street}, ${address.zipCode} ${address.city}`,
       value: address.id,
     }));
 
   function handleSubmit() {
-    onSelectAddress(values);
+    onChangeAddress(values);
     closeModal();
   }
 
