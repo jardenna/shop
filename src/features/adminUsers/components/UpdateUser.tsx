@@ -10,6 +10,7 @@ interface UpdateUserProps {
   ariaLabel: string;
   id: ColumnKey;
   isFormDirty: boolean;
+  language: Record<string, string>;
   roleValue: Roles;
   submitBtnLabel: string;
   value: string;
@@ -23,6 +24,7 @@ const UpdateUser = ({
   id,
   onSaveEdit,
   onEditChange,
+  language,
   value,
   ariaLabel,
   isFormDirty,
@@ -35,6 +37,7 @@ const UpdateUser = ({
       <EditUserInput
         submitBtnLabel={submitBtnLabel}
         labelText={id}
+        language={language}
         onSave={() => {
           onSaveEdit();
           close();

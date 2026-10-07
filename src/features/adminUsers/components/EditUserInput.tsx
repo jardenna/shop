@@ -5,17 +5,18 @@ import { ColumnKey } from '../../../pages/users/UserPage';
 import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
 
-type EditUserInputProps = {
+interface EditUserInputProps {
   id: ColumnKey;
   isFormDirty: boolean;
   labelText: string;
+  language: Record<string, string>;
   onEditChange: InputChangeHandler;
   roleValue: Roles;
   submitBtnLabel: string;
   value: string;
   onCancel: () => void;
   onSave: () => void;
-};
+}
 
 const EditUserInput = ({
   id,
@@ -27,6 +28,7 @@ const EditUserInput = ({
   roleValue,
   submitBtnLabel,
   isFormDirty,
+  language,
 }: EditUserInputProps) => (
   <Form
     submitBtnLabel={submitBtnLabel}
@@ -46,10 +48,8 @@ const EditUserInput = ({
         name={id}
         onChange={onEditChange}
         value={value}
-        labelText={labelText}
+        labelText={language[labelText]}
         inputHasNoLabel
-        autoFocus
-        className="edit-user-input"
       />
     )}
   </Form>
