@@ -29,7 +29,7 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
-  const { isAdmin } = useAuth();
+  const { isAdmin: isAllowedUpdateUsers } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
@@ -58,8 +58,6 @@ const UserPage = () => {
 
   const [deleteUser] = useDeleteUserMutation();
   const [updateUser] = useUpdateUserMutation();
-
-  const allowedEditUser = isAdmin;
 
   const { onShowUpdateInput, onUpdateChange, values, onSave, isFormDirty } =
     useUpdateUserField({
@@ -153,7 +151,7 @@ const UserPage = () => {
                   </td>
                 ))}
                 <td>
-                  {allowedEditUser && !isAdmin && (
+                  {isAllowedUpdateUsers && !isAdmin && (
                     <DeleteItem
                       isLoading={isLoading}
                       ariaLabel={language.deleteUser}
