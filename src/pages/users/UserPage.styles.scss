@@ -1,0 +1,18 @@
+@use '../../scss/globals' as *;
+
+.update-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-user-popup {
+  .footer {
+    gap: 12px;
+
+    .btn {
+      min-height: fit-content;
+      padding: 8px;
+      font-size: $font-small;
+    }
+  }
+}
