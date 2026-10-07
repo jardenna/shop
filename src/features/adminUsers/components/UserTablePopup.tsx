@@ -7,7 +7,7 @@ import { InputChangeHandler } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 import UserRowText from './UserRowText';
 
-export interface BaseUserTableRowProps {
+export interface BaseUserTablePopupProps {
   id: ColumnKey;
   isFormDirty: boolean;
   language: Record<string, string>;
@@ -17,7 +17,7 @@ export interface BaseUserTableRowProps {
   onSave: () => void;
 }
 
-interface UserTablePopupProps extends BaseUserTableRowProps {
+interface UserTablePopupProps extends BaseUserTablePopupProps {
   ariaLabel: string;
   onUpdateChange: InputChangeHandler;
   text: string;
