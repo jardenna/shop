@@ -25,8 +25,9 @@ const DeleteItem = ({
       placement="left-start"
       popupContent={({ close }) => (
         <section className="delete-item">
-          <p>{language.sureToDelete}</p>
-          <p>{itemName}?</p>
+          <p>
+            {language.sureToDelete} {itemName}?
+          </p>
 
           <footer className="footer">
             <Button variant={BtnVariant.Secondary} onClick={close}>

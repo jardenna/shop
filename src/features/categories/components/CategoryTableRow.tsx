@@ -4,14 +4,14 @@ import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
 
-type CategoryTableRowProps = {
+interface CategoryTableRowProps {
   categoryName: string;
   createdAt: Date;
   id: string;
   linkText: string;
   scheduledDate: Date | null;
   status: Status;
-};
+}
 
 const CategoryTableRow = ({
   id,

@@ -1,25 +1,19 @@
-import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import { ColumnKey } from '../../../pages/users/UserPage';
 import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
+import { BaseUserTablePopupProps } from './UserTablePopup';
 
-type EditUserInputProps = {
-  id: ColumnKey;
-  isFormDirty: boolean;
+interface UpdateUserInputProps extends BaseUserTablePopupProps {
   labelText: string;
-  onEditChange: InputChangeHandler;
-  roleValue: Roles;
+  onUpdateChange: InputChangeHandler;
   submitBtnLabel: string;
-  value: string;
   onCancel: () => void;
-  onSave: () => void;
-};
+}
 
-const EditUserInput = ({
+const UpdateUserInput = ({
   id,
-  onEditChange,
+  onUpdateChange,
   onSave,
   onCancel,
   value,
@@ -27,7 +21,8 @@ const EditUserInput = ({
   roleValue,
   submitBtnLabel,
   isFormDirty,
-}: EditUserInputProps) => (
+  language,
+}: UpdateUserInputProps) => (
   <Form
     submitBtnLabel={submitBtnLabel}
     disabled={!isFormDirty}
@@ -39,20 +34,18 @@ const EditUserInput = ({
     }}
   >
     {id === 'role' ? (
-      <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
+      <RoleRadioBtn roleValue={roleValue} onChange={onUpdateChange} />
     ) : (
       <Input
         id={id}
         name={id}
-        onChange={onEditChange}
+        onChange={onUpdateChange}
         value={value}
-        labelText={labelText}
+        labelText={language[labelText]}
         inputHasNoLabel
-        autoFocus
-        className="edit-user-input"
       />
     )}
   </Form>
 );
 
-export default EditUserInput;
+export default UpdateUserInput;

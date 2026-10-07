@@ -1,13 +1,13 @@
 import MailTo from '../../../components/MailTo';
 import { translateKey } from '../../../utils/utils';
 
-type EditTableTextProps = {
+interface UserRowTextProps {
   language: Record<string, string>;
   text: string;
-};
+}
 
-const EditTableText = ({ text, language }: EditTableTextProps) => (
-  <span className="edit-user-text">
+const UserRowText = ({ text, language }: UserRowTextProps) => (
+  <span>
     {!text.includes('@') ? (
       translateKey(text, language)
     ) : (
@@ -16,4 +16,4 @@ const EditTableText = ({ text, language }: EditTableTextProps) => (
   </span>
 );
 
-export default EditTableText;
+export default UserRowText;
