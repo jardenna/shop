@@ -2,6 +2,7 @@ import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
+import { tableHeaders } from '../../features/subCategories/components/subCategoryTableHeaders';
 import SubCategoryTableRows from '../../features/subCategories/components/SubCategoryTableRows';
 import {
   useGetAllSubCategoriesQuery,
@@ -12,7 +13,6 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import { tableHeaders } from './subCategoryTableHeaders';
 
 const SubCategoryPage = () => {
   const { language } = useLanguage();
