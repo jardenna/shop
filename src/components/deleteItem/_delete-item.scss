@@ -8,10 +8,10 @@
   }
 
   .footer {
-    margin-top: 8px;
+    gap: 12px;
 
     .btn {
-      min-height: auto;
+      min-height: fit-content;
       font-size: $font-small;
       padding: 8px;
     }

@@ -136,6 +136,7 @@
   border: 0;
 }
 
+// user scss
 .update-user {
   display: flex;
   justify-content: space-between;
@@ -147,7 +148,8 @@
 
     .btn {
       min-height: fit-content;
-      padding: 12px;
+      padding: 8px;
+      font-size: $font-small;
     }
   }
 }
