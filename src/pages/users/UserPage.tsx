@@ -3,8 +3,8 @@ import DeleteItem from '../../components/deleteItem/DeleteItem';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
-import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import UpdateUserTableText from '../../features/adminUsers/components/UpdateUserTableText';
+import UserTableRow from '../../features/adminUsers/components/UserTableRow';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
@@ -133,7 +133,7 @@ const UserPage = () => {
                         language={language}
                       />
 
-                      <UpdateUser
+                      <UserTableRow
                         submitBtnLabel={language.save}
                         isFormDirty={isFormDirty}
                         onUpdateChange={onUpdateChange}

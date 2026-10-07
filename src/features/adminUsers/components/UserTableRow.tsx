@@ -16,13 +16,13 @@ export interface BaseUpdateUserProps {
   onSave: () => void;
 }
 
-interface UpdateUserProps extends BaseUpdateUserProps {
+interface UserTableRowProps extends BaseUpdateUserProps {
   ariaLabel: string;
   onUpdateChange: InputChangeHandler;
   onOpenPopup: () => void;
 }
 
-const UpdateUser = ({
+const UserTableRow = ({
   onOpenPopup,
   id,
   onSave,
@@ -33,7 +33,7 @@ const UpdateUser = ({
   isFormDirty,
   roleValue,
   submitBtnLabel,
-}: UpdateUserProps) => (
+}: UserTableRowProps) => (
   <Popup
     onOpenPopup={onOpenPopup}
     popupContent={({ close }) => (
@@ -60,4 +60,4 @@ const UpdateUser = ({
   </Popup>
 );
 
-export default UpdateUser;
+export default UserTableRow;
