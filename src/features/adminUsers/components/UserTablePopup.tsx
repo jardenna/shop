@@ -17,14 +17,14 @@ export interface BaseUserTableRowProps {
   onSave: () => void;
 }
 
-interface UserTableRowProps extends BaseUserTableRowProps {
+interface UserTablePopupProps extends BaseUserTableRowProps {
   ariaLabel: string;
   onUpdateChange: InputChangeHandler;
   text: string;
   onOpenPopup: () => void;
 }
 
-const UserTableRow = ({
+const UserTablePopup = ({
   onOpenPopup,
   id,
   onSave,
@@ -36,7 +36,7 @@ const UserTableRow = ({
   roleValue,
   submitBtnLabel,
   text,
-}: UserTableRowProps) => (
+}: UserTablePopupProps) => (
   <>
     <UserRowText text={text} language={language} />
     <Popup
@@ -67,4 +67,4 @@ const UserTableRow = ({
   </>
 );
 
-export default UserTableRow;
+export default UserTablePopup;

@@ -2,7 +2,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
-import { BaseUserTableRowProps } from './UserTableRow';
+import { BaseUserTableRowProps } from './UserTablePopup';
 
 interface UpdateUserInputProps extends BaseUserTableRowProps {
   labelText: string;
