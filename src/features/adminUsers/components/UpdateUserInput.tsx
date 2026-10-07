@@ -1,24 +1,17 @@
-import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import { ColumnKey } from '../../../pages/users/UserPage';
 import { InputChangeHandler } from '../../../types/types';
 import RoleRadioBtn from './RoleRadioBtn';
+import { BaseUpdateUserProps } from './UpdateUser';
 
-interface EditUserInputProps {
-  id: ColumnKey;
-  isFormDirty: boolean;
+interface UpdateUserInputProps extends BaseUpdateUserProps {
   labelText: string;
-  language: Record<string, string>;
   onEditChange: InputChangeHandler;
-  roleValue: Roles;
   submitBtnLabel: string;
-  value: string;
   onCancel: () => void;
-  onSave: () => void;
 }
 
-const EditUserInput = ({
+const UpdateUserInput = ({
   id,
   onEditChange,
   onSave,
@@ -29,7 +22,7 @@ const EditUserInput = ({
   submitBtnLabel,
   isFormDirty,
   language,
-}: EditUserInputProps) => (
+}: UpdateUserInputProps) => (
   <Form
     submitBtnLabel={submitBtnLabel}
     disabled={!isFormDirty}
@@ -55,4 +48,4 @@ const EditUserInput = ({
   </Form>
 );
 
-export default EditUserInput;
+export default UpdateUserInput;

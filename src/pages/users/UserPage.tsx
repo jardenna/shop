@@ -152,7 +152,7 @@ const UserPage = () => {
                         id={columnKey}
                         value={editValues[columnKey] || ''}
                         roleValue={editValues.role || 'User'}
-                        onSaveEdit={handleSaveEdit}
+                        onSave={handleSaveEdit}
                         language={language}
                       />
                     </div>

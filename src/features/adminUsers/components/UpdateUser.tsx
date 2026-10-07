@@ -4,25 +4,29 @@ import Popup from '../../../components/popup/Popup';
 import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import { ChangeInputType } from '../../../types/types';
-import EditUserInput from './EditUserInput';
+import UpdateUserInput from './UpdateUserInput';
 
-interface UpdateUserProps {
-  ariaLabel: string;
+export interface BaseUpdateUserProps {
   id: ColumnKey;
   isFormDirty: boolean;
   language: Record<string, string>;
   roleValue: Roles;
   submitBtnLabel: string;
   value: string;
+  onSave: () => void;
+}
+
+interface UpdateUserProps extends BaseUpdateUserProps {
+  ariaLabel: string;
+
   onEditChange: (event: ChangeInputType) => void;
   onOpenPopup: () => void;
-  onSaveEdit: () => void;
 }
 
 const UpdateUser = ({
   onOpenPopup,
   id,
-  onSaveEdit,
+  onSave,
   onEditChange,
   language,
   value,
@@ -34,12 +38,12 @@ const UpdateUser = ({
   <Popup
     onOpenPopup={onOpenPopup}
     popupContent={({ close }) => (
-      <EditUserInput
+      <UpdateUserInput
         submitBtnLabel={submitBtnLabel}
         labelText={id}
         language={language}
         onSave={() => {
-          onSaveEdit();
+          onSave();
           close();
         }}
         onCancel={close}
