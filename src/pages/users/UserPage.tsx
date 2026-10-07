@@ -5,15 +5,15 @@ import { createInitialFilters } from '../../components/sortTable/utils/tableFilt
 import { useToast } from '../../components/toast/hooks/useToast';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import UpdateUserTableText from '../../features/adminUsers/components/UpdateUserTableText';
-import { tableHeaders } from '../../features/adminUsers/userTableHeaders';
-import { useUpdateUserField } from '../../features/adminUsers/useUpdateUserField';
-import { useAuth } from '../../features/auth/hooks/useAuth';
-import { useLanguage } from '../../features/language/useLanguage';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserMutation,
-} from '../../features/users/userApiSlice';
+} from '../../features/adminUsers/userApiSlice';
+import { tableHeaders } from '../../features/adminUsers/userTableHeaders';
+import { useUpdateUserField } from '../../features/adminUsers/useUpdateUserField';
+import { useAuth } from '../../features/auth/hooks/useAuth';
+import { useLanguage } from '../../features/language/useLanguage';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
