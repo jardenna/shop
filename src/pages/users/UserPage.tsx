@@ -5,6 +5,8 @@ import { createInitialFilters } from '../../components/sortTable/utils/tableFilt
 import { useToast } from '../../components/toast/hooks/useToast';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
 import UpdateUserTableText from '../../features/adminUsers/components/UpdateUserTableText';
+import { tableHeaders } from '../../features/adminUsers/userTableHeaders';
+import { useUpdateUserField } from '../../features/adminUsers/useUpdateUserField';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -18,8 +20,6 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import { tableHeaders } from './userTableHeaders';
-import { useUpdateUserField } from './useUpdateUserField';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 
