@@ -3,8 +3,8 @@ import DeleteItem from '../../components/deleteItem/DeleteItem';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
-import EditTableText from '../../features/adminUsers/components/EditTableText';
 import UpdateUser from '../../features/adminUsers/components/UpdateUser';
+import UpdateUserTableText from '../../features/adminUsers/components/UpdateUserTableText';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -129,8 +129,8 @@ const UserPage = () => {
               <tr key={id}>
                 {columnKeys.map((columnKey) => (
                   <td key={columnKey}>
-                    <div className="edit-user">
-                      <EditTableText
+                    <div className="update-user">
+                      <UpdateUserTableText
                         text={userItem[columnKey]}
                         language={language}
                       />
