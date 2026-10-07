@@ -10,7 +10,6 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
-import CheckoutAddressList from '../features/checkout/components/CheckoutAddressList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
@@ -28,6 +27,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
 import { findStandardAddress, StandardAddressIds } from '../utils/addressUtils';
+import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -167,7 +167,7 @@ const CheckoutPage = () => {
                 )}
               </LayoutElement>
 
-              <CheckoutAddressList
+              <AddressList
                 addresses={checkout.addresses}
                 language={language}
                 username={currentUser?.username ?? ''}

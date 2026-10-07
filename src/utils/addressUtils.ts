@@ -10,6 +10,12 @@ interface FindStandardAddress {
   addresses?: Address[];
 }
 
+export interface BaseAddressListProps extends StandardAddressIds {
+  addresses: Address[];
+  language: Record<string, string>;
+  onChangeAddress: (address: StandardAddressIds) => void;
+}
+
 export const findStandardAddress = ({ id, addresses }: FindStandardAddress) =>
   addresses?.find((address) => address.standardAddress.includes(id))?.id ?? '';
 
