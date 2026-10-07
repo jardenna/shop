@@ -10,6 +10,12 @@ interface FindStandardAddress {
   addresses?: Address[];
 }
 
+interface GetUpdatedAddresses {
+  addresses: Address[];
+  billingAddressId: string;
+  shippingAddressId: string;
+}
+
 export interface BaseAddressListProps extends StandardAddressIds {
   addresses: Address[];
   language: Record<string, string>;
@@ -70,11 +76,7 @@ export const getUpdatedAddresses = ({
   addresses,
   shippingAddressId,
   billingAddressId,
-}: {
-  addresses: Address[];
-  billingAddressId: string;
-  shippingAddressId: string;
-}): Address[] =>
+}: GetUpdatedAddresses): Address[] =>
   addresses.map((address) => {
     const standardAddress: StandardAddress[] = [
       ...(address.id === shippingAddressId
