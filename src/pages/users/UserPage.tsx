@@ -4,13 +4,13 @@ import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
 import UpdateUserTableText from '../../features/adminUsers/components/UpdateUserTableText';
+import { tableHeaders } from '../../features/adminUsers/components/userTableHeaders';
 import UserTableRow from '../../features/adminUsers/components/UserTableRow';
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
   useUpdateUserMutation,
 } from '../../features/adminUsers/userApiSlice';
-import { tableHeaders } from '../../features/adminUsers/userTableHeaders';
 import { useUpdateUserField } from '../../features/adminUsers/useUpdateUserField';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
