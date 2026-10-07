@@ -1,5 +1,4 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonCartList from '../../components/skeleton/skeletonCartList/SkeletonCartList';
@@ -21,19 +20,7 @@ const AddressPage = () => {
   const { language } = useLanguage();
   const { data: addresses, isLoading, refetch } = useGetAddressesQuery();
   const { currentUser } = useAuth();
-  const [updateAddress, { isLoading: isUpdateLoading }] =
-    useUpdateAddressMutation();
-
-  const handleUpdateAddress = async (address: AddressInput) => {
-    if (!address.id) {
-      return;
-    }
-
-    await updateAddress({
-      id: address.id,
-      address,
-    }).unwrap();
-  };
+  const [updateAddress] = useUpdateAddressMutation();
 
   const handleChangeAddress = async ({
     shippingAddressId,
@@ -92,12 +79,7 @@ const AddressPage = () => {
             billingAddressId={billingAddressId}
             shippingAddressId={shippingAddressId}
             renderAddressFooter={(address) => (
-              <AddressListFooter
-                isLoading={isUpdateLoading}
-                address={address}
-                language={language}
-                onSubmitAddress={handleUpdateAddress}
-              />
+              <AddressListFooter address={address} language={language} />
             )}
           />
         )}
