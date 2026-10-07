@@ -5,6 +5,7 @@ interface UseTableUpdateFieldProps<T extends { id: string }> {
   data: T[];
   callback?: (id: string, values: Partial<T>) => void;
 }
+console.log(1);
 
 export const useUpdateUserField = <T extends { id: string }>({
   data,
