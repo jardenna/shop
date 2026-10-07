@@ -37,13 +37,15 @@ const AddressList = ({
     </ul>
 
     <div className="address-actions">
-      <ChangeAddressModal
-        addresses={addresses}
-        billingAddressId={billingAddressId}
-        shippingAddressId={shippingAddressId}
-        language={language}
-        onChangeAddress={onChangeAddress}
-      />
+      {addresses.length > 1 && (
+        <ChangeAddressModal
+          addresses={addresses}
+          billingAddressId={billingAddressId}
+          shippingAddressId={shippingAddressId}
+          language={language}
+          onChangeAddress={onChangeAddress}
+        />
+      )}
 
       <AddressFormModal
         id={null}
