@@ -46,3 +46,48 @@ export const getAddressUpdates = ({
     },
   ];
 };
+
+export const getAddressLabel = (standardAddress: StandardAddress[]): string => {
+  const isDelivery = standardAddress.includes('addressDelivery');
+  const isBilling = standardAddress.includes('addressBilling');
+
+  if (isDelivery && isBilling) {
+    return 'addressdeliveryAndBilling';
+  }
+
+  if (isDelivery) {
+    return 'addressDelivery';
+  }
+
+  if (isBilling) {
+    return 'addressBilling';
+  }
+
+  return '';
+};
+
+export const getUpdatedAddresses = ({
+  addresses,
+  shippingAddressId,
+  billingAddressId,
+}: {
+  addresses: Address[];
+  billingAddressId: string;
+  shippingAddressId: string;
+}): Address[] =>
+  addresses.map((address) => {
+    const standardAddress: StandardAddress[] = [
+      ...(address.id === shippingAddressId
+        ? (['addressDelivery'] satisfies StandardAddress[])
+        : []),
+      ...(address.id === billingAddressId
+        ? (['addressBilling'] satisfies StandardAddress[])
+        : []),
+    ];
+
+    return {
+      ...address,
+      standardAddress,
+      label: getAddressLabel(standardAddress),
+    };
+  });

@@ -40,7 +40,7 @@ const ChangeAddressModal = ({
   const getAddressOptions = (addressType: StandardAddress): OptionType[] =>
     addresses.map((address) => ({
       id: `${address.id}-${addressType}`,
-      label: `${address.street}, ${address.zipCode} ${address.city}`,
+      label: `${address.name}, ${address.street}, ${address.zipCode} ${address.city}`,
       value: address.id,
     }));
 

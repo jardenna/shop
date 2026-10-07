@@ -26,7 +26,11 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import LayoutElement from '../layout/LayoutElement';
 import { ShopPath } from '../layout/nav/enums';
-import { findStandardAddress, StandardAddressIds } from '../utils/addressUtils';
+import {
+  findStandardAddress,
+  getUpdatedAddresses,
+  StandardAddressIds,
+} from '../utils/addressUtils';
 import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -78,9 +82,21 @@ const CheckoutPage = () => {
     addresses: checkout?.addresses,
   });
 
+  const selectedShippingAddressId =
+    changedAddress?.shippingAddressId ?? shippingAddressId;
+
+  const selectedBillingAddressId =
+    changedAddress?.billingAddressId ?? billingAddressId;
+
   const handleChangeAddress = (address: StandardAddressIds) => {
     setChangedAddress(address);
   };
+
+  const displayedAddresses = getUpdatedAddresses({
+    addresses: checkout?.addresses ?? [],
+    shippingAddressId: selectedShippingAddressId,
+    billingAddressId: selectedBillingAddressId,
+  });
 
   const handleCheckout = async (paymentValues: PaymentFormValues) => {
     if (!checkout) {
@@ -105,8 +121,8 @@ const CheckoutPage = () => {
 
     const order = await createOrder({
       orderItems,
-      shippingAddressId: changedAddress?.shippingAddressId ?? shippingAddressId,
-      billingAddressId: changedAddress?.billingAddressId ?? billingAddressId,
+      shippingAddressId: selectedShippingAddressId,
+      billingAddressId: selectedBillingAddressId,
       payment: {
         method: paymentValues.paymentMethod,
       },
@@ -168,12 +184,12 @@ const CheckoutPage = () => {
               </LayoutElement>
 
               <AddressList
-                addresses={checkout.addresses}
+                addresses={displayedAddresses}
                 language={language}
                 username={currentUser?.username ?? ''}
                 buttonRef={addAddressButtonRef}
-                billingAddressId={billingAddressId}
-                shippingAddressId={shippingAddressId}
+                billingAddressId={selectedBillingAddressId}
+                shippingAddressId={selectedShippingAddressId}
                 onChangeAddress={handleChangeAddress}
               />
 
