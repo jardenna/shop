@@ -3,7 +3,7 @@ import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 
 export interface BaseUpdateUserProps {
@@ -18,7 +18,7 @@ export interface BaseUpdateUserProps {
 
 interface UpdateUserProps extends BaseUpdateUserProps {
   ariaLabel: string;
-  onEditChange: (event: ChangeInputType) => void;
+  onUpdateChange: InputChangeHandler;
   onOpenPopup: () => void;
 }
 
@@ -26,7 +26,7 @@ const UpdateUser = ({
   onOpenPopup,
   id,
   onSave,
-  onEditChange,
+  onUpdateChange,
   language,
   value,
   ariaLabel,
@@ -46,7 +46,7 @@ const UpdateUser = ({
           close();
         }}
         onCancel={close}
-        onEditChange={onEditChange}
+        onUpdateChange={onUpdateChange}
         id={id}
         value={value}
         roleValue={roleValue}

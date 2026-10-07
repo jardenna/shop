@@ -6,14 +6,14 @@ import { BaseUpdateUserProps } from './UpdateUser';
 
 interface UpdateUserInputProps extends BaseUpdateUserProps {
   labelText: string;
-  onEditChange: InputChangeHandler;
+  onUpdateChange: InputChangeHandler;
   submitBtnLabel: string;
   onCancel: () => void;
 }
 
 const UpdateUserInput = ({
   id,
-  onEditChange,
+  onUpdateChange,
   onSave,
   onCancel,
   value,
@@ -34,12 +34,12 @@ const UpdateUserInput = ({
     }}
   >
     {id === 'role' ? (
-      <RoleRadioBtn roleValue={roleValue} onChange={onEditChange} />
+      <RoleRadioBtn roleValue={roleValue} onChange={onUpdateChange} />
     ) : (
       <Input
         id={id}
         name={id}
-        onChange={onEditChange}
+        onChange={onUpdateChange}
         value={value}
         labelText={language[labelText]}
         inputHasNoLabel

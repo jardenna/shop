@@ -18,7 +18,6 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import './_userPage.scss';
 import { tableHeaders } from './userTableHeaders';
 import { useUpdateUserField } from './useUpdateUserField';
 
@@ -139,7 +138,7 @@ const UserPage = () => {
                       <UpdateUser
                         submitBtnLabel={language.save}
                         isFormDirty={isFormDirty}
-                        onEditChange={onUpdateChange}
+                        onUpdateChange={onUpdateChange}
                         onOpenPopup={() => {
                           onShowUpdateInput(id, columnKey);
                         }}
