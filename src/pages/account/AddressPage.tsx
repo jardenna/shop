@@ -15,6 +15,7 @@ import {
   StandardAddressIds,
 } from '../../utils/addressUtils';
 import AddressList from './AddressList';
+import AddressListFooter from './AddressListFooter';
 
 const AddressPage = () => {
   const { language } = useLanguage();
@@ -85,13 +86,19 @@ const AddressPage = () => {
         {addresses && (
           <AddressList
             onChangeAddress={handleChangeAddress}
-            isLoading={isUpdateLoading}
             addresses={addresses}
             language={language}
             username={currentUser?.username ?? ''}
             billingAddressId={billingAddressId}
             shippingAddressId={shippingAddressId}
-            onUpdateAddress={handleUpdateAddress}
+            renderAddressFooter={(address) => (
+              <AddressListFooter
+                isLoading={isUpdateLoading}
+                address={address}
+                language={language}
+                onSubmitAddress={handleUpdateAddress}
+              />
+            )}
           />
         )}
       </ErrorBoundary>
