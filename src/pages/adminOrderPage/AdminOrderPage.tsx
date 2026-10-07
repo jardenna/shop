@@ -5,14 +5,14 @@ import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
+import { tableHeaders } from '../../features/orders/components/orderTableHeaders';
+import OrderTableRow from '../../features/orders/components/OrderTableRow';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import { tableHeaders } from './orderTableHeaders';
-import OrderTableRow from './OrderTableRow';
 
 const AdminOrderPage = () => {
   const { language } = useLanguage();

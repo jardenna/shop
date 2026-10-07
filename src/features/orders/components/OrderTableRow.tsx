@@ -1,12 +1,12 @@
 import { Link } from 'react-router';
-import { paymentMethodLabels } from '../../app/api/apiConstants';
-import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
-import { PaymentMethods } from '../../app/api/apiTypes/paymentApiTypes';
-import Badge from '../../components/badge/Badge';
-import DateDisplay from '../../components/datePicker/DateDisplay';
-import MoreLink from '../../components/MoreLink';
-import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
-import { AdminPath } from '../../layout/nav/enums';
+import { paymentMethodLabels } from '../../../app/api/apiConstants';
+import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
+import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
+import Badge from '../../../components/badge/Badge';
+import DateDisplay from '../../../components/datePicker/DateDisplay';
+import MoreLink from '../../../components/MoreLink';
+import { AdminPath } from '../../../layout/nav/enums';
+import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 
 interface OrderTableRowProps {
   createdAt: Date;
