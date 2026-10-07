@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import type { ChangeInputType } from '../../types/types';
 
-type UseTableEditFieldProps<T extends { id: string }> = {
+interface UseTableUpdateFieldProps<T extends { id: string }> {
   data: T[];
   callback?: (id: string, values: Partial<T>) => void;
-};
+}
 
 export const useUpdateUserField = <T extends { id: string }>({
   data,
   callback,
-}: UseTableEditFieldProps<T>) => {
-  const [editRowId, setEditRowId] = useState<string | null>(null);
-  const [editingField, setEditingField] = useState<keyof T | null>(null);
+}: UseTableUpdateFieldProps<T>) => {
+  const [updateRowId, setUpdateRowId] = useState<string | null>(null);
+  const [updatesField, setUpdatesField] = useState<keyof T | null>(null);
   const [values, setValues] = useState<Partial<T>>({});
   const [initialValues, setInitialValues] = useState<Partial<T>>({});
 
   const handleShowEditInput = (id: string, field: keyof T) => {
-    setEditRowId(id);
-    setEditingField(field);
+    setUpdateRowId(id);
+    setUpdatesField(field);
     const row = data.find((item) => item.id === id);
     if (row) {
       const initialFieldValue = { [field]: row[field] } as Partial<T>;
@@ -34,8 +34,8 @@ export const useUpdateUserField = <T extends { id: string }>({
   };
 
   const handleCancelEdit = () => {
-    setEditRowId(null);
-    setEditingField(null);
+    setUpdateRowId(null);
+    setUpdatesField(null);
     setValues({});
     setInitialValues({});
   };
@@ -50,19 +50,19 @@ export const useUpdateUserField = <T extends { id: string }>({
       return;
     }
 
-    if (callback && editRowId) {
-      callback(editRowId, values);
+    if (callback && updateRowId) {
+      callback(updateRowId, values);
     }
 
-    setEditRowId(null);
-    setEditingField(null);
+    setUpdateRowId(null);
+    setUpdatesField(null);
     setValues({});
     setInitialValues({});
   };
 
   return {
-    editRowId,
-    editingField,
+    updateRowId,
+    updatesField,
     handleShowEditInput,
     handleEditChange,
     handleCancelEdit,
