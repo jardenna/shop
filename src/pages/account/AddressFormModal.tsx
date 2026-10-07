@@ -85,6 +85,7 @@ const AddressFormModal = ({
   const [addAddress, { isLoading: addressIsLoading }] = useAddAddressMutation();
 
   const updatedAddress = id ? { ...values, id } : values;
+
   async function handleSubmitAddress() {
     if (!isFormDirty) {
       onAddToast({
