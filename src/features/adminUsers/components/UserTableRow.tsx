@@ -6,7 +6,7 @@ import { BtnVariant, IconName } from '../../../types/enums';
 import { InputChangeHandler } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 
-export interface BaseUpdateUserProps {
+export interface BaseUserTableRowProps {
   id: ColumnKey;
   isFormDirty: boolean;
   language: Record<string, string>;
@@ -16,7 +16,7 @@ export interface BaseUpdateUserProps {
   onSave: () => void;
 }
 
-interface UserTableRowProps extends BaseUpdateUserProps {
+interface UserTableRowProps extends BaseUserTableRowProps {
   ariaLabel: string;
   onUpdateChange: InputChangeHandler;
   onOpenPopup: () => void;
