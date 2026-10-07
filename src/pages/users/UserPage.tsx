@@ -62,19 +62,14 @@ const UserPage = () => {
 
   const allowedEditUser = isAdmin;
 
-  const {
-    handleShowEditInput,
-    handleEditChange,
-    editValues,
-    handleSaveEdit,
-    isFormDirty,
-  } = useUpdateUserField({
-    data: allUsers || [],
-    callback: handleUpdateUser,
-  });
+  const { onShowUpdateInput, onUpdateChange, values, onSave, isFormDirty } =
+    useUpdateUserField({
+      data: allUsers || [],
+      callback: handleUpdateUser,
+    });
 
   async function handleUpdateUser(id: string) {
-    const validation = validateUpdateUser(editValues);
+    const validation = validateUpdateUser(values);
 
     if (validation) {
       onAddToast({
@@ -86,7 +81,7 @@ const UserPage = () => {
 
     await updateUser({
       id,
-      user: editValues,
+      user: values,
     }).unwrap();
     onAddToast({
       message: language.userUpdated,
@@ -144,15 +139,15 @@ const UserPage = () => {
                       <UpdateUser
                         submitBtnLabel={language.save}
                         isFormDirty={isFormDirty}
-                        onEditChange={handleEditChange}
+                        onEditChange={onUpdateChange}
                         onOpenPopup={() => {
-                          handleShowEditInput(id, columnKey);
+                          onShowUpdateInput(id, columnKey);
                         }}
                         ariaLabel={`${language.updateUser} ${columnKey}`}
                         id={columnKey}
-                        value={editValues[columnKey] || ''}
-                        roleValue={editValues.role || 'User'}
-                        onSave={handleSaveEdit}
+                        value={values[columnKey] || ''}
+                        roleValue={values.role || 'User'}
+                        onSave={onSave}
                         language={language}
                       />
                     </div>

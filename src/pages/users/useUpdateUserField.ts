@@ -15,7 +15,7 @@ export const useUpdateUserField = <T extends { id: string }>({
   const [values, setValues] = useState<Partial<T>>({});
   const [initialValues, setInitialValues] = useState<Partial<T>>({});
 
-  const handleShowEditInput = (id: string, field: keyof T) => {
+  const handleShowUpdateInput = (id: string, field: keyof T) => {
     setUpdateRowId(id);
     setUpdatesField(field);
     const row = data.find((item) => item.id === id);
@@ -27,17 +27,10 @@ export const useUpdateUserField = <T extends { id: string }>({
     }
   };
 
-  const handleEditChange = (event: ChangeInputType) => {
+  const handleUpdateChange = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
     setValues({ ...values, [name]: value });
-  };
-
-  const handleCancelEdit = () => {
-    setUpdateRowId(null);
-    setUpdatesField(null);
-    setValues({});
-    setInitialValues({});
   };
 
   const isFormDirty = Object.keys(values).some((key) => {
@@ -45,7 +38,7 @@ export const useUpdateUserField = <T extends { id: string }>({
     return values[typedKey] !== initialValues[typedKey];
   });
 
-  const handleSaveEdit = () => {
+  const handleSave = () => {
     if (!isFormDirty) {
       return;
     }
@@ -63,11 +56,10 @@ export const useUpdateUserField = <T extends { id: string }>({
   return {
     updateRowId,
     updatesField,
-    handleShowEditInput,
-    handleEditChange,
-    handleCancelEdit,
-    handleSaveEdit,
-    editValues: values,
+    onShowUpdateInput: handleShowUpdateInput,
+    onUpdateChange: handleUpdateChange,
+    onSave: handleSave,
+    values,
     isFormDirty,
   };
 };
