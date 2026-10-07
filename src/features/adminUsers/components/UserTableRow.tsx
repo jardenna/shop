@@ -35,6 +35,7 @@ const UserTableRow = ({
   submitBtnLabel,
 }: UserTableRowProps) => (
   <Popup
+    className="update-user-popup"
     onOpenPopup={onOpenPopup}
     popupContent={({ close }) => (
       <UpdateUserInput
