@@ -48,8 +48,10 @@ const CheckoutPage = () => {
 
   const { deleteCartItem } = useDeleteCartItem();
   const { data: checkout, isLoading, refetch, isError } = useGetCheckoutQuery();
-  const [changedAddress, setChangedAddress] =
-    useState<StandardAddressIds | null>(null);
+  const [changedAddress, setChangedAddress] = useState<StandardAddressIds>({
+    shippingAddressId: '',
+    billingAddressId: '',
+  });
 
   const initialState: Pick<PaymentFormValues, 'paymentMethod'> = {
     paymentMethod: 'visa',
@@ -83,10 +85,10 @@ const CheckoutPage = () => {
   });
 
   const selectedShippingAddressId =
-    changedAddress?.shippingAddressId ?? shippingAddressId;
+    changedAddress.shippingAddressId || shippingAddressId;
 
   const selectedBillingAddressId =
-    changedAddress?.billingAddressId ?? billingAddressId;
+    changedAddress.billingAddressId || billingAddressId;
 
   const handleChangeAddress = (address: StandardAddressIds) => {
     setChangedAddress(address);
