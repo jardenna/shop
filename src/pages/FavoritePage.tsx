@@ -111,7 +111,7 @@ const FavoritePage = () => {
           onReset={onReset}
         >
           {selectedProduct && (
-            <section className="favorite-panel">
+            <div className="favorite-panel">
               <FavoritesPanelCart product={selectedProduct} />
               <CartForm
                 className="favorites-form"
@@ -126,7 +126,7 @@ const FavoritePage = () => {
                 }}
                 currentProductQuantity={0}
               />
-            </section>
+            </div>
           )}
         </ErrorBoundary>
       </Panel>
