@@ -13,10 +13,16 @@ import { NavListProps } from './navLists';
 interface MobileNavProps {
   navList: NavListProps[];
   className?: string;
+  hidePanelHeading?: boolean;
   onLogout?: () => void;
 }
 
-const MobileNav = ({ navList, className = '', onLogout }: MobileNavProps) => {
+const MobileNav = ({
+  navList,
+  className = '',
+  onLogout,
+  hidePanelHeading,
+}: MobileNavProps) => {
   const ariaControls = useId();
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
@@ -52,7 +58,7 @@ const MobileNav = ({ navList, className = '', onLogout }: MobileNavProps) => {
         ignoreRefs={[menuButtonRef]}
         className="mobile-nav"
         hideCloseBtn
-        heading={language.menu}
+        heading={!hidePanelHeading ? language.menu : undefined}
       >
         <NavContainer
           className={className}
@@ -62,7 +68,6 @@ const MobileNav = ({ navList, className = '', onLogout }: MobileNavProps) => {
         />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </Panel>
-
       <Overlay isOverlayShown={isPanelShown} />
     </>
   );

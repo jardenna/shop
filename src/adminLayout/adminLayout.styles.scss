@@ -74,23 +74,15 @@
   }
 }
 
-// .nav-heading {
-//   text-transform: uppercase;
-//   padding: 20px;
-//   border-bottom: $border;
-//   font-family: $font-primary-semibold;
-// }
-
 .admin-nav {
   flex-grow: 1;
 
-  &.mobile-nav {
-    top: $admin-header-height;
-    height: calc(100dvh - $admin-header-height);
+  .nav-list {
+    border-top: $border-dark;
+  }
 
-    .nav-item {
-      border-bottom: $border;
-    }
+  .nav-item {
+    border-bottom: $border;
   }
 
   .nav-link {
