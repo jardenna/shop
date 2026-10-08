@@ -1,9 +1,7 @@
 import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import Button from '../../../components/Button';
-import { BtnVariant } from '../../../types/enums';
+import FavoritesAddToCartBtn from '../../favorites/components/FavoritesAddToCartBtn';
 import { useLanguage } from '../../language/useLanguage';
-import NotifyMeForm from './NotifyMeForm';
 import ProductCart from './ProductCart';
 
 interface ProductCartListProps {
@@ -33,28 +31,19 @@ const ProductCartList = ({
             product={product}
             isOutOfStock={product.countInStock === 0}
           />
-          {onOpenPanel &&
-            (product.countInStock === 0 ? (
-              <div className="in-stock-container">
-                <NotifyMeForm
-                  options={[]}
-                  isOutOfStock
-                  currentUser={currentUser ?? null}
-                />
-              </div>
-            ) : (
-              <Button
-                onClick={() => {
-                  onOpenPanel(product.id);
-                }}
-                variant={BtnVariant.Secondary}
-              >
-                {language.addToCart}
-              </Button>
-            ))}
+          {onOpenPanel && (
+            <FavoritesAddToCartBtn
+              countInStock={product.countInStock}
+              onOpenPanel={onOpenPanel}
+              currentUser={currentUser ?? null}
+              panelId={product.id}
+              btnLabel={language.addToCart}
+            />
+          )}
         </li>
       ))}
     </ul>
   );
 };
+
 export default ProductCartList;
