@@ -23,7 +23,7 @@ import FaqPage from '../pages/footerPages/FaqPage';
 import PrivacyPage from '../pages/footerPages/Privacypage';
 import ShippingAndReturnsPage from '../pages/footerPages/ShippingAndReturnsPage';
 import TermsAndConditionsPage from '../pages/footerPages/TermsAndConditionsPage';
-import HomePage from '../pages/home/HomePage';
+import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
