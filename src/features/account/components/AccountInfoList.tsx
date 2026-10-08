@@ -2,9 +2,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import type { MyAccountResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import Icon from '../../../components/icons/Icon';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
-import Popup from '../../../components/popup/Popup';
+import Tooltip from '../../../components/popup/Tooltip';
 import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
 import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
@@ -44,13 +43,11 @@ const AccountInfoList = ({
             text={language[label]}
             tooltip={
               tooltip && (
-                <Popup
-                  popupType="tooltip"
+                <Tooltip
                   ariaLabel={language.viewInfo}
-                  popupContent={language.phoneInfo}
-                >
-                  <Icon iconName={IconName.Info} size="1em" />
-                </Popup>
+                  tooltipContent={language.phoneInfo}
+                  iconName={IconName.Info}
+                />
               )
             }
           >
