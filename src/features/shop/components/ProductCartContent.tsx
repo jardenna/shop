@@ -12,7 +12,7 @@ interface ProductCartContentProps {
   product: BaseProduct;
   productView?: string;
 }
-//
+
 const ProductCartContent = ({
   ariaLabelledby,
   product,
