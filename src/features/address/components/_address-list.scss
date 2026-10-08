@@ -1,7 +1,7 @@
 @use '../../../scss/globals' as *;
 
 .address-list {
-  @include grid-template-column;
+  @include grid-template-column(rem(224px));
 
   gap: 20px;
 }

@@ -1,10 +1,6 @@
 @use '../scss/globals' as *;
 
 .favorite-page {
-  .product-cart-list {
-    @include grid-template-column;
-  }
-
   .product-cart-content {
     padding-inline: 12px;
   }
