@@ -6,8 +6,8 @@ import {
   useGetAddressesQuery,
   useUpdateAddressMutation,
 } from '../features/address/addressesApiSlice';
-import AddressList from '../features/address/AddressList';
-import AddressListFooter from '../features/address/AddressListFooter';
+import AddressList from '../features/address/components/AddressList';
+import AddressListFooter from '../features/address/components/AddressListFooter';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
 import {
@@ -15,7 +15,6 @@ import {
   getAddressUpdates,
   StandardAddressIds,
 } from '../utils/addressUtils';
-import './addressPage.styles.scss';
 
 const AddressPage = () => {
   const { language } = useLanguage();

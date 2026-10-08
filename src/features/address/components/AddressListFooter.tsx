@@ -1,4 +1,4 @@
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
+import { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import AddressFormModal from './AddressFormModal';
 import DeleteAddressModal from './DeleteAddressModal';
 

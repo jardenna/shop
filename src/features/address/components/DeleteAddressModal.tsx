@@ -1,12 +1,12 @@
 import { useId } from 'react';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
-import IconContent from '../../components/IconContent';
-import DeleteModal from '../../components/Modal/DeleteModal';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { useToast } from '../../components/toast/hooks/useToast';
-import { BtnVariant, IconName } from '../../types/enums';
-import { useLanguage } from '../language/useLanguage';
-import { useDeleteAddressMutation } from './addressesApiSlice';
+import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import IconContent from '../../../components/IconContent';
+import DeleteModal from '../../../components/Modal/DeleteModal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useToast } from '../../../components/toast/hooks/useToast';
+import { BtnVariant, IconName } from '../../../types/enums';
+import { useLanguage } from '../../language/useLanguage';
+import { useDeleteAddressMutation } from '../addressesApiSlice';
 
 interface DeleteAddressModalProps {
   address: Address;

@@ -3,23 +3,23 @@ import {
   Address,
   AddressFields,
   AddressInput,
-} from '../../app/api/apiTypes/addressApiTypes';
-import FieldSet from '../../components/fieldset/FieldSet';
-import Input from '../../components/formElements/Input';
-import IconContent from '../../components/IconContent';
-import FormModal from '../../components/Modal/FormModal';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { useModal } from '../../components/Modal/useModal';
-import { useToast } from '../../components/toast/hooks/useToast';
-import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnVariant, IconName } from '../../types/enums';
-import type { InputType, RefBtnType } from '../../types/types';
-import { validateAddress } from '../../utils/validation/validateAddress';
-import { useLanguage } from '../language/useLanguage';
+} from '../../../app/api/apiTypes/addressApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Input from '../../../components/formElements/Input';
+import IconContent from '../../../components/IconContent';
+import FormModal from '../../../components/Modal/FormModal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useModal } from '../../../components/Modal/useModal';
+import { useToast } from '../../../components/toast/hooks/useToast';
+import { useFormValidation } from '../../../hooks/useFormValidation';
+import { BtnVariant, IconName } from '../../../types/enums';
+import type { InputType, RefBtnType } from '../../../types/types';
+import { validateAddress } from '../../../utils/validation/validateAddress';
+import { useLanguage } from '../../language/useLanguage';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
-} from './addressesApiSlice';
+} from '../addressesApiSlice';
 
 interface AddressFormModalProps {
   headerText: string;

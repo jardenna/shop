@@ -1,4 +1,4 @@
-@use '../scss/globals' as *;
+@use '../../../scss/globals' as *;
 
 .address-list {
   @include grid-template-column;
