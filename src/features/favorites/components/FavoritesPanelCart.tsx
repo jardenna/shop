@@ -16,9 +16,8 @@ interface FavoritesPanelCartProps {
 const FavoritesPanelCart = ({ product }: FavoritesPanelCartProps) => (
   <article className="order-item-cart">
     <Img src={product.image} alt="" className="order-item-img" />
-    <div>
-      <ProductPrice price={product.price} discount={product.discount} />
-    </div>
+
+    <ProductPrice price={product.price} discount={product.discount} />
   </article>
 );
 
