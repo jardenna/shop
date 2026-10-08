@@ -111,7 +111,7 @@ const FavoritePage = () => {
           onReset={onReset}
         >
           {selectedProduct && (
-            <div className="favorite-panel">
+            <div className="favorites-panel">
               <FavoritesPanelCart product={selectedProduct} />
               <CartForm
                 className="favorites-form"

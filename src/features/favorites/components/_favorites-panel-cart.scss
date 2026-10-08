@@ -1,6 +1,6 @@
 @use '../../../scss/globals' as *;
 
-.favorite-panel {
+.favorites-panel {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -17,13 +17,7 @@
   }
 }
 
-.favorite-panel-product {
-  flex-grow: 1;
-  display: flex;
-  gap: 16px;
-}
-
-.favorite-item-cart {
+.favorites-item-cart {
   .product-price {
     font-size: rem(20px);
   }
