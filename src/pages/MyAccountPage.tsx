@@ -6,14 +6,17 @@ import AccountInfoList from '../features/account/components/AccountInfoList';
 import { useLanguage } from '../features/language/useLanguage';
 import type { InputMode, InputType } from '../types/types';
 
-export type ProfileFieldListProps = {
-  label: string;
-  name: keyof BaseProfile;
+export interface BaseInputListProps {
   inputMode?: InputMode;
   required?: boolean;
-  tooltip?: boolean;
   type?: InputType;
-};
+}
+
+export interface ProfileFieldListProps extends BaseInputListProps {
+  label: string;
+  name: keyof BaseProfile;
+  tooltip?: boolean;
+}
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
