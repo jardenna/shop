@@ -1,6 +1,6 @@
 import { Address } from '../../app/api/apiTypes/addressApiTypes';
+import DeleteAddressModal from '../../pages/account/DeleteAddressModal';
 import AddressFormModal from './AddressFormModal';
-import DeleteAddressModal from './DeleteAddressModal';
 
 interface AddressListFooterProps {
   address: Address;

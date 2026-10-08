@@ -6,6 +6,7 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useToast } from '../components/toast/hooks/useToast';
 import { paymentMethodsList } from '../config/paymentConfig';
+import AddressList from '../features/address/AddressList';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
@@ -31,7 +32,6 @@ import {
   getUpdatedAddresses,
   StandardAddressIds,
 } from '../utils/addressUtils';
-import AddressList from './account/AddressList';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 

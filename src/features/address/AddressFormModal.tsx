@@ -11,15 +11,15 @@ import FormModal from '../../components/Modal/FormModal';
 import TriggerModalButton from '../../components/Modal/TriggerModalButton';
 import { useModal } from '../../components/Modal/useModal';
 import { useToast } from '../../components/toast/hooks/useToast';
-import { useLanguage } from '../../features/language/useLanguage';
-import {
-  useAddAddressMutation,
-  useUpdateAddressMutation,
-} from '../../features/profile/addressesApiSlice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { InputType, RefBtnType } from '../../types/types';
 import { validateAddress } from '../../utils/validation/validateAddress';
+import { useLanguage } from '../language/useLanguage';
+import {
+  useAddAddressMutation,
+  useUpdateAddressMutation,
+} from '../profile/addressesApiSlice';
 
 interface AddressFormModalProps {
   headerText: string;
