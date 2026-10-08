@@ -21,7 +21,7 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
-import PageErrorBoundary from '../pages/PageErrorBoundary';
+import RouteErrorBoundary from '../pages/RouteErrorBoundary';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
@@ -137,13 +137,13 @@ const Layout = () => {
           handleSelectCurrency('currencyOption', selectedOptions);
         }}
       />
-      <PageErrorBoundary>
+      <RouteErrorBoundary>
         <main id="main">
           <Outlet />
           <MiniCartPopup />
         </main>
         <Footer />
-      </PageErrorBoundary>
+      </RouteErrorBoundary>
       <ScrollRestoration />
     </div>
   );

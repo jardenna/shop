@@ -2,14 +2,14 @@ import { ReactNode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 
-interface PageErrorBoundaryProps {
+interface RouteErrorBoundaryProps {
   children: ReactNode;
 }
 
-const PageErrorBoundary = ({ children }: PageErrorBoundaryProps) => (
+const RouteErrorBoundary = ({ children }: RouteErrorBoundaryProps) => (
   <ErrorBoundary FallbackComponent={ErrorBoundaryFallback}>
     {children}
   </ErrorBoundary>
 );
 
-export default PageErrorBoundary;
+export default RouteErrorBoundary;

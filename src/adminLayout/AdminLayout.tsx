@@ -13,7 +13,7 @@ import { clearErrorToasts } from '../features/toastSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
-import PageErrorBoundary from '../pages/PageErrorBoundary';
+import RouteErrorBoundary from '../pages/RouteErrorBoundary';
 import AdminHeader from './AdminHeader';
 import './adminLayout.styles.scss';
 import Aside from './aside/Aside';
@@ -64,11 +64,11 @@ const AdminLayout = () => {
             }
           />
         )}
-        <PageErrorBoundary>
+        <RouteErrorBoundary>
           <main id="main" className="admin">
             <Outlet />
           </main>
-        </PageErrorBoundary>
+        </RouteErrorBoundary>
       </div>
       <ScrollRestoration />
     </div>
