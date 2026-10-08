@@ -21,7 +21,7 @@ import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
-import RouteErrorBoundary from '../pages/RouteErrorBoundary';
+import RouteErrorBoundary from '../pages/pageContainer/RouteErrorBoundary';
 import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
