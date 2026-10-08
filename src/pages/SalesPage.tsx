@@ -138,7 +138,6 @@ const Salespage = () => {
               {noCategoryId && <NotFoundError error="" className="sale" />}
               <ProductCartList
                 products={selectedProducts}
-                showSizeOverlay={productView !== 'list'}
                 getProductLink={getProductLink}
                 productView={productView}
               />

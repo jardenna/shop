@@ -15,6 +15,7 @@ const ProductCartGridContent = ({
   <>
     <ProductPrice price={price} discount={discount} />
     <ColorList colors={colors} variant="mini" count={3} />
+    button
   </>
 );
 

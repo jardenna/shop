@@ -132,10 +132,8 @@ const FavoritePage = () => {
       </Panel>
       <ProductCartList
         products={sortedFavorites}
-        productView="grid"
         onOpenPanel={handleOpenPanel}
         currentUser={currentUser}
-        showSizeOverlay
         getProductLink={getProductLink}
       />
     </MainPageContainer>

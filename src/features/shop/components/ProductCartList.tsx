@@ -3,13 +3,13 @@ import ProductCart, { BaseProductCart } from './ProductCart';
 
 interface ProductCartListProps extends BaseProductCart {
   products: BaseProduct[];
+  productView?: string;
   getProductLink: (id: string) => string;
 }
 
 const ProductCartList = ({
   products,
   productView,
-  showSizeOverlay,
   getProductLink,
   onOpenPanel,
   currentUser,
@@ -18,7 +18,6 @@ const ProductCartList = ({
     {products.map((product) => (
       <li key={product.id}>
         <ProductCart
-          showSizeOverlay={showSizeOverlay}
           productView={productView}
           linkTo={getProductLink(product.id)}
           product={product}

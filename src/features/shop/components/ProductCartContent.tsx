@@ -10,13 +10,13 @@ interface ProductCartContentProps {
   ariaLabelledby: string;
   linkTo: string;
   product: BaseProduct;
-  productView?: string;
+  productView: string;
 }
 
 const ProductCartContent = ({
   ariaLabelledby,
   product,
-  productView = 'grid',
+  productView,
   linkTo,
 }: ProductCartContentProps) => (
   <div className="product-cart-content">
