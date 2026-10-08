@@ -20,7 +20,13 @@
     height: auto;
   }
 
-  // @include animation(skeleton-animation, 1.5s infinite, linear);
+  @include animation(skeleton-animation, 1.5s infinite, linear);
+}
+
+.skeleton-account-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .skeleton-admin-page {

@@ -16,6 +16,7 @@ interface PanelProps {
   portalId: string;
   ariaControls?: string;
   className?: string;
+  heading?: string;
   hideCloseBtn?: boolean;
   ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
@@ -32,6 +33,7 @@ const Panel = ({
   hideCloseBtn,
   ignoreRefs = [],
   portalId,
+  heading,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -65,6 +67,7 @@ const Panel = ({
         className={`panel ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
+        {heading && <h2 className="panel-heading">{heading}</h2>}
         {children}
 
         {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}

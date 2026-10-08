@@ -72,7 +72,10 @@ $placement-x: 12px;
   }
 
   .product-cart-content {
-    margin-block: 8px 16px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
     .product-price {
       font-size: 16px;

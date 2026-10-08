@@ -16,4 +16,10 @@
   box-shadow: $box-shadow;
   min-width: rem(340px);
   transform: translateX(-50%);
+
+  .panel-heading {
+    max-width: rem(400px);
+    text-wrap: pretty;
+    margin-bottom: 8px;
+  }
 }

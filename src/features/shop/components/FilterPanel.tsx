@@ -158,76 +158,70 @@ const FilterPanel = ({
         isPanelShown={isPanelShown}
         className="filter-panel"
         ariaControls={ariaControls}
+        heading={language.filterProducts}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
         >
-          <>
-            <VisuallyHidden as="header">
-              <h2>{language.filterHeading}</h2>
-            </VisuallyHidden>
-
-            <Form
-              className="filter-form"
-              submitBtnLabel={primaryBtnText}
-              onSubmit={onHidePanel}
-              cancelBtnProps={{
-                btnLabel: language.clearAllFilters,
-                isDisabled: isClearFiltersDisabled,
-                onCancel: onClearAllFilters,
-              }}
+          <Form
+            className="filter-form"
+            submitBtnLabel={primaryBtnText}
+            onSubmit={onHidePanel}
+            cancelBtnProps={{
+              btnLabel: language.clearAllFilters,
+              isDisabled: isClearFiltersDisabled,
+              onCancel: onClearAllFilters,
+            }}
+          >
+            <FieldSet
+              legendText={language.filterProducts}
+              className="filter-fieldset"
             >
+              {filteredEntries.length > 0 && (
+                <div>
+                  {filteredEntries.map(([key, values]) => (
+                    <TagList
+                      key={key}
+                      language={language}
+                      tagList={values.map((value) => ({
+                        key: key as FilterKeys,
+                        value,
+                      }))}
+                      onClick={onRemoveFilterTag}
+                    />
+                  ))}
+                </div>
+              )}
               <FieldSet
-                legendText={language.filterProducts}
-                className="filter-fieldset"
+                legendText={language.priceRange}
+                className="dural-range-fieldset"
                 showLegendText
               >
-                {filteredEntries.length > 0 && (
-                  <div>
-                    {filteredEntries.map(([key, values]) => (
-                      <TagList
-                        key={key}
-                        language={language}
-                        tagList={values.map((value) => ({
-                          key: key as FilterKeys,
-                          value,
-                        }))}
-                        onClick={onRemoveFilterTag}
-                      />
-                    ))}
-                  </div>
-                )}
-                <FieldSet
-                  legendText={language.priceRange}
-                  className="dural-range-fieldset"
-                  showLegendText
-                >
-                  <DualRange
-                    minValue={values.minPrice}
-                    maxValue={values.maxPrice}
-                    inputNames={{
-                      min: 'minPrice',
-                      max: 'maxPrice',
-                    }}
-                    inputLabels={{
-                      min: language.priceFrom,
-                      max: language.priceTo,
-                    }}
-                    onChange={setValue}
-                    unitLabel={currencyText}
-                  />
-                  <ClearFiltersBtn
-                    onClick={() => {
-                      onClearSingleFilter(['minPrice', 'maxPrice']);
-                    }}
-                    disabled={isClearPriceBtnDisabled}
-                  />
-                </FieldSet>
-                <Accordion accordionList={accordionList} name="filter" />
+                <DualRange
+                  minValue={values.minPrice}
+                  maxValue={values.maxPrice}
+                  inputNames={{
+                    min: 'minPrice',
+                    max: 'maxPrice',
+                  }}
+                  inputLabels={{
+                    min: language.priceFrom,
+                    max: language.priceTo,
+                  }}
+                  onChange={setValue}
+                  unitLabel={currencyText}
+                />
+                <ClearFiltersBtn
+                  onClick={() => {
+                    onClearSingleFilter(['minPrice', 'maxPrice']);
+                  }}
+                  disabled={isClearPriceBtnDisabled}
+                />
               </FieldSet>
-            </Form>
-          </>
+              <Accordion accordionList={accordionList} name="filter" />
+            </FieldSet>
+          </Form>
         </ErrorBoundary>
       </Panel>
     </>

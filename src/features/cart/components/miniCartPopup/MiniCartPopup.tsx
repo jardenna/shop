@@ -57,12 +57,12 @@ const MiniCartPopup = () => {
       onClosePanel={handleCloseMiniCart}
       isPanelShown={shouldOpenMiniCart}
       portalId="mini-cart"
+      heading={language.myBag}
     >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        <h2 className="mini-cart-title">{language.myBag}</h2>
         <MiniCartInfo
           remainingForFreeShipping={summary.remainingForFreeShipping}
           language={language}

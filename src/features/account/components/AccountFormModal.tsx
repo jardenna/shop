@@ -86,7 +86,11 @@ const AccountFormModal = ({
 
   return (
     <>
-      <TriggerModalButton modalId={modalId} ariaControls={ariaControls}>
+      <TriggerModalButton
+        modalId={modalId}
+        ariaControls={ariaControls}
+        className="account-trigger-modal"
+      >
         {language.update}
       </TriggerModalButton>
       <FormModal

@@ -16,6 +16,7 @@ export interface PopupData {
 }
 
 interface SingleProductPanelProps {
+  changedValue: string;
   isAddCartItemLoading: boolean;
   isReplaceCartItemLoading: boolean;
   language: Record<string, string>;
@@ -36,24 +37,17 @@ const SingleProductPanel = ({
   onReplaceItem,
   isAddCartItemLoading,
   isReplaceCartItemLoading,
+  changedValue,
   src,
 }: SingleProductPanelProps) => {
-  const { incomingValue, existingValue, changedAttribute } = popupData;
+  const { incomingValue, existingValue } = popupData;
 
   const newValue = translateKey(incomingValue, language);
   const value = translateKey(existingValue, language);
 
-  const changedValue =
-    changedAttribute === 'size'
-      ? language.sizeLowercase
-      : language.colorLowercase;
-
   return (
     <section className="single-product-panel">
       <div className="panel-content">
-        <h2 className="panel-heading">
-          {language.singleProductPanelHeading} {changedValue}
-        </h2>
         <p className="panel-content-info">{language.singleProductPanelText}</p>
         <div className="panel-img">
           <Img alt="" src={src} />

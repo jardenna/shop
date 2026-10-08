@@ -17,7 +17,6 @@ import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
-import './favoritesPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
@@ -105,13 +104,14 @@ const FavoritePage = () => {
         isPanelShown={isPanelShown}
         onClosePanel={onHidePanel}
         portalId="favorites"
+        heading={selectedProduct?.productName ?? ''}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
         >
           {selectedProduct && (
-            <section className="favorite-panel">
+            <div className="favorites-panel">
               <FavoritesPanelCart product={selectedProduct} />
               <CartForm
                 className="favorites-form"
@@ -126,7 +126,7 @@ const FavoritePage = () => {
                 }}
                 currentProductQuantity={0}
               />
-            </section>
+            </div>
           )}
         </ErrorBoundary>
       </Panel>

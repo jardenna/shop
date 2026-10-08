@@ -1,6 +1,5 @@
 import type { BaseProfile } from '../app/api/apiTypes/shopApiTypes';
-import Skeleton from '../components/skeleton/Skeleton';
-import SkeletonGrid from '../components/skeleton/SkeletonGrid';
+import SkeletonAccountPage from '../components/skeleton/SkeletonAccountPage';
 import { useGetMyAccountQuery } from '../features/account/accountApiSlice';
 import AccountFormModal from '../features/account/components/AccountFormModal';
 import AccountInfoList from '../features/account/components/AccountInfoList';
@@ -48,12 +47,7 @@ const MyAccountPage = () => {
     <>
       <p>{language.verifyAndUpdateInfo}</p>
       <div>
-        {isLoading && (
-          <>
-            <SkeletonGrid width="8" height="1.4" />
-            <Skeleton height="3.2" />
-          </>
-        )}
+        {isLoading && <SkeletonAccountPage />}
         {profile && (
           <>
             <AccountInfoList

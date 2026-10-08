@@ -1,12 +1,16 @@
 @use '../scss/globals' as *;
 
-.account-page {
+.my-account-page {
   display: flex;
   gap: 24px;
 
   .label-value-grid {
     border-bottom: 1px solid $color-gray-40;
     padding-block: 12px;
+  }
+
+  .account-trigger-modal {
+    margin-top: 32px;
   }
 
   .account-nav {

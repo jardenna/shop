@@ -56,6 +56,11 @@ const SingleProductPurchaseSection = ({
   const { onAddToast } = useToast();
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
+  const changedValue =
+    popupData?.changedAttribute === 'size'
+      ? language.sizeLowercase
+      : language.colorLowercase;
+
   const [addCartItemApi, { isLoading: isAddCartItemLoading }] =
     useAddToCartMutation();
 
@@ -202,10 +207,12 @@ const SingleProductPurchaseSection = ({
         isPanelShown={isPanelShown}
         onClosePanel={onHidePanel}
         portalId="single-product"
+        heading={`${language.singleProductPanelHeading} ${changedValue}`}
       >
         {popupData && (
           <SingleProductPanel
             popupData={popupData}
+            changedValue={changedValue}
             language={language}
             selectedLanguage={selectedLanguage}
             src={src}
