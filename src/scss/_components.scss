@@ -110,7 +110,7 @@
   display: grid;
   grid-template-rows: max-content 1fr;
 
-  &:has(.account-page),
+  &:has(.my-account-page),
   &:has(.hero-content) {
     .main-header {
       margin-bottom: 0;

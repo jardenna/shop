@@ -32,7 +32,7 @@ const AccountLayout = () => {
   return (
     <>
       <MetaTags metaTitle={title} />
-      <div className="account-page">
+      <div className="my-account-page">
         <section
           className="account-content-container"
           aria-labelledby={adminLayoutId}
