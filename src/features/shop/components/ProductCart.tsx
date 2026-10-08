@@ -59,14 +59,12 @@ const ProductCart = ({
         <FavoriteHeart id={product.id} className="product-cart-favorites" />
       </div>
 
-      <div className="product-cart-content">
-        <ProductCartContent
-          ariaLabelledby={ariaLabelledby}
-          linkTo={linkTo}
-          product={product}
-          productView={productView}
-        />
-      </div>
+      <ProductCartContent
+        ariaLabelledby={ariaLabelledby}
+        linkTo={linkTo}
+        product={product}
+        productView={productView}
+      />
     </article>
   );
 };

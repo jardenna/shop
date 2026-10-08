@@ -17,24 +17,26 @@ const FavoritesAddToCartBtn = ({
   countInStock,
   currentUser,
   panelId,
-}: FavoritesAddToCartBtnProps) =>
-  countInStock === 0 ? (
-    <div className="in-stock-container">
+}: FavoritesAddToCartBtnProps) => (
+  <div className="favorites-cta">
+    {countInStock === 0 ? (
       <NotifyMeForm
         options={[]}
         isOutOfStock
         currentUser={currentUser ?? null}
+        btnVariant={BtnVariant.Secondary}
       />
-    </div>
-  ) : (
-    <Button
-      onClick={() => {
-        onOpenPanel(panelId);
-      }}
-      variant={BtnVariant.Secondary}
-    >
-      {btnLabel}
-    </Button>
-  );
+    ) : (
+      <Button
+        onClick={() => {
+          onOpenPanel(panelId);
+        }}
+        variant={BtnVariant.Secondary}
+      >
+        {btnLabel}
+      </Button>
+    )}
+  </div>
+);
 
 export default FavoritesAddToCartBtn;

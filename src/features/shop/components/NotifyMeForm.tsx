@@ -21,12 +21,14 @@ interface NotifyMeFormProps {
   currentUser: UserResponse | null;
   isOutOfStock: boolean;
   options: string[];
+  btnVariant?: BtnVariant;
 }
 
 const NotifyMeForm = ({
   options,
   currentUser,
   isOutOfStock,
+  btnVariant = BtnVariant.Ghost,
 }: NotifyMeFormProps) => {
   const ariaControls = useId();
   const modalId = 'notify';
@@ -67,7 +69,7 @@ const NotifyMeForm = ({
       <TriggerModalButton
         ariaControls={ariaControls}
         modalId={modalId}
-        variant={BtnVariant.Ghost}
+        variant={btnVariant}
         onClick={handleOpenModal}
       >
         {hasMissingSizes
