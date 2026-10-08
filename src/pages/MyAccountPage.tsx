@@ -4,11 +4,12 @@ import { useGetMyAccountQuery } from '../features/account/accountApiSlice';
 import AccountFormModal from '../features/account/components/AccountFormModal';
 import AccountInfoList from '../features/account/components/AccountInfoList';
 import { useLanguage } from '../features/language/useLanguage';
-import type { InputType } from '../types/types';
+import type { InputMode, InputType } from '../types/types';
 
 export type ProfileFieldListProps = {
   label: string;
   name: keyof BaseProfile;
+  inputMode?: InputMode;
   required?: boolean;
   tooltip?: boolean;
   type?: InputType;
@@ -34,12 +35,14 @@ const MyAccountPage = () => {
       label: 'email',
       type: 'email',
       required: true,
+      inputMode: 'email',
     },
     {
       name: 'phoneNo',
       label: 'phone',
-      type: 'number',
       tooltip: true,
+      type: 'tel',
+      inputMode: 'tel',
     },
   ];
 

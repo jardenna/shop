@@ -102,19 +102,22 @@ const AccountFormModal = ({
         disabled={!isFormDirty}
       >
         <FieldSet legendText={language.userInfo}>
-          {profileFieldList.map(({ name, label, type, required }) => (
-            <Input
-              key={name}
-              value={values[name]}
-              name={name}
-              id={name}
-              labelText={language[label]}
-              onChange={onChange}
-              type={type}
-              required={required}
-              errorText={language[errors[name]]}
-            />
-          ))}
+          {profileFieldList.map(
+            ({ name, label, type, required, inputMode }) => (
+              <Input
+                key={name}
+                value={values[name]}
+                name={name}
+                id={name}
+                labelText={language[label]}
+                onChange={onChange}
+                type={type}
+                required={required}
+                errorText={language[errors[name]]}
+                inputMode={inputMode}
+              />
+            ),
+          )}
         </FieldSet>
         <FieldSet legendText={language.fashionPreference}>
           <RadioTileList
