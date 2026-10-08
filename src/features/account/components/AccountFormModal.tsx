@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import type {
   BaseProfile,
+  MyAccountResponse,
   PreferredFashion,
-  UserProfileResponse,
 } from '../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Input from '../../../components/formElements/Input';
@@ -12,14 +12,14 @@ import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import type { ProfileFieldListProps } from '../../../pages/account/MyAccountPage';
+import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
 import type { OptionType } from '../../../types/types';
 import { validateProfile } from '../../../utils/validation/validateProfile';
 import { useLanguage } from '../../language/useLanguage';
-import { useUpdateUserProfileMutation } from '../accountApiSlice';
+import { useUpdateMyAccountMutation } from '../accountApiSlice';
 
 interface AccountFormModalProps {
-  profile: UserProfileResponse;
+  profile: MyAccountResponse;
   profileFieldList: ProfileFieldListProps[];
 }
 
@@ -64,7 +64,7 @@ const AccountFormModal = ({
     },
   );
 
-  const [updateProfile, { isLoading, reset }] = useUpdateUserProfileMutation();
+  const [updateProfile, { isLoading, reset }] = useUpdateMyAccountMutation();
 
   async function handleSubmit() {
     if (!isFormDirty) {

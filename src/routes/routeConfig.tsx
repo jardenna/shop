@@ -4,7 +4,6 @@ import AccountLayout from '../layout/AccountLayout';
 import Layout from '../layout/Layout';
 import { AdminPath, ShopPath } from '../layout/nav/enums';
 import AboutUsPage from '../pages/AboutUsPage';
-import MyAccountPage from '../pages/account/MyAccountPage';
 import AddressPage from '../pages/AddressPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
@@ -26,6 +25,7 @@ import TermsAndConditionsPage from '../pages/footerPages/TermsAndConditionsPage'
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
+import MyAccountPage from '../pages/MyAccountPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
 import MyOrdersPage from '../pages/MyOrdersPage';
 import CreateProductPage from '../pages/product/CreateProductPage';

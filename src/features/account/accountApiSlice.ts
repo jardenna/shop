@@ -1,29 +1,26 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import type {
-  UserProfileRequest,
-  UserProfileResponse,
+  MyAccountRequest,
+  MyAccountResponse,
 } from '../../app/api/apiTypes/shopApiTypes';
 import { profileUrl } from '../../app/endpoints';
 
 export const accountApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUserProfile: builder.query<UserProfileResponse, void>({
+    getMyAccount: builder.query<MyAccountResponse, void>({
       query: () => profileUrl,
-      providesTags: [TagTypesEnum.Profile],
+      providesTags: [TagTypesEnum.Account],
     }),
-    updateUserProfile: builder.mutation<
-      UserProfileResponse,
-      UserProfileRequest
-    >({
+    updateMyAccount: builder.mutation<MyAccountResponse, MyAccountRequest>({
       query: (address) => ({
         url: profileUrl,
         method: 'PUT',
         body: address,
       }),
-      invalidatesTags: [TagTypesEnum.Profile],
+      invalidatesTags: [TagTypesEnum.Account],
     }),
   }),
 });
 
-export const { useGetUserProfileQuery, useUpdateUserProfileMutation } =
+export const { useGetMyAccountQuery, useUpdateMyAccountMutation } =
   accountApiSlice;
