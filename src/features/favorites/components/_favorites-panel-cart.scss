@@ -23,21 +23,14 @@
   gap: 16px;
 }
 
-.order-item-cart {
+.favorite-item-cart {
   .product-price {
     font-size: rem(20px);
   }
 
-  .order-item-img {
+  .favorite-item-img {
     width: 100%;
     max-height: rem(300px);
     margin-bottom: 12px;
-  }
-
-  .order-item-info {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
   }
 }
