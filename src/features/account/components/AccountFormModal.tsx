@@ -3,20 +3,20 @@ import type {
   BaseProfile,
   PreferredFashion,
   UserProfileResponse,
-} from '../../app/api/apiTypes/shopApiTypes';
-import FieldSet from '../../components/fieldset/FieldSet';
-import Input from '../../components/formElements/Input';
-import RadioTileList from '../../components/formElements/radioTileList/RadioTileList';
-import FormModal from '../../components/Modal/FormModal';
-import TriggerModalButton from '../../components/Modal/TriggerModalButton';
-import { useModal } from '../../components/Modal/useModal';
-import { useToast } from '../../components/toast/hooks/useToast';
-import { useLanguage } from '../../features/language/useLanguage';
-import { useUpdateUserProfileMutation } from '../../features/profile/profileApiSlice';
-import { useFormValidation } from '../../hooks/useFormValidation';
-import type { OptionType } from '../../types/types';
-import { validateProfile } from '../../utils/validation/validateProfile';
-import type { ProfileFieldListProps } from './MyAccountPage';
+} from '../../../app/api/apiTypes/shopApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Input from '../../../components/formElements/Input';
+import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
+import FormModal from '../../../components/Modal/FormModal';
+import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
+import { useModal } from '../../../components/Modal/useModal';
+import { useToast } from '../../../components/toast/hooks/useToast';
+import { useFormValidation } from '../../../hooks/useFormValidation';
+import type { ProfileFieldListProps } from '../../../pages/account/MyAccountPage';
+import type { OptionType } from '../../../types/types';
+import { validateProfile } from '../../../utils/validation/validateProfile';
+import { useLanguage } from '../../language/useLanguage';
+import { useUpdateUserProfileMutation } from '../accountApiSlice';
 
 interface AccountFormModalProps {
   profile: UserProfileResponse;

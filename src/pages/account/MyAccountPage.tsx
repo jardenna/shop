@@ -1,11 +1,11 @@
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import Skeleton from '../../components/skeleton/Skeleton';
 import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
+import { useGetUserProfileQuery } from '../../features/account/accountApiSlice';
+import AccountFormModal from '../../features/account/components/AccountFormModal';
+import AccountInfoList from '../../features/account/components/AccountInfoList';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
-import AccountFormModal from './AccountFormModal';
-import AccountInfoList from './AccountInfoList';
 
 export type ProfileFieldListProps = {
   label: string;

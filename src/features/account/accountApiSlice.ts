@@ -5,7 +5,7 @@ import type {
 } from '../../app/api/apiTypes/shopApiTypes';
 import { profileUrl } from '../../app/endpoints';
 
-export const profileApiSlice = apiSlice.injectEndpoints({
+export const accountApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUserProfile: builder.query<UserProfileResponse, void>({
       query: () => profileUrl,
@@ -26,4 +26,4 @@ export const profileApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useGetUserProfileQuery, useUpdateUserProfileMutation } =
-  profileApiSlice;
+  accountApiSlice;
