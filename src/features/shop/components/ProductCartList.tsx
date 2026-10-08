@@ -1,31 +1,29 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductCart, { BaseProductCart } from './ProductCart';
+import ProductCart from './ProductCart';
 
-interface ProductCartListProps extends BaseProductCart {
+interface ProductCartListProps {
   products: BaseProduct[];
+  productView?: string;
+  children?: (product: BaseProduct) => React.ReactNode;
   getProductLink: (id: string) => string;
 }
-
 const ProductCartList = ({
   products,
   productView,
-  showSizeOverlay,
   getProductLink,
-  onOpenPanel,
-  currentUser,
+  children,
 }: ProductCartListProps) => (
   <ul className={`product-cart-list ${productView}`}>
     {products.map((product) => (
       <li key={product.id}>
         <ProductCart
-          showSizeOverlay={showSizeOverlay}
           productView={productView}
           linkTo={getProductLink(product.id)}
           product={product}
           isOutOfStock={product.countInStock === 0}
-          onOpenPanel={onOpenPanel}
-          currentUser={currentUser}
         />
+
+        {children?.(product)}
       </li>
     ))}
   </ul>

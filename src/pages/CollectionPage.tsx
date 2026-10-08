@@ -213,7 +213,6 @@ const CollectionPage = () => {
               <ProductCartList
                 products={products.products}
                 productView={productView}
-                showSizeOverlay={productView !== 'list'}
                 getProductLink={getProductLink}
               />
               {itemCount > 0 && (

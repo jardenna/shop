@@ -72,7 +72,7 @@ $placement-x: 12px;
   }
 
   .product-cart-content {
-    padding: 8px;
+    padding-block: 8px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;

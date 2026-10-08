@@ -1,43 +1,26 @@
 import { useId } from 'react';
 import { Link } from 'react-router';
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
-import {
-  BaseProduct,
-  BaseShopProduct,
-} from '../../../app/api/apiTypes/sharedApiTypes';
+import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
-import Button from '../../../components/Button';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
-import NotifyMeForm from './NotifyMeForm';
 import './productCart.styles.scss';
-import ProductCartGridContent from './ProductCartGridContent';
-import ProductCartListContent from './ProductCartListContent';
+import ProductCartContent from './ProductCartContent';
 import SizeOverlay from './SizeOverlay';
 
-export interface BaseProductCart {
-  productView: string;
-  showSizeOverlay: boolean;
-  currentUser?: UserResponse | null;
-  onOpenPanel?: (id: string) => void;
-}
-
-interface ProductCartProps extends BaseProductCart {
+interface ProductCartProps {
   linkTo: string;
   product: BaseProduct;
   isOutOfStock?: boolean;
+  productView?: string;
 }
 
 const ProductCart = ({
   product,
-  showSizeOverlay,
-  productView,
+  productView = 'grid',
   linkTo,
-  onOpenPanel,
-  currentUser,
   isOutOfStock,
 }: ProductCartProps) => {
   const ariaLabelledby = useId();
@@ -68,49 +51,20 @@ const ProductCart = ({
               )}
             </div>
             <Img alt="" src={product.image} />
-            {showSizeOverlay && <SizeOverlay sizes={product.sizes} count={5} />}
+            {productView === 'grid' && (
+              <SizeOverlay sizes={product.sizes} count={5} />
+            )}
           </div>
         </Link>
         <FavoriteHeart id={product.id} className="product-cart-favorites" />
       </div>
 
-      <div className="product-cart-content">
-        <Link to={linkTo} tabIndex={-1}>
-          <h2 className="product-cart-title" id={ariaLabelledby}>
-            {product.productName}
-          </h2>
-          <div className="product-cart-info">
-            {productView === 'list' ? (
-              <ProductCartListContent product={product as BaseShopProduct} />
-            ) : (
-              <ProductCartGridContent
-                discount={product.discount}
-                price={product.price}
-                colors={product.colors}
-              />
-            )}
-          </div>
-        </Link>
-        {onOpenPanel &&
-          (isOutOfStock ? (
-            <div className="in-stock-container">
-              <NotifyMeForm
-                options={[]}
-                isOutOfStock
-                currentUser={currentUser ?? null}
-              />
-            </div>
-          ) : (
-            <Button
-              onClick={() => {
-                onOpenPanel(product.id);
-              }}
-              variant={BtnVariant.Secondary}
-            >
-              {language.addToCart}
-            </Button>
-          ))}
-      </div>
+      <ProductCartContent
+        ariaLabelledby={ariaLabelledby}
+        linkTo={linkTo}
+        product={product}
+        productView={productView}
+      />
     </article>
   );
 };
