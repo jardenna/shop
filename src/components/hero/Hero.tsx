@@ -1,6 +1,6 @@
-import ImageBackground from '../../../components/imageBackground/ImageBackground';
-import { useLanguage } from '../../../features/language/useLanguage';
-import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import { useLanguage } from '../../features/language/useLanguage';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import ImageBackground from '../imageBackground/ImageBackground';
 import './_hero.scss';
 
 const Hero = () => {

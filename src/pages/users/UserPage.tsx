@@ -19,6 +19,7 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { validateUpdateUser } from '../../utils/validation/validateUpdateUser';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
+import './UserPage.styles.scss';
 
 const columnKeys = ['username', 'email', 'role'] as const;
 

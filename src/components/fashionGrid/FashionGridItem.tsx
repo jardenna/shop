@@ -1,7 +1,7 @@
-import ImageBackground from '../../../components/imageBackground/ImageBackground';
-import MoreLink from '../../../components/MoreLink';
+import ImageBackground from '../imageBackground/ImageBackground';
+import MoreLink from '../MoreLink';
 
-type FashionGridItemProps = {
+interface FashionGridItemProps {
   alt: string;
   ariaLabelledby: string;
   className: string;
@@ -10,7 +10,7 @@ type FashionGridItemProps = {
   linkTo: string;
   text: string;
   backgroundImageName?: string;
-};
+}
 
 const FashionGridItem = ({
   className,

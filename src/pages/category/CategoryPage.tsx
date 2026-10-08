@@ -5,6 +5,7 @@ import {
   useGetAllCategoriesWithParamsQuery,
   useGetHasCategoriesScheduledQuery,
 } from '../../features/categories/categoriyApiSlice';
+import { tableHeaders } from '../../features/categories/components/categoryTableHeaders';
 import CategoryTableRow from '../../features/categories/components/CategoryTableRow';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
@@ -13,7 +14,6 @@ import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/enums';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import { tableHeaders } from './categoryTableHeaders';
 
 const CategoryPage = () => {
   const { language } = useLanguage();
