@@ -1,25 +1,16 @@
 import { useId } from 'react';
 import { Link } from 'react-router';
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
-import Button from '../../../components/Button';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
-import NotifyMeForm from './NotifyMeForm';
 import './productCart.styles.scss';
 import ProductCartContent from './ProductCartContent';
 import SizeOverlay from './SizeOverlay';
 
-export interface BaseProductCart {
-  currentUser?: UserResponse | null;
-  onOpenPanel?: (id: string) => void;
-}
-
-interface ProductCartProps extends BaseProductCart {
+interface ProductCartProps {
   linkTo: string;
   product: BaseProduct;
   isOutOfStock?: boolean;
@@ -30,8 +21,6 @@ const ProductCart = ({
   product,
   productView = 'grid',
   linkTo,
-  onOpenPanel,
-  currentUser,
   isOutOfStock,
 }: ProductCartProps) => {
   const ariaLabelledby = useId();
@@ -77,26 +66,6 @@ const ProductCart = ({
           product={product}
           productView={productView}
         />
-
-        {onOpenPanel &&
-          (isOutOfStock ? (
-            <div className="in-stock-container">
-              <NotifyMeForm
-                options={[]}
-                isOutOfStock
-                currentUser={currentUser ?? null}
-              />
-            </div>
-          ) : (
-            <Button
-              onClick={() => {
-                onOpenPanel(product.id);
-              }}
-              variant={BtnVariant.Secondary}
-            >
-              {language.addToCart}
-            </Button>
-          ))}
       </div>
     </article>
   );
