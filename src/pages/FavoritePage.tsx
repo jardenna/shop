@@ -89,7 +89,6 @@ const FavoritePage = () => {
       </MainPageContainer>
     );
   }
-  console.log(selectedProduct);
 
   return (
     <MainPageContainer
