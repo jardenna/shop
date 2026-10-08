@@ -13,16 +13,10 @@ import { NavListProps } from './navLists';
 interface MobileNavProps {
   navList: NavListProps[];
   className?: string;
-  navHeading?: string;
   onLogout?: () => void;
 }
 
-const MobileNav = ({
-  navList,
-  className = '',
-  onLogout,
-  navHeading,
-}: MobileNavProps) => {
+const MobileNav = ({ navList, className = '', onLogout }: MobileNavProps) => {
   const ariaControls = useId();
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
@@ -58,8 +52,8 @@ const MobileNav = ({
         ignoreRefs={[menuButtonRef]}
         className="mobile-nav"
         hideCloseBtn
+        heading={language.menu}
       >
-        {navHeading && <div className="nav-heading">{navHeading}</div>}
         <NavContainer
           className={className}
           navList={navList}

@@ -50,7 +50,6 @@ const AdminLayout = () => {
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
-        navHeading={language.menu}
         onLogout={handleLogout}
         isLargeTabletSize={isLargeTabletSize}
       />

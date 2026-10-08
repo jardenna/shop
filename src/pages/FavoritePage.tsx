@@ -89,6 +89,7 @@ const FavoritePage = () => {
       </MainPageContainer>
     );
   }
+  console.log(selectedProduct);
 
   return (
     <MainPageContainer
@@ -104,6 +105,7 @@ const FavoritePage = () => {
         isPanelShown={isPanelShown}
         onClosePanel={onHidePanel}
         portalId="favorites"
+        heading={selectedProduct?.productName ?? ''}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}

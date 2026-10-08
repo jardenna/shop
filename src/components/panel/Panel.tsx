@@ -12,6 +12,7 @@ import './_panel.scss';
 
 interface PanelProps {
   children: ReactNode;
+  heading: string;
   isPanelShown: boolean;
   portalId: string;
   ariaControls?: string;
@@ -32,6 +33,7 @@ const Panel = ({
   hideCloseBtn,
   ignoreRefs = [],
   portalId,
+  heading,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -65,6 +67,7 @@ const Panel = ({
         className={`panel ${className} transition from-right ${transitionState}`}
         ref={panelRef}
       >
+        <h2 className="panel-heading">{heading}</h2>
         {children}
 
         {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}
