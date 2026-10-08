@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
-import { Address } from '../../app/api/apiTypes/addressApiTypes';
-import ChangeAddressModal from '../../components/Modal/ChangeAddressModal';
-import { RefBtnType } from '../../types/types';
-import { StandardAddressIds } from '../../utils/addressUtils';
+import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import ChangeAddressModal from '../../../components/Modal/ChangeAddressModal';
+import { RefBtnType } from '../../../types/types';
+import { StandardAddressIds } from '../../../utils/addressUtils';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
+import './_address-list.scss';
 
 interface AddressListProps {
   addresses: Address[];

@@ -77,7 +77,7 @@ export interface ProductFormData extends BaseProductFormData {
 export type PreferredFashion =
   'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
 
-export type UserProfileResponse = DefaultResponseType &
+export type MyAccountResponse = DefaultResponseType &
   BaseProfile & {
     addresses: Address[];
     favorites: string[];
@@ -92,7 +92,7 @@ export type BaseProfile = {
   username: string;
 };
 
-export type UserProfileRequest = BaseProfile & {
+export type MyAccountRequest = BaseProfile & {
   addresses?: Address[];
 };
 

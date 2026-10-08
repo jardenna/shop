@@ -135,3 +135,12 @@
   height: 80rem;
   border: 0;
 }
+
+.tooltip {
+  display: flex;
+  gap: 4px;
+}
+
+[role='tooltip'] {
+  max-width: rem(232px);
+}

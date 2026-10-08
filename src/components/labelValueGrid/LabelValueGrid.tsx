@@ -1,22 +1,19 @@
 import type { ReactNode } from 'react';
 import './_label-value-grid.scss';
 
-type LabelValueGridProps = {
+interface LabelValueGridProps {
   children: ReactNode;
   text: string;
   tooltip?: ReactNode;
-};
+}
 
 const LabelValueGrid = ({ children, text, tooltip }: LabelValueGridProps) => (
   <div className="label-value-grid">
-    {tooltip ? (
-      <div className="tooltip">
-        <strong className="label">{text}:</strong>
-        {tooltip}
-      </div>
-    ) : (
-      <strong className="label">{text}:</strong>
-    )}
+    <div className={`label ${tooltip ? 'tooltip' : ''}`}>
+      <strong>{text}:</strong>
+      {tooltip}
+    </div>
+
     <span className="text">{children}</span>
   </div>
 );

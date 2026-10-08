@@ -1,16 +1,4 @@
-@use '../../scss/globals' as *;
-
-.my-account {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-
-  .account-info-btn {
-    &::after {
-      inset: -15px;
-    }
-  }
-}
+@use '../../../scss/globals' as *;
 
 .address-list {
   @include grid-template-column;
