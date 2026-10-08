@@ -58,7 +58,11 @@ const Header = ({
           className="main-nav-container"
         />
       ) : (
-        <MobileNav navList={navList} className="main-nav-container" />
+        <MobileNav
+          navList={navList}
+          className="main-nav-container"
+          hidePanelHeading
+        />
       )}
       <HeaderIcons
         dropdownBtnList={dropdownBtnList}
