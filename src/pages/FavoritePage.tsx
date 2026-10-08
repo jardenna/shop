@@ -18,6 +18,7 @@ import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import MainPageContainer from './pageContainer/MainPageContainer';
+import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -130,12 +131,21 @@ const FavoritePage = () => {
           )}
         </ErrorBoundary>
       </Panel>
+
       <ProductCartList
         products={sortedFavorites}
-        onOpenPanel={handleOpenPanel}
-        currentUser={currentUser}
         getProductLink={getProductLink}
-      />
+      >
+        {(product) => (
+          <FavoritesAddToCartBtn
+            countInStock={product.countInStock}
+            onOpenPanel={handleOpenPanel}
+            currentUser={currentUser ?? null}
+            panelId={product.id}
+            btnLabel={language.addToCart}
+          />
+        )}
+      </ProductCartList>
     </MainPageContainer>
   );
 };
