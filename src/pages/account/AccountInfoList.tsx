@@ -45,7 +45,6 @@ const AccountInfoList = ({
             tooltip={
               tooltip && (
                 <Popup
-                  triggerBtnClassName="account-info-btn"
                   popupType="tooltip"
                   ariaLabel={language.viewInfo}
                   popupContent={language.phoneInfo}

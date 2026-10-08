@@ -72,7 +72,7 @@ const Popup = ({
         createPortal(
           <div
             ref={popupRef}
-            className={`popup popup-container ${className}`}
+            className={`popup popup-container ${popupType === 'tooltip' ? 'tooltip' : undefined} ${className}`}
             id={popupId}
             role={popupType === 'tooltip' ? 'tooltip' : undefined}
           >

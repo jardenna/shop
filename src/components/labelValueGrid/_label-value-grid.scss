@@ -3,11 +3,6 @@
 .label-value-grid {
   @include grid-fixed-columns($gap: 4px);
 
-  .tooltip {
-    display: flex;
-    gap: 4px;
-  }
-
   .label {
     white-space: nowrap;
   }

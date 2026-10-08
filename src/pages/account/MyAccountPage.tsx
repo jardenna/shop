@@ -4,7 +4,6 @@ import SkeletonGrid from '../../components/skeleton/SkeletonGrid';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetUserProfileQuery } from '../../features/profile/profileApiSlice';
 import type { InputType } from '../../types/types';
-import './_my-account.scss';
 import AccountFormModal from './AccountFormModal';
 import AccountInfoList from './AccountInfoList';
 
@@ -48,7 +47,7 @@ const MyAccountPage = () => {
   return (
     <>
       <p>{language.verifyAndUpdateInfo}</p>
-      <div className="my-account">
+      <div>
         {isLoading && (
           <>
             <SkeletonGrid width="8" height="1.4" />
