@@ -19,7 +19,7 @@ import { useLanguage } from '../language/useLanguage';
 import {
   useAddAddressMutation,
   useUpdateAddressMutation,
-} from '../profile/addressesApiSlice';
+} from './addressesApiSlice';
 
 interface AddressFormModalProps {
   headerText: string;

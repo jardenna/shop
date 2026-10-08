@@ -1,20 +1,21 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import Skeleton from '../../components/skeleton/Skeleton';
-import SkeletonCartList from '../../components/skeleton/skeletonCartList/SkeletonCartList';
-import AddressList from '../../features/address/AddressList';
-import AddressListFooter from '../../features/address/AddressListFooter';
-import { useAuth } from '../../features/auth/hooks/useAuth';
-import { useLanguage } from '../../features/language/useLanguage';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import Skeleton from '../components/skeleton/Skeleton';
+import SkeletonCartList from '../components/skeleton/skeletonCartList/SkeletonCartList';
 import {
   useGetAddressesQuery,
   useUpdateAddressMutation,
-} from '../../features/profile/addressesApiSlice';
+} from '../features/address/addressesApiSlice';
+import AddressList from '../features/address/AddressList';
+import AddressListFooter from '../features/address/AddressListFooter';
+import { useAuth } from '../features/auth/hooks/useAuth';
+import { useLanguage } from '../features/language/useLanguage';
 import {
   findStandardAddress,
   getAddressUpdates,
   StandardAddressIds,
-} from '../../utils/addressUtils';
+} from '../utils/addressUtils';
+import './addressPage.styles.scss';
 
 const AddressPage = () => {
   const { language } = useLanguage();
