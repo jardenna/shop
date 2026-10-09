@@ -81,8 +81,7 @@ export function validatePayment(values: ValidatePayment) {
       !sanitizedPhoneNumber ||
       !mobilePhoneNumberRegex.test(sanitizedPhoneNumber)
     ) {
-      errors.mobilePhoneNumber =
-        ValidationMessage.PhoneNumberMustContainExactly8Digits;
+      errors.mobilePhoneNumber = ValidationMessage.MobilePay8Characters;
     }
   }
 

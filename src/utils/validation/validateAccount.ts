@@ -20,7 +20,7 @@ export function validateAccount(values: BaseProfile) {
 
   // Phone Errors
   if (phoneNo && !mobilePhoneNumberRegex.test(phoneNo)) {
-    errors.phoneNo = ValidationMessage.PhoneNumberMustContainExactly8Digits;
+    errors.phoneNo = ValidationMessage.PleaseEnterValidPhone;
   }
 
   return errors;
