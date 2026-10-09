@@ -3,8 +3,8 @@ import { useScrollOnPagination } from '../../components/pagination/hooks/useScro
 import Pagination from '../../components/pagination/Pagination';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
+import { useGetAllAdminOrdersQuery } from '../../features/adminOrders/adminOrderApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetAllAdminOrdersQuery } from '../../features/orders/adminOrderApiSlice';
 import { tableHeaders } from '../../features/orders/components/orderTableHeaders';
 import OrderTableRow from '../../features/orders/components/OrderTableRow';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
