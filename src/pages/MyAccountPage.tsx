@@ -4,15 +4,19 @@ import { useGetMyAccountQuery } from '../features/account/accountApiSlice';
 import AccountFormModal from '../features/account/components/AccountFormModal';
 import AccountInfoList from '../features/account/components/AccountInfoList';
 import { useLanguage } from '../features/language/useLanguage';
-import type { InputType } from '../types/types';
+import type { InputMode, InputType } from '../types/types';
 
-export type ProfileFieldListProps = {
+export interface BaseInputListProps {
+  inputMode?: InputMode;
+  required?: boolean;
+  type?: InputType;
+}
+
+export interface ProfileFieldListProps extends BaseInputListProps {
   label: string;
   name: keyof BaseProfile;
-  required?: boolean;
-  tooltip?: boolean;
-  type?: InputType;
-};
+  tooltip?: string;
+}
 
 const MyAccountPage = () => {
   const { language } = useLanguage();
@@ -28,21 +32,24 @@ const MyAccountPage = () => {
       name: 'dateOfBirth',
       type: 'date',
       label: 'dateOfBirth',
+      tooltip: language.birthDateInfo,
     },
     {
       name: 'email',
       label: 'email',
       type: 'email',
       required: true,
+      inputMode: 'email',
     },
     {
       name: 'phoneNo',
       label: 'phone',
-      type: 'number',
-      tooltip: true,
+      tooltip: language.phoneInfo,
+      type: 'tel',
+      inputMode: 'tel',
     },
   ];
-
+  //
   return (
     <>
       <p>{language.verifyAndUpdateInfo}</p>

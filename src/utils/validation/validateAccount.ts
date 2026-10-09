@@ -1,11 +1,12 @@
 import { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
+import { phoneNumberRegex } from '../regex';
 import { validateEmail } from './CommonFieldValidation';
 
-export function validateProfile(values: BaseProfile) {
+export function validateAccount(values: BaseProfile) {
   const errors: ValidationErrors<BaseProfile> = {};
-  const { username, email } = values;
+  const { username, email, phoneNo } = values;
 
   if (!username) {
     errors.username = ValidationMessage.PleaseEnterName;
@@ -15,6 +16,11 @@ export function validateProfile(values: BaseProfile) {
   const emailError = validateEmail(email);
   if (emailError) {
     errors.email = emailError;
+  }
+
+  // Phone Errors
+  if (phoneNo && !phoneNumberRegex.test(phoneNo)) {
+    errors.phoneNo = ValidationMessage.PleaseEnterValidPhone;
   }
 
   return errors;

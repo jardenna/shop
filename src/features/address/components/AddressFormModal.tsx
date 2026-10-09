@@ -12,8 +12,9 @@ import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import { BaseInputListProps } from '../../../pages/MyAccountPage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import type { InputType, RefBtnType } from '../../../types/types';
+import type { RefBtnType } from '../../../types/types';
 import { validateAddress } from '../../../utils/validation/validateAddress';
 import { useLanguage } from '../../language/useLanguage';
 import {
@@ -34,16 +35,14 @@ interface AddressFormModalProps {
 
 type AddressField = keyof AddressFields;
 
-interface AddressFieldListProps {
+interface AddressFieldListProps extends BaseInputListProps {
   name: AddressField;
-  required?: boolean;
-  type?: InputType;
 }
 
 const addressInputList: AddressFieldListProps[] = [
   { name: 'name' },
   { name: 'street', required: true },
-  { name: 'zipCode', required: true, type: 'number' },
+  { name: 'zipCode', required: true, inputMode: 'numeric' },
   { name: 'city', required: true },
   { name: 'country' },
 ];

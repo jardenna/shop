@@ -14,7 +14,7 @@ import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
 import type { OptionType } from '../../../types/types';
-import { validateProfile } from '../../../utils/validation/validateProfile';
+import { validateAccount } from '../../../utils/validation/validateAccount';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateMyAccountMutation } from '../accountApiSlice';
 
@@ -56,13 +56,12 @@ const AccountFormModal = ({
     preferredFashion: profile.preferredFashion,
   };
 
-  const { values, onChange, onSubmit, errors, isFormDirty } = useFormValidation(
-    {
+  const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
+    useFormValidation({
       initialState,
       callback: handleSubmit,
-      validate: validateProfile,
-    },
-  );
+      validate: validateAccount,
+    });
 
   const [updateProfile, { isLoading, reset }] = useUpdateMyAccountMutation();
 
@@ -100,21 +99,25 @@ const AccountFormModal = ({
         ariaControls={ariaControls}
         headerText={language.updateYourInfo}
         disabled={!isFormDirty}
+        onClearAllValues={onClearAllValues}
       >
         <FieldSet legendText={language.userInfo}>
-          {profileFieldList.map(({ name, label, type, required }) => (
-            <Input
-              key={name}
-              value={values[name]}
-              name={name}
-              id={name}
-              labelText={language[label]}
-              onChange={onChange}
-              type={type}
-              required={required}
-              errorText={language[errors[name]]}
-            />
-          ))}
+          {profileFieldList.map(
+            ({ name, label, type, required, inputMode }) => (
+              <Input
+                key={name}
+                value={values[name]}
+                name={name}
+                id={name}
+                labelText={language[label]}
+                onChange={onChange}
+                type={type}
+                required={required}
+                errorText={language[errors[name]]}
+                inputMode={inputMode}
+              />
+            ),
+          )}
         </FieldSet>
         <FieldSet legendText={language.fashionPreference}>
           <RadioTileList

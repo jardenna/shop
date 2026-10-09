@@ -42,6 +42,7 @@ bag;Shopping bag;Indkøbskurv
 black;Black;Sort
 blackFriday;Black Friday;Black Friday-rabat
 blue;Blue;Blå
+birthDateInfo;We use your date of birth to verify your age and ensure that our services and offers are suitable for you.;Vi bruger din fødselsdato til at bekræfte din alder og sikre, at vores tjenester og tilbud passer til dig.
 bodyMeasurements;Body Measurements;Kropsmål
 brand;Brand;Brand
 brandRequired;Please insert brand;Indsæt venligst brand
@@ -409,10 +410,12 @@ performedBy;Performed by;Udført af
 perPage;per page;pr. side
 phone;Phone;Telefon
 phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.
-phoneNumberMustContainExactly8Digits;Exactly 8 digits;Præcis 8 cifre
+pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
+mobilePay8Characters;Exactly 8 digits;Præcis 8 cifre
 pink;Pink;Pink
 placeOrder;Place order;Gennemfør ordre
 pleaseEnter;Please enter;Indsæt venligst
+pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by

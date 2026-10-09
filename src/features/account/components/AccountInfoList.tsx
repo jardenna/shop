@@ -5,7 +5,6 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import Tooltip from '../../../components/popup/Tooltip';
 import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
-import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 interface AccountInfoListProps {
@@ -45,8 +44,7 @@ const AccountInfoList = ({
               tooltip && (
                 <Tooltip
                   ariaLabel={language.viewInfo}
-                  tooltipContent={language.phoneInfo}
-                  iconName={IconName.Info}
+                  tooltipContent={tooltip}
                 />
               )
             }
