@@ -15,7 +15,7 @@ export interface BaseInputListProps {
 export interface ProfileFieldListProps extends BaseInputListProps {
   label: string;
   name: keyof BaseProfile;
-  tooltip?: boolean;
+  tooltip?: string;
 }
 
 const MyAccountPage = () => {
@@ -32,6 +32,7 @@ const MyAccountPage = () => {
       name: 'dateOfBirth',
       type: 'date',
       label: 'dateOfBirth',
+      tooltip: language.birthDateInfo,
     },
     {
       name: 'email',
@@ -43,12 +44,12 @@ const MyAccountPage = () => {
     {
       name: 'phoneNo',
       label: 'phone',
-      tooltip: true,
+      tooltip: language.phoneInfo,
       type: 'tel',
       inputMode: 'tel',
     },
   ];
-
+  //
   return (
     <>
       <p>{language.verifyAndUpdateInfo}</p>
