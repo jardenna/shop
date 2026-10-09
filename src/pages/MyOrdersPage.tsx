@@ -5,7 +5,7 @@ import SkeletonMyOrderPage from '../components/skeleton/skeletonMyOrderPage/Skel
 import { useLanguage } from '../features/language/useLanguage';
 import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderFooter';
 import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
-import OrderList from '../features/orders/components/OrderList';
+import OrderList from '../features/orders/components/orderList/OrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';

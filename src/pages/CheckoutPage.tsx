@@ -5,6 +5,7 @@ import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useToast } from '../components/toast/hooks/useToast';
+import TotalPrice from '../components/TotalPrice';
 import { paymentMethodsList } from '../config/paymentConfig';
 import AddressList from '../features/address/components/AddressList';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -18,7 +19,6 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
-import TotalPrice from '../features/orders/components/TotalPrice';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,

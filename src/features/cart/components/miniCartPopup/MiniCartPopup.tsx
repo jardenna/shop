@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Button from '../../../../components/Button';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Panel from '../../../../components/panel/Panel';
+import TotalPrice from '../../../../components/TotalPrice';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { selectUser } from '../../../auth/authSlice';
@@ -12,8 +13,7 @@ import {
   closeMiniCart,
   selectIsMiniCartOpen,
 } from '../../../miniCartPopupSlice';
-import OrderList from '../../../orders/components/OrderList';
-import TotalPrice from '../../../orders/components/TotalPrice';
+import OrderList from '../../../orders/components/orderList/OrderList';
 import { useActiveCart } from '../../useActiveCart';
 import './_mini-cart-popup.scss';
 import MiniCartInfo from './MiniCartInfo';

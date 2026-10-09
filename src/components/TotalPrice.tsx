@@ -1,5 +1,5 @@
-import { useLanguage } from '../../language/useLanguage';
-import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { useLanguage } from '../features/language/useLanguage';
+import ProductPrice from '../features/shop/components/productPrice/ProductPrice';
 
 interface TotalPriceProps {
   price: number;
