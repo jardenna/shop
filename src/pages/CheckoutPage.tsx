@@ -5,20 +5,20 @@ import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useToast } from '../components/toast/hooks/useToast';
+import TotalPrice from '../components/TotalPrice';
 import { paymentMethodsList } from '../config/paymentConfig';
 import AddressList from '../features/address/components/AddressList';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useDeleteCartMutation } from '../features/cart/cartApiSlice';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
 import { useGetCheckoutQuery } from '../features/checkout/checkoutApiSlice';
+import OrderSummaryList from '../features/checkout/components/orderSummaryList/OrderSummaryList';
 import Payment from '../features/checkout/components/Payment';
 import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMethod';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
-import OrderSummaryList from '../features/orders/components/orderSummaryList/OrderSummaryList';
-import TotalPrice from '../features/orders/components/TotalPrice';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,

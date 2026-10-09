@@ -9,18 +9,18 @@ import NotFoundError from '../../components/NotFoundError';
 import SimpleTable from '../../components/simpleTable/SimpleTable';
 import SkeletonAdminOrderDetailsPage from '../../components/skeleton/skeletonOrderDetailsPage/SkeletonAdminOrderDetailsPage';
 import { useToast } from '../../components/toast/hooks/useToast';
-import { useLanguage } from '../../features/language/useLanguage';
 import {
   useCancelOrderMutation,
   useGetAdminOrderByIdQuery,
   useShipOrderMutation,
   useUpdateOrderMutation,
-} from '../../features/orders/adminOrderApiSlice';
-import AdminOrderFooter from '../../features/orders/components/AdminOrderFooter';
+} from '../../features/adminOrders/adminOrderApiSlice';
+import AdminOrderFooter from '../../features/adminOrders/components/AdminOrderFooter';
+import OrderMethodInfo from '../../features/adminOrders/components/orderMethodInfo/OrderMethodInfo';
+import OrderStatusActions from '../../features/adminOrders/components/orderStatusActions/OrderStatusActions';
+import { useLanguage } from '../../features/language/useLanguage';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
-import OrderMethodInfo from '../../features/orders/components/orderMethodInfo/OrderMethodInfo';
-import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';

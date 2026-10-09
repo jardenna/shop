@@ -4,6 +4,7 @@ import { useAppDispatch } from '../app/hooks';
 import Button from '../components/Button';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCartPage from '../components/skeleton/SkeletonCartPage/SkeletonCartPage';
+import TotalPrice from '../components/TotalPrice';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import {
   useApplyPromoCodeMutation,
@@ -19,7 +20,6 @@ import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
-import TotalPrice from '../features/orders/components/TotalPrice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
