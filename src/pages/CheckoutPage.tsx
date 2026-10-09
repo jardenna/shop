@@ -165,11 +165,11 @@ const CheckoutPage = () => {
     id,
   }));
 
-  const handleDeleteCartItem = (cartItemId: string) => {
-    deleteCartItem(cartItemId);
+  const handleDeleteCartItem = async (cartItemId: string) => {
+    await deleteCartItem(cartItemId);
 
-    if (!checkout) {
-      navigate(`/${ShopPath.ShoppingCart}`);
+    if (checkout?.cartItems.length === 1) {
+      navigate(`/${ShopPath.ShoppingCart}`, { replace: true });
     }
   };
 
