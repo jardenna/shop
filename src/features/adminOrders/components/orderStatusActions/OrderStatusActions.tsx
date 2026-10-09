@@ -3,8 +3,8 @@ import Button from '../../../../components/Button';
 import Cart from '../../../../components/carts/Cart';
 import ProgressTracker from '../../../../components/progressTracker/ProgressTracker';
 import { useLanguage } from '../../../language/useLanguage';
-import { orderTrackingList } from '../../utils/createTrackingList';
-import OrderCancelledBadge from '../OrderCancelledBadge';
+import OrderCancelledBadge from '../../../orders/components/OrderCancelledBadge';
+import { orderTrackingList } from '../../../orders/utils/createTrackingList';
 import './_order-status-actions.scss';
 
 interface OrderStatusProps {

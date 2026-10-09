@@ -17,10 +17,10 @@ import {
 } from '../../features/adminOrders/adminOrderApiSlice';
 import AdminOrderFooter from '../../features/adminOrders/components/AdminOrderFooter';
 import OrderMethodInfo from '../../features/adminOrders/components/orderMethodInfo/OrderMethodInfo';
+import OrderStatusActions from '../../features/adminOrders/components/orderStatusActions/OrderStatusActions';
 import { useLanguage } from '../../features/language/useLanguage';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
 import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
-import OrderStatusActions from '../../features/orders/components/orderStatusActions/OrderStatusActions';
 import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
