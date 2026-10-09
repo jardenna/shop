@@ -603,6 +603,7 @@ userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
+userCreated;User was created;Bruger blev oprettet
 verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.

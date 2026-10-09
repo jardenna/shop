@@ -4,6 +4,7 @@ import type {
   AuthResponse,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { AutoComplete } from '../../../types/types';
@@ -37,6 +38,7 @@ const CreateAccount = ({
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const { onAddToast } = useToast();
 
   const initialState: InitialState = {
     username: '',
@@ -64,6 +66,9 @@ const CreateAccount = ({
 
     if (result.success) {
       navigate(navigateTo);
+      onAddToast({
+        message: language.userCreated,
+      });
     }
   }
 
