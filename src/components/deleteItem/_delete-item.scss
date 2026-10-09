@@ -1,7 +1,8 @@
 @use '../../scss/globals' as *;
 
 .delete-item {
-  min-width: rem(216px);
+  width: rem(216px);
+  text-wrap: pretty;
 
   p {
     margin: 0;

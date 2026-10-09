@@ -4,6 +4,7 @@ import type {
   AuthResponse,
   UserResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
 import { AutoComplete } from '../../../types/types';
@@ -20,6 +21,7 @@ export interface BaseCreateAccountProps {
 }
 
 interface CreateAccountProps extends BaseCreateAccountProps {
+  successMessage?: string;
   createUser: (user: AuthRequest) => Promise<AuthResponse>;
 }
 
@@ -34,9 +36,11 @@ const CreateAccount = ({
   autoComplete,
   isLoading,
   createUser,
+  successMessage,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const { onAddToast } = useToast();
 
   const initialState: InitialState = {
     username: '',
@@ -64,6 +68,9 @@ const CreateAccount = ({
 
     if (result.success) {
       navigate(navigateTo);
+      onAddToast({
+        message: successMessage ?? language.userCreated,
+      });
     }
   }
 

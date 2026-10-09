@@ -2,6 +2,7 @@ import { useRegisterUserMutation } from '../features/auth/authApiSlice';
 import CreateAccount from '../features/auth/components/CreateAccount';
 import { useLanguage } from '../features/language/useLanguage';
 import { ShopPath } from '../layout/nav/enums';
+import { shopName } from '../utils/contactInformation';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const RegisterUserPage = () => {
@@ -16,6 +17,7 @@ const RegisterUserPage = () => {
         autoComplete="on"
         isLoading={isLoading}
         createUser={(userData) => registerUser(userData).unwrap()}
+        successMessage={`${language.welcomeTo} ${shopName}`}
       />
     </MainPageContainer>
   );
