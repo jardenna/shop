@@ -14,9 +14,9 @@ import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
 import type { OptionType } from '../../../types/types';
-import { validateProfile } from '../../../utils/validation/validateProfile';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateMyAccountMutation } from '../accountApiSlice';
+import { validateAccount } from '../../../utils/validation/validateAccount';
 
 interface AccountFormModalProps {
   profile: MyAccountResponse;
@@ -60,7 +60,7 @@ const AccountFormModal = ({
     {
       initialState,
       callback: handleSubmit,
-      validate: validateProfile,
+      validate: validateAccount,
     },
   );
 
