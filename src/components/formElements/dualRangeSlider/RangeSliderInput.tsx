@@ -1,4 +1,4 @@
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 
 interface RangeSliderInputProps {
   ariaValuetext: string;
@@ -6,9 +6,9 @@ interface RangeSliderInputProps {
   max: number;
   min: number;
   name: string;
+  onChange: InputChangeHandler;
   step: number;
   value: number;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const RangeSliderInput = ({

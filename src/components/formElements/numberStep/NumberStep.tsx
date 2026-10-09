@@ -1,6 +1,6 @@
 import { useLanguage } from '../../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import IconBtn from '../../IconBtn';
 import Input from '../Input';
 import './_number-step.scss';
@@ -9,6 +9,7 @@ interface NumberStepProps {
   id: string;
   labelText: string;
   name: string;
+  onChange: InputChangeHandler;
   value: number;
   disabled?: boolean;
   displayOnly?: boolean;
@@ -18,7 +19,6 @@ interface NumberStepProps {
   max?: number;
   min?: number;
   showLabel?: boolean;
-  onChange: (event: ChangeInputType) => void;
   onNumberStepChange: (field: string, amount: number) => void;
 }
 
