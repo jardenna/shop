@@ -6,23 +6,30 @@
   border-radius: $border-radius;
   position: fixed;
   z-index: 150;
-  padding: 20px 24px;
+  padding: 12px;
   margin: 0;
   top: 10%;
   left: 50%;
-  display: flex;
-  flex-direction: column;
   gap: 4px;
   width: 100%;
   background-color: $color-white;
   box-shadow: $box-shadow;
   opacity: 0;
   transform: translate(-50%, -100%);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: calc(100dvh - 100px);
 
   .modal-header {
-    display: flex;
-    align-items: center;
     border-bottom: $border;
+    grid-row: 1;
+  }
+
+  .modal-content {
+    grid-row: 2;
+    min-height: 0;
+    overflow: hidden auto;
+    padding: 12px;
   }
 
   .modal-title {
