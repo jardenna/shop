@@ -6,7 +6,7 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
-import { ChangeInputType, InputType } from '../../types/types';
+import { InputChangeHandler, InputType } from '../../types/types';
 import Button from '../Button';
 import DisplayControls from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
@@ -36,6 +36,7 @@ type TableProps<T> = {
   isError: boolean;
   isLoading: boolean;
   navigationPath: string;
+  onFilter: InputChangeHandler;
   sortField: keyof T;
   sortOrder: SortOrder;
   tableCaption: string;
@@ -46,7 +47,6 @@ type TableProps<T> = {
   skeletonCount?: number;
   skeletonHeight?: string;
   children: (data: T[]) => ReactNode;
-  onFilter: (event: ChangeInputType) => void;
   onRemoveFilterTag: (key: string, value: string) => void;
   onReset: () => void;
   onSort: (field: keyof T) => void;
