@@ -56,13 +56,12 @@ const AccountFormModal = ({
     preferredFashion: profile.preferredFashion,
   };
 
-  const { values, onChange, onSubmit, errors, isFormDirty } = useFormValidation(
-    {
+  const { values, onChange, onSubmit, errors, isFormDirty, onClearAllValues } =
+    useFormValidation({
       initialState,
       callback: handleSubmit,
       validate: validateAccount,
-    },
-  );
+    });
 
   const [updateProfile, { isLoading, reset }] = useUpdateMyAccountMutation();
 
@@ -100,6 +99,7 @@ const AccountFormModal = ({
         ariaControls={ariaControls}
         headerText={language.updateYourInfo}
         disabled={!isFormDirty}
+        onClearAllValues={onClearAllValues}
       >
         <FieldSet legendText={language.userInfo}>
           {profileFieldList.map(
