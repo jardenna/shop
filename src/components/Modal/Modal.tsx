@@ -72,7 +72,7 @@ const Modal = ({
   }
 
   return (
-    <Portal portalId="modal">
+    <Portal portalId={modalId}>
       <dialog
         id={ariaControls}
         aria-labelledby={dialogId}
