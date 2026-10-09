@@ -59,10 +59,6 @@ textarea {
 
 input {
   height: $input-height;
-
-  &::before {
-    content: '';
-  }
 }
 
 .input-info {
