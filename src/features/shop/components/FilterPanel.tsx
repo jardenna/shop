@@ -19,12 +19,12 @@ import TagList from '../../../components/tags/TagList';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { IconName } from '../../../types/enums';
-import { ChangeInputType } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
 import ClearFiltersBtn from './ClearFiltersBtn';
 import './filterPanel.styles.scss';
+import { InputChangeHandler } from '../../../types/types';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -48,14 +48,14 @@ interface FilterPanelProps {
   initialFilters: InitialFilters;
   language: Record<string, string>;
   productCount: number;
+  setValue: InputChangeHandler;
   sizes: Size[];
+  toggleValue: InputChangeHandler;
   values: InitialFilters;
   onClearAllFilters: () => void;
   onClearSingleFilter: (keys: string | string[]) => void;
   onRemoveFilterTag: (key: string, value: string) => void;
   onReset: () => void;
-  setValue: (event: ChangeInputType) => void;
-  toggleValue: (event: ChangeInputType) => void;
 }
 
 const FilterPanel = ({

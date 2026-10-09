@@ -5,19 +5,19 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import { ChangeInputType } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import { ProductQuantityMap } from '../../shop/cartUtils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { BaseCartProps } from './CartList';
+import { InputChangeHandler } from '../../../types/types';
 
 interface CartItemProps extends BaseCartProps {
   cart: Order;
   linkTo: string;
+  onChange: InputChangeHandler;
   quantityByProductId: ProductQuantityMap;
   value: number;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const CartItem = ({
