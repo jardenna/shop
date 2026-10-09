@@ -1,7 +1,7 @@
 import { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
-import { mobilePhoneNumberRegex } from '../regex';
+import { phoneNumberRegex } from '../regex';
 import { validateEmail } from './CommonFieldValidation';
 
 export function validateAccount(values: BaseProfile) {
@@ -19,7 +19,7 @@ export function validateAccount(values: BaseProfile) {
   }
 
   // Phone Errors
-  if (phoneNo && !mobilePhoneNumberRegex.test(phoneNo)) {
+  if (phoneNo && !phoneNumberRegex.test(phoneNo)) {
     errors.phoneNo = ValidationMessage.PleaseEnterValidPhone;
   }
 

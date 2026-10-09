@@ -6,7 +6,7 @@ import {
   cardNumberRegex,
   emailRegex,
   expiryDateRegex,
-  mobilePhoneNumberRegex,
+  phoneNumberRegex,
   securityCodeRegex,
 } from '../regex';
 
@@ -77,10 +77,7 @@ export function validatePayment(values: ValidatePayment) {
   if (paymentMethod === paymentMethodsValues.mobilepay) {
     const sanitizedPhoneNumber = mobilePhoneNumber.replace(/\s/g, '');
 
-    if (
-      !sanitizedPhoneNumber ||
-      !mobilePhoneNumberRegex.test(sanitizedPhoneNumber)
-    ) {
+    if (!sanitizedPhoneNumber || !phoneNumberRegex.test(sanitizedPhoneNumber)) {
       errors.mobilePhoneNumber = ValidationMessage.MobilePay8Characters;
     }
   }
