@@ -165,6 +165,14 @@ const CheckoutPage = () => {
     id,
   }));
 
+  const handleDeleteCartItem = (cartItemId: string) => {
+    deleteCartItem(cartItemId);
+
+    if (!checkout) {
+      navigate(`/${ShopPath.ShoppingCart}`);
+    }
+  };
+
   return (
     <MainPageContainer heading={language.checkout} variant="large">
       {isError && <ErrorBoundaryFallback resetErrorBoundary={refetch} />}
@@ -221,7 +229,7 @@ const CheckoutPage = () => {
               <OrderSummaryList
                 orderItems={checkout}
                 language={language}
-                deleteCartItem={deleteCartItem}
+                onDeleteCartItem={handleDeleteCartItem}
                 isLoading={isLoading}
               />
 

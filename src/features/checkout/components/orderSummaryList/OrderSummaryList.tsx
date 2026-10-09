@@ -10,13 +10,13 @@ interface OrderSummaryListProps {
   isLoading: boolean;
   language: Record<string, string>;
   orderItems?: CartListResponse;
-  deleteCartItem: (cartItemId: string) => void;
+  onDeleteCartItem: (cartItemId: string) => void;
 }
 
 const OrderSummaryList = ({
   orderItems,
   language,
-  deleteCartItem,
+  onDeleteCartItem,
   isLoading,
 }: OrderSummaryListProps) => {
   const getCartQuantity = (cartItems: CartItem[]): number =>
@@ -38,7 +38,7 @@ const OrderSummaryList = ({
                 language={language}
                 ariaLabel={`${language.delete} ${cartItem.productName}`}
                 onDeleteItem={() => {
-                  deleteCartItem(cartItem.id);
+                  onDeleteCartItem(cartItem.id);
                 }}
                 isLoading={isLoading}
               />
