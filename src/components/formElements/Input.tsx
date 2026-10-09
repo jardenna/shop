@@ -96,7 +96,7 @@ const Input = ({
           inputHasNoLabel={inputHasNoLabel}
           errorText={errorText}
         />
-        <div className={inputSuffix ? 'input-suffix-container' : ''}>
+        <div className={inputSuffix ? 'input-suffix-container' : undefined}>
           <input
             step={step}
             readOnly={readOnly}
