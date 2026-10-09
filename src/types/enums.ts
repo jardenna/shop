@@ -32,6 +32,7 @@ export enum ValidationMessage {
   PleaseEnterTranslationKey = 'pleaseEnterTranslationKey',
   PleaseEnterValidEmail = 'pleaseEnterValidEmail',
   PleaseEnterValidPhone = 'pleaseEnterValidPhone',
+  PleaseEnterValidZipcode = 'pleaseEnterValidZipcode',
   PleaseEnterZipcode = 'pleaseEnterZipcode',
   PleaseSelectParentCategory = 'pleaseSelectParentCategory',
   PriceRequired = 'priceRequired',

@@ -1,6 +1,7 @@
 import { AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
+import { isNumber } from '../regex';
 
 export function validateAddress(values: AddressInput) {
   const errors: ValidationErrors<AddressInput> = {};
@@ -14,6 +15,8 @@ export function validateAddress(values: AddressInput) {
   }
   if (!zipCode) {
     errors.zipCode = ValidationMessage.PleaseEnterZipcode;
+  } else if (!isNumber.test(zipCode)) {
+    errors.zipCode = ValidationMessage.PleaseEnterValidZipcode;
   }
 
   return errors;

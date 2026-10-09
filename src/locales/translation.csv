@@ -411,10 +411,11 @@ perPage;per page;pr. side
 phone;Phone;Telefon
 phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.
 pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
-mobilePay8Characters;Exactly 8 numbers;Præcis 8 cifre
+mobilePay8Characters;Exactly 8 digits;Præcis 8 cifre
 pink;Pink;Pink
 placeOrder;Place order;Gennemfør ordre
 pleaseEnter;Please enter;Indsæt venligst
+pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by
