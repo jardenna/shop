@@ -4,11 +4,15 @@ import Popup from './Popup';
 
 interface TooltipProps {
   ariaLabel: string;
-  iconName: IconName;
   tooltipContent: string;
+  iconName?: IconName;
 }
 
-const Tooltip = ({ ariaLabel, tooltipContent, iconName }: TooltipProps) => (
+const Tooltip = ({
+  ariaLabel,
+  tooltipContent,
+  iconName = IconName.Info,
+}: TooltipProps) => (
   <Popup
     popupType="tooltip"
     ariaLabel={ariaLabel}
