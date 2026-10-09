@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import VisuallyHidden from '../../VisuallyHidden';
 import RangeSliderInput from './RangeSliderInput';
 import { InputUtils } from './useRangeController';
@@ -13,6 +13,7 @@ interface DualRangeSliderProps {
   inputNames: InputUtils;
   max: number;
   min: number;
+  onChange: InputChangeHandler;
   step: number;
   track: {
     startPercent: number;
@@ -20,7 +21,6 @@ interface DualRangeSliderProps {
   };
   unitLabel: string;
   hideOutput?: boolean;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const DualRangeSlider = ({

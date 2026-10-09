@@ -1,5 +1,5 @@
 import { useCurrency } from '../../../features/currency/useCurrency';
-import type { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
@@ -10,12 +10,12 @@ interface DualRangeProps {
   inputNames: InputUtils;
   maxValue: string;
   minValue: string;
+  onChange: InputChangeHandler;
   unitLabel: string;
   max?: number;
   min?: number;
   showInput?: boolean;
   step?: number;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const DualRange = ({

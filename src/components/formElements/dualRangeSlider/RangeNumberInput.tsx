@@ -1,4 +1,4 @@
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import Input from '../Input';
 
 interface RangeNumberInputProps {
@@ -7,12 +7,12 @@ interface RangeNumberInputProps {
   max: number;
   min: number;
   name: string;
+  onChange: InputChangeHandler;
   step: number;
   value: string;
   inputHasNoLabel?: boolean;
   inputSuffix?: string;
   onBlur?: () => void;
-  onChange: (event: ChangeInputType) => void;
 }
 
 const RangeNumberInput = ({
