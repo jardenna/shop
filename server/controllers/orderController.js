@@ -246,7 +246,7 @@ const payOrder = asyncHandler(async (req, res) => {
   });
 
   if (validationError) {
-    order.paymentStatus = PAYMENT_STATUS.FAILED;
+    order.payment.status = PAYMENT_STATUS.FAILED;
 
     await order.save();
 
@@ -270,7 +270,7 @@ const payOrder = asyncHandler(async (req, res) => {
     });
 
     if (databaseProduct.countInStock < matchingOrderItem.qty) {
-      order.paymentStatus = PAYMENT_STATUS.FAILED;
+      order.payment.status = PAYMENT_STATUS.FAILED;
 
       await order.save();
 
