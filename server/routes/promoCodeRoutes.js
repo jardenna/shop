@@ -1,5 +1,9 @@
 import express from 'express';
-import { createPromoCode } from '../controllers/PromoCodeController.js';
+import {
+  createPromoCode,
+  getPromoCode,
+  updatePromoCode,
+} from '../controllers/PromoCodeController.js';
 import {
   authenticate,
   authorizeEmployee,
@@ -10,6 +14,11 @@ const router = express.Router();
 
 router
   .route('/')
+  .get(authenticate, authorizeEmployee, getPromoCode)
   .post(languageMiddleware, authenticate, authorizeEmployee, createPromoCode);
+
+router
+  .route('/:id')
+  .patch(languageMiddleware, authenticate, authorizeEmployee, updatePromoCode);
 
 export default router;

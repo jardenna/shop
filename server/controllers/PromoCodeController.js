@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
+import { t } from '../utils/translator.js';
 import { validatePromoCode } from '../validators/validatePromoCode.js';
 
 // @desc    Create Promo code
@@ -35,4 +36,44 @@ const createPromoCode = asyncHandler(async (req, res) => {
   });
 });
 
-export { createPromoCode };
+// @desc    Get Promo code
+// @route   /api/admin/promo-codes
+// @method  GET
+// @access  Private for admin and employees
+const getPromoCode = asyncHandler(async (req, res) => {
+  const promoCodes = await PromoCode.find();
+
+  res.status(200).json(promoCodes);
+});
+
+// @desc    Update Promo code
+// @route   /api/admin/promo-codes/:id
+// @method  PATCH
+// @access  Private for admin and employees
+const updatePromoCode = asyncHandler(async (req, res) => {
+  const { code, label, percent, active, startsAt, expiresAt } = req.body;
+  const promoCode = await PromoCode.findById(req.params.id);
+
+  if (!promoCode) {
+    return res
+      .status(404)
+      .json({ success: false, message: t('promoCodeNotFound', req.lang) });
+  }
+
+  promoCode.code = code;
+  promoCode.label = label;
+  promoCode.percent = percent;
+  promoCode.active = active;
+  promoCode.startsAt = startsAt;
+  promoCode.expiresAt = expiresAt;
+
+  const updatedPromoCode = await promoCode.save();
+
+  res.status(200).json({
+    success: true,
+    message: t('promoCodeUpdated', req.lang),
+    promoCode: updatedPromoCode,
+  });
+});
+
+export { createPromoCode, getPromoCode, updatePromoCode };
