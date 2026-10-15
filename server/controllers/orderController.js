@@ -41,6 +41,20 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 
   const activeDiscount = await getActiveDiscount(user.role, cart.discount.code);
+  if (activeDiscount.code) {
+    const existingOrder = await Order.findOne({
+      user: req.user._id,
+      'discount.code': activeDiscount.code,
+      'payment.status': PAYMENT_STATUS.COMPLETED,
+    }).lean();
+
+    if (existingOrder) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeAlreadyUsed', req.lang),
+      });
+    }
+  }
 
   if (!user.addresses.length) {
     return res.status(400).json({
