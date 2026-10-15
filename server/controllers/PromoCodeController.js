@@ -1,4 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
+import PromoCode from '../models/promoCodeModel.js';
 import { validatePromoCode } from '../validators/validatePromoCode.js';
 
 // @desc    Create Promo code
@@ -6,9 +7,25 @@ import { validatePromoCode } from '../validators/validatePromoCode.js';
 // @method  POST
 // @access  Private for admin and employees
 const createPromoCode = asyncHandler(async (req, res) => {
-  const isPromoCodeValid = validatePromoCode(req.body);
+  const existingPromoCode = await PromoCode.findOne({
+    code: req.body.code.trim().toUpperCase(),
+  });
 
-  console.log(isPromoCodeValid);
+  if (existingPromoCode) {
+    return res.status(400).json({
+      success: false,
+      message: 'Promo code already exists',
+    });
+  }
+
+  const validation = validatePromoCode(req.body, req.lang);
+
+  if (!validation.success) {
+    return res.status(400).json({
+      success: false,
+      message: validation.message,
+    });
+  }
 
   res.send(req.body);
 });
