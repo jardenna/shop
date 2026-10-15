@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
-import { PAYMENT_METHODS_LIST } from '../config/paymentConstants.js';
+import {
+  PAYMENT_METHODS_LIST,
+  PAYMENT_STATUS,
+} from '../config/paymentConstants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
+import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
@@ -258,6 +262,19 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     });
   }
 
+  const existingOrder = await Order.findOne({
+    user: req.user._id,
+    'discount.code': activeDiscount.code,
+    'payment.status': PAYMENT_STATUS.COMPLETED,
+  }).lean();
+
+  if (existingOrder) {
+    return res.status(400).json({
+      success: false,
+      message: t('promoCodeAlreadyUsed', req.lang),
+    });
+  }
+
   cart.discount = {
     code: activeDiscount.code,
     label: activeDiscount.label,
@@ -271,7 +288,6 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     message: t('promoCodeApplied', req.lang),
   });
 });
-
 // @desc    Get cart
 // @route   /api/cart
 // @method  GET

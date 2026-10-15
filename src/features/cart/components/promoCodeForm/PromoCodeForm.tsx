@@ -37,7 +37,6 @@ const PromoCodeForm = ({
       onSubmit={onSubmit}
       submitBtnLabel={language.apply}
       isLoading={isLoading}
-      disabled={promoDiscount.code !== ''}
       className="promo-form"
     >
       <Input
@@ -46,7 +45,7 @@ const PromoCodeForm = ({
         name="promoCode"
         id="promoCode"
         onChange={onChange}
-        readOnly={promoDiscount.code !== ''}
+
         errorText={language[errors.promoCode]}
       />
     </Form>
