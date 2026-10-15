@@ -249,7 +249,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   }
 
   const promoCode = req.body.promoCode;
-  const activeDiscount = getActiveDiscount(user.role, promoCode);
+  const activeDiscount = await getActiveDiscount(user.role, promoCode);
 
   if (activeDiscount.code === '') {
     return res.status(400).json({
@@ -288,7 +288,7 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
+  const activeDiscount = await getActiveDiscount(user.role, cart.discount.code);
 
   const cartData = await buildCartData({
     cart,

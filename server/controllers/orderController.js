@@ -40,7 +40,7 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = getActiveDiscount(user.role, cart.discount.code);
+  const activeDiscount = await getActiveDiscount(user.role, cart.discount.code);
 
   if (!user.addresses.length) {
     return res.status(400).json({
