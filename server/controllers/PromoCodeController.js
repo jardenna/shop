@@ -55,9 +55,31 @@ const updatePromoCode = asyncHandler(async (req, res) => {
   const promoCode = await PromoCode.findById(req.params.id);
 
   if (!promoCode) {
-    return res
-      .status(404)
-      .json({ success: false, message: t('promoCodeNotFound', req.lang) });
+    return res.status(404).json({
+      success: false,
+      message: t('promoCodeNotFound', req.lang),
+    });
+  }
+
+  const validation = validatePromoCode(req.body, req.lang);
+
+  if (!validation.success) {
+    return res.status(400).json({
+      success: false,
+      message: validation.message,
+    });
+  }
+
+  const existingPromoCode = await PromoCode.findOne({
+    code: code.trim().toUpperCase(),
+    _id: { $ne: promoCode._id },
+  });
+
+  if (existingPromoCode) {
+    return res.status(400).json({
+      success: false,
+      message: t('promoCodeAlreadyExists', req.lang),
+    });
   }
 
   promoCode.code = code;
