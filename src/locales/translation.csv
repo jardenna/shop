@@ -465,6 +465,13 @@ productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 promoCodeApplied;Discount code applied.;Rabatkoden er blevet anvendt.
+promoCodeRequired;Please provide a promo code;Indtast en rabatkode
+promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
+promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være mellem 1 og 99 %
+promoCodeActiveInvalid;Please provide a valid active state;Angiv en gyldig aktivstatus
+promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
+promoCodeEndDateInvalid;Invalid end date;Ugyldig slutdato
+promoCodeDateRangeInvalid;End date must be after start date;Slutdatoen skal være efter startdatoen
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet

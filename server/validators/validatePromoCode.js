@@ -1,14 +1,17 @@
+import { t } from '../utils/translator.js';
+
 const validatePromoCode = (promoCode, lang) => {
   if (typeof promoCode.code !== 'string' || !promoCode.code.trim()) {
     return {
       success: false,
       message: 'Please provide a promo code',
+      message: t('promoCodeRequired', lang),
     };
   }
   if (typeof promoCode.label !== 'string' || !promoCode.label.trim()) {
     return {
       success: false,
-      message: 'Please provide a label',
+      message: t('promoCodeLabelRequired', lang),
     };
   }
 
@@ -20,31 +23,32 @@ const validatePromoCode = (promoCode, lang) => {
   ) {
     return {
       success: false,
-      message: 'Percent must be between 1 and 99%',
+      message: t('promoCodePercentInvalid', lang),
     };
   }
   if (typeof promoCode.active !== 'boolean') {
     return {
       success: false,
       message: 'Please provide an active state true or false',
+      message: t('promoCodeActiveInvalid', lang),
     };
   }
   if (isNaN(Date.parse(promoCode.startsAt))) {
     return {
       success: false,
-      message: 'Invalid start date format',
+      message: t('promoCodeStartDateInvalid', lang),
     };
   }
   if (isNaN(Date.parse(promoCode.expiresAt))) {
     return {
       success: false,
-      message: 'Invalid end date format',
+      message: t('promoCodeEndDateInvalid', lang),
     };
   }
   if (new Date(promoCode.startsAt) >= new Date(promoCode.expiresAt)) {
     return {
       success: false,
-      message: 'End date must be after start date',
+      message: t('promoCodeDateRangeInvalid', lang),
     };
   }
 
