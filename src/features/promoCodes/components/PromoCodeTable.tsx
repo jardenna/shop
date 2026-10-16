@@ -1,10 +1,10 @@
 import Cart from '../../../components/carts/Cart';
-import DateDisplay from '../../../components/datePicker/DateDisplay';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useLanguage } from '../../language/useLanguage';
 import OrderHeading from '../../orders/components/orderHeading/OrderHeading';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
+import PromoCodeDate from './PromoCodeDate';
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
@@ -28,10 +28,10 @@ const PromoCodeTable = () => {
               <td>{percent} %</td>
 
               <td>
-                <DateDisplay date={startsAt} hour="2-digit" minute="2-digit" />
+                <PromoCodeDate date={startsAt} />
               </td>
               <td>
-                <DateDisplay date={expiresAt} hour="2-digit" minute="2-digit" />
+                <PromoCodeDate date={expiresAt} />
               </td>
             </>
           )}
