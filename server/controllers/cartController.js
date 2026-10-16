@@ -285,7 +285,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: t('promoCodeAlreadyUsed', req.lang),
+    message: t('promoCodeApplied', req.lang),
   });
 });
 
