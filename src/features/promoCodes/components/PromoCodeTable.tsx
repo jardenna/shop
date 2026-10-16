@@ -11,7 +11,6 @@ const PromoCodeTable = () => {
   const { language } = useLanguage();
 
   const { data: promoCodes } = useGetPromoCodesQuery();
-  console.log(promoCodes);
 
   return (
     <Cart>
@@ -34,7 +33,6 @@ const PromoCodeTable = () => {
               <td>{code}</td>
               <td>{label}</td>
               <td>{percent} %</td>
-
               <td>
                 <PromoCodeDate date={startsAt} />
               </td>
