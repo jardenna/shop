@@ -6,3 +6,8 @@ export interface PromoCode {
   percent: number;
   startsAt: Date;
 }
+
+export interface UpdatePromoCodeRequest {
+  body: PromoCode;
+  id: string;
+}

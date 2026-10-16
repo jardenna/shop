@@ -28,4 +28,4 @@ export const ordersUrl = baseOrderEndpoint;
 export const userOrdersUrl = `${baseOrderEndpoint}/me`;
 export const checkoutUrl = 'checkout';
 export const adminOrdersUrl = `admin/${baseOrderEndpoint}`;
-export const promoCodeUrlNew = 'admin/promo-codes';
+export const adminPromoCodeUrl = 'admin/promo-codes';

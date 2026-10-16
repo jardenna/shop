@@ -1,24 +1,28 @@
 import apiSlice from '../../app/api/apiSlice';
-import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
+import {
+  PromoCode,
+  UpdatePromoCodeRequest,
+} from '../../app/api/apiTypes/promoCodeApiTypes';
+import { adminPromoCodeUrl } from '../../app/endpoints';
 
 export const promoCodeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createPromoCode: builder.mutation<PromoCode, PromoCode>({
       query: (body) => ({
-        url: '',
+        url: adminPromoCodeUrl,
         method: 'POST',
         body,
       }),
     }),
-    updatePromoCode: builder.mutation<PromoCode, PromoCode>({
-      query: (body) => ({
-        url: '',
+    updatePromoCode: builder.mutation<PromoCode, UpdatePromoCodeRequest>({
+      query: ({ body, id }) => ({
+        url: `${adminPromoCodeUrl}/${id}`,
         method: 'Patch',
         body,
       }),
     }),
     getPromoCodes: builder.query<PromoCode[], void>({
-      query: () => '',
+      query: () => adminPromoCodeUrl,
     }),
   }),
 });
