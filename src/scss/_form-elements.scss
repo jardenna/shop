@@ -61,6 +61,10 @@ input {
   height: $input-height;
 }
 
+time {
+  text-wrap: nowrap;
+}
+
 .input-info {
   font-size: $font-mini;
   font-style: italic;
