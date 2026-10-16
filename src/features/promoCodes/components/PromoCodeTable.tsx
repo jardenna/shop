@@ -1,8 +1,8 @@
+import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useLanguage } from '../../language/useLanguage';
-import SectionHeading from '../../orders/components/sectionHeading/SectionHeading';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
 import PromoCodeDate from './PromoCodeDate';

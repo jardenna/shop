@@ -1,7 +1,7 @@
+import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import PaymentSummaryList from '../../cart/components/paymentSummery/PaymentSummaryList';
 import OrderList from './orderList/OrderList';
-import SectionHeading from './sectionHeading/SectionHeading';
 
 interface OrderSummaryProps {
   language: Record<string, string>;
