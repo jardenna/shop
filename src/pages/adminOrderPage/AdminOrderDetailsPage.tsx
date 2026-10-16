@@ -103,6 +103,7 @@ const AdminOrderDetailsPage = () => {
     { label: 'dateAndTime' },
     { label: 'performedBy' },
   ];
+
   return (
     <AdminPageContainer
       heading={language.orderDetails}
