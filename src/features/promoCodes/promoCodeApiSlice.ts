@@ -34,6 +34,9 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
     getPromoCodeById: builder.query<PromoCodeResponse, string>({
       query: (id) => `${adminPromoCodeUrl}/${id}`,
       providesTags: [TagTypesEnum.PromoCode],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
   }),
 });
