@@ -3,8 +3,10 @@ import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import MoreLink from '../../../components/MoreLink';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
+import { AdminPath } from '../../../layout/nav/enums';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
@@ -39,6 +41,7 @@ const PromoCodeTable = () => {
               percent,
               startsAt,
               status,
+              id,
             }) => (
               <>
                 <td>{code}</td>
@@ -52,6 +55,12 @@ const PromoCodeTable = () => {
                 </td>
                 <td>
                   <Badge badgeText={language[status]} className={status} />
+                </td>
+                <td>
+                  <MoreLink
+                    linkText={language.update}
+                    linkTo={`${AdminPath.AdminPromoCodeUpdate}/${id}`}
+                  />
                 </td>
               </>
             )}

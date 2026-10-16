@@ -2,6 +2,7 @@ export interface PromoCode {
   active: boolean;
   code: string;
   expiresAt: Date;
+  id: string;
   label: string;
   percent: number;
   startsAt: Date;
