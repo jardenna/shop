@@ -28,6 +28,9 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
     getPromoCodes: builder.query<PromoCodeResponse[], void>({
       query: () => adminPromoCodeUrl,
     }),
+    getPromoCodeById: builder.query<PromoCodeResponse, string>({
+      query: (id) => `${adminPromoCodeUrl}/${id}`,
+    }),
   }),
 });
 
@@ -35,4 +38,5 @@ export const {
   useCreatePromoCodeMutation,
   useUpdatePromoCodeMutation,
   useGetPromoCodesQuery,
+  useGetPromoCodeByIdQuery,
 } = promoCodeApiSlice;

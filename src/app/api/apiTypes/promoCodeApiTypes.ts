@@ -18,3 +18,7 @@ export interface UpdatePromoCodeRequest {
   body: PromoCode;
   id: string;
 }
+
+export interface GetPromoCodeByIdRequest {
+  id: string;
+}

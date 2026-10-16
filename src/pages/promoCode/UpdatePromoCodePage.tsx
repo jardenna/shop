@@ -1,11 +1,13 @@
 import { useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useGetPromoCodeByIdQuery } from '../../features/promoCodes/promoCodeApiSlice';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdatePromoCodePage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-  console.log(id);
+  const { data: promoCode } = useGetPromoCodeByIdQuery(id ?? '');
+  console.log(promoCode);
 
   // if (isError) {
   //   return (
@@ -22,7 +24,7 @@ const UpdatePromoCodePage = () => {
   // }
 
   return (
-    <AdminPageContainer heading={language.updateCategory} variant="medium">
+    <AdminPageContainer heading={language.updatePromoCode} variant="medium">
       hello
     </AdminPageContainer>
   );
