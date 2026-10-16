@@ -72,7 +72,9 @@ const MyOrderDetailsPage = () => {
     >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={refetch}
+        onReset={() => {
+          refetch();
+        }}
       >
         {order && (
           <div className="my-orders-page">

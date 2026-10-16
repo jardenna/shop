@@ -115,7 +115,9 @@ const AdminOrderDetailsPage = () => {
       {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={refetch}
+        onReset={() => {
+          refetch();
+        }}
       >
         <p>
           {language.orderNo}: # {id}

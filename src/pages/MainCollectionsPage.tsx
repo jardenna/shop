@@ -46,7 +46,9 @@ const CollectionLandingPage = () => {
     <MainPageContainer heading={language.collection}>
       <MainCollections
         mainCollectionList={mainCollectionList}
-        onReset={refetch}
+        onReset={() => {
+          refetch();
+        }}
         isLoading={isLoading}
       />
     </MainPageContainer>
