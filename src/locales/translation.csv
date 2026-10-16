@@ -1,5 +1,6 @@
 ﻿key;en;da
 about;About us;Om os
+accessibilityStatement;Accessibility statement;Tilgængelighedserklæring
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
 account;Account;Konto
@@ -28,8 +29,8 @@ addToStock;Add to stock;Tilføj til lager
 admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 all;All;Alle
-allSalesBannerAltText;Smiling couple, with the man covering the woman's eyes in a playful and affectionate gesture.;Smilende par, hvor manden holder hænderne over kvindens øjne i en legende og kærlig gestus.
 allowedFormats;Allowed formats;Tilladte formater
+allSalesBannerAltText;Smiling couple, with the man covering the woman's eyes in a playful and affectionate gesture.;Smilende par, hvor manden holder hænderne over kvindens øjne i en legende og kærlig gestus.
 alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
@@ -38,11 +39,12 @@ ascending;ascending;stigende
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
+backToOrderList;Back to order list;Tilbage til ordrelisten
 bag;Shopping bag;Indkøbskurv
+birthDateInfo;We use your date of birth to verify your age and ensure that our services and offers are suitable for you.;Vi bruger din fødselsdato til at bekræfte din alder og sikre, at vores tjenester og tilbud passer til dig.
 black;Black;Sort
 blackFriday;Black Friday;Black Friday-rabat
 blue;Blue;Blå
-birthDateInfo;We use your date of birth to verify your age and ensure that our services and offers are suitable for you.;Vi bruger din fødselsdato til at bekræfte din alder og sikre, at vores tjenester og tilbud passer til dig.
 bodyMeasurements;Body Measurements;Kropsmål
 brand;Brand;Brand
 brandRequired;Please insert brand;Indsæt venligst brand
@@ -54,6 +56,7 @@ calendar;Calendar;Kalender
 cancel;Cancel;Annuller
 cancelled;Cancelled;Annulleret
 cancelOrder;Cancel order;Annuller ordre
+cannotDeleteAssignedAddress;This address cannot be deleted because it is assigned as a delivery or billing address.;Denne adresse kan ikke slettes, fordi den er valgt som leverings- eller faktureringsadresse.
 cardHasExpired;Card has expired;Kortet er udløbet
 cardholderName;Cardholder name;Kortholder navn
 cardNumberMustContainExactly16Digits;Exactly 16 digits;Præcis 16 cifre
@@ -76,12 +79,11 @@ categoryNotFound;This category is no longer available.;Denne kategori er ikke l�
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
-checkout;Checkout;Kasse
-cannotDeleteAssignedAddress;This address cannot be deleted because it is assigned as a delivery or billing address.;Denne adresse kan ikke slettes, fordi den er valgt som leverings- eller faktureringsadresse.
-changeStandardAddress;Change standard address;Skift standard adresse
-changeOrderAddress;Change address for this order;Skift adresse for denne ordre
 changeBillingAddress;Change billing address;Skift faktureringsadresse
 changeDeliveryAddress;Change delivery address;Skift leveringsadresse
+changeOrderAddress;Change address for this order;Skift adresse for denne ordre
+changeStandardAddress;Change standard address;Skift standard adresse
+checkout;Checkout;Kasse
 chest;Chest;Bryst
 circleChevronRight;Circle chevron right;Circle chevron right
 city;City;By
@@ -107,10 +109,10 @@ completed;Completed;Gennemført
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
 contactCustomerService;Contact customer service;Kontakt kundeservice
-customerService;Customer service;Kundeservice
 continueShopping;Continue shopping;Fortsæt med at handle
 continueToCheckout;Continue to Checkout;Fortsæt til kassen
 convertingSize;Size conversions;Konvertering af størrelser
+cookies;Cookies;Cookies
 copy;Copy;Kopi
 copyAction;Copy;Kopier
 couldNotFindInfo;Sorry, We couldn’t find the information you’re looking for;Vi kunne desværre ikke finde den information, du søger
@@ -119,10 +121,6 @@ country;Country;Land
 create;Create;Opret
 createAccount;Create account;Opret konto
 created;Created;Oprettet
-termsAndConditions;Terms & Conditions;Handelsbetingelser
-privacy;Privacy;Privatliv
-cookies;Cookies;Cookies
-accessibilityStatement;Accessibility statement;Tilgængelighedserklæring
 createdAt;Created at;Tilføjet den
 createNewAccount;Create new account;Opret en ny konto
 createNewAddress;Create new address;Opret ny adresse
@@ -136,6 +134,7 @@ currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte stø
 currentPage;Current page;Nuværende side
 customer;Customer;Kunde
 customerInformation;Customer information;Kundeinformation
+customerService;Customer service;Kundeservice
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
 date;Date;Dato
@@ -152,7 +151,6 @@ deleteProduct;Delete product;Slet produkt
 deleteUser;Delete user;Slet bruger
 delivered;Delivered;Leveret
 delivery;Delivery;Levering
-shippingAndReturns;Shipping & returns;Levering & returnering
 deliveryText;We offer secure delivery with careful packaging. All orders are processed within 1–2 business days, and you'll receive a tracking link as soon as your order is shipped.;Vi tilbyder sikker levering med omhyggelig emballering. Alle ordrer behandles inden for 1-2 hverdage, og du modtager et trackinglink, så snart din ordre er afsendt.
 descending;descending;faldende
 describeProduct;Describe the product;Fortæl om produktet
@@ -178,20 +176,21 @@ estimatedDelivery;Estimated delivery;Anslået leveringsdato
 estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
+expiry;Expiry;Udløbsdato
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
-faq;FAQ;FAQ
 failed;Failed;Mislykket
+faq;FAQ;FAQ
 fashionGridKidsAltText;"Two girls sitting side by side, one in a red polka dot dress and the other in a yellow polka dot dress.";"To søde piger sidder ned, den ene i rød prikket kjole, den anden i gul prikket kjole."
 fashionGridKidsLink;Shop kids;Shop børn
 fashionGridKidsText;Fun, functional, and built for adventure-styles kids love and parents trust.;Sjove og funktionelle styles til børn på farten og forældre med krav til kvalitet.
 fashionGridMenAltText;"Man wearing sunglasses, reclining and looking up with a cheerful smile.";"Mand med solbriller ligger afslappet og kigger glad op."
 fashionGridMenLink;Shop men;Shop herre
 fashionGridMenText;Premium materials and considered design. For the man who knows that calm is a kind of strength.;Eksklusive materialer og gennemtænkt design. Til manden der forstår, at ro også er styrke.
-heroTitle;Celebrating Life;Celebrating Life
-heroText;Discover style made to move with your passions and celebrate what makes you unique.;Udforsk styles, der følger dine passioner og hylder det, der gør dig unik.
+fashionGridMSaleText;Exclusive Fashion Sale;Eksklusivt Modesalg
 fashionGridSaleAltText;"Young woman wearing a short, white 1960s-inspired dress.";"Ung kvinde i kort hvid 60’er-inspireret kjole."
+fashionGridSaleText;For a limited time, enjoy incredible discounts on the latest fashion trends.;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends.
 fashionGridWomanLink;Shop Women;Shop dame
 fashionGridWomanText;Find pieces that inspire self-expression, effortless, bold, and made to move with you.;Udtryk dig selv med styles, der er ubesværede, modige og med dig i bevægelse.
 fashionGridWomenAltText;"Woman in a colorful outfit, wearing a beret that matches her sweater.";"Kvinde i farverigt outfit og en alpehue der matcher til hendes sweater."
@@ -229,8 +228,8 @@ gridLarge; Large grid;Bredt grid
 gridSmall; Small grid;Smalt grid
 heart;Heart;Hjerte
 heroAltText;"Two women dressed in matching blazers, posing fashionably.";"To kvinder iført smarte matchende blazere."
-fashionGridSaleText;For a limited time, enjoy incredible discounts on the latest fashion trends.;I en begrænset periode kan du få fantastiske rabatter på de nyeste modetrends.
-fashionGridMSaleText;Exclusive Fashion Sale;Eksklusivt Modesalg
+heroText;Discover style made to move with your passions and celebrate what makes you unique.;Udforsk styles, der følger dine passioner og hylder det, der gør dig unik.
+heroTitle;Celebrating Life;Celebrating Life
 hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
 hips;Hips;Hofte
@@ -238,7 +237,6 @@ home;Home;Hjem
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
-vat;Vat;Moms
 inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
@@ -261,10 +259,8 @@ keepBoth;Keep both;Behold begge
 kid;Kid;Barn
 kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
-womenSalesBannerAltText;A woman wearing a wide-brimmed hat and soft knitwear looks confidently into the camera with a warm, relaxed expression.;En kvinde iført en bredskygget hat og blød strik ser selvsikkert ind i kameraet med et varmt og afslappet udtryk.
-menSalesBannerAltText;A sharply dressed man in a light suit and tie stands in a city street, looking thoughtfully into the distance.;En velklædt mand i et lyst jakkesæt og slips står på en bygade og ser eftertænksomt ud i det fjerne.
-kidsSalesBannerAltText;Three children in colourful casual outfits jump joyfully in the air with their arms raised, smiling with excitement.;Tre børn i farverigt, afslappet tøj hopper begejstret i luften med armene løftet og smiler glad.kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands.;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden.
 kidsFashion;Kids’s fashion;Børnemode
+kidsSalesBannerAltText;Three children in colourful casual outfits jump joyfully in the air with their arms raised, smiling with excitement.;Tre børn i farverigt, afslappet tøj hopper begejstret i luften med armene løftet og smiler glad.kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands.;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden.
 language;Language;Sprog
 left;left;tilbage
 list;List;Liste
@@ -293,10 +289,12 @@ maximumFileSize;Maximum file size;Maksimal filstørrelse
 men;Men;Mænd
 menAltText;Elegant man with a hat, suspenders, and a burgundy shirt, lifts his hand to remove his sunglasses.;Elegant mand med hat, seler og bordeaux skjorte, løfter hånden for at tage sine solbriller af.
 menBannerAltText;Stylish man wearing an exclusive jacket and dark sunglasses, exuding timeless confidence.;Stilfuld mand iført eksklusiv jakke og mørke solbriller, udstråler tidløs selvsikkerhed.
+menSalesBannerAltText;A sharply dressed man in a light suit and tie stands in a city street, looking thoughtfully into the distance.;En velklædt mand i et lyst jakkesæt og slips står på en bygade og ser eftertænksomt ud i det fjerne.
 mensFashion;Men’s fashion;Heremode
 menu;Menu;Menu
 minLength;At least 8 characters;Mindst 8 tegn
 missingYourSize;Missing your size;Mangler vi din størrelse
+mobilePay8Characters;Exactly 8 digits;Præcis 8 cifre
 mobilePhoneNumber;Mobile phone number;Mobilnummer
 monthAgo;months ago;måneder siden
 multiColor;MultiColour;Flerfarvet
@@ -329,6 +327,9 @@ noProductText;No products match your filters. Try removing some filters or reset
 noProductTitle;No product match your filters;Ingen produkter matcher dine filtre
 noPromoCode;We couldn't recognize the discount code Please try again;Vi kunne desværre ikke genkende rabatkoden Prøv venligst igen
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
+noSaleCta;Explore our collections;Udforsk vores kollektioner
+noSaleText;There are no sale items at the moment, but great deals have a habit of showing up when you least expect them. Check back soon and see what’s waiting for you;Der er ingen tilbudsvarer lige nu, men gode tilbud dukker ofte op, når du mindst venter det. Kom snart tilbage og se, hvad der venter på dig
+noSaleTitle;No sale items right now;Ingen tilbud lige nu
 notAuthorized;Not authorized;Ikke autoriseret
 notAuthorizedNoToken;Not authorized, no token;Ikke autoriseret, ingen token
 notAuthorizedTokenFailed;Not authorized, token failed;Ikke autoriseret, token mislykkedes
@@ -341,9 +342,6 @@ notPublished;Not published;Ikke udgivet
 notRatedYet;Not rated yet;Ikke bedømt endnu
 noTumbleDry;Not suitable for tumble drying;Ikke egnet til tørretumbler
 notVisibleInShop;is not visible in the shop until the main category is published;bliver først synlig i shoppen, når hovedkategorien er udgivet
-noSaleCta;Explore our collections;Udforsk vores kollektioner
-noSaleText;There are no sale items at the moment, but great deals have a habit of showing up when you least expect them. Check back soon and see what’s waiting for you;Der er ingen tilbudsvarer lige nu, men gode tilbud dukker ofte op, når du mindst venter det. Kom snart tilbage og se, hvad der venter på dig
-noSaleTitle;No sale items right now;Ingen tilbud lige nu
 noUser;User not found. Please sign up first;Bruger blev ikke fundet. Opret dig først
 numberOfReviews;Number of reviews;Antal reviews
 of;of;af
@@ -351,10 +349,6 @@ onlyAdminsAssignRole;Only admins can assign roles;Kun administratorer kan tildel
 onlyFourAddresses;You may have up to 4 addresses;Du kan højst have 4 adresser
 orange;Orange;Orange
 order;Order;Ordre
-orderDetails;Order details;Ordre detaljer
-orderNo;Order Number;Ordrenummer
-orderDate;Order Date;Ordre dato
-backToOrderList;Back to order list;Tilbage til ordrelisten
 orderActions;Order actions;Ordrehandlinger
 orderAllreadyDelivered;Order is already delivered;Ordren er allerede leveret
 orderAllreadyPaid;Order is already paid;Ordren er allerede betalt
@@ -363,11 +357,14 @@ orderCancellationNotAllowed;This order can no longer be cancelled.;Denne ordre k
 orderCancelled;This order has been cancelled;Denne ordre er annulleret
 orderConfirmationTitle;Thank you for your order;Tak for din ordre
 orderCreated;Order created;Ordre oprettet
+orderDate;Order Date;Ordre dato
+orderDetails;Order details;Ordre detaljer
 orderedItems;Ordered items;Bestilte varer
 orderHistory;Order history;Ordrehistorik
 orderList;Order list;Ordreliste
 orderMustBeProcessingFirst;Order must be processing before it can be shipped.;Ordren skal være under behandling, før den kan sendes.
 orderMustBeShippedFirst;The order must be shipped before it can be marked as delivered.;Ordren skal være afsendt, før den kan markeres som leveret.
+orderNo;Order Number;Ordrenummer
 orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde den ordre, du leder efter.
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
@@ -379,6 +376,7 @@ orderSummary;Order summary;Ordreoversigt
 orderSummaryList;Order summary list;Ordreoversigtsliste
 orderTotalInclVat;Total price incl. vat;Pris i alt inkl. moms
 orderUpdated;Order updated;Ordre opdateret
+originalProductNotFound;Original product not found;Det originale produkt blev ikke fundet
 originaPrice;Original price;Før pris
 outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
@@ -410,12 +408,9 @@ performedBy;Performed by;Udført af
 perPage;per page;pr. side
 phone;Phone;Telefon
 phoneInfo;We’ll only contact you when needed, for instance, to update you on your order or reply to a customer service question.;Vi kontakter dig kun, når det er påkrævet, eksempelvis ved vigtige ændringer i din ordre eller for at svare på en henvendelse til kundeservice.
-pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
-mobilePay8Characters;Exactly 8 digits;Præcis 8 cifre
 pink;Pink;Pink
 placeOrder;Place order;Gennemfør ordre
 pleaseEnter;Please enter;Indsæt venligst
-pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by
@@ -425,6 +420,8 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
+pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
@@ -438,6 +435,7 @@ priceRequired;Please insert price;Indsæt venligst pris
 priceTo;Price to;Pris til
 pricing;Pricing;Prissætning
 printOrder;Print order;Udskriv ordre
+privacy;Privacy;Privatliv
 processing;In progress;Behandles
 processOrder;Process order;Behandl ordre
 product;Product;Produkt
@@ -464,18 +462,18 @@ productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
-promoCodeApplied;Discount code applied.;Rabatkoden blev anvendt.
-promoCodeRequired;Please provide a promo code;Indtast en rabatkode
-promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
-promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være mellem 1 og 99 %
 promoCodeActiveInvalid;Please provide a valid active state;Angiv en gyldig aktivstatus
-promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
-promoCodeEndDateInvalid;Invalid end date;Ugyldig slutdato
-promoCodeNotFound;We couldn't find the promo code you're looking for.;Vi kunne ikke finde den promokode, du leder efter.
-promoCodeDateRangeInvalid;End date must be after start date;Slutdatoen skal være efter startdatoen
 promoCodeAlreadyExists;This promo code already exists;Denne rabatkode findes allerede
-promoCodeUpdated;Promo code updated;Promokode opdateret
 promoCodeAlreadyUsed;You have already used this promo code;Du har allerede brugt denne rabatkode
+promoCodeApplied;Discount code applied.;Rabatkoden blev anvendt.
+promoCodeDateRangeInvalid;End date must be after start date;Slutdatoen skal være efter startdatoen
+promoCodeEndDateInvalid;Invalid end date;Ugyldig slutdato
+promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
+promoCodeNotFound;We couldn't find the promo code you're looking for.;Vi kunne ikke finde den promokode, du leder efter.
+promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være mellem 1 og 99 %
+promoCodeRequired;Please provide a promo code;Indtast en rabatkode
+promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
+promoCodeUpdated;Promo code updated;Promokode opdateret
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
@@ -524,6 +522,7 @@ serverError;Server error. Please try again later.;Der opstod en fejl. Prøv igen
 shareReview;Share review;Del anmeldelse
 shareYourExperience;Share your experience;Del din oplevelse
 shipped;Shipped;Afsendt
+shippingAndReturns;Shipping & returns;Levering & returnering
 shoes;Shoes;Sko
 shop;Shop;Shop
 shopCart;Shopping cart;Indkøbskurv
@@ -550,8 +549,8 @@ singleProductPanelHeading;You already have this item in another;Du har allerede 
 singleProductPanelText;Choose whether you want to replace the existing item or keep both. The size guide and product information can help you make the right choice, avoid unnecessary returns, and thereby reduce the environmental impact.;Vælg, om du vil erstatte den eksisterende vare eller beholde begge. Størrelsesguiden og produktoplysningerne kan hjælpe dig med at træffe det rigtige valg, undgå unødige returneringer og dermed mindske belastningen på miljøet.
 size;Size;Størrelse
 sizeGuide;Size guide;Størrelsesguide
-sizeGuideInfo;Compare sizes across countries with our size guide.;Sammenlign størrelser på tværs af lande med vores størrelsesguide.
 sizeGuideCaption;International size conversion guide.;Størrelsesguide med internationale størrelseskonverteringer.
+sizeGuideInfo;Compare sizes across countries with our size guide.;Sammenlign størrelser på tværs af lande med vores størrelsesguide.
 sizeGuideIntro;Find your size based on your body measurements.;Find din størrelse ud fra dine kropsmål.
 sizeGuideNote;Measurements are a guide and may vary between brands.;Målene er vejledende og kan variere mellem mærker.
 sizeInfoText;Sizes depend on the selected category;Størrelser afhænger af den valgte kategori
@@ -569,19 +568,19 @@ subCategories;Subcategories;Underkategorier
 subCategory;Subcategory;Underkategori
 subCategoryAlreadyExist;Subcategory already exists;Underkategori findes allerede
 subCategoryDeleted;Subcategory deleted;Subkategori blev slettet
+subcategoryDoesNotExist;Subcategory does not exist;Underkategorien findes ikke
 subCategoryList;Subcategory list;Underkategori-liste
 subCategoryName;Subcategory name;Underkategori navn
 subTotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
-originalProductNotFound;Original product not found;Det originale produkt blev ikke fundet
-subcategoryDoesNotExist;Subcategory does not exist;Underkategorien findes ikke
 summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
 system;System;System
 temporarilyOutOfStock;This item is temporarily out of stock;Varen er midlertidigt udsolgt
 temporarilyOutOfStockText;Get notified when the item is back in stock;Få besked, når varen er tilbage på lager
+termsAndConditions;Terms & Conditions;Handelsbetingelser
 thereAre;There are;Der findes
 title;Title;Titel
 to;to;til
@@ -610,12 +609,14 @@ updateYourInfo;Update your details;Opdatér dine oplysninger
 used;Used;Anvendt
 user;User;Bruger
 userAlreadyExist;A profile already exists. Try logging in instead;Der findes allerede en profil. Prøv at logge ind i stedet
+userCreated;User was created;Bruger blev oprettet
 userDeleted;User deleted;Bruger slettet
 userInfo;User info;Bruger info
 username;User name;Brugernavn
 users;Users;Brugere
 userUpdated;User was updated;Bruger blev opdateret
-userCreated;User was created;Bruger blev oprettet
+validFrom;Valid from;Gyldig fra
+vat;Vat;Moms
 verifyAndUpdateInfo;Verify and update your information;Bekræft og opdatér dine oplysninger
 view;View;Se
 viewAndTrackOrders;View and track your orders.;Tjek og følg dine ordrer.
@@ -623,8 +624,8 @@ viewCart;View your cart;Se din indkøbskurv
 viewCategory;View category;Se kategori
 viewInfo;View info;Se info
 viewMyOrders;View my orders;Se mine ordrer
-viewProduct;View product;Se produkt
 viewOrder;View order;Se ordre
+viewProduct;View product;Se produkt
 viewScheduledDate;View scheduled date;Se planlagt dato
 viewYourFavorites;View your favorites;Se dine favoritter
 waist;Waist;Livvidde
@@ -641,6 +642,7 @@ women_3AltText;Woman in a red blazer and stylish high heels leaning against a ma
 women;Women;Damer
 womenAltText;Glamorous woman in a black dress with a large silver buckle, dancing and radiating sophisticated joy.;Glamourøs kvinde i sort kjole med stort sølvspænde danser og udstråler sofistikeret glæde.
 womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau.;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau.
+womenSalesBannerAltText;A woman wearing a wide-brimmed hat and soft knitwear looks confidently into the camera with a warm, relaxed expression.;En kvinde iført en bredskygget hat og blød strik ser selvsikkert ind i kameraet med et varmt og afslappet udtryk.
 womensFashion;Women’s fashion;Damemode
 yearsAgo;years ago;år siden
 yellow;Yellow;Gul
