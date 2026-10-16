@@ -7,6 +7,12 @@ export interface PromoCode {
   startsAt: Date;
 }
 
+export type PromoCodeStatus = 'active' | 'scheduled' | 'expired' | 'inactive';
+
+export interface PromoCodeResponse extends PromoCode {
+  status: PromoCodeStatus;
+}
+
 export interface UpdatePromoCodeRequest {
   body: PromoCode;
   id: string;

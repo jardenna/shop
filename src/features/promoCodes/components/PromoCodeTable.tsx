@@ -28,7 +28,7 @@ const PromoCodeTable = () => {
             code,
             percent,
             startsAt,
-            active,
+            status,
           }) => (
             <>
               <td>{code}</td>
@@ -42,7 +42,7 @@ const PromoCodeTable = () => {
                 <PromoCodeDate date={expiresAt} />
               </td>
               <td>
-                <Badge badgeText={active ? 'Active' : 'scheduled'} />
+                <Badge badgeText={language[status]} className={status} />
               </td>
             </>
           )}

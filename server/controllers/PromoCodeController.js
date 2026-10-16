@@ -1,3 +1,4 @@
+import { isAfter, isBefore } from 'date-fns';
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
 import { t } from '../utils/translator.js';
@@ -40,10 +41,31 @@ const createPromoCode = asyncHandler(async (req, res) => {
 // @route   /api/admin/promo-codes
 // @method  GET
 // @access  Private for admin and employees
+
 const getPromoCode = asyncHandler(async (req, res) => {
   const promoCodes = await PromoCode.find();
+  const currentDate = new Date();
 
-  res.status(200).json(promoCodes);
+  const promoCodesWithStatus = promoCodes.map((promoCode) => {
+    let status;
+
+    if (!promoCode.active) {
+      status = 'inactive';
+    } else if (isAfter(currentDate, promoCode.expiresAt)) {
+      status = 'expired';
+    } else if (isBefore(currentDate, promoCode.startsAt)) {
+      status = 'scheduled';
+    } else {
+      status = 'active';
+    }
+
+    return {
+      ...promoCode.toObject(),
+      status,
+    };
+  });
+
+  res.status(200).json(promoCodesWithStatus);
 });
 
 // @desc    Update Promo code
