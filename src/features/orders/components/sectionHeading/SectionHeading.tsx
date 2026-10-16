@@ -6,7 +6,7 @@ interface SectionHeadingProps {
 }
 
 const SectionHeading = ({ heading, variant = '' }: SectionHeadingProps) => (
-  <h2 className={`order-heading ${variant}`}>{heading}</h2>
+  <h2 className={`section-heading ${variant}`}>{heading}</h2>
 );
 
 export default SectionHeading;
