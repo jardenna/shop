@@ -4,6 +4,7 @@ import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
+import Skeleton from '../../../components/skeleton/Skeleton';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
@@ -12,11 +13,13 @@ import PromoCodeDate from './PromoCodeDate';
 const PromoCodeTable = () => {
   const { language } = useLanguage();
 
-  const { data: promoCodes, refetch } = useGetPromoCodesQuery();
+  const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
 
   return (
     <Cart>
-      <SectionHeading heading={language.discountCodes} />{' '}
+      <SectionHeading heading={language.discountCodes} />
+
+      {isLoading && <Skeleton />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => {
