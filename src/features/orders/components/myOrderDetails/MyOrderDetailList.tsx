@@ -2,7 +2,7 @@ import { paymentMethodLabels } from '../../../../app/api/apiConstants';
 import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
-import OrderHeading from '../sectionHeading/SectionHeading';
+import SectionHeading from '../sectionHeading/SectionHeading';
 import MyOrderDetailItem from './MyOrderDetailItem';
 import './_my-order-details.scss';
 
@@ -21,7 +21,7 @@ const MyOrderDetailList = ({
 
   return (
     <article className="order-details-info">
-      <OrderHeading variant="underline" heading={language.orderSummary} />
+      <SectionHeading variant="underline" heading={language.orderSummary} />
       <ul className="my-order-detail-list">
         <MyOrderDetailItem
           text={formatOrderNumber(id)}

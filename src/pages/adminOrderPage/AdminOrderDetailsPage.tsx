@@ -21,7 +21,7 @@ import OrderStatusActions from '../../features/adminOrders/components/orderStatu
 import { useLanguage } from '../../features/language/useLanguage';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
 import OrderSummary from '../../features/orders/components/OrderSummary';
-import OrderHeading from '../../features/orders/components/sectionHeading/SectionHeading';
+import SectionHeading from '../../features/orders/components/sectionHeading/SectionHeading';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -129,7 +129,7 @@ const AdminOrderDetailsPage = () => {
         {order && (
           <>
             <Cart>
-              <OrderHeading heading={language.orderHistory} />
+              <SectionHeading heading={language.orderHistory} />
               <SimpleTable
                 tableCaption={language.orderSummaryList}
                 tableHeaderList={tableHeaderList}
@@ -158,7 +158,7 @@ const AdminOrderDetailsPage = () => {
               <OrderSummary language={language} order={order} />
             </Cart>
             <Cart>
-              <OrderHeading heading={language.customerInformation} />
+              <SectionHeading heading={language.customerInformation} />
               <article className="order-details">
                 <OrderMethodInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}

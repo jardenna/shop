@@ -18,7 +18,7 @@ import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMe
 import { useCurrency } from '../features/currency/useCurrency';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
-import OrderHeading from '../features/orders/components/sectionHeading/SectionHeading';
+import SectionHeading from '../features/orders/components/sectionHeading/SectionHeading';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,
@@ -186,7 +186,7 @@ const CheckoutPage = () => {
           >
             <section className="order-flow-list" ref={addressSectionRef}>
               <LayoutElement ariaLabel="address" className="order-flow-header">
-                <OrderHeading heading={language.addresses} />
+                <SectionHeading heading={language.addresses} />
 
                 {checkout.addresses.length === 0 && (
                   <span>({language.addressRequiredToPlaceOrder})</span>

@@ -2,7 +2,7 @@ import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useLanguage } from '../../language/useLanguage';
-import OrderHeading from '../../orders/components/sectionHeading/SectionHeading';
+import SectionHeading from '../../orders/components/sectionHeading/SectionHeading';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
 import PromoCodeDate from './PromoCodeDate';
@@ -15,7 +15,7 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <OrderHeading heading={language.discountCodes} />
+      <SectionHeading heading={language.discountCodes} />
       {promoCodes && (
         <SimpleTable
           tableCaption={language.discountCodeList}

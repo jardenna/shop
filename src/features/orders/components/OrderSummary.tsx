@@ -1,7 +1,7 @@
 import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import PaymentSummaryList from '../../cart/components/paymentSummery/PaymentSummaryList';
 import OrderList from './orderList/OrderList';
-import OrderHeading from './sectionHeading/SectionHeading';
+import SectionHeading from './sectionHeading/SectionHeading';
 
 interface OrderSummaryProps {
   language: Record<string, string>;
@@ -11,11 +11,11 @@ interface OrderSummaryProps {
 const OrderSummary = ({ language, order }: OrderSummaryProps) => (
   <section className="order-summary">
     <article>
-      <OrderHeading heading={language.orderedItems} />
+      <SectionHeading heading={language.orderedItems} />
       <OrderList orders={order.orderItems} language={language} />
     </article>
     <article>
-      <OrderHeading heading={language.priceOverview} />
+      <SectionHeading heading={language.priceOverview} />
       <div className="payment-summary">
         <PaymentSummaryList
           language={language}
