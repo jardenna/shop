@@ -1,0 +1,58 @@
+import { Schema, model } from 'mongoose';
+import { renameIdTransform } from '../utils/formatMongoData.js';
+
+const PromoCodeSchema = new Schema(
+  {
+    code: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      uppercase: true,
+    },
+    label: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    percent: {
+      type: Number,
+      required: true,
+      min: [1, 'Percent must be at least 1'],
+      max: [99, 'Percent cannot exceed 99'],
+    },
+    active: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    startsAt: {
+      type: Date,
+      required: true,
+    },
+    expiresAt: {
+      type: Date,
+      required: true,
+      validate: {
+        validator(expiresAt) {
+          return expiresAt > this.startsAt;
+        },
+        message: 'Expiration date must be after the start date',
+      },
+    },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: renameIdTransform,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  },
+);
+
+const PromoCode = model('PromoCode', PromoCodeSchema);
+
+export default PromoCode;

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
+import SectionHeading from '../adminLayout/sectionHeading/SectionHeading';
 import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
@@ -18,7 +19,6 @@ import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMe
 import { useCurrency } from '../features/currency/useCurrency';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,
@@ -186,7 +186,7 @@ const CheckoutPage = () => {
           >
             <section className="order-flow-list" ref={addressSectionRef}>
               <LayoutElement ariaLabel="address" className="order-flow-header">
-                <OrderHeading heading={language.addresses} />
+                <SectionHeading heading={language.addresses} />
 
                 {checkout.addresses.length === 0 && (
                   <span>({language.addressRequiredToPlaceOrder})</span>

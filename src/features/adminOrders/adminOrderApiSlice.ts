@@ -19,7 +19,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getAdminOrderById: builder.query<OrderResponse, string>({
-      query: (orderId) => `${adminOrdersUrl}${orderId}`,
+      query: (orderId) => `${adminOrdersUrl}/${orderId}`,
       providesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },
       ],
@@ -29,7 +29,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     }),
     updateOrder: builder.mutation<DefaultResponse, UpdateOrderRequest>({
       query: ({ orderId, status }) => ({
-        url: `${adminOrdersUrl}${orderId}/status`,
+        url: `${adminOrdersUrl}/${orderId}/status`,
         method: 'PATCH',
         body: { status },
       }),
@@ -39,7 +39,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     }),
     cancelOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
-        url: `${adminOrdersUrl}${orderId}/cancel`,
+        url: `${adminOrdersUrl}/${orderId}/cancel`,
         method: 'PATCH',
       }),
       invalidatesTags: (_result, _error, orderId) => [
@@ -48,7 +48,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     }),
     shipOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
-        url: `${adminOrdersUrl}${orderId}/send-order`,
+        url: `${adminOrdersUrl}/${orderId}/send-order`,
         method: 'PATCH',
       }),
       invalidatesTags: (_result, _error, orderId) => [

@@ -1,6 +1,7 @@
-import { EMPLOYEE_DISCOUNT, PROMO_CODES } from '../config/constants.js';
+import { EMPLOYEE_DISCOUNT } from '../config/constants.js';
+import PromoCode from '../models/promoCodeModel.js';
 
-export const getActiveDiscount = (role, code) => {
+export const getActiveDiscount = async (role, code) => {
   if (role === 'Employee') {
     return {
       percent: EMPLOYEE_DISCOUNT,
@@ -10,19 +11,33 @@ export const getActiveDiscount = (role, code) => {
   }
 
   const trimmedCode = code?.trim().toUpperCase();
-  const promoCode = PROMO_CODES.find(({ code }) => code === trimmedCode);
 
-  if (promoCode && promoCode.active) {
+  if (!trimmedCode) {
     return {
-      code: promoCode.code,
-      percent: promoCode.percent,
-      label: promoCode.label,
+      code: '',
+      percent: 0,
+      label: '',
+    };
+  }
+
+  const promoCode = await PromoCode.findOne({
+    code: trimmedCode,
+    active: true,
+    startsAt: { $lte: new Date() },
+    expiresAt: { $gt: new Date() },
+  }).lean();
+
+  if (!promoCode) {
+    return {
+      code: '',
+      percent: 0,
+      label: '',
     };
   }
 
   return {
-    code: '',
-    percent: 0,
-    label: '',
+    code: promoCode.code,
+    percent: promoCode.percent,
+    label: promoCode.label,
   };
 };

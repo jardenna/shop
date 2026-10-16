@@ -64,26 +64,5 @@ export const VAT_SHARE = VAT_RATE / (100 + VAT_RATE);
 
 export const MAX_ADDRESS_COUNT = 4;
 
-export const PROMO_CODES = [
-  {
-    code: 'SUMMER15',
-    label: 'summerSale',
-    percent: 10,
-    active: true,
-  },
-  {
-    code: 'WELCOME10',
-    label: 'welcome',
-    percent: 10,
-    active: false,
-  },
-  {
-    code: 'BLACKFRIDAY',
-    label: 'blackFriday',
-    percent: 30,
-    active: false,
-  },
-];
-
 export const SHIPPING_PRICE = 49;
 export const DISCOUNT_SHIPPING_PRICE = 3500;

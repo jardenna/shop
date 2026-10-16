@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import SectionHeading from '../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Cart from '../../components/carts/Cart';
@@ -20,7 +21,6 @@ import OrderMethodInfo from '../../features/adminOrders/components/orderMethodIn
 import OrderStatusActions from '../../features/adminOrders/components/orderStatusActions/OrderStatusActions';
 import { useLanguage } from '../../features/language/useLanguage';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
-import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderSummary from '../../features/orders/components/OrderSummary';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
@@ -103,6 +103,7 @@ const AdminOrderDetailsPage = () => {
     { label: 'dateAndTime' },
     { label: 'performedBy' },
   ];
+
   return (
     <AdminPageContainer
       heading={language.orderDetails}
@@ -114,7 +115,9 @@ const AdminOrderDetailsPage = () => {
       {isLoading && <SkeletonAdminOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={refetch}
+        onReset={() => {
+          refetch();
+        }}
       >
         <p>
           {language.orderNo}: # {id}
@@ -128,12 +131,12 @@ const AdminOrderDetailsPage = () => {
         {order && (
           <>
             <Cart>
-              <OrderHeading heading={language.orderHistory} />
+              <SectionHeading heading={language.orderHistory} />
               <SimpleTable
                 tableCaption={language.orderSummaryList}
                 tableHeaderList={tableHeaderList}
                 tableDataList={order.delivery.statusHistory}
-                getRowKey={({ status, changedAt }) => `${status}-${changedAt}`}
+                rowKey={({ status, changedAt }) => `${status}-${changedAt}`}
                 renderCells={({ status, changedAt, changedBy, actorType }) => (
                   <>
                     <td>{language[status]}</td>
@@ -157,7 +160,7 @@ const AdminOrderDetailsPage = () => {
               <OrderSummary language={language} order={order} />
             </Cart>
             <Cart>
-              <OrderHeading heading={language.customerInformation} />
+              <SectionHeading heading={language.customerInformation} />
               <article className="order-details">
                 <OrderMethodInfo
                   paymentMethod={paymentMethodLabels[order.payment.method]}

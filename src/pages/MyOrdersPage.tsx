@@ -57,7 +57,9 @@ const MyOrdersPage = () => {
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
-        onReset={refetch}
+        onReset={() => {
+          refetch();
+        }}
       >
         {myOrders && (
           <section className="my-orders-page">
