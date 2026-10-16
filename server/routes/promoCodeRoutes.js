@@ -2,6 +2,7 @@ import express from 'express';
 import {
   createPromoCode,
   getPromoCode,
+  getPromoCodeById,
   updatePromoCode,
 } from '../controllers/PromoCodeController.js';
 import {
@@ -19,6 +20,7 @@ router
 
 router
   .route('/:id')
+  .get(languageMiddleware, authenticate, authorizeEmployee, getPromoCodeById)
   .patch(languageMiddleware, authenticate, authorizeEmployee, updatePromoCode);
 
 export default router;

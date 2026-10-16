@@ -1,6 +1,6 @@
-import { isAfter, isBefore } from 'date-fns';
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
+import { getPromoCodesWithStatus } from '../utils/promoCodeUtils.js';
 import { t } from '../utils/translator.js';
 import { validatePromoCode } from '../validators/validatePromoCode.js';
 
@@ -41,31 +41,29 @@ const createPromoCode = asyncHandler(async (req, res) => {
 // @route   /api/admin/promo-codes
 // @method  GET
 // @access  Private for admin and employees
-
 const getPromoCode = asyncHandler(async (req, res) => {
   const promoCodes = await PromoCode.find();
-  const currentDate = new Date();
+  const CodesWithStatus = getPromoCodesWithStatus(promoCodes);
 
-  const promoCodesWithStatus = promoCodes.map((promoCode) => {
-    let status;
+  res.status(200).json(CodesWithStatus);
+});
 
-    if (!promoCode.active) {
-      status = 'inactive';
-    } else if (isAfter(currentDate, promoCode.expiresAt)) {
-      status = 'expired';
-    } else if (isBefore(currentDate, promoCode.startsAt)) {
-      status = 'scheduled';
-    } else {
-      status = 'active';
-    }
+// @desc    Get Promo code by id
+// @route   /api/admin/promo-codes/id
+// @method  GET
+// @access  Private for admin and employees
+const getPromoCodeById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const promoCode = await PromoCode.findById(id);
 
-    return {
-      ...promoCode.toObject(),
-      status,
-    };
-  });
+  if (!promoCode) {
+    return res.status(404).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
+    });
+  }
 
-  res.status(200).json(promoCodesWithStatus);
+  res.status(200).json(promoCode);
 });
 
 // @desc    Update Promo code
@@ -120,4 +118,4 @@ const updatePromoCode = asyncHandler(async (req, res) => {
   });
 });
 
-export { createPromoCode, getPromoCode, updatePromoCode };
+export { createPromoCode, getPromoCode, getPromoCodeById, updatePromoCode };
