@@ -19,7 +19,7 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
+import OrderHeading from '../features/orders/components/sectionHeading/SectionHeading';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';

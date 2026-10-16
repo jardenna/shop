@@ -18,7 +18,7 @@ import SelectPaymentMethod from '../features/checkout/components/SelectPaymentMe
 import { useCurrency } from '../features/currency/useCurrency';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
-import OrderHeading from '../features/orders/components/orderHeading/OrderHeading';
+import OrderHeading from '../features/orders/components/sectionHeading/SectionHeading';
 import {
   useCreateOrderMutation,
   usePayOrderMutation,

@@ -1,7 +1,7 @@
 import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import PaymentSummaryList from '../../cart/components/paymentSummery/PaymentSummaryList';
-import OrderHeading from './orderHeading/OrderHeading';
 import OrderList from './orderList/OrderList';
+import OrderHeading from './sectionHeading/SectionHeading';
 
 interface OrderSummaryProps {
   language: Record<string, string>;

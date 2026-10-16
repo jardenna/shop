@@ -20,8 +20,8 @@ import OrderMethodInfo from '../../features/adminOrders/components/orderMethodIn
 import OrderStatusActions from '../../features/adminOrders/components/orderStatusActions/OrderStatusActions';
 import { useLanguage } from '../../features/language/useLanguage';
 import OrderAddressList from '../../features/orders/components/orderAddressList/OrderAddressList';
-import OrderHeading from '../../features/orders/components/orderHeading/OrderHeading';
 import OrderSummary from '../../features/orders/components/OrderSummary';
+import OrderHeading from '../../features/orders/components/sectionHeading/SectionHeading';
 import { createOrderAddressList } from '../../features/orders/utils/createOrderAddressList';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
