@@ -1,7 +1,13 @@
 import { useLanguage } from '../language/useLanguage';
 import { useGetPromoCodesQuery } from './promoCodeApiSlice';
 
-// discountCode discount validFrom expiry status
+const tableHeaderList = [
+  { label: 'discountCode' },
+  { label: 'discount' },
+  { label: 'validFrom' },
+  { label: 'expiry' },
+  { label: 'status' },
+];
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
