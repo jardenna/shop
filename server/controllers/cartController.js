@@ -285,9 +285,10 @@ const applyPromoCode = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: t('promoCodeApplied', req.lang),
+    message: t('promoCodeAlreadyUsed', req.lang),
   });
 });
+
 // @desc    Get cart
 // @route   /api/cart
 // @method  GET

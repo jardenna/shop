@@ -464,7 +464,6 @@ productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
-promoCodeApplied;Discount code applied.;Rabatkoden er blevet anvendt.
 promoCodeRequired;Please provide a promo code;Indtast en rabatkode
 promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
 promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være mellem 1 og 99 %
