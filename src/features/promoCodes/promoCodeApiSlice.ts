@@ -1,4 +1,4 @@
-import apiSlice from '../../app/api/apiSlice';
+import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
   PromoCode,
   PromoCodeResponse,
@@ -14,6 +14,7 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body,
       }),
+      invalidatesTags: [TagTypesEnum.PromoCode],
     }),
     updatePromoCode: builder.mutation<
       PromoCodeResponse,
@@ -24,12 +25,15 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
         method: 'Patch',
         body,
       }),
+      invalidatesTags: [TagTypesEnum.PromoCode],
     }),
     getPromoCodes: builder.query<PromoCodeResponse[], void>({
       query: () => adminPromoCodeUrl,
+      providesTags: [TagTypesEnum.PromoCode],
     }),
     getPromoCodeById: builder.query<PromoCodeResponse, string>({
       query: (id) => `${adminPromoCodeUrl}/${id}`,
+      providesTags: [TagTypesEnum.PromoCode],
     }),
   }),
 });
