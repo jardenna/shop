@@ -11,15 +11,15 @@ interface SimpleTableProps<RowData> {
   tableCaption: string;
   tableDataList: RowData[];
   tableHeaderList: TableHeaderItem[];
-  getRowKey: (rowData: RowData) => string;
   renderCells: (rowData: RowData) => ReactNode;
+  rowKey: (rowData: RowData) => string;
 }
 
 const SimpleTable = <RowData,>({
   tableHeaderList,
   tableDataList,
   renderCells,
-  getRowKey,
+  rowKey,
   tableCaption,
 }: SimpleTableProps<RowData>) => {
   const { language } = useLanguage();
@@ -40,7 +40,7 @@ const SimpleTable = <RowData,>({
 
       <tbody>
         {tableDataList.map((rowData) => (
-          <tr key={getRowKey(rowData)}>{renderCells(rowData)}</tr>
+          <tr key={rowKey(rowData)}>{renderCells(rowData)}</tr>
         ))}
       </tbody>
     </table>

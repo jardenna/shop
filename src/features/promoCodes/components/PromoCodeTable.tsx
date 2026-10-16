@@ -20,7 +20,7 @@ const PromoCodeTable = () => {
           tableCaption={language.orderSummaryList}
           tableHeaderList={tableHeaderList}
           tableDataList={promoCodes}
-          getRowKey={({ label, expiresAt }) => `${label}-${expiresAt}`}
+          rowKey={({ code }) => code}
           renderCells={({ expiresAt, label, code, percent, startsAt }) => (
             <>
               <td>{code}</td>

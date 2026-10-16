@@ -134,7 +134,7 @@ const AdminOrderDetailsPage = () => {
                 tableCaption={language.orderSummaryList}
                 tableHeaderList={tableHeaderList}
                 tableDataList={order.delivery.statusHistory}
-                getRowKey={({ status, changedAt }) => `${status}-${changedAt}`}
+                rowKey={({ status, changedAt }) => `${status}-${changedAt}`}
                 renderCells={({ status, changedAt, changedBy, actorType }) => (
                   <>
                     <td>{language[status]}</td>
