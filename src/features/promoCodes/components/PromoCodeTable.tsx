@@ -15,10 +15,10 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <OrderHeading heading={language.orderHistory} />
+      <OrderHeading heading={language.discountCodes} />
       {promoCodes && (
         <SimpleTable
-          tableCaption={language.orderSummaryList}
+          tableCaption={language.discountCodeList}
           tableHeaderList={tableHeaderList}
           tableDataList={promoCodes}
           rowKey={({ code }) => code}

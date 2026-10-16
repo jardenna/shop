@@ -159,6 +159,8 @@ desktopAltText;A young woman smiles in surprise, elegantly delighted by a young 
 details;Details;Detaljer
 discount;Discount;Rabat
 discountCode;Discount code;Rabatkode
+discountCodeList;Discount code list;Rabatkode oversigt
+discountCodes;Discount codes;Rabatkoder
 discountRange;Discount must be between 0% and 90%;Rabat skal være mellem 0% og 90%
 discoverCollection;Discover Collection;Se kollektionen
 discoverLatestTrends;Discover latest trends;Udforsk de nyeste tendenser
@@ -372,8 +374,8 @@ orders;Orders;Ordrer
 ordershipped;Order shipped;Ordre sendt
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
-orderSummary;Order summary;Ordreoversigt
-orderSummaryList;Order summary list;Ordreoversigtsliste
+orderSummary;Order summary;Ordre oversigt
+orderSummaryList;Order summary list;Ordre oversigtsliste
 orderTotalInclVat;Total price incl. vat;Pris i alt inkl. moms
 orderUpdated;Order updated;Ordre opdateret
 originalProductNotFound;Original product not found;Det originale produkt blev ikke fundet
