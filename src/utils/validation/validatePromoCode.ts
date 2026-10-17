@@ -2,7 +2,7 @@ import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-export function validateAdminPromoCode(values: PromoCode) {
+export function validatePromoCode(values: PromoCode) {
   const errors: ValidationErrors<PromoCode> = {};
   const { code, label, percent, startsAt, expiresAt } = values;
 
