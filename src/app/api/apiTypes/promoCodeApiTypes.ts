@@ -1,11 +1,11 @@
 export interface PromoCode {
   active: boolean;
   code: string;
-  expiresAt: Date;
+  expiresAt: string;
   id: string;
   label: string;
   percent: number;
-  startsAt: Date;
+  startsAt: string;
 }
 
 export type PromoCodeStatus = 'active' | 'scheduled' | 'expired' | 'inactive';
