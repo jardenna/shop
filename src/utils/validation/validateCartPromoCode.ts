@@ -1,11 +1,12 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-interface PromoParams {
+interface CartPromoCodeValues {
   promoCode: string;
 }
-export function validateCartPromoCode(values: PromoParams) {
-  const errors: ValidationErrors<PromoParams> = {};
+
+export function validateCartPromoCode(values: CartPromoCodeValues) {
+  const errors: ValidationErrors<CartPromoCodeValues> = {};
   const { promoCode } = values;
 
   if (promoCode === '') {
