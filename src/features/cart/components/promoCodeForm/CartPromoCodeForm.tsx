@@ -6,17 +6,17 @@ import { validatePromoCode } from '../../../../utils/validation/validatePromoCod
 import { useLanguage } from '../../../language/useLanguage';
 import './_promo-code-form.scss';
 
-interface PromoCodeFormProps {
+interface CartPromoCodeFormProps {
   isLoading: boolean;
   promoDiscount: Discount;
   onSubmitPromoCode: (promoCode: string) => void;
 }
 
-const PromoCodeForm = ({
+const CartPromoCodeForm = ({
   onSubmitPromoCode,
   isLoading,
   promoDiscount,
-}: PromoCodeFormProps) => {
+}: CartPromoCodeFormProps) => {
   const { language } = useLanguage();
   const initialState = {
     promoCode: promoDiscount.code,
@@ -55,4 +55,4 @@ const PromoCodeForm = ({
   );
 };
 
-export default PromoCodeForm;
+export default CartPromoCodeForm;

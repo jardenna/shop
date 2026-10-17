@@ -15,7 +15,7 @@ import CartInfo from '../features/cart/components/CartInfo';
 import CartList from '../features/cart/components/CartList';
 import PaymentMethodsList from '../features/cart/components/PaymentMethodsList';
 import PaymentSummaryList from '../features/cart/components/paymentSummery/PaymentSummaryList';
-import PromoCodeForm from '../features/cart/components/promoCodeForm/PromoCodeForm';
+import CartPromoCodeForm from '../features/cart/components/promoCodeForm/CartPromoCodeForm';
 import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
@@ -129,7 +129,7 @@ const ShoppingCartPage = () => {
               promoDiscount={cartData.discount}
             />
             {!isEmployee && apiCartList && (
-              <PromoCodeForm
+              <CartPromoCodeForm
                 onSubmitPromoCode={handleApplyPromoCode}
                 isLoading={isPromoCodeLoading}
                 promoDiscount={cartData.discount}
