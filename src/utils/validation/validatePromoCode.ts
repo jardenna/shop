@@ -1,9 +1,16 @@
-import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-export function validatePromoCode(values: PromoCode) {
-  const errors: ValidationErrors<PromoCode> = {};
+export interface PromoCodeFormValues {
+  code: string;
+  expiresAt: string;
+  label: string;
+  percent: number | null;
+  startsAt: string;
+}
+
+export function validatePromoCode(values: PromoCodeFormValues) {
+  const errors: ValidationErrors<PromoCodeFormValues> = {};
   const { code, label, percent, startsAt, expiresAt } = values;
 
   if (!code.trim()) {

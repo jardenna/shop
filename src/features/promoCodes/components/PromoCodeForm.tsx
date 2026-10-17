@@ -7,6 +7,7 @@ import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';
 
 interface PromoCodeFormProps {
@@ -37,6 +38,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
 
   const { onChange, values, onSubmit, isFormDirty } = useFormValidation({
     initialState,
+    validate: validatePromoCode,
   });
 
   return (
