@@ -32,7 +32,10 @@ const UpdatePromoCodePage = () => {
   }
 
   return (
-    <AdminPageContainer heading={language.updatePromoCode} variant="medium">
+    <AdminPageContainer
+      heading={`${language.updatePromoCode} ${promoCode?.code ?? ''}`}
+      variant="medium"
+    >
       hello
     </AdminPageContainer>
   );
