@@ -42,8 +42,8 @@ const UpdateSubCategoryPage = () => {
         >
           <SubCategoryForm
             selectedCategory={category}
-            onReset={() => refetch()}
-            id={id || ''}
+            onReset={refetch}
+            id={id ?? ''}
             parentCategories={allCategories.categories}
             popupMessage={language.categoryUpdated}
           />

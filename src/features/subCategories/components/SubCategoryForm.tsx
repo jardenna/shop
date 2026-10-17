@@ -26,13 +26,13 @@ import {
   useUpdateSubCategoryMutation,
 } from '../subCategoryApiSlice';
 
-type SubCategoryFormProps = {
+interface SubCategoryFormProps {
   id: string | null;
   parentCategories: Category[];
   popupMessage: string;
   selectedCategory: SubCategoryResponse | null;
   onReset: () => void;
-};
+}
 
 const SubCategoryForm = ({
   selectedCategory,
@@ -131,7 +131,12 @@ const SubCategoryForm = ({
   );
 
   return (
-    <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => {
+        onReset();
+      }}
+    >
       <Form
         disabled={!!id && !isFormDirty}
         onSubmit={onSubmit}

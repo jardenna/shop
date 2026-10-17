@@ -26,7 +26,7 @@ const CreateSubCategoryPage = () => {
     <AdminPageContainer heading={language.createNewCategory} variant="small">
       {allCategories && (
         <SubCategoryForm
-          onReset={() => refetch}
+          onReset={refetch}
           selectedCategory={null}
           id={null}
           parentCategories={allCategories.categories}
