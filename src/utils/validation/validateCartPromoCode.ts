@@ -4,7 +4,7 @@ import { ValidationMessage } from '../../types/enums';
 interface PromoParams {
   promoCode: string;
 }
-export function validatePromoCode(values: PromoParams) {
+export function validateCartPromoCode(values: PromoParams) {
   const errors: ValidationErrors<PromoParams> = {};
   const { promoCode } = values;
 

@@ -2,7 +2,7 @@ import { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Form from '../../../../components/Form';
 import Input from '../../../../components/formElements/Input';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { validatePromoCode } from '../../../../utils/validation/validatePromoCode';
+import { validateCartPromoCode } from '../../../../utils/validation/validateCartPromoCode';
 import { useLanguage } from '../../../language/useLanguage';
 import './_promo-code-form.scss';
 
@@ -25,7 +25,7 @@ const CartPromoCodeForm = ({
   const { values, onSubmit, onChange, errors } = useFormValidation({
     initialState,
     callback: handleSubmit,
-    validate: validatePromoCode,
+    validate: validateCartPromoCode,
   });
 
   function handleSubmit() {
