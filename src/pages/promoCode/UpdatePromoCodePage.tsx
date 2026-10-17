@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useLanguage } from '../../features/language/useLanguage';
+import PromoCodeForm from '../../features/promoCodes/components/PromoCodeForm';
 import { useGetPromoCodeByIdQuery } from '../../features/promoCodes/promoCodeApiSlice';
 import { AdminPath } from '../../layout/nav/enums';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
@@ -14,6 +15,7 @@ const UpdatePromoCodePage = () => {
     isError,
     error,
     isLoading,
+    refetch,
   } = useGetPromoCodeByIdQuery(id ?? '');
   console.log(promoCode);
 
@@ -36,7 +38,13 @@ const UpdatePromoCodePage = () => {
       heading={`${language.updatePromoCode} ${promoCode?.code ?? ''}`}
       variant="medium"
     >
-      hello
+      {promoCode && (
+        <PromoCodeForm
+          id={id ?? null}
+          promoCode={promoCode}
+          onReset={refetch}
+        />
+      )}
     </AdminPageContainer>
   );
 };
