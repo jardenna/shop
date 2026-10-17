@@ -178,6 +178,7 @@ estimatedDelivery;Estimated delivery;Anslået leveringsdato
 estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
+expiresAt;ExpiresAt at;Slutter
 expiry;Expiry;Udløbsdato
 expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 eye;Eye;Øje
@@ -469,6 +470,7 @@ promoCodeAlreadyExists;This promo code already exists;Denne rabatkode findes all
 promoCodeAlreadyUsed;You have already used this promo code;Du har allerede brugt denne rabatkode
 promoCodeApplied;Discount code applied.;Rabatkoden blev anvendt.
 promoCodeDateRangeInvalid;End date must be after start date;Slutdatoen skal være efter startdatoen
+promoCodeDetails;Discount details;Rabat detaljer
 promoCodeEndDateInvalid;Invalid end date;Ugyldig slutdato
 promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
 promoCodeNotFound;We couldn't find the promo code you're looking for.;Vi kunne ikke finde den promokode, du leder efter.
@@ -476,6 +478,7 @@ promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være me
 promoCodeRequired;Please provide a promo code;Indtast en rabatkode
 promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
 promoCodeUpdated;Promo code updated;Promokode opdateret
+promoCodeValidity;Validity period;Gyldighedsperiode
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato
 published;Published;Udgivet
@@ -563,6 +566,7 @@ somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsø
 sort;Sort;Sorter
 standard;Standard;Standard
 stars;stars;stjerner
+startsAt;Starts at;Starter
 status;Status;Status
 street;Street;Gade
 sub;Sub;Sekundær

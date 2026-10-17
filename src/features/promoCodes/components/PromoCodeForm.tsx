@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
@@ -18,7 +19,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  // Helper functions
   const handleGoback = () => {
     navigate(-1);
   };
@@ -27,61 +27,17 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     code: promoCode?.code ?? '',
     label: promoCode?.label ?? '',
     percent: promoCode?.percent ?? null,
-    startsAt: promoCode?.startsAt ?? '',
+    startsAt: promoCode?.startsAt
+      ? format(new Date(promoCode.startsAt), "yyyy-MM-dd'T'HH:mm")
+      : '',
+    expiresAt: promoCode?.expiresAt
+      ? format(new Date(promoCode.expiresAt), "yyyy-MM-dd'T'HH:mm")
+      : '',
   };
 
-  // Hooks
   const { onChange, values, onSubmit, isFormDirty } = useFormValidation({
     initialState,
   });
-
-  // const { onAddToast } = useToast();
-
-  // // Redux hooks
-  // const [updateSubCategory, { isLoading }] = useUpdatePromoCodeMutation();
-  // const [createSubCategory, { isLoading: isCreateLoading }] =
-  //   useCreatePromoCodeMutation();
-
-  // // Submit handler
-  // async function handleSubmitCategory() {
-  //   if (!isFormDirty) {
-  //     onAddToast({
-  //       message: language.noChanges,
-  //     });
-  //     return;
-  //   }
-
-  //   if (id) {
-  //     await updateSubCategory({
-  //       id,
-  //       subCategory: {
-  //         ...values,
-  //         category: values.category,
-  //         scheduledDate: selectedDate,
-  //       },
-  //     }).unwrap();
-
-  //     onAddToast({
-  //       message: language.categoryUpdated,
-  //     });
-  //   } else {
-  //     await createSubCategory({
-  //       ...values,
-  //       category: values.category,
-  //       scheduledDate: selectedDate,
-  //     }).unwrap();
-  //   }
-
-  //   onAddToast({
-  //     message: popupMessage,
-  //   });
-
-  //   navigate(AdminPath.AdminSubCategories);
-  // }
-
-  // const selectedCategoryOption = parentCategoriesOptions.find(
-  //   (option) => option.value === values.category,
-  // );
 
   return (
     <ErrorBoundary
@@ -98,7 +54,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
           onCancel: handleGoback,
         }}
       >
-        <FieldSet legendText={language.categories} showLegendText>
+        <FieldSet legendText={language.promoCodeDetails}>
           <Input
             onChange={onChange}
             value={values.code}
@@ -116,15 +72,24 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             required
           />
         </FieldSet>
-        <FieldSet legendText="Start & end date" showLegendText>
+        <FieldSet legendText={language.promoCodeValidity}>
           <Input
-            type="date"
+            type="datetime-local"
             name="startsAt"
-
             id="startsAt"
             value={values.startsAt}
             onChange={onChange}
-            labelText="startsAt"
+            labelText={language.startsAt}
+            required
+          />
+          <Input
+            type="datetime-local"
+            name="expiresAt"
+            id="expiresAt"
+            value={values.expiresAt}
+            onChange={onChange}
+            labelText={language.expiresAt}
+            required
           />
         </FieldSet>
       </Form>
