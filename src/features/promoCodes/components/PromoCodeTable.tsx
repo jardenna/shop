@@ -36,7 +36,6 @@ const PromoCodeTable = () => {
             rowKey={({ code }) => code}
             renderCells={({
               expiresAt,
-              label,
               code,
               percent,
               startsAt,
@@ -44,9 +43,10 @@ const PromoCodeTable = () => {
               id,
             }) => (
               <>
-                <td>{code}</td>
-                <td>{label}</td>
-                <td>{percent} %</td>
+                <td>
+                  {code} <div>{percent} %</div>
+                </td>
+
                 <td>
                   <PromoCodeDate date={startsAt} />
                 </td>
