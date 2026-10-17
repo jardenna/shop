@@ -418,6 +418,12 @@ pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by
 pleaseEnterDiscountCode;Please enter discount code;Indsæt venligst rabatkode
+pleaseEnterDescription;Please enter a description;Indtast en beskrivelse
+invalidDiscountPercentage;Discount percentage must be between 1 and 99;Rabatprocenten skal være mellem 1 og 99
+pleaseEnterStartDate;Please enter a start date;Indtast en startdato
+pleaseEnterEndDate;Please enter an end date;Indtast en slutdato
+startDateCannotBeInThePast;Start date and time cannot be in the past;Startdato og -tidspunkt må ikke ligge i fortiden
+endDateCannotBeBeforeStartDate;End date and time cannot be before the start date and time;Slutdato og -tidspunkt må ikke ligge før startdato og -tidspunkt
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
