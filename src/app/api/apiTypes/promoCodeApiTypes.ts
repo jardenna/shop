@@ -1,11 +1,14 @@
-export interface PromoCode {
-  active: boolean;
+export interface BasePromoCode {
   code: string;
   expiresAt: string;
-  id: string;
   label: string;
-  percent: number;
   startsAt: string;
+}
+
+export interface PromoCode extends BasePromoCode {
+  active: boolean;
+  percent: number;
+  id?: string;
 }
 
 export type PromoCodeStatus = 'active' | 'scheduled' | 'expired' | 'inactive';
@@ -16,9 +19,5 @@ export interface PromoCodeResponse extends PromoCode {
 
 export interface UpdatePromoCodeRequest {
   body: PromoCode;
-  id: string;
-}
-
-export interface GetPromoCodeByIdRequest {
   id: string;
 }

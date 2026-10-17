@@ -1,12 +1,9 @@
+import { BasePromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-export interface PromoCodeFormValues {
-  code: string;
-  expiresAt: string;
-  label: string;
+interface PromoCodeFormValues extends BasePromoCode {
   percent: number | null;
-  startsAt: string;
 }
 
 export function validatePromoCode(values: PromoCodeFormValues) {
