@@ -65,7 +65,7 @@ const CategoryPage = () => {
       variant="medium"
     >
       <SortTable
-        btnLabel="categories"
+        btnLabel={language.categories}
         navigationPath={AdminPath.AdminCategories}
         onRemoveFilterTag={onRemoveFilterTag}
         isError={isError}
