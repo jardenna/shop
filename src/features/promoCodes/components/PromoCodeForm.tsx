@@ -12,7 +12,7 @@ import { useLanguage } from '../../language/useLanguage';
 
 interface PromoCodeFormProps {
   id: string | null;
-  promoCode?: PromoCode;
+  promoCode: PromoCode | null;
   onReset: () => void;
 }
 
@@ -87,6 +87,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             onChange={onChange}
             labelText={language.startsAt}
             errorText={language[errors.startsAt]}
+
             required
           />
           <Input
