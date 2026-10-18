@@ -12,7 +12,7 @@ import { useLanguage } from '../../language/useLanguage';
 
 interface PromoCodeFormProps {
   id: string | null;
-  promoCode: PromoCode | null;
+  promoCode?: PromoCode;
   onReset: () => void;
 }
 

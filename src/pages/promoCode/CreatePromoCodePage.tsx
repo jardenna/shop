@@ -12,7 +12,6 @@ const CreatePromoCodePage = () => {
     >
       <PromoCodeForm
         id={null}
-        promoCode={null}
         onReset={() => {
           console.log(123);
         }}
