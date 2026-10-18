@@ -3,6 +3,7 @@ import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
@@ -19,7 +20,15 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <SectionHeading heading={language.discountCodes} />
+      <div>
+        <SectionHeading heading={language.discountCodes} />
+        <LinkButton
+          linkTo={AdminPath.AdminPromoCodeCreate}
+
+          linkText={language.createNewDiscountCode}
+          className="page-header-link"
+        />
+      </div>
 
       {isLoading && <Skeleton />}
       <ErrorBoundary
