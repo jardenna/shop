@@ -87,7 +87,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             onChange={onChange}
             labelText={language.startsAt}
             errorText={language[errors.startsAt]}
-
             required
           />
           <Input
