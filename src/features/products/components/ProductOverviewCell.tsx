@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import MissingImage from '../../../components/formElements/fileInput/MissingImage';
 import Img from '../../../components/Img';
 import { AdminPath } from '../../../layout/nav/enums';
+import './productOverview.styles.scss';
 
 type ProductOverviewCellProps = {
   id: string;

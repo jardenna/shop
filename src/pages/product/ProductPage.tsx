@@ -20,7 +20,6 @@ import { AdminPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import './productPage.styles.scss';
 
 const ProductPage = () => {
   const { language } = useLanguage();
