@@ -166,7 +166,6 @@ const ProductPage = () => {
         columns={tableHeaders}
         tableCaption={language.productList}
         emptyHeaderCellText={language.productActions}
-        className="product-table"
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}

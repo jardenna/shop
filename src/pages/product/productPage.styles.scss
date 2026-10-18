@@ -1,20 +1,10 @@
 @use '../../scss/globals' as *;
 
-.product-table {
-  th,
-  td {
-    &:first-child {
-      width: rem(260px);
-    }
-  }
-}
-
 .product-overview-cell {
   display: flex;
   gap: 8px;
   align-items: center;
-  line-height: rem(18px);
-  text-wrap: pretty;
+  text-wrap: nowrap;
 
   @include max-size($large) {
     flex-direction: column;

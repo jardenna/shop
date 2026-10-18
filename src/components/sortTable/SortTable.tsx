@@ -41,7 +41,6 @@ type TableProps<T> = {
   sortOrder: SortOrder;
   tableCaption: string;
   values: InitialTableFilters<T>;
-  className?: string;
   emptyHeaderCellText?: string;
   scrollToRef?: RefObject<HTMLTableElement | null>;
   skeletonCount?: number;
@@ -63,7 +62,6 @@ const SortTable = <T,>({
   isError,
   btnLabel,
   error,
-  className,
   onSort,
   sortField,
   sortOrder,
@@ -158,10 +156,7 @@ const SortTable = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            <table
-              className={`${className} padding-${padding}`}
-              ref={scrollToRef}
-            >
+            <table className={`padding-${padding}`} ref={scrollToRef}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
               <thead>
                 <tr>
