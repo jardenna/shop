@@ -22,7 +22,7 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ body, id }) => ({
         url: `${adminPromoCodeUrl}/${id}`,
-        method: 'Patch',
+        method: 'PATCH',
         body,
       }),
       invalidatesTags: [TagTypesEnum.PromoCode],
