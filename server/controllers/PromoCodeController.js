@@ -9,7 +9,11 @@ import { validatePromoCode } from '../validators/validatePromoCode.js';
 // @method  POST
 // @access  Private for admin and employees
 const createPromoCode = asyncHandler(async (req, res) => {
-  const validation = validatePromoCode(req.body, req.lang);
+  const validation = validatePromoCode({
+    promoCode: req.body,
+    lang: req.lang,
+    isUpdate: false,
+  });
 
   if (!validation.success) {
     return res.status(400).json({
@@ -81,7 +85,11 @@ const updatePromoCode = asyncHandler(async (req, res) => {
     });
   }
 
-  const validation = validatePromoCode(req.body, req.lang);
+  const validation = validatePromoCode({
+    promoCode: req.body,
+    lang: req.lang,
+    isUpdate: true,
+  });
 
   if (!validation.success) {
     return res.status(400).json({
