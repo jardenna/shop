@@ -474,18 +474,19 @@ productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
 profile;Profile;Profil
 promoCodeActiveInvalid;Please provide a valid active state;Angiv en gyldig aktivstatus
-promoCodeAlreadyExists;This promo code already exists;Denne rabatkode findes allerede
-promoCodeAlreadyUsed;You have already used this promo code;Du har allerede brugt denne rabatkode
+promoCodeAlreadyExists;This discount code already exists;Denne rabatkode findes allerede
+promoCodeAlreadyUsed;You have already used this discount code;Du har allerede brugt denne rabatkode
 promoCodeApplied;Discount code applied.;Rabatkoden blev anvendt.
+promoCodeCreated;Discount code was created;Rabatkode blev tilføjet
 promoCodeDateRangeInvalid;End date must be after start date;Slutdatoen skal være efter startdatoen
 promoCodeDetails;Discount details;Rabat detaljer
 promoCodeEndDateInvalid;Invalid end date;Ugyldig slutdato
 promoCodeLabelRequired;Please provide a label;Indtast en betegnelse
-promoCodeNotFound;We couldn't find the promo code you're looking for.;Vi kunne ikke finde den promokode, du leder efter.
+promoCodeNotFound;We couldn't find the discount code you're looking for.;Vi kunne ikke finde den rabatkode, du leder efter.
 promoCodePercentInvalid;Percent must be between 1 and 99%;Rabatten skal være mellem 1 og 99 %
-promoCodeRequired;Please provide a promo code;Indtast en rabatkode
+promoCodeRequired;Please provide a discount code;Indtast en rabatkode
 promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
-promoCodeUpdated;Promo code updated;Promokode opdateret
+promoCodeUpdated;Discount code was updated;Rabatkode blev opdateret
 promoCodeValidity;Validity period;Gyldighedsperiode
 publish;Publish;Udgiv
 publishDate;Publish date;Udgivelsesdato

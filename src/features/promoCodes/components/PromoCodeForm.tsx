@@ -59,17 +59,16 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
 
   // Submit handler
   async function handleSubmitPromoCode() {
-    if (id) {
-      await updatePromoCode({
-        id,
-        body: values,
-      });
-    } else {
-      await createPromoCode(values);
+    const result = id
+      ? await updatePromoCode({ id, body: values })
+      : await createPromoCode(values);
+
+    if (result.data?.success !== true) {
+      return;
     }
 
     onAddToast({
-      message: id ? language.productUpdated : language.productCreated,
+      message: id ? language.promoCodeUpdated : language.promoCodeCreated,
     });
 
     navigate(`/${AdminPath.Admin}`);

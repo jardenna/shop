@@ -24,8 +24,6 @@ export function validatePromoCode(values: PromoCodeFormValues) {
 
   if (!startsAt) {
     errors.startsAt = ValidationMessage.PleaseEnterStartDate;
-  } else if (new Date(startsAt) < new Date()) {
-    errors.startsAt = ValidationMessage.StartDateCannotBeInThePast;
   }
 
   if (!expiresAt) {

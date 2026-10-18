@@ -1,3 +1,5 @@
+import { DefaultResponse } from './sharedApiTypes';
+
 export interface BasePromoCode {
   code: string;
   expiresAt: string;
@@ -13,7 +15,7 @@ export interface PromoCode extends BasePromoCode {
 
 export type PromoCodeStatus = 'active' | 'scheduled' | 'expired' | 'inactive';
 
-export interface PromoCodeResponse extends PromoCode {
+export interface PromoCodeResponse extends PromoCode, DefaultResponse {
   status: PromoCodeStatus;
 }
 
