@@ -110,6 +110,17 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             errorText={language[errors.label]}
             required
           />
+          <Input
+            onChange={onChange}
+            value={values.percent}
+            id="percent"
+            inputMode="numeric"
+            name="percent"
+            type="number"
+            labelText={language.description}
+            errorText={language[errors.percent]}
+            required
+          />
         </FieldSet>
         <FieldSet legendText={language.promoCodeValidity}>
           <Input
