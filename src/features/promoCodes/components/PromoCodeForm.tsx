@@ -36,10 +36,12 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
       : '',
   };
 
-  const { onChange, values, onSubmit, isFormDirty } = useFormValidation({
-    initialState,
-    validate: validatePromoCode,
-  });
+  const { onChange, values, errors, onSubmit, isFormDirty } = useFormValidation(
+    {
+      initialState,
+      validate: validatePromoCode,
+    },
+  );
 
   return (
     <ErrorBoundary
@@ -63,6 +65,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             id="code"
             name="code"
             labelText={language.discountCode}
+            errorText={language[errors.code]}
             required
           />
           <Input
@@ -71,6 +74,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             id="label"
             name="label"
             labelText={language.description}
+            errorText={language[errors.label]}
             required
           />
         </FieldSet>
@@ -82,6 +86,8 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             value={values.startsAt}
             onChange={onChange}
             labelText={language.startsAt}
+            errorText={language[errors.startsAt]}
+
             required
           />
           <Input
@@ -90,6 +96,8 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             id="expiresAt"
             value={values.expiresAt}
             onChange={onChange}
+            errorText={language[errors.expiresAt]}
+
             labelText={language.expiresAt}
             required
           />
