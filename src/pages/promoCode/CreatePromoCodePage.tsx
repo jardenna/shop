@@ -6,7 +6,10 @@ const CreatePromoCodePage = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer heading={language.updatePromoCode} variant="medium">
+    <AdminPageContainer
+      heading={language.createNewDiscountCode}
+      variant="medium"
+    >
       <PromoCodeForm
         id={null}
         promoCode={null}
