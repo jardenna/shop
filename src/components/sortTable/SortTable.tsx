@@ -199,9 +199,7 @@ const SortTable = <T,>({
                           )}
                         </div>
                       ) : (
-                        <VisuallyHidden as="p">
-                          {emptyHeaderCellText}
-                        </VisuallyHidden>
+                        <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
                       )}
                     </th>
                   ))}
