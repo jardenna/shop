@@ -464,6 +464,7 @@ productNotFound;This product is no longer available;Dette produkt er ikke længe
 productPerPage;products per page;produkter pr. side
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
+productActions;Product actions;Produkthandlinger
 productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
@@ -614,7 +615,6 @@ updateCategory;Update category;Opdater kategori
 updatedAt;Updated at;Opdateret
 updateOrder;Update order;Opdater ordre
 updatePreferences;Update Preferences;Opdater præferencer
-updateProduct;Update product;Opdater produkt
 updatePromoCode;Update discount code;Opdater Rabat kode
 updateSubCategory;Update subcategory;Opdater underkategori
 updateUser;Update user;Opdater bruger

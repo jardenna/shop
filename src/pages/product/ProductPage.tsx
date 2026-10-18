@@ -165,7 +165,7 @@ const ProductPage = () => {
         skeletonHeight="7"
         columns={tableHeaders}
         tableCaption={language.productList}
-        emptyHeaderCellText={language.updateProduct}
+        emptyHeaderCellText={language.productActions}
         className="product-table"
         onSort={onSort}
         sortField={sortField}

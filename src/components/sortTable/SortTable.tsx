@@ -160,49 +160,49 @@ const SortTable = <T,>({
           >
             <table className={className} ref={scrollToRef}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
-              <thead>
+              <thead className={`padding-${padding}`}>
                 <tr>
                   {columns.map((col) => (
                     <th
                       key={col.key}
                       scope="col"
-                      style={{ paddingBlock: Number(padding) }}
                       aria-sort={sortField === col.name ? ariaSort : 'none'}
                     >
-                      {col.name !== '' ? (
-                        <div className="table-header-cell">
-                          {!col.hideTableControls && (
-                            <Button
-                              variant={BtnVariant.Ghost}
-                              onClick={() => {
-                                onSort(col.key);
-                              }}
-                              ariaLabel={`${language.sort} ${ariaLabel}`}
-                            >
-                              {language[col.label]}
-                              <span className="sort-icon" aria-hidden>
-                                {sortField === col.name ? sortIcon : '⇅'}
-                              </span>
-                            </Button>
-                          )}
+                      <div className="table-header-cell">
+                        {!col.hideTableControls && (
+                          <Button
+                            variant={BtnVariant.Ghost}
+                            onClick={() => {
+                              onSort(col.key);
+                            }}
+                            ariaLabel={`${language.sort} ${ariaLabel}`}
+                          >
+                            {language[col.label]}
+                            <span className="sort-icon" aria-hidden>
+                              {sortField === col.name ? sortIcon : '⇅'}
+                            </span>
+                          </Button>
+                        )}
 
-                          {!col.hideTableControls && (
-                            <TableFilterPopup
-                              onFilter={onFilter}
-                              id={col.label}
-                              name={col.name}
-                              value={values[col.key]}
-                              filterType={col.tableFilterType || 'text'}
-                              values={values}
-                              className="table-filter-popup"
-                            />
-                          )}
-                        </div>
-                      ) : (
-                        <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
-                      )}
+                        {!col.hideTableControls && (
+                          <TableFilterPopup
+                            onFilter={onFilter}
+                            id={col.label}
+                            name={col.name}
+                            value={values[col.key]}
+                            filterType={col.tableFilterType || 'text'}
+                            values={values}
+                            className="table-filter-popup"
+                          />
+                        )}
+                      </div>
                     </th>
                   ))}
+                  {emptyHeaderCellText && (
+                    <th scope="col">
+                      <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
+                    </th>
+                  )}
                 </tr>
               </thead>
               <tbody className={`padding-${padding}`}>
