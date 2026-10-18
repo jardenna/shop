@@ -11,6 +11,7 @@ interface SimpleTableProps<RowData> {
   tableCaption: string;
   tableDataList: RowData[];
   tableHeaderList: TableHeaderItem[];
+  emptyHeaderCellText?: string;
   renderCells: (rowData: RowData) => ReactNode;
   rowKey: (rowData: RowData) => string;
 }
@@ -21,6 +22,7 @@ const SimpleTable = <RowData,>({
   renderCells,
   rowKey,
   tableCaption,
+  emptyHeaderCellText,
 }: SimpleTableProps<RowData>) => {
   const { language } = useLanguage();
 
@@ -35,6 +37,12 @@ const SimpleTable = <RowData,>({
               {language[label]}
             </th>
           ))}
+
+          {emptyHeaderCellText && (
+            <th>
+              <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
+            </th>
+          )}
         </tr>
       </thead>
 

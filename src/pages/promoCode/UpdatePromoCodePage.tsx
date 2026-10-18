@@ -17,7 +17,6 @@ const UpdatePromoCodePage = () => {
     isLoading,
     refetch,
   } = useGetPromoCodeByIdQuery(id ?? '');
-  console.log(promoCode);
 
   if (isError) {
     return (

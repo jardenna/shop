@@ -34,6 +34,7 @@ const PromoCodeTable = () => {
             tableHeaderList={tableHeaderList}
             tableDataList={promoCodes}
             rowKey={({ code }) => code}
+            emptyHeaderCellText={language.updatePromoCode}
             renderCells={({
               expiresAt,
               code,
