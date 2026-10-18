@@ -30,7 +30,7 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
-  const { isAdmin: isAllowedUpdateUsers } = useAuth();
+  const { isAdmin: deleteUsersIsAllowed } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
@@ -116,7 +116,7 @@ const UserPage = () => {
         tableCaption={language.customersList}
         isLoading={isLoading}
         emptyHeaderCellText={
-          isAllowedUpdateUsers ? language.deleteUser : undefined
+          deleteUsersIsAllowed ? language.deleteUser : undefined
         }
         onSort={onSort}
         sortField={sortField}
@@ -150,7 +150,7 @@ const UserPage = () => {
                   </td>
                 ))}
 
-                {isAllowedUpdateUsers && (
+                {deleteUsersIsAllowed && (
                   <td>
                     {!isAdmin ? (
                       <DeleteItem
