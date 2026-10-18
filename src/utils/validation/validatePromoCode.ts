@@ -1,13 +1,9 @@
-import { BasePromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
+import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-interface PromoCodeFormValues extends BasePromoCode {
-  percent: number | null;
-}
-
-export function validatePromoCode(values: PromoCodeFormValues) {
-  const errors: ValidationErrors<PromoCodeFormValues> = {};
+export function validatePromoCode(values: PromoCode) {
+  const errors: ValidationErrors<PromoCode> = {};
   const { code, label, percent, startsAt, expiresAt } = values;
 
   if (!code.trim()) {
