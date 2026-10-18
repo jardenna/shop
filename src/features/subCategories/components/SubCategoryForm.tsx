@@ -30,7 +30,7 @@ interface SubCategoryFormProps {
   id: string | null;
   parentCategories: Category[];
   popupMessage: string;
-  selectedCategory: SubCategoryResponse | null;
+  selectedCategory?: SubCategoryResponse;
   onReset: () => void;
 }
 

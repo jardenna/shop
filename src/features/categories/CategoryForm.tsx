@@ -21,7 +21,7 @@ import {
 interface CategoryFormProps {
   id: string | null;
   popupMessage: string;
-  selectedCategory: CreateCategoryRequest | null;
+  selectedCategory?: CreateCategoryRequest;
   onReset?: () => void;
 }
 

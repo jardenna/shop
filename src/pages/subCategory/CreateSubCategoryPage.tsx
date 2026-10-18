@@ -27,7 +27,6 @@ const CreateSubCategoryPage = () => {
       {allCategories && (
         <SubCategoryForm
           onReset={refetch}
-          selectedCategory={null}
           id={null}
           parentCategories={allCategories.categories}
           popupMessage={language.categoryCreated}

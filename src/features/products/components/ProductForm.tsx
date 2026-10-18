@@ -55,7 +55,7 @@ type ProductFormProps = {
   id: string | null;
   images: string[];
   parentCategories: SubCategoriesWithParent[];
-  selectedProduct: Product | null;
+  selectedProduct?: Product;
   refetch: () => void;
 };
 
