@@ -6,27 +6,24 @@ table {
   width: 100%;
   border: $border;
 
-  tbody,
-  thead {
-    &.padding-4 {
-      th,
-      td {
-        padding-block: $padding-block-small-px;
-      }
+  &.padding-4 {
+    th,
+    td {
+      padding-block: $padding-block-small-px;
     }
+  }
 
-    &.padding-12 {
-      th,
-      td {
-        padding-block: $padding-block-medium-px;
-      }
+  &.padding-12 {
+    th,
+    td {
+      padding-block: $padding-block-medium-px;
     }
+  }
 
-    &.padding-20 {
-      th,
-      td {
-        padding-block: $padding-block-large-px;
-      }
+  &.padding-20 {
+    th,
+    td {
+      padding-block: $padding-block-large-px;
     }
   }
 

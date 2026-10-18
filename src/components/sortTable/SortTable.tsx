@@ -158,9 +158,12 @@ const SortTable = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            <table className={className} ref={scrollToRef}>
+            <table
+              className={`${className} padding-${padding}`}
+              ref={scrollToRef}
+            >
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
-              <thead className={`padding-${padding}`}>
+              <thead>
                 <tr>
                   {columns.map((col) => (
                     <th
@@ -205,7 +208,7 @@ const SortTable = <T,>({
                   )}
                 </tr>
               </thead>
-              <tbody className={`padding-${padding}`}>
+              <tbody>
                 {data.length ? (
                   children(data)
                 ) : (
