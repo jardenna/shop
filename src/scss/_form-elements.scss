@@ -20,10 +20,6 @@ form {
   .error-message {
     font-family: $font-primary-semibold;
     color: $color-danger;
-
-    // @include max-size($small) {
-    //   font-size: $font-mini;
-    // }
   }
 }
 
@@ -52,11 +48,6 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
-
-  // @include max-size($small) {
-  //   gap: 12px;
-  //   justify-content: flex-start;
-  // }
 }
 
 textarea {
