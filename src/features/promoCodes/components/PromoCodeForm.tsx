@@ -45,13 +45,18 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
       : '',
   };
 
-  const { onChange, values, errors, onSubmit, isFormDirty } = useFormValidation(
-    {
-      initialState,
-      callback: handleSubmitPromoCode,
-      validate: validatePromoCode,
-    },
-  );
+  const {
+    onChange,
+    onChangeToggleSwitch,
+    values,
+    errors,
+    onSubmit,
+    isFormDirty,
+  } = useFormValidation({
+    initialState,
+    callback: handleSubmitPromoCode,
+    validate: validatePromoCode,
+  });
   console.log(values);
 
   // Redux hooks
@@ -154,7 +159,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
                 id="active"
                 name="active"
                 checked={values.active}
-                onChange={onChange}
+                onChange={onChangeToggleSwitch}
                 labelText={language.active}
               />
             </div>
