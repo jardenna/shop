@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
@@ -6,6 +7,7 @@ import FormCart from '../../../components/carts/FormCart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
+import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
@@ -31,6 +33,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     navigate(-1);
   };
 
+  const [isActive, setIsActive] = useState(false);
   const initialState = {
     code: promoCode?.code ?? '',
     active: promoCode?.active ?? false,
@@ -147,6 +150,14 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
                 errorText={language[errors.expiresAt]}
                 labelText={language.expiresAt}
                 required
+              />
+              <ToggleSwitch
+                id="active"
+                checked={isActive}
+                onChange={() => {
+                  setIsActive(!isActive);
+                }}
+                labelText={language.active}
               />
             </div>
           </FormCart>
