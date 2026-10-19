@@ -1,5 +1,3 @@
-import { useLanguage } from '../../../features/language/useLanguage';
-import { translateKey } from '../../../utils/utils';
 import './_toggle-switch.scss';
 
 type ToggleSwitchProps = {
@@ -14,26 +12,22 @@ const ToggleSwitch = ({
   id,
   checked,
   labelText,
-}: ToggleSwitchProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <div className="toggle-switch-list">
-      <div className="toggle-switch-item">
-        <label htmlFor={id} className="switch">
-          <span>{translateKey(labelText, language)}</span>
-        </label>
-        <input
-          type="checkbox"
-          id={id}
-          className="toggle-switch-input visually-hidden"
-          onChange={onChange}
-          checked={checked}
-          role="switch"
-        />
-      </div>
+}: ToggleSwitchProps) => (
+  <div className="toggle-switch-list">
+    <div className="toggle-switch-item">
+      <label htmlFor={id} className="switch">
+        <span>{labelText}</span>
+      </label>
+      <input
+        type="checkbox"
+        id={id}
+        className="toggle-switch-input visually-hidden"
+        onChange={onChange}
+        checked={checked}
+        role="switch"
+      />
     </div>
-  );
-};
+  </div>
+);
 
 export default ToggleSwitch;
