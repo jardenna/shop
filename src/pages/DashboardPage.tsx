@@ -1,5 +1,6 @@
 import { useLanguage } from '../features/language/useLanguage';
 import PromoCodeTable from '../features/promoCodes/components/PromoCodeTable';
+import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {

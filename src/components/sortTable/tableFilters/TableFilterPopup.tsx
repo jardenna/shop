@@ -3,6 +3,7 @@ import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
+import { dateFormat } from '../../../utils/dates';
 import Input from '../../formElements/Input';
 import RadioButtonList from '../../formElements/radioList/RadioButtonList';
 import Icon from '../../icons/Icon';
@@ -70,7 +71,7 @@ const TableFilterPopup = <T,>({
               name={name}
               max={
                 filterType === 'date'
-                  ? format(new Date(), 'yyyy-MM-dd')
+                  ? format(new Date(), dateFormat.date)
                   : undefined
               }
               id={id}

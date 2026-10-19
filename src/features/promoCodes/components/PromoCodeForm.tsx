@@ -1,15 +1,14 @@
 import { format } from 'date-fns';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
 import FormCart from '../../../components/carts/FormCart';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
+import { dateFormat } from '../../../utils/dates';
 import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';
 import {
@@ -20,13 +19,14 @@ import {
 interface PromoCodeFormProps {
   id: string | null;
   promoCode: PromoCode | null;
-  onReset: () => void;
 }
 
-const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
+const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { onAddToast } = useToast();
+
+  const minDateTime = format(new Date(), dateFormat.dateTimeLocal);
 
   const handleGoback = () => {
     navigate(-1);
@@ -38,10 +38,10 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     label: promoCode?.label ?? '',
     percent: promoCode?.percent ?? 0,
     startsAt: promoCode?.startsAt
-      ? format(new Date(promoCode.startsAt), "yyyy-MM-dd'T'HH:mm")
-      : '',
+      ? format(new Date(promoCode.startsAt), dateFormat.dateTimeLocal)
+      : minDateTime,
     expiresAt: promoCode?.expiresAt
-      ? format(new Date(promoCode.expiresAt), "yyyy-MM-dd'T'HH:mm")
+      ? format(new Date(promoCode.expiresAt), dateFormat.dateTimeLocal)
       : '',
   };
 
@@ -81,90 +81,84 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
   }
 
   return (
-    <ErrorBoundary
-      FallbackComponent={ErrorBoundaryFallback}
-      onReset={() => {
-        onReset();
+    <Form
+      disabled={!!id && !isFormDirty}
+      onSubmit={onSubmit}
+      submitBtnLabel={id ? language.save : language.create}
+      isLoading={isLoading || isCreateLoading}
+      cancelBtnProps={{
+        onCancel: handleGoback,
       }}
     >
-      <Form
-        disabled={!!id && !isFormDirty}
-        onSubmit={onSubmit}
-        submitBtnLabel={id ? language.save : language.create}
-        isLoading={isLoading || isCreateLoading}
-        cancelBtnProps={{
-          onCancel: handleGoback,
-        }}
-      >
+      <FormCart legendText={language.promoCodeDetails}>
+        <ToggleSwitch
+          id="active"
+          name="active"
+          checked={values.active}
+          onChange={onChangeToggleSwitch}
+          labelText={language.active}
+        />
+      </FormCart>
+      <section className="promo-code-form-container">
         <FormCart legendText={language.promoCodeDetails}>
-          <ToggleSwitch
-            id="active"
-            name="active"
-            checked={values.active}
-            onChange={onChangeToggleSwitch}
-            labelText={language.active}
+          <div className="promo-code-2-columns">
+            <Input
+              onChange={onChange}
+              value={values.code}
+              id="code"
+              name="code"
+              labelText={language.discountCode}
+              errorText={language[errors.code]}
+              required
+            />
+            <Input
+              onChange={onChange}
+              value={values.label}
+              id="label"
+              name="label"
+              labelText={language.description}
+              errorText={language[errors.label]}
+              required
+            />
+          </div>
+
+          <Input
+            type="number"
+            name="percent"
+            id="percent"
+            value={values.percent}
+            onChange={onChange}
+            errorText={language[errors.percent]}
+            labelText={language.discount}
+            required
+            inputSuffix="%"
           />
         </FormCart>
-        <section className="promo-code-form-container">
-          <FormCart legendText={language.promoCodeDetails}>
-            <div className="promo-code-2-columns">
-              <Input
-                onChange={onChange}
-                value={values.code}
-                id="code"
-                name="code"
-                labelText={language.discountCode}
-                errorText={language[errors.code]}
-                required
-              />
-              <Input
-                onChange={onChange}
-                value={values.label}
-                id="label"
-                name="label"
-                labelText={language.description}
-                errorText={language[errors.label]}
-                required
-              />
-            </div>
-
-            <Input
-              type="number"
-              name="percent"
-              id="percent"
-              value={values.percent}
-              onChange={onChange}
-              errorText={language[errors.percent]}
-              labelText={language.discount}
-              required
-              inputSuffix="%"
-            />
-          </FormCart>
-          <FormCart legendText={language.promoCodeValidity}>
-            <Input
-              type="datetime-local"
-              name="startsAt"
-              id="startsAt"
-              value={values.startsAt}
-              onChange={onChange}
-              labelText={language.startsAt}
-              errorText={language[errors.startsAt]}
-              required
-            />
-            <Input
-              type="datetime-local"
-              name="expiresAt"
-              id="expiresAt"
-              value={values.expiresAt}
-              onChange={onChange}
-              errorText={language[errors.expiresAt]}
-              labelText={language.expiresAt}
-              required
-            />
-          </FormCart>
-        </section>
-      </Form>
-    </ErrorBoundary>
+        <FormCart legendText={language.promoCodeValidity}>
+          <Input
+            type="datetime-local"
+            name="startsAt"
+            id="startsAt"
+            min={minDateTime}
+            value={values.startsAt}
+            onChange={onChange}
+            labelText={language.startsAt}
+            errorText={language[errors.startsAt]}
+            required
+          />
+          <Input
+            type="datetime-local"
+            name="expiresAt"
+            id="expiresAt"
+            value={values.expiresAt}
+            onChange={onChange}
+            errorText={language[errors.expiresAt]}
+            labelText={language.expiresAt}
+            required
+          />
+        </FormCart>
+      </section>
+    </Form>
   );
 };
 

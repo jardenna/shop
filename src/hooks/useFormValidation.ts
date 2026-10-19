@@ -59,49 +59,44 @@ export function useFormValidation<T extends KeyValuePair>({
     }
   }, [errors]);
 
-  function onChange(event: ChangeInputType) {
-    const { name, value, type, checked } = event.target;
-
-    let updatedValue: string | number | null = value;
-
-    if (type === 'number') {
-      updatedValue = value === '' ? null : Math.max(0, Number(value));
-    }
-
-    setValues({
-      ...values,
-      [name]: updatedValue,
-    });
-
-    if (type === 'checkbox') {
-      setValues(() => {
-        const currentValues = values[name] as string[];
-
-        if (checked) {
-          return {
-            ...values,
-            [name]: [...currentValues, value],
-          };
-        }
-
-        return {
-          ...values,
-          [name]: currentValues.filter((item) => item !== value),
-        };
-      });
-    }
-
-    if (!touched.includes(name)) {
-      setTouched([...touched, name]);
-    }
-
-    // Clear the error message when typing
-    setErrors((prevErrors) => {
-      const updatedErrors = { ...prevErrors };
+  function clearFieldError(name: string) {
+    setErrors((previous) => {
+      const updatedErrors = { ...previous };
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete updatedErrors[name];
       return updatedErrors;
     });
+  }
+
+  function onChange(event: ChangeInputType) {
+    const { name, value, type, checked } = event.target;
+
+    setValues((previous) => {
+      let updatedValue: string | number | null | string[];
+
+      if (type === 'checkbox') {
+        const currentValues = previous[name] as string[];
+
+        updatedValue = checked
+          ? [...currentValues, value]
+          : currentValues.filter((item) => item !== value);
+      } else if (type === 'number') {
+        updatedValue = value === '' ? null : Math.max(0, Number(value));
+      } else {
+        updatedValue = value;
+      }
+
+      return {
+        ...previous,
+        [name]: updatedValue,
+      };
+    });
+
+    if (!touched.includes(name)) {
+      setTouched((previous) => [...previous, name]);
+    }
+
+    clearFieldError(name);
   }
 
   // Special case for number step
@@ -124,10 +119,11 @@ export function useFormValidation<T extends KeyValuePair>({
 
   function handleChangeTextArea(event: ChangeTextAreaType) {
     const { name, value } = event.target;
-    setValues({
-      ...values,
+
+    setValues((previous) => ({
+      ...previous,
       [name]: value,
-    });
+    }));
   }
 
   const handleFileChange = (event: ChangeInputType) => {
@@ -181,31 +177,31 @@ export function useFormValidation<T extends KeyValuePair>({
     );
   };
 
-  const onCustomChange = (
+  function handleCustomChange(
     name: string,
     value: Date | string | number | (string | number)[],
-  ) => {
-    if (isArray) {
-      setValues({
-        ...values,
-        [name]: [
-          ...new Set([...(values[name] as (string | number | Date)[]), value]),
-        ],
-      });
-    } else {
-      setValues({
-        ...values,
-        [name]: value,
-      });
-    }
+  ) {
+    setValues((previous) => {
+      if (isArray) {
+        return {
+          ...previous,
+          [name]: [
+            ...new Set([
+              ...(previous[name] as (string | number | Date)[]),
+              value,
+            ]),
+          ],
+        };
+      }
 
-    setErrors((prevErrors) => {
-      const updatedErrors = { ...prevErrors };
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete updatedErrors[name];
-      return updatedErrors;
+      return {
+        ...previous,
+        [name]: value,
+      };
     });
-  };
+
+    clearFieldError(name);
+  }
 
   const handleClearInput = (name: string) => {
     setValues({
@@ -272,7 +268,7 @@ export function useFormValidation<T extends KeyValuePair>({
     onSubmit,
     onChange,
     onChangeTextArea: handleChangeTextArea,
-    onCustomChange,
+    onCustomChange: handleCustomChange,
     onClearInput: handleClearInput,
     isFocused,
     onFocus,

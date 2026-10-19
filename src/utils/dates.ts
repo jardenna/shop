@@ -5,3 +5,8 @@ export const dateToLocaleMap: Record<SelectedLanguage, Locales> = {
   en: 'en-US',
   da: 'da-DK',
 };
+
+export const dateFormat = {
+  dateTimeLocal: "yyyy-MM-dd'T'HH:mm",
+  date: 'yyyy-MM-dd',
+};
