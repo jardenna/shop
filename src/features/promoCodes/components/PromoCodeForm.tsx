@@ -92,7 +92,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
         isLoading={isLoading || isCreateLoading}
-
         cancelBtnProps={{
           onCancel: handleGoback,
         }}
@@ -106,9 +105,9 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             labelText={language.active}
           />
         </FormCart>
-        <section className="product-form-container">
+        <section className="promo-code-form-container">
           <FormCart legendText={language.promoCodeDetails}>
-            <div className="product-form-2-columns">
+            <div className="promo-code-2-columns">
               <Input
                 onChange={onChange}
                 value={values.code}
