@@ -20,7 +20,6 @@ import { AdminPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
-import './productPage.styles.scss';
 
 const ProductPage = () => {
   const { language } = useLanguage();
@@ -165,8 +164,7 @@ const ProductPage = () => {
         skeletonHeight="7"
         columns={tableHeaders}
         tableCaption={language.productList}
-        emptyHeaderCellText={language.updateProduct}
-        className="product-table"
+        emptyHeaderCellText={language.productActions}
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}

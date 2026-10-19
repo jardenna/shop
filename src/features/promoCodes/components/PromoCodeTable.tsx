@@ -3,8 +3,11 @@ import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import LinkButton from '../../../components/LinkButton';
+import MoreLink from '../../../components/MoreLink';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
+import { AdminPath } from '../../../layout/nav/enums';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
@@ -17,7 +20,14 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <SectionHeading heading={language.discountCodes} />
+      <header className="promo-code-header">
+        <SectionHeading heading={language.discountCodes} />
+        <LinkButton
+          linkTo={AdminPath.AdminPromoCodeCreate}
+          linkText={language.createNewDiscountCode}
+          className="page-header-link"
+        />
+      </header>
 
       {isLoading && <Skeleton />}
       <ErrorBoundary
@@ -32,18 +42,20 @@ const PromoCodeTable = () => {
             tableHeaderList={tableHeaderList}
             tableDataList={promoCodes}
             rowKey={({ code }) => code}
+            emptyHeaderCellText={language.updatePromoCode}
             renderCells={({
               expiresAt,
-              label,
               code,
               percent,
               startsAt,
               status,
+              id,
             }) => (
               <>
-                <td>{code}</td>
-                <td>{label}</td>
-                <td>{percent} %</td>
+                <td>
+                  {code} <div>{percent} %</div>
+                </td>
+
                 <td>
                   <PromoCodeDate date={startsAt} />
                 </td>
@@ -52,6 +64,12 @@ const PromoCodeTable = () => {
                 </td>
                 <td>
                   <Badge badgeText={language[status]} className={status} />
+                </td>
+                <td>
+                  <MoreLink
+                    linkText={language.update}
+                    linkTo={`${AdminPath.AdminPromoCodeUpdate}/${id}`}
+                  />
                 </td>
               </>
             )}

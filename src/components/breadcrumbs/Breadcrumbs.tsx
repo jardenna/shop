@@ -39,13 +39,17 @@ const Breadcrumbs = ({
   const split = (path: string) => path.split('/').filter(Boolean);
   const getLastSegment = (path: string) => split(path).at(-1);
 
-  const hiddenPathSegments = ['update', 'view'];
+  const hiddenPathSegments = ['update', 'view', 'promo-code'];
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
 
   const resolveLabel = (path: string) => {
     if (path === '/') {
       return language.home;
+    }
+
+    if (paths.at(-1) === path && currentLabel) {
+      return currentLabel;
     }
 
     const parts = split(path);
@@ -71,7 +75,9 @@ const Breadcrumbs = ({
       const routeParts = split(route.path);
       return (
         routeParts.length === parts.length &&
-        routeParts.every((part, i) => part.startsWith(':') || part === parts[i])
+        routeParts.every(
+          (part, index) => part.startsWith(':') || part === parts[index],
+        )
       );
     });
 
@@ -97,10 +103,6 @@ const Breadcrumbs = ({
       if (matchedRoute.path.includes(':category') && category) {
         return language[category] ?? category;
       }
-    }
-
-    if (paths.at(-1) === path && currentLabel) {
-      return currentLabel;
     }
 
     return decodeURIComponent(getLastSegment(path) ?? '');

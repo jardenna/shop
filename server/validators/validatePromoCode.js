@@ -1,6 +1,6 @@
 import { t } from '../utils/translator.js';
 
-const validatePromoCode = (promoCode, lang) => {
+const validatePromoCode = ({ promoCode, lang, isUpdate }) => {
   if (typeof promoCode.code !== 'string' || !promoCode.code.trim()) {
     return {
       success: false,
@@ -45,10 +45,20 @@ const validatePromoCode = (promoCode, lang) => {
       message: t('promoCodeEndDateInvalid', lang),
     };
   }
+
+  const currentDate = new Date();
+  const startDate = new Date(promoCode.startsAt);
   if (new Date(promoCode.startsAt) >= new Date(promoCode.expiresAt)) {
     return {
       success: false,
       message: t('promoCodeDateRangeInvalid', lang),
+    };
+  }
+
+  if (!isUpdate && startDate < new Date(currentDate.setHours(0, 0, 0, 0))) {
+    return {
+      success: false,
+      message: t('startDateCannotBeInThePast', lang),
     };
   }
 

@@ -6,26 +6,6 @@ table {
   width: 100%;
   border: $border;
 
-  tbody {
-    &.padding-4 {
-      td {
-        padding-block: $padding-block-small-px;
-      }
-    }
-
-    &.padding-12 {
-      td {
-        padding-block: $padding-block-medium-px;
-      }
-    }
-
-    &.padding-20 {
-      td {
-        padding-block: $padding-block-large-px;
-      }
-    }
-  }
-
   tr {
     &:nth-child(odd) {
       td {

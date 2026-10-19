@@ -1,15 +1,31 @@
+import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-interface PrompParams {
-  promoCode: string;
-}
-export function validatePromoCode(values: PrompParams) {
-  const errors: ValidationErrors<PrompParams> = {};
-  const { promoCode } = values;
+export function validatePromoCode(values: PromoCode) {
+  const errors: ValidationErrors<PromoCode> = {};
+  const { code, label, percent, startsAt, expiresAt } = values;
 
-  if (promoCode === '') {
-    errors.promoCode = ValidationMessage.PleaseEnterDiscountCode;
+  if (!code.trim()) {
+    errors.code = ValidationMessage.PleaseEnterDiscountCode;
+  }
+
+  if (!label.trim()) {
+    errors.label = ValidationMessage.PleaseEnterDescription;
+  }
+
+  if (!percent || percent < 1 || percent > 99) {
+    errors.percent = ValidationMessage.InvalidDiscountPercentage;
+  }
+
+  if (!startsAt) {
+    errors.startsAt = ValidationMessage.PleaseEnterStartDate;
+  }
+
+  if (!expiresAt) {
+    errors.expiresAt = ValidationMessage.PleaseEnterEndDate;
+  } else if (startsAt && new Date(expiresAt) < new Date(startsAt)) {
+    errors.expiresAt = ValidationMessage.EndDateCannotBeBeforeStartDate;
   }
 
   return errors;

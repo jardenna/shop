@@ -20,10 +20,18 @@
   .product-form-right-column {
     flex: 1;
     min-width: rem(500px);
+
+    @include max-size($small) {
+      min-width: auto;
+    }
   }
 
   .product-form-2-columns {
     @include grid-fixed-columns;
+
+    @include max-size($small) {
+      flex-direction: column;
+    }
 
     .product-price {
       justify-content: start;

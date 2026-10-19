@@ -1,15 +1,21 @@
-export interface PromoCode {
-  active: boolean;
+import { DefaultResponse } from './sharedApiTypes';
+
+export interface BasePromoCode {
   code: string;
-  expiresAt: Date;
+  expiresAt: string;
   label: string;
+  startsAt: string;
+}
+
+export interface PromoCode extends BasePromoCode {
+  active: boolean;
   percent: number;
-  startsAt: Date;
+  id?: string;
 }
 
 export type PromoCodeStatus = 'active' | 'scheduled' | 'expired' | 'inactive';
 
-export interface PromoCodeResponse extends PromoCode {
+export interface PromoCodeResponse extends PromoCode, DefaultResponse {
   status: PromoCodeStatus;
 }
 

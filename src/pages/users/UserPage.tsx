@@ -3,6 +3,7 @@ import DeleteItem from '../../components/deleteItem/DeleteItem';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
+import VisuallyHidden from '../../components/VisuallyHidden';
 import { tableHeaders } from '../../features/adminUsers/components/userTableHeaders';
 import UserTablePopup from '../../features/adminUsers/components/UserTablePopup';
 import {
@@ -29,7 +30,7 @@ const UserPage = () => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
-  const { isAdmin: isAllowedUpdateUsers } = useAuth();
+  const { isAdmin: deleteUsersIsAllowed } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
@@ -114,7 +115,9 @@ const UserPage = () => {
         columns={tableHeaders}
         tableCaption={language.customersList}
         isLoading={isLoading}
-        emptyHeaderCellText={language.deleteUser}
+        emptyHeaderCellText={
+          deleteUsersIsAllowed ? language.deleteUser : undefined
+        }
         onSort={onSort}
         sortField={sortField}
         sortOrder={sortOrder}
@@ -146,18 +149,25 @@ const UserPage = () => {
                     </div>
                   </td>
                 ))}
-                <td>
-                  {isAllowedUpdateUsers && !isAdmin && (
-                    <DeleteItem
-                      isLoading={isLoading}
-                      ariaLabel={language.deleteUser}
-                      onDeleteItem={() => {
-                        handleDeleteUser(id, username);
-                      }}
-                      itemName={username}
-                    />
-                  )}
-                </td>
+
+                {deleteUsersIsAllowed && (
+                  <td>
+                    {!isAdmin ? (
+                      <DeleteItem
+                        isLoading={isLoading}
+                        ariaLabel={language.deleteUser}
+                        onDeleteItem={() => {
+                          handleDeleteUser(id, username);
+                        }}
+                        itemName={username}
+                      />
+                    ) : (
+                      <VisuallyHidden>
+                        {language.adminCannotBeDeleted}
+                      </VisuallyHidden>
+                    )}
+                  </td>
+                )}
               </tr>
             );
           })

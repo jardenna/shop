@@ -62,20 +62,28 @@ export function useFormValidation<T extends KeyValuePair>({
   function onChange(event: ChangeInputType) {
     const { name, value, type, checked } = event.target;
 
+    let updatedValue: string | number | null = value;
+
+    if (type === 'number') {
+      updatedValue = value === '' ? null : Math.max(0, Number(value));
+    }
+
     setValues({
       ...values,
-      [name]: type === 'number' ? Math.max(0, Number(value)) : value,
+      [name]: updatedValue,
     });
 
     if (type === 'checkbox') {
       setValues(() => {
         const currentValues = values[name] as string[];
+
         if (checked) {
           return {
             ...values,
             [name]: [...currentValues, value],
           };
         }
+
         return {
           ...values,
           [name]: currentValues.filter((item) => item !== value),
@@ -103,6 +111,16 @@ export function useFormValidation<T extends KeyValuePair>({
       [field]: (previous[field] as number) + amount,
     }));
   };
+
+  // Special case for singleCheckbox
+  function handleChangeToggleSwitch(event: ChangeInputType) {
+    const { name, checked } = event.target;
+
+    setValues((previous) => ({
+      ...previous,
+      [name]: checked,
+    }));
+  }
 
   function handleChangeTextArea(event: ChangeTextAreaType) {
     const { name, value } = event.target;
@@ -268,5 +286,6 @@ export function useFormValidation<T extends KeyValuePair>({
     onFileChange: handleFileChange,
     isFormDirty,
     onNumberStepChange: handleNumberStepChange,
+    onChangeToggleSwitch: handleChangeToggleSwitch,
   };
 }

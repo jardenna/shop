@@ -3,11 +3,8 @@
 $switch-height: 25px;
 $thumb-size: 20px;
 
-.toggle-switch-list {
+.toggle-switch-item {
   position: relative;
-  gap: 12px;
-  display: flex;
-  flex-direction: column;
 
   .switch {
     display: flex;
@@ -39,11 +36,7 @@ $thumb-size: 20px;
     }
   }
 
-  .toggle-switch-item {
-    position: relative;
-  }
-
-  .toggle-switch-item:has(input:checked) {
+  &:has(input:checked) {
     .switch {
       background-color: $color-background-secondary;
 
@@ -53,7 +46,7 @@ $thumb-size: 20px;
     }
   }
 
-  .toggle-switch-item:has(input:focus-visible) {
+  &:has(input:focus-visible) {
     .switch {
       box-shadow: $box-shadow-input;
     }

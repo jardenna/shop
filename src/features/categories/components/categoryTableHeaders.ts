@@ -20,5 +20,4 @@ export const tableHeaders: Column<Category>[] = [
     name: 'createdAt',
     tableFilterType: 'date',
   },
-  { key: 'id', label: '', name: '' },
 ];

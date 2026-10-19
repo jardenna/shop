@@ -10,5 +10,4 @@ export const tableHeaders: Column<UserResponse>[] = [
   },
   { key: 'email', label: 'email', name: 'email', tableFilterType: 'text' },
   { key: 'role', label: 'role', name: 'role', tableFilterType: 'radio' },
-  { key: 'id', label: '', name: '' },
 ];

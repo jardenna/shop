@@ -41,7 +41,6 @@ type TableProps<T> = {
   sortOrder: SortOrder;
   tableCaption: string;
   values: InitialTableFilters<T>;
-  className?: string;
   emptyHeaderCellText?: string;
   scrollToRef?: RefObject<HTMLTableElement | null>;
   skeletonCount?: number;
@@ -63,7 +62,6 @@ const SortTable = <T,>({
   isError,
   btnLabel,
   error,
-  className,
   onSort,
   sortField,
   sortOrder,
@@ -158,7 +156,7 @@ const SortTable = <T,>({
             FallbackComponent={ErrorBoundaryFallback}
             onReset={onReset}
           >
-            <table className={className} ref={scrollToRef}>
+            <table className={`padding-${padding}`} ref={scrollToRef}>
               <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
               <thead>
                 <tr>
@@ -166,48 +164,46 @@ const SortTable = <T,>({
                     <th
                       key={col.key}
                       scope="col"
-                      style={{ paddingBlock: Number(padding) }}
                       aria-sort={sortField === col.name ? ariaSort : 'none'}
                     >
-                      {col.name !== '' ? (
-                        <div className="table-header-cell">
-                          {!col.hideTableControls && (
-                            <Button
-                              variant={BtnVariant.Ghost}
-                              onClick={() => {
-                                onSort(col.key);
-                              }}
-                              ariaLabel={`${language.sort} ${ariaLabel}`}
-                            >
-                              {language[col.label]}
-                              <span className="sort-icon" aria-hidden>
-                                {sortField === col.name ? sortIcon : '⇅'}
-                              </span>
-                            </Button>
-                          )}
+                      <div className="table-header-cell">
+                        {!col.hideTableControls && (
+                          <Button
+                            variant={BtnVariant.Ghost}
+                            onClick={() => {
+                              onSort(col.key);
+                            }}
+                            ariaLabel={`${language.sort} ${ariaLabel}`}
+                          >
+                            {language[col.label]}
+                            <span className="sort-icon" aria-hidden>
+                              {sortField === col.name ? sortIcon : '⇅'}
+                            </span>
+                          </Button>
+                        )}
 
-                          {!col.hideTableControls && (
-                            <TableFilterPopup
-                              onFilter={onFilter}
-                              id={col.label}
-                              name={col.name}
-                              value={values[col.key]}
-                              filterType={col.tableFilterType || 'text'}
-                              values={values}
-                              className="table-filter-popup"
-                            />
-                          )}
-                        </div>
-                      ) : (
-                        <VisuallyHidden as="p">
-                          {emptyHeaderCellText}
-                        </VisuallyHidden>
-                      )}
+                        {!col.hideTableControls && (
+                          <TableFilterPopup
+                            onFilter={onFilter}
+                            id={col.label}
+                            name={col.name}
+                            value={values[col.key]}
+                            filterType={col.tableFilterType || 'text'}
+                            values={values}
+                            className="table-filter-popup"
+                          />
+                        )}
+                      </div>
                     </th>
                   ))}
+                  {emptyHeaderCellText && (
+                    <th scope="col">
+                      <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
+                    </th>
+                  )}
                 </tr>
               </thead>
-              <tbody className={`padding-${padding}`}>
+              <tbody>
                 {data.length ? (
                   children(data)
                 ) : (

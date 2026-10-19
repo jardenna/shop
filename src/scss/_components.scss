@@ -149,3 +149,18 @@
 .favorites-cta {
   padding-right: 8px;
 }
+
+.promo-code-form-container {
+  display: flex;
+  gap: 20px;
+
+  .promo-code-2-columns {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+.promo-code-header {
+  display: flex;
+  justify-content: space-between;
+}

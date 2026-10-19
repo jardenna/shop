@@ -1,0 +1,11 @@
+@use '../../../scss/globals' as *;
+
+.product-overview-cell {
+  text-wrap: nowrap;
+
+  @include min-size($small) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}

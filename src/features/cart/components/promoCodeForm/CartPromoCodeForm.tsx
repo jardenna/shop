@@ -2,21 +2,21 @@ import { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Form from '../../../../components/Form';
 import Input from '../../../../components/formElements/Input';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { validatePromoCode } from '../../../../utils/validation/validatePromoCode';
+import { validateCartPromoCode } from '../../../../utils/validation/validateCartPromoCode';
 import { useLanguage } from '../../../language/useLanguage';
 import './_promo-code-form.scss';
 
-interface PromoCodeFormProps {
+interface CartPromoCodeFormProps {
   isLoading: boolean;
   promoDiscount: Discount;
   onSubmitPromoCode: (promoCode: string) => void;
 }
 
-const PromoCodeForm = ({
+const CartPromoCodeForm = ({
   onSubmitPromoCode,
   isLoading,
   promoDiscount,
-}: PromoCodeFormProps) => {
+}: CartPromoCodeFormProps) => {
   const { language } = useLanguage();
   const initialState = {
     promoCode: promoDiscount.code,
@@ -25,7 +25,7 @@ const PromoCodeForm = ({
   const { values, onSubmit, onChange, errors } = useFormValidation({
     initialState,
     callback: handleSubmit,
-    validate: validatePromoCode,
+    validate: validateCartPromoCode,
   });
 
   function handleSubmit() {
@@ -55,4 +55,4 @@ const PromoCodeForm = ({
   );
 };
 
-export default PromoCodeForm;
+export default CartPromoCodeForm;

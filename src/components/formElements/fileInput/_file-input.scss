@@ -46,7 +46,15 @@
 
 .preview-list {
   margin-top: 8px;
-  gap: 12px;
+
+  img {
+    border-radius: 0;
+  }
+
+  @include max-size($small) {
+    max-width: 300px;
+    overflow: auto hidden;
+  }
 }
 
 .img-list {
@@ -81,7 +89,7 @@
 
 .img-list-img {
   width: rem(192px);
-  height: rem(98px);
+  height: rem(160px);
 
   @include transition;
 }

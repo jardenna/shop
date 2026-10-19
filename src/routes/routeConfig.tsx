@@ -32,6 +32,8 @@ import CreateProductPage from '../pages/product/CreateProductPage';
 import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
+import CreatePromoCodePage from '../pages/promoCode/CreatePromoCodePage';
+import UpdatePromoCodePage from '../pages/promoCode/UpdatePromoCodePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import RegisterUserPage from '../pages/RegisterUserPage';
 import Salespage from '../pages/SalesPage';
@@ -155,6 +157,14 @@ const adminRouteList = [
   {
     path: `${AdminPath.AdminSubCategoryView}/:id`,
     element: <ViewSubCategoryPage />,
+  },
+  {
+    path: `${AdminPath.AdminPromoCodeUpdate}/:id`,
+    element: <UpdatePromoCodePage />,
+  },
+  {
+    path: AdminPath.AdminPromoCodeCreate,
+    element: <CreatePromoCodePage />,
   },
   {
     path: AdminPath.AdminProducts,

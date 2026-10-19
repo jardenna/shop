@@ -20,5 +20,4 @@ export const tableHeaders: Column<SubCategoryResponse>[] = [
     name: 'categoryStatus',
     tableFilterType: 'radio',
   },
-  { key: 'id', label: '', name: '' },
 ];

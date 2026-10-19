@@ -16,6 +16,11 @@ input::-webkit-inner-spin-button {
 
 form {
   width: 100%;
+
+  .error-message {
+    font-family: $font-primary-semibold;
+    color: $color-danger;
+  }
 }
 
 ::placeholder {
@@ -43,11 +48,6 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
-
-  @include max-size($medium) {
-    gap: 12px;
-    justify-content: flex-start;
-  }
 }
 
 textarea {
@@ -114,6 +114,12 @@ time {
   .input-suffix-container {
     position: relative;
 
+    &:has([aria-invalid='true']) {
+      .input-suffix {
+        right: 32px;
+      }
+    }
+
     input {
       padding-right: 40px;
     }
@@ -136,6 +142,10 @@ time {
     padding: 12px;
 
     @extend %styled-input;
+  }
+
+  input[aria-invalid='true'] {
+    padding-right: 32px;
   }
 
   textarea[aria-invalid='true'],

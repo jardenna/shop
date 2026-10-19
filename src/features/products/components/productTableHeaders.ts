@@ -45,5 +45,4 @@ export const tableHeaders: Column<Product>[] = [
     name: 'productStatus',
     tableFilterType: 'radio',
   },
-  { key: 'id', label: '', name: '' },
 ];

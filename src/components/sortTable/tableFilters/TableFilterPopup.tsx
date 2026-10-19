@@ -137,7 +137,7 @@ const TableFilterPopup = <T,>({
 
   return (
     <Popup
-      placement="bottom-start"
+      placement="bottom-end"
       popupContent={getPopupContent}
       ariaLabel={language.filter}
       className={className}

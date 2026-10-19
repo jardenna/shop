@@ -1,39 +1,35 @@
-import { useLanguage } from '../../../features/language/useLanguage';
-import { translateKey } from '../../../utils/utils';
+import { ChangeInputType } from '../../../types/types';
 import './_toggle-switch.scss';
 
-type ToggleSwitchProps = {
+interface ToggleSwitchProps {
   checked: boolean;
   id: string;
   labelText: string;
-  onChange: () => void;
-};
+  name: string;
+  onChange: (event: ChangeInputType) => void;
+}
 
 const ToggleSwitch = ({
   onChange,
   id,
+  name,
   checked,
   labelText,
-}: ToggleSwitchProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <div className="toggle-switch-list">
-      <div className="toggle-switch-item">
-        <label htmlFor={id} className="switch">
-          <span>{translateKey(labelText, language)}</span>
-        </label>
-        <input
-          type="checkbox"
-          id={id}
-          className="toggle-switch-input visually-hidden"
-          onChange={onChange}
-          checked={checked}
-          role="switch"
-        />
-      </div>
-    </div>
-  );
-};
+}: ToggleSwitchProps) => (
+  <div className="toggle-switch-item">
+    <label htmlFor={id} className="switch">
+      <span>{labelText}</span>
+    </label>
+    <input
+      type="checkbox"
+      id={id}
+      name={name}
+      className="visually-hidden"
+      onChange={onChange}
+      checked={checked}
+      role="switch"
+    />
+  </div>
+);
 
 export default ToggleSwitch;

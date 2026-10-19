@@ -1,7 +1,7 @@
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 
 interface PromoCodeDateProps {
-  date: Date;
+  date: string;
 }
 
 const PromoCodeDate = ({ date }: PromoCodeDateProps) => (

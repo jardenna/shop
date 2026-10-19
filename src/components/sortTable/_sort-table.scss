@@ -44,6 +44,29 @@ $table-header-height: rem(320px);
     }
   }
 
+  table {
+    &.padding-4 {
+      th,
+      td {
+        padding-block: $padding-block-small-px;
+      }
+    }
+
+    &.padding-12 {
+      th,
+      td {
+        padding-block: $padding-block-medium-px;
+      }
+    }
+
+    &.padding-20 {
+      th,
+      td {
+        padding-block: $padding-block-large-px;
+      }
+    }
+  }
+
   img {
     max-width: rem(96px);
     min-width: rem(96px);
