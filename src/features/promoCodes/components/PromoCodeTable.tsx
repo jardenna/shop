@@ -1,7 +1,8 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
-import Badge from '../../../components/badge/Badge';
 import Cart from '../../../components/carts/Cart';
+import Chip from '../../../components/chips/Chip';
+import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
@@ -63,7 +64,10 @@ const PromoCodeTable = () => {
                   <PromoCodeDate date={expiresAt} />
                 </td>
                 <td>
-                  <Badge badgeText={language[status]} className={status} />
+                  <Chip
+                    chipText={language[status]}
+                    variant={chipVariants[status]}
+                  />
                 </td>
                 <td>
                   <MoreLink

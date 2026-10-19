@@ -2,6 +2,7 @@ export type ChipVariant = 'success' | 'danger' | 'info' | 'warning' | 'neutral';
 
 export const chipVariants = {
   delivered: 'success',
+  active: 'success',
   published: 'success',
   cancelled: 'danger',
   created: 'info',
@@ -10,6 +11,6 @@ export const chipVariants = {
   scheduled: 'neutral',
   expired: 'neutral',
   inactive: 'neutral',
-} as const;
+} as const satisfies Record<string, ChipVariant>;
 
 export type ChipStatus = keyof typeof chipVariants;
