@@ -97,6 +97,15 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
           onCancel: handleGoback,
         }}
       >
+        <FormCart legendText={language.promoCodeDetails}>
+          <ToggleSwitch
+            id="active"
+            name="active"
+            checked={values.active}
+            onChange={onChangeToggleSwitch}
+            labelText={language.active}
+          />
+        </FormCart>
         <section className="product-form-container">
           <FormCart legendText={language.promoCodeDetails}>
             <div className="product-form-2-columns">
@@ -133,35 +142,26 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             />
           </FormCart>
           <FormCart legendText={language.promoCodeValidity}>
-            <div className="product-form-2-columns">
-              <Input
-                type="datetime-local"
-                name="startsAt"
-                id="startsAt"
-                value={values.startsAt}
-                onChange={onChange}
-                labelText={language.startsAt}
-                errorText={language[errors.startsAt]}
-                required
-              />
-              <Input
-                type="datetime-local"
-                name="expiresAt"
-                id="expiresAt"
-                value={values.expiresAt}
-                onChange={onChange}
-                errorText={language[errors.expiresAt]}
-                labelText={language.expiresAt}
-                required
-              />
-              <ToggleSwitch
-                id="active"
-                name="active"
-                checked={values.active}
-                onChange={onChangeToggleSwitch}
-                labelText={language.active}
-              />
-            </div>
+            <Input
+              type="datetime-local"
+              name="startsAt"
+              id="startsAt"
+              value={values.startsAt}
+              onChange={onChange}
+              labelText={language.startsAt}
+              errorText={language[errors.startsAt]}
+              required
+            />
+            <Input
+              type="datetime-local"
+              name="expiresAt"
+              id="expiresAt"
+              value={values.expiresAt}
+              onChange={onChange}
+              errorText={language[errors.expiresAt]}
+              labelText={language.expiresAt}
+              required
+            />
           </FormCart>
         </section>
       </Form>
