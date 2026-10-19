@@ -170,6 +170,7 @@ const ProductForm = ({
     localStorageKeys.showPrice,
     false,
   );
+
   const { onAddToast } = useToast();
 
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -423,7 +424,7 @@ const ProductForm = ({
                   id="show-price"
                   checked={showPrice}
                   onChange={handleShowPrice}
-                  labelText="showPrice"
+                  labelText={language.showPrice}
                 />
                 {showPrice && (
                   <ProductPrice
