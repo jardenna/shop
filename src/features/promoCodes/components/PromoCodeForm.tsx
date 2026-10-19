@@ -131,7 +131,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             onChange={onChange}
             labelText={language.startsAt}
             errorText={language[errors.startsAt]}
-
             required
           />
           <Input
@@ -141,8 +140,17 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
             value={values.expiresAt}
             onChange={onChange}
             errorText={language[errors.expiresAt]}
-
             labelText={language.expiresAt}
+            required
+          />
+          <Input
+            type="number"
+            name="percent"
+            id="percent"
+            value={values.percent}
+            onChange={onChange}
+            errorText={language[errors.percent]}
+            labelText={language.discount}
             required
           />
         </FieldSet>
