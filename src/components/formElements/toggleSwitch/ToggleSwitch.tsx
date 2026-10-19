@@ -16,21 +16,19 @@ const ToggleSwitch = ({
   checked,
   labelText,
 }: ToggleSwitchProps) => (
-  <div className="toggle-switch-container">
-    <div className="toggle-switch-item">
-      <label htmlFor={id} className="switch">
-        <span>{labelText}</span>
-      </label>
-      <input
-        type="checkbox"
-        id={id}
-        name={name}
-        className="visually-hidden"
-        onChange={onChange}
-        checked={checked}
-        role="switch"
-      />
-    </div>
+  <div className="toggle-switch-item">
+    <label htmlFor={id} className="switch">
+      <span>{labelText}</span>
+    </label>
+    <input
+      type="checkbox"
+      id={id}
+      name={name}
+      className="visually-hidden"
+      onChange={onChange}
+      checked={checked}
+      role="switch"
+    />
   </div>
 );
 
