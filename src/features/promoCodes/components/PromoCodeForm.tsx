@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
@@ -33,7 +32,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     navigate(-1);
   };
 
-  const [isActive, setIsActive] = useState(false);
   const initialState = {
     code: promoCode?.code ?? '',
     active: promoCode?.active ?? false,
@@ -54,6 +52,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
       validate: validatePromoCode,
     },
   );
+  console.log(values);
 
   // Redux hooks
   const [createPromoCode, { isLoading: isCreateLoading }] =
@@ -154,10 +153,8 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
               <ToggleSwitch
                 id="active"
                 name="active"
-                checked={isActive}
-                onChange={() => {
-                  setIsActive(!isActive);
-                }}
+                checked={values.active}
+                onChange={onChange}
                 labelText={language.active}
               />
             </div>
