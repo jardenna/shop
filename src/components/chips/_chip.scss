@@ -1,8 +1,6 @@
 @use '../../scss/globals' as *;
 
 .chip {
-  display: inline-flex;
-  align-items: center;
   width: fit-content;
   font-family: $font-primary-bold;
   text-wrap: nowrap;
