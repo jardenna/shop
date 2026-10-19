@@ -8,8 +8,8 @@ export const chipVariants = {
   created: 'info',
   shipped: 'info',
   processing: 'warning',
-  scheduled: 'neutral',
-  expired: 'neutral',
+  scheduled: 'info',
+  expired: 'danger',
   inactive: 'neutral',
 } as const satisfies Record<string, ChipVariant>;
 
