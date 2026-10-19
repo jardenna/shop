@@ -2,8 +2,8 @@ import { format } from 'date-fns';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
+import FormCart from '../../../components/carts/FormCart';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { useToast } from '../../../components/toast/hooks/useToast';
@@ -91,59 +91,66 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
           onCancel: handleGoback,
         }}
       >
-        <FieldSet legendText={language.promoCodeDetails}>
-          <Input
-            onChange={onChange}
-            value={values.code}
-            id="code"
-            name="code"
-            labelText={language.discountCode}
-            errorText={language[errors.code]}
-            required
-          />
-          <Input
-            onChange={onChange}
-            value={values.label}
-            id="label"
-            name="label"
-            labelText={language.description}
-            errorText={language[errors.label]}
-            required
-          />
-          <Input
-            type="number"
-            name="percent"
-            id="percent"
-            value={values.percent}
-            onChange={onChange}
-            errorText={language[errors.percent]}
-            labelText={language.discount}
-            required
-            inputSuffix="%"
-          />
-        </FieldSet>
-        <FieldSet legendText={language.promoCodeValidity}>
-          <Input
-            type="datetime-local"
-            name="startsAt"
-            id="startsAt"
-            value={values.startsAt}
-            onChange={onChange}
-            labelText={language.startsAt}
-            errorText={language[errors.startsAt]}
-            required
-          />
-          <Input
-            type="datetime-local"
-            name="expiresAt"
-            id="expiresAt"
-            value={values.expiresAt}
-            onChange={onChange}
-            errorText={language[errors.expiresAt]}
-            labelText={language.expiresAt}
-            required
-          />
-        </FieldSet>
+        <section className="product-form-container">
+          <FormCart legendText={language.promoCodeDetails}>
+            <div className="product-form-2-columns">
+              <Input
+                onChange={onChange}
+                value={values.code}
+                id="code"
+                name="code"
+                labelText={language.discountCode}
+                errorText={language[errors.code]}
+                required
+              />
+              <Input
+                onChange={onChange}
+                value={values.label}
+                id="label"
+                name="label"
+                labelText={language.description}
+                errorText={language[errors.label]}
+                required
+              />
+            </div>
+
+            <Input
+              type="number"
+              name="percent"
+              id="percent"
+              value={values.percent}
+              onChange={onChange}
+              errorText={language[errors.percent]}
+              labelText={language.discount}
+              required
+              inputSuffix="%"
+            />
+          </FormCart>
+          <FormCart legendText={language.promoCodeValidity}>
+            <div className="product-form-2-columns">
+              <Input
+                type="datetime-local"
+                name="startsAt"
+                id="startsAt"
+                value={values.startsAt}
+                onChange={onChange}
+                labelText={language.startsAt}
+                errorText={language[errors.startsAt]}
+                required
+              />
+              <Input
+                type="datetime-local"
+                name="expiresAt"
+                id="expiresAt"
+                value={values.expiresAt}
+                onChange={onChange}
+                errorText={language[errors.expiresAt]}
+                labelText={language.expiresAt}
+                required
+              />
+            </div>
+          </FormCart>
+        </section>
       </Form>
     </ErrorBoundary>
   );
