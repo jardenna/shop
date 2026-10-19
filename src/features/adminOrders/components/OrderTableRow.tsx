@@ -3,6 +3,8 @@ import { paymentMethodLabels } from '../../../app/api/apiConstants';
 import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../../components/badge/Badge';
+import Chip from '../../../components/chips/Chip';
+import { chipVariants } from '../../../components/chips/chipsUtils';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
@@ -50,10 +52,9 @@ const OrderTableRow = ({
       />
     </td>
     <td>
-      <Badge
-        badgeText={language[deliveryStatus]}
-        className={deliveryStatus}
-        showDot
+      <Chip
+        chipText={language[deliveryStatus]}
+        variant={chipVariants[deliveryStatus]}
       />
     </td>
     <td>
