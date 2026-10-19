@@ -57,7 +57,6 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     callback: handleSubmitPromoCode,
     validate: validatePromoCode,
   });
-  console.log(values);
 
   // Redux hooks
   const [createPromoCode, { isLoading: isCreateLoading }] =
