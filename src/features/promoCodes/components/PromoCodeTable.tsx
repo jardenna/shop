@@ -20,15 +20,14 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <div>
+      <header className="promo-code-header">
         <SectionHeading heading={language.discountCodes} />
         <LinkButton
           linkTo={AdminPath.AdminPromoCodeCreate}
-
           linkText={language.createNewDiscountCode}
           className="page-header-link"
         />
-      </div>
+      </header>
 
       {isLoading && <Skeleton />}
       <ErrorBoundary
