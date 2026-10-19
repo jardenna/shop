@@ -10,13 +10,7 @@ const CreatePromoCodePage = () => {
       heading={language.createNewDiscountCode}
       variant="medium"
     >
-      <PromoCodeForm
-        id={null}
-        promoCode={null}
-        onReset={() => {
-          console.log(123);
-        }}
-      />
+      <PromoCodeForm id={null} promoCode={null} />
     </AdminPageContainer>
   );
 };

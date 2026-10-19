@@ -1,4 +1,6 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -37,13 +39,14 @@ const UpdatePromoCodePage = () => {
       heading={`${language.updatePromoCode} ${promoCode?.code ?? ''}`}
       variant="medium"
     >
-      {promoCode && (
-        <PromoCodeForm
-          id={id ?? null}
-          promoCode={promoCode}
-          onReset={refetch}
-        />
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={() => {
+          refetch();
+        }}
+      >
+        {promoCode && <PromoCodeForm id={id ?? null} promoCode={promoCode} />}
+      </ErrorBoundary>
     </AdminPageContainer>
   );
 };
