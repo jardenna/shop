@@ -74,19 +74,21 @@ export function useFormValidation<T extends KeyValuePair>({
     });
 
     if (type === 'checkbox') {
-      if (typeof values[name] === 'boolean') {
-        setValues({
+      setValues(() => {
+        const currentValues = values[name] as string[];
+
+        if (checked) {
+          return {
+            ...values,
+            [name]: [...currentValues, value],
+          };
+        }
+
+        return {
           ...values,
-          [name]: checked,
-        });
-      } else {
-        setValues({
-          ...values,
-          [name]: checked
-            ? [...(values[name] as string[]), value]
-            : (values[name] as string[]).filter((item) => item !== value),
-        });
-      }
+          [name]: currentValues.filter((item) => item !== value),
+        };
+      });
     }
 
     if (!touched.includes(name)) {
@@ -109,6 +111,16 @@ export function useFormValidation<T extends KeyValuePair>({
       [field]: (previous[field] as number) + amount,
     }));
   };
+
+  // Special case for singleCheckbox
+  function handleChangeToggleSwitch(event: ChangeInputType) {
+    const { name, checked } = event.target;
+
+    setValues((previous) => ({
+      ...previous,
+      [name]: checked,
+    }));
+  }
 
   function handleChangeTextArea(event: ChangeTextAreaType) {
     const { name, value } = event.target;
@@ -274,5 +286,6 @@ export function useFormValidation<T extends KeyValuePair>({
     onFileChange: handleFileChange,
     isFormDirty,
     onNumberStepChange: handleNumberStepChange,
+    onChangeToggleSwitch: handleChangeToggleSwitch,
   };
 }
