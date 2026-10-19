@@ -1,3 +1,4 @@
+import { Fragment } from 'react/jsx-runtime';
 import { BaseImageUploadProps } from '../../../features/products/components/ImageUpload';
 import ImgListItem from './ImgListItem';
 
@@ -20,7 +21,7 @@ const Preview = ({
 }: PreviewProps) => (
   <ul className="img-list preview-list">
     {previewData.map(({ url, reason, file }) => (
-      <div key={url}>
+      <Fragment key={url}>
         <ImgListItem
           onClick={() => {
             removePreviewImage(file.lastModified);
@@ -29,7 +30,7 @@ const Preview = ({
           reason={reason}
           ariaLabel={ariaLabel}
         />
-      </div>
+      </Fragment>
     ))}
   </ul>
 );

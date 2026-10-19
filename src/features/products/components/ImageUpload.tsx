@@ -63,9 +63,9 @@ const ImageUpload = ({
           </ul>
         )}
         <FileInput onChange={onChange} multiple name="images" id="images" />
+        <InputInfo inputInfo={inputInfoText} />
       </div>
 
-      <InputInfo inputInfo={inputInfoText} />
       {previewData.length > maxFiles && <p>{errorText}</p>}
       {previewData.length > 0 && (
         <Preview
