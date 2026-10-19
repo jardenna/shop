@@ -74,21 +74,19 @@ export function useFormValidation<T extends KeyValuePair>({
     });
 
     if (type === 'checkbox') {
-      setValues(() => {
-        const currentValues = values[name] as string[];
-
-        if (checked) {
-          return {
-            ...values,
-            [name]: [...currentValues, value],
-          };
-        }
-
-        return {
+      if (typeof values[name] === 'boolean') {
+        setValues({
           ...values,
-          [name]: currentValues.filter((item) => item !== value),
-        };
-      });
+          [name]: checked,
+        });
+      } else {
+        setValues({
+          ...values,
+          [name]: checked
+            ? [...(values[name] as string[]), value]
+            : (values[name] as string[]).filter((item) => item !== value),
+        });
+      }
     }
 
     if (!touched.includes(name)) {
