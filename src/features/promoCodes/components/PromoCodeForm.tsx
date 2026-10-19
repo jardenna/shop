@@ -10,6 +10,7 @@ import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSw
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
+import { dateFormat } from '../../../utils/dates';
 import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';
 import {
@@ -28,6 +29,8 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
+  const minDateTime = format(new Date(), dateFormat.dateTimeLocal);
+
   const handleGoback = () => {
     navigate(-1);
   };
@@ -38,10 +41,10 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
     label: promoCode?.label ?? '',
     percent: promoCode?.percent ?? 0,
     startsAt: promoCode?.startsAt
-      ? format(new Date(promoCode.startsAt), "yyyy-MM-dd'T'HH:mm")
-      : '',
+      ? format(new Date(promoCode.startsAt), dateFormat.dateTimeLocal)
+      : minDateTime,
     expiresAt: promoCode?.expiresAt
-      ? format(new Date(promoCode.expiresAt), "yyyy-MM-dd'T'HH:mm")
+      ? format(new Date(promoCode.expiresAt), dateFormat.dateTimeLocal)
       : '',
   };
 
@@ -145,6 +148,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
               type="datetime-local"
               name="startsAt"
               id="startsAt"
+              min={minDateTime}
               value={values.startsAt}
               onChange={onChange}
               labelText={language.startsAt}

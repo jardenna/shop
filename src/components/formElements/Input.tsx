@@ -28,7 +28,7 @@ export type InputProps = {
   inputSuffix?: string;
   max?: number | string;
   maxLength?: number;
-  min?: number;
+  min?: number | string;
   multiple?: boolean;
   placeholder?: string;
   readOnly?: boolean;
