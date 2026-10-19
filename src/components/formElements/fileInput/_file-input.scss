@@ -50,15 +50,11 @@
   img {
     border-radius: 0;
   }
-
-  @include max-size($small) {
-    max-width: 300px;
-    overflow: auto hidden;
-  }
 }
 
 .img-list {
   display: flex;
+  flex-wrap: wrap;
 
   .img-list-item {
     position: relative;
@@ -88,7 +84,7 @@
 }
 
 .img-list-img {
-  width: rem(192px);
+  width: rem(176px);
   height: rem(160px);
 
   @include transition;
