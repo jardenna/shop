@@ -1,19 +1,21 @@
 import './_toggle-switch.scss';
 
-type ToggleSwitchProps = {
+interface ToggleSwitchProps {
   checked: boolean;
   id: string;
   labelText: string;
+  name: string;
   onChange: () => void;
-};
+}
 
 const ToggleSwitch = ({
   onChange,
   id,
+  name,
   checked,
   labelText,
 }: ToggleSwitchProps) => (
-  <div className="toggle-switch-list">
+  <div className="toggle-switch-container">
     <div className="toggle-switch-item">
       <label htmlFor={id} className="switch">
         <span>{labelText}</span>
@@ -21,7 +23,8 @@ const ToggleSwitch = ({
       <input
         type="checkbox"
         id={id}
-        className="toggle-switch-input visually-hidden"
+        name={name}
+        className="visually-hidden"
         onChange={onChange}
         checked={checked}
         role="switch"

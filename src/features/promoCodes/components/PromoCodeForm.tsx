@@ -153,6 +153,7 @@ const PromoCodeForm = ({ promoCode, id, onReset }: PromoCodeFormProps) => {
               />
               <ToggleSwitch
                 id="active"
+                name="active"
                 checked={isActive}
                 onChange={() => {
                   setIsActive(!isActive);

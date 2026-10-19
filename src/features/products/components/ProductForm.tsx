@@ -422,6 +422,7 @@ const ProductForm = ({
               <div className="product-form-2-columns">
                 <ToggleSwitch
                   id="show-price"
+                  name="show-price"
                   checked={showPrice}
                   onChange={handleShowPrice}
                   labelText={language.showPrice}
