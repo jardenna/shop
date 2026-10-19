@@ -25,19 +25,6 @@
   font-family: $font-primary-bold;
   text-wrap: nowrap;
 
-  &:has(.badge-dot) {
-    border: 1px solid;
-    border-color: inherit;
-
-    .badge-dot {
-      display: flex;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: currentcolor;
-    }
-  }
-
   &.badge-large {
     border-radius: 50px;
     padding: 12px 20px;
@@ -51,26 +38,6 @@
   &.badge-small {
     border-radius: 50px;
     padding: 2px 8px;
-  }
-
-  &.delivered {
-    color: $color-info;
-  }
-
-  &.cancelled {
-    color: $color-red-30;
-  }
-
-  &.created {
-    color: $color-badge-default;
-  }
-
-  &.shipped {
-    color: $color-blue-70;
-  }
-
-  &.processing {
-    color: $color-yellow-80;
   }
 
   &.published {

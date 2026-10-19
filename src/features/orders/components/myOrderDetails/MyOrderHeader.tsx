@@ -21,11 +21,7 @@ const MyOrderHeader = ({
       <span>
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       </span>
-      <Badge
-        badgeText={language[orderStatus]}
-        className={orderStatus}
-        showDot
-      />
+      <Badge badgeText={language[orderStatus]} className={orderStatus} />
     </div>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
   </div>
