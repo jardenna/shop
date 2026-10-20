@@ -90,7 +90,9 @@ const getActivePromoCode = asyncHandler(async (req, res) => {
     (promoCode) => promoCode.status === 'current',
   );
 
-  res.status(200).json(currentPromoCode ?? null);
+  res
+    .status(200)
+    .json(currentPromoCode ? { code: currentPromoCode.code } : null);
 });
 
 // @desc    Get Promo code by id
