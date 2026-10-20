@@ -1,4 +1,4 @@
-import { ACTOR_TYPE } from '../config/deliveryConstants.js';
+import { ACTOR_TYPE, DELIVERY_STATUS } from '../config/deliveryConstants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -46,6 +46,7 @@ const createOrder = asyncHandler(async (req, res) => {
       user: req.user._id,
       'discount.code': activeDiscount.code,
       'payment.status': PAYMENT_STATUS.COMPLETED,
+      'delivery.status': { $ne: DELIVERY_STATUS.CANCELLED },
     }).lean();
 
     if (existingOrder) {

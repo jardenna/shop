@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { DELIVERY_STATUS } from '../config/deliveryConstants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -273,6 +274,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     user: req.user._id,
     'discount.code': activeDiscount.code,
     'payment.status': PAYMENT_STATUS.COMPLETED,
+    'delivery.status': { $ne: DELIVERY_STATUS.CANCELLED },
   }).lean();
 
   if (existingOrder) {

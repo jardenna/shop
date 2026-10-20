@@ -36,7 +36,6 @@ const Payment = ({
   const methodToShow = availablePaymentMethods.find(
     (method) => method.id === value,
   );
-  console.log(methodToShow);
 
   const initialValues: PaymentFormValues = {
     paymentMethod: value,
