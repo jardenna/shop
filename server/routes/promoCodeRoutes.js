@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   createPromoCode,
-  getActivePromoCode,
+  getCurrentPromoCode,
   getPromoCode,
   getPromoCodeById,
   updatePromoCode,
@@ -21,7 +21,7 @@ router
 
 router
   .route('/current')
-  .get(languageMiddleware, authenticate, getActivePromoCode);
+  .get(languageMiddleware, authenticate, getCurrentPromoCode);
 
 router
   .route('/:id')
