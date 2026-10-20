@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createPromoCode,
+  getActivePromoCode,
   getPromoCode,
   getPromoCodeById,
   updatePromoCode,
@@ -17,6 +18,10 @@ router
   .route('/')
   .get(authenticate, authorizeEmployee, getPromoCode)
   .post(languageMiddleware, authenticate, authorizeEmployee, createPromoCode);
+
+router
+  .route('/current')
+  .get(languageMiddleware, authenticate, getActivePromoCode);
 
 router
   .route('/:id')

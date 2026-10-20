@@ -1,6 +1,10 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
-import { getPromoCodesWithStatus } from '../utils/promoCodeUtils.js';
+import User from '../models/userModel.js';
+import {
+  getPromoCodesWithStatus,
+  hasOverlappingActivePromoCode,
+} from '../utils/promoCodeUtils.js';
 import { t } from '../utils/translator.js';
 import { validatePromoCode } from '../validators/validatePromoCode.js';
 
@@ -9,6 +13,8 @@ import { validatePromoCode } from '../validators/validatePromoCode.js';
 // @method  POST
 // @access  Private for admin and employees
 const createPromoCode = asyncHandler(async (req, res) => {
+  const { code, active, startsAt, expiresAt } = req.body;
+
   const validation = validatePromoCode({
     promoCode: req.body,
     lang: req.lang,
@@ -23,7 +29,7 @@ const createPromoCode = asyncHandler(async (req, res) => {
   }
 
   const existingPromoCode = await PromoCode.findOne({
-    code: req.body.code.trim().toUpperCase(),
+    code: code.trim().toUpperCase(),
   });
 
   if (existingPromoCode) {
@@ -31,6 +37,20 @@ const createPromoCode = asyncHandler(async (req, res) => {
       success: false,
       message: t('promoCodeAlreadyExists', req.lang),
     });
+  }
+
+  if (active) {
+    const overlappingPromoCode = await hasOverlappingActivePromoCode({
+      startsAt,
+      expiresAt,
+    });
+
+    if (overlappingPromoCode) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeDateRangeOverlap', req.lang),
+      });
+    }
   }
 
   const promoCode = await PromoCode.create(req.body);
@@ -47,9 +67,29 @@ const createPromoCode = asyncHandler(async (req, res) => {
 // @access  Private for admin and employees
 const getPromoCode = asyncHandler(async (req, res) => {
   const promoCodes = await PromoCode.find();
-  const CodesWithStatus = getPromoCodesWithStatus(promoCodes);
+  const codesWithStatus = getPromoCodesWithStatus(promoCodes);
 
-  res.status(200).json(CodesWithStatus);
+  res.status(200).json(codesWithStatus);
+});
+
+// @desc    Get Active promo code
+// @route   /api/promo-codes/current
+// @method  GET
+// @access  Private
+const getActivePromoCode = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id).select('role');
+
+  if (user?.role === 'Employee') {
+    return res.status(200).json(null);
+  }
+
+  const promoCodes = await PromoCode.find();
+  const codesWithStatus = getPromoCodesWithStatus(promoCodes);
+
+  const currentPromoCode = codesWithStatus.find(
+    (promoCode) => promoCode.status === 'inactive',
+  );
+  res.status(200).json(currentPromoCode ?? null);
 });
 
 // @desc    Get Promo code by id
@@ -98,6 +138,21 @@ const updatePromoCode = asyncHandler(async (req, res) => {
     });
   }
 
+  if (active) {
+    const overlappingPromoCode = await hasOverlappingActivePromoCode({
+      startsAt,
+      expiresAt,
+      excludeId: promoCode._id,
+    });
+
+    if (overlappingPromoCode) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeDateRangeOverlap', req.lang),
+      });
+    }
+  }
+
   const existingPromoCode = await PromoCode.findOne({
     code: code.trim().toUpperCase(),
     _id: { $ne: promoCode._id },
@@ -126,4 +181,10 @@ const updatePromoCode = asyncHandler(async (req, res) => {
   });
 });
 
-export { createPromoCode, getPromoCode, getPromoCodeById, updatePromoCode };
+export {
+  createPromoCode,
+  getActivePromoCode,
+  getPromoCode,
+  getPromoCodeById,
+  updatePromoCode,
+};

@@ -67,6 +67,7 @@ app.use('/api/admin/orders', adminOrderRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/admin/promo-codes', promoCodeRoutes);
+app.use('/api/promo-code', promoCodeRoutes);
 
 // Global error handler
 app.use(errorHandler);
