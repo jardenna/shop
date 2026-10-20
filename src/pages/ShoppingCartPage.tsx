@@ -41,9 +41,7 @@ const ShoppingCartPage = () => {
     isAuthReady,
   });
 
-  const { data: currentPromoCode } = useGetCurrentPromoCodeQuery();
-
-  console.log(currentPromoCode);
+  const { data: currentPromoCode, refetch } = useGetCurrentPromoCodeQuery();
 
   const cartItems = cartData?.cartItems;
 
@@ -132,11 +130,13 @@ const ShoppingCartPage = () => {
               language={language}
               promoDiscount={cartData.discount}
             />
-            {!isEmployee && apiCartList && (
+            {!isEmployee && apiCartList && currentPromoCode && (
               <CartPromoCodeForm
                 onSubmitPromoCode={handleApplyPromoCode}
+                currentPromoCode={currentPromoCode.code}
                 isLoading={isPromoCodeLoading}
                 promoDiscount={cartData.discount}
+                onReset={refetch}
               />
             )}
             <div className="fixed-bottom-container">
