@@ -100,6 +100,7 @@ const ShoppingCartPage = () => {
   const goToCheckoutPage = () => {
     navigate(`/${ShopPath.Checkout}`);
   };
+  console.log(cartData.summary);
 
   return (
     <MainPageContainer heading={pageHeading} variant="large">
@@ -125,6 +126,7 @@ const ShoppingCartPage = () => {
 
           <aside>
             <SectionHeading heading={language.paymentSummary} />
+            ss
             <PaymentSummaryList
               summary={cartData.summary}
               language={language}
