@@ -318,6 +318,18 @@ const payOrder = asyncHandler(async (req, res) => {
 
   const updatedOrder = await order.save();
 
+  const cart = await Cart.findOne({ user: req.user._id });
+
+  if (cart) {
+    cart.discount = {
+      code: '',
+      label: '',
+      percent: 0,
+    };
+
+    await cart.save();
+  }
+
   res.status(200).json(updatedOrder);
 });
 
