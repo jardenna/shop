@@ -3,6 +3,7 @@ export type ChipVariant = 'success' | 'danger' | 'info' | 'warning' | 'neutral';
 export const chipVariants = {
   delivered: 'success',
   active: 'success',
+  current: 'success',
   published: 'success',
   cancelled: 'danger',
   created: 'info',

@@ -131,6 +131,7 @@ createNewProduct;Create new product;Opret nyt produkt
 createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
+current;Current;Aktuel
 currency;Currency;Valuta
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 currentPage;Current page;Nuværende side
