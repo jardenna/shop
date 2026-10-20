@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
-// import User from '../models/userModel.js';
+import User from '../models/userModel.js';
 import {
   getPromoCodesWithStatus,
   hasOverlappingActivePromoCode,
@@ -77,11 +77,11 @@ const getPromoCode = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private
 const getCurrentPromoCode = asyncHandler(async (req, res) => {
-  // const user = await User.findById(req.user._id).select('role');
+  const user = await User.findById(req.user._id).select('role');
 
-  // if (user?.role === 'Employee') {
-  //   return res.status(200).json(null);
-  // }
+  if (user?.role === 'Employee') {
+    return res.status(200).json(null);
+  }
 
   const promoCodes = await PromoCode.find();
   const codesWithStatus = getPromoCodesWithStatus(promoCodes);

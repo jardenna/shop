@@ -31,7 +31,7 @@ const ShoppingCartPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const dispatch = useAppDispatch();
-  const { currentUser, isAuthReady, isEmployee } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
 
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
@@ -100,7 +100,6 @@ const ShoppingCartPage = () => {
   const goToCheckoutPage = () => {
     navigate(`/${ShopPath.Checkout}`);
   };
-  console.log(cartData.summary);
 
   return (
     <MainPageContainer heading={pageHeading} variant="large">
@@ -131,7 +130,7 @@ const ShoppingCartPage = () => {
               language={language}
               promoDiscount={cartData.discount}
             />
-            {!isEmployee && apiCartList && currentPromoCode && (
+            {apiCartList && currentPromoCode && (
               <CartPromoCodeForm
                 onSubmitPromoCode={handleApplyPromoCode}
                 currentPromoCode={currentPromoCode.code}
