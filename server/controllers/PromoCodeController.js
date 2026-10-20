@@ -1,7 +1,10 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
 import User from '../models/userModel.js';
-import { getPromoCodesWithStatus } from '../utils/promoCodeUtils.js';
+import {
+  getPromoCodesWithStatus,
+  hasOverlappingActivePromoCode,
+} from '../utils/promoCodeUtils.js';
 import { t } from '../utils/translator.js';
 import { validatePromoCode } from '../validators/validatePromoCode.js';
 
@@ -10,6 +13,8 @@ import { validatePromoCode } from '../validators/validatePromoCode.js';
 // @method  POST
 // @access  Private for admin and employees
 const createPromoCode = asyncHandler(async (req, res) => {
+  const { code, active, startsAt, expiresAt } = req.body;
+
   const validation = validatePromoCode({
     promoCode: req.body,
     lang: req.lang,
@@ -24,7 +29,7 @@ const createPromoCode = asyncHandler(async (req, res) => {
   }
 
   const existingPromoCode = await PromoCode.findOne({
-    code: req.body.code.trim().toUpperCase(),
+    code: code.trim().toUpperCase(),
   });
 
   if (existingPromoCode) {
@@ -32,6 +37,20 @@ const createPromoCode = asyncHandler(async (req, res) => {
       success: false,
       message: t('promoCodeAlreadyExists', req.lang),
     });
+  }
+
+  if (active) {
+    const overlappingPromoCode = await hasOverlappingActivePromoCode({
+      startsAt,
+      expiresAt,
+    });
+
+    if (overlappingPromoCode) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeDateRangeOverlap', req.lang),
+      });
+    }
   }
 
   const promoCode = await PromoCode.create(req.body);
@@ -117,6 +136,21 @@ const updatePromoCode = asyncHandler(async (req, res) => {
       success: false,
       message: validation.message,
     });
+  }
+
+  if (active) {
+    const overlappingPromoCode = await hasOverlappingActivePromoCode({
+      startsAt,
+      expiresAt,
+      excludeId: promoCode._id,
+    });
+
+    if (overlappingPromoCode) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeDateRangeOverlap', req.lang),
+      });
+    }
   }
 
   const existingPromoCode = await PromoCode.findOne({
