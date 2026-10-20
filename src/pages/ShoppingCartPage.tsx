@@ -126,7 +126,6 @@ const ShoppingCartPage = () => {
 
           <aside>
             <SectionHeading heading={language.paymentSummary} />
-            ss
             <PaymentSummaryList
               summary={cartData.summary}
               language={language}
