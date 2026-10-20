@@ -252,6 +252,13 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     });
   }
 
+  if (cart.discount?.code) {
+    return res.status(400).json({
+      success: false,
+      message: t('promoCodeAlreadyApplied', req.lang),
+    });
+  }
+
   const promoCode = req.body.promoCode;
   const activeDiscount = await getActiveDiscount(user.role, promoCode);
 
