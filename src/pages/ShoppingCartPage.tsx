@@ -20,6 +20,7 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
+import { useGetCurrentPromoCodeQuery } from '../features/promoCodes/promoCodeApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
@@ -39,6 +40,10 @@ const ShoppingCartPage = () => {
     currentUser,
     isAuthReady,
   });
+
+  const { data: currentPromoCode } = useGetCurrentPromoCodeQuery();
+
+  console.log(currentPromoCode);
 
   const cartItems = cartData?.cartItems;
 

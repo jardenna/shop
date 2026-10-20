@@ -24,6 +24,7 @@ export const cartUrl = baseCartEndpoint;
 export const guestCartUrl = `${baseCartEndpoint}/guest`;
 export const qtyCartUrl = `${baseCartEndpoint}/qty`;
 export const promoCodeurl = `${baseCartEndpoint}/promo-code`;
+export const currentPromoCodeurl = '/promo-code/current';
 export const ordersUrl = baseOrderEndpoint;
 export const userOrdersUrl = `${baseOrderEndpoint}/me`;
 export const checkoutUrl = 'checkout';
