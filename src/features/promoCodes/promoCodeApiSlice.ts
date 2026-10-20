@@ -1,5 +1,6 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import {
+  CurrentPromoResponse,
   PromoCode,
   PromoCodeResponse,
   UpdatePromoCodeRequest,
@@ -31,7 +32,7 @@ export const promoCodeApiSlice = apiSlice.injectEndpoints({
       query: () => adminPromoCodeUrl,
       providesTags: [TagTypesEnum.PromoCode],
     }),
-    getCurrentPromoCode: builder.query<PromoCodeResponse[], void>({
+    getCurrentPromoCode: builder.query<CurrentPromoResponse, void>({
       query: () => currentPromoCodeurl,
       providesTags: [TagTypesEnum.PromoCode],
     }),
