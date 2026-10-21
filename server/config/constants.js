@@ -1,5 +1,10 @@
 export const ALLOWED_ROLES = ['Employee', 'User'];
 
+export const ROLES = {
+  EMPLOYEE: 'Employee',
+  USER: 'User',
+};
+
 export const ALLOWED_FASHION_PREFERENCES = [
   'mensFashion',
   'womensFashion',
@@ -13,7 +18,14 @@ export const STATUS = {
   SCHEDULED: 'Scheduled',
 };
 
-export const { PUBLISHED, INACTIVE, SCHEDULED } = STATUS;
+export const PROMO_CODE_STATUS = {
+  INACTIVE: 'inactive',
+  SCHEDULED: 'scheduled',
+  EXPIRED: 'expired',
+  CURRENT: 'current',
+};
+
+export const { PUBLISHED, INACTIVE, SCHEDULED, EXPIRED } = STATUS;
 export const STANDARD_ADDRESS_TYPES = ['addressDelivery', 'addressBilling'];
 
 export const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];

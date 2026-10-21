@@ -255,14 +255,32 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   }
 
   if (cart.discount?.code) {
-    return res.status(400).json({
-      success: false,
-      message: t('promoCodeAlreadyApplied', req.lang),
+    const currentDiscount = await getActiveDiscount({
+      role: user.role,
+      code: cart.discount.code,
+      lang: req.lang,
     });
+
+    if (currentDiscount.code) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeAlreadyApplied', req.lang),
+      });
+    }
+
+    cart.discount = {
+      code: '',
+      label: '',
+      percent: 0,
+    };
   }
 
   const promoCode = req.body.promoCode;
-  const activeDiscount = await getActiveDiscount(user.role, promoCode);
+  const activeDiscount = await getActiveDiscount({
+    role: user.role,
+    code: promoCode,
+    lang: req.lang,
+  });
 
   if (activeDiscount.code === '') {
     return res.status(400).json({
@@ -315,7 +333,11 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = await getActiveDiscount(user.role, cart.discount.code);
+  const activeDiscount = await getActiveDiscount({
+    role: user.role,
+    code: cart.discount.code,
+    lang: req.lang,
+  });
 
   const cartData = await buildCartData({
     cart,

@@ -40,7 +40,11 @@ const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = await getActiveDiscount(user.role, cart.discount.code);
+  const activeDiscount = await getActiveDiscount({
+    role: user.role,
+    code: cart.discount.code,
+    lang: req.lang,
+  });
   if (activeDiscount.code) {
     const existingOrder = await Order.findOne({
       user: req.user._id,

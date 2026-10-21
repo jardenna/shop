@@ -1,4 +1,5 @@
 import { isBefore } from 'date-fns';
+import { PROMO_CODE_STATUS } from '../config/constants.js';
 import PromoCode from '../models/promoCodeModel.js';
 
 export const getPromoCodesWithStatus = (promoCodes) =>
@@ -7,13 +8,13 @@ export const getPromoCodesWithStatus = (promoCodes) =>
     let status;
 
     if (!promoCode.active) {
-      status = 'inactive';
+      status = PROMO_CODE_STATUS.INACTIVE;
     } else if (!isBefore(currentDate, promoCode.expiresAt)) {
-      status = 'expired';
+      status = PROMO_CODE_STATUS.EXPIRED;
     } else if (isBefore(currentDate, promoCode.startsAt)) {
-      status = 'scheduled';
+      status = PROMO_CODE_STATUS.SCHEDULED;
     } else {
-      status = 'current';
+      status = PROMO_CODE_STATUS.CURRENT;
     }
 
     return {
