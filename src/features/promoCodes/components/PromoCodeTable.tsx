@@ -9,7 +9,7 @@ import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
-import Skeleton from '../../../components/skeleton/Skeleton';
+import SkeletonPromoCodeTable from '../../../components/skeleton/SkeletonPromoCodeTable';
 import SkeletonTable from '../../../components/skeleton/skeletonTable/SkeletonTable';
 import { AdminPath } from '../../../layout/nav/enums';
 import { OptionType } from '../../../types/types';
@@ -55,7 +55,7 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <SkeletonTable rowCount={4} cellCount={4} height="4" />
+      <SkeletonPromoCodeTable />
       <header className="promo-code-header">
         <SectionHeading heading={language.discountCodes} />
         <LinkButton
@@ -65,7 +65,7 @@ const PromoCodeTable = () => {
         />
       </header>
 
-      {isLoading && <Skeleton />}
+      {isLoading && <SkeletonTable />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => {
