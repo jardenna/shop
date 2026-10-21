@@ -147,10 +147,7 @@ const SortTable = <T,>({
       </div>
       <div className="fixed-table">
         {isLoading ? (
-          <SkeletonTable
-            skeletonHeight={skeletonHeight}
-            count={skeletonCount}
-          />
+          <SkeletonTable height={skeletonHeight} count={skeletonCount} />
         ) : (
           <ErrorBoundary
             FallbackComponent={ErrorBoundaryFallback}

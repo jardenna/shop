@@ -1,8 +1,8 @@
 import Skeleton from '../Skeleton';
 import SkeletonFooter from '../SkeletonFooter';
 import SkeletonHeading from '../SkeletonHeading';
-import SkeletonList from '../SkeletonList';
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
+import SkeletonTable from '../skeletonTable/SkeletonTable';
 import './_skeleton-order-page.scss';
 import SkeletonAddressList from './SkeletonAddressList';
 import SkeletonPriceCol from './SkeletonPriceCol';
@@ -16,7 +16,7 @@ const SkeletonAdminOrderDetailsPage = () => (
     <SkeletonProgress />
     <div>
       <SkeletonHeading width="16" />
-      <SkeletonList count={5} className="flex-column" height="1" />
+      <SkeletonTable rowCount={3} cellCount={3} />
     </div>
 
     <div className="skeleton-content-row">
