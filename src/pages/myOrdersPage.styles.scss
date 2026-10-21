@@ -10,7 +10,7 @@
   }
 
   .btn-primary {
-    max-width: rem(150px);
+    min-width: rem(150px);
   }
 }
 
@@ -30,15 +30,20 @@
     }
   }
 
-  .my-order-header,
-  .my-order-footer {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .my-order-footer {
     font-size: $font-medium;
     align-items: center;
     gap: 8px;
+  }
+
+  .my-order-footer-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .my-order-header,
+  .my-order-footer {
+    display: flex;
+    justify-content: space-between;
   }
 }
