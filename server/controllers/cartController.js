@@ -257,7 +257,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   if (cart.discount?.code) {
     return res.status(400).json({
       success: false,
-      message: t('promoCodeAlreadyApplied', req.lang),
+      message: t('promoCodeAlreadyUsed', req.lang),
     });
   }
 
