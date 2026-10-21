@@ -25,17 +25,18 @@ const PromoCodeTable = () => {
   const [selectedYear, setSelectedYear] = useState('');
 
   const yearOptions = [
-    {
-      label: '2026',
-      value: '2026',
-      id: '2026',
-    },
-    {
-      label: '2027',
-      value: '2027',
-      id: '2027',
-    },
-  ];
+    ...new Set(
+      promoCodes?.map((promoCode) =>
+        String(new Date(promoCode.startsAt).getFullYear()),
+      ) ?? [],
+    ),
+  ]
+    .sort((a, b) => Number(b) - Number(a))
+    .map((year) => ({
+      label: year,
+      value: year,
+      id: year,
+    }));
 
   const filteredPromoCodes = selectedYear
     ? promoCodes?.filter(
