@@ -137,6 +137,7 @@ const ShoppingCartPage = () => {
                 isLoading={isPromoCodeLoading}
                 promoDiscount={cartData.discount}
                 onReset={refetch}
+                promoCodeUsed={cartData.promoCodeUsed}
               />
             )}
             <div className="fixed-bottom-container">

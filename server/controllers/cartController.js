@@ -8,6 +8,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
+import PromoCode from '../models/promoCodeModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
@@ -328,11 +329,30 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
+  // Check whether the user has already used the current promo code.
+  const currentPromoCode = await PromoCode.findOne({
+    active: true,
+    startsAt: { $lte: new Date() },
+    expiresAt: { $gt: new Date() },
+  }).lean();
+
+  const promoCodeUsed = currentPromoCode
+    ? Boolean(
+        await Order.exists({
+          user: req.user._id,
+          'discount.code': currentPromoCode.code,
+          'payment.status': PAYMENT_STATUS.COMPLETED,
+          'delivery.status': { $ne: DELIVERY_STATUS.CANCELLED },
+        }),
+      )
+    : false;
+
   return res.status(200).json({
     ...formatMongoData(cart),
     cartItems: cartData.cartItems,
     summary: cartData.summary,
     discount: activeDiscount,
+    promoCodeUsed,
     paymentMethods: PAYMENT_METHODS_LIST,
   });
 });

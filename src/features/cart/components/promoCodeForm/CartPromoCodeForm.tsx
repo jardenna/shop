@@ -11,6 +11,7 @@ import './_promo-code-form.scss';
 interface CartPromoCodeFormProps {
   currentPromoCode: string;
   isLoading: boolean;
+  promoCodeUsed: boolean;
   promoDiscount: Discount;
   onReset: () => void;
   onSubmitPromoCode: (promoCode: string) => void;
@@ -22,6 +23,7 @@ const CartPromoCodeForm = ({
   currentPromoCode,
   onReset,
   promoDiscount,
+  promoCodeUsed,
 }: CartPromoCodeFormProps) => {
   const { language } = useLanguage();
   const initialState = {
@@ -37,8 +39,6 @@ const CartPromoCodeForm = ({
   function handleSubmit() {
     onSubmitPromoCode(values.promoCode);
   }
-
-  const promoCodeUsed = promoDiscount.code !== '';
 
   return (
     <ErrorBoundary
