@@ -67,16 +67,18 @@ const PromoCodeTable = () => {
           refetch();
         }}
       >
-        <Selectbox
-          id="year"
-          placeHolder={language.selectYear}
-          options={yearOptions}
-          onChange={(option) => {
-            handleSelectYear(option);
-          }}
-          name="year"
-          labelText={language.filterByYear}
-        />
+        <div className="promo-code-select">
+          <Selectbox
+            id="year"
+            placeHolder={language.selectYear}
+            options={yearOptions}
+            onChange={(option) => {
+              handleSelectYear(option);
+            }}
+            name="year"
+            labelText={language.filterByYear}
+          />
+        </div>
         {filteredPromoCodes && (
           <SimpleTable
             tableCaption={language.discountCodeList}
