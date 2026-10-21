@@ -35,6 +35,7 @@ allSalesBannerAltText;Smiling couple, with the man covering the woman's eyes in 
 alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
+allYears;All years;Alle år
 apply;Apply;Tilføj
 ascending;ascending;stigende
 assignRole;Assign role;Tildel rolle
@@ -211,6 +212,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterByYear;Filter by year;Filtrer efter år
 filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
@@ -535,6 +537,7 @@ selectedSize;Selected size;Valgt størrelse
 selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
+selectYear;Select year;Vælg år
 sendOrder;Send order;Send ordre
 serverError;Server error. Please try again later.;Der opstod en fejl. Prøv igen senere.
 shareReview;Share review;Del anmeldelse

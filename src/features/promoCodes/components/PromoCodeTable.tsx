@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Cart from '../../../components/carts/Cart';
@@ -6,9 +7,11 @@ import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
 import { AdminPath } from '../../../layout/nav/enums';
+import { OptionType } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
@@ -18,6 +21,36 @@ const PromoCodeTable = () => {
   const { language } = useLanguage();
 
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
+
+  const yearOptions = [
+    { label: language.allYears, value: '', id: 'all-years' },
+    ...[
+      ...new Set(
+        promoCodes?.map((promoCode) =>
+          String(new Date(promoCode.startsAt).getFullYear()),
+        ) ?? [],
+      ),
+    ]
+      .sort((firstYear, secondYear) => Number(secondYear) - Number(firstYear))
+      .map((year) => ({
+        label: year,
+        value: year,
+        id: year,
+      })),
+  ];
+
+  const [selectedYear, setSelectedYear] = useState('');
+
+  const handleSelectYear = (option: OptionType | null) => {
+    setSelectedYear(option?.value ?? '');
+  };
+
+  const filteredPromoCodes = selectedYear
+    ? promoCodes?.filter(
+        (promoCode) =>
+          new Date(promoCode.startsAt).getFullYear() === Number(selectedYear),
+      )
+    : promoCodes;
 
   return (
     <Cart>
@@ -37,11 +70,23 @@ const PromoCodeTable = () => {
           refetch();
         }}
       >
-        {promoCodes && (
+        <div className="promo-code-select">
+          <Selectbox
+            id="year"
+            placeHolder={language.selectYear}
+            options={yearOptions}
+            onChange={(option) => {
+              handleSelectYear(option);
+            }}
+            name="year"
+            labelText={language.filterByYear}
+          />
+        </div>
+        {filteredPromoCodes && (
           <SimpleTable
             tableCaption={language.discountCodeList}
             tableHeaderList={tableHeaderList}
-            tableDataList={promoCodes}
+            tableDataList={filteredPromoCodes}
             rowKey={({ code }) => code}
             emptyHeaderCellText={language.updatePromoCode}
             renderCells={({
