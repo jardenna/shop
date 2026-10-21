@@ -39,7 +39,6 @@ const CartPromoCodeForm = ({
   }
 
   const promoCodeUsed = promoDiscount.code !== '';
-  console.log(promoCodeUsed);
 
   return (
     <ErrorBoundary
