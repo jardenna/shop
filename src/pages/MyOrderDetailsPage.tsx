@@ -91,7 +91,7 @@ const MyOrderDetailsPage = () => {
 
               <OrderAddressList addresses={addressList} refetch={refetch} />
             </section>
-            <div>
+            <div className="my-order-footer-actions">
               <CancelOrderButton status={status.status} id={id ?? ''} />
               <DownloadPdfBtn
                 document={
