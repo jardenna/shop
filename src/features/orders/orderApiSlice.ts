@@ -24,6 +24,12 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         body: payment,
       }),
     }),
+    cancelMyOrder: builder.mutation<OrderResponse, string>({
+      query: (id) => ({
+        url: `${ordersUrl}/${id}/cancel`,
+        method: 'PATCH',
+      }),
+    }),
     getUserOrder: builder.query<MyOrdersResponse[], void>({
       query: () => userOrdersUrl,
     }),
@@ -41,4 +47,5 @@ export const {
   useGetUserOrderQuery,
   usePayOrderMutation,
   useGetOrderByIdQuery,
+  useCancelMyOrderMutation,
 } = orderApiSlice;
