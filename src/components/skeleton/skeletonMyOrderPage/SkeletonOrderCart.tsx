@@ -17,9 +17,13 @@ const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
       </div>
       <SkeletonMyOrderSummary />
       <Skeleton className="skeleton-divider" />
+
       <div className="footer-row">
         <Skeleton className="delivery-date" />
-        <SkeletonButton width="10" />
+        <div className="my-order-footer-actions">
+          <SkeletonButton width="10" />
+          <SkeletonButton width="10" />
+        </div>
       </div>
     </div>
   ));
