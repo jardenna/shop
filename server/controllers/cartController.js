@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { DELIVERY_STATUS } from '../config/deliveryConstants.js';
 import {
   PAYMENT_METHODS_LIST,
   PAYMENT_STATUS,
@@ -7,6 +8,7 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Cart from '../models/cartModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
+import PromoCode from '../models/promoCodeModel.js';
 import User from '../models/userModel.js';
 import { buildCartData } from '../services/buildCartData.js';
 import { getActiveDiscount } from '../services/getActiveDiscount.js';
@@ -252,6 +254,13 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     });
   }
 
+  if (cart.discount?.code) {
+    return res.status(400).json({
+      success: false,
+      message: t('promoCodeAlreadyApplied', req.lang),
+    });
+  }
+
   const promoCode = req.body.promoCode;
   const activeDiscount = await getActiveDiscount(user.role, promoCode);
 
@@ -266,6 +275,7 @@ const applyPromoCode = asyncHandler(async (req, res) => {
     user: req.user._id,
     'discount.code': activeDiscount.code,
     'payment.status': PAYMENT_STATUS.COMPLETED,
+    'delivery.status': { $ne: DELIVERY_STATUS.CANCELLED },
   }).lean();
 
   if (existingOrder) {
@@ -319,11 +329,30 @@ const getCart = asyncHandler(async (req, res) => {
     });
   }
 
+  // Check whether the user has already used the current promo code.
+  const currentPromoCode = await PromoCode.findOne({
+    active: true,
+    startsAt: { $lte: new Date() },
+    expiresAt: { $gt: new Date() },
+  }).lean();
+
+  const promoCodeUsed = currentPromoCode
+    ? Boolean(
+        await Order.exists({
+          user: req.user._id,
+          'discount.code': currentPromoCode.code,
+          'payment.status': PAYMENT_STATUS.COMPLETED,
+          'delivery.status': { $ne: DELIVERY_STATUS.CANCELLED },
+        }),
+      )
+    : false;
+
   return res.status(200).json({
     ...formatMongoData(cart),
     cartItems: cartData.cartItems,
     summary: cartData.summary,
     discount: activeDiscount,
+    promoCodeUsed,
     paymentMethods: PAYMENT_METHODS_LIST,
   });
 });

@@ -76,7 +76,7 @@ const getPromoCode = asyncHandler(async (req, res) => {
 // @route   /api/promo-codes/current
 // @method  GET
 // @access  Private
-const getActivePromoCode = asyncHandler(async (req, res) => {
+const getCurrentPromoCode = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('role');
 
   if (user?.role === 'Employee') {
@@ -87,9 +87,12 @@ const getActivePromoCode = asyncHandler(async (req, res) => {
   const codesWithStatus = getPromoCodesWithStatus(promoCodes);
 
   const currentPromoCode = codesWithStatus.find(
-    (promoCode) => promoCode.status === 'inactive',
+    (promoCode) => promoCode.status === 'current',
   );
-  res.status(200).json(currentPromoCode ?? null);
+
+  res
+    .status(200)
+    .json(currentPromoCode ? { code: currentPromoCode.code } : null);
 });
 
 // @desc    Get Promo code by id
@@ -183,7 +186,7 @@ const updatePromoCode = asyncHandler(async (req, res) => {
 
 export {
   createPromoCode,
-  getActivePromoCode,
+  getCurrentPromoCode,
   getPromoCode,
   getPromoCodeById,
   updatePromoCode,

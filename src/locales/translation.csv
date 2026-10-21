@@ -131,6 +131,7 @@ createNewProduct;Create new product;Opret nyt produkt
 createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
+current;Current;Aktuel
 currency;Currency;Valuta
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 currentPage;Current page;Nuværende side
@@ -182,6 +183,7 @@ estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
 expiresAt;ExpiresAt at;Slutter
+expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 expiry;Expiry;Udløbsdato
 expired;Expired;Udløbet
 eye;Eye;Øje
@@ -592,7 +594,6 @@ subCategoryName;Subcategory name;Underkategori navn
 subTotal;Subtotal;Subtotal
 subtract;Subtract;Fratræk
 success;Success;Succes
-summerSale;Summer sale;Sommerrabat
 sureToDelete;Do you want to delete;Vil du slette
 switchUser;Switch user;Skift bruger
 system;System;System

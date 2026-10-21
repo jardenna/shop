@@ -20,6 +20,7 @@ import { useActiveCart } from '../features/cart/useActiveCart';
 import { deleteGuestCartItem, updateGuestCartQty } from '../features/cartSlice';
 import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
+import { useGetCurrentPromoCodeQuery } from '../features/promoCodes/promoCodeApiSlice';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { ShopPath } from '../layout/nav/enums';
@@ -30,7 +31,7 @@ const ShoppingCartPage = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const dispatch = useAppDispatch();
-  const { currentUser, isAuthReady, isEmployee } = useAuth();
+  const { currentUser, isAuthReady } = useAuth();
 
   const { isMobileSize } = useMediaQuery();
   const pageHeading = language.bag;
@@ -39,6 +40,8 @@ const ShoppingCartPage = () => {
     currentUser,
     isAuthReady,
   });
+
+  const { data: currentPromoCode, refetch } = useGetCurrentPromoCodeQuery();
 
   const cartItems = cartData?.cartItems;
 
@@ -122,17 +125,19 @@ const ShoppingCartPage = () => {
 
           <aside>
             <SectionHeading heading={language.paymentSummary} />
-
             <PaymentSummaryList
               summary={cartData.summary}
               language={language}
               promoDiscount={cartData.discount}
             />
-            {!isEmployee && apiCartList && (
+            {apiCartList && currentPromoCode && (
               <CartPromoCodeForm
                 onSubmitPromoCode={handleApplyPromoCode}
+                currentPromoCode={currentPromoCode.code}
                 isLoading={isPromoCodeLoading}
                 promoDiscount={cartData.discount}
+                onReset={refetch}
+                promoCodeUsed={cartData.promoCodeUsed}
               />
             )}
             <div className="fixed-bottom-container">

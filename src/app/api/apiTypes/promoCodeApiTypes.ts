@@ -23,3 +23,7 @@ export interface UpdatePromoCodeRequest {
   body: PromoCode;
   id: string;
 }
+
+export interface CurrentPromoResponse {
+  code: string;
+}

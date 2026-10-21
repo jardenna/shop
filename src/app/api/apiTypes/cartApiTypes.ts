@@ -37,13 +37,13 @@ export interface CartListResponse extends DefaultResponseType {
   cartItems: Order[];
   discount: Discount;
   paymentMethods: PaymentMethods[];
+  promoCodeUsed: boolean;
   summary: Summary;
 }
 
 export interface CheckoutResponse extends CartListResponse {
   addresses: Address[];
   paymentMethod: PaymentMethods[];
-  s: PaymentMethods[];
 }
 
 export interface UpdateCartRequest {
@@ -56,6 +56,7 @@ export interface GuestCartResponse {
   discount: Discount;
   missingProductIds: string[];
   paymentMethods: PaymentMethods[];
+  promoCodeUsed: boolean;
   summary: Summary;
 }
 
