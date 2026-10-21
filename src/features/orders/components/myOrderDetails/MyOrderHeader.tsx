@@ -18,15 +18,13 @@ const MyOrderHeader = ({
   orderStatus,
 }: MyOrderHeaderProps) => (
   <div className="my-order-header">
-    <div>
-      <span>
-        <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
-      </span>
+    <span>
+      <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       <Chip
         chipText={language[orderStatus]}
         variant={chipVariants[orderStatus]}
       />
-    </div>
+    </span>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
   </div>
 );

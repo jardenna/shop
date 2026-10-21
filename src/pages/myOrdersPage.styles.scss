@@ -24,6 +24,10 @@
 
   .my-order-header {
     font-family: $font-primary-semibold;
+
+    .chip {
+      margin-left: 6px;
+    }
   }
 
   .my-order-header,
