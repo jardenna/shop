@@ -38,7 +38,8 @@ const CartPromoCodeForm = ({
     onSubmitPromoCode(values.promoCode);
   }
 
-  const promoCodeUsed = false;
+  const promoCodeUsed = promoDiscount.code !== '';
+  console.log(promoCodeUsed);
 
   return (
     <ErrorBoundary
@@ -47,10 +48,9 @@ const CartPromoCodeForm = ({
     >
       <Form
         onSubmit={onSubmit}
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         submitBtnLabel={promoCodeUsed ? language.used : language.apply}
-        isLoading={isLoading}
         disabled={promoCodeUsed}
+        isLoading={isLoading}
         className="promo-form"
       >
         <Input
