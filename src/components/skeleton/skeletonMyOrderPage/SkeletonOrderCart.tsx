@@ -9,7 +9,7 @@ const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
   return skeletons.map((_, index) => (
     <div className="my-orders-page-cart skeleton-order-cart" key={index}>
       <div className="order-header">
-        <div>
+        <div className="skeleton-control-item">
           <Skeleton className="order-id" />
           <SkeletonBadge width="8" />
         </div>
@@ -17,6 +17,7 @@ const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
       </div>
       <SkeletonMyOrderSummary />
       <Skeleton className="skeleton-divider" />
+
       <div className="footer-row">
         <Skeleton className="delivery-date" />
         <SkeletonButton width="10" />

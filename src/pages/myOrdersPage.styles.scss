@@ -5,16 +5,12 @@
   flex-direction: column;
   gap: 20px;
 
-  .badge {
-    margin-top: 6px;
-  }
-
   .product-price {
     font-size: $font-medium;
   }
 
   .btn-primary {
-    max-width: rem(150px);
+    min-width: rem(150px);
   }
 }
 
@@ -28,12 +24,19 @@
 
   .my-order-header {
     font-family: $font-primary-semibold;
-  }
 
-  .my-order-header,
-  .my-order-footer {
-    display: flex;
-    justify-content: space-between;
+    .my-order-heading {
+      display: flex;
+      align-items: center;
+    }
+
+    .my-order-title {
+      font-size: inherit;
+    }
+
+    .chip {
+      margin-left: 6px;
+    }
   }
 
   .my-order-footer {
@@ -41,4 +44,15 @@
     align-items: center;
     gap: 8px;
   }
+
+  .my-order-header,
+  .my-order-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.my-order-footer-actions {
+  display: flex;
+  gap: 12px;
 }

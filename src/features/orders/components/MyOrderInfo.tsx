@@ -6,14 +6,11 @@ interface MyOrderInfoProps {
   status: DeliveryStatus;
 }
 
-const MyOrderInfo = ({ status, language }: MyOrderInfoProps) => (
-  <div>
-    {status === 'cancelled' ? (
-      <OrderCancelledBadge language={language} />
-    ) : (
-      <h2>{language.orderStatusMessage}</h2>
-    )}
-  </div>
-);
+const MyOrderInfo = ({ status, language }: MyOrderInfoProps) =>
+  status === 'cancelled' ? (
+    <OrderCancelledBadge language={language} />
+  ) : (
+    <h2>{language.orderStatusMessage}</h2>
+  );
 
 export default MyOrderInfo;

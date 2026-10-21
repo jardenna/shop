@@ -1,6 +1,8 @@
 export type ChipVariant = 'success' | 'danger' | 'info' | 'warning' | 'neutral';
 
-export const chipVariants = {
+type ChipVariantMap = Record<string, ChipVariant>;
+
+export const chipVariants: ChipVariantMap = {
   delivered: 'success',
   active: 'success',
   current: 'success',
@@ -12,6 +14,6 @@ export const chipVariants = {
   scheduled: 'info',
   expired: 'danger',
   inactive: 'neutral',
-} as const satisfies Record<string, ChipVariant>;
+};
 
 export type ChipStatus = keyof typeof chipVariants;

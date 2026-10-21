@@ -5,6 +5,7 @@ import {
   OrderResponse,
 } from '../../app/api/apiTypes/orderApiTypes';
 import { PayOrderRequest } from '../../app/api/apiTypes/paymentApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { ordersUrl, userOrdersUrl } from '../../app/endpoints';
 
 export const orderApiSlice = apiSlice.injectEndpoints({
@@ -24,6 +25,13 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         body: payment,
       }),
     }),
+    cancelMyOrder: builder.mutation<DefaultResponse, string>({
+      query: (id) => ({
+        url: `${ordersUrl}/${id}/cancel`,
+        method: 'PATCH',
+      }),
+      invalidatesTags: [TagTypesEnum.Order],
+    }),
     getUserOrder: builder.query<MyOrdersResponse[], void>({
       query: () => userOrdersUrl,
     }),
@@ -41,4 +49,5 @@ export const {
   useGetUserOrderQuery,
   usePayOrderMutation,
   useGetOrderByIdQuery,
+  useCancelMyOrderMutation,
 } = orderApiSlice;

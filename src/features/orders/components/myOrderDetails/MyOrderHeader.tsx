@@ -1,5 +1,6 @@
 import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
-import Badge from '../../../../components/badge/Badge';
+import Chip from '../../../../components/chips/Chip';
+import { chipVariants } from '../../../../components/chips/chipsUtils';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
@@ -16,14 +17,17 @@ const MyOrderHeader = ({
   language,
   orderStatus,
 }: MyOrderHeaderProps) => (
-  <div className="my-order-header">
-    <div>
-      <span>
+  <header className="my-order-header">
+    <div className="my-order-heading">
+      <h2 className="my-order-title">
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
-      </span>
-      <Badge badgeText={language[orderStatus]} className={orderStatus} />
+      </h2>
+      <Chip
+        chipText={language[orderStatus]}
+        variant={chipVariants[orderStatus]}
+      />
     </div>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
-  </div>
+  </header>
 );
 export default MyOrderHeader;
