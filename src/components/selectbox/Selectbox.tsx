@@ -29,6 +29,7 @@ type SelectboxProps = {
   isMulti?: boolean;
   isSearchable?: boolean;
   menuIsOpen?: boolean;
+  placeHolder?: string;
   ref?: RefElementType;
   required?: boolean;
   selectKey?: string;
@@ -42,6 +43,7 @@ const Selectbox = ({
   onChange,
   defaultValue,
   id,
+  placeHolder = '',
   isSearchable = false,
   required,
   menuIsOpen,
@@ -116,7 +118,7 @@ const Selectbox = ({
           isDisabled={isDisabled}
           menuPlacement="auto"
           closeMenuOnSelect={closeMenuOnSelect}
-          placeholder=""
+          placeholder={placeHolder}
           noOptionsMessage={() => language.noOptions}
           components={components}
           menuIsOpen={menuIsOpen}
