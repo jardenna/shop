@@ -18,7 +18,7 @@ const MyOrderFooter = ({
   const footerText = createDeliveryDateText(delivery);
 
   return (
-    <div className="my-order-footer">
+    <footer className="my-order-footer">
       {footerText.date && (
         <div>
           <span>{language[footerText.text]}: </span>
@@ -37,7 +37,7 @@ const MyOrderFooter = ({
         </Button>
         <Button onClick={onViewDetails}>{language.showDetails}</Button>
       </div>
-    </div>
+    </footer>
   );
 };
 

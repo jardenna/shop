@@ -25,6 +25,15 @@
   .my-order-header {
     font-family: $font-primary-semibold;
 
+    .my-order-heading {
+      display: flex;
+      align-items: center;
+    }
+
+    .my-order-title {
+      font-size: inherit;
+    }
+
     .chip {
       margin-left: 6px;
     }
