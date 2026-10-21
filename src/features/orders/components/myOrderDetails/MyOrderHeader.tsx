@@ -1,5 +1,6 @@
 import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
-import Badge from '../../../../components/badge/Badge';
+import Chip from '../../../../components/chips/Chip';
+import { chipVariants } from '../../../../components/chips/chipsUtils';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
@@ -21,7 +22,10 @@ const MyOrderHeader = ({
       <span>
         <span>{language.order}</span> <span>{formatOrderNumber(orderId)}</span>
       </span>
-      <Badge badgeText={language[orderStatus]} className={orderStatus} />
+      <Chip
+        chipText={language[orderStatus]}
+        variant={chipVariants[orderStatus]}
+      />
     </div>
     <ProductPrice price={totalPrice} cancelled={orderStatus === 'cancelled'} />
   </div>
