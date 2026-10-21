@@ -216,9 +216,11 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private
 const getUserOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ user: req.user._id }).select(
-    '_id createdAt payment.status delivery.status delivery.shippedAt delivery.statusHistory summary.totalPrice orderItems',
-  );
+  const orders = await Order.find({ user: req.user._id })
+    .sort({ createdAt: -1 })
+    .select(
+      '_id createdAt payment.status delivery.status delivery.shippedAt delivery.statusHistory summary.totalPrice orderItems',
+    );
 
   res.status(200).json(orders);
 });
