@@ -18,6 +18,13 @@ export const STATUS = {
   SCHEDULED: 'Scheduled',
 };
 
+export const PROMO_CODE_STATUS = {
+  INACTIVE: 'inactive',
+  SCHEDULED: 'scheduled',
+  EXPIRED: 'expired',
+  CURRENT: 'current',
+};
+
 export const { PUBLISHED, INACTIVE, SCHEDULED, EXPIRED } = STATUS;
 export const STANDARD_ADDRESS_TYPES = ['addressDelivery', 'addressBilling'];
 
