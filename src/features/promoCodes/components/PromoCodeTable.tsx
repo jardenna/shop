@@ -22,8 +22,6 @@ const PromoCodeTable = () => {
 
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
 
-  const [selectedYear, setSelectedYear] = useState('');
-
   const yearOptions = [
     ...new Set(
       promoCodes?.map((promoCode) =>
@@ -38,18 +36,18 @@ const PromoCodeTable = () => {
       id: year,
     }));
 
+  const [selectedYear, setSelectedYear] = useState('');
+
+  const handleSelectYear = (option: OptionType) => {
+    setSelectedYear(option.value);
+  };
+
   const filteredPromoCodes = selectedYear
     ? promoCodes?.filter(
         (promoCode) =>
           new Date(promoCode.startsAt).getFullYear() === Number(selectedYear),
       )
     : promoCodes;
-
-  console.log(filteredPromoCodes);
-
-  const handleSelectYear = (option: OptionType) => {
-    setSelectedYear(option.value);
-  };
 
   return (
     <Cart>
