@@ -371,7 +371,10 @@ const cancelMyOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  res.status(200).json(order);
+  res.status(200).json({
+    success: true,
+    message: t('orderCancelled', req.lang),
+  });
 });
 
 export { cancelMyOrder, createOrder, getOrderById, getUserOrders, payOrder };

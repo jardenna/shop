@@ -8,6 +8,7 @@ import ProgressTracker from '../components/progressTracker/ProgressTracker';
 import SkeletonOrderDetailsPage from '../components/skeleton/skeletonOrderDetailsPage/SkeletonOrderDetailsPage';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useLanguage } from '../features/language/useLanguage';
+import CancelOrderButton from '../features/orders/components/myOrderDetails/CancelOrderButton';
 import MyOrderDetailList from '../features/orders/components/myOrderDetails/MyOrderDetailList';
 import MyOrderInfo from '../features/orders/components/MyOrderInfo';
 import OrderAddressList from '../features/orders/components/orderAddressList/OrderAddressList';
@@ -79,10 +80,8 @@ const MyOrderDetailsPage = () => {
         {order && (
           <div className="my-orders-page">
             <MyOrderInfo language={language} status={order.delivery.status} />
-
             <ProgressTracker steps={orderTrackingList} status={status} />
             <OrderSummary language={language} order={order} />
-
             <section className="order-details">
               <MyOrderDetailList
                 createdAt={order.createdAt}
@@ -92,18 +91,21 @@ const MyOrderDetailsPage = () => {
 
               <OrderAddressList addresses={addressList} refetch={refetch} />
             </section>
-            <DownloadPdfBtn
-              document={
-                <PrintOrder
-                  order={order}
-                  selectedLanguage={selectedLanguage}
-                  language={language}
-                  rates={rates}
-                />
-              }
-              fileName={`order-${order.id}.pdf`}
-              label={language.printOrder}
-            />
+            <div>
+              <CancelOrderButton status={status.status} id={id ?? ''} />
+              <DownloadPdfBtn
+                document={
+                  <PrintOrder
+                    order={order}
+                    selectedLanguage={selectedLanguage}
+                    language={language}
+                    rates={rates}
+                  />
+                }
+                fileName={`order-${order.id}.pdf`}
+                label={language.printOrder}
+              />
+            </div>
           </div>
         )}
       </ErrorBoundary>

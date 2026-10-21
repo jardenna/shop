@@ -75,6 +75,7 @@ const MyOrdersPage = () => {
                 <MyOrderFooter
                   language={language}
                   delivery={myOrder.delivery}
+                  id={myOrder.id}
                   onViewDetails={() => {
                     handleViewDetails(myOrder.id);
                   }}
