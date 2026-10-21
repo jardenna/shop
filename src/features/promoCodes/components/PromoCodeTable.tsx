@@ -79,11 +79,11 @@ const PromoCodeTable = () => {
           name="year"
           labelText={language.filterByYear}
         />
-        {promoCodes && (
+        {filteredPromoCodes && (
           <SimpleTable
             tableCaption={language.discountCodeList}
             tableHeaderList={tableHeaderList}
-            tableDataList={promoCodes}
+            tableDataList={filteredPromoCodes}
             rowKey={({ code }) => code}
             emptyHeaderCellText={language.updatePromoCode}
             renderCells={({
