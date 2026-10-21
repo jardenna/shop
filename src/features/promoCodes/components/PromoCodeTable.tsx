@@ -10,6 +10,7 @@ import MoreLink from '../../../components/MoreLink';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
+import SkeletonTable from '../../../components/skeleton/skeletonTable/SkeletonTable';
 import { AdminPath } from '../../../layout/nav/enums';
 import { OptionType } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
@@ -54,6 +55,7 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
+      <SkeletonTable rowCount={4} cellCount={4} height="4" />
       <header className="promo-code-header">
         <SectionHeading heading={language.discountCodes} />
         <LinkButton
