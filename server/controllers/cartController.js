@@ -255,10 +255,24 @@ const applyPromoCode = asyncHandler(async (req, res) => {
   }
 
   if (cart.discount?.code) {
-    return res.status(400).json({
-      success: false,
-      message: t('promoCodeAlreadyUsed', req.lang),
+    const currentDiscount = await getActiveDiscount({
+      role: user.role,
+      code: cart.discount.code,
+      lang: req.lang,
     });
+
+    if (currentDiscount.code) {
+      return res.status(400).json({
+        success: false,
+        message: t('promoCodeAlreadyApplied', req.lang),
+      });
+    }
+
+    cart.discount = {
+      code: '',
+      label: '',
+      percent: 0,
+    };
   }
 
   const promoCode = req.body.promoCode;
