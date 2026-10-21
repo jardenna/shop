@@ -211,6 +211,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterByYear;Filter by year;Filtrer efter år
 filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
 filterRow;Filter row;Filtrer række
@@ -535,6 +536,7 @@ selectedSize;Selected size;Valgt størrelse
 selectNumber;Select number;Vælg antal
 selectPreferences;Select preferred language and currency;Vælg sprog og valuta
 selectSize;Select size;Vælg størrelse
+selectYear;Select year;Vælg år
 sendOrder;Send order;Send ordre
 serverError;Server error. Please try again later.;Der opstod en fejl. Prøv igen senere.
 shareReview;Share review;Del anmeldelse

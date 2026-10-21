@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Cart from '../../../components/carts/Cart';
@@ -6,9 +7,11 @@ import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import Skeleton from '../../../components/skeleton/Skeleton';
 import { AdminPath } from '../../../layout/nav/enums';
+import { OptionType } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import { tableHeaderList } from '../tableHeaderList';
@@ -18,6 +21,34 @@ const PromoCodeTable = () => {
   const { language } = useLanguage();
 
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
+
+  const [selectedYear, setSelectedYear] = useState('');
+
+  const yearOptions = [
+    {
+      label: '2026',
+      value: '2026',
+      id: '2026',
+    },
+    {
+      label: '2027',
+      value: '2027',
+      id: '2027',
+    },
+  ];
+
+  const filteredPromoCodes = selectedYear
+    ? promoCodes?.filter(
+        (promoCode) =>
+          new Date(promoCode.startsAt).getFullYear() === Number(selectedYear),
+      )
+    : promoCodes;
+
+  console.log(filteredPromoCodes);
+
+  const handleSelectYear = (option: OptionType) => {
+    setSelectedYear(option.value);
+  };
 
   return (
     <Cart>
@@ -37,6 +68,16 @@ const PromoCodeTable = () => {
           refetch();
         }}
       >
+        <Selectbox
+          id="year"
+          placeHolder={language.selectYear}
+          options={yearOptions}
+          onChange={(option) => {
+            handleSelectYear(option);
+          }}
+          name="year"
+          labelText={language.filterByYear}
+        />
         {promoCodes && (
           <SimpleTable
             tableCaption={language.discountCodeList}
