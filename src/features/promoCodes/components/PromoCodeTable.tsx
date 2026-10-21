@@ -23,23 +23,26 @@ const PromoCodeTable = () => {
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
 
   const yearOptions = [
-    ...new Set(
-      promoCodes?.map((promoCode) =>
-        String(new Date(promoCode.startsAt).getFullYear()),
-      ) ?? [],
-    ),
-  ]
-    .sort((a, b) => Number(b) - Number(a))
-    .map((year) => ({
-      label: year,
-      value: year,
-      id: year,
-    }));
+    { label: language.allYears, value: '', id: 'all-years' },
+    ...[
+      ...new Set(
+        promoCodes?.map((promoCode) =>
+          String(new Date(promoCode.startsAt).getFullYear()),
+        ) ?? [],
+      ),
+    ]
+      .sort((firstYear, secondYear) => Number(secondYear) - Number(firstYear))
+      .map((year) => ({
+        label: year,
+        value: year,
+        id: year,
+      })),
+  ];
 
   const [selectedYear, setSelectedYear] = useState('');
 
-  const handleSelectYear = (option: OptionType) => {
-    setSelectedYear(option.value);
+  const handleSelectYear = (option: OptionType | null) => {
+    setSelectedYear(option?.value ?? '');
   };
 
   const filteredPromoCodes = selectedYear
