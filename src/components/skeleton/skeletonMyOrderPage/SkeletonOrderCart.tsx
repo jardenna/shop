@@ -20,10 +20,7 @@ const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
 
       <div className="footer-row">
         <Skeleton className="delivery-date" />
-        <div className="my-order-footer-actions">
-          <SkeletonButton width="10" />
-          <SkeletonButton width="10" />
-        </div>
+        <SkeletonButton width="10" />
       </div>
     </div>
   ));
