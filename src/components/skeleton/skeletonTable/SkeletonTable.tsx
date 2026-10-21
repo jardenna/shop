@@ -3,12 +3,16 @@ import './_skeleton-table.scss';
 import SkeletonCell from './SkeletonCell';
 
 interface SkeletonTableProps extends SkeletonProps {
-  count?: number;
-  skeletonHeight?: string;
+  cellCount?: number;
+  rowCount?: number;
 }
 
-const SkeletonTable = ({ count = 10, skeletonHeight }: SkeletonTableProps) => {
-  const skeletons = Array.from({ length: count });
+const SkeletonTable = ({
+  rowCount = 10,
+  cellCount,
+  height,
+}: SkeletonTableProps) => {
+  const skeletons = Array.from({ length: rowCount });
 
   return (
     <div className="skeleton-table">
@@ -16,9 +20,9 @@ const SkeletonTable = ({ count = 10, skeletonHeight }: SkeletonTableProps) => {
         <div
           className="skeleton-row"
           key={index}
-          style={{ height: `${skeletonHeight}rem` }}
+          style={{ height: `${height}rem` }}
         >
-          <SkeletonCell />
+          <SkeletonCell count={cellCount} />
         </div>
       ))}
     </div>
