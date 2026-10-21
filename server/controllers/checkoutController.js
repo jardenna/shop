@@ -30,10 +30,11 @@ const getCheckout = asyncHandler(async (req, res) => {
     });
   }
 
-  const activeDiscount = await getActiveDiscount(
-    user.role,
-    cart.discount?.code,
-  );
+  const activeDiscount = await getActiveDiscount({
+    role: user.role,
+    code: cart.discount?.code,
+    lang: req.lang,
+  });
 
   const cartData = await buildCartData({
     cart,

@@ -39,7 +39,7 @@ export const createSummaryItemList = ({
   }
 
   if (summary.promoDiscount > 0 && discount) {
-    const discountLabel = `${discount.label === 'employeeDiscount' ? language[discount.label] : discount.label} (${discount.percent}%)`;
+    const discountLabel = `${discount.label} (${discount.percent}%)`;
 
     summaryItemList.push({
       label: discountLabel,

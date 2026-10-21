@@ -1,11 +1,12 @@
 import { EMPLOYEE_DISCOUNT, ROLES } from '../config/constants.js';
 import PromoCode from '../models/promoCodeModel.js';
+import { t } from '../utils/translator.js';
 
-export const getActiveDiscount = async (role, code) => {
+export const getActiveDiscount = async ({ role, code, lang }) => {
   if (role === ROLES.EMPLOYEE) {
     return {
       percent: EMPLOYEE_DISCOUNT,
-      label: 'employeeDiscount',
+      label: t('employeeDiscount', lang),
       code: '',
     };
   }
