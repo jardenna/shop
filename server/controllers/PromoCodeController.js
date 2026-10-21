@@ -1,3 +1,4 @@
+import { ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import PromoCode from '../models/promoCodeModel.js';
 import User from '../models/userModel.js';
@@ -79,7 +80,7 @@ const getPromoCode = asyncHandler(async (req, res) => {
 const getCurrentPromoCode = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select('role');
 
-  if (user?.role === 'Employee') {
+  if (user?.role === ROLES.EMPLOYEE) {
     return res.status(200).json(null);
   }
 

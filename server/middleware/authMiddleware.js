@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { ROLES } from '../config/constants.js';
 import User from '../models/userModel.js';
 import { t } from '../utils/translator.js';
 import asyncHandler from './asyncHandler.js';
@@ -50,7 +51,7 @@ const authorizeAdmin = (req, res, next) => {
 };
 
 const authorizeEmployee = (req, res, next) => {
-  if (req.user && req.user.role === 'Employee') {
+  if (req.user && req.user.role === ROLES.EMPLOYEE) {
     next();
   } else {
     return res.status(401).json({
