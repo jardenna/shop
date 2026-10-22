@@ -11,8 +11,6 @@ export type Roles = (typeof roleValues)[number];
 
 export type Status = (typeof statusValues)[number];
 
-// // --- Auth ---
-
 // Category
 export type ScheduledResponse = {
   hasScheduled: boolean;
