@@ -1,4 +1,4 @@
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
+import { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
 import Button from '../../../components/Button';
 import { BtnVariant } from '../../../types/enums';
 import NotifyMeForm from '../../shop/components/NotifyMeForm';

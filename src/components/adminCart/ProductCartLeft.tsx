@@ -1,4 +1,4 @@
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
+import type { Status } from '../../app/api/apiTypes/AdminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import MissingImage from '../formElements/fileInput/MissingImage';

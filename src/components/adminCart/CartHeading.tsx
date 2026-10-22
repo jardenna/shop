@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/adminApiTypes';
+import { Status } from '../../app/api/apiTypes/AdminApiTypes';
 import AdminBadge from './AdminBadge';
 
 interface CartHeadingProps {

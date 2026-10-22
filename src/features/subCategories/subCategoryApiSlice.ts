@@ -1,15 +1,15 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type {
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
+import { ScheduledResponse } from '../../app/api/apiTypes/AdminApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
   CreateSubCategoryRequest,
-  ScheduledResponse,
   SubCategoriesResponse,
   SubCategoriesWithParent,
   SubCategoryParams,
   SubCategoryResponse,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
-import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/subCategoryApiTypes';
 import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({
@@ -42,7 +42,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     deleteSubCategory: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${subCategoryUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
     }),
     updateSubCategory: builder.mutation<
@@ -51,7 +51,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ subCategory, id }) => ({
         url: `${subCategoryUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: subCategory,
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],
@@ -62,7 +62,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: (subCategory) => ({
         url: subCategoryUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: subCategory,
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],

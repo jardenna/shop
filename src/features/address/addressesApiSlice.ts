@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddAddressRequest,
   Address,
@@ -17,7 +17,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
     addAddress: builder.mutation<BaseAddress, AddAddressRequest>({
       query: (address) => ({
         url: addressUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: address,
       }),
       invalidatesTags: [TagTypesEnum.Address],
@@ -25,7 +25,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
     updateAddress: builder.mutation<BaseAddress, UpdateAddressRequest>({
       query: ({ address, id }) => ({
         url: `${addressUrl}/${id}`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
         body: { address },
       }),
       invalidatesTags: [TagTypesEnum.Address],
@@ -33,7 +33,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
     deleteAddress: builder.mutation<BaseAddress, string>({
       query: (id) => ({
         url: `${addressUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),

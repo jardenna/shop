@@ -16,6 +16,14 @@ export enum TagTypesEnum {
   Users = 'Users',
 }
 
+export enum MethodsEnum {
+  Delete = 'DELETE',
+  Get = 'GET',
+  Patch = 'PATCH',
+  Post = 'POST',
+  Put = 'PUT',
+}
+
 const apiSlice = createApi({
   baseQuery: baseQueryWithErrorHandling,
   tagTypes: [

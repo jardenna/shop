@@ -1,4 +1,4 @@
-import { UserResponse } from '../../app/api/apiTypes/adminApiTypes';
+import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { InputChangeHandler, OptionType } from '../../types/types';

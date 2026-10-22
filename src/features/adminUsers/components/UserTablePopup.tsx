@@ -1,4 +1,4 @@
-import { Roles } from '../../../app/api/apiTypes/adminApiTypes';
+import { Roles } from '../../../app/api/apiTypes/AdminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import { ColumnKey } from '../../../pages/users/UserPage';

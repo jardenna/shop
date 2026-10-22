@@ -1,11 +1,11 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type {
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  BaseUser,
   UpdateUserByIdRequest,
-  UpdateUserByIdResponse,
   UserParams,
   UserResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
-import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+} from '../../app/api/apiTypes/userApiTypes';
 import { userUrl } from '../../app/endpoints';
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -17,20 +17,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [TagTypesEnum.Auth],
     }),
-    updateUser: builder.mutation<UpdateUserByIdResponse, UpdateUserByIdRequest>(
-      {
-        query: ({ user, id }) => ({
-          url: `${userUrl}/${id}`,
-          method: 'PUT',
-          body: user,
-        }),
-        invalidatesTags: [TagTypesEnum.Auth],
-      },
-    ),
+    updateUser: builder.mutation<BaseUser, UpdateUserByIdRequest>({
+      query: ({ user, id }) => ({
+        url: `${userUrl}/${id}`,
+        method: MethodsEnum.Put,
+        body: user,
+      }),
+      invalidatesTags: [TagTypesEnum.Auth],
+    }),
     deleteUser: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${userUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),

@@ -1,4 +1,4 @@
-import { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
+import { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
 import { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<UserResponse>[] = [

@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   MyAccountRequest,
   MyAccountResponse,
@@ -14,7 +14,7 @@ export const accountApiSlice = apiSlice.injectEndpoints({
     updateMyAccount: builder.mutation<MyAccountResponse, MyAccountRequest>({
       query: (address) => ({
         url: profileUrl,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: address,
       }),
       invalidatesTags: [TagTypesEnum.Account],

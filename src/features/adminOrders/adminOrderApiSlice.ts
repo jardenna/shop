@@ -1,8 +1,8 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AdminOrderParams,
   AdminOrderResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
+} from '../../app/api/apiTypes/adminOrderApiTypes';
 import {
   OrderResponse,
   UpdateOrderRequest,
@@ -30,7 +30,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     updateOrder: builder.mutation<DefaultResponse, UpdateOrderRequest>({
       query: ({ orderId, status }) => ({
         url: `${adminOrdersUrl}/${orderId}/status`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
         body: { status },
       }),
       invalidatesTags: (_result, _error, { orderId }) => [
@@ -40,7 +40,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     cancelOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
         url: `${adminOrdersUrl}/${orderId}/cancel`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
       }),
       invalidatesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },
@@ -49,7 +49,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
     shipOrder: builder.mutation<DefaultResponse, string>({
       query: (orderId) => ({
         url: `${adminOrdersUrl}/${orderId}/send-order`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
       }),
       invalidatesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },

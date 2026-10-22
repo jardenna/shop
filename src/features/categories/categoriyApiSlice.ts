@@ -1,12 +1,12 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type {
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
+import { ScheduledResponse } from '../../app/api/apiTypes/AdminApiTypes';
+import {
   CategoriesResponse,
   CategoryItemResponse,
   CategoryParams,
   CreateCategoryRequest,
-  ScheduledResponse,
   UpdateCategoryRequest,
-} from '../../app/api/apiTypes/adminApiTypes';
+} from '../../app/api/apiTypes/categoryApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 export const categoryApiSlice = apiSlice.injectEndpoints({
@@ -41,7 +41,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
       {
         query: (name) => ({
           url: categoryUrl,
-          method: 'POST',
+          method: MethodsEnum.Post,
           body: name,
         }),
         invalidatesTags: [TagTypesEnum.Categories],
@@ -53,7 +53,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ category, id }) => ({
         url: `${categoryUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: category,
       }),
       invalidatesTags: [TagTypesEnum.Categories],

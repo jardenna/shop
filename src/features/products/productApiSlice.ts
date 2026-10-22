@@ -1,12 +1,12 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import type {
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
+import { ScheduledResponse } from '../../app/api/apiTypes/AdminApiTypes';
+import {
   Product,
   ProductRequest,
   ProductsParams,
   ProductsResponse,
-  ScheduledResponse,
   UpdateProductRequest,
-} from '../../app/api/apiTypes/adminApiTypes';
+} from '../../app/api/apiTypes/adminProductApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { productUrl } from '../../app/endpoints';
 
@@ -33,7 +33,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
     updateProduct: builder.mutation<Product, UpdateProductRequest>({
       query: ({ id, product }) => ({
         url: `${productUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: product,
       }),
       invalidatesTags: [TagTypesEnum.Products],
@@ -41,14 +41,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
     createProduct: builder.mutation<Product, ProductRequest>({
       query: (product) => ({
         url: productUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: product,
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
     duplicateProduct: builder.mutation<Product, string>({
       query: (id) => ({
-        method: 'POST',
+        method: MethodsEnum.Post,
         url: `${productUrl}/${id}/duplicate`,
       }),
       invalidatesTags: [TagTypesEnum.Products],
@@ -56,7 +56,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
     deleteProduct: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${productUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
     }),
   }),

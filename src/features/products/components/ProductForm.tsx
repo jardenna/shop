@@ -2,11 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
-import type {
-  Product,
-  ProductRequest,
-  SubCategoriesWithParent,
-} from '../../../app/api/apiTypes/adminApiTypes';
+import { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
+import { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
@@ -90,7 +87,7 @@ const ProductForm = ({
     onCustomChange(name, selectedOptions.value);
   };
 
-  const initialState: ProductRequest = {
+  const initialState = {
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
     quantity: selectedProduct?.quantity ?? 0,

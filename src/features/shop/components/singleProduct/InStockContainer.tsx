@@ -1,5 +1,5 @@
-import { UserResponse } from '../../../../app/api/apiTypes/adminApiTypes';
 import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { UserResponse } from '../../../../app/api/apiTypes/userApiTypes';
 import InStock from '../InStock';
 import NotifyMeForm from '../NotifyMeForm';
 

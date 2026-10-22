@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   CreateOrderRequest,
   MyOrdersResponse,
@@ -13,7 +13,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     createOrder: builder.mutation<OrderResponse, CreateOrderRequest>({
       query: (body) => ({
         url: ordersUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body,
       }),
       invalidatesTags: [TagTypesEnum.Order],
@@ -21,14 +21,14 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     payOrder: builder.mutation<OrderResponse, PayOrderRequest>({
       query: ({ orderId, ...payment }) => ({
         url: `${ordersUrl}/${orderId}/pay`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: payment,
       }),
     }),
     cancelMyOrder: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${ordersUrl}/${id}/cancel`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
       }),
       invalidatesTags: [TagTypesEnum.Order],
     }),
