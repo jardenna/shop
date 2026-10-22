@@ -11,6 +11,7 @@ import type {
   Size,
   SortOrder,
 } from './sharedApiTypes';
+import { BaseSubCategory } from './subCategoryApiTypes';
 
 export type Roles = (typeof roleValues)[number];
 
@@ -102,24 +103,6 @@ export type MainCategory = DefaultResponseType & {
   categoryStatus: Status;
   id: string;
   scheduledDate?: Date;
-};
-
-// SubCategories
-export type CreateSubCategoryRequest = {
-  category: string;
-  categoryStatus: Status;
-  subCategoryName: string;
-  translationKey: string;
-  scheduledDate?: Date;
-};
-
-export type BaseSubCategory = DefaultResponseType & {
-  _id: string;
-  allowedSizes: string[];
-  category: MainCategory;
-  categoryStatus: Status;
-  subCategoryName: string;
-  translationKey: string;
 };
 
 // Products
