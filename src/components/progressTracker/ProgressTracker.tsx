@@ -4,10 +4,7 @@ import { orderTrackingList } from '../../features/orders/utils/createTrackingLis
 import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_progress-tracker.scss';
-
-interface Status {
-  status: string;
-}
+import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 
 interface TrackingList {
   iconName: IconName;
@@ -16,7 +13,7 @@ interface TrackingList {
 }
 
 interface ProgressTrackerProps {
-  status: Status;
+  status: DeliveryStatus;
   steps: TrackingList[];
 }
 
@@ -36,7 +33,7 @@ const ProgressTracker = ({ steps, status }: ProgressTrackerProps) => {
   const { language } = useLanguage();
 
   const currentStatusIndex = orderTrackingList.findIndex(
-    ({ id }) => id === status.status,
+    ({ id }) => id === status,
   );
 
   return (
