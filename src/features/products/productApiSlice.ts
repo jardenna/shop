@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   Product,
   ProductRequest,
@@ -41,14 +41,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
     createProduct: builder.mutation<Product, ProductRequest>({
       query: (product) => ({
         url: productUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: product,
       }),
       invalidatesTags: [TagTypesEnum.Products],
     }),
     duplicateProduct: builder.mutation<Product, string>({
       query: (id) => ({
-        method: 'POST',
+        method: MethodsEnum.Post,
         url: `${productUrl}/${id}/duplicate`,
       }),
       invalidatesTags: [TagTypesEnum.Products],

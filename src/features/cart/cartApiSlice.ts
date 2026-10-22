@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddToCartRequest,
   BaseOrder,
@@ -21,7 +21,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
     addToCart: builder.mutation<CartListResponse, AddToCartRequest>({
       query: (cartItem) => ({
         url: cartUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: {
           cartItems: Array.isArray(cartItem) ? cartItem : [cartItem],
         },
@@ -31,7 +31,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
     replaceCart: builder.mutation<CartListResponse, UpdateCartRequest>({
       query: ({ cartItemId, cartItem }) => ({
         url: `${cartUrl}/${cartItemId}`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
         body: cartItem,
       }),
       invalidatesTags: [TagTypesEnum.Carts],
@@ -57,7 +57,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
     getGuestCart: builder.query<GuestCartResponse, BaseOrder[]>({
       query: (body) => ({
         url: guestCartUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body,
       }),
       providesTags: [TagTypesEnum.Carts],
@@ -65,7 +65,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
     updateQty: builder.mutation<DefaultResponse, UpdateCartQtyRequest>({
       query: ({ cartItemId, qty }) => ({
         url: `${cartUrl}/${cartItemId}/quantity`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
         body: { qty },
       }),
       invalidatesTags: [TagTypesEnum.Carts],
@@ -73,7 +73,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
     applyPromoCode: builder.mutation<CartListResponse, string>({
       query: (promoCode) => ({
         url: promoCodeurl,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
         body: { promoCode },
       }),
       invalidatesTags: [TagTypesEnum.Carts],

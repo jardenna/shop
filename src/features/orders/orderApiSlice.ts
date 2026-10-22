@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   CreateOrderRequest,
   MyOrdersResponse,
@@ -28,7 +28,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     cancelMyOrder: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${ordersUrl}/${id}/cancel`,
-        method: 'PATCH',
+        method: MethodsEnum.Patch,
       }),
       invalidatesTags: [TagTypesEnum.Order],
     }),

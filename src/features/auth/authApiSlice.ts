@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   AuthRequest,
   AuthResponse,
@@ -13,7 +13,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     registerUser: builder.mutation<AuthResponse, AuthRequest>({
       query: (user) => ({
         url: authEndpoints.register,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: user,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
@@ -21,7 +21,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     createUser: builder.mutation<AuthResponse, AuthRequest>({
       query: (user) => ({
         url: authEndpoints.create,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: user,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
@@ -29,7 +29,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     login: builder.mutation<AuthResponse, OmittedUserRequest>({
       query: (user) => ({
         url: authEndpoints.login,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: user,
       }),
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
@@ -43,7 +43,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     logout: builder.mutation<DefaultResponse, void>({
       query: () => ({
         url: authEndpoints.logout,
-        method: 'POST',
+        method: MethodsEnum.Post,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {

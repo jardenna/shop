@@ -1,4 +1,4 @@
-import apiSlice from '../app/api/apiSlice';
+import apiSlice, { MethodsEnum } from '../app/api/apiSlice';
 import type { UploadResponse } from '../app/api/apiTypes/adminApiTypes';
 
 export const uploadImageApiSlice = apiSlice.injectEndpoints({
@@ -6,7 +6,7 @@ export const uploadImageApiSlice = apiSlice.injectEndpoints({
     uploadImage: builder.mutation<UploadResponse, FormData>({
       query: (formData) => ({
         url: '/upload',
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: formData,
       }),
     }),

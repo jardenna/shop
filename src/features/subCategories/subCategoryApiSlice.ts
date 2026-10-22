@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   CreateSubCategoryRequest,
   ScheduledResponse,
@@ -62,7 +62,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: (subCategory) => ({
         url: subCategoryUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: subCategory,
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],

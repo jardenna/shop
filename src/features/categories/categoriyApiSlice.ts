@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   CategoriesResponse,
   CategoryItemResponse,
@@ -41,7 +41,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
       {
         query: (name) => ({
           url: categoryUrl,
-          method: 'POST',
+          method: MethodsEnum.Post,
           body: name,
         }),
         invalidatesTags: [TagTypesEnum.Categories],

@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   ProductMenuResponse,
@@ -43,7 +43,7 @@ export const shopApiSlice = apiSlice.injectEndpoints({
     postReviews: builder.mutation<ReviewsResponse, ReviewsRequest>({
       query: ({ productId, reviews }) => ({
         url: `${productUrl}/${productId}/reviews`,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body: reviews,
       }),
       invalidatesTags: [TagTypesEnum.Products],

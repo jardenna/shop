@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type { ToggleFavoriteResponse } from '../../app/api/apiTypes/shopApiTypes';
 import { favoritesUrl } from '../../app/endpoints';
@@ -12,7 +12,7 @@ export const favoritesApiSlice = apiSlice.injectEndpoints({
     toggleFavorite: builder.mutation<ToggleFavoriteResponse, string>({
       query: (id) => ({
         url: `${favoritesUrl}/${id}`,
-        method: 'POST',
+        method: MethodsEnum.Post,
       }),
       invalidatesTags: [TagTypesEnum.Favorites],
       // Favorites cach value
