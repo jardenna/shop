@@ -53,7 +53,7 @@ export const categoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ category, id }) => ({
         url: `${categoryUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: category,
       }),
       invalidatesTags: [TagTypesEnum.Categories],

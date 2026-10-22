@@ -33,7 +33,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
     updateProduct: builder.mutation<Product, UpdateProductRequest>({
       query: ({ id, product }) => ({
         url: `${productUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: product,
       }),
       invalidatesTags: [TagTypesEnum.Products],
@@ -56,7 +56,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
     deleteProduct: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${productUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
     }),
   }),

@@ -13,7 +13,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     createOrder: builder.mutation<OrderResponse, CreateOrderRequest>({
       query: (body) => ({
         url: ordersUrl,
-        method: 'POST',
+        method: MethodsEnum.Post,
         body,
       }),
       invalidatesTags: [TagTypesEnum.Order],
@@ -21,7 +21,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     payOrder: builder.mutation<OrderResponse, PayOrderRequest>({
       query: ({ orderId, ...payment }) => ({
         url: `${ordersUrl}/${orderId}/pay`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: payment,
       }),
     }),

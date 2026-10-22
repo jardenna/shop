@@ -42,7 +42,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     deleteSubCategory: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${subCategoryUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
     }),
     updateSubCategory: builder.mutation<
@@ -51,7 +51,7 @@ const subCategoryApiSlice = apiSlice.injectEndpoints({
     >({
       query: ({ subCategory, id }) => ({
         url: `${subCategoryUrl}/${id}`,
-        method: 'PUT',
+        method: MethodsEnum.Put,
         body: subCategory,
       }),
       invalidatesTags: [TagTypesEnum.SubCategories],

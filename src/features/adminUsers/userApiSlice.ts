@@ -1,4 +1,4 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   UpdateUserByIdRequest,
   UpdateUserByIdResponse,
@@ -21,7 +21,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
       {
         query: ({ user, id }) => ({
           url: `${userUrl}/${id}`,
-          method: 'PUT',
+          method: MethodsEnum.Put,
           body: user,
         }),
         invalidatesTags: [TagTypesEnum.Auth],
@@ -30,7 +30,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     deleteUser: builder.mutation<DefaultResponse, string>({
       query: (id) => ({
         url: `${userUrl}/${id}`,
-        method: 'DELETE',
+        method: MethodsEnum.Delete,
       }),
       invalidatesTags: [TagTypesEnum.Auth],
     }),
