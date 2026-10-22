@@ -1,5 +1,5 @@
 import { OptionProps } from 'react-select';
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
+import type { Status } from '../../app/api/apiTypes/adminOrderApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import CustomOption from './CustomOption';
 

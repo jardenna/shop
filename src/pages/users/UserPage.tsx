@@ -1,4 +1,4 @@
-import { Roles } from '../../app/api/apiTypes/adminApiTypes';
+import { Roles } from '../../app/api/apiTypes/adminOrderApiTypes';
 import DeleteItem from '../../components/deleteItem/DeleteItem';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';

@@ -1,4 +1,4 @@
-import { Order } from '../../../app/api/apiTypes/adminApiTypes';
+import { Order } from '../../../app/api/apiTypes/adminOrderApiTypes';
 import { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<Order>[] = [

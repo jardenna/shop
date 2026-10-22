@@ -2,7 +2,7 @@ import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AdminOrderParams,
   AdminOrderResponse,
-} from '../../app/api/apiTypes/adminApiTypes';
+} from '../../app/api/apiTypes/adminOrderApiTypes';
 import {
   OrderResponse,
   UpdateOrderRequest,

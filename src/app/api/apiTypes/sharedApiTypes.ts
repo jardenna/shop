@@ -1,5 +1,5 @@
 import { mainCategoryValues, subCategoryValues } from '../apiConstants';
-import type { Status } from './adminApiTypes';
+import type { Status } from './adminOrderApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
@@ -49,7 +49,7 @@ export type SubCategoryNames = (typeof subCategoryValues)[number];
 
 export type SortOrder = 'asc' | 'desc';
 
-export type BaseProduct = {
+export interface BaseProduct {
   allowedSizes: Size[];
   brand: string;
   categoryName: MainCategoryNames;
@@ -61,7 +61,7 @@ export type BaseProduct = {
   price: number;
   productName: string;
   sizes: Size[];
-};
+}
 
 export type BaseShopProduct = BaseProduct &
   DefaultResponseType & {

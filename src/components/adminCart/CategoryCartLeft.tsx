@@ -1,4 +1,4 @@
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
+import type { Status } from '../../app/api/apiTypes/adminOrderApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import CartContent from './CartContent';
 import CartHeading from './CartHeading';
