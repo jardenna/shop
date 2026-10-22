@@ -1,69 +1,23 @@
 import { roleValues, statusValues } from '../apiConstants';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
-import type {
-  DefaultResponse,
-  DefaultResponseType,
-  SortOrder,
-} from './sharedApiTypes';
+import type { DefaultResponse, SortOrder } from './sharedApiTypes';
 
 export type Roles = (typeof roleValues)[number];
 
 export type Status = (typeof statusValues)[number];
 
-// Category
 export type ScheduledResponse = {
   hasScheduled: boolean;
-};
-
-export type Category = DefaultResponseType & {
-  categoryName: string;
-  categoryStatus: Status;
-  id: string;
-  scheduledDate?: Date;
-};
-
-export type CategoriesResponse = DefaultResponse & {
-  categories: Category[];
 };
 
 export type UploadResponse = DefaultResponse & {
   images: string[];
 };
 
-export type CreateCategoryRequest = {
-  categoryName: string;
-  categoryStatus: Status;
-  scheduledDate?: Date;
-};
-
-export type CategoryItemResponse = DefaultResponseType & {
-  category: Category;
-};
-
-export type UpdateCategoryRequest = {
-  category: CreateCategoryRequest;
-  id: string;
-};
-
-// MainCategories
-export type MainCategory = DefaultResponseType & {
-  _id: string;
-  categoryName: string;
-  categoryStatus: Status;
-  id: string;
-  scheduledDate?: Date;
-};
-
 export type SortParams = {
   sortField: string;
   sortOrder: SortOrder;
-};
-
-export type CategoryParams = SortParams & {
-  categoryName: string;
-  categoryStatus: Status;
-  createdAt: string;
 };
 
 export type FileName = 'images';
@@ -81,7 +35,7 @@ export interface AdminOrderParams extends SortParams {
   paymentStatus?: string;
 }
 
-export interface OrderItems {
+export interface Order {
   createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatus;
@@ -94,7 +48,7 @@ export interface OrderItems {
 
 export interface AdminOrderResponse {
   orderCount: number;
-  orders: OrderItems[];
+  orders: Order[];
   page: number;
   pages: number;
   success: boolean;

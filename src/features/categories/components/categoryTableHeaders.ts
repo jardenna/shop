@@ -1,4 +1,4 @@
-import { Category } from '../../../app/api/apiTypes/adminApiTypes';
+import { Category } from '../../../app/api/apiTypes/categoryApiTypes';
 import { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<Category>[] = [

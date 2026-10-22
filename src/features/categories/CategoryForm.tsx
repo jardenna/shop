@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
-import type { CreateCategoryRequest } from '../../app/api/apiTypes/adminApiTypes';
+import { CreateCategoryRequest } from '../../app/api/apiTypes/categoryApiTypes';
 import { useDatePicker } from '../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FieldSet from '../../components/fieldset/FieldSet';

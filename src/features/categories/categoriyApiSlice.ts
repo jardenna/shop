@@ -1,12 +1,12 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import type {
+import type { ScheduledResponse } from '../../app/api/apiTypes/adminApiTypes';
+import {
   CategoriesResponse,
   CategoryItemResponse,
   CategoryParams,
   CreateCategoryRequest,
-  ScheduledResponse,
   UpdateCategoryRequest,
-} from '../../app/api/apiTypes/adminApiTypes';
+} from '../../app/api/apiTypes/categoryApiTypes';
 import { categoryUrl } from '../../app/endpoints';
 
 export const categoryApiSlice = apiSlice.injectEndpoints({
