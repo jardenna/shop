@@ -142,16 +142,6 @@ export type SubCategoriesWithParent = {
   parentCategoryName: string;
 };
 
-export type UpdateSubCategoryResponse = {
-  category: Category;
-  subCategory: SubCategoryResponse;
-};
-
-export type UpdateSubCategoryRequest = {
-  id: string;
-  subCategory: CreateSubCategoryRequest;
-};
-
 // Products
 export type Product = BaseShopProduct & {
   category: Category;

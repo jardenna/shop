@@ -6,10 +6,12 @@ import type {
   SubCategoriesWithParent,
   SubCategoryParams,
   SubCategoryResponse,
-  UpdateSubCategoryRequest,
-  UpdateSubCategoryResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import {
+  UpdateSubCategoryRequest,
+  UpdateSubCategoryResponse,
+} from '../../app/api/apiTypes/subCategoryApiTypes';
 import { subCategoryUrl } from '../../app/endpoints';
 
 const subCategoryApiSlice = apiSlice.injectEndpoints({
