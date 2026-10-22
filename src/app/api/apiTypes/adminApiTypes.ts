@@ -1,14 +1,13 @@
 import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
+import { ProductRequest } from './adminProductApiTypes';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
   BasePagination,
-  BaseProductParams,
   BaseShopProduct,
   DefaultResponse,
   DefaultResponseType,
-  Size,
   SortOrder,
 } from './sharedApiTypes';
 import { BaseSubCategory } from './subCategoryApiTypes';
@@ -130,37 +129,7 @@ export type UserParams = SortParams & {
   username: string;
 };
 
-export type ProductsParams = BaseProductParams &
-  SortParams & {
-    categoryName: string;
-    maxDiscount: string;
-    maxPrice: string;
-    maxStock: string;
-    minDiscount: string;
-    minPrice: string;
-    minStock: string;
-    productName: string;
-    productStatus: Status;
-    subCategoryName: string;
-    maxDiscountedPrice?: string;
-    minDiscountedPrice?: string;
-  };
-
-export type ProductRequest = {
-  brand: string;
-  colors: string[];
-  description: string;
-  discount: number;
-  images: string[];
-  material: string;
-  price: number;
-  productName: string;
-  productStatus: Status;
-  quantity: number;
-  sizes: Size[];
-  subCategory: string;
-  scheduledDate?: Date;
-};
+// Products
 
 export type UpdateProductRequest = {
   id: string;

@@ -1,12 +1,14 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
   Product,
-  ProductRequest,
-  ProductsParams,
   ProductsResponse,
   ScheduledResponse,
   UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
+import {
+  ProductRequest,
+  ProductsParams,
+} from '../../app/api/apiTypes/adminProductApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { productUrl } from '../../app/endpoints';
 
