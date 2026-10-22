@@ -3,11 +3,11 @@ import type {
   Product,
   ProductsResponse,
   ScheduledResponse,
-  UpdateProductRequest,
 } from '../../app/api/apiTypes/adminApiTypes';
 import {
   ProductRequest,
   ProductsParams,
+  UpdateProductRequest,
 } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { productUrl } from '../../app/endpoints';

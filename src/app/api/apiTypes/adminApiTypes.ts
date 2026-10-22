@@ -1,6 +1,5 @@
 import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
-import { ProductRequest } from './adminProductApiTypes';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
@@ -130,11 +129,6 @@ export type UserParams = SortParams & {
 };
 
 // Products
-
-export type UpdateProductRequest = {
-  id: string;
-  product: ProductRequest;
-};
 
 export type ProductsResponse = BasePagination & {
   products: Product[];
