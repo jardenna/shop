@@ -1,13 +1,13 @@
 import { Category, MainCategory, Status } from './adminApiTypes';
 import { DefaultResponseType } from './sharedApiTypes';
 
-export interface CreateSubCategoryRequest {
+export type CreateSubCategoryRequest = {
   category: string;
   categoryStatus: Status;
   subCategoryName: string;
   translationKey: string;
   scheduledDate?: Date;
-}
+};
 
 export interface BaseSubCategory extends DefaultResponseType {
   _id: string;

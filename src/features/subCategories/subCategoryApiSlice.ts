@@ -1,11 +1,11 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import type {
-  CreateSubCategoryRequest,
   ScheduledResponse,
   SubCategoryParams,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
+  CreateSubCategoryRequest,
   SubCategoriesResponse,
   SubCategoriesWithParent,
   SubCategoryResponse,
