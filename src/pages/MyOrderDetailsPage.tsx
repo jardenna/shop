@@ -32,10 +32,6 @@ const MyOrderDetailsPage = () => {
     isLoading,
   } = useGetOrderByIdQuery(id ?? '');
 
-  const status = {
-    status: order?.delivery.status ?? 'created',
-  };
-
   const addressList = order
     ? createOrderAddressList({
         billingAddress: order.billingAddress,
@@ -80,7 +76,10 @@ const MyOrderDetailsPage = () => {
         {order && (
           <div className="my-orders-page">
             <MyOrderInfo language={language} status={order.delivery.status} />
-            <ProgressTracker steps={orderTrackingList} status={status} />
+            <ProgressTracker
+              steps={orderTrackingList}
+              status={order.delivery.status}
+            />
             <OrderSummary language={language} order={order} />
             <section className="order-details">
               <MyOrderDetailList
@@ -92,7 +91,7 @@ const MyOrderDetailsPage = () => {
               <OrderAddressList addresses={addressList} refetch={refetch} />
             </section>
             <div className="my-order-footer-actions">
-              <CancelOrderButton status={status.status} id={id ?? ''} />
+              <CancelOrderButton status={order.delivery.status} id={id ?? ''} />
               <DownloadPdfBtn
                 document={
                   <PrintOrder

@@ -55,7 +55,7 @@ const OrderStatusActions = ({
 
   return (
     <Cart className="order-status-actions">
-      <ProgressTracker steps={orderTrackingList} status={orderStatus} />
+      <ProgressTracker steps={orderTrackingList} status={orderStatus.status} />
       {isCancelled && <OrderCancelledBadge language={language} />}
       {!isCancelled && !isDelivered && (
         <footer className="footer order-status-footer">
