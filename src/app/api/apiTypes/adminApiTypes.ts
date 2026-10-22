@@ -3,7 +3,6 @@ import { roleValues, statusValues } from '../apiConstants';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
-  BasePagination,
   BaseShopProduct,
   DefaultResponse,
   DefaultResponseType,
@@ -126,12 +125,6 @@ export type UserParams = SortParams & {
   email: string;
   role: Roles;
   username: string;
-};
-
-// Products
-
-export type ProductsResponse = BasePagination & {
-  products: Product[];
 };
 
 export type FileName = 'images';
