@@ -3,12 +3,12 @@ import type {
   CreateSubCategoryRequest,
   ScheduledResponse,
   SubCategoriesResponse,
-  SubCategoriesWithParent,
   SubCategoryParams,
   SubCategoryResponse,
 } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
+  SubCategoriesWithParent,
   UpdateSubCategoryRequest,
   UpdateSubCategoryResponse,
 } from '../../app/api/apiTypes/subCategoryApiTypes';

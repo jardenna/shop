@@ -134,14 +134,6 @@ export type SubCategoriesResponse = DefaultResponseType & {
   subCategories: SubCategoryResponse[];
 };
 
-export type SubCategoriesWithParent = {
-  allowedSizes: string[];
-  categoryId: string;
-  categoryStatus: Status;
-  label: string;
-  parentCategoryName: string;
-};
-
 // Products
 export type Product = BaseShopProduct & {
   category: Category;

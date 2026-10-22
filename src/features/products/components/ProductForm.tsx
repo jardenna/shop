@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router';
 import type {
   Product,
   ProductRequest,
-  SubCategoriesWithParent,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
