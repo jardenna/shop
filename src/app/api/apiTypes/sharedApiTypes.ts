@@ -1,5 +1,5 @@
 import { mainCategoryValues, subCategoryValues } from '../apiConstants';
-import type { Status } from './adminOrderApiTypes';
+import type { Status } from './AdminApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;

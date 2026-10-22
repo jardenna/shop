@@ -5,13 +5,13 @@ export type Roles = (typeof roleValues)[number];
 
 export type Status = (typeof statusValues)[number];
 
-export type ScheduledResponse = {
+export interface ScheduledResponse {
   hasScheduled: boolean;
-};
+}
 
-export type UploadResponse = DefaultResponse & {
+export interface UploadResponse extends DefaultResponse {
   images: string[];
-};
+}
 
 export type SortParams = {
   sortField: string;

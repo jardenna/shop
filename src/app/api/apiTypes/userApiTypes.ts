@@ -1,5 +1,5 @@
 import { OmitChecked } from '../../../types/types';
-import { Roles, SortParams } from './adminOrderApiTypes';
+import { Roles, SortParams } from './AdminApiTypes';
 import { DefaultResponse } from './sharedApiTypes';
 
 // --- Users ---

@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/adminOrderApiTypes';
+import { Status } from '../../app/api/apiTypes/AdminApiTypes';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
