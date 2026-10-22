@@ -1,4 +1,3 @@
-import type { OmitChecked } from '../../../types/types';
 import { roleValues, statusValues } from '../apiConstants';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
@@ -12,49 +11,7 @@ export type Roles = (typeof roleValues)[number];
 
 export type Status = (typeof statusValues)[number];
 
-// --- Users ---
-type EditableUserFields = {
-  email: string;
-  username: string;
-  role?: Roles;
-};
-
-type BaseUser = Required<EditableUserFields> & {
-  id: string;
-};
-
-export type UserResponse = BaseUser & {
-  isAdmin: boolean;
-};
-
-export type UpdateUserByIdResponse = BaseUser;
-
-export type UpdateUserById = Partial<EditableUserFields>;
-
-export type UpdateUserByIdRequest = {
-  id: string;
-  user: UpdateUserById;
-};
-
-export type UpdateUserRole = {
-  role: Roles;
-};
-
-export type UpdateUserRoleRequest = {
-  user: UpdateUserRole;
-  userId: string;
-};
-
-export type OmittedUserRequest = OmitChecked<AuthRequest, 'username'>;
-
-// --- Auth ---
-export type AuthRequest = EditableUserFields & {
-  password: string;
-};
-
-export type AuthResponse = DefaultResponse & {
-  user: UserResponse;
-};
+// // --- Auth ---
 
 // Category
 export type ScheduledResponse = {

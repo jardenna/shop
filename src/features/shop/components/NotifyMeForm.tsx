@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
-import type { UserResponse } from '../../../app/api/apiTypes/adminApiTypes';
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';

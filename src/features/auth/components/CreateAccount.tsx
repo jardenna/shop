@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router';
-import type {
+import {
   AuthRequest,
   AuthResponse,
   UserResponse,
-} from '../../../app/api/apiTypes/adminApiTypes';
+} from '../../../app/api/apiTypes/userApiTypes';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
