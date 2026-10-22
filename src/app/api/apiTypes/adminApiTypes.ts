@@ -102,7 +102,7 @@ export type MainCategory = DefaultResponseType & {
   scheduledDate?: Date;
 };
 
-// Products
+// Products used by ProductForm
 export type Product = BaseShopProduct & {
   category: Category;
   quantity: number;

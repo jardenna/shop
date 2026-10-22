@@ -1,5 +1,13 @@
-import { Product, SortParams, Status } from './adminApiTypes';
-import { BasePagination, Size } from './sharedApiTypes';
+import { Category, SortParams, Status } from './adminApiTypes';
+import { BasePagination, BaseShopProduct, Size } from './sharedApiTypes';
+import { BaseSubCategory } from './subCategoryApiTypes';
+
+export interface Product extends BaseShopProduct {
+  category: Category;
+  quantity: number;
+  subCategory: BaseSubCategory;
+  scheduledDate?: Date;
+}
 
 export interface ProductsParams extends SortParams {
   categoryName: string;

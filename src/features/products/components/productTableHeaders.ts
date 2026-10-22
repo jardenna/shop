@@ -1,4 +1,4 @@
-import { Product } from '../../../app/api/apiTypes/adminApiTypes';
+import { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
 import { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<Product>[] = [
