@@ -5,7 +5,7 @@ import { translateKey } from '../../../../utils/utils';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import './_order-list.scss';
 
-export interface OrderItems extends BaseOrder {
+interface Order extends BaseOrder {
   discount: number;
   id: string;
   image: string;
@@ -15,7 +15,7 @@ export interface OrderItems extends BaseOrder {
 
 interface OrderListProps {
   language: Record<string, string>;
-  orders: OrderItems[];
+  orders: Order[];
   hidePrice?: boolean;
 }
 
