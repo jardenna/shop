@@ -66,12 +66,6 @@ export type CategoryParams = SortParams & {
   createdAt: string;
 };
 
-export type UserParams = SortParams & {
-  email: string;
-  role: Roles;
-  username: string;
-};
-
 export type FileName = 'images';
 
 export interface AdminOrderParams extends SortParams {

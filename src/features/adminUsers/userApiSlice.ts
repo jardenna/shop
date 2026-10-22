@@ -1,9 +1,9 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import { UserParams } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   BaseUser,
   UpdateUserByIdRequest,
+  UserParams,
   UserResponse,
 } from '../../app/api/apiTypes/userApiTypes';
 import { userUrl } from '../../app/endpoints';
