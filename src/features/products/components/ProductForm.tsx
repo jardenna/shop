@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
-import type { Product } from '../../../app/api/apiTypes/adminApiTypes';
+import { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
 import { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';

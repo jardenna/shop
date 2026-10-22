@@ -3,12 +3,10 @@ import { roleValues, statusValues } from '../apiConstants';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
-  BaseShopProduct,
   DefaultResponse,
   DefaultResponseType,
   SortOrder,
 } from './sharedApiTypes';
-import { BaseSubCategory } from './subCategoryApiTypes';
 
 export type Roles = (typeof roleValues)[number];
 
@@ -99,14 +97,6 @@ export type MainCategory = DefaultResponseType & {
   categoryName: string;
   categoryStatus: Status;
   id: string;
-  scheduledDate?: Date;
-};
-
-// Products used by ProductForm
-export type Product = BaseShopProduct & {
-  category: Category;
-  quantity: number;
-  subCategory: BaseSubCategory;
   scheduledDate?: Date;
 };
 
