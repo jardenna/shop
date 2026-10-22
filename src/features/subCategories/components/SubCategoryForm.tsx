@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router';
 import type {
   Category,
   CreateSubCategoryRequest,
-  SubCategoryResponse,
 } from '../../../app/api/apiTypes/adminApiTypes';
+import { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';

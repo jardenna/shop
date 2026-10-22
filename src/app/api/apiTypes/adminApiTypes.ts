@@ -122,18 +122,6 @@ export type BaseSubCategory = DefaultResponseType & {
   translationKey: string;
 };
 
-export type SubCategoryResponse = BaseSubCategory & {
-  categoryName: string;
-  id: string;
-  mainCategory: MainCategory;
-  productCount: number;
-  scheduledDate?: Date;
-};
-
-export type SubCategoriesResponse = DefaultResponseType & {
-  subCategories: SubCategoryResponse[];
-};
-
 // Products
 export type Product = BaseShopProduct & {
   category: Category;
