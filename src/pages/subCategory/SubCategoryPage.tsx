@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/adminApiTypesNew';
+import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useLanguage } from '../../features/language/useLanguage';

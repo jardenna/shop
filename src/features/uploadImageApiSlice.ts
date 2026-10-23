@@ -1,5 +1,5 @@
 import apiSlice, { MethodsEnum } from '../app/api/apiSlice';
-import { UploadResponse } from '../app/api/apiTypes/adminApiTypesNew';
+import { UploadResponse } from '../app/api/apiTypes/adminApiTypes';
 
 export const uploadImageApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

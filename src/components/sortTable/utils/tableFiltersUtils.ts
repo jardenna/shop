@@ -8,7 +8,7 @@ import {
   statusValues,
   subCategoryValues,
 } from '../../../app/api/apiConstants';
-import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypesNew';
+import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
 import {
   DeliveryStatusFilterValues,
   PaymentMethodFilterValues,

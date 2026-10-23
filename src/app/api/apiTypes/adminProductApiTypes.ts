@@ -1,4 +1,4 @@
-import { SortParams, Status } from './adminApiTypesNew';
+import { SortParams, Status } from './adminApiTypes';
 import { Category } from './categoryApiTypes';
 import { BasePagination, BaseShopProduct, Size } from './sharedApiTypes';
 import { BaseSubCategory } from './subCategoryApiTypes';

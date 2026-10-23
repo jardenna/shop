@@ -1,4 +1,4 @@
-import { SortParams } from './adminApiTypesNew';
+import { SortParams } from './adminApiTypes';
 import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 
