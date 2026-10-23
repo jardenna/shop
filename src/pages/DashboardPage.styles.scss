@@ -13,11 +13,12 @@
 .promo-code-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
 }
 
 .promo-code-select {
   max-width: rem(152px);
-  margin-bottom: 12px;
 
   /* stylelint-disable-next-line selector-class-pattern */
   .select-box__control {
