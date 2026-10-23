@@ -5,7 +5,11 @@ const DashboardSettingsPage = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer heading={language.dashboardSettings} variant="large">
+    <AdminPageContainer
+      heading={language.dashboardSettings}
+      variant="large"
+      hideBreadCrumbs
+    >
       hello
     </AdminPageContainer>
   );

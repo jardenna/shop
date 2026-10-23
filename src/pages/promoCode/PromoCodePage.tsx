@@ -6,7 +6,11 @@ const PromoCodePage = () => {
   const { language } = useLanguage();
 
   return (
-    <AdminPageContainer heading={language.promoCodes} variant="large">
+    <AdminPageContainer
+      heading={language.discountCodes}
+      variant="large"
+      hideBreadCrumbs
+    >
       <PromoCodeTable />
     </AdminPageContainer>
   );
