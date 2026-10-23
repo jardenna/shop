@@ -1,4 +1,4 @@
-import type { Roles } from '../../../app/api/apiTypes/AdminApiTypes';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypesNew';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
 import type { InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';

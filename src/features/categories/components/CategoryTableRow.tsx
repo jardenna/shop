@@ -1,4 +1,4 @@
-import type { Status } from '../../../app/api/apiTypes/AdminApiTypes';
+import type { Status } from '../../../app/api/apiTypes/adminApiTypesNew';
 import AdminBadge from '../../../components/adminCart/AdminBadge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';

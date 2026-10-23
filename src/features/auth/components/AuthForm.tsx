@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import type { Roles } from '../../../app/api/apiTypes/AdminApiTypes';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypesNew';
 import Button from '../../../components/Button';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';

@@ -1,4 +1,4 @@
-import type { Status } from '../../../app/api/apiTypes/AdminApiTypes';
+import type { Status } from '../../../app/api/apiTypes/adminApiTypesNew';
 import AdminBadge from '../../../components/adminCart/AdminBadge';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';

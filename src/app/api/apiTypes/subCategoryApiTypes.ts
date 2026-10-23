@@ -1,4 +1,4 @@
-import { SortParams, Status } from './AdminApiTypes';
+import { SortParams, Status } from './adminApiTypesNew';
 import { Category, MainCategory } from './categoryApiTypes';
 import { DefaultResponseType } from './sharedApiTypes';
 

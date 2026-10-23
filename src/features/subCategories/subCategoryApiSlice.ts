@@ -1,5 +1,5 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import { ScheduledResponse } from '../../app/api/apiTypes/AdminApiTypes';
+import { ScheduledResponse } from '../../app/api/apiTypes/adminApiTypesNew';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   CreateSubCategoryRequest,

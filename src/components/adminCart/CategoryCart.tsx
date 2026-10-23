@@ -1,4 +1,4 @@
-import type { Status } from '../../app/api/apiTypes/AdminApiTypes';
+import type { Status } from '../../app/api/apiTypes/adminApiTypesNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/enums';
 import { translateKey } from '../../utils/utils';

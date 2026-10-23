@@ -1,4 +1,4 @@
-import { Status } from '../../../app/api/apiTypes/AdminApiTypes';
+import { Status } from '../../../app/api/apiTypes/adminApiTypesNew';
 import AdminBadge from '../../../components/adminCart/AdminBadge';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import ProductActions from './ProductActions';

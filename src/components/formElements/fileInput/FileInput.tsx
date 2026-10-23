@@ -1,4 +1,4 @@
-import { FileName } from '../../../app/api/apiTypes/AdminApiTypes';
+import { FileName } from '../../../app/api/apiTypes/adminApiTypesNew';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { IconName } from '../../../types/enums';
 import type { InputChangeHandler } from '../../../types/types';
