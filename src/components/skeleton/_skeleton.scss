@@ -29,7 +29,13 @@
   gap: 32px;
 }
 
-.skeleton-promo-code-page {
+.skeleton-promo-code-table {
+  .skeleton-header {
+    margin-bottom: 12px;
+  }
+}
+
+.skeleton-update-promo-code-page {
   .footer {
     margin-top: 8px;
   }

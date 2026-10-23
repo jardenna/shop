@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonPromoPage from '../../components/skeleton/SkeletonPromoPage';
+import SkeletonUpdatePromoPage from '../../components/skeleton/SkeletonUpdatePromoPage';
 import { useLanguage } from '../../features/language/useLanguage';
 import PromoCodeForm from '../../features/promoCodes/components/PromoCodeForm';
 import { useGetPromoCodeByIdQuery } from '../../features/promoCodes/promoCodeApiSlice';
@@ -31,7 +31,7 @@ const UpdatePromoCodePage = () => {
   }
 
   if (isLoading) {
-    return <SkeletonPromoPage />;
+    return <SkeletonUpdatePromoPage />;
   }
 
   return (

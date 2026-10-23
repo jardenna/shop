@@ -58,6 +58,7 @@ const SubCategoryPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminSubCategoryCreate}
       variant="medium"
+      hideBreadCrumbs
     >
       <SortTable
         btnLabel="subCategory"

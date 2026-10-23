@@ -5,9 +5,9 @@ import SkeletonFormCart from './SkeletonFormCart';
 import SkeletonInputList from './SkeletonInputList';
 import SkeletonToggleButton from './SkeletonToggleButton';
 
-const SkeletonPromoPage = () => (
+const SkeletonUpdatePromoPage = () => (
   <SkeletonAdminPage variant="medium">
-    <div className="skeleton-promo-code-page">
+    <div className="skeleton-update-promo-code-page">
       <SkeletonFormCart>
         <SkeletonToggleButton />
         <div className="skeleton-column" />
@@ -30,4 +30,4 @@ const SkeletonPromoPage = () => (
   </SkeletonAdminPage>
 );
 
-export default SkeletonPromoPage;
+export default SkeletonUpdatePromoPage;

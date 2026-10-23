@@ -63,6 +63,7 @@ const CategoryPage = () => {
       linkText={language.createNewCategory}
       linkTo={AdminPath.AdminCategoryCreate}
       variant="medium"
+      hideBreadCrumbs
     >
       <SortTable
         btnLabel={language.categories}

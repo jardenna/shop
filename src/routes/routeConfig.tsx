@@ -13,6 +13,7 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import DashboardPage from '../pages/DashboardPage';
+import DashboardSettingsPage from '../pages/DashboardSettingsPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
 import AccessibilityPage from '../pages/footerPages/AccessibilityPage';
@@ -33,6 +34,7 @@ import ProductPage from '../pages/product/ProductPage';
 import UpdateProductPage from '../pages/product/UpdateProductPage';
 import ViewProductPage from '../pages/product/ViewProductPage';
 import CreatePromoCodePage from '../pages/promoCode/CreatePromoCodePage';
+import PromoCodePage from '../pages/promoCode/PromoCodePage';
 import UpdatePromoCodePage from '../pages/promoCode/UpdatePromoCodePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import RegisterUserPage from '../pages/RegisterUserPage';
@@ -193,6 +195,14 @@ const adminRouteList = [
   {
     path: `${AdminPath.AdminOrderById}:id`,
     element: <AdminOrderDetailsPage />,
+  },
+  {
+    path: AdminPath.DashboardSettings,
+    element: <DashboardSettingsPage />,
+  },
+  {
+    path: AdminPath.AdminDiscountCodes,
+    element: <PromoCodePage />,
   },
 ];
 

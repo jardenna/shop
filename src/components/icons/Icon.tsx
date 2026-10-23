@@ -20,6 +20,7 @@ import ManIcon from './colors/ManIcon';
 import WomanIcon from './colors/WomanIcon';
 import DashboardIcon from './DashboardIcon';
 import DeliverIcon from './DeliverIcon';
+import DiscountIcon from './DiscountIcon';
 import DublicateIcon from './DublicateIcon';
 import ErrorIcon from './ErrorIcon';
 import EyeIcon from './EyeIcon';
@@ -51,6 +52,7 @@ import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import RefreshIcon from './RefreshIcon';
 import SearchIcon from './SearchIcon';
+import SettingIcon from './SettingIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
 import FacebookIcon from './socials/FacebookIcon';
 import InstagramIcon from './socials/InstagramIcon';
@@ -90,6 +92,7 @@ const iconMapping = {
   close: CloseIcon,
   dashboard: DashboardIcon,
   deliver: DeliverIcon,
+  discount: DiscountIcon,
   dublicate: DublicateIcon,
   error: ErrorIcon,
   eye: EyeIcon,
@@ -125,6 +128,7 @@ const iconMapping = {
   products: ProductsIcon,
   refresh: RefreshIcon,
   search: SearchIcon,
+  settings: SettingIcon,
   shoppingBag: ShoppingBagIcon,
   star: StarIcon,
   subCategories: SubCategoriesIcon,

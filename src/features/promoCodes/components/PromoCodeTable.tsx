@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import Cart from '../../../components/carts/Cart';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
@@ -54,15 +53,6 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <header className="promo-code-header">
-        <SectionHeading heading={language.discountCodes} />
-        <LinkButton
-          linkTo={AdminPath.AdminPromoCodeCreate}
-          linkText={language.createNewDiscountCode}
-          className="page-header-link"
-        />
-      </header>
-
       {isLoading && <SkeletonPromoCodeTable />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
@@ -70,16 +60,25 @@ const PromoCodeTable = () => {
           refetch();
         }}
       >
-        <div className="promo-code-select">
-          <Selectbox
-            id="year"
-            placeHolder={language.selectYear}
-            options={yearOptions}
-            onChange={(option) => {
-              handleSelectYear(option);
-            }}
-            name="year"
-            labelText={language.filterByYear}
+        <div className="promo-code-header">
+          <div className="promo-code-select">
+            <Selectbox
+              id="year"
+              placeHolder={language.selectYear}
+              options={yearOptions}
+              onChange={(option) => {
+                handleSelectYear(option);
+              }}
+              inputHasNoLabel
+              name="year"
+              labelText={language.filterByYear}
+            />
+          </div>
+
+          <LinkButton
+            linkTo={AdminPath.AdminPromoCodeCreate}
+            linkText={language.createNewDiscountCode}
+            className="page-header-link"
           />
         </div>
         {filteredPromoCodes && (
