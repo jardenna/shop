@@ -90,6 +90,16 @@ export const adminNavList: AdminNavList[] = [
     iconName: IconName.Orders,
   },
   {
+    path: AdminPath.DashboardSettings,
+    linkText: LinkText.DashboardSettings,
+    iconName: IconName.Settings,
+  },
+  {
+    path: AdminPath.DiscountCodes,
+    linkText: LinkText.DiscountCodes,
+    iconName: IconName.Discount,
+  },
+  {
     path: ShopPath.Root,
     linkText: LinkText.Shop,
     iconName: IconName.Basket,
