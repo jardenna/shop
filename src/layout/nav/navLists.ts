@@ -95,7 +95,7 @@ export const adminNavList: AdminNavList[] = [
     iconName: IconName.Settings,
   },
   {
-    path: AdminPath.DiscountCodes,
+    path: AdminPath.AdminDiscountCodes,
     linkText: LinkText.DiscountCodes,
     iconName: IconName.Discount,
   },

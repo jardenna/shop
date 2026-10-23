@@ -3,6 +3,7 @@ export enum AdminPath {
   AdminCategories = '/dashboard/categories',
   AdminCategoryCreate = '/dashboard/categories/create',
   AdminCategoryUpdate = '/dashboard/categories/update',
+  AdminDiscountCodes = '/dashboard/discount-codes',
   AdminOrderById = '/dashboard/admin/orders/',
   AdminOrders = '/dashboard/orders',
   AdminProductCreate = '/dashboard/products/create',
@@ -17,8 +18,7 @@ export enum AdminPath {
   AdminSubCategoryView = '/dashboard/subCategories/view',
   AdminUser = '/dashboard/users',
   AdminUserCreate = '/dashboard/users/create',
-  DashboardSettings = 'dashboard-settings',
-  DiscountCodes = 'discount-codes',
+  DashboardSettings = '/dashboard/dashboard-settings',
   Users = 'users',
 }
 
