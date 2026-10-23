@@ -53,7 +53,6 @@ const PromoCodeTable = () => {
 
   return (
     <Cart>
-      <SkeletonPromoCodeTable />
       {isLoading && <SkeletonPromoCodeTable />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
