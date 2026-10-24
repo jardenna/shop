@@ -56,20 +56,6 @@ const DashboardSchema = new Schema(
         },
       },
     },
-    newProducts: {
-      productName: { type: String, required: true },
-      image: { type: String, required: true },
-    },
-    mostSellingProducts: {
-      productName: { type: String, required: true },
-      image: { type: String, required: true },
-      salesNumber: {
-        type: Number,
-        required: true,
-      },
-    },
-    recentOrders: {},
-    deliveryStatus: {},
   },
   {
     timestamps: true,
@@ -86,7 +72,3 @@ const DashboardSchema = new Schema(
 const Dashboard = model('Dashboard', DashboardSchema);
 
 export default Dashboard;
-
-// -mangler afsendelse  alt minus levering og afsendt
-// - annullerede order
-// ordre qty
