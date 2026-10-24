@@ -1,30 +1,21 @@
-import { subDays } from 'date-fns';
 import { PUBLISHED, ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
+import { getDashboardDayRange } from '../utils/dateUtils.js';
 
 // @desc    Get 5 newest users
 // @route   /api/dashboard/new-custormers
 // @method  Get
 // @access  Private for admin and employees
 const getNewestCustomers = asyncHandler(async (req, res) => {
-  const customers = await User.find({
-    role: ROLES.USER,
-  })
-    .select('role username')
-    .sort({ createdAt: -1 })
-    .limit(5);
-
   const count = await User.countDocuments({ role: ROLES.USER });
 
-  const endDate = new Date();
+  const period = getDashboardDayRange(req.params.id);
+  console.log({ count });
 
-  const startDate = subDays(endDate, 7);
-  console.log({ startDate, count });
-
-  res.status(200).json(customers);
+  res.status(200).json(period);
 });
 
 // @desc    Get Top selling Products

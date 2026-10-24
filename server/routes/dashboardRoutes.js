@@ -9,7 +9,7 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 const router = express.Router();
 
 router.get(
-  '/new-custormers',
+  '/new-custormers/:id',
   languageMiddleware,
   authenticate,
   authorizeEmployee,
