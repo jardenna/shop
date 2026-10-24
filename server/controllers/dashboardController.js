@@ -16,10 +16,11 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
     .limit(5);
 
   res.send(customers);
+  // res.status(200).json(customers);
 });
 
 // @desc    Get Top Products
-// @route   /api/products/top
+// @route   /api/dashboard/products/top
 // @method  Get
 // @access  Public
 const getTopProducts = asyncHandler(async (req, res) => {
@@ -29,7 +30,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get New Products
-// @route   /api/products/new
+// @route   /api/dashboard/products/new
 // @method  Get
 // @access  Public
 const getNewProducts = asyncHandler(async (req, res) => {
