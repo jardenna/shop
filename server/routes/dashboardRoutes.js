@@ -1,5 +1,9 @@
 import express from 'express';
-import { getNewestCustomers } from '../controllers/dashboardController.js';
+import {
+  createGoals,
+  getGoals,
+  getNewestCustomers,
+} from '../controllers/dashboardController.js';
 import {
   authenticate,
   authorizeEmployee,
@@ -9,6 +13,10 @@ import languageMiddleware from '../middleware/languageMiddleware.js';
 import validatePeriodMiddleware from '../middleware/dashboardPeriodMiddleware.js';
 
 const router = express.Router();
+router
+  .route('/goals')
+  .get(languageMiddleware, authenticate, authorizeEmployee, getGoals)
+  .post(languageMiddleware, authenticate, authorizeEmployee, createGoals);
 
 router.get(
   '/new-custormers/:id',

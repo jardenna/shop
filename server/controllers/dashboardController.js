@@ -1,9 +1,41 @@
 import { PUBLISHED, ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
+import Dashboard from '../models/dashboardModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { getDashboardDayRange } from '../utils/dateUtils.js';
+
+// @desc    Create goals
+// @route   /api/dashboard/goals
+// @method  Post
+// @access  Private for admin and employees
+const createGoals = asyncHandler(async (req, res) => {
+  const dashboard = await Dashboard.findOneAndUpdate(
+    { main: 'main' },
+    { $setOnInsert: { main: 'main' } },
+    {
+      upsert: true,
+      new: true,
+      setDefaultsOnInsert: true,
+    },
+  );
+
+  res.status(200).json({
+    success: true,
+    dashboard,
+  });
+});
+
+// @desc    Get goals
+// @route   /api/dashboard/goals
+// @method  Get
+// @access  Private for admin and employees
+const getGoals = asyncHandler(async (req, res) => {
+  const goals = await Dashboard.find();
+
+  res.send(goals);
+});
 
 // @desc    Get 5 newest users
 // @route   /api/dashboard/new-custormers/id
@@ -64,8 +96,9 @@ const getNewProducts = asyncHandler(async (req, res) => {
 
   res.status(200).json(products);
 });
-
 export {
+  createGoals,
+  getGoals,
   getNewestCustomers,
   getNewProducts,
   getTopProducts,

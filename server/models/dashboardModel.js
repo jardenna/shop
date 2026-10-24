@@ -3,6 +3,11 @@ import { renameIdTransform } from '../utils/formatMongoData.js';
 
 const DashboardSchema = new Schema(
   {
+    main: {
+      type: String,
+      default: 'main',
+      unique: true,
+    },
     goals: {
       newCustomers: {
         7: {
