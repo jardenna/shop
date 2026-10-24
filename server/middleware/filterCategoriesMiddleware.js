@@ -1,4 +1,4 @@
-import { getDayRange } from '../utils/dateUtils';
+import { getDayRange } from '../utils/dateUtils.js';
 
 export function filterCategoriesMiddleware(req, res, next) {
   const { categoryStatus, categoryName, subCategoryName, createdAt } =

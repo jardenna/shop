@@ -1,5 +1,5 @@
 import User from '../models/userModel.js';
-import { getDayRange } from '../utils/dateUtils';
+import { getDayRange } from '../utils/dateUtils.js';
 
 const filterOrdersMiddleware = async (req, res, next) => {
   const {
