@@ -1,27 +1,16 @@
-import { GOAL_DAYS, PUBLISHED, ROLES } from '../config/constants.js';
+import { PUBLISHED, ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { getDashboardDayRange } from '../utils/dateUtils.js';
-import { t } from '../utils/translator.js';
 
 // @desc    Get 5 newest users
 // @route   /api/dashboard/new-custormers/id
 // @method  Get
 // @access  Private for admin and employees
 const getNewestCustomers = asyncHandler(async (req, res) => {
-  const period = getDashboardDayRange(Number(req.params.id));
-
-  const validPeriodes = GOAL_DAYS.includes(period);
-
-  if (!validPeriodes) {
-    return res.status(400).json({
-      success: false,
-      message: t('pleaseEnterValidPeriod', req.lang),
-    });
-  }
-
+  const period = getDashboardDayRange(req.period);
   const count = await User.countDocuments({
     role: ROLES.USER,
     createdAt: period,

@@ -4,7 +4,7 @@ import User from '../models/userModel.js';
 import { t } from '../utils/translator.js';
 import asyncHandler from './asyncHandler.js';
 
-const authenticate = asyncHandler(async (req, res, next) => {
+export const authenticate = asyncHandler(async (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (!token) {
@@ -39,7 +39,7 @@ const authenticate = asyncHandler(async (req, res, next) => {
   }
 });
 
-const authorizeAdmin = (req, res, next) => {
+export const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
   } else {
@@ -50,7 +50,7 @@ const authorizeAdmin = (req, res, next) => {
   }
 };
 
-const authorizeEmployee = (req, res, next) => {
+export const authorizeEmployee = (req, res, next) => {
   if (req.user && req.user.role === ROLES.EMPLOYEE) {
     next();
   } else {
@@ -60,5 +60,3 @@ const authorizeEmployee = (req, res, next) => {
     });
   }
 };
-
-export { authenticate, authorizeAdmin, authorizeEmployee };
