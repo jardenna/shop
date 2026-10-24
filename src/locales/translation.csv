@@ -436,6 +436,7 @@ pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterValidPeriod;Please enter a valid period;Indtast venligst en gyldig periode
 pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
 pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer

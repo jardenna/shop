@@ -79,3 +79,5 @@ export const MAX_ADDRESS_COUNT = 4;
 
 export const SHIPPING_PRICE = 49;
 export const DISCOUNT_SHIPPING_PRICE = 3500;
+
+export const GOAL_DAYS = [7, 30, 365];
