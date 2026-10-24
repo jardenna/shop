@@ -5,19 +5,19 @@ const DashboardSchema = new Schema(
   {
     goals: {
       newCustomers: {
-        'days-7': {
+        7: {
           type: Number,
           required: true,
           min: 0,
           default: 5,
         },
-        'days-30': {
+        30: {
           type: Number,
           required: true,
           min: 0,
           default: 20,
         },
-        year: {
+        365: {
           type: Number,
           required: true,
           min: 0,
@@ -25,19 +25,19 @@ const DashboardSchema = new Schema(
         },
       },
       orders: {
-        'days-7': {
+        7: {
           type: Number,
           required: true,
           min: 0,
           default: 10,
         },
-        'days-30': {
+        30: {
           type: Number,
           required: true,
           min: 0,
           default: 40,
         },
-        year: {
+        365: {
           type: Number,
           required: true,
           min: 0,
@@ -45,19 +45,19 @@ const DashboardSchema = new Schema(
         },
       },
       revenue: {
-        'days-7': {
+        7: {
           type: Number,
           required: true,
           min: 0,
           default: 5000,
         },
-        'days-30': {
+        30: {
           type: Number,
           required: true,
           min: 0,
           default: 20000,
         },
-        year: {
+        365: {
           type: Number,
           required: true,
           min: 0,
