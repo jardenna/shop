@@ -1,5 +1,18 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
+import User from '../models/userModel.js';
+
+// @desc    Get new users
+// @route   /api/dashboard/new-custormers
+// @method  Get
+// @access  Private for admin and employees
+const getNewestCustomers = asyncHandler(async (req, res) => {
+  const users = await User.find().select('role');
+
+  // const customers = user?.role === ROLES.User;
+
+  res.send(users);
+});
 
 // @desc    Get Top Products
 // @route   /api/products/top
@@ -25,7 +38,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
-export { getNewProducts, getTopProducts };
+export { getNewestCustomers, getNewProducts, getTopProducts };
 
 // -mangler afsendelse  alt minus levering og afsendt
 // - annullerede order

@@ -10,6 +10,7 @@ import authRoutes from './routes/authRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import checkoutRoutes from './routes/checkoutRoutes.js';
+import dashboardRoutes from './routes/dashboardRoutes.js';
 import favoritesRoutes from './routes/favoritesRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import productRoutes from './routes/productRoutes.js';
@@ -68,6 +69,7 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/admin/promo-codes', promoCodeRoutes);
 app.use('/api/promo-code', promoCodeRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Global error handler
 app.use(errorHandler);
