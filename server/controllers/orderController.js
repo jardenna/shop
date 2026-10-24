@@ -45,6 +45,7 @@ const createOrder = asyncHandler(async (req, res) => {
     code: cart.discount.code,
     lang: req.lang,
   });
+
   if (activeDiscount.code) {
     const existingOrder = await Order.findOne({
       user: req.user._id,
