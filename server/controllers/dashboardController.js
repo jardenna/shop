@@ -32,9 +32,22 @@ const createGoals = asyncHandler(async (req, res) => {
 // @method  Get
 // @access  Private for admin and employees
 const getGoals = asyncHandler(async (req, res) => {
+  const dashboard = await Dashboard.findOne({ main: 'main' });
+
+  res.status(200).json(dashboard);
+});
+
+// @desc    Update goals
+// @route   /api/dashboard/goals
+// @method  Put
+// @access  Private for admin and employees
+const updateGoals = asyncHandler(async (req, res) => {
   const goals = await Dashboard.find();
+  console.log(req.body);
 
   res.send(goals);
+
+  // res.status(200).json(goals);
 });
 
 // @desc    Get 5 newest users
@@ -103,6 +116,7 @@ export {
   getNewProducts,
   getTopProducts,
   getTopSellingProducts,
+  updateGoals,
 };
 
 // -mangler afsendelse  alt minus levering og afsendt

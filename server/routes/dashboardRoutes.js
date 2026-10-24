@@ -3,6 +3,7 @@ import {
   createGoals,
   getGoals,
   getNewestCustomers,
+  updateGoals,
 } from '../controllers/dashboardController.js';
 import {
   authenticate,
@@ -16,6 +17,7 @@ const router = express.Router();
 router
   .route('/goals')
   .get(languageMiddleware, authenticate, authorizeEmployee, getGoals)
+  .put(languageMiddleware, authenticate, authorizeEmployee, updateGoals)
   .post(languageMiddleware, authenticate, authorizeEmployee, createGoals);
 
 router.get(
