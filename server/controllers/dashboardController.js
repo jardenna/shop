@@ -1,3 +1,4 @@
+import { ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
@@ -7,11 +8,14 @@ import User from '../models/userModel.js';
 // @method  Get
 // @access  Private for admin and employees
 const getNewestCustomers = asyncHandler(async (req, res) => {
-  const users = await User.find().select('role');
+  const customers = await User.find({
+    role: ROLES.USER,
+  })
+    .select('role username')
+    .sort({ createdAt: -1 })
+    .limit(5);
 
-  // const customers = user?.role === ROLES.User;
-
-  res.send(users);
+  res.send(customers);
 });
 
 // @desc    Get Top Products
