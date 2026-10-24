@@ -1,3 +1,4 @@
+import KpiTargetTable from '../features/kpiTarget/KpiTargetTable';
 import { useLanguage } from '../features/language/useLanguage';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
@@ -10,7 +11,7 @@ const DashboardSettingsPage = () => {
       variant="large"
       hideBreadCrumbs
     >
-      hello
+      <KpiTargetTable />
     </AdminPageContainer>
   );
 };
