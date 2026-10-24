@@ -6,16 +6,18 @@ import User from '../models/userModel.js';
 import { getDashboardDayRange } from '../utils/dateUtils.js';
 
 // @desc    Get 5 newest users
-// @route   /api/dashboard/new-custormers
+// @route   /api/dashboard/new-custormers/id
 // @method  Get
 // @access  Private for admin and employees
 const getNewestCustomers = asyncHandler(async (req, res) => {
-  const count = await User.countDocuments({ role: ROLES.USER });
+  const period = getDashboardDayRange(Number(req.params.id));
 
-  const period = getDashboardDayRange(req.params.id);
-  console.log({ count });
+  const count = await User.countDocuments({
+    role: ROLES.USER,
+    createdAt: period,
+  });
 
-  res.status(200).json(period);
+  res.status(200).json({ count });
 });
 
 // @desc    Get Top selling Products
