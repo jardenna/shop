@@ -26,3 +26,23 @@ const getNewProducts = asyncHandler(async (req, res) => {
 });
 
 export { getNewProducts, getTopProducts };
+
+// -mangler afsendelse  alt minus levering og afsendt
+// - annullerede order
+// ordre qty
+
+// newProducts: {
+//   productName: { type: String, required: true },
+//   image: { type: String, required: true },
+// },
+// mostSellingProducts: {
+//   productName: { type: String, required: true },
+//   image: { type: String, required: true },
+//   salesNumber: {
+//     type: Number,
+//     required: true,
+//   },
+// },
+
+// deliveryStatus: {},
+// productLowQty: {},
