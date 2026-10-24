@@ -1,0 +1,28 @@
+import asyncHandler from '../middleware/asyncHandler.js';
+import Product from '../models/productModel.js';
+
+// @desc    Get Top Products
+// @route   /api/products/top
+// @method  Get
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(5).lean();
+
+  res.status(200).json(products);
+});
+
+// @desc    Get New Products
+// @route   /api/products/new
+// @method  Get
+// @access  Public
+const getNewProducts = asyncHandler(async (req, res) => {
+  // if no new in 1 month show no new products within the last month
+  const products = await Product.find({})
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean();
+
+  res.status(200).json(products);
+});
+
+export { getNewProducts, getTopProducts };
