@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import { getDayRange } from '../utils/dateUtils';
 
 const filterOrdersMiddleware = async (req, res, next) => {
   const {
@@ -27,17 +28,7 @@ const filterOrdersMiddleware = async (req, res, next) => {
 
   // Filter by createdAt
   if (createdAt) {
-    const startDate = new Date(createdAt);
-    const endDate = new Date(createdAt);
-
-    // Normalize to full day range
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(23, 59, 59, 999);
-
-    filter.createdAt = {
-      $gte: startDate,
-      $lte: endDate,
-    };
+    filter.createdAt = getDayRange(createdAt);
   }
 
   // Filter by user
