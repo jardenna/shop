@@ -29,7 +29,6 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const { language } = useLanguage();
-
   const { onAddToast } = useToast();
 
   const {

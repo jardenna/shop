@@ -27,31 +27,33 @@ const SimpleTable = <RowData,>({
   const { language } = useLanguage();
 
   return (
-    <table className="simple-table">
-      <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
+    <div className="fixed-table">
+      <table className="simple-table">
+        <VisuallyHidden as="caption">{tableCaption}</VisuallyHidden>
 
-      <thead>
-        <tr>
-          {tableHeaderList.map(({ label }) => (
-            <th key={label} scope="col">
-              {language[label]}
-            </th>
+        <thead>
+          <tr>
+            {tableHeaderList.map(({ label }) => (
+              <th key={label} scope="col">
+                {language[label]}
+              </th>
+            ))}
+
+            {emptyHeaderCellText && (
+              <th>
+                <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
+              </th>
+            )}
+          </tr>
+        </thead>
+
+        <tbody>
+          {tableDataList.map((rowData) => (
+            <tr key={rowKey(rowData)}>{renderCells(rowData)}</tr>
           ))}
-
-          {emptyHeaderCellText && (
-            <th>
-              <VisuallyHidden>{emptyHeaderCellText}</VisuallyHidden>
-            </th>
-          )}
-        </tr>
-      </thead>
-
-      <tbody>
-        {tableDataList.map((rowData) => (
-          <tr key={rowKey(rowData)}>{renderCells(rowData)}</tr>
-        ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

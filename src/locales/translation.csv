@@ -380,6 +380,8 @@ orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orders;Orders;Ordrer
+newCustomers;New customers;Nye kunder
+revenue;Revenue;Omsætning
 ordershipped;Order shipped;Ordre sendt
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
@@ -430,12 +432,15 @@ pleaseEnterDescription;Please enter a description;Indtast venligst en beskrivels
 invalidDiscountPercentage;Discount percentage must be between 1 and 99;Rabatprocenten skal være mellem 1 og 99
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
+pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
+dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterValidPeriod;Please enter a valid period;Indtast venligst en gyldig periode
 pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
 pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
