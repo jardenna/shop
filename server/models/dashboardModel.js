@@ -8,6 +8,23 @@ const DashboardSchema = new Schema(
       default: 'main',
       unique: true,
     },
+    tableHeaders: [
+      {
+        days: { type: Number, required: true },
+        label: { type: String, required: true },
+      },
+    ],
+    kpis: [
+      {
+        key: { type: String, required: true },
+      },
+      {
+        label: { type: String, required: true },
+      },
+      {
+        description: { type: String, required: true },
+      },
+    ],
     goals: {
       newCustomers: {
         7: {
