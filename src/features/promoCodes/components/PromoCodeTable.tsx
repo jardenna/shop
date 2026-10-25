@@ -17,6 +17,7 @@ import PromoCodeDate from './PromoCodeDate';
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
+
   const tableHeaderList = [
     { label: 'discountCode', id: 'discountCode' },
     { label: 'validFrom', id: 'validFrom' },
