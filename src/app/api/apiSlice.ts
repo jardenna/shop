@@ -9,6 +9,7 @@ export enum TagTypesEnum {
   Categories = 'Categories',
   Checkout = 'Checkout',
   Favorites = 'Favorites',
+  Goals = 'Goals',
   Order = 'Order',
   Products = 'Products',
   PromoCode = 'PromoCode',
@@ -39,6 +40,7 @@ const apiSlice = createApi({
     TagTypesEnum.Checkout,
     TagTypesEnum.Address,
     TagTypesEnum.PromoCode,
+    TagTypesEnum.Goals,
   ],
   endpoints: () => ({}),
 });
