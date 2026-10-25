@@ -1,10 +1,11 @@
-import { PUBLISHED, ROLES } from '../config/constants.js';
+import { GOAL_DAYS, KPI, PUBLISHED, ROLES } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Dashboard from '../models/dashboardModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import { getDashboardDayRange } from '../utils/dateUtils.js';
+import { t } from '../utils/translator.js';
 
 // @desc    Create goals
 // @route   /api/dashboard/goals
@@ -39,18 +40,46 @@ const getGoals = asyncHandler(async (req, res) => {
 
 // @desc    Update goals
 // @route   /api/dashboard/goals
-// @method  Put
+// @method  Patch
 // @access  Private for admin and employees
 const updateGoals = asyncHandler(async (req, res) => {
-  const goals = await Dashboard.find();
-  console.log(req.body);
+  const dashboard = await Dashboard.findOne({ main: 'main' });
+  const { key, days, goal } = req.body;
 
-  res.send(goals);
+  if (!dashboard) {
+    return res
+      .status(400)
+      .json({ success: false, message: t('pleaseEnterValidPeriod', req.lang) });
+  }
 
-  // res.status(200).json(goals);
+  if (!goal || typeof goal !== 'number' || goal < 1) {
+    return res.status(400).json({
+      success: false,
+      message: t('pleaseEnterValidPeriod', req.lang),
+    });
+  }
+
+  if (!KPI.includes(key) || !GOAL_DAYS.includes(Number(days))) {
+    return res.status(400).json({
+      success: false,
+      message: t('pleaseEnterValidPeriod', req.lang),
+    });
+  }
+
+  const updatedDashboard = await Dashboard.findOneAndUpdate(
+    { main: 'main' },
+    {
+      $set: {
+        [`goals.${key}.${Number(days)}`]: goal,
+      },
+    },
+    { new: true, runValidators: true },
+  );
+
+  res.status(200).json(updatedDashboard.goals[key][days]);
 });
 
-// @desc    Get 5 newest users
+// @desc    Get 5 newest customers
 // @route   /api/dashboard/new-custormers/id
 // @method  Get
 // @access  Private for admin and employees
