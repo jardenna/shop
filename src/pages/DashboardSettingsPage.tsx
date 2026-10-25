@@ -7,7 +7,6 @@ const DashboardSettingsPage = () => {
   const { language } = useLanguage();
 
   const { data: dashboard } = useGetDashboardGoalsQuery();
-  console.log(dashboard?.tableHeaders);
 
   return (
     <AdminPageContainer
