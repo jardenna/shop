@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-import { renameIdTransform } from '../utils/formatMongoData.js';
 
 const DashboardSchema = new Schema(
   {
@@ -114,10 +113,13 @@ const DashboardSchema = new Schema(
     timestamps: true,
     toJSON: {
       virtuals: true,
-      transform: renameIdTransform,
-    },
-    toObject: {
-      virtuals: true,
+      versionKey: false,
+      transform: (_, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString();
+        delete returnedObject._id;
+
+        return returnedObject;
+      },
     },
   },
 );
