@@ -17,11 +17,7 @@ const DashboardSchema = new Schema(
     kpis: [
       {
         key: { type: String, required: true },
-      },
-      {
         label: { type: String, required: true },
-      },
-      {
         description: { type: String, required: true },
       },
     ],
