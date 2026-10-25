@@ -15,7 +15,7 @@ export type ValidationErrors<T extends Record<string, any>> = Partial<
 >;
 
 export type FormValues = {
-  [key: string]: string | number | string[];
+  [key: string]: string | number | string[] | null;
 };
 
 type FormValidationProps<T extends KeyValuePair> = {
