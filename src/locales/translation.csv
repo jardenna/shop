@@ -380,6 +380,8 @@ orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orders;Orders;Ordrer
+newCustomers;New customers;Nye kunder
+revenue;Revenue;Omsætning
 ordershipped;Order shipped;Ordre sendt
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
