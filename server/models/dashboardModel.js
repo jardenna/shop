@@ -10,13 +10,14 @@ const DashboardSchema = new Schema(
     tableHeaders: {
       type: [
         {
+          days: { type: Number, required: true },
           label: { type: String, required: true },
         },
       ],
       default: [
-        { label: 'goal7Days' },
-        { label: 'goal30Days' },
-        { label: 'goal12Months' },
+        { days: 7, label: 'goal7Days' },
+        { days: 30, label: 'goal30Days' },
+        { days: 365, label: 'goal12Months' },
       ],
     },
     kpis: {
