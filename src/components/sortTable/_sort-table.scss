@@ -34,6 +34,10 @@ $table-header-height: rem(320px);
   height: min(rem(632px), calc(100dvh - $table-header-height));
   overflow: auto;
 
+  &:has(.simple-table) {
+    height: rem(200px);
+  }
+
   @include max-size($large) {
     height: min(rem(1050px), calc(100dvh - $table-header-height));
   }
