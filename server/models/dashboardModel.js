@@ -8,19 +8,45 @@ const DashboardSchema = new Schema(
       default: 'main',
       unique: true,
     },
-    tableHeaders: [
-      {
-        days: { type: Number, required: true },
-        label: { type: String, required: true },
-      },
-    ],
-    kpis: [
-      {
-        key: { type: String, required: true },
-        label: { type: String, required: true },
-        description: { type: String, required: true },
-      },
-    ],
+    tableHeaders: {
+      type: [
+        {
+          days: { type: Number, required: true },
+          label: { type: String, required: true },
+        },
+      ],
+      default: [
+        { days: 7, label: 'goal7Days' },
+        { days: 30, label: 'goal30Days' },
+        { days: 365, label: 'goal12Months' },
+      ],
+    },
+    kpis: {
+      type: [
+        {
+          key: { type: String, required: true },
+          label: { type: String, required: true },
+          description: { type: String, required: true },
+        },
+      ],
+      default: [
+        {
+          key: 'newCustomers',
+          label: 'newCustomers',
+          description: 'newCustomersDescription',
+        },
+        {
+          key: 'orders',
+          label: 'orders',
+          description: 'ordersDescription',
+        },
+        {
+          key: 'revenue',
+          label: 'revenue',
+          description: 'revenueDescription',
+        },
+      ],
+    },
     goals: {
       newCustomers: {
         7: {
