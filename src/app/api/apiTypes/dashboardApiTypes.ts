@@ -4,10 +4,14 @@ export interface GoalPeriods {
   7: number;
 }
 
-export interface DashboardGoalsResponse {
+export interface DashboardGoals {
   newCustomers: GoalPeriods;
   orders: GoalPeriods;
   revenue: GoalPeriods;
+}
+
+export interface DashboardGoalsResponse {
+  goals: DashboardGoals;
 }
 
 export type GoalKeys = 'newCustomers' | 'orders' | 'revenue';

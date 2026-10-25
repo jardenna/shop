@@ -1,11 +1,11 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
 import { DashboardGoalsResponse } from '../../app/api/apiTypes/dashboardApiTypes';
-import { baseGoalsUrl } from '../../app/endpoints';
+import { adminGoalsUrl } from '../../app/endpoints';
 
 export const dashboardGoalsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getDashboardGoals: builder.query<DashboardGoalsResponse, void>({
-      query: () => baseGoalsUrl,
+      query: () => adminGoalsUrl,
       providesTags: [TagTypesEnum.Goals],
     }),
   }),
