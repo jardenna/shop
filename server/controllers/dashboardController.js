@@ -17,7 +17,7 @@ const createGoals = asyncHandler(async (req, res) => {
     { $setOnInsert: { main: 'main' } },
     {
       upsert: true,
-      new: true,
+      returnDocument: 'after',
       setDefaultsOnInsert: true,
     },
   );
@@ -43,26 +43,20 @@ const getGoals = asyncHandler(async (req, res) => {
 // @method  Patch
 // @access  Private for admin and employees
 const updateGoals = asyncHandler(async (req, res) => {
-  const dashboard = await Dashboard.findOne({ main: 'main' });
   const { key, days, goal } = req.body;
+  const period = Number(days);
 
-  if (!dashboard) {
-    return res
-      .status(400)
-      .json({ success: false, message: t('pleaseEnterValidPeriod', req.lang) });
-  }
-
-  if (!goal || typeof goal !== 'number' || goal < 1) {
+  if (!KPI.includes(key) || !GOAL_DAYS.includes(period)) {
     return res.status(400).json({
       success: false,
       message: t('pleaseEnterValidPeriod', req.lang),
     });
   }
 
-  if (!KPI.includes(key) || !GOAL_DAYS.includes(Number(days))) {
+  if (typeof goal !== 'number' || !Number.isFinite(goal) || goal < 0) {
     return res.status(400).json({
       success: false,
-      message: t('pleaseEnterValidPeriod', req.lang),
+      message: t('pleaseEnterValidGoal', req.lang),
     });
   }
 
@@ -70,13 +64,26 @@ const updateGoals = asyncHandler(async (req, res) => {
     { main: 'main' },
     {
       $set: {
-        [`goals.${key}.${Number(days)}`]: goal,
+        [`goals.${key}.${period}`]: goal,
       },
     },
-    { new: true, runValidators: true },
+    {
+      returnDocument: 'after',
+      runValidators: true,
+    },
   );
 
-  res.status(200).json(updatedDashboard.goals[key][days]);
+  if (!updatedDashboard) {
+    return res.status(404).json({
+      success: false,
+      message: t('dashboardNotFound', req.lang),
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    goal: updatedDashboard.goals[key][period],
+  });
 });
 
 // @desc    Get 5 newest customers
