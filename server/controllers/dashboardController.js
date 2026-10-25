@@ -107,16 +107,7 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
 const getTopSellingProducts = asyncHandler(async (req, res) => {
   const orders = await Order.find().select('orderItems');
 
-  // const products = await Product.find()
-  //   .select('productName images')
-  //   .sort({ createdAt: -1 })
-  //   .limit(5)
-  //   .lean();
-
-  // console.log(products);
-
   res.send(orders);
-  // res.status(200).json(products);
 });
 
 // @desc    Get Top Products
@@ -154,19 +145,3 @@ export {
   getTopSellingProducts,
   updateGoals,
 };
-
-// -mangler afsendelse  alt minus levering og afsendt
-// - annullerede order
-// ordre qty
-
-// mostSellingProducts: {
-//   productName: { type: String, required: true },
-//   image: { type: String, required: true },
-//   salesNumber: {
-//     type: Number,
-//     required: true,
-//   },
-// },
-
-// deliveryStatus: {},
-// productLowQty: {},
