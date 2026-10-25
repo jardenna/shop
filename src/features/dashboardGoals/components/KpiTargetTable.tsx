@@ -1,5 +1,5 @@
-import VisuallyHidden from '../../components/VisuallyHidden';
-import { useLanguage } from '../language/useLanguage';
+import VisuallyHidden from '../../../components/VisuallyHidden';
+import { useLanguage } from '../../language/useLanguage';
 
 const KpiTargetTable = () => {
   const { language } = useLanguage();

@@ -1,4 +1,4 @@
-import KpiTargetTable from '../features/kpiTarget/KpiTargetTable';
+import KpiTargetTable from '../features/dashboardGoals/components/KpiTargetTable';
 import { useLanguage } from '../features/language/useLanguage';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
