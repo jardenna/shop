@@ -98,9 +98,9 @@ const AdminOrderDetailsPage = () => {
   };
 
   const tableHeaderList = [
-    { label: 'status' },
-    { label: 'dateAndTime' },
-    { label: 'performedBy' },
+    { label: 'status', id: 'status' },
+    { label: 'dateAndTime', id: 'dateAndTime' },
+    { label: 'performedBy', id: 'performedBy' },
   ];
 
   return (

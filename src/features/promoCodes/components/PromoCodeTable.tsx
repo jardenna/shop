@@ -13,11 +13,16 @@ import { AdminPath } from '../../../layout/nav/enums';
 import { OptionType } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
-import { tableHeaderList } from '../tableHeaderList';
 import PromoCodeDate from './PromoCodeDate';
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
+  const tableHeaderList = [
+    { label: 'discountCode', id: 'discountCode' },
+    { label: 'validFrom', id: 'validFrom' },
+    { label: 'expiry', id: 'expiry' },
+    { label: 'status', id: 'status' },
+  ];
 
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
 
@@ -98,9 +103,8 @@ const PromoCodeTable = () => {
             }) => (
               <>
                 <td>
-                  {code} <div>{percent} %</div>
+                  {code} <div>({percent} %)</div>
                 </td>
-
                 <td>
                   <PromoCodeDate date={startsAt} />
                 </td>
