@@ -64,7 +64,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
                       errors[name] ? language[errors[name]] : undefined
                     }
                     inputHasNoLabel
-                    inputSuffix={kr}
+                    inputSuffix={kpi.key === 'revenue' ? kr : undefined}
                   />
                 </td>
               );
