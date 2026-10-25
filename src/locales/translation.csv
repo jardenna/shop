@@ -430,6 +430,8 @@ pleaseEnterDescription;Please enter a description;Indtast venligst en beskrivels
 invalidDiscountPercentage;Discount percentage must be between 1 and 99;Rabatprocenten skal være mellem 1 og 99
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
+pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
+dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
