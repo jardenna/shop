@@ -30,6 +30,7 @@ const RangeNumberInput = ({
 }: RangeNumberInputProps) => (
   <Input
     inputHasNoLabel={inputHasNoLabel}
+    variant="secondary"
     id={id}
     name={name}
     type="number"

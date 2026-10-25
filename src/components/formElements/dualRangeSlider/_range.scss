@@ -167,10 +167,6 @@ $color-range-primary: $color-blue-30;
     max-width: rem(100px);
 
     input {
-      height: rem(48px);
-      background-color: $color-white;
-      border: $border;
-
       &:focus-visible {
         outline: transparent;
       }

@@ -53,6 +53,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
               return (
                 <td key={id}>
                   <Input
+                    variant="secondary"
                     name={name}
                     id={name}
                     value={values[name]}
@@ -65,6 +66,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
                     }
                     inputHasNoLabel
                     inputSuffix={kpi.key === 'revenue' ? kr : undefined}
+                    inputMode="numeric"
                   />
                 </td>
               );
