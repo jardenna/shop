@@ -10,14 +10,13 @@ const DashboardSchema = new Schema(
     tableHeaders: {
       type: [
         {
-          days: { type: Number, required: true },
           label: { type: String, required: true },
         },
       ],
       default: [
-        { days: 7, label: 'goal7Days' },
-        { days: 30, label: 'goal30Days' },
-        { days: 365, label: 'goal12Months' },
+        { label: 'goal7Days' },
+        { label: 'goal30Days' },
+        { label: 'goal12Months' },
       ],
     },
     kpis: {
@@ -117,6 +116,18 @@ const DashboardSchema = new Schema(
       transform: (_, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
+
+        if (returnedObject.tableHeaders) {
+          returnedObject.tableHeaders.forEach((header) => {
+            delete header._id;
+          });
+        }
+
+        if (returnedObject.kpis) {
+          returnedObject.kpis.forEach((kpi) => {
+            delete kpi._id;
+          });
+        }
 
         return returnedObject;
       },
