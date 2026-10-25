@@ -79,6 +79,7 @@ const TableFilterPopup = <T,>({
               onChange={onFilter}
               labelText={labelText}
               autoFocus
+              variant="secondary"
             />
           </form>
         );
@@ -92,6 +93,7 @@ const TableFilterPopup = <T,>({
             }}
           >
             <Input
+              variant="secondary"
               id={minKey}
               type="number"
               inputMode="numeric"
@@ -103,6 +105,7 @@ const TableFilterPopup = <T,>({
               inputSuffix={inputSuffix}
             />
             <Input
+              variant="secondary"
               id={maxKey}
               name={maxKey}
               type="number"
