@@ -38,7 +38,7 @@ const PrintOrdertable = ({
       );
 
       return (
-        <View key={item.productName} style={tableStyles.tableRow}>
+        <View key={item.id} style={tableStyles.tableRow}>
           <Text style={tableStyles.description}>{item.productName}</Text>
           <Text style={tableStyles.quantity}>{item.qty}</Text>
           <Text style={tableStyles.price}>{convertedPrice}</Text>
