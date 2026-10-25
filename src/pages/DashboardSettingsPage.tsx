@@ -1,5 +1,4 @@
-import SimpleTable from '../components/simpleTable/SimpleTable';
-import DashboardTableCells from '../features/dashboardGoals/components/DashboardTableCells';
+import DashboardKpiTable from '../features/dashboardGoals/components/DashboardKpiTable';
 import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/dashboardGoalsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
@@ -15,24 +14,7 @@ const DashboardSettingsPage = () => {
       variant="large"
       hideBreadCrumbs
     >
-      {dashboard && (
-        <SimpleTable
-          tableCaption={language.kpiGoals}
-          tableHeaderList={[
-            { id: 'kpi', label: 'kpi' },
-            ...dashboard.tableHeaders,
-          ]}
-          tableDataList={dashboard.kpis}
-          rowKey={({ key }) => key}
-          renderCells={(kpi) => (
-            <DashboardTableCells
-              kpi={kpi}
-              tableHeaders={dashboard.tableHeaders}
-              goals={dashboard.goals}
-            />
-          )}
-        />
-      )}
+      {dashboard && <DashboardKpiTable dashboard={dashboard} />}
     </AdminPageContainer>
   );
 };
