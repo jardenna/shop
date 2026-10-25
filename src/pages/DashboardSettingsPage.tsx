@@ -9,6 +9,17 @@ const DashboardSettingsPage = () => {
   const { data: dashboard } = useGetDashboardGoalsQuery();
   console.log(dashboard?.goals);
 
+  const tableHeaderList = [
+    { label: 'goal7Days' },
+    { label: 'goal30Days' },
+    { label: 'goal12Months' },
+  ];
+  console.log(tableHeaderList);
+
+  // goal7Days
+  // goal30Days
+  // goal12Months
+
   return (
     <AdminPageContainer
       heading={language.dashboardSettings}
