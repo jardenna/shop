@@ -4,7 +4,6 @@ const validatePromoCode = ({ promoCode, lang, isUpdate }) => {
   if (typeof promoCode.code !== 'string' || !promoCode.code.trim()) {
     return {
       success: false,
-      message: 'Please provide a promo code',
       message: t('promoCodeRequired', lang),
     };
   }
@@ -29,7 +28,6 @@ const validatePromoCode = ({ promoCode, lang, isUpdate }) => {
   if (typeof promoCode.active !== 'boolean') {
     return {
       success: false,
-      message: 'Please provide an active state true or false',
       message: t('promoCodeActiveInvalid', lang),
     };
   }
