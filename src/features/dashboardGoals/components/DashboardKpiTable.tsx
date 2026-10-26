@@ -5,6 +5,7 @@ import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
+import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
 
 interface DashboardKpiTableProps {
   dashboard: DashboardResponse;
@@ -27,12 +28,20 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
     callback: handleSubmitKpi,
   });
 
-  function handleSubmitKpi() {
+  const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
+    useUpdateDashboardGoalsMutation();
+
+  async function handleSubmitKpi() {
+    await updateGoals({ key: 'newCustomers', days: 30, goal: 20 });
     console.log(values);
   }
 
   return (
-    <Form submitBtnLabel="Gem ændringer" onSubmit={onSubmit}>
+    <Form
+      submitBtnLabel="Gem ændringer"
+      onSubmit={onSubmit}
+      isLoading={isUpdateGoalsLoading}
+    >
       <SimpleTable
         tableCaption={language.kpiGoals}
         tableHeaderList={[
