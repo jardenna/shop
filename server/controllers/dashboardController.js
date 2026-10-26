@@ -43,29 +43,63 @@ const getGoals = asyncHandler(async (req, res) => {
 // @method  Patch
 // @access  Private for admin and employees
 const updateGoals = asyncHandler(async (req, res) => {
-  const { key, days, goal } = req.body;
-  const period = Number(days);
+  const { goals } = req.body;
 
-  if (!KPI.includes(key) || !GOAL_DAYS.includes(period)) {
-    return res.status(400).json({
-      success: false,
-      message: t('pleaseEnterValidPeriod', req.lang),
-    });
-  }
-
-  if (typeof goal !== 'number' || !Number.isFinite(goal) || goal < 0) {
+  if (!goals || typeof goals !== 'object' || Array.isArray(goals)) {
     return res.status(400).json({
       success: false,
       message: t('pleaseEnterValidGoal', req.lang),
     });
   }
 
+  const goalKeys = Object.keys(goals);
+
+  if (
+    goalKeys.length !== KPI.length ||
+    !goalKeys.every((key) => KPI.includes(key))
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: t('pleaseEnterValidGoal', req.lang),
+    });
+  }
+
+  for (const key of KPI) {
+    const periods = goals[key];
+
+    if (!periods || typeof periods !== 'object' || Array.isArray(periods)) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterValidPeriod', req.lang),
+      });
+    }
+
+    const periodKeys = Object.keys(periods);
+
+    if (
+      periodKeys.length !== GOAL_DAYS.length ||
+      !periodKeys.every((day) => GOAL_DAYS.includes(Number(day)))
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: t('pleaseEnterValidPeriod', req.lang),
+      });
+    }
+
+    for (const goal of Object.values(periods)) {
+      if (typeof goal !== 'number' || !Number.isFinite(goal) || goal < 0) {
+        return res.status(400).json({
+          success: false,
+          message: t('pleaseEnterValidGoal', req.lang),
+        });
+      }
+    }
+  }
+
   const updatedDashboard = await Dashboard.findOneAndUpdate(
     { main: 'main' },
     {
-      $set: {
-        [`goals.${key}.${period}`]: goal,
-      },
+      $set: { goals },
     },
     {
       returnDocument: 'after',
@@ -82,7 +116,7 @@ const updateGoals = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    goal: updatedDashboard.goals[key][period],
+    goals: updatedDashboard.goals,
   });
 });
 

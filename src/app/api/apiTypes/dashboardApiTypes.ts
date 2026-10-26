@@ -18,12 +18,6 @@ export interface TableHeader {
 
 export type GoalKeys = 'newCustomers' | 'orders' | 'revenue';
 
-export interface DashboardGoalsRequest {
-  days: number;
-  goal: number;
-  key: GoalKeys;
-}
-
 export interface DashboardGoalsResponse {
   goal: number;
   success: boolean;

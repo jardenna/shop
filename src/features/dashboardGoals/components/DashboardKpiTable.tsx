@@ -32,8 +32,19 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
     useUpdateDashboardGoalsMutation();
 
   async function handleSubmitKpi() {
-    await updateGoals({ key: 'newCustomers', days: 30, goal: 20 });
-    console.log(values);
+    const goals = Object.fromEntries(
+      dashboard.kpis.map(({ key }) => [
+        key,
+        Object.fromEntries(
+          dashboard.tableHeaders.map(({ days }) => [
+            days,
+            values[`${key}-${days}`],
+          ]),
+        ),
+      ]),
+    );
+
+    await updateGoals({ goals }).unwrap();
   }
 
   return (
