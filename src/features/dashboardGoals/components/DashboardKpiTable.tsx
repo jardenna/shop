@@ -1,4 +1,4 @@
-import { DashboardGoalsResponse } from '../../../app/api/apiTypes/dashboardApiTypes';
+import { DashboardResponse } from '../../../app/api/apiTypes/dashboardApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
@@ -7,7 +7,7 @@ import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 
 interface DashboardKpiTableProps {
-  dashboard: DashboardGoalsResponse;
+  dashboard: DashboardResponse;
 }
 
 const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {

@@ -1,14 +1,30 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { DashboardGoalsResponse } from '../../app/api/apiTypes/dashboardApiTypes';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
+import {
+  DashboardGoalsRequest,
+  DashboardGoalsResponse,
+  DashboardResponse,
+} from '../../app/api/apiTypes/dashboardApiTypes';
 import { adminGoalsUrl } from '../../app/endpoints';
 
 export const dashboardGoalsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getDashboardGoals: builder.query<DashboardGoalsResponse, void>({
+    getDashboardGoals: builder.query<DashboardResponse, void>({
       query: () => adminGoalsUrl,
       providesTags: [TagTypesEnum.Goals],
+    }),
+    updateDashboardGoals: builder.mutation<
+      DashboardGoalsResponse,
+      DashboardGoalsRequest
+    >({
+      query: (body) => ({
+        url: adminGoalsUrl,
+        method: MethodsEnum.Patch,
+        body,
+      }),
+      invalidatesTags: [TagTypesEnum.Goals],
     }),
   }),
 });
 
-export const { useGetDashboardGoalsQuery } = dashboardGoalsApiSlice;
+export const { useGetDashboardGoalsQuery, useUpdateDashboardGoalsMutation } =
+  dashboardGoalsApiSlice;

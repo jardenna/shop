@@ -24,6 +24,11 @@ export interface DashboardGoalsRequest {
   key: GoalKeys;
 }
 
+export interface DashboardGoalsResponse {
+  goal: number;
+  success: boolean;
+}
+
 export interface Kpi {
   description: string;
   id: string;
@@ -31,7 +36,7 @@ export interface Kpi {
   label: GoalKeys;
 }
 
-export interface DashboardGoalsResponse {
+export interface DashboardResponse {
   goals: DashboardGoals;
   kpis: Kpi[];
   tableHeaders: TableHeader[];
