@@ -1,5 +1,6 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
+  DashboardGoalsRequest,
   DashboardGoalsResponse,
   DashboardResponse,
 } from '../../app/api/apiTypes/dashboardApiTypes';
@@ -11,7 +12,10 @@ export const dashboardGoalsApiSlice = apiSlice.injectEndpoints({
       query: () => adminGoalsUrl,
       providesTags: [TagTypesEnum.Goals],
     }),
-    updateDashboardGoals: builder.mutation<DashboardGoalsResponse, any>({
+    updateDashboardGoals: builder.mutation<
+      DashboardGoalsResponse,
+      DashboardGoalsRequest
+    >({
       query: (body) => ({
         url: adminGoalsUrl,
         method: MethodsEnum.Patch,
