@@ -82,6 +82,14 @@ time {
   width: 100%;
   position: relative;
 
+  &.secondary {
+    input {
+      background-color: $color-white;
+      border: $border;
+      height: rem(48px);
+    }
+  }
+
   &::after {
     content: '';
     position: absolute;

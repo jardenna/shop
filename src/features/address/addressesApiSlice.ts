@@ -5,7 +5,6 @@ import {
   BaseAddress,
   UpdateAddressRequest,
 } from '../../app/api/apiTypes/addressApiTypes';
-
 import { addressUrl } from '../../app/endpoints';
 
 export const addressesApiSlice = apiSlice.injectEndpoints({

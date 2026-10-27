@@ -1,9 +1,12 @@
-import KpiTargetTable from '../features/kpiTarget/KpiTargetTable';
+import DashboardKpiTable from '../features/dashboardGoals/components/DashboardKpiTable';
+import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/dashboardGoalsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardSettingsPage = () => {
   const { language } = useLanguage();
+
+  const { data: dashboard } = useGetDashboardGoalsQuery();
 
   return (
     <AdminPageContainer
@@ -11,7 +14,7 @@ const DashboardSettingsPage = () => {
       variant="large"
       hideBreadCrumbs
     >
-      <KpiTargetTable />
+      {dashboard && <DashboardKpiTable dashboard={dashboard} />}
     </AdminPageContainer>
   );
 };

@@ -4,6 +4,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import './_simple-table.scss';
 
 interface TableHeaderItem {
+  id: string;
   label: string;
 }
 
@@ -33,8 +34,8 @@ const SimpleTable = <RowData,>({
 
         <thead>
           <tr>
-            {tableHeaderList.map(({ label }) => (
-              <th key={label} scope="col">
+            {tableHeaderList.map(({ label, id }) => (
+              <th key={id} scope="col">
                 {language[label]}
               </th>
             ))}

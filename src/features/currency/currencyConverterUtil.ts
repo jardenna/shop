@@ -12,13 +12,14 @@ export const currencyToLocaleMap: Record<CurrencyCode, Locales> = {
   NOK: 'no-No',
 };
 
+export const kr = 'Kr.';
 export const currencyToText: Record<CurrencyCode, CurrencyText> = {
   USD: '$',
   GBP: '£',
   EUR: '€',
-  DKK: 'Kr.',
-  SEK: 'Kr.',
-  NOK: 'Kr.',
+  DKK: kr,
+  SEK: kr,
+  NOK: kr,
 };
 
 export const currencies = Object.keys(currencyToLocaleMap).join(',');

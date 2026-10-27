@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-import { renameIdTransform } from '../utils/formatMongoData.js';
 
 const DashboardSchema = new Schema(
   {
@@ -7,6 +6,45 @@ const DashboardSchema = new Schema(
       type: String,
       default: 'main',
       unique: true,
+    },
+    tableHeaders: {
+      type: [
+        {
+          days: { type: Number, required: true },
+          label: { type: String, required: true },
+        },
+      ],
+      default: [
+        { days: 7, label: 'goal7Days' },
+        { days: 30, label: 'goal30Days' },
+        { days: 365, label: 'goal12Months' },
+      ],
+    },
+    kpis: {
+      type: [
+        {
+          key: { type: String, required: true },
+          label: { type: String, required: true },
+          description: { type: String, required: true },
+        },
+      ],
+      default: [
+        {
+          key: 'newCustomers',
+          label: 'newCustomers',
+          description: 'newCustomersDescription',
+        },
+        {
+          key: 'orders',
+          label: 'orders',
+          description: 'ordersDescription',
+        },
+        {
+          key: 'revenue',
+          label: 'revenue',
+          description: 'revenueDescription',
+        },
+      ],
     },
     goals: {
       newCustomers: {
@@ -75,10 +113,25 @@ const DashboardSchema = new Schema(
     timestamps: true,
     toJSON: {
       virtuals: true,
-      transform: renameIdTransform,
-    },
-    toObject: {
-      virtuals: true,
+      versionKey: false,
+      transform: (_, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString();
+        delete returnedObject._id;
+
+        if (returnedObject.tableHeaders) {
+          returnedObject.tableHeaders.forEach((header) => {
+            delete header._id;
+          });
+        }
+
+        if (returnedObject.kpis) {
+          returnedObject.kpis.forEach((kpi) => {
+            delete kpi._id;
+          });
+        }
+
+        return returnedObject;
+      },
     },
   },
 );

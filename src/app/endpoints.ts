@@ -2,6 +2,7 @@ const baseAuthEndpoint = 'auth';
 const baseCartEndpoint = 'cart';
 const baseOrderEndpoint = 'orders';
 const baseUserEndpoint = 'users';
+const baseDashboardEndpoint = 'dashboard';
 
 export const authEndpoints = {
   register: `${baseAuthEndpoint}/register`,
@@ -30,3 +31,4 @@ export const userOrdersUrl = `${baseOrderEndpoint}/me`;
 export const checkoutUrl = 'checkout';
 export const adminOrdersUrl = `admin/${baseOrderEndpoint}`;
 export const adminPromoCodeUrl = 'admin/promo-codes';
+export const adminGoalsUrl = `${baseDashboardEndpoint}/goals`;
