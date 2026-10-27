@@ -1,4 +1,7 @@
-import { DashboardResponse } from '../../../app/api/apiTypes/dashboardApiTypes';
+import {
+  DashboardGoalsRequest,
+  DashboardResponse,
+} from '../../../app/api/apiTypes/dashboardApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
@@ -32,7 +35,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
     useUpdateDashboardGoalsMutation();
 
   async function handleSubmitKpi() {
-    const goals = Object.fromEntries(
+    const goals: DashboardGoalsRequest['goals'] = Object.fromEntries(
       dashboard.kpis.map(({ key }) => [
         key,
         Object.fromEntries(
@@ -67,6 +70,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
               <div>{language[kpi.key]}</div>
               {language[kpi.description]}
             </td>
+
             {dashboard.tableHeaders.map(({ id, days }) => {
               const name = `${kpi.key}-${days}`;
 

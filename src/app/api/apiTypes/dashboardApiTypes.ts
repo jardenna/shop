@@ -35,3 +35,7 @@ export interface DashboardResponse {
   kpis: Kpi[];
   tableHeaders: TableHeader[];
 }
+
+export interface DashboardGoalsRequest {
+  goals: Record<string, Record<number, number>>;
+}
