@@ -2,10 +2,9 @@
 
 .progress-bar-container {
   height: 4px;
+  display: flex;
 
   .progress-bar {
-    display: flex;
-    height: 100%;
     background-color: $color-background-secondary;
 
     &.auto-animation {
