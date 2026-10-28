@@ -1,6 +1,6 @@
-import { KpiResponseNew } from './apiTypes';
+import { KpiResponse } from './apiTypes';
 
-export const dataNew: KpiResponseNew = {
+export const dataNew: KpiResponse = {
   totals: [
     {
       key: 'totalCustomers',
@@ -8,8 +8,12 @@ export const dataNew: KpiResponseNew = {
       description: 'totalCustomersDescription',
       total: 342,
       chartData: [
-        { date: '2026-10-22', current: 2, previous: 1 },
-        { date: '2026-10-23', current: 1, previous: 2 },
+        { date: 'Jan', value: 12 },
+        { date: 'Feb', value: 18 },
+        { date: 'Mar', value: 9 },
+        { date: 'Apr', value: 24 },
+        { date: 'May', value: 16 },
+        { date: 'Jun', value: 27 },
       ],
     },
     {
@@ -18,8 +22,12 @@ export const dataNew: KpiResponseNew = {
       description: 'totalRevenueDescription',
       total: 24567,
       chartData: [
-        { date: '2026-10-22', current: 1200, previous: 900 },
-        { date: '2026-10-23', current: 1500, previous: 1100 },
+        { date: 'Jan', value: 12 },
+        { date: 'Feb', value: 18 },
+        { date: 'Mar', value: 9 },
+        { date: 'Apr', value: 24 },
+        { date: 'May', value: 16 },
+        { date: 'Jun', value: 27 },
       ],
     },
     {
@@ -28,8 +36,12 @@ export const dataNew: KpiResponseNew = {
       description: 'totalOrdersDescription',
       total: 1240,
       chartData: [
-        { date: '2026-10-22', current: 12, previous: 9 },
-        { date: '2026-10-23', current: 15, previous: 11 },
+        { date: 'Jan', value: 12 },
+        { date: 'Feb', value: 18 },
+        { date: 'Mar', value: 9 },
+        { date: 'Apr', value: 24 },
+        { date: 'May', value: 16 },
+        { date: 'Jun', value: 27 },
       ],
     },
   ],
