@@ -1,7 +1,9 @@
 import Cart from '../../../components/carts/Cart';
 import Icon from '../../../components/icons/Icon';
 import ProgressBar from '../../../components/progressbar/ProgressBar';
+import BarChartComp from '../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../types/enums';
+import { KpiChartData } from '../apiTypes';
 import './_dashboard.scss';
 
 interface KpiCartProps {
@@ -10,6 +12,7 @@ interface KpiCartProps {
   title: string;
   total: number;
   changePercentage?: number;
+  chartData?: KpiChartData[];
   progressPercentage?: number;
 }
 
@@ -20,6 +23,7 @@ const KpiCart = ({
   changePercentage,
   description,
   total,
+  chartData,
 }: KpiCartProps) => (
   <Cart className="kpi-cart">
     <div className="test">
@@ -37,6 +41,7 @@ const KpiCart = ({
           )}
         </div>
         <div>{description}</div>
+
         {progressPercentage && (
           <div>{Math.round(progressPercentage)} % of goals</div>
         )}
@@ -45,6 +50,7 @@ const KpiCart = ({
     {progressPercentage && (
       <ProgressBar progressPercentage={progressPercentage} />
     )}
+    {chartData && <BarChartComp data={chartData} />}
   </Cart>
 );
 

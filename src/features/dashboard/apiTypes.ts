@@ -5,9 +5,8 @@ export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 export type PeriodKpiKey = 'newCustomers' | 'newRevenue' | 'newOrders';
 
 export interface KpiChartData {
-  current: number;
   date: string;
-  previous: number;
+  value: number;
 }
 
 export interface TotalKpi {
@@ -27,7 +26,7 @@ export interface PeriodKpi {
   value: number;
 }
 
-export interface KpiResponseNew {
+export interface KpiResponse {
   periods: Record<DashboardPeriod, PeriodKpi[]>;
   totals: TotalKpi[];
 }

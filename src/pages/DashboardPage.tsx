@@ -55,6 +55,7 @@ const DashboardPage = () => {
               title={language[kpi.title]}
               iconName={kpiIcons[kpi.key]}
               description={language[kpi.description]}
+              chartData={kpi.chartData}
               total={kpi.total}
             />
           ))}
