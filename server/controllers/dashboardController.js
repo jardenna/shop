@@ -170,6 +170,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
 
   res.status(200).json(products);
 });
+
 export {
   createGoals,
   getGoals,
