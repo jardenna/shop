@@ -16,17 +16,3 @@
   align-items: flex-end;
   margin-bottom: 12px;
 }
-
-.promo-code-select {
-  max-width: rem(152px);
-
-  /* stylelint-disable-next-line selector-class-pattern */
-  .select-box__control {
-    background-color: $color-white;
-    border: $border-dark;
-  }
-
-  input {
-    height: rem(40px);
-  }
-}

@@ -42,6 +42,7 @@ import LoginIcon from './LoginIcon';
 import LogoIcon from './LogoIcon';
 import LogoutIcon from './LogoutIcon';
 import MoreIcon from './MoreIcon';
+import NewOrdersIcon from './NewOrdersIcon';
 import OrdersIcon from './OrdersIcon';
 import PackageOpenIcon from './PackageOpenIcon';
 import MastercardIcon from './payments/MastercardIcon';
@@ -51,6 +52,7 @@ import VisaIcon from './payments/VisaIcon';
 import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import RefreshIcon from './RefreshIcon';
+import RevenueIcon from './RevenueIcon';
 import SearchIcon from './SearchIcon';
 import SettingIcon from './SettingIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
@@ -67,6 +69,7 @@ import UndoIcon from './UndoIcon';
 import UploadIcon from './UploadIcon';
 import UserIcon from './UserIcon';
 import UsersIcon from './UsersIcon';
+import WalletIcon from './WalletIcon';
 import WarningIcon from './WarningIcon';
 
 type IconProps = IconDefaultProps & {
@@ -121,12 +124,14 @@ const iconMapping = {
   menuDotsHorizontal: ThreeDotsHorizontalIcon,
   mobilePay: MobilePayIcon,
   more: MoreIcon,
+  newOrders: NewOrdersIcon,
   orders: OrdersIcon,
   packageOpen: PackageOpenIcon,
   payPal: PayPalIcon,
   pencil: PencilIcon,
   products: ProductsIcon,
   refresh: RefreshIcon,
+  revenue: RevenueIcon,
   search: SearchIcon,
   settings: SettingIcon,
   shoppingBag: ShoppingBagIcon,
@@ -140,6 +145,7 @@ const iconMapping = {
   upload: UploadIcon,
   user: UserIcon,
   visa: VisaIcon,
+  wallet: WalletIcon,
   users: UsersIcon,
   warning: WarningIcon,
   woman: WomanIcon,

@@ -69,6 +69,7 @@ const PromoCodeTable = () => {
         <div className="promo-code-header">
           <div className="promo-code-select">
             <Selectbox
+              variant="secondary"
               id="year"
               placeHolder={language.selectYear}
               options={yearOptions}
