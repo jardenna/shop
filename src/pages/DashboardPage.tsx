@@ -53,7 +53,11 @@ const DashboardPage = () => {
             iconName={kpiIcons[kpi.key]}
             description={language[kpi.description]}
             total={kpi.total}
-            progressPercentage={25}
+            progressPercentage={
+              kpi.value !== undefined && kpi.goal !== undefined && kpi.goal > 0
+                ? Math.min((kpi.value / kpi.goal) * 100, 100)
+                : undefined
+            }
           />
         ))}
       </div>
