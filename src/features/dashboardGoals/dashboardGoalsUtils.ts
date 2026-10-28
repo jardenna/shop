@@ -32,23 +32,3 @@ export const kpiIcons = {
 } as const;
 
 export type KpiIconKey = keyof typeof kpiIcons;
-
-export interface DashboardKpi {
-  description: string;
-  key: KpiIconKey;
-  title: string;
-  total: number;
-  changePercentage?: number;
-  chartData?: {
-    current: number;
-    date: string;
-    previous: number;
-  }[];
-  goal?: number;
-  value?: number;
-}
-
-export interface KpiResponse {
-  kpis: DashboardKpi[];
-  period: number;
-}

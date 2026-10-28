@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Selectbox from '../components/selectbox/Selectbox';
 import { DashboardPeriod } from '../features/dashboard/apiTypes';
 import KpiCart from '../features/dashboard/components/KpiCart';
-import { data } from '../features/dashboard/data';
 import { dataNew } from '../features/dashboard/dataNew';
 import {
   kpiIcons,
@@ -50,52 +49,29 @@ const DashboardPage = () => {
       />
       <div>
         <div className="flex">
-          {totals.map((a) => (
-            <div key={a.key}>{a.key}</div>
+          {totals.map((kpi) => (
+            <KpiCart
+              key={kpi.key}
+              title={language[kpi.title]}
+              iconName={kpiIcons[kpi.key]}
+              description={language[kpi.description]}
+              total={kpi.total}
+            />
           ))}
         </div>
         <div className="flex">
-          {periodKpis.map((a) => (
-            <div key={a.key}>{a.key}</div>
+          {periodKpis.map((kpi) => (
+            <KpiCart
+              key={kpi.key}
+              title={language[kpi.title]}
+              iconName={kpiIcons[kpi.key]}
+              description={language[kpi.description]}
+              total={kpi.value}
+              progressPercentage={Math.min((kpi.value / kpi.goal) * 100, 100)}
+            />
           ))}
         </div>
-        {data.kpis.map((kpi) => (
-          <KpiCart
-            key={kpi.key}
-            title={language[kpi.title]}
-            iconName={kpiIcons[kpi.key]}
-            description={language[kpi.description]}
-            total={kpi.total}
-            progressPercentage={
-              kpi.value !== undefined && kpi.goal !== undefined && kpi.goal > 0
-                ? Math.min((kpi.value / kpi.goal) * 100, 100)
-                : undefined
-            }
-          />
-        ))}
       </div>
-      {/* <div className="flex">
-        <KpiCart title="Total customers" iconName={IconName.Users} />
-        <KpiCart title="Total Revenue" iconName={IconName.Wallet} />
-        <KpiCart title="Total orders" iconName={IconName.Orders} />
-      </div>
-      <div className="flex">
-        <KpiCart
-          title="New customers"
-          iconName={IconName.Account}
-          progressPercentage={30}
-        />
-        <KpiCart
-          title="Revenue"
-          iconName={IconName.Revenue}
-          progressPercentage={90}
-        />
-        <KpiCart
-          title="New orders"
-          iconName={IconName.NewOrders}
-          progressPercentage={40}
-        />
-      </div> */}
     </AdminPageContainer>
   );
 };
