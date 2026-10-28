@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCart from '../features/dashboard/components/KpiCart';
+import { data } from '../features/dashboard/data';
 import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
@@ -16,6 +17,9 @@ const DashboardPage = () => {
     setSelectedPeriod(option?.value ?? '');
   };
   console.log(selectedPeriod);
+
+  const kpi = data.kpis;
+  console.log(kpi);
 
   //   new customers revenue orders
 
@@ -41,7 +45,7 @@ const DashboardPage = () => {
       />
       <div className="flex">
         <KpiCart title="Total customers" iconName={IconName.Users} />
-        <KpiCart title="Total Revenue" iconName={IconName.Revenue} />
+        <KpiCart title="Total Revenue" iconName={IconName.Wallet} />
         <KpiCart title="Total orders" iconName={IconName.Orders} />
       </div>
       <div className="flex">
@@ -52,7 +56,7 @@ const DashboardPage = () => {
         />
         <KpiCart
           title="Revenue"
-          iconName={IconName.Wallet}
+          iconName={IconName.Revenue}
           progressPercentage={90}
         />
         <KpiCart
