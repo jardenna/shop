@@ -52,12 +52,12 @@ const DashboardPage = () => {
         />
         <KpiCart
           title="Revenue"
-          iconName={IconName.Revenue}
+          iconName={IconName.Wallet}
           progressPercentage={90}
         />
         <KpiCart
           title="New orders"
-          iconName={IconName.Orders}
+          iconName={IconName.NewOrders}
           progressPercentage={-3}
         />
       </div>

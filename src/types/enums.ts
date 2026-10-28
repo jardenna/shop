@@ -127,6 +127,7 @@ export enum IconName {
   MenuDotsHorizontal = 'menuDotsHorizontal',
   MobilePay = 'mobilePay',
   More = 'more',
+  NewOrders = 'newOrders',
   Orders = 'orders',
   PackageOpen = 'packageOpen',
   PayPal = 'payPal',
@@ -148,6 +149,7 @@ export enum IconName {
   User = 'user',
   Users = 'users',
   Visa = 'visa',
+  Wallet = 'wallet',
   Warning = 'warning',
   Woman = 'woman',
 }
