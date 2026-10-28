@@ -33,6 +33,7 @@ type SelectboxProps = {
   ref?: RefElementType;
   required?: boolean;
   selectKey?: string;
+  variant?: 'primary' | 'secondary';
   isOptionDisabled?: (option: { value: string }) => boolean;
   onChange: (value: any) => void;
 };
@@ -60,6 +61,7 @@ const Selectbox = ({
   isLoading,
   isClearable,
   isOptionDisabled,
+  variant = 'primary',
 }: SelectboxProps) => {
   const { language } = useLanguage();
   const handleChange = (newValue: SelectedOption) => {
@@ -80,7 +82,7 @@ const Selectbox = ({
   const ariaErrorId = `${id}-error`;
 
   return (
-    <div className="input-container select-box-container">
+    <div className={`input-container select-box-container ${variant}`}>
       <FormLabel
         errorText={errorText}
         required={required}

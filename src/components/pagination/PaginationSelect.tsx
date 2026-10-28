@@ -44,6 +44,7 @@ const PaginationSelect = ({
           labelText={language.selectNumber}
           defaultValue={defaultValue}
           inputHasNoLabel
+          variant="secondary"
         />
       </FieldSet>
       {!isLargeTabletSize && <p>{language.productPerPage}</p>}

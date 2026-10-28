@@ -9,15 +9,32 @@
   }
 }
 
+.select-box-container {
+  &.secondary {
+    max-width: rem(170px);
+
+    .select-box__control {
+      background-color: $color-white;
+      border: $border-dark;
+
+      input {
+        height: rem(40px);
+      }
+    }
+  }
+}
+
 .select-box__menu-portal,
 .select-box {
   &:has(input[aria-invalid='true']) {
     @include outline($color-danger);
   }
+
   &:has(input[aria-invalid='true']:focus-visible) {
     border-color: $color-danger;
     outline: transparent;
   }
+
   .select-box__control {
     @extend %styled-input;
   }
