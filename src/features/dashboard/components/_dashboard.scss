@@ -1,7 +1,16 @@
 @use '../../../scss/globals' as *;
 
+.test {
+  display: flex;
+  gap: 8px;
+}
+
 .kpi-cart {
-  img {
-    max-width: 100px;
+  .kpi-icon {
+    background-color: green;
+  }
+
+  .kpi-title {
+    text-transform: uppercase;
   }
 }

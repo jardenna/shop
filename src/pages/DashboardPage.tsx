@@ -39,9 +39,16 @@ const DashboardPage = () => {
         name="year"
         labelText={language.filterByYear}
       />
-      <KpiCart title="New customers" iconName={IconName.Users} />
-      <KpiCart title="Revenue" iconName={IconName.Revenue} />
-      <KpiCart title="New orders" iconName={IconName.Orders} />
+      <div className="flex">
+        <KpiCart title="Total customers" iconName={IconName.Users} />
+        <KpiCart title="Total Revenue" iconName={IconName.Revenue} />
+        <KpiCart title="Total orders" iconName={IconName.Orders} />
+      </div>
+      <div className="flex">
+        <KpiCart title="New customers" iconName={IconName.Users} isGoalKpi />
+        <KpiCart title="Revenue" iconName={IconName.Revenue} isGoalKpi />
+        <KpiCart title="New orders" iconName={IconName.Orders} isGoalKpi />
+      </div>
     </AdminPageContainer>
   );
 };
