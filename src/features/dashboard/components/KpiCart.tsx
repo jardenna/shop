@@ -7,10 +7,10 @@ import './_dashboard.scss';
 interface KpiCartProps {
   iconName: IconName;
   title: string;
-  isGoalKpi?: boolean;
+  progressPercentage?: number;
 }
 
-const KpiCart = ({ title, iconName, isGoalKpi }: KpiCartProps) => (
+const KpiCart = ({ title, iconName, progressPercentage }: KpiCartProps) => (
   <Cart className="kpi-cart">
     <div className="test">
       <div className="kpi-icon">
@@ -25,7 +25,12 @@ const KpiCart = ({ title, iconName, isGoalKpi }: KpiCartProps) => (
         <div>3 new this week</div>
       </section>
     </div>
-    {isGoalKpi && <ProgressBar progressPercentage={60} />}
+    {progressPercentage && (
+      <ProgressBar
+        progressPercentage={progressPercentage}
+        variant={progressPercentage < 0 ? 'danger' : 'success'}
+      />
+    )}
   </Cart>
 );
 

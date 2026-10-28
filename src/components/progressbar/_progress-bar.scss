@@ -7,6 +7,14 @@
   .progress-bar {
     background-color: $color-background-secondary;
 
+    &.success {
+      background-color: $color-info;
+    }
+
+    &.danger {
+      background-color: $color-red-10;
+    }
+
     &.auto-animation {
       background-color: $color-border;
 

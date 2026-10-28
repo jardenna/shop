@@ -45,9 +45,21 @@ const DashboardPage = () => {
         <KpiCart title="Total orders" iconName={IconName.Orders} />
       </div>
       <div className="flex">
-        <KpiCart title="New customers" iconName={IconName.Users} isGoalKpi />
-        <KpiCart title="Revenue" iconName={IconName.Revenue} isGoalKpi />
-        <KpiCart title="New orders" iconName={IconName.Orders} isGoalKpi />
+        <KpiCart
+          title="New customers"
+          iconName={IconName.Users}
+          progressPercentage={30}
+        />
+        <KpiCart
+          title="Revenue"
+          iconName={IconName.Revenue}
+          progressPercentage={90}
+        />
+        <KpiCart
+          title="New orders"
+          iconName={IconName.Orders}
+          progressPercentage={-3}
+        />
       </div>
     </AdminPageContainer>
   );
