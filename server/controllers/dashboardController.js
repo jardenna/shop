@@ -177,7 +177,7 @@ const getNewProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private (admin and employees)
 const getTotalKpi = asyncHandler(async (req, res) => {
-  const orders = await Order.find().select('summary createdAt');
+  const orders = await Order.find().select('summary');
 
   const userCount = await User.countDocuments({
     role: ROLES.USER,
@@ -186,7 +186,8 @@ const getTotalKpi = asyncHandler(async (req, res) => {
   const orderCount = orders.length;
 
   const totalRevenue = orders.reduce(
-    (total, order) => total + order.summary.totalPrice,
+    (total, order) =>
+      total + order.summary.subTotal - order.summary.discountPrice,
     0,
   );
 
