@@ -3,14 +3,9 @@ import './_progress-bar.scss';
 type ProgressBarProps = {
   progressPercentage: number;
   isAuto?: boolean;
-  variant?: 'danger' | 'success';
 };
 
-const ProgressBar = ({
-  progressPercentage,
-  isAuto,
-  variant,
-}: ProgressBarProps) => (
+const ProgressBar = ({ progressPercentage, isAuto }: ProgressBarProps) => (
   <span
     className="progress-bar-container"
     role="progressbar"
@@ -18,7 +13,7 @@ const ProgressBar = ({
   >
     <span
       style={{ width: `${progressPercentage}%` }}
-      className={`progress-bar  ${isAuto ? 'auto-animation' : ''} ${variant ?? ''}`}
+      className={`progress-bar  ${isAuto ? 'auto-animation' : ''}`}
       aria-valuetext={progressPercentage.toString()}
       aria-valuenow={progressPercentage}
     />

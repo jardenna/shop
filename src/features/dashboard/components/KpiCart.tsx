@@ -26,10 +26,7 @@ const KpiCart = ({ title, iconName, progressPercentage }: KpiCartProps) => (
       </section>
     </div>
     {progressPercentage && (
-      <ProgressBar
-        progressPercentage={progressPercentage}
-        variant={progressPercentage < 0 ? 'danger' : 'success'}
-      />
+      <ProgressBar progressPercentage={progressPercentage} />
     )}
   </Cart>
 );

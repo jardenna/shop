@@ -58,7 +58,7 @@ const DashboardPage = () => {
         <KpiCart
           title="New orders"
           iconName={IconName.NewOrders}
-          progressPercentage={-3}
+          progressPercentage={40}
         />
       </div>
     </AdminPageContainer>
