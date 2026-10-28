@@ -20,9 +20,9 @@ const KpiCart = ({ title, iconName, progressPercentage }: KpiCartProps) => (
         <h2 className="kpi-title">{title}</h2>
         <div>
           <span>342</span>
-          <span> + 3%</span>
+          {/* <span> {`${progressPercentage ?? '4'}%`}</span> */}
         </div>
-        <div>3 new this week</div>
+        <div>Registered customers </div>
       </section>
     </div>
     {progressPercentage && (

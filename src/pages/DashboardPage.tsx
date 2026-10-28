@@ -10,16 +10,16 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedPeriod, setSelectedPeriod] = useState('7');
 
-  const handleSelectYear = (option: OptionType | null) => {
-    setSelectedYear(option?.value ?? '');
+  const handleSelectPeriod = (option: OptionType | null) => {
+    setSelectedPeriod(option?.value ?? '');
   };
+  console.log(selectedPeriod);
 
   //   new customers revenue orders
 
   // total customers total revenue total orders
-  console.log(selectedYear);
 
   return (
     <AdminPageContainer
@@ -33,7 +33,7 @@ const DashboardPage = () => {
         defaultValue={kpiOptions[0]}
         options={kpiOptions}
         onChange={(option) => {
-          handleSelectYear(option);
+          handleSelectPeriod(option);
         }}
         inputHasNoLabel
         name="year"
@@ -47,7 +47,7 @@ const DashboardPage = () => {
       <div className="flex">
         <KpiCart
           title="New customers"
-          iconName={IconName.Users}
+          iconName={IconName.Account}
           progressPercentage={30}
         />
         <KpiCart
