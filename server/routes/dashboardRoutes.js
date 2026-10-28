@@ -3,6 +3,8 @@ import {
   createGoals,
   getGoals,
   getNewestCustomers,
+  getPeriodKpi,
+  getTotalKpi,
   updateGoals,
 } from '../controllers/dashboardController.js';
 import {
@@ -18,6 +20,9 @@ router
   .get(languageMiddleware, authenticate, authorizeEmployee, getGoals)
   .patch(languageMiddleware, authenticate, authorizeEmployee, updateGoals)
   .post(languageMiddleware, authenticate, authorizeEmployee, createGoals);
+
+router.get('/total-kpi', authenticate, authorizeEmployee, getTotalKpi);
+router.get('/period-kpi', authenticate, authorizeEmployee, getPeriodKpi);
 
 router.get(
   '/new-custormers/:id',

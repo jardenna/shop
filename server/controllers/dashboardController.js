@@ -130,6 +130,7 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
     role: ROLES.USER,
     createdAt: period,
   });
+  console.log(req.period);
 
   res.status(200).json({ count });
 });
@@ -137,7 +138,7 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
 // @desc    Get Top selling Products
 // @route   /api/dashboard/products/top-selling
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getTopSellingProducts = asyncHandler(async (req, res) => {
   const orders = await Order.find().select('orderItems');
 
@@ -147,7 +148,7 @@ const getTopSellingProducts = asyncHandler(async (req, res) => {
 // @desc    Get Top Products
 // @route   /api/dashboard/products/top
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({ productStatus: PUBLISHED })
     .sort({ createdAt: -1 })
@@ -160,7 +161,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @desc    Get New Products
 // @route   /api/dashboard/products/new
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getNewProducts = asyncHandler(async (req, res) => {
   // if no new in 1 month show no new products within the last month
   const products = await Product.find({ productStatus: PUBLISHED })
@@ -171,12 +172,69 @@ const getNewProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
+// @desc    Get total KPIs
+// @route   GET /api/dashboard/total-kpi
+// @method  GET
+// @access  Private (admin and employees)
+const getTotalKpi = asyncHandler(async (req, res) => {
+  const orders = await Order.find().select('summary createdAt');
+
+  const userCount = await User.countDocuments({
+    role: ROLES.USER,
+  });
+
+  const orderCount = orders.length;
+
+  const totalRevenue = orders.reduce(
+    (total, order) => total + order.summary.totalPrice,
+    0,
+  );
+
+  res.send({
+    totals: [
+      {
+        key: 'totalCustomers',
+        title: 'totalCustomers',
+        description: 'totalCustomersDescription',
+        total: userCount,
+        chartData: [],
+      },
+      {
+        key: 'totalRevenue',
+        title: 'totalRevenue',
+        description: 'totalRevenueDescription',
+        total: totalRevenue,
+        chartData: [],
+      },
+      {
+        key: 'totalOrders',
+        title: 'totalOrders',
+        description: 'totalOrdersDescription',
+        total: orderCount,
+        chartData: [],
+      },
+    ],
+  });
+});
+
+// @desc    Get total KPIs
+// @route   GET /api/dashboard/period-kpi
+// @method  GET
+// @access  Private (admin and employees)
+const getPeriodKpi = asyncHandler(async (req, res) => {
+  const orders = await Order.find().select('summary createdAt');
+
+  res.send(orders);
+});
+
 export {
   createGoals,
   getGoals,
   getNewestCustomers,
   getNewProducts,
+  getPeriodKpi,
   getTopProducts,
   getTopSellingProducts,
+  getTotalKpi,
   updateGoals,
 };
