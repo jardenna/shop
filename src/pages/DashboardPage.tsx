@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import Selectbox from '../components/selectbox/Selectbox';
+import { DashboardPeriod } from '../features/dashboard/apiTypes';
 import KpiCart from '../features/dashboard/components/KpiCart';
 import { data } from '../features/dashboard/data';
+import { dataNew } from '../features/dashboard/dataNew';
 import {
   kpiIcons,
   kpiOptions,
@@ -13,15 +15,16 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
-  const [selectedPeriod, setSelectedPeriod] = useState('7');
+  const [selectedPeriod, setSelectedPeriod] = useState<DashboardPeriod>(7);
 
   const handleSelectPeriod = (option: OptionType | null) => {
-    setSelectedPeriod(option?.value ?? '');
+    if (option) {
+      setSelectedPeriod(Number(option.value) as DashboardPeriod);
+    }
   };
-  console.log(selectedPeriod);
 
-  const kpi = data.kpis;
-  console.log(kpi);
+  const totals = dataNew.totals;
+  const periodKpis = dataNew.periods[selectedPeriod];
 
   //   new customers revenue orders
 
@@ -46,6 +49,16 @@ const DashboardPage = () => {
         labelText={language.filterByYear}
       />
       <div>
+        <div className="flex">
+          {totals.map((a) => (
+            <div key={a.key}>{a.key}</div>
+          ))}
+        </div>
+        <div className="flex">
+          {periodKpis.map((a) => (
+            <div key={a.key}>{a.key}</div>
+          ))}
+        </div>
         {data.kpis.map((kpi) => (
           <KpiCart
             key={kpi.key}
