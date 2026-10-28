@@ -1,8 +1,8 @@
 import { Bar, BarChart } from 'recharts';
-import { KpiChartData } from '../../features/dashboard/apiTypes';
+import { ChartData } from '../../types/types';
 
 interface BarChartComp {
-  data: KpiChartData[];
+  data: ChartData[];
 }
 
 const BarChartComp = ({ data }: BarChartComp) => (
