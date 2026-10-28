@@ -51,6 +51,7 @@ import VisaIcon from './payments/VisaIcon';
 import PencilIcon from './PencilIcon';
 import ProductsIcon from './ProductsIcon';
 import RefreshIcon from './RefreshIcon';
+import RevenueIcon from './RevenueIcon';
 import SearchIcon from './SearchIcon';
 import SettingIcon from './SettingIcon';
 import ShoppingBagIcon from './ShoppingBagIcon';
@@ -127,6 +128,7 @@ const iconMapping = {
   pencil: PencilIcon,
   products: ProductsIcon,
   refresh: RefreshIcon,
+  revenue: RevenueIcon,
   search: SearchIcon,
   settings: SettingIcon,
   shoppingBag: ShoppingBagIcon,

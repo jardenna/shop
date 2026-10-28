@@ -133,6 +133,7 @@ export enum IconName {
   Pencil = 'pencil',
   Products = 'products',
   Refresh = 'refresh',
+  Revenue = 'revenue',
   Search = 'search',
   Settings = 'settings',
   ShoppingBag = 'shoppingBag',

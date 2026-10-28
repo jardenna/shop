@@ -3,6 +3,7 @@ import Selectbox from '../components/selectbox/Selectbox';
 import KpiCart from '../features/dashboard/components/KpiCart';
 import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
+import { IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
@@ -38,7 +39,9 @@ const DashboardPage = () => {
         name="year"
         labelText={language.filterByYear}
       />
-      <KpiCart title="New customers" />
+      <KpiCart title="New customers" iconName={IconName.Users} />
+      <KpiCart title="Revenue" iconName={IconName.Revenue} />
+      <KpiCart title="New orders" iconName={IconName.Orders} />
     </AdminPageContainer>
   );
 };

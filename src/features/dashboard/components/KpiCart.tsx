@@ -5,12 +5,13 @@ import { IconName } from '../../../types/enums';
 import './_dashboard.scss';
 
 interface KpiCartProps {
+  iconName: IconName;
   title: string;
 }
 
-const KpiCart = ({ title }: KpiCartProps) => (
+const KpiCart = ({ title, iconName }: KpiCartProps) => (
   <Cart className="kpi-cart">
-    <Icon iconName={IconName.Account} />
+    <Icon iconName={iconName} />
     <section>
       <h2>{title}</h2>
       <div>
