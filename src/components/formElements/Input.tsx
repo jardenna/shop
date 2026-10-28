@@ -36,7 +36,7 @@ export type InputProps = {
   required?: boolean;
   step?: number;
   type?: InputType;
-  variant?: 'primary' | 'secondary';
+  variant?: 'secondary';
   onBlur?: (event: BlurEventType) => void;
   onFocus?: () => void;
 };
@@ -69,7 +69,7 @@ const Input = ({
   inputInfo,
   inputMode,
   readOnly,
-  variant = 'primary',
+  variant,
 }: InputProps) => {
   const unitId = useId();
   const handleOnInput = (event: SyntheticEvent<HTMLInputElement>) => {
@@ -89,7 +89,7 @@ const Input = ({
 
   return (
     <>
-      <div className={`input-container ${variant}`}>
+      <div className={`input-container ${variant ?? ''}`}>
         <FormLabel
           required={required}
           labelText={labelText}
