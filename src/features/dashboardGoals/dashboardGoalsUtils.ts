@@ -1,9 +1,5 @@
 import { IconName } from '../../types/enums';
 
-export const days = [7, 30, 365];
-
-export const kpi = ['newCustomers', 'orders', 'revenue'];
-
 export const kpiOptions = [
   {
     label: 'Seneste 7 dage',
@@ -30,5 +26,3 @@ export const kpiIcons = {
   newRevenue: IconName.Revenue,
   newOrders: IconName.NewOrders,
 } as const;
-
-export type KpiIconKey = keyof typeof kpiIcons;
