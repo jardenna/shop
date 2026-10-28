@@ -9,6 +9,8 @@ interface KpiCartProps {
   iconName: IconName;
   title: string;
   total: number;
+  changePercentage?: number;
+  goalPercentage?: number;
   progressPercentage?: number;
 }
 
@@ -16,7 +18,9 @@ const KpiCart = ({
   title,
   iconName,
   progressPercentage,
+  changePercentage,
   description,
+  goalPercentage,
   total,
 }: KpiCartProps) => (
   <Cart className="kpi-cart">
@@ -28,8 +32,14 @@ const KpiCart = ({
         <h2 className="kpi-title">{title}</h2>
         <div>
           <span>{total}</span>
+          {changePercentage && (
+            <span>
+              {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
+            </span>
+          )}
         </div>
         <div>{description}</div>
+        {goalPercentage && <div>{goalPercentage} % of goals</div>}
       </section>
     </div>
     {progressPercentage && (
