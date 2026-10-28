@@ -5,12 +5,20 @@ import { IconName } from '../../../types/enums';
 import './_dashboard.scss';
 
 interface KpiCartProps {
+  description: string;
   iconName: IconName;
   title: string;
+  total: number;
   progressPercentage?: number;
 }
 
-const KpiCart = ({ title, iconName, progressPercentage }: KpiCartProps) => (
+const KpiCart = ({
+  title,
+  iconName,
+  progressPercentage,
+  description,
+  total,
+}: KpiCartProps) => (
   <Cart className="kpi-cart">
     <div className="test">
       <div className="kpi-icon">
@@ -19,10 +27,9 @@ const KpiCart = ({ title, iconName, progressPercentage }: KpiCartProps) => (
       <section>
         <h2 className="kpi-title">{title}</h2>
         <div>
-          <span>342</span>
-          {/* <span> {`${progressPercentage ?? '4'}%`}</span> */}
+          <span>{total}</span>
         </div>
-        <div>Registered customers </div>
+        <div>{description}</div>
       </section>
     </div>
     {progressPercentage && (

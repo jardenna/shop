@@ -1,4 +1,6 @@
-export const data = {
+import { KpiResponse } from '../dashboardGoals/dashboardGoalsUtils';
+
+export const data: KpiResponse = {
   period: 7,
   kpis: [
     {
@@ -36,17 +38,19 @@ export const data = {
       title: 'newCustomers',
       description: 'newCustomersDescription',
       value: 3,
+      total: 342,
+
       goal: 5,
-      goalPercentage: 60,
       changePercentage: 3,
     },
     {
       key: 'newRevenue',
       title: 'newRevenue',
+      total: 342,
+
       description: 'revenueDescription',
       value: 9000,
       goal: 10000,
-      goalPercentage: 90,
       changePercentage: 5,
     },
     {
@@ -54,8 +58,9 @@ export const data = {
       title: 'newOrders',
       description: 'newOrdersDescription',
       value: 8,
+      total: 2,
+
       goal: 10,
-      goalPercentage: 80,
       changePercentage: -3,
     },
   ],

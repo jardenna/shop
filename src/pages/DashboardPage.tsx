@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCart from '../features/dashboard/components/KpiCart';
 import { data } from '../features/dashboard/data';
-import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
+import {
+  kpiIcons,
+  kpiOptions,
+} from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
@@ -43,7 +45,19 @@ const DashboardPage = () => {
         name="year"
         labelText={language.filterByYear}
       />
-      <div className="flex">
+      <div>
+        {data.kpis.map((kpi) => (
+          <KpiCart
+            key={kpi.key}
+            title={language[kpi.title]}
+            iconName={kpiIcons[kpi.key]}
+            description={language[kpi.description]}
+            total={kpi.total}
+            progressPercentage={25}
+          />
+        ))}
+      </div>
+      {/* <div className="flex">
         <KpiCart title="Total customers" iconName={IconName.Users} />
         <KpiCart title="Total Revenue" iconName={IconName.Wallet} />
         <KpiCart title="Total orders" iconName={IconName.Orders} />
@@ -64,7 +78,7 @@ const DashboardPage = () => {
           iconName={IconName.NewOrders}
           progressPercentage={40}
         />
-      </div>
+      </div> */}
     </AdminPageContainer>
   );
 };
