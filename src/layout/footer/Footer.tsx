@@ -18,7 +18,11 @@ const Footer = () => {
   const { language } = useLanguage();
 
   return (
-    <LayoutElement ariaLabel="main" as="footer" className="main-footer">
+    <LayoutElement
+      ariaLabel={language.main}
+      as="footer"
+      className="main-footer"
+    >
       <div className="container">
         <article className="footer-container">
           <section className="footer-shop-info">

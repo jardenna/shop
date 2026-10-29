@@ -6,12 +6,17 @@ import { adminNavList } from '../layout/nav/navLists';
 import Logout from './Logout';
 
 interface AdminHeaderProps {
+  ariaLabel: string;
   isLargeTabletSize: boolean;
   onLogout: () => void;
 }
 
-const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => (
-  <LayoutElement className="admin-header" ariaLabel="page-header">
+const AdminHeader = ({
+  ariaLabel,
+  onLogout,
+  isLargeTabletSize,
+}: AdminHeaderProps) => (
+  <LayoutElement className="admin-header" ariaLabel={ariaLabel}>
     <>
       <Logo linkTo={`/${AdminPath.Admin}`} />
       {!isLargeTabletSize ? (

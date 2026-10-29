@@ -1,6 +1,7 @@
 import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import { DropdownItem } from '../../components/dropdownBtn/DropdownBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
+import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler, OptionType } from '../../types/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
@@ -47,37 +48,41 @@ const Header = ({
   isMobileSize,
   onSubmit,
   localLanguage,
-}: HeaderProps & MobileProps) => (
-  <LayoutElement className="main-header" ariaLabel="main">
-    <div className="container main-header-content">
-      <Logo linkTo={ShopPath.Root} />
-      {!isMobileSize ? (
-        <NavContainer
-          navList={navList}
-          ariaLabel="main"
-          className="main-nav-container"
+}: HeaderProps & MobileProps) => {
+  const { language } = useLanguage();
+
+  return (
+    <LayoutElement className="main" ariaLabel={language.main}>
+      <div className="container main-header-content">
+        <Logo linkTo={ShopPath.Root} />
+        {!isMobileSize ? (
+          <NavContainer
+            navList={navList}
+            ariaLabel="main"
+            className="main-nav-container"
+          />
+        ) : (
+          <MobileNav
+            navList={navList}
+            className="main-nav-container"
+            hidePanelHeading
+          />
+        )}
+        <HeaderIcons
+          dropdownBtnList={dropdownBtnList}
+          onChange={onChange}
+          values={values}
+          currencyOptions={currencyOptions}
+          onSelectCurrency={onSelectCurrency}
+          defaultValue={defaultValue}
+          localLanguage={localLanguage}
+          currentUser={currentUser}
+          isAuthReady={isAuthReady}
+          onSubmit={onSubmit}
         />
-      ) : (
-        <MobileNav
-          navList={navList}
-          className="main-nav-container"
-          hidePanelHeading
-        />
-      )}
-      <HeaderIcons
-        dropdownBtnList={dropdownBtnList}
-        onChange={onChange}
-        values={values}
-        currencyOptions={currencyOptions}
-        onSelectCurrency={onSelectCurrency}
-        defaultValue={defaultValue}
-        localLanguage={localLanguage}
-        currentUser={currentUser}
-        isAuthReady={isAuthReady}
-        onSubmit={onSubmit}
-      />
-    </div>
-  </LayoutElement>
-);
+      </div>
+    </LayoutElement>
+  );
+};
 
 export default Header;
