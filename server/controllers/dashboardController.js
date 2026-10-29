@@ -234,92 +234,93 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private (admin and employees)
 const getPeriodKpi = asyncHandler(async (req, res) => {
-  // const orders = await Order.find().select('summary createdAt');
+  const dashboard = await Dashboard.findOne({ main: 'main' });
+  res.send(dashboard);
 
-  res.send({
-    periods: {
-      7: [
-        {
-          key: 'newCustomers',
-          title: 'newCustomers',
-          description: 'newCustomersDescription',
-          value: 3,
-          goal: 5,
-          changePercentage: 3,
-        },
-        {
-          key: 'newRevenue',
-          title: 'newRevenue',
-          description: 'revenueDescription',
-          value: 9000,
-          goal: 10000,
-          changePercentage: 5,
-        },
-        {
-          key: 'newOrders',
-          title: 'newOrders',
-          description: 'newOrdersDescription',
-          value: 8,
-          goal: 10,
-          changePercentage: -3,
-        },
-      ],
+  // res.send({
+  //   periods: {
+  //     7: [
+  //       {
+  //         key: 'newCustomers',
+  //         title: 'newCustomers',
+  //         description: 'newCustomersDescription',
+  //         value: 3,
+  //         goal: 5,
+  //         changePercentage: 3,
+  //       },
+  //       {
+  //         key: 'newRevenue',
+  //         title: 'newRevenue',
+  //         description: 'revenueDescription',
+  //         value: 9000,
+  //         goal: 10000,
+  //         changePercentage: 5,
+  //       },
+  //       {
+  //         key: 'newOrders',
+  //         title: 'newOrders',
+  //         description: 'newOrdersDescription',
+  //         value: 8,
+  //         goal: 10,
+  //         changePercentage: -3,
+  //       },
+  //     ],
 
-      30: [
-        {
-          key: 'newCustomers',
-          title: 'newCustomers',
-          description: 'newCustomersDescription',
-          value: 18,
-          goal: 20,
-          changePercentage: 12,
-        },
-        {
-          key: 'newRevenue',
-          title: 'newRevenue',
-          description: 'revenueDescription',
-          value: 18000,
-          goal: 20000,
-          changePercentage: 8,
-        },
-        {
-          key: 'newOrders',
-          title: 'newOrders',
-          description: 'newOrdersDescription',
-          value: 36,
-          goal: 40,
-          changePercentage: 6,
-        },
-      ],
+  //     30: [
+  //       {
+  //         key: 'newCustomers',
+  //         title: 'newCustomers',
+  //         description: 'newCustomersDescription',
+  //         value: 18,
+  //         goal: 20,
+  //         changePercentage: 12,
+  //       },
+  //       {
+  //         key: 'newRevenue',
+  //         title: 'newRevenue',
+  //         description: 'revenueDescription',
+  //         value: 18000,
+  //         goal: 20000,
+  //         changePercentage: 8,
+  //       },
+  //       {
+  //         key: 'newOrders',
+  //         title: 'newOrders',
+  //         description: 'newOrdersDescription',
+  //         value: 36,
+  //         goal: 40,
+  //         changePercentage: 6,
+  //       },
+  //     ],
 
-      365: [
-        {
-          key: 'newCustomers',
-          title: 'newCustomers',
-          description: 'newCustomersDescription',
-          value: 190,
-          goal: 200,
-          changePercentage: 15,
-        },
-        {
-          key: 'newRevenue',
-          title: 'newRevenue',
-          description: 'revenueDescription',
-          value: 220000,
-          goal: 240000,
-          changePercentage: 10,
-        },
-        {
-          key: 'newOrders',
-          title: 'newOrders',
-          description: 'newOrdersDescription',
-          value: 470,
-          goal: 500,
-          changePercentage: -2,
-        },
-      ],
-    },
-  });
+  //     365: [
+  //       {
+  //         key: 'newCustomers',
+  //         title: 'newCustomers',
+  //         description: 'newCustomersDescription',
+  //         value: 190,
+  //         goal: 200,
+  //         changePercentage: 15,
+  //       },
+  //       {
+  //         key: 'newRevenue',
+  //         title: 'newRevenue',
+  //         description: 'revenueDescription',
+  //         value: 220000,
+  //         goal: 240000,
+  //         changePercentage: 10,
+  //       },
+  //       {
+  //         key: 'newOrders',
+  //         title: 'newOrders',
+  //         description: 'newOrdersDescription',
+  //         value: 470,
+  //         goal: 500,
+  //         changePercentage: -2,
+  //       },
+  //     ],
+  //   },
+  // });
 });
 
 export {
