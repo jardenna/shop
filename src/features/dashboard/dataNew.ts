@@ -57,8 +57,8 @@ export const dataNew: KpiResponse = {
         changePercentage: 3,
       },
       {
-        key: 'newRevenue',
-        label: 'newRevenue',
+        key: 'revenue',
+        label: 'revenue',
         description: 'revenueDescription',
         value: 9000,
         goal: 10000,
@@ -67,7 +67,7 @@ export const dataNew: KpiResponse = {
       {
         key: 'newOrders',
         label: 'newOrders',
-        description: 'newOrdersDescription',
+        description: 'ordersDescription',
         value: 8,
         goal: 10,
         changePercentage: -3,
@@ -84,7 +84,7 @@ export const dataNew: KpiResponse = {
         changePercentage: 12,
       },
       {
-        key: 'newRevenue',
+        key: 'revenue',
         label: 'newRevenue',
         description: 'revenueDescription',
         value: 18000,
@@ -94,7 +94,7 @@ export const dataNew: KpiResponse = {
       {
         key: 'newOrders',
         label: 'newOrders',
-        description: 'newOrdersDescription',
+        description: 'ordersDescription',
         value: 36,
         goal: 40,
         changePercentage: 6,
@@ -111,8 +111,8 @@ export const dataNew: KpiResponse = {
         changePercentage: 15,
       },
       {
-        key: 'newRevenue',
-        label: 'newRevenue',
+        key: 'revenue',
+        label: 'revenue',
         description: 'revenueDescription',
         value: 220000,
         goal: 240000,
@@ -121,7 +121,7 @@ export const dataNew: KpiResponse = {
       {
         key: 'newOrders',
         label: 'newOrders',
-        description: 'newOrdersDescription',
+        description: 'ordersDescription',
         value: 470,
         goal: 500,
         changePercentage: -2,

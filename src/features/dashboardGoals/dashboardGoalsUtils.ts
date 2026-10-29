@@ -23,6 +23,6 @@ export const kpiIcons = {
   totalRevenue: IconName.Wallet,
   totalOrders: IconName.Orders,
   newCustomers: IconName.Account,
-  newRevenue: IconName.Revenue,
+  revenue: IconName.Revenue,
   newOrders: IconName.NewOrders,
 } as const;

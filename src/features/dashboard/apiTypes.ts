@@ -4,7 +4,7 @@ export type DashboardPeriod = 7 | 30 | 365;
 
 export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 
-export type PeriodKpiKey = 'newCustomers' | 'newRevenue' | 'newOrders';
+export type PeriodKpiKey = 'newCustomers' | 'revenue' | 'newOrders';
 
 export interface TotalKpi {
   chartData: ChartData[];
