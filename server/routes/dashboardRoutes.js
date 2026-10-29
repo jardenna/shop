@@ -21,8 +21,21 @@ router
   .patch(languageMiddleware, authenticate, authorizeEmployee, updateGoals)
   .post(languageMiddleware, authenticate, authorizeEmployee, createGoals);
 
-router.get('/total-kpi', authenticate, authorizeEmployee, getTotalKpi);
-router.get('/period-kpi/:id', authenticate, authorizeEmployee, getPeriodKpi);
+router.get(
+  '/total-kpi',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  getTotalKpi,
+);
+router.get(
+  '/period-kpi/:id',
+  languageMiddleware,
+  validatePeriodMiddleware,
+  authenticate,
+  authorizeEmployee,
+  getPeriodKpi,
+);
 
 router.get(
   '/new-custormers/:id',
