@@ -1,5 +1,6 @@
 import IconBtn from '../../components/IconBtn';
 import { useAuth } from '../../features/auth/hooks/useAuth';
+import { useLanguage } from '../../features/language/useLanguage';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navLists';
 import { IconName } from '../../types/enums';
@@ -13,6 +14,7 @@ interface AsideProps {
 
 const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
   const { currentUser } = useAuth();
+  const { language } = useLanguage();
 
   return (
     <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
@@ -20,7 +22,7 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
         navList={adminNavList}
         isMenuCollapsed={isShown}
         currentUser={currentUser}
-        ariaLabel="main"
+        ariaLabel={language.main}
         className="admin-nav"
       />
       <IconBtn
