@@ -1,4 +1,4 @@
-import { KpiResponse } from './apiTypes';
+import { KpiResponse } from '../../app/api/apiTypes/dashboardApiTypes';
 
 export const dataNew: KpiResponse = {
   totals: [

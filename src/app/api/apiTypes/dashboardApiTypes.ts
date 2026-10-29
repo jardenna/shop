@@ -1,8 +1,5 @@
-import {
-  DashboardPeriod,
-  GoalKeys,
-} from '../../app/api/apiTypes/dashboardGoalsApiTypes';
-import { ChartData } from '../../types/types';
+import { ChartData } from '../../../types/types';
+import { DashboardPeriod, GoalKeys } from './dashboardGoalsApiTypes';
 
 export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 
