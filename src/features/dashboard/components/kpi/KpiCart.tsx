@@ -53,9 +53,8 @@ const KpiCart = ({
         )}
       </section>
     </div>
-    {progressPercentage && (
-      <ProgressBar progressPercentage={progressPercentage} />
-    )}
+    <ProgressBar progressPercentage={progressPercentage ?? 0} />
+
     {chartData && <BarChartComp data={chartData} />}
   </Cart>
 );
