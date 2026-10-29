@@ -58,7 +58,7 @@ const Header = ({
         {!isMobileSize ? (
           <NavContainer
             navList={navList}
-            ariaLabel="main"
+            ariaLabel={language.main}
             className="main-nav-container"
           />
         ) : (
