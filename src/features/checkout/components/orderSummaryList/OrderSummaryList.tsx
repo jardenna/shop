@@ -25,7 +25,7 @@ const OrderSummaryList = ({
   return (
     orderItems && (
       <div>
-        <LayoutElement ariaLabel="order">
+        <LayoutElement ariaLabel={language.account}>
           <h2 className="order-flow-title">
             {language.orderSummary} [ {getCartQuantity(orderItems.cartItems)} ]
           </h2>

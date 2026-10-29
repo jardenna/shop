@@ -185,7 +185,10 @@ const CheckoutPage = () => {
             onReset={() => refetch()}
           >
             <section className="order-flow-list" ref={addressSectionRef}>
-              <LayoutElement ariaLabel="address" className="order-flow-header">
+              <LayoutElement
+                ariaLabel={language.addresses}
+                className="order-flow-header"
+              >
                 <SectionHeading heading={language.addresses} />
 
                 {checkout.addresses.length === 0 && (
