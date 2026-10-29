@@ -36,7 +36,7 @@ const DashboardSchema = new Schema(
         },
         {
           key: 'orders',
-          label: 'orders',
+          label: 'newOrders',
           description: 'ordersDescription',
         },
         {

@@ -65,7 +65,7 @@ export const dataNew: KpiResponse = {
         changePercentage: 5,
       },
       {
-        key: 'newOrders',
+        key: 'orders',
         label: 'newOrders',
         description: 'ordersDescription',
         value: 8,
@@ -92,7 +92,7 @@ export const dataNew: KpiResponse = {
         changePercentage: 8,
       },
       {
-        key: 'newOrders',
+        key: 'orders',
         label: 'newOrders',
         description: 'ordersDescription',
         value: 36,
@@ -119,7 +119,7 @@ export const dataNew: KpiResponse = {
         changePercentage: 10,
       },
       {
-        key: 'newOrders',
+        key: 'orders',
         label: 'newOrders',
         description: 'ordersDescription',
         value: 470,

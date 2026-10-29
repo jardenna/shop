@@ -24,5 +24,5 @@ export const kpiIcons = {
   totalOrders: IconName.Orders,
   newCustomers: IconName.Account,
   revenue: IconName.Revenue,
-  newOrders: IconName.NewOrders,
+  orders: IconName.NewOrders,
 } as const;
