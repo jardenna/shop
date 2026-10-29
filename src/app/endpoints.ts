@@ -32,3 +32,5 @@ export const checkoutUrl = 'checkout';
 export const adminOrdersUrl = `admin/${baseOrderEndpoint}`;
 export const adminPromoCodeUrl = 'admin/promo-codes';
 export const adminGoalsUrl = `${baseDashboardEndpoint}/goals`;
+export const adminTotalsKpiUrl = `${baseDashboardEndpoint}/total-kpi`;
+export const adminPeriodKpiUrl = `${baseDashboardEndpoint}/period-kpi`;
