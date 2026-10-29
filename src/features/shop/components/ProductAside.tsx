@@ -25,6 +25,7 @@ const ProductAside = ({
     <ProductAsideHeader
       headerText={headerText}
       ariaLabelledby={ariaLabelledby}
+      ariaLabel={language.product}
     />
     <section className={`product-aside ${className}`}>
       <LayoutElement as="nav" ariaLabel={language.collection}>
