@@ -7,9 +7,13 @@ import User from '../models/userModel.js';
 import {
   getDashboardDayRange,
   getMonthlyChartData,
+  getPreviousDateRange,
 } from '../utils/dateUtils.js';
 import { t } from '../utils/translator.js';
-import { calculateOrderRevenue } from '../utils/utils.js';
+import {
+  calculateChangePercentage,
+  calculateOrderRevenue,
+} from '../utils/utils.js';
 
 // @desc    Create goals
 // @route   /api/dashboard/goals
@@ -235,109 +239,76 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 // @access  Private (admin and employees)
 const getPeriodKpi = asyncHandler(async (req, res) => {
   const dashboard = await Dashboard.findOne({ main: 'main' });
-  const period = Number(req.params.id);
-
-  //  const period = getDashboardDayRange(req.period);
 
   if (!dashboard) {
-    res.status(404);
-    throw new Error('Dashboard not found');
+    return res.status(404).json({
+      success: false,
+      message: 'Dashboard not found',
+    });
   }
+
+  const period = Number(req.params.id);
+  const dateRange = getDashboardDayRange(period);
+  const previousDateRange = getPreviousDateRange(dateRange, period);
+
+  const newOrders = await Order.countDocuments({
+    createdAt: dateRange,
+  });
+
+  const newCustomers = await User.countDocuments({
+    role: ROLES.USER,
+    createdAt: dateRange,
+  });
+
+  const orders = await Order.find({
+    createdAt: dateRange,
+  }).select('summary');
+
+  const newRevenue = orders.reduce(
+    (total, order) => total + calculateOrderRevenue(order),
+    0,
+  );
+
+  const previousOrders = await Order.countDocuments({
+    createdAt: previousDateRange,
+  });
+
+  const previousCustomers = await User.countDocuments({
+    role: ROLES.USER,
+    createdAt: previousDateRange,
+  });
+
+  const previousRevenueOrders = await Order.find({
+    createdAt: previousDateRange,
+  }).select('summary');
+
+  const previousRevenue = previousRevenueOrders.reduce(
+    (total, order) => total + calculateOrderRevenue(order),
+    0,
+  );
+
+  const values = {
+    newCustomers,
+    orders: newOrders,
+    revenue: newRevenue,
+  };
+
+  const changes = {
+    newCustomers: calculateChangePercentage(newCustomers, previousCustomers),
+    orders: calculateChangePercentage(newOrders, previousOrders),
+    revenue: calculateChangePercentage(newRevenue, previousRevenue),
+  };
 
   const periodKpis = dashboard.kpis.map((kpi) => ({
     key: kpi.key,
     label: kpi.label,
     description: kpi.description,
-    // value: values[kpi.key],
+    value: values[kpi.key],
     goal: dashboard.goals[kpi.key][period],
+    changePercentage: changes[kpi.key],
   }));
 
   res.send(periodKpis);
-
-  // res.send({
-  //   periods: {
-  //     7: [
-  //       {
-  //         key: 'newCustomers',
-  //         title: 'newCustomers',
-  //         description: 'newCustomersDescription',
-  //         value: 3,
-  //         goal: 5,
-  //         changePercentage: 3,
-  //       },
-  //       {
-  //         key: 'newRevenue',
-  //         title: 'newRevenue',
-  //         description: 'revenueDescription',
-  //         value: 9000,
-  //         goal: 10000,
-  //         changePercentage: 5,
-  //       },
-  //       {
-  //         key: 'newOrders',
-  //         title: 'newOrders',
-  //         description: 'newOrdersDescription',
-  //         value: 8,
-  //         goal: 10,
-  //         changePercentage: -3,
-  //       },
-  //     ],
-
-  //     30: [
-  //       {
-  //         key: 'newCustomers',
-  //         title: 'newCustomers',
-  //         description: 'newCustomersDescription',
-  //         value: 18,
-  //         goal: 20,
-  //         changePercentage: 12,
-  //       },
-  //       {
-  //         key: 'newRevenue',
-  //         title: 'newRevenue',
-  //         description: 'revenueDescription',
-  //         value: 18000,
-  //         goal: 20000,
-  //         changePercentage: 8,
-  //       },
-  //       {
-  //         key: 'newOrders',
-  //         title: 'newOrders',
-  //         description: 'newOrdersDescription',
-  //         value: 36,
-  //         goal: 40,
-  //         changePercentage: 6,
-  //       },
-  //     ],
-
-  //     365: [
-  //       {
-  //         key: 'newCustomers',
-  //         title: 'newCustomers',
-  //         description: 'newCustomersDescription',
-  //         value: 190,
-  //         goal: 200,
-  //         changePercentage: 15,
-  //       },
-  //       {
-  //         key: 'newRevenue',
-  //         title: 'newRevenue',
-  //         description: 'revenueDescription',
-  //         value: 220000,
-  //         goal: 240000,
-  //         changePercentage: 10,
-  //       },
-  //       {
-  //         key: 'newOrders',
-  //         title: 'newOrders',
-  //         description: 'newOrdersDescription',
-  //         value: 470,
-  //         goal: 500,
-  //         changePercentage: -2,
-  //       },
-  //     ],
-  //   },
-  // });
 });
 
 export {

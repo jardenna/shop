@@ -13,6 +13,11 @@ export const getDayRange = (createdAt) => {
   };
 };
 
+export const getPreviousDateRange = (dateRange, period) => ({
+  $gte: subDays(dateRange.$gte, period),
+  $lte: subDays(dateRange.$lte, period),
+});
+
 export const getDashboardDayRange = (period) => {
   const endDate = new Date();
   const startDate = subDays(endDate, period);
