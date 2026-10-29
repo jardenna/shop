@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DashboardPeriod } from '../app/api/apiTypes/dashboardApiTypes';
+import { DashboardPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCart from '../features/dashboard/components/KpiCart';
 import { dataNew } from '../features/dashboard/dataNew';

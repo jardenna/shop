@@ -1,7 +1,7 @@
 import {
   DashboardGoalsRequest,
   DashboardResponse,
-} from '../../../app/api/apiTypes/dashboardApiTypes';
+} from '../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
