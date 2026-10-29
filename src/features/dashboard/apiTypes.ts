@@ -10,7 +10,7 @@ export interface TotalKpi {
   chartData: ChartData[];
   description: string;
   key: TotalKpiKey;
-  title: string;
+  label: string;
   total: number;
 }
 
@@ -19,7 +19,7 @@ export interface PeriodKpi {
   description: string;
   goal: number;
   key: PeriodKpiKey;
-  title: string;
+  label: string;
   value: number;
 }
 

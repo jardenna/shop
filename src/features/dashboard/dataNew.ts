@@ -4,7 +4,7 @@ export const dataNew: KpiResponse = {
   totals: [
     {
       key: 'totalCustomers',
-      title: 'totalCustomers',
+      label: 'totalCustomers',
       description: 'totalCustomersDescription',
       total: 342,
       chartData: [
@@ -18,7 +18,7 @@ export const dataNew: KpiResponse = {
     },
     {
       key: 'totalRevenue',
-      title: 'totalRevenue',
+      label: 'totalRevenue',
       description: 'totalRevenueDescription',
       total: 24567,
       chartData: [
@@ -32,7 +32,7 @@ export const dataNew: KpiResponse = {
     },
     {
       key: 'totalOrders',
-      title: 'totalOrders',
+      label: 'totalOrders',
       description: 'totalOrdersDescription',
       total: 1240,
       chartData: [
@@ -50,7 +50,7 @@ export const dataNew: KpiResponse = {
     7: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 3,
         goal: 5,
@@ -58,7 +58,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newRevenue',
-        title: 'newRevenue',
+        label: 'newRevenue',
         description: 'revenueDescription',
         value: 9000,
         goal: 10000,
@@ -66,7 +66,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newOrders',
-        title: 'newOrders',
+        label: 'newOrders',
         description: 'newOrdersDescription',
         value: 8,
         goal: 10,
@@ -77,7 +77,7 @@ export const dataNew: KpiResponse = {
     30: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 18,
         goal: 20,
@@ -85,7 +85,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newRevenue',
-        title: 'newRevenue',
+        label: 'newRevenue',
         description: 'revenueDescription',
         value: 18000,
         goal: 20000,
@@ -93,7 +93,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newOrders',
-        title: 'newOrders',
+        label: 'newOrders',
         description: 'newOrdersDescription',
         value: 36,
         goal: 40,
@@ -104,7 +104,7 @@ export const dataNew: KpiResponse = {
     365: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 190,
         goal: 200,
@@ -112,7 +112,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newRevenue',
-        title: 'newRevenue',
+        label: 'newRevenue',
         description: 'revenueDescription',
         value: 220000,
         goal: 240000,
@@ -120,7 +120,7 @@ export const dataNew: KpiResponse = {
       },
       {
         key: 'newOrders',
-        title: 'newOrders',
+        label: 'newOrders',
         description: 'newOrdersDescription',
         value: 470,
         goal: 500,
