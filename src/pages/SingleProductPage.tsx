@@ -118,7 +118,7 @@ const SingleProductPage = () => {
           />
 
           <article className="single-product-content">
-            <SingleProductHeader product={product} />
+            <SingleProductHeader product={product} ariaLabel={language.page} />
             <ReviewStars
               stars={getStarsArray(product.rating)}
               rating={product.rating}

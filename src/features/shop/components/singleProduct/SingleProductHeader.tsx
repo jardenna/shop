@@ -3,14 +3,18 @@ import FavoriteHeart from '../../../../components/favorites/FavoriteHeart';
 import LayoutElement from '../../../../layout/LayoutElement';
 import { useLanguage } from '../../../language/useLanguage';
 
-type SingleProductHeaderProps = {
+interface SingleProductHeaderProps {
+  ariaLabel: string;
   product: BaseShopProduct;
-};
+}
 
-const SingleProductHeader = ({ product }: SingleProductHeaderProps) => {
+const SingleProductHeader = ({
+  product,
+  ariaLabel,
+}: SingleProductHeaderProps) => {
   const { language } = useLanguage();
   return (
-    <LayoutElement ariaLabel="page">
+    <LayoutElement ariaLabel={ariaLabel}>
       <span>
         {language.brand}: {product.brand}
       </span>

@@ -52,7 +52,7 @@ const Header = ({
   const { language } = useLanguage();
 
   return (
-    <LayoutElement className="main" ariaLabel={language.main}>
+    <LayoutElement className="main-header" ariaLabel={language.main}>
       <div className="container main-header-content">
         <Logo linkTo={ShopPath.Root} />
         {!isMobileSize ? (
