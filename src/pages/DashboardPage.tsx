@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { DashboardPeriod } from '../app/api/apiTypes/dashboardApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
-import { DashboardPeriod } from '../features/dashboard/apiTypes';
 import KpiCart from '../features/dashboard/components/KpiCart';
 import { dataNew } from '../features/dashboard/dataNew';
 import {
@@ -24,10 +24,6 @@ const DashboardPage = () => {
 
   const totals = dataNew.totals;
   const periodKpis = dataNew.periods[selectedPeriod];
-
-  //   new customers revenue orders
-
-  // total customers total revenue total orders
 
   return (
     <AdminPageContainer

@@ -1,8 +1,8 @@
-export interface GoalPeriods {
-  30: number;
-  365: number;
-  7: number;
-}
+export type DashboardPeriod = 7 | 30 | 365;
+
+export type GoalKeys = 'newCustomers' | 'revenue' | 'orders';
+
+export type GoalPeriods = Record<DashboardPeriod, number>;
 
 export interface DashboardGoals {
   newCustomers: GoalPeriods;
@@ -16,8 +16,6 @@ export interface TableHeader {
   label: string;
 }
 
-export type GoalKeys = 'newCustomers' | 'orders' | 'revenue';
-
 export interface DashboardGoalsResponse {
   goal: number;
   success: boolean;
@@ -25,9 +23,8 @@ export interface DashboardGoalsResponse {
 
 export interface Kpi {
   description: string;
-  id: string;
   key: GoalKeys;
-  label: GoalKeys;
+  label: string;
 }
 
 export interface DashboardResponse {

@@ -1,10 +1,10 @@
+import {
+  DashboardPeriod,
+  GoalKeys,
+} from '../../app/api/apiTypes/dashboardApiTypes';
 import { ChartData } from '../../types/types';
 
-export type DashboardPeriod = 7 | 30 | 365;
-
 export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
-
-export type PeriodKpiKey = 'newCustomers' | 'revenue' | 'orders';
 
 export interface TotalKpi {
   chartData: ChartData[];
@@ -18,7 +18,7 @@ export interface PeriodKpi {
   changePercentage: number;
   description: string;
   goal: number;
-  key: PeriodKpiKey;
+  key: GoalKeys;
   label: string;
   value: number;
 }
