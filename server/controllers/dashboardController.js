@@ -215,18 +215,18 @@ const getTotalKpi = asyncHandler(async (req, res) => {
       chartData: customerChartData,
     },
     {
-      key: 'totalRevenue',
-      label: 'totalRevenue',
-      description: 'totalRevenueDescription',
-      total: totalRevenue,
-      chartData: revenueChartData,
-    },
-    {
       key: 'totalOrders',
       label: 'totalOrders',
       description: 'totalOrdersDescription',
       total: orderCount,
       chartData: orderChartData,
+    },
+    {
+      key: 'totalRevenue',
+      label: 'totalRevenue',
+      description: 'totalRevenueDescription',
+      total: totalRevenue,
+      chartData: revenueChartData,
     },
   ];
 
