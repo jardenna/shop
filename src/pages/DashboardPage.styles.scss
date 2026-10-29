@@ -1,5 +1,14 @@
 @use '../scss/globals' as *;
 
+.dashboard-page {
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+}
+
 .promo-code-form-container {
   display: flex;
   gap: 20px;

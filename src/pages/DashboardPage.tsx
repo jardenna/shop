@@ -8,6 +8,7 @@ import {
 } from '../features/dashboard/dashboardApiSlice';
 import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
+import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
@@ -30,19 +31,27 @@ const DashboardPage = () => {
       heading={language.dashboard}
       variant="x-large"
       hideBreadCrumbs
+      className="dashboard-page"
     >
-      <Selectbox
-        id="year"
-        variant="secondary"
-        defaultValue={kpiOptions[0]}
-        options={kpiOptions}
-        onChange={(option) => {
-          handleSelectPeriod(option);
-        }}
-        inputHasNoLabel
-        name="year"
-        labelText={language.filterByYear}
-      />
+      <LayoutElement
+        ariaLabel={language.dashboard}
+        className="dashboard-header"
+      >
+        <h2>Welcome back</h2>
+        <Selectbox
+          id="year"
+          variant="secondary"
+          defaultValue={kpiOptions[0]}
+          options={kpiOptions}
+          onChange={(option) => {
+            handleSelectPeriod(option);
+          }}
+          inputHasNoLabel
+          name="year"
+          labelText={language.filterByYear}
+        />
+      </LayoutElement>
+
       {periodKpi && totalKpi && (
         <KpiCartList periodKpi={periodKpi} totalKpi={totalKpi} />
       )}
