@@ -67,7 +67,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
         renderCells={(kpi) => (
           <>
             <td>
-              <div>{language[kpi.key]}</div>
+              <div>{language[kpi.label]}</div>
               {language[kpi.description]}
             </td>
 

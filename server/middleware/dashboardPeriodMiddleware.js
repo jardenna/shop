@@ -7,7 +7,7 @@ const validatePeriodMiddleware = (req, res, next) => {
   if (!GOAL_DAYS.includes(period)) {
     return res.status(400).json({
       success: false,
-      message: t('pleaseEnterValidPeriod', req.lang),
+      message: `${t('pleaseEnterValidPeriod', req.lang)} [${GOAL_DAYS}]`,
     });
   }
 

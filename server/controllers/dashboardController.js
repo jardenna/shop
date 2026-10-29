@@ -4,8 +4,16 @@ import Dashboard from '../models/dashboardModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
-import { getDashboardDayRange } from '../utils/dateUtils.js';
+import {
+  getDashboardDayRange,
+  getMonthlyChartData,
+  getPreviousDateRange,
+} from '../utils/dateUtils.js';
 import { t } from '../utils/translator.js';
+import {
+  calculateChangePercentage,
+  calculateOrderRevenue,
+} from '../utils/utils.js';
 
 // @desc    Create goals
 // @route   /api/dashboard/goals
@@ -137,7 +145,7 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
 // @desc    Get Top selling Products
 // @route   /api/dashboard/products/top-selling
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getTopSellingProducts = asyncHandler(async (req, res) => {
   const orders = await Order.find().select('orderItems');
 
@@ -147,7 +155,7 @@ const getTopSellingProducts = asyncHandler(async (req, res) => {
 // @desc    Get Top Products
 // @route   /api/dashboard/products/top
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({ productStatus: PUBLISHED })
     .sort({ createdAt: -1 })
@@ -160,7 +168,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
 // @desc    Get New Products
 // @route   /api/dashboard/products/new
 // @method  Get
-// @access  Public
+// @access  Private for admin and employees
 const getNewProducts = asyncHandler(async (req, res) => {
   // if no new in 1 month show no new products within the last month
   const products = await Product.find({ productStatus: PUBLISHED })
@@ -170,12 +178,143 @@ const getNewProducts = asyncHandler(async (req, res) => {
 
   res.status(200).json(products);
 });
+
+// @desc    Get total KPIs
+// @route   GET /api/dashboard/total-kpi
+// @method  GET
+// @access  Private (admin and employees)
+const getTotalKpi = asyncHandler(async (req, res) => {
+  const orders = await Order.find().select('summary createdAt');
+  const users = await User.find({
+    role: ROLES.USER,
+  }).select('createdAt');
+
+  const userCount = await User.countDocuments({
+    role: ROLES.USER,
+  });
+
+  const orderCount = await Order.countDocuments();
+
+  const totalRevenue = orders.reduce(
+    (total, order) => total + calculateOrderRevenue(order),
+    0,
+  );
+
+  const revenueChartData = getMonthlyChartData(orders, calculateOrderRevenue);
+
+  const customerChartData = getMonthlyChartData(users);
+
+  const orderChartData = getMonthlyChartData(orders);
+
+  res.send({
+    totals: [
+      {
+        key: 'totalCustomers',
+        title: 'totalCustomers',
+        description: 'totalCustomersDescription',
+        total: userCount,
+        chartData: customerChartData,
+      },
+      {
+        key: 'totalRevenue',
+        title: 'totalRevenue',
+        description: 'totalRevenueDescription',
+        total: totalRevenue,
+        chartData: revenueChartData,
+      },
+      {
+        key: 'totalOrders',
+        title: 'totalOrders',
+        description: 'totalOrdersDescription',
+        total: orderCount,
+        chartData: orderChartData,
+      },
+    ],
+  });
+});
+
+// @desc    Get total KPIs
+// @route   GET /api/dashboard/period-kpi/id
+// @method  GET
+// @access  Private (admin and employees)
+const getPeriodKpi = asyncHandler(async (req, res) => {
+  const dashboard = await Dashboard.findOne({ main: 'main' });
+
+  if (!dashboard) {
+    return res.status(404).json({
+      success: false,
+      message: 'Dashboard not found',
+    });
+  }
+
+  const period = Number(req.params.id);
+  const dateRange = getDashboardDayRange(period);
+  const previousDateRange = getPreviousDateRange(dateRange, period);
+
+  const orders = await Order.find({
+    createdAt: dateRange,
+  }).select('summary');
+
+  const newOrders = orders.length;
+
+  const newCustomers = await User.countDocuments({
+    role: ROLES.USER,
+    createdAt: dateRange,
+  });
+
+  const newRevenue = orders.reduce(
+    (total, order) => total + calculateOrderRevenue(order),
+    0,
+  );
+
+  const previousOrders = await Order.find({
+    createdAt: previousDateRange,
+  }).select('summary');
+
+  const previousOrderCount = previousOrders.length;
+
+  const previousCustomers = await User.countDocuments({
+    role: ROLES.USER,
+    createdAt: previousDateRange,
+  });
+
+  const previousRevenue = previousOrders.reduce(
+    (total, order) => total + calculateOrderRevenue(order),
+    0,
+  );
+
+  const values = {
+    newCustomers,
+    orders: newOrders,
+    revenue: newRevenue,
+  };
+
+  const changes = {
+    newCustomers: calculateChangePercentage(newCustomers, previousCustomers),
+    orders: calculateChangePercentage(newOrders, previousOrderCount),
+    revenue: calculateChangePercentage(newRevenue, previousRevenue),
+  };
+
+  const periodKpis = dashboard.kpis.map((kpi) => ({
+    key: kpi.key,
+    label: kpi.label,
+    description: kpi.description,
+    value: values[kpi.key],
+    goal: dashboard.goals[kpi.key][period],
+    changePercentage: changes[kpi.key],
+  }));
+
+  res.send(periodKpis);
+});
+
 export {
   createGoals,
   getGoals,
   getNewestCustomers,
   getNewProducts,
+  getPeriodKpi,
   getTopProducts,
   getTopSellingProducts,
+  getTotalKpi,
   updateGoals,
 };

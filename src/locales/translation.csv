@@ -6,15 +6,13 @@ totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle
 totalOrders;Total orders;Ordrer i alt
 totalOrdersDescription;All orders placed;Alle afgivne ordrer
 newCustomersDescription;New customers in the selected period;Nye kunder i den valgte periode
-newRevenue;Revenue;Omsætning
 revenueDescription;Revenue in the selected period;Omsætning i den valgte periode
 newOrders;New orders;Nye ordrer
-newOrdersDescription;New orders in the selected period;Nye ordrer i den valgte periode
+ordersDescription;New orders in the selected period;Nye ordrer i den valgte periode
 about;About us;Om os
 goal7Days;7 days;7 dage
 goal30Days;30 days;30 dage
 newCustomersDescription;Number of newly registered customers;Antal nye kunder registreret
-ordersDescription;Number of completed orders;Antal gennemførte ordrer
 revenueDescription;Total revenue in;Samlet omsætning i DDK
 goal12Months;12 months;12 måneder
 accessibilityStatement;Accessibility statement;Tilgængelighedserklæring

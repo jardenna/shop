@@ -1,19 +1,16 @@
+import { ChartData } from '../../types/types';
+
 export type DashboardPeriod = 7 | 30 | 365;
 
 export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 
-export type PeriodKpiKey = 'newCustomers' | 'newRevenue' | 'newOrders';
-
-export interface KpiChartData {
-  date: string;
-  value: number;
-}
+export type PeriodKpiKey = 'newCustomers' | 'revenue' | 'orders';
 
 export interface TotalKpi {
-  chartData: KpiChartData[];
+  chartData: ChartData[];
   description: string;
   key: TotalKpiKey;
-  title: string;
+  label: string;
   total: number;
 }
 
@@ -22,7 +19,7 @@ export interface PeriodKpi {
   description: string;
   goal: number;
   key: PeriodKpiKey;
-  title: string;
+  label: string;
   value: number;
 }
 

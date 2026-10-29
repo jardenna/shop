@@ -52,7 +52,7 @@ const DashboardPage = () => {
           {totals.map((kpi) => (
             <KpiCart
               key={kpi.key}
-              title={language[kpi.title]}
+              title={language[kpi.label]}
               iconName={kpiIcons[kpi.key]}
               description={language[kpi.description]}
               chartData={kpi.chartData}
@@ -64,7 +64,7 @@ const DashboardPage = () => {
           {periodKpis.map((kpi) => (
             <KpiCart
               key={kpi.key}
-              title={language[kpi.title]}
+              title={language[kpi.label]}
               iconName={kpiIcons[kpi.key]}
               description={language[kpi.description]}
               total={kpi.value}

@@ -3,7 +3,7 @@ import Icon from '../../../components/icons/Icon';
 import ProgressBar from '../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../types/enums';
-import { KpiChartData } from '../apiTypes';
+import { ChartData } from '../../../types/types';
 import './_dashboard.scss';
 
 interface KpiCartProps {
@@ -12,7 +12,7 @@ interface KpiCartProps {
   title: string;
   total: number;
   changePercentage?: number;
-  chartData?: KpiChartData[];
+  chartData?: ChartData[];
   progressPercentage?: number;
 }
 

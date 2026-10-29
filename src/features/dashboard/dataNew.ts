@@ -4,7 +4,7 @@ export const dataNew: KpiResponse = {
   totals: [
     {
       key: 'totalCustomers',
-      title: 'totalCustomers',
+      label: 'totalCustomers',
       description: 'totalCustomersDescription',
       total: 342,
       chartData: [
@@ -18,7 +18,7 @@ export const dataNew: KpiResponse = {
     },
     {
       key: 'totalRevenue',
-      title: 'totalRevenue',
+      label: 'totalRevenue',
       description: 'totalRevenueDescription',
       total: 24567,
       chartData: [
@@ -32,7 +32,7 @@ export const dataNew: KpiResponse = {
     },
     {
       key: 'totalOrders',
-      title: 'totalOrders',
+      label: 'totalOrders',
       description: 'totalOrdersDescription',
       total: 1240,
       chartData: [
@@ -50,24 +50,24 @@ export const dataNew: KpiResponse = {
     7: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 3,
         goal: 5,
         changePercentage: 3,
       },
       {
-        key: 'newRevenue',
-        title: 'newRevenue',
+        key: 'revenue',
+        label: 'revenue',
         description: 'revenueDescription',
         value: 9000,
         goal: 10000,
         changePercentage: 5,
       },
       {
-        key: 'newOrders',
-        title: 'newOrders',
-        description: 'newOrdersDescription',
+        key: 'orders',
+        label: 'newOrders',
+        description: 'ordersDescription',
         value: 8,
         goal: 10,
         changePercentage: -3,
@@ -77,24 +77,24 @@ export const dataNew: KpiResponse = {
     30: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 18,
         goal: 20,
         changePercentage: 12,
       },
       {
-        key: 'newRevenue',
-        title: 'newRevenue',
+        key: 'revenue',
+        label: 'newRevenue',
         description: 'revenueDescription',
         value: 18000,
         goal: 20000,
         changePercentage: 8,
       },
       {
-        key: 'newOrders',
-        title: 'newOrders',
-        description: 'newOrdersDescription',
+        key: 'orders',
+        label: 'newOrders',
+        description: 'ordersDescription',
         value: 36,
         goal: 40,
         changePercentage: 6,
@@ -104,24 +104,24 @@ export const dataNew: KpiResponse = {
     365: [
       {
         key: 'newCustomers',
-        title: 'newCustomers',
+        label: 'newCustomers',
         description: 'newCustomersDescription',
         value: 190,
         goal: 200,
         changePercentage: 15,
       },
       {
-        key: 'newRevenue',
-        title: 'newRevenue',
+        key: 'revenue',
+        label: 'revenue',
         description: 'revenueDescription',
         value: 220000,
         goal: 240000,
         changePercentage: 10,
       },
       {
-        key: 'newOrders',
-        title: 'newOrders',
-        description: 'newOrdersDescription',
+        key: 'orders',
+        label: 'newOrders',
+        description: 'ordersDescription',
         value: 470,
         goal: 500,
         changePercentage: -2,

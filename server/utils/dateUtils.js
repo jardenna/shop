@@ -1,4 +1,4 @@
-import { subDays } from 'date-fns';
+import { format, startOfMonth, subDays, subMonths } from 'date-fns';
 
 export const getDayRange = (createdAt) => {
   const startDate = new Date(createdAt);
@@ -13,6 +13,11 @@ export const getDayRange = (createdAt) => {
   };
 };
 
+export const getPreviousDateRange = (dateRange, period) => ({
+  $gte: subDays(dateRange.$gte, period),
+  $lte: subDays(dateRange.$lte, period),
+});
+
 export const getDashboardDayRange = (period) => {
   const endDate = new Date();
   const startDate = subDays(endDate, period);
@@ -21,4 +26,21 @@ export const getDashboardDayRange = (period) => {
     $gte: startDate,
     $lte: endDate,
   };
+};
+
+export const getMonthlyChartData = (items, getValue = () => 1) => {
+  const currentMonth = startOfMonth(new Date());
+
+  return Array.from({ length: 6 }, (_, index) => {
+    const month = subMonths(currentMonth, 5 - index);
+
+    const monthlyItems = items.filter(
+      (item) => format(item.createdAt, 'yyyy-MM') === format(month, 'yyyy-MM'),
+    );
+
+    return {
+      date: format(month, 'MMM'),
+      value: monthlyItems.reduce((total, item) => total + getValue(item), 0),
+    };
+  });
 };

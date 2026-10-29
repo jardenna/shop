@@ -85,3 +85,8 @@ export type SizeVariant =
   'mini' | 'small' | 'medium' | 'large' | 'x-large' | 'full';
 
 export type ToastRole = 'alert' | 'status';
+
+export interface ChartData {
+  date: string;
+  value: number;
+}
