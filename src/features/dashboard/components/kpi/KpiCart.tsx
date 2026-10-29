@@ -5,11 +5,12 @@ import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
 
 interface KpiCartProps {
   description: string;
   iconName: IconName;
-  id: string;
+  id: DashboardKpiId;
   title: string;
   total: number;
   changePercentage?: number;
@@ -27,12 +28,12 @@ const KpiCart = ({
   id,
   chartData,
 }: KpiCartProps) => (
-  <Cart>
+  <Cart className={`dashboard-kpi ${dashboardKpiVariants[id]}`}>
     <div className="kpi-cart">
       <div className="kpi-icon">
         <Icon iconName={iconName} />
       </div>
-      <section>
+      <section className="kpi-content">
         <h2 className="kpi-title">{title}</h2>
         <div>
           {id.includes('evenue') ? (
@@ -47,7 +48,6 @@ const KpiCart = ({
           )}
         </div>
         <div>{description}</div>
-
         {progressPercentage && (
           <div>{Math.round(progressPercentage)} % of goals</div>
         )}

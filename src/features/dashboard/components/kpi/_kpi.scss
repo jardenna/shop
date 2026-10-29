@@ -18,8 +18,12 @@
   display: flex;
   gap: 8px;
 
+  .kpi-content {
+    color: $color-primary;
+  }
+
   .kpi-icon {
-    background-color: #00800069;
+    background-color: currentcolor;
     width: 32px;
     height: 32px;
     display: flex;
@@ -36,5 +40,25 @@
     text-transform: uppercase;
     color: $color-gray-70;
     font-size: $font-mini;
+  }
+}
+
+.dashboard-kpi {
+  color: #48c5ac;
+
+  &.users {
+    color: #48c5ac;
+  }
+
+  &.orders {
+    color: #5798ed;
+  }
+
+  &.revenue {
+    color: #f3b83f;
+  }
+
+  &.new-customers {
+    color: #65c65b;
   }
 }
