@@ -235,7 +235,24 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 // @access  Private (admin and employees)
 const getPeriodKpi = asyncHandler(async (req, res) => {
   const dashboard = await Dashboard.findOne({ main: 'main' });
-  res.send(dashboard);
+  const period = Number(req.params.id);
+
+  //  const period = getDashboardDayRange(req.period);
+
+  if (!dashboard) {
+    res.status(404);
+    throw new Error('Dashboard not found');
+  }
+
+  const periodKpis = dashboard.kpis.map((kpi) => ({
+    key: kpi.key,
+    label: kpi.label,
+    description: kpi.description,
+    // value: values[kpi.key],
+    goal: dashboard.goals[kpi.key][period],
+  }));
+
+  res.send(periodKpis);
 
   // res.send({
   //   periods: {
