@@ -3,6 +3,7 @@ import { DashboardPeriod, GoalKeys } from './dashboardGoalsApiTypes';
 
 export type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 
+// Delete
 export interface TotalKpi {
   chartData: ChartData[];
   description: string;
@@ -12,6 +13,24 @@ export interface TotalKpi {
 }
 
 export interface PeriodKpi {
+  changePercentage: number;
+  description: string;
+  goal: number;
+  key: GoalKeys;
+  label: string;
+  value: number;
+}
+// Delete
+
+export interface TotalKpiResponse {
+  chartData: ChartData[];
+  description: string;
+  key: TotalKpiKey;
+  label: string;
+  total: number;
+}
+
+export interface PeriodKpiResponse {
   changePercentage: number;
   description: string;
   goal: number;
