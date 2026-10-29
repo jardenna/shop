@@ -21,7 +21,6 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
         <KpiCart
           key={kpi.key}
           id={kpi.key}
-
           title={language[kpi.label]}
           iconName={kpiIcons[kpi.key]}
           description={language[kpi.description]}
