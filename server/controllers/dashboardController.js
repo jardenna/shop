@@ -9,6 +9,7 @@ import {
   getMonthlyChartData,
 } from '../utils/dateUtils.js';
 import { t } from '../utils/translator.js';
+import { calculateOrderRevenue } from '../utils/utils.js';
 
 // @desc    Create goals
 // @route   /api/dashboard/goals
@@ -191,19 +192,15 @@ const getTotalKpi = asyncHandler(async (req, res) => {
   const orderCount = await Order.countDocuments();
 
   const totalRevenue = orders.reduce(
-    (total, order) =>
-      total + order.summary.subTotal - order.summary.discountPrice,
+    (total, order) => total + calculateOrderRevenue(order),
     0,
   );
+
+  const revenueChartData = getMonthlyChartData(orders, calculateOrderRevenue);
 
   const customerChartData = getMonthlyChartData(users);
 
   const orderChartData = getMonthlyChartData(orders);
-
-  const revenueChartData = getMonthlyChartData(
-    orders,
-    (order) => order.summary.subTotal - order.summary.discountPrice,
-  );
 
   res.send({
     totals: [
