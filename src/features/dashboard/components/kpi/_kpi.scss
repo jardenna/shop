@@ -1,11 +1,23 @@
-@use '../../../scss/globals' as *;
+@use '../../../../scss/globals' as *;
 
-.test {
-  display: flex;
-  gap: 8px;
+.kpi-cart-list {
+  @include grid-fixed-columns($columns: 3);
+
+  gap: 20px;
+
+  @include max-size($small) {
+    @include grid-template-column;
+  }
+
+  .cart {
+    margin: 0;
+  }
 }
 
 .kpi-cart {
+  display: flex;
+  gap: 8px;
+
   .kpi-icon {
     background-color: #00800069;
     width: 32px;

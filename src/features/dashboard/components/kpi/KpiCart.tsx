@@ -1,10 +1,9 @@
-import Cart from '../../../components/carts/Cart';
-import Icon from '../../../components/icons/Icon';
-import ProgressBar from '../../../components/progressbar/ProgressBar';
-import BarChartComp from '../../../components/reCharts/BarChartComp';
-import { IconName } from '../../../types/enums';
-import { ChartData } from '../../../types/types';
-import './_dashboard.scss';
+import Cart from '../../../../components/carts/Cart';
+import Icon from '../../../../components/icons/Icon';
+import ProgressBar from '../../../../components/progressbar/ProgressBar';
+import BarChartComp from '../../../../components/reCharts/BarChartComp';
+import { IconName } from '../../../../types/enums';
+import { ChartData } from '../../../../types/types';
 
 interface KpiCartProps {
   description: string;
@@ -25,8 +24,8 @@ const KpiCart = ({
   total,
   chartData,
 }: KpiCartProps) => (
-  <Cart className="kpi-cart">
-    <div className="test">
+  <Cart>
+    <div className="kpi-cart">
       <div className="kpi-icon">
         <Icon iconName={iconName} />
       </div>
