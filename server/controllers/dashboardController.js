@@ -4,7 +4,10 @@ import Dashboard from '../models/dashboardModel.js';
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
-import { getDashboardDayRange } from '../utils/dateUtils.js';
+import {
+  getDashboardDayRange,
+  getMonthlyChartData,
+} from '../utils/dateUtils.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Create goals
@@ -130,7 +133,6 @@ const getNewestCustomers = asyncHandler(async (req, res) => {
     role: ROLES.USER,
     createdAt: period,
   });
-  console.log(req.period);
 
   res.status(200).json({ count });
 });
@@ -177,18 +179,30 @@ const getNewProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private (admin and employees)
 const getTotalKpi = asyncHandler(async (req, res) => {
-  const orders = await Order.find().select('summary');
+  const orders = await Order.find().select('summary createdAt');
+  const users = await User.find({
+    role: ROLES.USER,
+  }).select('createdAt');
 
   const userCount = await User.countDocuments({
     role: ROLES.USER,
   });
 
-  const orderCount = orders.length;
+  const orderCount = await Order.countDocuments();
 
   const totalRevenue = orders.reduce(
     (total, order) =>
       total + order.summary.subTotal - order.summary.discountPrice,
     0,
+  );
+
+  const customerChartData = getMonthlyChartData(users);
+
+  const orderChartData = getMonthlyChartData(orders);
+
+  const revenueChartData = getMonthlyChartData(
+    orders,
+    (order) => order.summary.subTotal - order.summary.discountPrice,
   );
 
   res.send({
@@ -198,21 +212,21 @@ const getTotalKpi = asyncHandler(async (req, res) => {
         title: 'totalCustomers',
         description: 'totalCustomersDescription',
         total: userCount,
-        chartData: [],
+        chartData: customerChartData,
       },
       {
         key: 'totalRevenue',
         title: 'totalRevenue',
         description: 'totalRevenueDescription',
         total: totalRevenue,
-        chartData: [],
+        chartData: revenueChartData,
       },
       {
         key: 'totalOrders',
         title: 'totalOrders',
         description: 'totalOrdersDescription',
         total: orderCount,
-        chartData: [],
+        chartData: orderChartData,
       },
     ],
   });
@@ -223,9 +237,92 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private (admin and employees)
 const getPeriodKpi = asyncHandler(async (req, res) => {
-  const orders = await Order.find().select('summary createdAt');
+  // const orders = await Order.find().select('summary createdAt');
 
-  res.send(orders);
+  res.send({
+    periods: {
+      7: [
+        {
+          key: 'newCustomers',
+          title: 'newCustomers',
+          description: 'newCustomersDescription',
+          value: 3,
+          goal: 5,
+          changePercentage: 3,
+        },
+        {
+          key: 'newRevenue',
+          title: 'newRevenue',
+          description: 'revenueDescription',
+          value: 9000,
+          goal: 10000,
+          changePercentage: 5,
+        },
+        {
+          key: 'newOrders',
+          title: 'newOrders',
+          description: 'newOrdersDescription',
+          value: 8,
+          goal: 10,
+          changePercentage: -3,
+        },
+      ],
+
+      30: [
+        {
+          key: 'newCustomers',
+          title: 'newCustomers',
+          description: 'newCustomersDescription',
+          value: 18,
+          goal: 20,
+          changePercentage: 12,
+        },
+        {
+          key: 'newRevenue',
+          title: 'newRevenue',
+          description: 'revenueDescription',
+          value: 18000,
+          goal: 20000,
+          changePercentage: 8,
+        },
+        {
+          key: 'newOrders',
+          title: 'newOrders',
+          description: 'newOrdersDescription',
+          value: 36,
+          goal: 40,
+          changePercentage: 6,
+        },
+      ],
+
+      365: [
+        {
+          key: 'newCustomers',
+          title: 'newCustomers',
+          description: 'newCustomersDescription',
+          value: 190,
+          goal: 200,
+          changePercentage: 15,
+        },
+        {
+          key: 'newRevenue',
+          title: 'newRevenue',
+          description: 'revenueDescription',
+          value: 220000,
+          goal: 240000,
+          changePercentage: 10,
+        },
+        {
+          key: 'newOrders',
+          title: 'newOrders',
+          description: 'newOrdersDescription',
+          value: 470,
+          goal: 500,
+          changePercentage: -2,
+        },
+      ],
+    },
+  });
 });
 
 export {
