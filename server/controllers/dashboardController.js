@@ -234,7 +234,7 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get total KPIs
-// @route   GET /api/dashboard/period-kpi
+// @route   GET /api/dashboard/period-kpi/id
 // @method  GET
 // @access  Private (admin and employees)
 const getPeriodKpi = asyncHandler(async (req, res) => {
@@ -251,38 +251,34 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
   const dateRange = getDashboardDayRange(period);
   const previousDateRange = getPreviousDateRange(dateRange, period);
 
-  const newOrders = await Order.countDocuments({
+  const orders = await Order.find({
     createdAt: dateRange,
-  });
+  }).select('summary');
+
+  const newOrders = orders.length;
 
   const newCustomers = await User.countDocuments({
     role: ROLES.USER,
     createdAt: dateRange,
   });
 
-  const orders = await Order.find({
-    createdAt: dateRange,
-  }).select('summary');
-
   const newRevenue = orders.reduce(
     (total, order) => total + calculateOrderRevenue(order),
     0,
   );
 
-  const previousOrders = await Order.countDocuments({
+  const previousOrders = await Order.find({
     createdAt: previousDateRange,
-  });
+  }).select('summary');
+
+  const previousOrderCount = previousOrders.length;
 
   const previousCustomers = await User.countDocuments({
     role: ROLES.USER,
     createdAt: previousDateRange,
   });
 
-  const previousRevenueOrders = await Order.find({
-    createdAt: previousDateRange,
-  }).select('summary');
-
-  const previousRevenue = previousRevenueOrders.reduce(
+  const previousRevenue = previousOrders.reduce(
     (total, order) => total + calculateOrderRevenue(order),
     0,
   );
@@ -295,7 +291,7 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
 
   const changes = {
     newCustomers: calculateChangePercentage(newCustomers, previousCustomers),
-    orders: calculateChangePercentage(newOrders, previousOrders),
+    orders: calculateChangePercentage(newOrders, previousOrderCount),
     revenue: calculateChangePercentage(newRevenue, previousRevenue),
   };
 
