@@ -20,6 +20,8 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
       {totalKpi.map((kpi) => (
         <KpiCart
           key={kpi.key}
+          id={kpi.key}
+
           title={language[kpi.label]}
           iconName={kpiIcons[kpi.key]}
           description={language[kpi.description]}
@@ -30,6 +32,7 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
       {periodKpi.map((kpi) => (
         <KpiCart
           key={kpi.key}
+          id={kpi.key}
           title={language[kpi.label]}
           iconName={kpiIcons[kpi.key]}
           description={language[kpi.description]}

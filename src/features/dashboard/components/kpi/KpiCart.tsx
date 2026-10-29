@@ -4,10 +4,12 @@ import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
+import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface KpiCartProps {
   description: string;
   iconName: IconName;
+  id: string;
   title: string;
   total: number;
   changePercentage?: number;
@@ -22,6 +24,7 @@ const KpiCart = ({
   changePercentage,
   description,
   total,
+  id,
   chartData,
 }: KpiCartProps) => (
   <Cart>
@@ -32,7 +35,11 @@ const KpiCart = ({
       <section>
         <h2 className="kpi-title">{title}</h2>
         <div>
-          <span>{total}</span>
+          {id.includes('evenue') ? (
+            <ProductPrice price={total} />
+          ) : (
+            <span>{total}</span>
+          )}
           {changePercentage && (
             <span>
               {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
