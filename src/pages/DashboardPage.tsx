@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import { DashboardPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
-import KpiCart from '../features/dashboard/components/KpiCart';
+import KpiCartList from '../features/dashboard/components/KpiCartList';
 import {
   useGetPeriodKpiQuery,
   useGetTotalKpiQuery,
 } from '../features/dashboard/dashboardApiSlice';
-import { dataNew } from '../features/dashboard/dataNew';
-import {
-  kpiIcons,
-  kpiOptions,
-} from '../features/dashboardGoals/dashboardGoalsUtils';
+import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
@@ -23,16 +19,11 @@ const DashboardPage = () => {
   const { data: totalKpi } = useGetTotalKpiQuery();
   const { data: periodKpi } = useGetPeriodKpiQuery(selectedPeriod);
 
-  console.log(totalKpi, periodKpi);
-
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
       setSelectedPeriod(Number(option.value) as DashboardPeriod);
     }
   };
-
-  const totals = dataNew.totals;
-  const periodKpis = dataNew.periods[selectedPeriod];
 
   return (
     <AdminPageContainer
@@ -52,33 +43,9 @@ const DashboardPage = () => {
         name="year"
         labelText={language.filterByYear}
       />
-      <div>
-        <div className="flex">
-          {totals.map((kpi) => (
-            <KpiCart
-              key={kpi.key}
-              title={language[kpi.label]}
-              iconName={kpiIcons[kpi.key]}
-              description={language[kpi.description]}
-              chartData={kpi.chartData}
-              total={kpi.total}
-            />
-          ))}
-        </div>
-        <div className="flex">
-          {periodKpis.map((kpi) => (
-            <KpiCart
-              key={kpi.key}
-              title={language[kpi.label]}
-              iconName={kpiIcons[kpi.key]}
-              description={language[kpi.description]}
-              total={kpi.value}
-              progressPercentage={Math.min((kpi.value / kpi.goal) * 100, 100)}
-              changePercentage={kpi.changePercentage}
-            />
-          ))}
-        </div>
-      </div>
+      {periodKpi && totalKpi && (
+        <KpiCartList periodKpi={periodKpi} totalKpi={totalKpi} />
+      )}
     </AdminPageContainer>
   );
 };
