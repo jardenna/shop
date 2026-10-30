@@ -50,7 +50,7 @@ const HeaderIcons = ({
       <ul className="header-icon-list">
         <li>
           <ActionNavBtn
-            dropdownList={dropdownBtnList}
+            actionNavDropdownList={dropdownBtnList}
             placement="bottom-start"
             ariaHasPopup="menu"
             triggerBtnClassName="header-icon-btn"

@@ -4,13 +4,13 @@ import { KeyCode } from '../types/enums';
 import { useKeyPress } from './useKeyPress';
 
 type UseKeyboardListNavProps = {
-  dropdownList: ActionNavItemProps[];
+  actionNavDropdownList: ActionNavItemProps[];
   defaultIndex?: number;
 };
 
 export const useKeyboardListNav = ({
   defaultIndex,
-  dropdownList,
+  actionNavDropdownList,
 }: UseKeyboardListNavProps) => {
   const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
@@ -23,12 +23,15 @@ export const useKeyboardListNav = ({
   };
 
   const handleNextListItem = () => {
-    handleActivateListItem((selectedListItemIndex + 1) % dropdownList.length);
+    handleActivateListItem(
+      (selectedListItemIndex + 1) % actionNavDropdownList.length,
+    );
   };
 
   const handlePrevListItem = () => {
     handleActivateListItem(
-      (selectedListItemIndex - 1 + dropdownList.length) % dropdownList.length,
+      (selectedListItemIndex - 1 + actionNavDropdownList.length) %
+        actionNavDropdownList.length,
     );
   };
 
@@ -37,7 +40,7 @@ export const useKeyboardListNav = ({
   };
 
   const handleGotoLastListItem = () => {
-    handleActivateListItem(dropdownList.length - 1);
+    handleActivateListItem(actionNavDropdownList.length - 1);
   };
 
   useKeyPress(handleNextListItem, [KeyCode.ArrowRight]);

@@ -5,24 +5,24 @@ import Icon from '../icons/Icon';
 import type { ActionNavItemProps } from './ActionNavBtn';
 
 interface ActionNavListProps {
-  dropdownList: ActionNavItemProps[];
+  actionNavDropdownList: ActionNavItemProps[];
   defaultIndex?: number;
   closePopup?: () => void;
 }
 
 const ActionNavList = ({
-  dropdownList,
+  actionNavDropdownList,
   defaultIndex,
   closePopup,
 }: ActionNavListProps) => {
   const { listRefs } = useKeyboardListNav({
     defaultIndex,
-    dropdownList,
+    actionNavDropdownList,
   });
 
   return (
     <ul>
-      {dropdownList.map(
+      {actionNavDropdownList.map(
         (
           { label, onClick, btnVariant, disabled, isActive, iconName },
           index,

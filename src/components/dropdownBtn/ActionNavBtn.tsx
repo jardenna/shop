@@ -17,9 +17,9 @@ export interface ActionNavItemProps {
 }
 
 interface ActionNavBtnProps {
+  actionNavDropdownList: ActionNavItemProps[];
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
-  dropdownList: ActionNavItemProps[];
   ariaLabel?: string;
   placement?: Placement;
   showArrow?: boolean;
@@ -28,7 +28,7 @@ interface ActionNavBtnProps {
 }
 
 const ActionNavBtn = ({
-  dropdownList,
+  actionNavDropdownList,
   triggerBtnVariant = BtnVariant.Ghost,
   children,
   showArrow,
@@ -67,7 +67,7 @@ const ActionNavBtn = ({
         <div ref={popupRef} className="popup-container" id={dropdownId}>
           <ActionNavList
             defaultIndex={-1}
-            dropdownList={dropdownList}
+            actionNavDropdownList={actionNavDropdownList}
             closePopup={closePopup}
           />
           {showArrow && (
