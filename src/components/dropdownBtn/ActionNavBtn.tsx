@@ -5,7 +5,7 @@ import { BtnVariant, IconName } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_dropdown-btn.scss';
-import DropdownList from './DropdownList';
+import ActionNavList from './ActionNavList';
 
 export interface ActionNavItemProps {
   label: string;
@@ -65,7 +65,7 @@ const ActionNavBtn = ({
       </Button>
       {popupIsOpen && (
         <div ref={popupRef} className="popup-container" id={dropdownId}>
-          <DropdownList
+          <ActionNavList
             defaultIndex={-1}
             dropdownList={dropdownList}
             closePopup={closePopup}

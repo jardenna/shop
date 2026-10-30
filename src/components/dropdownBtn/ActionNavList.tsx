@@ -4,17 +4,17 @@ import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { ActionNavItemProps } from './ActionNavBtn';
 
-interface DropdownListProps {
+interface ActionNavListProps {
   dropdownList: ActionNavItemProps[];
   defaultIndex?: number;
   closePopup?: () => void;
 }
 
-const DropdownList = ({
+const ActionNavList = ({
   dropdownList,
   defaultIndex,
   closePopup,
-}: DropdownListProps) => {
+}: ActionNavListProps) => {
   const { listRefs } = useKeyboardListNav({
     defaultIndex,
     dropdownList,
@@ -50,4 +50,4 @@ const DropdownList = ({
   );
 };
 
-export default DropdownList;
+export default ActionNavList;
