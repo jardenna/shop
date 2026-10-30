@@ -1,3 +1,4 @@
+import AdminBadge from '../../../../components/adminCart/AdminBadge';
 import Cart from '../../../../components/carts/Cart';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
@@ -46,7 +47,7 @@ const KpiCart = ({
           kpiTotal={isRevenue ? convertedPrice : total}
           changePercentage={changePercentage}
         />
-
+        <AdminBadge scheduledDate={new Date()} status="Published" />
         {chartData && <BarChartComp data={chartData} />}
       </div>
       {progressPercentage && (
