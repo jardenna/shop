@@ -4,7 +4,7 @@ import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant, IconName } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
-import './_dropdown-btn.scss';
+import './_action-nav.scss';
 import ActionNavList from './ActionNavList';
 
 export interface ActionNavItemProps {
