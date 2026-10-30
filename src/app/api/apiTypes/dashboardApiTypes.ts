@@ -17,5 +17,6 @@ export interface PeriodKpiResponse {
   goal: number;
   key: GoalKeys;
   label: string;
+  previousValue: number;
   value: number;
 }
