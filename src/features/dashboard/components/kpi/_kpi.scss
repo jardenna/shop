@@ -54,10 +54,15 @@
   }
 }
 
-.kpi-cart {
+.kpi-content {
   display: flex;
-  gap: 12px;
-  align-items: center;
+  justify-content: space-between;
+
+  .kpi-cart {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
 
   .kpi-total {
     font-family: $font-primary-semibold;
@@ -83,9 +88,4 @@
     color: $color-gray-70;
     font-size: $font-mini;
   }
-}
-
-.test {
-  display: flex;
-  justify-content: space-between;
 }

@@ -8,4 +8,3 @@ export const dashboardKpiVariants = {
 } as const;
 
 export type DashboardKpiId = keyof typeof dashboardKpiVariants;
-export type DashboardKpiVariant = (typeof dashboardKpiVariants)[DashboardKpiId];
