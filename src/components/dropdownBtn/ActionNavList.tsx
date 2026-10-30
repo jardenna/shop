@@ -27,7 +27,7 @@ const ActionNavList = ({
           { label, onClick, btnVariant, disabled, isActive, iconName },
           index,
         ) => (
-          <li key={label} className="dropdown-item">
+          <li key={label} className="action-nav-item">
             <Button
               variant={btnVariant || BtnVariant.Ghost}
               className={isActive ? 'active' : ''}
