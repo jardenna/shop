@@ -13,8 +13,6 @@
     margin: 0;
     padding: 12px;
 
-    // color: #48c5ac;
-
     &.new-orders {
       color: #f3b83f;
     }
@@ -64,11 +62,6 @@
     align-items: center;
   }
 
-  .kpi-total {
-    font-family: $font-primary-semibold;
-    font-size: rem(20px);
-  }
-
   .kpi-icon {
     background-color: rgb(from currentcolor r g b / 15%);
     width: 32px;
@@ -86,6 +79,16 @@
   .kpi-title {
     text-transform: uppercase;
     color: $color-gray-70;
+    font-size: $font-mini;
+    margin-bottom: 4px;
+  }
+
+  .kpi-total {
+    font-family: $font-primary-semibold;
+    font-size: rem(20px);
+  }
+
+  .kpi-description {
     font-size: $font-mini;
   }
 }

@@ -51,7 +51,7 @@ const KpiCart = ({
                 </span>
               )}
             </p>
-            <p>{description}</p>
+            <p className="kpi-description">{description}</p>
           </section>
         </div>
 
