@@ -14,11 +14,11 @@
     padding: 12px;
 
     &.new-orders {
-      color: #f3b83f;
+      color: #65c65b;
     }
 
     &.new-revenue {
-      color: $color-dust-red-20;
+      color: $color-red-10;
     }
 
     &.total-customers {
@@ -34,7 +34,7 @@
     }
 
     &.new-customers {
-      color: #65c65b;
+      color: $color-blue-30;
     }
 
     p {
