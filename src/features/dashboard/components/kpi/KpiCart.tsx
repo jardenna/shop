@@ -32,13 +32,13 @@ const KpiCart = ({
   const { convertedPrice } = useCurrency(total);
 
   return (
-    <Cart className={`dashboard-kpi ${dashboardKpiVariants[id]}`}>
+    <Cart className={dashboardKpiVariants[id]}>
       <div className="test">
         <div className="kpi-cart">
           <div className="kpi-icon">
             <Icon iconName={iconName} />
           </div>
-          <section className="kpi-content">
+          <section>
             <h2 className="kpi-title">{title}</h2>
             <p>
               <span className="kpi-total">
