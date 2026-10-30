@@ -4,7 +4,7 @@ import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
-import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
+import { useCurrency } from '../../../currency/useCurrency';
 import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
 
 interface KpiCartProps {
@@ -27,36 +27,38 @@ const KpiCart = ({
   total,
   id,
   chartData,
-}: KpiCartProps) => (
-  <Cart className={`dashboard-kpi ${dashboardKpiVariants[id]}`}>
-    <div className="kpi-cart">
-      <div className="kpi-icon">
-        <Icon iconName={iconName} />
-      </div>
-      <section className="kpi-content">
-        <h2 className="kpi-title">{title}</h2>
-        <div>
-          {id.includes('evenue') ? (
-            <ProductPrice price={total} />
-          ) : (
-            <span>{total}</span>
-          )}
-          {changePercentage && (
-            <span>
-              {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
-            </span>
-          )}
+}: KpiCartProps) => {
+  const isRevenue = id.toLowerCase().includes('revenue');
+  const { convertedPrice } = useCurrency(total);
+
+  return (
+    <Cart className={`dashboard-kpi ${dashboardKpiVariants[id]}`}>
+      <div className="kpi-cart">
+        <div className="kpi-icon">
+          <Icon iconName={iconName} />
         </div>
-        <div>{description}</div>
-        {progressPercentage && (
-          <div>{Math.round(progressPercentage)} % of goals</div>
-        )}
-      </section>
-    </div>
-    <ProgressBar progressPercentage={progressPercentage ?? 0} />
+        <section className="kpi-content">
+          <h2 className="kpi-title">{title}</h2>
+          <p>
+            <span className="kpi-total">
+              {isRevenue ? convertedPrice : total}
+            </span>
 
-    {chartData && <BarChartComp data={chartData} />}
-  </Cart>
-);
-
+            {changePercentage && (
+              <span>
+                {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
+              </span>
+            )}
+          </p>
+          <p>{description}</p>
+        </section>
+      </div>
+      {progressPercentage && (
+        <ProgressBar progressPercentage={progressPercentage} />
+      )}
+      {chartData && <BarChartComp data={chartData} />}
+      {progressPercentage && <p>{Math.round(progressPercentage)} % of goals</p>}
+    </Cart>
+  );
+};
 export default KpiCart;
