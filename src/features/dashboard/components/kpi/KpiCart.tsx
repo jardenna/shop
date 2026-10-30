@@ -33,8 +33,8 @@ const KpiCart = ({
 
   return (
     <Cart className={dashboardKpiVariants[id]}>
-      <div className="kpi-content">
-        <div className="kpi-cart">
+      <div className="kpi-cart">
+        <div className="kpi-content">
           <div className="kpi-icon">
             <Icon iconName={iconName} />
           </div>
