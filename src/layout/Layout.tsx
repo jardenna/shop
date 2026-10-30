@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
-import { DropdownItem } from '../components/dropdownBtn/ActionNavBtn';
+import { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -83,7 +83,7 @@ const Layout = () => {
   const localLanguage =
     values.languageOption === 'da' ? danishLang : englishLang;
 
-  const accountDropdownList: DropdownItem[] = [
+  const accountDropdownList: ActionNavItemProps[] = [
     {
       label: language.myAccount,
       isActive: pathname.includes(ShopPath.MyAccount),

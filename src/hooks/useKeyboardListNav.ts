@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
-import { DropdownItem } from '../components/dropdownBtn/ActionNavBtn';
+import { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
 import { KeyCode } from '../types/enums';
 import { useKeyPress } from './useKeyPress';
 
 type UseKeyboardListNavProps = {
-  dropdownList: DropdownItem[];
+  dropdownList: ActionNavItemProps[];
   defaultIndex?: number;
 };
 

@@ -7,19 +7,19 @@ import Button from '../Button';
 import './_dropdown-btn.scss';
 import DropdownList from './DropdownList';
 
-export type DropdownItem = {
+export interface ActionNavItemProps {
   label: string;
   btnVariant?: BtnVariant;
   disabled?: boolean;
   iconName?: IconName;
   isActive?: boolean;
   onClick: () => void;
-};
+}
 
 interface ActionNavBtnProps {
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
-  dropdownList: DropdownItem[];
+  dropdownList: ActionNavItemProps[];
   ariaLabel?: string;
   placement?: Placement;
   showArrow?: boolean;

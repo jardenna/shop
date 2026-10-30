@@ -1,5 +1,5 @@
 import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
-import { DropdownItem } from '../../components/dropdownBtn/ActionNavBtn';
+import { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler, OptionType } from '../../types/types';
@@ -31,7 +31,7 @@ export interface BaseHeaderProps {
 
 export interface HeaderProps extends BaseHeaderProps {
   currentUser: UserResponse | null;
-  dropdownBtnList: DropdownItem[];
+  dropdownBtnList: ActionNavItemProps[];
   isAuthReady: boolean;
   onSubmit: () => void;
 }

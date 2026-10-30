@@ -1,21 +1,22 @@
 import { useNavigate } from 'react-router';
-import type { DropdownItem } from '../../../components/dropdownBtn/ActionNavBtn';
-import ActionNavBtn from '../../../components/dropdownBtn/ActionNavBtn';
+import ActionNavBtn, {
+  ActionNavItemProps,
+} from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';
 import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
-type ProductActionsProps = {
+interface ProductActionsProps {
   id: string;
   onCopyProduct: (id: string) => void;
-};
+}
 
 const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  const actionsDropdownList: DropdownItem[] = [
+  const actionsDropdownList: ActionNavItemProps[] = [
     {
       label: language.view,
       onClick: () => {

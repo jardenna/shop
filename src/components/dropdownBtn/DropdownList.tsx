@@ -2,10 +2,10 @@ import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
-import type { DropdownItem } from './ActionNavBtn';
+import type { ActionNavItemProps } from './ActionNavBtn';
 
 interface DropdownListProps {
-  dropdownList: DropdownItem[];
+  dropdownList: ActionNavItemProps[];
   defaultIndex?: number;
   closePopup?: () => void;
 }
