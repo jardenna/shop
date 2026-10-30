@@ -19,6 +19,8 @@
     }
 
     .progress-bar-container {
+      margin-top: 16px;
+
       .progress-bar {
         background-color: currentcolor;
       }
@@ -61,10 +63,12 @@
   }
 }
 
-.dashboard-kpi {
-  padding: 12px;
+.test {
   display: flex;
   justify-content: space-between;
+}
+
+.dashboard-kpi {
   color: #48c5ac;
 
   &.users {

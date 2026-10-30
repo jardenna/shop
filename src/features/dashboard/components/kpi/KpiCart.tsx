@@ -33,31 +33,37 @@ const KpiCart = ({
 
   return (
     <Cart className={`dashboard-kpi ${dashboardKpiVariants[id]}`}>
-      <div className="kpi-cart">
-        <div className="kpi-icon">
-          <Icon iconName={iconName} />
-        </div>
-        <section className="kpi-content">
-          <h2 className="kpi-title">{title}</h2>
-          <p>
-            <span className="kpi-total">
-              {isRevenue ? convertedPrice : total}
-            </span>
-
-            {changePercentage && (
-              <span>
-                {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
+      <div className="test">
+        <div className="kpi-cart">
+          <div className="kpi-icon">
+            <Icon iconName={iconName} />
+          </div>
+          <section className="kpi-content">
+            <h2 className="kpi-title">{title}</h2>
+            <p>
+              <span className="kpi-total">
+                {isRevenue ? convertedPrice : total}
               </span>
-            )}
-          </p>
-          <p>{description}</p>
-        </section>
+
+              {changePercentage && (
+                <span>
+                  {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
+                </span>
+              )}
+            </p>
+            <p>{description}</p>
+          </section>
+        </div>
+
+        {chartData && <BarChartComp data={chartData} />}
+        {progressPercentage && (
+          <p>{Math.round(progressPercentage)} % of goals</p>
+        )}
       </div>
+
       {progressPercentage && (
         <ProgressBar progressPercentage={progressPercentage} />
       )}
-      {chartData && <BarChartComp data={chartData} />}
-      {progressPercentage && <p>{Math.round(progressPercentage)} % of goals</p>}
     </Cart>
   );
 };
