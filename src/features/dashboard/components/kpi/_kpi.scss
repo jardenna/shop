@@ -13,6 +13,32 @@
     margin: 0;
     padding: 12px;
 
+    // color: #48c5ac;
+
+    &.new-orders {
+      color: #f3b83f;
+    }
+
+    &.new-revenue {
+      color: $color-dust-red-20;
+    }
+
+    &.total-customers {
+      color: #48c5ac;
+    }
+
+    &.total-orders {
+      color: #5798ed;
+    }
+
+    &.total-revenue {
+      color: #f3b83f;
+    }
+
+    &.new-customers {
+      color: #65c65b;
+    }
+
     p {
       margin: 0;
       color: $color-primary;
@@ -36,10 +62,6 @@
   .kpi-total {
     font-family: $font-primary-semibold;
     font-size: rem(20px);
-  }
-
-  .kpi-content {
-    color: $color-primary;
   }
 
   .kpi-icon {
@@ -66,24 +88,4 @@
 .test {
   display: flex;
   justify-content: space-between;
-}
-
-.dashboard-kpi {
-  color: #48c5ac;
-
-  &.users {
-    color: #48c5ac;
-  }
-
-  &.orders {
-    color: #5798ed;
-  }
-
-  &.revenue {
-    color: #f3b83f;
-  }
-
-  &.new-customers {
-    color: #65c65b;
-  }
 }
