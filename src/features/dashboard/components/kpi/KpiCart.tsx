@@ -56,4 +56,5 @@ const KpiCart = ({
     </Cart>
   );
 };
+
 export default KpiCart;
