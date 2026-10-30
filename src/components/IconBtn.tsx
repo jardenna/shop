@@ -1,4 +1,5 @@
 import { BtnType, BtnVariant, IconName } from '../types/enums';
+import { AriaHasPopup } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
@@ -12,6 +13,7 @@ export type BaseIconBtn = {
 
 type IconBtnProps = BaseIconBtn & {
   ariaExpanded?: boolean;
+  ariaHasPopup?: AriaHasPopup;
   btnType?: BtnType;
   disabled?: boolean;
   isLoading?: boolean;
@@ -25,6 +27,7 @@ const IconBtn = ({
   onClick,
   className,
   ariaExpanded,
+  ariaHasPopup,
   btnType,
   variant = BtnVariant.Ghost,
   size,
@@ -40,6 +43,7 @@ const IconBtn = ({
     type={btnType}
     disabled={disabled}
     showBtnLoader={isLoading}
+    ariaHasPopup={ariaHasPopup}
   >
     <IconContent
       iconName={iconName}
