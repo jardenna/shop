@@ -41,10 +41,21 @@
       margin: 0;
       color: $color-primary;
     }
+  }
+
+  .kpi-progress-bar {
+    margin-top: 16px;
+
+    .kpi-progress-info {
+      display: flex;
+      margin-bottom: 4px;
+      width: 100%;
+      justify-content: space-between;
+      color: $color-primary;
+      font-size: 12px;
+    }
 
     .progress-bar-container {
-      margin-top: 16px;
-
       .progress-bar {
         background-color: currentcolor;
       }

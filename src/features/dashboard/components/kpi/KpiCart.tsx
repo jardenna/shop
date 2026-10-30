@@ -4,6 +4,7 @@ import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
 import { useCurrency } from '../../../currency/useCurrency';
+import { useLanguage } from '../../../language/useLanguage';
 import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
 import KpiContent from './KpiContent';
 
@@ -31,6 +32,7 @@ const KpiCart = ({
   id,
   chartData,
 }: KpiCartProps) => {
+  const { language } = useLanguage();
   const isRevenue = id.toLowerCase().includes('revenue');
   const { convertedPrice } = useCurrency(total);
 
@@ -46,12 +48,15 @@ const KpiCart = ({
         />
 
         {chartData && <BarChartComp data={chartData} />}
-        {progressPercentage && (
-          <p>{Math.round(progressPercentage)} % of goals</p>
-        )}
       </div>
       {progressPercentage && (
-        <ProgressBar progressPercentage={progressPercentage} />
+        <div className="kpi-progress-bar">
+          <span className="kpi-progress-info">
+            <span>{language.goalProgress}</span>
+            <span>{Math.round(progressPercentage)} % </span>
+          </span>
+          <ProgressBar progressPercentage={progressPercentage} />
+        </div>
       )}
     </Cart>
   );
