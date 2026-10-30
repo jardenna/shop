@@ -283,6 +283,12 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
     0,
   );
 
+  const previousValues = {
+    newCustomers: previousCustomers,
+    orders: previousOrderCount,
+    revenue: previousRevenue,
+  };
+
   const values = {
     newCustomers,
     orders: newOrders,
@@ -300,6 +306,7 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
     label: kpi.label,
     description: kpi.description,
     value: values[kpi.key],
+    previousValue: previousValues[kpi.key],
     goal: dashboard.goals[kpi.key][period],
     changePercentage: changes[kpi.key],
   }));
