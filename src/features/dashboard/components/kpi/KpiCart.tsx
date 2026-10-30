@@ -1,19 +1,22 @@
 import Cart from '../../../../components/carts/Cart';
-import Icon from '../../../../components/icons/Icon';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
 import { useCurrency } from '../../../currency/useCurrency';
 import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
+import KpiContent from './KpiContent';
 
-interface KpiCartProps {
+export interface BaseKpiCartProps {
   description: string;
   iconName: IconName;
-  id: DashboardKpiId;
   title: string;
-  total: number;
   changePercentage?: number;
+}
+
+interface KpiCartProps extends BaseKpiCartProps {
+  id: DashboardKpiId;
+  total: number;
   chartData?: ChartData[];
   progressPercentage?: number;
 }
@@ -34,33 +37,19 @@ const KpiCart = ({
   return (
     <Cart className={dashboardKpiVariants[id]}>
       <div className="kpi-cart">
-        <div className="kpi-content">
-          <div className="kpi-icon">
-            <Icon iconName={iconName} />
-          </div>
-          <section>
-            <h2 className="kpi-title">{title}</h2>
-            <p>
-              <span className="kpi-total">
-                {isRevenue ? convertedPrice : total}
-              </span>
-
-              {changePercentage && (
-                <span>
-                  {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
-                </span>
-              )}
-            </p>
-            <p className="kpi-description">{description}</p>
-          </section>
-        </div>
+        <KpiContent
+          iconName={iconName}
+          description={description}
+          title={title}
+          kpiTotal={isRevenue ? convertedPrice : total}
+          changePercentage={changePercentage}
+        />
 
         {chartData && <BarChartComp data={chartData} />}
         {progressPercentage && (
           <p>{Math.round(progressPercentage)} % of goals</p>
         )}
       </div>
-
       {progressPercentage && (
         <ProgressBar progressPercentage={progressPercentage} />
       )}
