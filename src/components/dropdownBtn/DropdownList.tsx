@@ -2,7 +2,7 @@ import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
-import type { DropdownItem } from './DropdownBtn';
+import type { DropdownItem } from './ActionNavBtn';
 
 interface DropdownListProps {
   dropdownList: DropdownItem[];

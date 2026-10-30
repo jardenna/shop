@@ -16,7 +16,7 @@ export type DropdownItem = {
   onClick: () => void;
 };
 
-export type DropdownBtnProps = {
+interface ActionNavBtnProps {
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
   dropdownList: DropdownItem[];
@@ -25,9 +25,9 @@ export type DropdownBtnProps = {
   showArrow?: boolean;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
-};
+}
 
-const DropdownBtn = ({
+const ActionNavBtn = ({
   dropdownList,
   triggerBtnVariant = BtnVariant.Ghost,
   children,
@@ -36,7 +36,7 @@ const DropdownBtn = ({
   ariaLabel,
   ariaHasPopup,
   triggerBtnClassName,
-}: DropdownBtnProps) => {
+}: ActionNavBtnProps) => {
   const dropdownId = useId();
   const {
     popupRef,
@@ -79,4 +79,4 @@ const DropdownBtn = ({
   );
 };
 
-export default DropdownBtn;
+export default ActionNavBtn;

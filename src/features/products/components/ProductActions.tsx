@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
-import type { DropdownItem } from '../../../components/dropdownBtn/DropdownBtn';
-import DropdownBtn from '../../../components/dropdownBtn/DropdownBtn';
+import type { DropdownItem } from '../../../components/dropdownBtn/ActionNavBtn';
+import ActionNavBtn from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';
 import { IconName } from '../../../types/enums';
@@ -40,7 +40,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   ];
 
   return (
-    <DropdownBtn
+    <ActionNavBtn
       dropdownList={actionsDropdownList}
       ariaLabel={language.productActions}
       showArrow
@@ -48,7 +48,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       ariaHasPopup="menu"
     >
       <Icon iconName={IconName.MenuDotsHorizontal} />
-    </DropdownBtn>
+    </ActionNavBtn>
   );
 };
 

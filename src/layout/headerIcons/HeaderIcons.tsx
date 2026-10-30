@@ -1,17 +1,17 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import DropdownBtn from '../../components/dropdownBtn/DropdownBtn';
+import { useAppSelector } from '../../app/hooks';
+import ActionNavBtn from '../../components/dropdownBtn/ActionNavBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
+import { selectCartList } from '../../features/cartSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
-import { useAppSelector } from '../../app/hooks';
-import { selectCartList } from '../../features/cartSlice';
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -49,7 +49,7 @@ const HeaderIcons = ({
     >
       <ul className="header-icon-list">
         <li>
-          <DropdownBtn
+          <ActionNavBtn
             dropdownList={dropdownBtnList}
             placement="bottom-start"
             ariaHasPopup="menu"
@@ -59,7 +59,7 @@ const HeaderIcons = ({
               ariaLabel={language.myAccount}
               iconName={IconName.User}
             />
-          </DropdownBtn>
+          </ActionNavBtn>
         </li>
         <li>
           <HeaderBadgeLinks

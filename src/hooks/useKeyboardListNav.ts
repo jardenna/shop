@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
+import { DropdownItem } from '../components/dropdownBtn/ActionNavBtn';
 import { KeyCode } from '../types/enums';
 import { useKeyPress } from './useKeyPress';
 

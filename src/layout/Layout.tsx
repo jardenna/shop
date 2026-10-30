@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
-import { DropdownItem } from '../components/dropdownBtn/DropdownBtn';
+import { DropdownItem } from '../components/dropdownBtn/ActionNavBtn';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
