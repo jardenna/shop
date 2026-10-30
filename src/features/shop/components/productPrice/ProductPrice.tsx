@@ -28,6 +28,7 @@ const ProductPrice = ({
   const { convertedPrice: displayPrice } = useCurrency(
     discountedPrice ?? calDiscountedPrice,
   );
+
   const { convertedPrice: regularPrice } = useCurrency(price);
 
   if (hasError) {

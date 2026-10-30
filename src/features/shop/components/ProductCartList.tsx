@@ -9,7 +9,7 @@ interface ProductCartListProps {
 }
 const ProductCartList = ({
   products,
-  productView,
+  productView = '',
   getProductLink,
   children,
 }: ProductCartListProps) => (

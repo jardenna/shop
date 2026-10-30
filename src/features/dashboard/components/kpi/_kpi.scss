@@ -1,0 +1,103 @@
+@use '../../../../scss/globals' as *;
+
+.kpi-cart-list {
+  @include grid-fixed-columns($columns: 3);
+
+  gap: 20px;
+
+  @include max-size($small) {
+    @include grid-template-column;
+  }
+
+  .cart {
+    margin: 0;
+    padding: 12px;
+
+    &.new-orders {
+      color: #65c65b;
+    }
+
+    &.new-revenue {
+      color: $color-red-10;
+    }
+
+    &.total-customers {
+      color: #48c5ac;
+    }
+
+    &.total-orders {
+      color: #5798ed;
+    }
+
+    &.total-revenue {
+      color: $color-yellow;
+    }
+
+    &.new-customers {
+      color: $color-blue-30;
+    }
+
+    p {
+      margin: 0;
+      color: $color-primary;
+    }
+
+    .progress-bar-container {
+      margin-top: 16px;
+
+      .progress-bar {
+        background-color: currentcolor;
+      }
+    }
+  }
+}
+
+.kpi-cart {
+  display: flex;
+  justify-content: space-between;
+
+  .kpi-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .kpi-icon {
+    background-color: rgb(from currentcolor r g b / 15%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+
+    svg {
+      width: rem(20px);
+    }
+  }
+
+  .changed-percentage {
+    color: $color-info;
+    margin-left: 8px;
+
+    &.down {
+      color: $color-red-10;
+    }
+  }
+
+  .kpi-title {
+    text-transform: uppercase;
+    color: $color-gray-70;
+    font-size: $font-mini;
+    margin-bottom: 4px;
+  }
+
+  .kpi-total {
+    font-family: $font-primary-semibold;
+    font-size: rem(20px);
+  }
+
+  .kpi-description {
+    font-size: $font-mini;
+  }
+}

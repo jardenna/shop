@@ -43,7 +43,7 @@ const AccountLayout = () => {
             ariaLabel={language.account}
           />
           <section className="account-page-content">
-            <LayoutElement ariaLabel="account">
+            <LayoutElement ariaLabel={language.account}>
               <h1 id={adminLayoutId}>{title}</h1>
             </LayoutElement>
             <Outlet />

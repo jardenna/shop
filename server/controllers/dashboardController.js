@@ -206,31 +206,31 @@ const getTotalKpi = asyncHandler(async (req, res) => {
 
   const orderChartData = getMonthlyChartData(orders);
 
-  res.send({
-    totals: [
-      {
-        key: 'totalCustomers',
-        title: 'totalCustomers',
-        description: 'totalCustomersDescription',
-        total: userCount,
-        chartData: customerChartData,
-      },
-      {
-        key: 'totalRevenue',
-        title: 'totalRevenue',
-        description: 'totalRevenueDescription',
-        total: totalRevenue,
-        chartData: revenueChartData,
-      },
-      {
-        key: 'totalOrders',
-        title: 'totalOrders',
-        description: 'totalOrdersDescription',
-        total: orderCount,
-        chartData: orderChartData,
-      },
-    ],
-  });
+  const totalKpis = [
+    {
+      key: 'totalCustomers',
+      label: 'totalCustomers',
+      description: 'totalCustomersDescription',
+      total: userCount,
+      chartData: customerChartData,
+    },
+    {
+      key: 'totalOrders',
+      label: 'totalOrders',
+      description: 'totalOrdersDescription',
+      total: orderCount,
+      chartData: orderChartData,
+    },
+    {
+      key: 'totalRevenue',
+      label: 'totalRevenue',
+      description: 'totalRevenueDescription',
+      total: totalRevenue,
+      chartData: revenueChartData,
+    },
+  ];
+
+  res.send(totalKpis);
 });
 
 // @desc    Get total KPIs

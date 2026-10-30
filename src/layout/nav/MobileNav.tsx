@@ -41,7 +41,7 @@ const MobileNav = ({
         <TriggerPanelButton
           ariaExpanded={isPanelShown}
           onTogglePanel={onTogglePanel}
-          ariaLabel={language.mainMenu}
+          ariaLabel={language.main}
           ariaControls={ariaControls}
           className="menu-burger"
         >
@@ -64,7 +64,7 @@ const MobileNav = ({
           className={className}
           navList={navList}
           hideAriaHasPopup
-          ariaLabel="main"
+          ariaLabel={language.main}
         />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </Panel>

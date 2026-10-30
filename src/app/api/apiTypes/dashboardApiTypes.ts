@@ -1,41 +1,21 @@
-export interface GoalPeriods {
-  30: number;
-  365: number;
-  7: number;
-}
+import { ChartData } from '../../../types/types';
+import { GoalKeys } from './dashboardGoalsApiTypes';
 
-export interface DashboardGoals {
-  newCustomers: GoalPeriods;
-  orders: GoalPeriods;
-  revenue: GoalPeriods;
-}
+type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 
-export interface TableHeader {
-  days: keyof GoalPeriods;
-  id: string;
-  label: string;
-}
-
-export type GoalKeys = 'newCustomers' | 'orders' | 'revenue';
-
-export interface DashboardGoalsResponse {
-  goal: number;
-  success: boolean;
-}
-
-export interface Kpi {
+export interface TotalKpiResponse {
+  chartData: ChartData[];
   description: string;
-  id: string;
+  key: TotalKpiKey;
+  label: string;
+  total: number;
+}
+
+export interface PeriodKpiResponse {
+  changePercentage: number;
+  description: string;
+  goal: number;
   key: GoalKeys;
-  label: GoalKeys;
-}
-
-export interface DashboardResponse {
-  goals: DashboardGoals;
-  kpis: Kpi[];
-  tableHeaders: TableHeader[];
-}
-
-export interface DashboardGoalsRequest {
-  goals: Record<string, Record<number, number>>;
+  label: string;
+  value: number;
 }
