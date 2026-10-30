@@ -21,8 +21,10 @@ const KpiContent = ({
       <p>
         <span className="kpi-total">{kpiTotal}</span>
         {changePercentage && (
-          <span>
-            {changePercentage > 0 ? '↑' : '↓'} {changePercentage} %
+          <span
+            className={`changed-percentage ${changePercentage > 0 ? '' : 'down'}`}
+          >
+            {changePercentage > 0 ? '↑' : '↓'} {changePercentage}%
           </span>
         )}
       </p>

@@ -76,6 +76,15 @@
     }
   }
 
+  .changed-percentage {
+    color: $color-info;
+    margin-left: 8px;
+
+    &.down {
+      color: $color-red-10;
+    }
+  }
+
   .kpi-title {
     text-transform: uppercase;
     color: $color-gray-70;
