@@ -9,7 +9,6 @@ interface KpiCartPopupProps {
 }
 
 const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
-  console.log(kpi);
   const isRevenue = kpi.key.toLowerCase().includes('revenue');
   const { convertedPrice } = useCurrency(kpi.value);
   const { convertedPrice: convertedPreviousPrice } = useCurrency(
@@ -19,10 +18,9 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   return (
     <section>
       <h3>{language.comparisonWithPreviousPeriod}</h3>
-      Forrige {period} dage {language[kpi.label]}:{' '}
+      Forrige {period} dage {language[kpi.key]}:{' '}
       {isRevenue ? convertedPreviousPrice : kpi.value} Seneste {period} dage{' '}
-      {language[kpi.label]}: {isRevenue ? convertedPrice : kpi.value} Ændring
-      +10
+      {language[kpi.key]}: {isRevenue ? convertedPrice : kpi.value} Ændring +10
     </section>
   );
 };
