@@ -1,10 +1,12 @@
 import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import DateRange from '../../../../components/datePicker/DateRange';
 import { useLanguage } from '../../../language/useLanguage';
+import ConvertedPrice from '../../../shop/components/ConvertedPrice';
 
 interface KpiCartPopupItemProps {
-  count: string | number;
+  count: number;
   endDate: Date;
+  isRevenue: boolean;
   label: string;
   period: GoalPeriod;
   startDate: Date;
@@ -15,9 +17,10 @@ const KpiCartPopupItem = ({
   period,
   startDate,
   endDate,
-  count,
   label,
   isPrevious,
+  count,
+  isRevenue,
 }: KpiCartPopupItemProps) => {
   const { language } = useLanguage();
 
@@ -38,7 +41,9 @@ const KpiCartPopupItem = ({
         </p>
       </div>
       <div>
-        <p className="text-bold popup-item-count">{count}</p>
+        <p className="text-bold popup-item-count">
+          {isRevenue ? <ConvertedPrice price={count} /> : <span>{count}</span>}
+        </p>
         <p>{label}</p>
       </div>
     </div>
