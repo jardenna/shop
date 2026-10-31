@@ -3,8 +3,9 @@ import {
   GoalKeys,
   GoalPeriod,
 } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
-import DateRange from '../../../../components/datePicker/DateRange';
 import { useCurrency } from '../../../currency/useCurrency';
+import KpiCartPopupItem from './KpiCartPopupItem';
+
 interface KpiCartPopupProps {
   kpi: PeriodKpiResponse;
   language: Record<string, string>;
@@ -17,6 +18,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   const { convertedPrice: convertedPreviousPrice } = useCurrency(
     kpi.previousValue,
   );
+
   const popupLabelKeys: Record<GoalKeys, string> = {
     newCustomers: 'customers',
     orders: 'orders',
@@ -28,25 +30,22 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   return (
     <section>
       <h3>{language.comparisonWithPreviousPeriod}</h3>
+      <KpiCartPopupItem
+        endDate={kpi.currentPeriod.endDate}
+        startDate={kpi.currentPeriod.startDate}
+        period={period}
+        text={isRevenue ? convertedPrice : kpi.value}
+        label={popupLabel}
+      />
+      <KpiCartPopupItem
+        endDate={kpi.previousPeriod.endDate}
+        startDate={kpi.previousPeriod.startDate}
+        period={period}
+        text={isRevenue ? convertedPreviousPrice : kpi.previousValue}
+        label={popupLabel}
+      />
 
-      <div className="flex">
-        <div>
-          <p>Seneste {period} dage</p>
-          <p>
-            <DateRange
-              month="short"
-              day="numeric"
-              endDate={kpi.currentPeriod.endDate}
-              startDate={kpi.currentPeriod.startDate}
-            />
-          </p>
-        </div>
-        <div>
-          <p>{isRevenue ? convertedPrice : kpi.value}</p>
-          <p>{popupLabel}</p>
-        </div>
-      </div>
-      <div className="flex">
+      {/* <div className="flex">
         <div>
           <p>Forrige {period} dage</p>
           <p>
@@ -62,7 +61,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
           <p>{isRevenue ? convertedPreviousPrice : kpi.previousValue}</p>
           <p>{popupLabel}</p>
         </div>
-      </div>
+      </div> */}
       <p>
         {language.change}: {kpi.value - kpi.previousValue}
       </p>
