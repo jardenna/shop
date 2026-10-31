@@ -470,6 +470,9 @@ pleaseEnterValidPeriod;Please enter a valid period;Indtast venligst en gyldig pe
 pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
 pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
 pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
+pleaseEnterValue;Please enter a value;Indtast venligst en værdi
+pleaseEnterValidNumber;Please enter a valid number;Indtast venligst et gyldigt tal
+pleaseEnterWholeNumber;Please enter a whole number;Indtast venligst et helt tal
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori

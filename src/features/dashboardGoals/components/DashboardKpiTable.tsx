@@ -6,6 +6,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
@@ -29,6 +30,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
   const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState,
     callback: handleSubmitKpi,
+    validate: validateDashboardGoals,
   });
 
   const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
