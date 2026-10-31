@@ -1,4 +1,4 @@
-import DashboardKpiTable from '../features/dashboardGoals/components/DashboardKpiTable';
+import DashboardGoalTable from '../features/dashboardGoals/components/DashboardGoalTable';
 import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/dashboardGoalsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
@@ -14,7 +14,7 @@ const DashboardSettingsPage = () => {
       variant="large"
       hideBreadCrumbs
     >
-      {dashboard && <DashboardKpiTable dashboard={dashboard} />}
+      {dashboard && <DashboardGoalTable dashboard={dashboard} />}
     </AdminPageContainer>
   );
 };

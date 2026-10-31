@@ -11,11 +11,11 @@ import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
 
-interface DashboardKpiTableProps {
+interface DashboardGoalTableProps {
   dashboard: DashboardResponse;
 }
 
-const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
+const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
   const { language } = useLanguage();
 
   const initialState = Object.fromEntries(
@@ -104,4 +104,4 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
   );
 };
 
-export default DashboardKpiTable;
+export default DashboardGoalTable;
