@@ -138,6 +138,13 @@
   p {
     margin: 0;
   }
+
+  .kpi-value-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
 }
 
 .kpi-cart-popover {

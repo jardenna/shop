@@ -3,6 +3,7 @@ import {
   GoalKeys,
   GoalPeriod,
 } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import Chip from '../../../../components/chips/Chip';
 import { useCurrency } from '../../../currency/useCurrency';
 import KpiCartPopupItem from './KpiCartPopupItem';
 
@@ -28,6 +29,8 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   const currentValue = isRevenue ? convertedPrice : kpi.value;
   const previousValue = isRevenue ? convertedPreviousPrice : kpi.previousValue;
   const popupLabel = language[popupLabelKeys[kpi.key]];
+  const chipText = kpi.value - kpi.previousValue;
+  const chipVariant = chipText > 0 ? 'success' : 'danger';
 
   return (
     <section className="kpi-cart-popup">
@@ -50,9 +53,10 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
         isPrevious
       />
 
-      <p>
-        {language.netChangeInPeriod}: {kpi.value - kpi.previousValue}
-      </p>
+      <div className="kpi-value-info">
+        {language.netChangeInPeriod}:
+        <Chip chipText={`${chipText}`} variant={chipVariant} />
+      </div>
     </section>
   );
 };
