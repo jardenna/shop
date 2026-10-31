@@ -112,3 +112,30 @@
     font-size: $font-mini;
   }
 }
+
+.kpi-cart-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+
+  .kpi-cart-popup-item {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .kpi-popup-title {
+    font-size: rem(20px);
+  }
+
+  .popup-item-count {
+    font-size: rem(20px);
+  }
+
+  p {
+    margin: 0;
+  }
+}

@@ -3,11 +3,11 @@ import DateRange from '../../../../components/datePicker/DateRange';
 import { useLanguage } from '../../../language/useLanguage';
 
 interface KpiCartPopupItemProps {
+  count: string | number;
   endDate: Date;
   label: string;
   period: GoalPeriod;
   startDate: Date;
-  text: string | number;
   isPrevious?: boolean;
 }
 
@@ -15,16 +15,16 @@ const KpiCartPopupItem = ({
   period,
   startDate,
   endDate,
-  text,
+  count,
   label,
   isPrevious,
 }: KpiCartPopupItemProps) => {
   const { language } = useLanguage();
 
   return (
-    <div className="flex">
+    <div className="kpi-cart-popup-item">
       <div>
-        <p>
+        <p className="text-bold">
           {isPrevious ? language.previous : language.last}{' '}
           {period === 365 ? language.years : `${period} ${language.days}`}
         </p>
@@ -38,7 +38,7 @@ const KpiCartPopupItem = ({
         </p>
       </div>
       <div>
-        <p>{text}</p>
+        <p className="text-bold popup-item-count">{count}</p>
         <p>{label}</p>
       </div>
     </div>
