@@ -1,5 +1,6 @@
 ﻿key;en;da
 totalCustomers;Total customers;Kunder i alt
+customers;Customers;Kunder
 totalCustomersDescription;All registered customers;Alle registrerede kunder
 totalRevenue;Total revenue;Samlet omsætning
 totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
