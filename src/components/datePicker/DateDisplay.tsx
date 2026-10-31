@@ -1,14 +1,14 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { dateToLocaleMap } from '../../utils/dates';
 
-type DateDisplayProps = {
+export interface DateDisplayProps {
   date: Date | string;
   day?: 'numeric' | '2-digit' | undefined;
   hour?: 'numeric' | '2-digit' | undefined;
   minute?: 'numeric' | '2-digit' | undefined;
   month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow' | undefined;
   year?: 'numeric' | '2-digit' | undefined;
-};
+}
 
 const DateDisplay = ({
   date,

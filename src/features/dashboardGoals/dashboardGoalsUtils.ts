@@ -2,17 +2,17 @@ import { IconName } from '../../types/enums';
 
 export const kpiOptions = [
   {
-    label: 'Seneste 7 dage',
+    label: 'last7Days',
     value: '7',
     id: '7',
   },
   {
-    label: 'Seneste 30 dage',
+    label: 'last30Days',
     value: '30',
     id: '30',
   },
   {
-    label: 'Forrige år',
+    label: 'previousYear',
     value: '365',
     id: '365',
   },

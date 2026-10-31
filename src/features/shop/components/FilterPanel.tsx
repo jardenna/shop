@@ -19,12 +19,12 @@ import TagList from '../../../components/tags/TagList';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { IconName } from '../../../types/enums';
+import { InputChangeHandler } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
 import ClearFiltersBtn from './ClearFiltersBtn';
 import './filterPanel.styles.scss';
-import { InputChangeHandler } from '../../../types/types';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;

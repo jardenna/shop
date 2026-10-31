@@ -1,5 +1,6 @@
 ﻿key;en;da
 totalCustomers;Total customers;Kunder i alt
+customers;Customers;Kunder
 totalCustomersDescription;All registered customers;Alle registrerede kunder
 totalRevenue;Total revenue;Samlet omsætning
 totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
@@ -12,6 +13,13 @@ ordersDescription;New orders in the selected period;Nye ordrer i den valgte peri
 about;About us;Om os
 goal7Days;7 days;7 dage
 goal30Days;30 days;30 dage
+last7Days;Last 7 days;Seneste 7 dage
+last30Days;Last 30 days;Seneste 30 dage
+previous;Previous;Forrige
+last;Last;Seneste
+previousYear;Previous year;Forrige år
+comparisonWithPreviousPeriod;Comparison with previous period;Sammenligning med forrige periode
+goalProgress;Goal progress;Målopfyldelse
 newCustomersDescription;Number of newly registered customers;Antal nye kunder registreret
 revenueDescription;Total revenue in;Samlet omsætning i DDK
 goal12Months;12 months;12 måneder
@@ -96,6 +104,7 @@ categoryNotFound;This category is no longer available.;Denne kategori er ikke l�
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
+netChangeInPeriod;Net change in period;Nettoændring i perioden
 changeBillingAddress;Change billing address;Skift faktureringsadresse
 changeDeliveryAddress;Change delivery address;Skift leveringsadresse
 changeOrderAddress;Change address for this order;Skift adresse for denne ordre
@@ -160,6 +169,7 @@ dashboardSettings;Dashboard settings;Dashboard indstillinger
 date;Date;Dato
 dateAndTime;Date & time;Dato & tid
 dateOfBirth;Date of birth;Fødselsdato
+days;days;dage
 daysAgo;days ago;dage siden
 delete;Delete;Slet
 deleteAddress;Delete address;Slet adresse
@@ -688,6 +698,7 @@ womenAltText;Glamorous woman in a black dress with a large silver buckle, dancin
 womenBannerAltText;Sophisticated woman in a matching jacket and trousers with a bag and red flowers behind her, completing an elegant tableau.;Sofistikeret kvinde i matchende jakke og bukser med taske og røde blomster bag sig fuldender et elegant tableau.
 womenSalesBannerAltText;A woman wearing a wide-brimmed hat and soft knitwear looks confidently into the camera with a warm, relaxed expression.;En kvinde iført en bredskygget hat og blød strik ser selvsikkert ind i kameraet med et varmt og afslappet udtryk.
 womensFashion;Women’s fashion;Damemode
+years;year;år
 yearsAgo;years ago;år siden
 yellow;Yellow;Gul
 yesterday;Yesterday;I går

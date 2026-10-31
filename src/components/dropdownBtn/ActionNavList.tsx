@@ -2,32 +2,32 @@ import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
-import type { DropdownItem } from './DropdownBtn';
+import type { ActionNavItemProps } from './ActionNavBtn';
 
-interface DropdownListProps {
-  dropdownList: DropdownItem[];
+interface ActionNavListProps {
+  actionNavDropdownList: ActionNavItemProps[];
   defaultIndex?: number;
   closePopup?: () => void;
 }
 
-const DropdownList = ({
-  dropdownList,
+const ActionNavList = ({
+  actionNavDropdownList,
   defaultIndex,
   closePopup,
-}: DropdownListProps) => {
+}: ActionNavListProps) => {
   const { listRefs } = useKeyboardListNav({
     defaultIndex,
-    dropdownList,
+    actionNavDropdownList,
   });
 
   return (
     <ul>
-      {dropdownList.map(
+      {actionNavDropdownList.map(
         (
           { label, onClick, btnVariant, disabled, isActive, iconName },
           index,
         ) => (
-          <li key={label} className="dropdown-item">
+          <li key={label} className="action-nav-item">
             <Button
               variant={btnVariant || BtnVariant.Ghost}
               className={isActive ? 'active' : ''}
@@ -50,4 +50,4 @@ const DropdownList = ({
   );
 };
 
-export default DropdownList;
+export default ActionNavList;

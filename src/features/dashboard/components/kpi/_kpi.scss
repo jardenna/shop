@@ -41,10 +41,21 @@
       margin: 0;
       color: $color-primary;
     }
+  }
+
+  .kpi-progress-bar {
+    margin-top: 16px;
+
+    .kpi-progress-info {
+      display: flex;
+      margin-bottom: 4px;
+      width: 100%;
+      justify-content: space-between;
+      color: $color-primary;
+      font-size: 12px;
+    }
 
     .progress-bar-container {
-      margin-top: 16px;
-
       .progress-bar {
         background-color: currentcolor;
       }
@@ -55,6 +66,17 @@
 .kpi-cart {
   display: flex;
   justify-content: space-between;
+
+  &.period-kpi-cart {
+    flex-direction: column;
+    position: relative;
+
+    .popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
 
   .kpi-content {
     display: flex;
@@ -100,4 +122,50 @@
   .kpi-description {
     font-size: $font-mini;
   }
+}
+
+.kpi-cart-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .kpi-cart-popup-item {
+    padding: 12px;
+    border-radius: 4px;
+    background-color: rgb($color-chip-success-bg, 60%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+    &.previous {
+      background-color: rgb($color-background, 70%);
+    }
+  }
+
+  .kpi-popup-title {
+    font-size: rem(24px);
+    font-family: $font-primary;
+  }
+
+  .popup-item-count {
+    font-size: rem(16px);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .kpi-value-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+.kpi-cart-popover {
+  padding: 20px;
+  max-width: rem(332px);
 }

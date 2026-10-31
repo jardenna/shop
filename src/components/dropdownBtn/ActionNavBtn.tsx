@@ -4,31 +4,31 @@ import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant, IconName } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
-import './_dropdown-btn.scss';
-import DropdownList from './DropdownList';
+import './_action-nav.scss';
+import ActionNavList from './ActionNavList';
 
-export type DropdownItem = {
+export interface ActionNavItemProps {
   label: string;
   btnVariant?: BtnVariant;
   disabled?: boolean;
   iconName?: IconName;
   isActive?: boolean;
   onClick: () => void;
-};
+}
 
-export type DropdownBtnProps = {
+interface ActionNavBtnProps {
+  actionNavDropdownList: ActionNavItemProps[];
   ariaHasPopup: AriaHasPopup;
   children: ReactNode;
-  dropdownList: DropdownItem[];
   ariaLabel?: string;
   placement?: Placement;
   showArrow?: boolean;
   triggerBtnClassName?: string;
   triggerBtnVariant?: BtnVariant;
-};
+}
 
-const DropdownBtn = ({
-  dropdownList,
+const ActionNavBtn = ({
+  actionNavDropdownList,
   triggerBtnVariant = BtnVariant.Ghost,
   children,
   showArrow,
@@ -36,8 +36,9 @@ const DropdownBtn = ({
   ariaLabel,
   ariaHasPopup,
   triggerBtnClassName,
-}: DropdownBtnProps) => {
+}: ActionNavBtnProps) => {
   const dropdownId = useId();
+
   const {
     popupRef,
     popupIsOpen,
@@ -65,9 +66,9 @@ const DropdownBtn = ({
       </Button>
       {popupIsOpen && (
         <div ref={popupRef} className="popup-container" id={dropdownId}>
-          <DropdownList
+          <ActionNavList
             defaultIndex={-1}
-            dropdownList={dropdownList}
+            actionNavDropdownList={actionNavDropdownList}
             closePopup={closePopup}
           />
           {showArrow && (
@@ -79,4 +80,4 @@ const DropdownBtn = ({
   );
 };
 
-export default DropdownBtn;
+export default ActionNavBtn;

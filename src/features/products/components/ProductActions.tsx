@@ -1,21 +1,22 @@
 import { useNavigate } from 'react-router';
-import type { DropdownItem } from '../../../components/dropdownBtn/DropdownBtn';
-import DropdownBtn from '../../../components/dropdownBtn/DropdownBtn';
+import ActionNavBtn, {
+  ActionNavItemProps,
+} from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';
 import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
-type ProductActionsProps = {
+interface ProductActionsProps {
   id: string;
   onCopyProduct: (id: string) => void;
-};
+}
 
 const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
-  const actionsDropdownList: DropdownItem[] = [
+  const actionsDropdownList: ActionNavItemProps[] = [
     {
       label: language.view,
       onClick: () => {
@@ -40,15 +41,15 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   ];
 
   return (
-    <DropdownBtn
-      dropdownList={actionsDropdownList}
+    <ActionNavBtn
+      actionNavDropdownList={actionsDropdownList}
       ariaLabel={language.productActions}
       showArrow
       placement="left-start"
       ariaHasPopup="menu"
     >
       <Icon iconName={IconName.MenuDotsHorizontal} />
-    </DropdownBtn>
+    </ActionNavBtn>
   );
 };
 

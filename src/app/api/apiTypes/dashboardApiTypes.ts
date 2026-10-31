@@ -13,9 +13,18 @@ export interface TotalKpiResponse {
 
 export interface PeriodKpiResponse {
   changePercentage: number;
+  currentPeriod: {
+    endDate: Date;
+    startDate: Date;
+  };
   description: string;
   goal: number;
   key: GoalKeys;
   label: string;
+  previousPeriod: {
+    endDate: Date;
+    startDate: Date;
+  };
+  previousValue: number;
   value: number;
 }

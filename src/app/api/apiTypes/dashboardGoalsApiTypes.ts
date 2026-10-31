@@ -1,8 +1,7 @@
-export type DashboardPeriod = 7 | 30 | 365;
+export type GoalPeriod = 7 | 30 | 365;
+type GoalPeriods = Record<GoalPeriod, number>;
 
 export type GoalKeys = 'newCustomers' | 'revenue' | 'orders';
-
-export type GoalPeriods = Record<DashboardPeriod, number>;
 
 export interface DashboardGoals {
   newCustomers: GoalPeriods;
