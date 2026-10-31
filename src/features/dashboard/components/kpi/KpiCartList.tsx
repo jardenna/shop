@@ -6,7 +6,7 @@ import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes'
 import { kpiIcons } from '../../../dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCart from './KpiCart';
-import KpiCartNew from './KpiCartNew';
+import PeriodKpiCart from './PeriodKpiCart';
 import './_kpi.scss';
 
 interface KpiCartListProps {
@@ -36,7 +36,7 @@ const KpiCartList = ({
         />
       ))}
       {periodKpi.map((kpi) => (
-        <KpiCartNew key={kpi.key} kpi={kpi} period={selectedPeriod} />
+        <PeriodKpiCart key={kpi.key} kpi={kpi} period={selectedPeriod} />
       ))}
     </div>
   );

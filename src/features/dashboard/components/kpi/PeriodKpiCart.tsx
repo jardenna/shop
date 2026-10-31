@@ -12,12 +12,12 @@ import { dashboardKpiVariants } from '../../dashboardUtils';
 import KpiCartPopup from './KpiCartPopup';
 import KpiContent from './KpiContent';
 
-interface KpiCartNewProps {
+interface PeriodKpiCartProps {
   kpi: PeriodKpiResponse;
   period: GoalPeriod;
 }
 
-const KpiCartNew = ({ kpi, period }: KpiCartNewProps) => {
+const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
   const { language } = useLanguage();
   const isRevenue = kpi.key.toLowerCase().includes('revenue');
   const { convertedPrice } = useCurrency(kpi.value);
@@ -56,4 +56,4 @@ const KpiCartNew = ({ kpi, period }: KpiCartNewProps) => {
   );
 };
 
-export default KpiCartNew;
+export default PeriodKpiCart;
