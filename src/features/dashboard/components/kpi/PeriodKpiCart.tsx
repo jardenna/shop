@@ -36,7 +36,7 @@ const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
           <KpiCartPopup period={period} kpi={kpi} language={language} />
         }
         ariaHasPopup="dialog"
-        ariaLabel="noget translate"
+        ariaLabel={language.comparisonWithPreviousPeriod}
       >
         <Icon iconName={IconName.Info} />
       </PopoverBtn>
