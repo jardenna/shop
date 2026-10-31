@@ -1,4 +1,3 @@
-import { useCurrency } from '../../../features/currency/useCurrency';
 import { InputChangeHandler } from '../../../types/types';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
@@ -30,8 +29,6 @@ const DualRange = ({
   unitLabel,
   showInput,
 }: DualRangeProps) => {
-  const { currencyText } = useCurrency();
-
   const { input, committed, track, onRangeChange } = useRangeController({
     minValue,
     maxValue,
@@ -60,7 +57,7 @@ const DualRange = ({
               input.commitMin(input.min);
             }}
             labelText={inputLabels.min}
-            inputSuffix={currencyText}
+            inputSuffix={unitLabel}
           />
 
           <RangeNumberInput
@@ -78,7 +75,7 @@ const DualRange = ({
               input.commitMax(input.max);
             }}
             labelText={inputLabels.max}
-            inputSuffix={currencyText}
+            inputSuffix={unitLabel}
           />
         </div>
       )}
