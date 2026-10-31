@@ -26,6 +26,11 @@ const DashboardPage = () => {
     }
   };
 
+  const translatedOptions = kpiOptions.map((option) => ({
+    ...option,
+    label: language[option.label],
+  }));
+
   return (
     <AdminPageContainer
       heading={language.dashboard}
@@ -41,8 +46,8 @@ const DashboardPage = () => {
         <Selectbox
           id="year"
           variant="secondary"
-          defaultValue={kpiOptions[0]}
-          options={kpiOptions}
+          defaultValue={translatedOptions[0]}
+          options={translatedOptions}
           onChange={(option) => {
             handleSelectPeriod(option);
           }}

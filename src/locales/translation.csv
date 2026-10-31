@@ -12,6 +12,10 @@ ordersDescription;New orders in the selected period;Nye ordrer i den valgte peri
 about;About us;Om os
 goal7Days;7 days;7 dage
 goal30Days;30 days;30 dage
+last7Days;Last 7 days;Seneste 7 dage
+last30Days;Last 30 days;Seneste 30 dage
+previousYear;Previous year;Forrige år
+comparisonWithPreviousPeriod;Comparison with previous period;Sammenligning med forrige periode
 goalProgress;Goal progress;Målopfyldelse
 newCustomersDescription;Number of newly registered customers;Antal nye kunder registreret
 revenueDescription;Total revenue in;Samlet omsætning i DDK
