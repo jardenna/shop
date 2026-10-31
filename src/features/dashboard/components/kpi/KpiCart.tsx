@@ -1,10 +1,9 @@
-import Cart from '../../../../components/carts/Cart';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import { IconName } from '../../../../types/enums';
 import { ChartData } from '../../../../types/types';
 import { useCurrency } from '../../../currency/useCurrency';
-import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
-import KpiContent from './KpiContent';
+import { DashboardKpiId } from '../../dashboardUtils';
+import KpiCartLayout from './KpiCartLayout';
 
 export interface BaseKpiCartProps {
   description: string;
@@ -31,17 +30,15 @@ const KpiCart = ({
   const { convertedPrice } = useCurrency(total);
 
   return (
-    <Cart className={dashboardKpiVariants[id]}>
-      <div className="kpi-cart">
-        <KpiContent
-          iconName={iconName}
-          description={description}
-          title={title}
-          kpiTotal={isRevenue ? convertedPrice : total}
-        />
-        <BarChartComp data={chartData} />
-      </div>
-    </Cart>
+    <KpiCartLayout
+      iconName={iconName}
+      description={description}
+      title={title}
+      kpiTotal={isRevenue ? convertedPrice : total}
+      id={id}
+    >
+      <BarChartComp data={chartData} />
+    </KpiCartLayout>
   );
 };
 

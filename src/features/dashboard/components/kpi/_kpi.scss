@@ -67,6 +67,17 @@
   display: flex;
   justify-content: space-between;
 
+  &.period-kpi-cart {
+    flex-direction: column;
+    position: relative;
+
+    .popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
   .kpi-content {
     display: flex;
     gap: 12px;
