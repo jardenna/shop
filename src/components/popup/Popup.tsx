@@ -4,12 +4,14 @@ import { createPortal } from 'react-dom';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant } from '../../types/enums';
+import { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_popup.scss';
 
 interface PopupProps {
   children: ReactNode;
   popupContent: ReactNode | ((params: { close: () => void }) => ReactNode);
+  ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   className?: string;
   placement?: Placement;
@@ -22,6 +24,7 @@ interface PopupProps {
 const Popup = ({
   children,
   popupContent,
+  ariaHasPopup,
   ariaLabel,
   triggerBtnVariant = BtnVariant.Ghost,
   triggerBtnClassName,
@@ -48,6 +51,7 @@ const Popup = ({
       : {
           ariaExpanded: popupIsOpen,
           ariaControls: popupId,
+          ariaHasPopup,
         };
 
   const handleOpenPopup = () => {

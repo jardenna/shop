@@ -1,4 +1,4 @@
-import AdminBadge from '../../../../components/adminCart/AdminBadge';
+import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
 import Cart from '../../../../components/carts/Cart';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
@@ -47,7 +47,13 @@ const KpiCart = ({
           kpiTotal={isRevenue ? convertedPrice : total}
           changePercentage={changePercentage}
         />
-        <AdminBadge scheduledDate={new Date()} status="Published" />
+        <PopoverBtn
+          popupContent={<span>Hello</span>}
+          ariaHasPopup="dialog"
+          ariaLabel="noget translate"
+        >
+          btn
+        </PopoverBtn>
         {chartData && <BarChartComp data={chartData} />}
       </div>
       {progressPercentage && (
