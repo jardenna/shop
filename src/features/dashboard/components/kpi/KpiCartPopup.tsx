@@ -53,7 +53,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
       />
 
       <div className="kpi-value-info">
-        {language.netChangeInPeriod}:
+        {language.netChangeInPeriod}
         <Chip
           chipText={`${isRevenue ? convertedChipPrice : chipText}`}
           variant={chipVariant}

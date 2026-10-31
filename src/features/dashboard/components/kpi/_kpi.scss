@@ -130,20 +130,27 @@
   gap: 12px;
 
   .kpi-cart-popup-item {
-    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: rgb($color-chip-success-bg, 60%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     width: 100%;
+
+    &.previous {
+      background-color: rgb($color-background, 70%);
+    }
   }
 
   .kpi-popup-title {
-    font-size: rem(16px);
+    font-size: rem(24px);
+    font-family: $font-primary;
   }
 
   .popup-item-count {
-    font-size: rem(20px);
+    font-size: rem(16px);
   }
 
   p {

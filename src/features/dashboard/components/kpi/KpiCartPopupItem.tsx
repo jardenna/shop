@@ -25,7 +25,7 @@ const KpiCartPopupItem = ({
   const { language } = useLanguage();
 
   return (
-    <div className="kpi-cart-popup-item">
+    <div className={`kpi-cart-popup-item ${isPrevious ? 'previous' : ''}`}>
       <div>
         <p className="text-bold">
           {isPrevious ? language.previous : language.last}{' '}
