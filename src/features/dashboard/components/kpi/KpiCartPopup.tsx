@@ -51,7 +51,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
       />
 
       <p>
-        {language.change}: {kpi.value - kpi.previousValue}
+        {language.netChangeInPeriod}: {kpi.value - kpi.previousValue}
       </p>
     </section>
   );

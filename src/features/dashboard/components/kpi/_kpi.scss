@@ -122,12 +122,13 @@
     margin-bottom: 12px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 20px;
     width: 100%;
   }
 
   .kpi-popup-title {
-    font-size: rem(20px);
+    font-size: rem(16px);
   }
 
   .popup-item-count {

@@ -104,7 +104,7 @@ categoryNotFound;This category is no longer available.;Denne kategori er ikke l�
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
-change;Change;Ændring
+netChangeInPeriod;Net change in period;Nettoændring i perioden
 changeBillingAddress;Change billing address;Skift faktureringsadresse
 changeDeliveryAddress;Change delivery address;Skift leveringsadresse
 changeOrderAddress;Change address for this order;Skift adresse for denne ordre
