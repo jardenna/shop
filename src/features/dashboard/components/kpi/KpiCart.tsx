@@ -10,7 +10,6 @@ export interface BaseKpiCartProps {
   description: string;
   iconName: IconName;
   title: string;
-  changePercentage?: number;
 }
 
 interface KpiCartProps extends BaseKpiCartProps {
@@ -22,7 +21,7 @@ interface KpiCartProps extends BaseKpiCartProps {
 const KpiCart = ({
   title,
   iconName,
-  changePercentage,
+
   description,
   total,
   id,
@@ -39,7 +38,6 @@ const KpiCart = ({
           description={description}
           title={title}
           kpiTotal={isRevenue ? convertedPrice : total}
-          changePercentage={changePercentage}
         />
         <BarChartComp data={chartData} />
       </div>

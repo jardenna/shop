@@ -3,6 +3,7 @@ import { BaseKpiCartProps } from './KpiCart';
 
 interface KpiContentProps extends BaseKpiCartProps {
   kpiTotal: number | string;
+  changePercentage?: number;
 }
 
 const KpiContent = ({
