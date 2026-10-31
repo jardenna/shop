@@ -1,17 +1,28 @@
+import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import { DashboardPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import { useCurrency } from '../../../currency/useCurrency';
 
 interface KpiCartPopupProps {
+  kpi: PeriodKpiResponse;
+  language: Record<string, string>;
   period: DashboardPeriod;
 }
 
-const KpiCartPopup = ({ period }: KpiCartPopupProps) => {
-  console.log(145);
+const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
+  console.log(kpi);
+  const isRevenue = kpi.key.toLowerCase().includes('revenue');
+  const { convertedPrice } = useCurrency(kpi.value);
+  const { convertedPrice: convertedPreviousPrice } = useCurrency(
+    kpi.previousValue,
+  );
 
   return (
     <section>
-      {period}
-      <h3>Sammenligning med forrige periode</h3>
-      Forrige 7 dage 11 kunder Seneste 7 dage 21 kunder Ændring +10
+      <h3>{language.comparisonWithPreviousPeriod}</h3>
+      Forrige {period} dage {language[kpi.label]}:{' '}
+      {isRevenue ? convertedPreviousPrice : kpi.value} Seneste {period} dage{' '}
+      {language[kpi.label]}: {isRevenue ? convertedPrice : kpi.value} Ændring
+      +10
     </section>
   );
 };

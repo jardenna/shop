@@ -1,3 +1,4 @@
+import { Fragment } from 'react/jsx-runtime';
 import {
   PeriodKpiResponse,
   TotalKpiResponse,
@@ -5,6 +6,7 @@ import {
 import { kpiIcons } from '../../../dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCart from './KpiCart';
+import KpiCartPopup from './KpiCartPopup';
 import './_kpi.scss';
 
 interface KpiCartListProps {
@@ -29,17 +31,18 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
         />
       ))}
       {periodKpi.map((kpi) => (
-        <KpiCart
-          key={kpi.key}
-          id={kpi.key}
-          title={language[kpi.label]}
-          iconName={kpiIcons[kpi.key]}
-          description={language[kpi.description]}
-          total={kpi.value}
-          progressPercentage={Math.min((kpi.value / kpi.goal) * 100, 100)}
-          changePercentage={kpi.changePercentage}
-          hasPopup
-        />
+        <Fragment key={kpi.key}>
+          <KpiCart
+            id={kpi.key}
+            title={language[kpi.label]}
+            iconName={kpiIcons[kpi.key]}
+            description={language[kpi.description]}
+            total={kpi.value}
+            progressPercentage={Math.min((kpi.value / kpi.goal) * 100, 100)}
+            changePercentage={kpi.changePercentage}
+          />
+          <KpiCartPopup period={7} kpi={kpi} language={language} />
+        </Fragment>
       ))}
     </div>
   );
