@@ -20,7 +20,8 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
       <h3>{language.comparisonWithPreviousPeriod}</h3>
       Forrige {period} dage {language[kpi.key]}:{' '}
       {isRevenue ? convertedPreviousPrice : kpi.value} Seneste {period} dage{' '}
-      {language[kpi.key]}: {isRevenue ? convertedPrice : kpi.value} Ændring +10
+      {language[kpi.key]}: {isRevenue ? convertedPrice : kpi.previousValue}{' '}
+      Ændring +10
     </section>
   );
 };

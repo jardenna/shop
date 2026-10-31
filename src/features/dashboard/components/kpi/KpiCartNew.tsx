@@ -33,7 +33,6 @@ const KpiCartNew = ({ kpi, period }: KpiCartNewProps) => {
           kpiTotal={isRevenue ? convertedPrice : kpi.value}
           changePercentage={kpi.changePercentage}
         />
-        {kpi.key}
         <PopoverBtn
           popupContent={
             <KpiCartPopup period={period} kpi={kpi} language={language} />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GoalPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
@@ -11,7 +12,6 @@ import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
-import { GoalPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
@@ -58,7 +58,11 @@ const DashboardPage = () => {
       </LayoutElement>
 
       {periodKpi && totalKpi && (
-        <KpiCartList periodKpi={periodKpi} totalKpi={totalKpi} />
+        <KpiCartList
+          periodKpi={periodKpi}
+          totalKpi={totalKpi}
+          selectedPeriod={selectedPeriod}
+        />
       )}
     </AdminPageContainer>
   );

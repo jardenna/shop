@@ -2,6 +2,7 @@ import {
   PeriodKpiResponse,
   TotalKpiResponse,
 } from '../../../../app/api/apiTypes/dashboardApiTypes';
+import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import { kpiIcons } from '../../../dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCart from './KpiCart';
@@ -10,10 +11,15 @@ import './_kpi.scss';
 
 interface KpiCartListProps {
   periodKpi: PeriodKpiResponse[];
+  selectedPeriod: GoalPeriod;
   totalKpi: TotalKpiResponse[];
 }
 
-const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
+const KpiCartList = ({
+  totalKpi,
+  periodKpi,
+  selectedPeriod,
+}: KpiCartListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -30,7 +36,7 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
         />
       ))}
       {periodKpi.map((kpi) => (
-        <KpiCartNew key={kpi.key} kpi={kpi} period={7} />
+        <KpiCartNew key={kpi.key} kpi={kpi} period={selectedPeriod} />
       ))}
     </div>
   );
