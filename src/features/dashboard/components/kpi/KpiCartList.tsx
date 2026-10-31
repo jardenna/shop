@@ -38,6 +38,7 @@ const KpiCartList = ({ totalKpi, periodKpi }: KpiCartListProps) => {
           total={kpi.value}
           progressPercentage={Math.min((kpi.value / kpi.goal) * 100, 100)}
           changePercentage={kpi.changePercentage}
+          hasPopup
         />
       ))}
     </div>
