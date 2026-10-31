@@ -34,6 +34,7 @@ const KpiCartNew = ({ kpi, period }: KpiCartNewProps) => {
           changePercentage={kpi.changePercentage}
         />
         <PopoverBtn
+          className="kpi-cart-popover"
           popupContent={
             <KpiCartPopup period={period} kpi={kpi} language={language} />
           }

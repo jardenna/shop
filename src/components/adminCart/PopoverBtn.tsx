@@ -7,6 +7,7 @@ interface PopoverBtnProps {
   children: ReactNode;
   popupContent: ReactNode | string;
   ariaLabel?: string;
+  className?: string;
 }
 
 const PopoverBtn = ({
@@ -14,11 +15,13 @@ const PopoverBtn = ({
   children,
   ariaHasPopup,
   ariaLabel,
+  className = '',
 }: PopoverBtnProps) => (
   <Popup
     ariaLabel={ariaLabel}
     popupContent={popupContent}
     ariaHasPopup={ariaHasPopup}
+    className={className}
   >
     {children}
   </Popup>
