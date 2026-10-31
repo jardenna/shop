@@ -309,6 +309,14 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
     previousValue: previousValues[kpi.key],
     goal: dashboard.goals[kpi.key][period],
     changePercentage: changes[kpi.key],
+    currentPeriod: {
+      startDate: dateRange.$gte,
+      endDate: dateRange.$lte,
+    },
+    previousPeriod: {
+      startDate: previousDateRange.$gte,
+      endDate: previousDateRange.$lte,
+    },
   }));
 
   res.send(periodKpis);

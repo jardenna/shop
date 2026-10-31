@@ -1,7 +1,7 @@
 import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import DateDisplay from '../../../../components/datePicker/DateDisplay';
 import { useCurrency } from '../../../currency/useCurrency';
-
 interface KpiCartPopupProps {
   kpi: PeriodKpiResponse;
   language: Record<string, string>;
@@ -18,10 +18,21 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   return (
     <section>
       <h3>{language.comparisonWithPreviousPeriod}</h3>
-      Forrige {period} dage {language[kpi.key]}:{' '}
-      {isRevenue ? convertedPreviousPrice : kpi.value} Seneste {period} dage{' '}
-      {language[kpi.key]}: {isRevenue ? convertedPrice : kpi.previousValue}{' '}
-      Ændring +10
+      <p>
+        Forrige {period} dage:{' '}
+        <DateDisplay date={kpi.previousPeriod.startDate} /> -
+        <DateDisplay date={kpi.previousPeriod.endDate} /> {language[kpi.key]}:{' '}
+        {isRevenue ? convertedPreviousPrice : kpi.previousValue}
+      </p>
+      <p>
+        Seneste {period} dage :{' '}
+        <DateDisplay date={kpi.currentPeriod.startDate} /> -{' '}
+        <DateDisplay date={kpi.currentPeriod.endDate} /> {language[kpi.key]}:{' '}
+        {isRevenue ? convertedPrice : kpi.value}
+      </p>
+      <p>
+        {language.change}: {kpi.value - kpi.previousValue}
+      </p>
     </section>
   );
 };
