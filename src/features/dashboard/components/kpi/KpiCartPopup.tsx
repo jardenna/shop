@@ -1,11 +1,11 @@
 import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import { DashboardPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import { useCurrency } from '../../../currency/useCurrency';
 
 interface KpiCartPopupProps {
   kpi: PeriodKpiResponse;
   language: Record<string, string>;
-  period: DashboardPeriod;
+  period: GoalPeriod;
 }
 
 const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { DashboardPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
@@ -12,17 +11,18 @@ import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
+import { GoalPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
-  const [selectedPeriod, setSelectedPeriod] = useState<DashboardPeriod>(7);
+  const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
 
   const { data: totalKpi } = useGetTotalKpiQuery();
   const { data: periodKpi } = useGetPeriodKpiQuery(selectedPeriod);
 
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
-      setSelectedPeriod(Number(option.value) as DashboardPeriod);
+      setSelectedPeriod(Number(option.value) as GoalPeriod);
     }
   };
 

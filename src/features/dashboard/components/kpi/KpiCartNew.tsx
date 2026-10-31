@@ -1,5 +1,5 @@
 import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import { DashboardPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
 import Cart from '../../../../components/carts/Cart';
 import Icon from '../../../../components/icons/Icon';
@@ -14,7 +14,7 @@ import KpiContent from './KpiContent';
 
 interface KpiCartNewProps {
   kpi: PeriodKpiResponse;
-  period: DashboardPeriod;
+  period: GoalPeriod;
 }
 
 const KpiCartNew = ({ kpi, period }: KpiCartNewProps) => {
