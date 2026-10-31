@@ -10,7 +10,7 @@ import { validateDashboardGoals } from '../../../utils/validation/validateDashbo
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
-
+import './_dashboard-goal-table.scss';
 interface DashboardGoalTableProps {
   dashboard: DashboardResponse;
 }
@@ -57,6 +57,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
       submitBtnLabel="Gem ændringer"
       onSubmit={onSubmit}
       isLoading={isUpdateGoalsLoading}
+      className="dashboard-goal-form"
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
@@ -69,8 +70,10 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
         renderCells={(kpi) => (
           <>
             <td>
-              <div>{language[kpi.label]}</div>
-              {language[kpi.description]}
+              <div className="kpi-text">
+                <p className="text-bold">{language[kpi.label]}</p>
+                <p>{language[kpi.description]}</p>
+              </div>
             </td>
 
             {dashboard.tableHeaders.map(({ id, days }) => {
