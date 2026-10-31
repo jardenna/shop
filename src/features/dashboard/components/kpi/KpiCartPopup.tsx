@@ -25,6 +25,8 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
     revenue: 'revenue',
   };
 
+  const currentValue = isRevenue ? convertedPrice : kpi.value;
+  const previousValue = isRevenue ? convertedPreviousPrice : kpi.previousValue;
   const popupLabel = language[popupLabelKeys[kpi.key]];
 
   return (
@@ -34,15 +36,16 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
         endDate={kpi.currentPeriod.endDate}
         startDate={kpi.currentPeriod.startDate}
         period={period}
-        text={isRevenue ? convertedPrice : kpi.value}
+        text={currentValue}
         label={popupLabel}
       />
       <KpiCartPopupItem
         endDate={kpi.previousPeriod.endDate}
         startDate={kpi.previousPeriod.startDate}
         period={period}
-        text={isRevenue ? convertedPreviousPrice : kpi.previousValue}
+        text={previousValue}
         label={popupLabel}
+        isPrevious
       />
 
       {/* <div className="flex">
