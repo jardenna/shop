@@ -90,8 +90,8 @@ export const adminNavList: AdminNavList[] = [
     iconName: IconName.Orders,
   },
   {
-    path: AdminPath.DashboardSettings,
-    linkText: LinkText.DashboardSettings,
+    path: AdminPath.Goals,
+    linkText: LinkText.Goals,
     iconName: IconName.Settings,
   },
   {

@@ -18,7 +18,7 @@ export enum AdminPath {
   AdminSubCategoryView = '/dashboard/subCategories/view',
   AdminUser = '/dashboard/users',
   AdminUserCreate = '/dashboard/users/create',
-  DashboardSettings = '/dashboard/dashboard-settings',
+  Goals = '/dashboard/dashboard-settings',
   Users = 'users',
 }
 
@@ -68,11 +68,11 @@ export enum LinkText {
   CreateNewProduct = 'createNewProduct',
   CreateNewUser = 'createNewUser',
   Dashboard = 'dashboard',
-  DashboardSettings = 'dashboardSettings',
   DiscountCodes = 'discountCodes',
   Edit = 'edit',
   Faq = 'faq',
   Favorites = 'favorites',
+  Goals = 'kpiGoals',
   Home = 'home',
   Kids = 'kids',
   Login = 'login',

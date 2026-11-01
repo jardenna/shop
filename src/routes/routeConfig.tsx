@@ -197,7 +197,7 @@ const adminRouteList = [
     element: <AdminOrderDetailsPage />,
   },
   {
-    path: AdminPath.DashboardSettings,
+    path: AdminPath.Goals,
     element: <GoalsPage />,
   },
   {
