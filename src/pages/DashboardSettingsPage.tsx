@@ -14,7 +14,10 @@ const DashboardSettingsPage = () => {
       variant="medium"
       hideBreadCrumbs
     >
-      <div>{language.goalSettingsDescription}</div>
+      <div>
+        <p className="text-bold">{language.goalSettingsDescription}</p>
+        <p>{language.goalSettingsPeriodDescription}</p>
+      </div>
       {dashboard && <DashboardGoalTable dashboard={dashboard} />}
 
       <section className="cart">
