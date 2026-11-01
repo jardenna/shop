@@ -10,13 +10,13 @@ import { validateDashboardGoals } from '../../../utils/validation/validateDashbo
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
-import './_dashboard-goal-table.scss';
+import './_admin-goal-table.scss';
 
-interface DashboardGoalTableProps {
+interface AdminGoalTableProps {
   dashboard: DashboardResponse;
 }
 
-const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
+const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
   const { language } = useLanguage();
 
   const initialState = Object.fromEntries(
@@ -114,4 +114,4 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
   );
 };
 
-export default DashboardGoalTable;
+export default AdminGoalTable;

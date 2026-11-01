@@ -1,5 +1,5 @@
 import Icon from '../components/icons/Icon';
-import DashboardGoalTable from '../features/dashboardGoals/components/DashboardGoalTable';
+import AdminGoalTable from '../features/dashboardGoals/components/AdminGoalTable';
 import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/dashboardGoalsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
@@ -22,7 +22,7 @@ const DashboardSettingsPage = () => {
         </p>
         <p>{language.goalSettingsPeriodDescription}</p>
       </div>
-      {dashboard && <DashboardGoalTable dashboard={dashboard} />}
+      {dashboard && <AdminGoalTable dashboard={dashboard} />}
 
       <section className="goal-info">
         <h2 className="goal-info-title">
