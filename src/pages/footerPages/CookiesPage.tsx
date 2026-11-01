@@ -55,7 +55,7 @@ const CookiesPage = () => {
         <section>
           <h2>How we use cookies</h2>
           <p>We use cookies to:</p>
-          <ul>
+          <ul className="secondary">
             <li>Keep the website functioning correctly.</li>
             <li>Remember your preferences and settings.</li>
             <li>Improve the performance and user experience of our website.</li>

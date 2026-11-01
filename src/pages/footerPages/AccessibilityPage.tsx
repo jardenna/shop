@@ -31,7 +31,7 @@ const AccessibilityPage = () => {
 
         <section>
           <h2>What we do</h2>
-          <ul>
+          <ul className="secondary">
             <li>Content has a clear and logical structure.</li>
             <li>Interactive elements can be used with a keyboard.</li>
             <li>Images have appropriate alternative text where needed.</li>

@@ -26,13 +26,6 @@
   gap: 32px;
 
   ul {
-    list-style: disc;
-    margin: auto;
-    padding-left: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
     li::marker {
       color: $color-blue-30;
     }
