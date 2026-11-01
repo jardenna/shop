@@ -5,7 +5,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
-const DashboardSettingsPage = () => {
+const GoalsPage = () => {
   const { language } = useLanguage();
 
   const { data: adminGoal } = useGetAdminGoalsQuery();
@@ -41,4 +41,4 @@ const DashboardSettingsPage = () => {
   );
 };
 
-export default DashboardSettingsPage;
+export default GoalsPage;
