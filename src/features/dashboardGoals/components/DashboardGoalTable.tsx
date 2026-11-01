@@ -11,6 +11,7 @@ import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
 import './_dashboard-goal-table.scss';
+
 interface DashboardGoalTableProps {
   dashboard: DashboardResponse;
 }
@@ -27,11 +28,16 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
     ),
   );
 
-  const { values, onChange, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitKpi,
-    validate: validateDashboardGoals,
-  });
+  const { values, onChange, onSubmit, errors, onClearAllValues } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitKpi,
+      validate: validateDashboardGoals,
+    });
+
+  const handleClearAllValues = () => {
+    onClearAllValues();
+  };
 
   const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
     useUpdateDashboardGoalsMutation();
@@ -58,6 +64,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
       onSubmit={onSubmit}
       isLoading={isUpdateGoalsLoading}
       className="dashboard-goal-form"
+      cancelBtnProps={{ onCancel: handleClearAllValues }}
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
