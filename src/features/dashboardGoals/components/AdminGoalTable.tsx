@@ -1,6 +1,6 @@
 import {
-  DashboardGoalsRequest,
-  DashboardResponse,
+  AdminGoalsRequest,
+  AdminGoalsTableResponse,
 } from '../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
@@ -13,7 +13,7 @@ import { useUpdateDashboardGoalsMutation } from '../adminGoalsApiSlice';
 import './_admin-goal-table.scss';
 
 interface AdminGoalTableProps {
-  dashboard: DashboardResponse;
+  dashboard: AdminGoalsTableResponse;
 }
 
 const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
@@ -42,7 +42,7 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
   const [updateGoals, { isLoading }] = useUpdateDashboardGoalsMutation();
 
   async function handleSubmitKpi() {
-    const goals: DashboardGoalsRequest['goals'] = Object.fromEntries(
+    const goals: AdminGoalsRequest['goals'] = Object.fromEntries(
       dashboard.kpis.map(({ key }) => [
         key,
         Object.fromEntries(
