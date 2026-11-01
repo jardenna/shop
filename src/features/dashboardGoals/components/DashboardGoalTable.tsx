@@ -6,15 +6,16 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useFormValidation } from '../../../hooks/useFormValidation';
+import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
-
-interface DashboardKpiTableProps {
+import './_dashboard-goal-table.scss';
+interface DashboardGoalTableProps {
   dashboard: DashboardResponse;
 }
 
-const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
+const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
   const { language } = useLanguage();
 
   const initialState = Object.fromEntries(
@@ -29,6 +30,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
   const { values, onChange, onSubmit, errors } = useFormValidation({
     initialState,
     callback: handleSubmitKpi,
+    validate: validateDashboardGoals,
   });
 
   const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
@@ -55,6 +57,7 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
       submitBtnLabel="Gem ændringer"
       onSubmit={onSubmit}
       isLoading={isUpdateGoalsLoading}
+      className="dashboard-goal-form"
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
@@ -67,8 +70,10 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
         renderCells={(kpi) => (
           <>
             <td>
-              <div>{language[kpi.label]}</div>
-              {language[kpi.description]}
+              <div className="kpi-text">
+                <p className="text-bold">{language[kpi.label]}</p>
+                <p>{language[kpi.description]}</p>
+              </div>
             </td>
 
             {dashboard.tableHeaders.map(({ id, days }) => {
@@ -102,4 +107,4 @@ const DashboardKpiTable = ({ dashboard }: DashboardKpiTableProps) => {
   );
 };
 
-export default DashboardKpiTable;
+export default DashboardGoalTable;

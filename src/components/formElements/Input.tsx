@@ -120,6 +120,7 @@ const Input = ({
             min={min}
             max={max}
             autoComplete={autoComplete}
+            required
             onInput={handleOnInput}
             onFocus={onFocus}
             disabled={disabled}

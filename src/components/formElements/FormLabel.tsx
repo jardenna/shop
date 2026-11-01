@@ -31,14 +31,15 @@ const FormLabel = ({
           {labelText}
           {required && <RequiredIcon />}
         </label>
-
-        {errorText && (
-          <FormError errorText={errorText} ariaErrorId={ariaErrorId} />
-        )}
       </span>
     )}
 
-    {errorText && <ErrorInfoIcon />}
+    {errorText && (
+      <>
+        <FormError errorText={errorText} ariaErrorId={ariaErrorId} />
+        <ErrorInfoIcon />
+      </>
+    )}
   </>
 );
 

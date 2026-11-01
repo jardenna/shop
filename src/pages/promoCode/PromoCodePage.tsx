@@ -8,7 +8,7 @@ const PromoCodePage = () => {
   return (
     <AdminPageContainer
       heading={language.discountCodes}
-      variant="large"
+      variant="medium"
       hideBreadCrumbs
     >
       <PromoCodeTable />

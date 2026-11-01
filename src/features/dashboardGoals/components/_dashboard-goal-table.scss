@@ -1,0 +1,20 @@
+@use '../../../scss/globals' as *;
+
+.dashboard-goal-form {
+  .fixed-table {
+    height: rem(232px);
+  }
+
+  .kpi-text {
+    line-height: rem(20px);
+
+    .text-bold {
+      font-size: $font-medium;
+    }
+
+    p {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+}

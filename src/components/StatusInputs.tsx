@@ -75,6 +75,7 @@ const StatusInputs = ({
         name="status"
         labelText={labelText}
         ref={ref}
+        required
       />
       {status === 'Scheduled' && (
         <>
@@ -86,6 +87,7 @@ const StatusInputs = ({
             name="time"
             min={min}
             max={max}
+            required
           />
           <DatePicker
             onSelectDate={onSelectDate}
@@ -94,6 +96,7 @@ const StatusInputs = ({
             disabled={(date: Date) => isBefore(date, today)}
             startMonth={new Date()}
             captionLayout="label"
+            required
           />
         </>
       )}
