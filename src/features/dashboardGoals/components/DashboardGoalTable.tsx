@@ -28,7 +28,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
     ),
   );
 
-  const { values, onChange, onSubmit, errors, onClearAllValues } =
+  const { values, onChange, onSubmit, errors, onClearAllValues, isFormDirty } =
     useFormValidation({
       initialState,
       callback: handleSubmitKpi,
@@ -65,6 +65,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
       isLoading={isUpdateGoalsLoading}
       className="dashboard-goal-form"
       cancelBtnProps={{ onCancel: handleClearAllValues }}
+      disabled={!isFormDirty}
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
