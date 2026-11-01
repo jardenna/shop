@@ -2,9 +2,7 @@
 import { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
-export function validateDashboardGoals(
-  values: Record<string, string | number>,
-) {
+export function validateAdminGoals(values: Record<string, string | number>) {
   const errors: ValidationErrors<typeof values> = {};
 
   Object.entries(values).forEach(([name, value]) => {

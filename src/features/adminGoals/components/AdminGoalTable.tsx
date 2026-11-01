@@ -6,7 +6,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
+import { validateAdminGoals } from '../../../utils/validation/validateAdminGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateAdminGoalsMutation } from '../adminGoalsApiSlice';
@@ -30,7 +30,7 @@ const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
     useFormValidation({
       initialState,
       callback: handleSubmitKpi,
-      validate: validateDashboardGoals,
+      validate: validateAdminGoals,
     });
 
   const handleClearAllValues = () => {
