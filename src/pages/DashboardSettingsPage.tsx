@@ -11,7 +11,7 @@ const DashboardSettingsPage = () => {
   return (
     <AdminPageContainer
       heading={language.dashboardSettings}
-      variant="large"
+      variant="medium"
       hideBreadCrumbs
     >
       {dashboard && <DashboardGoalTable dashboard={dashboard} />}
