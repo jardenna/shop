@@ -39,8 +39,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
     onClearAllValues();
   };
 
-  const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
-    useUpdateDashboardGoalsMutation();
+  const [updateGoals, { isLoading }] = useUpdateDashboardGoalsMutation();
 
   async function handleSubmitKpi() {
     const goals: DashboardGoalsRequest['goals'] = Object.fromEntries(
@@ -60,9 +59,9 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
 
   return (
     <Form
-      submitBtnLabel="Gem ændringer"
+      submitBtnLabel={language.save}
       onSubmit={onSubmit}
-      isLoading={isUpdateGoalsLoading}
+      isLoading={isLoading}
       className="dashboard-goal-form"
       cancelBtnProps={{ onCancel: handleClearAllValues }}
       disabled={!isFormDirty}

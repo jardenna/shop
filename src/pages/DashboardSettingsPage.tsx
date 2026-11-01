@@ -17,10 +17,10 @@ const DashboardSettingsPage = () => {
       <div>{language.goalSettingsDescription}</div>
       {dashboard && <DashboardGoalTable dashboard={dashboard} />}
 
-      <section>
+      <section className="cart">
         <h2>{language.howItWorks}</h2>
         <div>
-          <ul>
+          <ul className="secondary">
             <li>{language.kpiGoalsInfo1}</li>
             <li>{language.kpiGoalsInfo2}</li>
             <li>{language.kpiGoalsInfo3}</li>
