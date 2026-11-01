@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { GoalPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
+import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
+import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
   useGetPeriodKpiQuery,
   useGetTotalKpiQuery,
 } from '../features/dashboard/dashboardApiSlice';
-import { kpiOptions } from '../features/dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';

@@ -3,7 +3,7 @@ type GoalPeriods = Record<GoalPeriod, number>;
 
 export type GoalKeys = 'newCustomers' | 'revenue' | 'orders';
 
-export interface DashboardGoals {
+interface AdminGoals {
   newCustomers: GoalPeriods;
   orders: GoalPeriods;
   revenue: GoalPeriods;
@@ -15,7 +15,7 @@ export interface TableHeader {
   label: string;
 }
 
-export interface DashboardGoalsResponse {
+export interface AdminGoalsResponse {
   goal: number;
   success: boolean;
 }
@@ -26,12 +26,12 @@ export interface Kpi {
   label: string;
 }
 
-export interface DashboardResponse {
-  goals: DashboardGoals;
+export interface AdminGoalsTableResponse {
+  goals: AdminGoals;
   kpis: Kpi[];
   tableHeaders: TableHeader[];
 }
 
-export interface DashboardGoalsRequest {
+export interface AdminGoalsRequest {
   goals: Record<string, Record<number, number>>;
 }

@@ -1,50 +1,50 @@
 import {
-  DashboardGoalsRequest,
-  DashboardResponse,
-} from '../../../app/api/apiTypes/dashboardGoalsApiTypes';
+  AdminGoalsRequest,
+  AdminGoalsTableResponse,
+} from '../../../app/api/apiTypes/adminGoalsApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
+import { validateAdminGoals } from '../../../utils/validation/validateAdminGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
-import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
-import './_dashboard-goal-table.scss';
-interface DashboardGoalTableProps {
-  dashboard: DashboardResponse;
+import { useUpdateAdminGoalsMutation } from '../adminGoalsApiSlice';
+import './_admin-goal-table.scss';
+
+interface AdminGoalTableProps {
+  adminGoal: AdminGoalsTableResponse;
 }
 
-const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
+const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
   const { language } = useLanguage();
+  const { kpis, tableHeaders, goals } = adminGoal;
 
   const initialState = Object.fromEntries(
-    dashboard.kpis.flatMap(({ key }) =>
-      dashboard.tableHeaders.map(({ days }) => [
-        `${key}-${days}`,
-        dashboard.goals[key][days],
-      ]),
+    kpis.flatMap(({ key }) =>
+      tableHeaders.map(({ days }) => [`${key}-${days}`, goals[key][days]]),
     ),
   );
 
-  const { values, onChange, onSubmit, errors } = useFormValidation({
-    initialState,
-    callback: handleSubmitKpi,
-    validate: validateDashboardGoals,
-  });
+  const { values, onChange, onSubmit, errors, onClearAllValues, isFormDirty } =
+    useFormValidation({
+      initialState,
+      callback: handleSubmitKpi,
+      validate: validateAdminGoals,
+    });
 
-  const [updateGoals, { isLoading: isUpdateGoalsLoading }] =
-    useUpdateDashboardGoalsMutation();
+  const handleClearAllValues = () => {
+    onClearAllValues();
+  };
+
+  const [updateGoals, { isLoading }] = useUpdateAdminGoalsMutation();
 
   async function handleSubmitKpi() {
-    const goals: DashboardGoalsRequest['goals'] = Object.fromEntries(
-      dashboard.kpis.map(({ key }) => [
+    const goals: AdminGoalsRequest['goals'] = Object.fromEntries(
+      kpis.map(({ key }) => [
         key,
         Object.fromEntries(
-          dashboard.tableHeaders.map(({ days }) => [
-            days,
-            values[`${key}-${days}`],
-          ]),
+          tableHeaders.map(({ days }) => [days, values[`${key}-${days}`]]),
         ),
       ]),
     );
@@ -54,18 +54,17 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
 
   return (
     <Form
-      submitBtnLabel="Gem ændringer"
+      submitBtnLabel={language.save}
       onSubmit={onSubmit}
-      isLoading={isUpdateGoalsLoading}
-      className="dashboard-goal-form"
+      isLoading={isLoading}
+      className="admin-goal-form"
+      cancelBtnProps={{ onCancel: handleClearAllValues }}
+      disabled={!isFormDirty}
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
-        tableHeaderList={[
-          { id: 'kpi', label: 'kpi' },
-          ...dashboard.tableHeaders,
-        ]}
-        tableDataList={dashboard.kpis}
+        tableHeaderList={[{ id: 'kpi', label: 'kpi' }, ...tableHeaders]}
+        tableDataList={kpis}
         rowKey={({ key }) => key}
         renderCells={(kpi) => (
           <>
@@ -76,7 +75,7 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
               </div>
             </td>
 
-            {dashboard.tableHeaders.map(({ id, days }) => {
+            {tableHeaders.map(({ id, days }) => {
               const name = `${kpi.key}-${days}`;
 
               return (
@@ -107,4 +106,4 @@ const DashboardGoalTable = ({ dashboard }: DashboardGoalTableProps) => {
   );
 };
 
-export default DashboardGoalTable;
+export default AdminGoalTable;

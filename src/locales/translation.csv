@@ -1,4 +1,11 @@
 ﻿key;en;da
+goalSettingsDescription;Set goals for your dashboard KPIs;Angiv mål for dashboardets KPI'er
+goalSettingsPeriodDescription;The values show how close you are to reaching your goals for each period.;Tallene viser, hvor tæt du er på at nå dine mål for de forskellige perioder.
+howItWorks;How it works;Sådan fungerer det
+kpiGoalsInfo1;Set a goal for each KPI and period.;Du angiver et mål for hver KPI og periode.
+kpiGoalsInfo2;Goals are displayed on the dashboard alongside current values.;Målene vises på dashboardet sammen med de aktuelle værdier.
+kpiGoalsInfo3;The three periods are 7 days, 30 days and 12 months.;De tre perioder er 7 dage, 30 dage og 12 måneder.
+kpiGoalsInfo4;You can change your goals at any time.;Du kan til enhver tid ændre målene.
 totalCustomers;Total customers;Kunder i alt
 customers;Customers;Kunder
 totalCustomersDescription;All registered customers;Alle registrerede kunder
@@ -165,7 +172,6 @@ customerInformation;Customer information;Kundeinformation
 customerService;Customer service;Kundeservice
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
-dashboardSettings;Dashboard settings;Dashboard indstillinger
 date;Date;Dato
 dateAndTime;Date & time;Dato & tid
 dateOfBirth;Date of birth;Fødselsdato

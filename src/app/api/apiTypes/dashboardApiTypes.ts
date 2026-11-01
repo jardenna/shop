@@ -1,5 +1,5 @@
 import { ChartData } from '../../../types/types';
-import { GoalKeys } from './dashboardGoalsApiTypes';
+import { GoalKeys } from './adminGoalsApiTypes';
 
 type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';
 

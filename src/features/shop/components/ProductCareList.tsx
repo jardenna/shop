@@ -6,7 +6,7 @@ type ProductCareListProps = {
 const ProductCareList = ({ careList, title }: ProductCareListProps) => (
   <>
     <strong>{title}</strong>
-    <ul className="product-care-info">
+    <ul className="product-care-info secondary">
       {careList.map((list) => (
         <li key={list}>{list}</li>
       ))}

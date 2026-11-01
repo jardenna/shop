@@ -13,7 +13,6 @@ import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import CollectionPage from '../pages/CollectionPage';
 import DashboardPage from '../pages/DashboardPage';
-import DashboardSettingsPage from '../pages/DashboardSettingsPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
 import AccessibilityPage from '../pages/footerPages/AccessibilityPage';
@@ -23,6 +22,7 @@ import FaqPage from '../pages/footerPages/FaqPage';
 import PrivacyPage from '../pages/footerPages/Privacypage';
 import ShippingAndReturnsPage from '../pages/footerPages/ShippingAndReturnsPage';
 import TermsAndConditionsPage from '../pages/footerPages/TermsAndConditionsPage';
+import GoalsPage from '../pages/GoalsPage';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import MainCollectionsPage from '../pages/MainCollectionsPage';
@@ -197,8 +197,8 @@ const adminRouteList = [
     element: <AdminOrderDetailsPage />,
   },
   {
-    path: AdminPath.DashboardSettings,
-    element: <DashboardSettingsPage />,
+    path: AdminPath.Goals,
+    element: <GoalsPage />,
   },
   {
     path: AdminPath.AdminDiscountCodes,

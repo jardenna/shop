@@ -66,7 +66,7 @@ const PrivacyPage = () => {
         <section>
           <h2>How we use your information</h2>
           <p>We use your information to:</p>
-          <ul>
+          <ul className="secondary">
             <li>Process and deliver your orders.</li>
             <li>Manage your account and preferences.</li>
             <li>Provide customer service and support.</li>

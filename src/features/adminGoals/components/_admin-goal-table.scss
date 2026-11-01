@@ -1,0 +1,46 @@
+@use '../../../scss/globals' as *;
+
+.admin-goal-form {
+  margin-bottom: 32px;
+
+  .footer {
+    justify-content: flex-end;
+
+    .btn {
+      max-width: rem(223px);
+    }
+  }
+
+  .fixed-table {
+    height: rem(232px);
+  }
+
+  .kpi-text {
+    line-height: rem(20px);
+
+    .text-bold {
+      font-size: $font-medium;
+    }
+
+    p {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+}
+
+.goal-heading {
+  font-size: rem(20px);
+  margin: 0;
+}
+
+.goal-info {
+  background-color: $color-background-info;
+  padding: 20px;
+  border-radius: $border-radius;
+
+  .goal-info-title {
+    display: flex;
+    gap: 8px;
+  }
+}
