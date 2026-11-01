@@ -4,7 +4,7 @@ import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
 import Icon from '../../../../components/icons/Icon';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import { IconName } from '../../../../types/enums';
-import { kpiIcons } from '../../../adminGoals/dashboardGoalsUtils';
+import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
 import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCartLayout from './KpiCartLayout';

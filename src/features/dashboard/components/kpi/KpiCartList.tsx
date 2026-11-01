@@ -3,7 +3,7 @@ import {
   PeriodKpiResponse,
   TotalKpiResponse,
 } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import { kpiIcons } from '../../../adminGoals/dashboardGoalsUtils';
+import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCart from './KpiCart';
 import PeriodKpiCart from './PeriodKpiCart';

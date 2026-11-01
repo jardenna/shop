@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
-import { kpiOptions } from '../features/adminGoals/dashboardGoalsUtils';
+import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
   useGetPeriodKpiQuery,
