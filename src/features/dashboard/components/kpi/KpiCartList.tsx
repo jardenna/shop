@@ -1,8 +1,8 @@
+import { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
 import {
   PeriodKpiResponse,
   TotalKpiResponse,
 } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import { kpiIcons } from '../../../dashboardGoals/dashboardGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
 import KpiCart from './KpiCart';

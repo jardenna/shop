@@ -1,7 +1,7 @@
 import {
   AdminGoalsRequest,
   AdminGoalsTableResponse,
-} from '../../../app/api/apiTypes/dashboardGoalsApiTypes';
+} from '../../../app/api/apiTypes/adminGoalsApiTypes';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';

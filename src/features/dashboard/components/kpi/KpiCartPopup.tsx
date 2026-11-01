@@ -1,8 +1,8 @@
-import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import {
   GoalKeys,
   GoalPeriod,
-} from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+} from '../../../../app/api/apiTypes/adminGoalsApiTypes';
+import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import Chip from '../../../../components/chips/Chip';
 import { useCurrency } from '../../../currency/useCurrency';
 import KpiCartPopupItem from './KpiCartPopupItem';

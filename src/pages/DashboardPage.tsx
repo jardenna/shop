@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GoalPeriod } from '../app/api/apiTypes/dashboardGoalsApiTypes';
+import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import Selectbox from '../components/selectbox/Selectbox';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {

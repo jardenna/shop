@@ -1,4 +1,4 @@
-import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
+import { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
 import DateRange from '../../../../components/datePicker/DateRange';
 import { useLanguage } from '../../../language/useLanguage';
 import ConvertedPrice from '../../../shop/components/ConvertedPrice';

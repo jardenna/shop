@@ -3,7 +3,7 @@ import {
   AdminGoalsRequest,
   AdminGoalsResponse,
   AdminGoalsTableResponse,
-} from '../../app/api/apiTypes/dashboardGoalsApiTypes';
+} from '../../app/api/apiTypes/adminGoalsApiTypes';
 import { adminGoalsUrl } from '../../app/endpoints';
 
 export const adminGoalsApiSlice = apiSlice.injectEndpoints({

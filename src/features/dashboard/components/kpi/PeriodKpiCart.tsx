@@ -1,5 +1,5 @@
+import { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
 import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import { GoalPeriod } from '../../../../app/api/apiTypes/dashboardGoalsApiTypes';
 import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
 import Icon from '../../../../components/icons/Icon';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
