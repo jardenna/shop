@@ -18,13 +18,11 @@ interface AdminGoalTableProps {
 
 const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
   const { language } = useLanguage();
+  const { kpis, tableHeaders, goals } = adminGoal;
 
   const initialState = Object.fromEntries(
-    adminGoal.kpis.flatMap(({ key }) =>
-      adminGoal.tableHeaders.map(({ days }) => [
-        `${key}-${days}`,
-        adminGoal.goals[key][days],
-      ]),
+    kpis.flatMap(({ key }) =>
+      tableHeaders.map(({ days }) => [`${key}-${days}`, goals[key][days]]),
     ),
   );
 
@@ -43,13 +41,10 @@ const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
 
   async function handleSubmitKpi() {
     const goals: AdminGoalsRequest['goals'] = Object.fromEntries(
-      adminGoal.kpis.map(({ key }) => [
+      kpis.map(({ key }) => [
         key,
         Object.fromEntries(
-          adminGoal.tableHeaders.map(({ days }) => [
-            days,
-            values[`${key}-${days}`],
-          ]),
+          tableHeaders.map(({ days }) => [days, values[`${key}-${days}`]]),
         ),
       ]),
     );
@@ -68,11 +63,8 @@ const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
     >
       <SimpleTable
         tableCaption={language.kpiGoals}
-        tableHeaderList={[
-          { id: 'kpi', label: 'kpi' },
-          ...adminGoal.tableHeaders,
-        ]}
-        tableDataList={adminGoal.kpis}
+        tableHeaderList={[{ id: 'kpi', label: 'kpi' }, ...tableHeaders]}
+        tableDataList={kpis}
         rowKey={({ key }) => key}
         renderCells={(kpi) => (
           <>
@@ -83,7 +75,7 @@ const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
               </div>
             </td>
 
-            {adminGoal.tableHeaders.map(({ id, days }) => {
+            {tableHeaders.map(({ id, days }) => {
               const name = `${kpi.key}-${days}`;
 
               return (
