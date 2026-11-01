@@ -1,6 +1,5 @@
 ﻿key;en;da
-key;en;da
-goalSettingsDescription;Set goals for your dashboard KPIs.;Angiv mål for dashboardets KPI'er.
+goalSettingsDescription;Set goals for your dashboard KPIs;Angiv mål for dashboardets KPI'er
 goalSettingsPeriodDescription;The values show how close you are to reaching your goals for each period.;Tallene viser, hvor tæt du er på at nå dine mål for de forskellige perioder.
 howItWorks;How it works;Sådan fungerer det
 kpiGoalsInfo1;Set a goal for each KPI and period.;Du angiver et mål for hver KPI og periode.
