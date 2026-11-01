@@ -62,7 +62,7 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
       submitBtnLabel={language.save}
       onSubmit={onSubmit}
       isLoading={isLoading}
-      className="dashboard-goal-form"
+      className="admin-goal-form"
       cancelBtnProps={{ onCancel: handleClearAllValues }}
       disabled={!isFormDirty}
     >
