@@ -6,7 +6,7 @@ import {
 } from '../../app/api/apiTypes/dashboardGoalsApiTypes';
 import { adminGoalsUrl } from '../../app/endpoints';
 
-export const dashboardGoalsApiSlice = apiSlice.injectEndpoints({
+export const adminGoalsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getDashboardGoals: builder.query<DashboardResponse, void>({
       query: () => adminGoalsUrl,
@@ -27,4 +27,4 @@ export const dashboardGoalsApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useGetDashboardGoalsQuery, useUpdateDashboardGoalsMutation } =
-  dashboardGoalsApiSlice;
+  adminGoalsApiSlice;

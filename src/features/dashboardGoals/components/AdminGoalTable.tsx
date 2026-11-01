@@ -9,7 +9,7 @@ import { useFormValidation } from '../../../hooks/useFormValidation';
 import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
-import { useUpdateDashboardGoalsMutation } from '../dashboardGoalsApiSlice';
+import { useUpdateDashboardGoalsMutation } from '../adminGoalsApiSlice';
 import './_admin-goal-table.scss';
 
 interface AdminGoalTableProps {

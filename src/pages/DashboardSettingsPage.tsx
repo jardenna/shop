@@ -1,6 +1,6 @@
 import Icon from '../components/icons/Icon';
+import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/adminGoalsApiSlice';
 import AdminGoalTable from '../features/dashboardGoals/components/AdminGoalTable';
-import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/dashboardGoalsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
