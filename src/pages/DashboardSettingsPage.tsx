@@ -10,11 +10,24 @@ const DashboardSettingsPage = () => {
 
   return (
     <AdminPageContainer
-      heading={language.dashboardSettings}
+      heading={language.kpiGoals}
       variant="medium"
       hideBreadCrumbs
     >
+      <div>{language.goalSettingsDescription}</div>
       {dashboard && <DashboardGoalTable dashboard={dashboard} />}
+
+      <section>
+        <h2>{language.howItWorks}</h2>
+        <div>
+          <ul>
+            <li>{language.kpiGoalsInfo1}</li>
+            <li>{language.kpiGoalsInfo2}</li>
+            <li>{language.kpiGoalsInfo3}</li>
+            <li>{language.kpiGoalsInfo4}</li>
+          </ul>
+        </div>
+      </section>
     </AdminPageContainer>
   );
 };
