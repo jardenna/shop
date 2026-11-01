@@ -12,10 +12,7 @@ export const adminGoalsApiSlice = apiSlice.injectEndpoints({
       query: () => adminGoalsUrl,
       providesTags: [TagTypesEnum.Goals],
     }),
-    updateDashboardGoals: builder.mutation<
-      AdminGoalsResponse,
-      AdminGoalsRequest
-    >({
+    updateAdminGoals: builder.mutation<AdminGoalsResponse, AdminGoalsRequest>({
       query: (body) => ({
         url: adminGoalsUrl,
         method: MethodsEnum.Patch,
@@ -26,5 +23,5 @@ export const adminGoalsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetAdminGoalsQuery, useUpdateDashboardGoalsMutation } =
+export const { useGetAdminGoalsQuery, useUpdateAdminGoalsMutation } =
   adminGoalsApiSlice;

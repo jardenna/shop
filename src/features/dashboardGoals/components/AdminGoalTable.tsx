@@ -9,7 +9,7 @@ import { useFormValidation } from '../../../hooks/useFormValidation';
 import { validateDashboardGoals } from '../../../utils/validation/validateDashboardGoals';
 import { kr } from '../../currency/currencyConverterUtil';
 import { useLanguage } from '../../language/useLanguage';
-import { useUpdateDashboardGoalsMutation } from '../adminGoalsApiSlice';
+import { useUpdateAdminGoalsMutation } from '../adminGoalsApiSlice';
 import './_admin-goal-table.scss';
 
 interface AdminGoalTableProps {
@@ -39,7 +39,7 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
     onClearAllValues();
   };
 
-  const [updateGoals, { isLoading }] = useUpdateDashboardGoalsMutation();
+  const [updateGoals, { isLoading }] = useUpdateAdminGoalsMutation();
 
   async function handleSubmitKpi() {
     const goals: AdminGoalsRequest['goals'] = Object.fromEntries(
