@@ -8,7 +8,7 @@ import { adminGoalsUrl } from '../../app/endpoints';
 
 export const adminGoalsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getDashboardGoals: builder.query<AdminGoalsTableResponse, void>({
+    getAdminGoals: builder.query<AdminGoalsTableResponse, void>({
       query: () => adminGoalsUrl,
       providesTags: [TagTypesEnum.Goals],
     }),
@@ -26,5 +26,5 @@ export const adminGoalsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetDashboardGoalsQuery, useUpdateDashboardGoalsMutation } =
+export const { useGetAdminGoalsQuery, useUpdateDashboardGoalsMutation } =
   adminGoalsApiSlice;

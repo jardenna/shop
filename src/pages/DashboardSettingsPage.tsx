@@ -1,5 +1,5 @@
 import Icon from '../components/icons/Icon';
-import { useGetDashboardGoalsQuery } from '../features/dashboardGoals/adminGoalsApiSlice';
+import { useGetAdminGoalsQuery } from '../features/dashboardGoals/adminGoalsApiSlice';
 import AdminGoalTable from '../features/dashboardGoals/components/AdminGoalTable';
 import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
@@ -8,7 +8,7 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 const DashboardSettingsPage = () => {
   const { language } = useLanguage();
 
-  const { data: dashboard } = useGetDashboardGoalsQuery();
+  const { data: dashboard } = useGetAdminGoalsQuery();
 
   return (
     <AdminPageContainer
