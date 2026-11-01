@@ -13,17 +13,17 @@ import { useUpdateAdminGoalsMutation } from '../adminGoalsApiSlice';
 import './_admin-goal-table.scss';
 
 interface AdminGoalTableProps {
-  dashboard: AdminGoalsTableResponse;
+  adminGoal: AdminGoalsTableResponse;
 }
 
-const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
+const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
   const { language } = useLanguage();
 
   const initialState = Object.fromEntries(
-    dashboard.kpis.flatMap(({ key }) =>
-      dashboard.tableHeaders.map(({ days }) => [
+    adminGoal.kpis.flatMap(({ key }) =>
+      adminGoal.tableHeaders.map(({ days }) => [
         `${key}-${days}`,
-        dashboard.goals[key][days],
+        adminGoal.goals[key][days],
       ]),
     ),
   );
@@ -43,10 +43,10 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
 
   async function handleSubmitKpi() {
     const goals: AdminGoalsRequest['goals'] = Object.fromEntries(
-      dashboard.kpis.map(({ key }) => [
+      adminGoal.kpis.map(({ key }) => [
         key,
         Object.fromEntries(
-          dashboard.tableHeaders.map(({ days }) => [
+          adminGoal.tableHeaders.map(({ days }) => [
             days,
             values[`${key}-${days}`],
           ]),
@@ -70,9 +70,9 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
         tableCaption={language.kpiGoals}
         tableHeaderList={[
           { id: 'kpi', label: 'kpi' },
-          ...dashboard.tableHeaders,
+          ...adminGoal.tableHeaders,
         ]}
-        tableDataList={dashboard.kpis}
+        tableDataList={adminGoal.kpis}
         rowKey={({ key }) => key}
         renderCells={(kpi) => (
           <>
@@ -83,7 +83,7 @@ const AdminGoalTable = ({ dashboard }: AdminGoalTableProps) => {
               </div>
             </td>
 
-            {dashboard.tableHeaders.map(({ id, days }) => {
+            {adminGoal.tableHeaders.map(({ id, days }) => {
               const name = `${kpi.key}-${days}`;
 
               return (

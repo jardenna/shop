@@ -8,7 +8,7 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 const DashboardSettingsPage = () => {
   const { language } = useLanguage();
 
-  const { data: dashboard } = useGetAdminGoalsQuery();
+  const { data: adminGoal } = useGetAdminGoalsQuery();
 
   return (
     <AdminPageContainer
@@ -22,7 +22,7 @@ const DashboardSettingsPage = () => {
         </p>
         <p>{language.goalSettingsPeriodDescription}</p>
       </div>
-      {dashboard && <AdminGoalTable dashboard={dashboard} />}
+      {adminGoal && <AdminGoalTable adminGoal={adminGoal} />}
 
       <section className="goal-info">
         <h2 className="goal-info-title">
