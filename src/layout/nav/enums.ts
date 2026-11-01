@@ -18,7 +18,7 @@ export enum AdminPath {
   AdminSubCategoryView = '/dashboard/subCategories/view',
   AdminUser = '/dashboard/users',
   AdminUserCreate = '/dashboard/users/create',
-  Goals = '/dashboard/dashboard-settings',
+  Goals = '/dashboard/goals',
   Users = 'users',
 }
 
