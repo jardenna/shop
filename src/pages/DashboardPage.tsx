@@ -3,7 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
-import SkeltonKpiPeriodCartList from '../components/skeleton/skeletonKpiCart/SkeltonKpiPeriodCartList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
@@ -15,6 +14,7 @@ import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
+import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
@@ -76,9 +76,7 @@ const DashboardPage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={handleReset}
       >
-        {isPeriodKpiLoading && isTotalKpiLoading && (
-          <SkeltonKpiPeriodCartList />
-        )}
+        {isPeriodKpiLoading && isTotalKpiLoading && <SkeltonKpiList />}
         {periodKpi && totalKpi && (
           <KpiCartList
             periodKpi={periodKpi}

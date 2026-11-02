@@ -2,7 +2,7 @@ import { SkeletonProps } from '../Skeleton';
 import SkeletonKpiCart from './SkeletonKpiCart';
 import SkeletonPeriodKpiCart from './SkeletonPeriodKpiCart';
 
-const SkeltonKpiPeriodCartList = ({ count = 6 }: SkeletonProps) => {
+const SkeltonKpiList = ({ count = 6 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
@@ -18,4 +18,4 @@ const SkeltonKpiPeriodCartList = ({ count = 6 }: SkeletonProps) => {
   );
 };
 
-export default SkeltonKpiPeriodCartList;
+export default SkeltonKpiList;
