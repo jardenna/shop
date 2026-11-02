@@ -1,4 +1,5 @@
 import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import SkeletonHeading from '../SkeletonHeading';
 import './_skeleton-info-background.scss';
 
 const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
@@ -8,10 +9,9 @@ const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
     <span className="skeleton-info-bg-list">
       {skeletons.map((_, index) => (
         <div className="skeleton-info-bg-box" key={index}>
-          <Skeleton width="12" height="1.2" />
-          <div className="address-lines">
-            <Skeleton count={4} width="10" />
-          </div>
+          <SkeletonHeading />
+
+          <Skeleton count={4} width="10" />
         </div>
       ))}
     </span>
