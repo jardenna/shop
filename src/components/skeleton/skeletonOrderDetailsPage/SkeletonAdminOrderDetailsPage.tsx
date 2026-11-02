@@ -1,10 +1,10 @@
 import Skeleton from '../Skeleton';
 import SkeletonFooter from '../SkeletonFooter';
 import SkeletonHeading from '../SkeletonHeading';
+import SkeletonInfoBackground from '../skeletonInfoBackground/SkeletonInfoBackground';
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import SkeletonTable from '../skeletonTable/SkeletonTable';
 import './_skeleton-order-page.scss';
-import SkeletonAddressList from './SkeletonAddressList';
 import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
 
@@ -26,8 +26,8 @@ const SkeletonAdminOrderDetailsPage = () => (
     <div>
       <SkeletonHeading width="14" />
       <div className="order-bottom-row">
-        <SkeletonAddressList count={1} />
-        <SkeletonAddressList />
+        <SkeletonInfoBackground count={1} />
+        <SkeletonInfoBackground />
       </div>
     </div>
     <SkeletonFooter />

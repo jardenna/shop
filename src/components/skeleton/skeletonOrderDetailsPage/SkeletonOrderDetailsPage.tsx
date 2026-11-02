@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
+import SkeletonInfoBackground from '../skeletonInfoBackground/SkeletonInfoBackground';
 import SkeletonProgress from '../skeletonProgress/SkeletonProgress';
 import './_skeleton-order-page.scss';
-import SkeletonAddressList from './SkeletonAddressList';
 import SkeletonOverviewGroup from './SkeletonOverviewGroup';
 import SkeletonPriceCol from './SkeletonPriceCol';
 import SkeletonSummeryItem from './SkeletonSummeryItem';
@@ -22,7 +22,7 @@ const SkeletonOrderDetailsPage = () => (
     <div className="order-bottom-row">
       <SkeletonOverviewGroup />
 
-      <SkeletonAddressList />
+      <SkeletonInfoBackground />
     </div>
   </div>
 );

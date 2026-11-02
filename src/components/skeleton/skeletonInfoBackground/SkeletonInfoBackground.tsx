@@ -1,6 +1,7 @@
 import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import './_skeleton-info-background.scss';
 
-const SkeletonAddressList = ({ count = 2 }: PickedSkeletonTypes) => {
+const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
 
   return (
@@ -17,4 +18,4 @@ const SkeletonAddressList = ({ count = 2 }: PickedSkeletonTypes) => {
   );
 };
 
-export default SkeletonAddressList;
+export default SkeletonInfoBackground;
