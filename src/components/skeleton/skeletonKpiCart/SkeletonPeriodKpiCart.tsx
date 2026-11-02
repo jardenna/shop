@@ -1,4 +1,5 @@
 import Skeleton from '../Skeleton';
+import SkeletonProgressBar from '../skeletonProgressBar/SkeletonProgressBar';
 import SkeletonKpiCartText from './SkeletonKpiCartText';
 
 const SkeletonPeriodKpiCart = () => (
@@ -9,13 +10,7 @@ const SkeletonPeriodKpiCart = () => (
       <SkeletonKpiCartText />
     </div>
 
-    <div className="skeleton-progress">
-      <div className="progress-labels">
-        <Skeleton className="progress-label" />
-        <Skeleton className="progress-value" />
-      </div>
-      <Skeleton className="progress-bar" />
-    </div>
+    <SkeletonProgressBar />
   </div>
 );
 

@@ -42,31 +42,3 @@
   height: 30px;
   border-radius: 50%;
 }
-
-/* ---- progress ---- */
-.skeleton-progress {
-  margin-top: 20px;
-
-  .progress-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-
-  .progress-labels .skeleton {
-    height: 14px;
-  }
-
-  .progress-label {
-    width: 100px;
-  }
-
-  .progress-value {
-    width: 38px;
-  }
-
-  .progress-bar {
-    height: 6px;
-    border-radius: 999px;
-  }
-}
