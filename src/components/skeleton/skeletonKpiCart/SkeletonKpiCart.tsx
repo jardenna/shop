@@ -1,5 +1,4 @@
 import Skeleton from '../Skeleton';
-import './_skeleton-kpi-cart.scss';
 import SkeletonKpiCartText from './SkeletonKpiCartText';
 
 const SkeletonKpiCart = () => (

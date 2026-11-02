@@ -4,7 +4,7 @@ import SkeletonKpiCartText from './SkeletonKpiCartText';
 
 const SkeletonPeriodKpiCart = () => (
   <div className="cart position-relative">
-    <Skeleton className="card-info" />
+    <Skeleton className="skeleton-icon-round" />
 
     <div className="skeleton-kpi-cart">
       <SkeletonKpiCartText />
