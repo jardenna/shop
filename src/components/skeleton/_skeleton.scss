@@ -217,6 +217,12 @@
   row-gap: 20px;
 }
 
+.skeleton-icon {
+  width: rem(44px);
+  height: rem(44px);
+  border-radius: 6px;
+}
+
 .skeleton-nav-item {
   display: flex;
   align-items: center;
