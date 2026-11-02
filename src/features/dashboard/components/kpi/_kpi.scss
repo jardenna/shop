@@ -86,8 +86,9 @@
 
   .kpi-icon {
     background-color: rgb(from currentcolor r g b / 15%);
-    width: 32px;
-    height: 32px;
+    width: rem(32px);
+    height: rem(32px);
+    flex: 0 0 32px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -220,6 +220,8 @@
 .skeleton-icon {
   width: rem(32px);
   height: rem(32px);
+  flex: 0 0 32px;
+  align-self: flex-start;
   border-radius: 6px;
 }
 
@@ -259,31 +261,31 @@
   height: 1px;
 }
 
-.skeleton-kpi-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  .skeleton-kpi-label {
-    max-width: rem(140px);
-    height: 14px;
-  }
-
-  .skeleton-kpi-value {
-    max-width: rem(190px);
-    height: 28px;
-  }
-
-  .skeleton-kpi-sub {
-    max-width: rem(260px);
-    height: 14px;
-  }
-}
-
 .skeleton-kpi-cart {
   display: flex;
   gap: 16px;
+
+  .skeleton-kpi-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .skeleton-kpi-label {
+      max-width: rem(140px);
+      height: 14px;
+    }
+
+    .skeleton-kpi-value {
+      max-width: rem(190px);
+      height: 28px;
+    }
+
+    .skeleton-kpi-sub {
+      max-width: rem(260px);
+      height: 14px;
+    }
+  }
 
   .skeleton-kpi-cart-text {
     flex: 1;
