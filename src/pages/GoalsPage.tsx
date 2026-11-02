@@ -1,4 +1,5 @@
 import Icon from '../components/icons/Icon';
+import SkeletonGoalsPage from '../components/skeleton/SkeletonGoalsPage';
 import { useGetAdminGoalsQuery } from '../features/adminGoals/adminGoalsApiSlice';
 import AdminGoalTable from '../features/adminGoals/components/AdminGoalTable';
 import { useLanguage } from '../features/language/useLanguage';
@@ -8,7 +9,7 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 const GoalsPage = () => {
   const { language } = useLanguage();
 
-  const { data: adminGoal } = useGetAdminGoalsQuery();
+  const { data: adminGoal, isLoading } = useGetAdminGoalsQuery();
 
   return (
     <AdminPageContainer
@@ -21,9 +22,9 @@ const GoalsPage = () => {
           {language.goalSettingsDescription}
         </p>
         <p>{language.goalSettingsPeriodDescription}</p>
-      </div>
+      </div>{' '}
+      {isLoading && <SkeletonGoalsPage />}
       {adminGoal && <AdminGoalTable adminGoal={adminGoal} />}
-
       <section className="goal-info">
         <h2 className="goal-info-title">
           <Icon iconName={IconName.Info} />
