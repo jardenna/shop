@@ -3,6 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
+import SkeletonKpiCart from '../components/skeleton/skeletonKpiCart/SkeletonKpiCart';
+import SkeletonPeriodKpiCart from '../components/skeleton/skeletonKpiCart/SkeletonPeriodKpiCart';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
@@ -47,6 +49,8 @@ const DashboardPage = () => {
       hideBreadCrumbs
       className="dashboard-page"
     >
+      <SkeletonKpiCart />
+      <SkeletonPeriodKpiCart />
       <LayoutElement
         ariaLabel={language.dashboard}
         className="dashboard-header"
