@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
-import SkeltonKpiCartList from '../components/skeleton/SkeltonKpiCartList';
+import SkeltonKpiPeriodCartList from '../components/skeleton/skeletonKpiCart/SkeltonKpiPeriodCartList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
@@ -20,10 +20,17 @@ const DashboardPage = () => {
   const { language } = useLanguage();
   const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
 
-  const { data: totalKpi, refetch: refetchTotalKpi } = useGetTotalKpiQuery();
+  const {
+    data: totalKpi,
+    isLoading: isTotalKpiLoading,
+    refetch: refetchTotalKpi,
+  } = useGetTotalKpiQuery();
 
-  const { data: periodKpi, refetch: refetchPeriodKpi } =
-    useGetPeriodKpiQuery(selectedPeriod);
+  const {
+    data: periodKpi,
+    isLoading: isPeriodKpiLoading,
+    refetch: refetchPeriodKpi,
+  } = useGetPeriodKpiQuery(selectedPeriod);
 
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
@@ -48,8 +55,6 @@ const DashboardPage = () => {
       hideBreadCrumbs
       className="dashboard-page"
     >
-      <SkeltonKpiCartList />
-
       <LayoutElement
         ariaLabel={language.dashboard}
         className="dashboard-header"
@@ -71,6 +76,9 @@ const DashboardPage = () => {
         FallbackComponent={ErrorBoundaryFallback}
         onReset={handleReset}
       >
+        {isPeriodKpiLoading && isTotalKpiLoading && (
+          <SkeltonKpiPeriodCartList />
+        )}
         {periodKpi && totalKpi && (
           <KpiCartList
             periodKpi={periodKpi}
