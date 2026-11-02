@@ -1,16 +1,17 @@
-import Skeleton, { SkeletonProps } from './Skeleton';
+import { Fragment } from 'react/jsx-runtime';
+import { SkeletonProps } from './Skeleton';
+import SkeletonKpiCart from './skeletonKpiCart/SkeletonKpiCart';
+import SkeletonPeriodKpiCart from './skeletonKpiCart/SkeletonPeriodKpiCart';
 
-const SkeltonKpiCartList = ({
-  count = 3,
-  width,
-  height = '3.5',
-  className = '',
-}: SkeletonProps) => {
+const SkeltonKpiCartList = ({ count = 3 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
   return (
-    <span className={`skeleton-list ${className}`}>
+    <span className="kpi-cart-list">
       {skeletons.map((_, index) => (
-        <Skeleton key={index} height={height} width={width} />
+        <Fragment key={index}>
+          <SkeletonKpiCart />
+          <SkeletonPeriodKpiCart />
+        </Fragment>
       ))}
     </span>
   );
