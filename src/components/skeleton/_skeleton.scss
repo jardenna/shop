@@ -259,24 +259,24 @@
   height: 1px;
 }
 
-.card-text {
+.skeleton-kpi-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  .card-label {
-    max-width: 140px;
+  .skeleton-kpi-label {
+    max-width: rem(140px);
     height: 14px;
   }
 
-  .card-value {
-    max-width: 190px;
+  .skeleton-kpi-value {
+    max-width: rem(190px);
     height: 28px;
   }
 
-  .card-sub {
-    max-width: 260px;
+  .skeleton-kpi-sub {
+    max-width: rem(260px);
     height: 14px;
   }
 }

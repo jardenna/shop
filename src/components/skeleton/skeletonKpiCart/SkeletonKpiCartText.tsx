@@ -3,10 +3,10 @@ import Skeleton from '../Skeleton';
 const SkeletonKpiCartText = () => (
   <>
     <Skeleton className="skeleton-icon" />
-    <div className="card-text">
-      <Skeleton className="card-label" />
-      <Skeleton className="card-value" />
-      <Skeleton className="card-sub" />
+    <div className="skeleton-kpi-content">
+      <Skeleton className="skeleton-kpi-label" />
+      <Skeleton className="skeleton-kpi-value" />
+      <Skeleton className="skeleton-kpi-sub" />
     </div>
   </>
 );

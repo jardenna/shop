@@ -1,16 +1,16 @@
-@use '../../../scss/globals' as *;
+@use '../../../scss/globals/functions' as *;
 
 .skeleton-progress {
-  margin-top: 20px;
+  margin-top: rem(20px);
 
   .progress-labels {
     display: flex;
     justify-content: space-between;
     margin-bottom: 4px;
-  }
 
-  .progress-labels .skeleton {
-    height: 12px;
+    .skeleton {
+      height: rem(12px);
+    }
   }
 
   .progress-label {
@@ -18,11 +18,11 @@
   }
 
   .progress-value {
-    width: 38px;
+    width: rem(38px);
   }
 
   .progress-bar {
-    height: 6px;
+    height: rem(6px);
     border-radius: 999px;
   }
 }
