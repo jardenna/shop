@@ -1,8 +1,15 @@
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { SkeletonProps } from '../Skeleton';
 import SkeletonHeading from '../SkeletonHeading';
 import './_skeleton-info-background.scss';
 
-const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
+interface SkeletonInfoBackgroundProps extends SkeletonProps {
+  infoItemCount?: number;
+}
+
+const SkeletonInfoBackground = ({
+  count = 2,
+  infoItemCount = 4,
+}: SkeletonInfoBackgroundProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
@@ -11,7 +18,7 @@ const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
         <div className="skeleton-info-bg-item" key={index}>
           <SkeletonHeading />
 
-          <Skeleton count={4} width="10" height="1.2" />
+          <Skeleton count={infoItemCount} height="1.2" />
         </div>
       ))}
     </span>

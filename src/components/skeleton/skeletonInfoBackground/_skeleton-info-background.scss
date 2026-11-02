@@ -12,13 +12,18 @@
   @include max-size($mini) {
     flex-direction: column;
   }
-}
 
-.skeleton-info-bg-item {
-  flex: 1;
-  background-color: $skeleton-background;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  .skeleton-heading {
+    margin: 0;
+  }
+
+  .skeleton-info-bg-item {
+    width: 80%;
+    flex: 1;
+    background-color: $skeleton-background;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
