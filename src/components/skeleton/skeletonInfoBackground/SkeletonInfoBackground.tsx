@@ -8,10 +8,10 @@ const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
   return (
     <span className="skeleton-info-bg-list">
       {skeletons.map((_, index) => (
-        <div className="skeleton-info-bg-box" key={index}>
+        <div className="skeleton-info-bg-item" key={index}>
           <SkeletonHeading />
 
-          <Skeleton count={4} width="10" />
+          <Skeleton count={4} width="10" height="1.2" />
         </div>
       ))}
     </span>

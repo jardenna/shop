@@ -172,18 +172,4 @@
     width: rem(200px);
     height: rem(16px);
   }
-
-  .skeleton-info-bg-list {
-    display: flex;
-    gap: 24px;
-    flex: 2;
-
-    @include max-size($small) {
-      width: 100%;
-    }
-
-    @include max-size($mini) {
-      flex-direction: column;
-    }
-  }
 }
