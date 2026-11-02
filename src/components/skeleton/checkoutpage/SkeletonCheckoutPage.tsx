@@ -7,7 +7,6 @@ import SkeletonPaymentMethods from './skeletonPaymentMethods/SkeletonPaymentMeth
 
 const SkeletonCheckoutPage = () => (
   <div className="checkout-page order-flow">
-    <SkeletonInfoBackground />
     <div className="order-flow-list">
       <span>
         <SkeletonHeading />
