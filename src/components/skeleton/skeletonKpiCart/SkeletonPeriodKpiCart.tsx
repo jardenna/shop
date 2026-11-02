@@ -1,24 +1,20 @@
 import Skeleton from '../Skeleton';
+import SkeletonKpiCartText from './SkeletonKpiCartText';
 
 const SkeletonPeriodKpiCart = () => (
   <div className="cart position-relative">
-    <div className="card-info skeleton" />
+    <Skeleton className="card-info" />
 
     <div className="card-main">
-      <Skeleton className="card-icon" />
-      <div className="card-text">
-        <Skeleton className="card-label" />
-        <Skeleton className="card-value" />
-        <Skeleton className="card-sub" />
-      </div>
+      <SkeletonKpiCartText />
     </div>
 
     <div className="skeleton-progress">
       <div className="progress-labels">
-        <div className="progress-label skeleton" />
-        <div className="progress-value skeleton" />
+        <Skeleton className="progress-label" />
+        <Skeleton className="progress-value" />
       </div>
-      <div className="progress-bar skeleton" />
+      <Skeleton className="progress-bar" />
     </div>
   </div>
 );
