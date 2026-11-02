@@ -6,7 +6,7 @@ const SkeletonPeriodKpiCart = () => (
   <div className="cart position-relative">
     <Skeleton className="card-info" />
 
-    <div className="card-main">
+    <div className="skeleton-kpi-cart">
       <SkeletonKpiCartText />
     </div>
 
