@@ -6,7 +6,7 @@ const SkeletonKpiCart = () => (
   <div className="cart">
     <div className="skeleton-kpi-cart">
       <SkeletonKpiCartText />
-      <Skeleton className="card-chart" />
+      <Skeleton className="skeleton-icon" />
     </div>
   </div>
 );
