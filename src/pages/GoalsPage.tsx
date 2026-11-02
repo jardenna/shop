@@ -1,5 +1,5 @@
 import Icon from '../components/icons/Icon';
-import SkeletonGoalsPage from '../components/skeleton/SkeletonGoalsPage';
+import SkeletonAdminGoalTable from '../components/skeleton/SkeletonAdminGoalTable';
 import { useGetAdminGoalsQuery } from '../features/adminGoals/adminGoalsApiSlice';
 import AdminGoalTable from '../features/adminGoals/components/AdminGoalTable';
 import { useLanguage } from '../features/language/useLanguage';
@@ -22,8 +22,8 @@ const GoalsPage = () => {
           {language.goalSettingsDescription}
         </p>
         <p>{language.goalSettingsPeriodDescription}</p>
-      </div>{' '}
-      {isLoading && <SkeletonGoalsPage />}
+      </div>
+      {isLoading && <SkeletonAdminGoalTable />}
       {adminGoal && <AdminGoalTable adminGoal={adminGoal} />}
       <section className="goal-info">
         <h2 className="goal-info-title">
