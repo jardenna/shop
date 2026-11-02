@@ -1,6 +1,6 @@
 @use '../../../scss/globals' as *;
 
-.address-box {
+.skeleton-info-bg-box {
   flex: 1;
   background-color: $skeleton-background;
   padding: 28px;
@@ -10,7 +10,7 @@
     margin-bottom: 20px;
   }
 
-  .address-lines .skeleton {
-    height: rem(15px);
-  }
+  // .address-lines .skeleton {
+  //   height: rem(15px);
+  // }
 }
