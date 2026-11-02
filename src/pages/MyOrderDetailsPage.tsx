@@ -49,24 +49,14 @@ const MyOrderDetailsPage = () => {
     );
   }
 
-  if (isLoading) {
-    return (
-      <MainPageContainer
-        hideBreadCrumbs
-        variant="large"
-        heading={language.orderConfirmationTitle}
-      >
-        <SkeletonOrderDetailsPage />
-      </MainPageContainer>
-    );
-  }
-
   return (
     <MainPageContainer
       hideBreadCrumbs
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
+      <SkeletonOrderDetailsPage />
+      {isLoading && <SkeletonOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => {
