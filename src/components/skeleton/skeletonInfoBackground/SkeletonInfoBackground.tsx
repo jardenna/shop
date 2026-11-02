@@ -5,7 +5,7 @@ const SkeletonInfoBackground = ({ count = 2 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });
 
   return (
-    <span className="address-list">
+    <span className="skeleton-info-bg-list">
       {skeletons.map((_, index) => (
         <div className="address-box" key={index}>
           <div className="overview-label skeleton" />
