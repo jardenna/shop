@@ -55,7 +55,6 @@ const MyOrderDetailsPage = () => {
       variant="large"
       heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
     >
-      <SkeletonOrderDetailsPage />
       {isLoading && <SkeletonOrderDetailsPage />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
