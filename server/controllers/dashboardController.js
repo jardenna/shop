@@ -15,27 +15,6 @@ import {
   calculateOrderRevenue,
 } from '../utils/utils.js';
 
-// @desc    Create goals
-// @route   /api/dashboard/goals
-// @method  Post
-// @access  Private for admin and employees
-const createGoals = asyncHandler(async (req, res) => {
-  const dashboard = await Dashboard.findOneAndUpdate(
-    { main: 'main' },
-    { $setOnInsert: { main: 'main' } },
-    {
-      upsert: true,
-      returnDocument: 'after',
-      setDefaultsOnInsert: true,
-    },
-  );
-
-  res.status(200).json({
-    success: true,
-    dashboard,
-  });
-});
-
 // @desc    Get goals
 // @route   /api/dashboard/goals
 // @method  Get
@@ -124,6 +103,7 @@ const updateGoals = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
+    message: t('goalWasUpdated', req.lang),
     goals: updatedDashboard.goals,
   });
 });
@@ -323,7 +303,6 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
 });
 
 export {
-  createGoals,
   getGoals,
   getNewestCustomers,
   getNewProducts,

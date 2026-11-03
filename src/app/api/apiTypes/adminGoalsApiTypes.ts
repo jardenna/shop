@@ -1,3 +1,5 @@
+import { DefaultResponse } from './sharedApiTypes';
+
 export type GoalPeriod = 7 | 30 | 365;
 type GoalPeriods = Record<GoalPeriod, number>;
 
@@ -15,7 +17,7 @@ export interface TableHeader {
   label: string;
 }
 
-export interface AdminGoalsResponse {
+export interface AdminGoalsResponse extends DefaultResponse {
   goal: number;
   success: boolean;
 }

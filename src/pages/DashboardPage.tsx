@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
@@ -12,13 +14,23 @@ import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
+import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
   const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
 
-  const { data: totalKpi } = useGetTotalKpiQuery();
-  const { data: periodKpi } = useGetPeriodKpiQuery(selectedPeriod);
+  const {
+    data: totalKpi,
+    isLoading: isTotalKpiLoading,
+    refetch: refetchTotalKpi,
+  } = useGetTotalKpiQuery();
+
+  const {
+    data: periodKpi,
+    isLoading: isPeriodKpiLoading,
+    refetch: refetchPeriodKpi,
+  } = useGetPeriodKpiQuery(selectedPeriod);
 
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
@@ -30,6 +42,11 @@ const DashboardPage = () => {
     ...option,
     label: language[option.label],
   }));
+
+  const handleReset = () => {
+    refetchTotalKpi();
+    refetchPeriodKpi();
+  };
 
   return (
     <AdminPageContainer
@@ -48,22 +65,26 @@ const DashboardPage = () => {
           variant="secondary"
           defaultValue={translatedOptions[0]}
           options={translatedOptions}
-          onChange={(option) => {
-            handleSelectPeriod(option);
-          }}
+          onChange={handleSelectPeriod}
           inputHasNoLabel
           name="year"
           labelText={language.filterByYear}
         />
       </LayoutElement>
 
-      {periodKpi && totalKpi && (
-        <KpiCartList
-          periodKpi={periodKpi}
-          totalKpi={totalKpi}
-          selectedPeriod={selectedPeriod}
-        />
-      )}
+      <ErrorBoundary
+        FallbackComponent={ErrorBoundaryFallback}
+        onReset={handleReset}
+      >
+        {isPeriodKpiLoading && isTotalKpiLoading && <SkeltonKpiList />}
+        {periodKpi && totalKpi && (
+          <KpiCartList
+            periodKpi={periodKpi}
+            totalKpi={totalKpi}
+            selectedPeriod={selectedPeriod}
+          />
+        )}
+      </ErrorBoundary>
     </AdminPageContainer>
   );
 };

@@ -20,7 +20,6 @@ interface KpiCartProps extends BaseKpiCartProps {
 const KpiCart = ({
   title,
   iconName,
-
   description,
   total,
   id,

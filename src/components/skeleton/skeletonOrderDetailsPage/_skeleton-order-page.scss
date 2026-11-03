@@ -172,33 +172,4 @@
     width: rem(200px);
     height: rem(16px);
   }
-
-  .address-list {
-    display: flex;
-    gap: 24px;
-    flex: 2;
-
-    @include max-size($small) {
-      width: 100%;
-    }
-
-    @include max-size($mini) {
-      flex-direction: column;
-    }
-
-    .address-box {
-      flex: 1;
-      background-color: $skeleton-background;
-      padding: 28px;
-
-      .overview-label {
-        width: rem(150px);
-        margin-bottom: 20px;
-      }
-
-      .address-lines .skeleton {
-        height: rem(15px);
-      }
-    }
-  }
 }

@@ -1,0 +1,29 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-info-bg-list {
+  display: flex;
+  gap: 24px;
+  flex: 2;
+
+  @include max-size($small) {
+    width: 100%;
+  }
+
+  @include max-size($mini) {
+    flex-direction: column;
+  }
+
+  .skeleton-heading {
+    margin: 0;
+  }
+
+  .skeleton-info-bg-item {
+    width: 80%;
+    flex: 1;
+    background-color: $skeleton-background;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
