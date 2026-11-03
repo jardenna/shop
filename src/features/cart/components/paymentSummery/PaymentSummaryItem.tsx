@@ -2,6 +2,7 @@ import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface PaymentSummaryItemProps {
   label: string;
+  language: Record<string, string>;
   price: number;
   cancelled?: boolean;
   className?: string;
@@ -14,11 +15,14 @@ const PaymentSummaryItem = ({
   price,
   isDiscount,
   cancelled,
+  language,
 }: PaymentSummaryItemProps) => (
   <div
     className={`payment-summary-item   ${isDiscount ? 'discount' : ''} ${className}`}
   >
-    <span>{label}</span>
+    <span>
+      {label.includes('employeeDiscount') ? language.employeeDiscount : label}
+    </span>
     <span className="payment-summary-info">
       <ProductPrice
         price={price}

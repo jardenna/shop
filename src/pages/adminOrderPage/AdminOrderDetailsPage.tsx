@@ -119,7 +119,7 @@ const AdminOrderDetailsPage = () => {
         }}
       >
         <p>
-          {language.orderNo}: # {id}
+          {language.orderNo}: #{id}
         </p>
         <OrderStatusActions
           onUpdateOrder={handleUpdateOrder}

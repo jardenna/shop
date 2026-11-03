@@ -5,7 +5,7 @@
   display: flex;
   justify-content: end;
   align-items: baseline;
-  text-wrap: nowrap;
+  white-space: nowrap;
 
   .orginal-price {
     text-decoration: line-through;
