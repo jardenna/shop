@@ -112,7 +112,6 @@ const AuthForm = ({
           />
         )}
       </FieldSet>
-
       {!currentUser && (
         <div className="flex-align-right">
           <Button

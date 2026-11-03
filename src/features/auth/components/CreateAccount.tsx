@@ -21,7 +21,6 @@ export interface BaseCreateAccountProps {
 }
 
 interface CreateAccountProps extends BaseCreateAccountProps {
-  successMessage?: string;
   createUser: (user: AuthRequest) => Promise<AuthResponse>;
 }
 
@@ -36,7 +35,6 @@ const CreateAccount = ({
   autoComplete,
   isLoading,
   createUser,
-  successMessage,
 }: CreateAccountProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -67,10 +65,11 @@ const CreateAccount = ({
     });
 
     if (result.success) {
-      navigate(navigateTo);
       onAddToast({
-        message: successMessage ?? language.userCreated,
+        message: result.message,
       });
+
+      navigate(navigateTo);
     }
   }
 

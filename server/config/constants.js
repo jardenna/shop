@@ -83,3 +83,5 @@ export const DISCOUNT_SHIPPING_PRICE = 3500;
 export const GOAL_DAYS = [7, 30, 365];
 
 export const KPI = ['newCustomers', 'orders', 'revenue'];
+
+export const SHOP_NAME = 'Fashion Fusion';
