@@ -5,7 +5,7 @@ export const tableHeaders: Column<Order>[] = [
   {
     key: 'orderId',
     label: 'order',
-    name: 'id',
+    name: 'orderId',
     tableFilterType: 'text',
   },
   {
