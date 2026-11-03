@@ -20,8 +20,8 @@ const getAllOrders = asyncHandler(async (req, res) => {
   const { page, ordersPerPage } = req.pagination;
   const filter = req.filter;
 
-  const sortField = req.query.sortField;
-  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+  const sortField = req.query.sortField ?? 'createdAt';
+  const sortOrder = req.query.sortOrder === 'asc' ? 1 : -1;
 
   const orders = await Order.find(filter || {})
     .select([
@@ -49,7 +49,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
 
   const sortedOrders = sortColumns({
     collection: orders,
-    sortField: orderSortFields[sortField] ?? 'createdAt',
+    sortField: orderSortFields[sortField] ?? sortField,
     sortOrder,
     language: req.lang,
   });
