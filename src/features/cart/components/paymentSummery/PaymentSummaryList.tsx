@@ -34,6 +34,7 @@ const PaymentSummaryList = ({
             label={label}
             price={price}
             cancelled={cancelled}
+            language={language}
           />
         ),
       )}
