@@ -6,10 +6,11 @@ import OrderLogo from './OrderLogo';
 import PrintOrderFooter from './printOrderFooter/PrintOrderFooter';
 import PrintOrderHeader from './PrintOrderHeader';
 import { styles } from './styles';
+import { Language } from '../../types/types';
 
 interface PdfContainerProps {
   children: ReactNode;
-  language: Record<string, string>;
+  language: Language;
   order: OrderResponse;
   selectedLanguage: SelectedLanguage;
 }

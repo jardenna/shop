@@ -90,3 +90,5 @@ export interface ChartData {
   date: string;
   value: number;
 }
+
+export type Language = Record<string, string>;

@@ -1,3 +1,5 @@
+import { Language } from '../types/types';
+
 export type ColorOption = {
   color: string;
   id: string;
@@ -39,7 +41,7 @@ const colorList = [
 ];
 
 type GetColorOptionsParams = {
-  language: Record<string, string>;
+  language: Language;
   borderColor?: string;
   colors?: string[];
 };
@@ -61,10 +63,7 @@ const getColorOptions = ({
     .sort((a, b) => a.label.localeCompare(b.label));
 
 // Sort colors based on their translated names
-const sortColorsByTranslation = (
-  colors: string[],
-  language: Record<string, string>,
-) =>
+const sortColorsByTranslation = (colors: string[], language: Language) =>
   [...colors].sort((a, b) => {
     // Fallback to original if translation is missing
     const aTranslated = language[a.toLowerCase()] || a;

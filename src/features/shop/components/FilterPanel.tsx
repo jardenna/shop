@@ -19,7 +19,7 @@ import TagList from '../../../components/tags/TagList';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../pages/CollectionPage';
 import { IconName } from '../../../types/enums';
-import { InputChangeHandler } from '../../../types/types';
+import { InputChangeHandler, Language } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
@@ -46,7 +46,7 @@ interface FilterPanelProps {
   brands: string[];
   colors: string[];
   initialFilters: InitialFilters;
-  language: Record<string, string>;
+  language: Language;
   productCount: number;
   setValue: InputChangeHandler;
   sizes: Size[];

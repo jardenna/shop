@@ -2,10 +2,11 @@ import { ReactNode } from 'react';
 import { NavigateFunction } from 'react-router';
 import Button from '../../../components/Button';
 import { ShopPath } from '../../../layout/nav/enums';
+import { Language } from '../../../types/types';
 
 interface AlreadyLoggedInProps {
   children: ReactNode;
-  language: Record<string, string>;
+  language: Language;
   navigate: NavigateFunction;
   username: string;
   onSwitchAccount: () => void;

@@ -1,11 +1,12 @@
 import { BtnVariant, IconName } from '../../types/enums';
+import { Language } from '../../types/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
 import { getAriaLabel } from './utils';
 
 type PaginationBtnItemsProps = {
-  language: Record<string, string>;
+  language: Language;
   page: number;
   paginationBtnList: PaginationItem[];
   onPagination: (id: number) => void;

@@ -1,8 +1,9 @@
+import { Language } from '../../../../types/types';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface PaymentSummaryItemProps {
   label: string;
-  language: Record<string, string>;
+  language: Language;
   price: number;
   cancelled?: boolean;
   className?: string;

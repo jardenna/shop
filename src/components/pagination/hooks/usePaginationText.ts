@@ -1,9 +1,10 @@
+import { Language } from '../../../types/types';
 import { getRangeText } from '../utils';
 
 type Params = {
   itemCount: number;
   itemsPerPage: number;
-  language: Record<string, string>;
+  language: Language;
   page: number;
   totalBtns: number;
 };

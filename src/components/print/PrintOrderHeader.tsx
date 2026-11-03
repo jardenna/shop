@@ -4,12 +4,13 @@ import { User } from '../../app/api/apiTypes/orderApiTypes';
 import { SelectedLanguage } from '../../features/language/languageSlice';
 import { formatDate } from './formatdate';
 import { styles } from './styles';
+import { Language } from '../../types/types';
 
 interface PrintOrderHeaderProps {
   billingAddress: BaseAddress;
   cancelled: boolean;
   createdAt: Date;
-  language: Record<string, string>;
+  language: Language;
   paidAt: Date;
   selectedLanguage: SelectedLanguage;
   user: User;

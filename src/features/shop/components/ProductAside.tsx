@@ -1,4 +1,5 @@
 import LayoutElement from '../../../layout/LayoutElement';
+import { Language } from '../../../types/types';
 import ProductAsideHeader from './ProductAsideHeader';
 import ProductAsideNav, { ProductAsideNavProps } from './ProductAsideNav';
 import './productAside.styles.scss';
@@ -6,7 +7,7 @@ import './productAside.styles.scss';
 interface ProductAsideProps extends ProductAsideNavProps {
   ariaLabelledby: string;
   headerText: string;
-  language: Record<string, string>;
+  language: Language;
   className?: string;
 }
 

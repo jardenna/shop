@@ -1,7 +1,8 @@
 import Badge from '../../../components/badge/Badge';
+import { Language } from '../../../types/types';
 
 interface OrderCancelledBadgeProps {
-  language: Record<string, string>;
+  language: Language;
 }
 
 const OrderCancelledBadge = ({ language }: OrderCancelledBadgeProps) => (

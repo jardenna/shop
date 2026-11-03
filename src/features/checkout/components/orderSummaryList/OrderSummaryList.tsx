@@ -3,12 +3,13 @@ import {
   CartListResponse,
 } from '../../../../app/api/apiTypes/cartApiTypes';
 import LayoutElement from '../../../../layout/LayoutElement';
+import { Language } from '../../../../types/types';
 import './_order-summary-list.scss';
 import OrderSummaryItem from './OrderSummaryItem';
 
 interface OrderSummaryListProps {
   isLoading: boolean;
-  language: Record<string, string>;
+  language: Language;
   orderItems?: CartListResponse;
   onDeleteCartItem: (cartItemId: string) => void;
 }

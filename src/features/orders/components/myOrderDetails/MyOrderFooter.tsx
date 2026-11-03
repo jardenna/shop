@@ -1,11 +1,12 @@
 import { Delivery } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import { Language } from '../../../../types/types';
 import { createDeliveryDateText } from '../../utils/createDeliveryDateText';
 
 interface MyOrderFooterProps {
   delivery: Delivery;
-  language: Record<string, string>;
+  language: Language;
   onViewDetails: () => void;
 }
 

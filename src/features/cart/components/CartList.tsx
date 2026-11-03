@@ -2,13 +2,14 @@ import { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/enums';
+import { Language } from '../../../types/types';
 import { ProductQuantityMap } from '../../shop/cartUtils';
 import './_cart-list.scss';
 import CartItem from './CartItem';
 
 export interface BaseCartProps {
   isLoading: boolean;
-  language: Record<string, string>;
+  language: Language;
   loadingId?: string;
   onDeleteCartItem: (cartItemId: string) => void;
   onUpdateQty: (cartItemId: string, qty: number) => void;

@@ -1,4 +1,5 @@
 import { Address, StandardAddress } from '../app/api/apiTypes/addressApiTypes';
+import { Language } from '../types/types';
 
 export interface StandardAddressIds {
   billingAddressId: string;
@@ -18,7 +19,7 @@ interface GetUpdatedAddresses {
 
 export interface BaseAddressListProps extends StandardAddressIds {
   addresses: Address[];
-  language: Record<string, string>;
+  language: Language;
   onChangeAddress: (address: StandardAddressIds) => void;
 }
 

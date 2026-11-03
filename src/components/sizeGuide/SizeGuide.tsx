@@ -1,7 +1,8 @@
+import { Language } from '../../types/types';
 import VisuallyHidden from '../VisuallyHidden';
 
 interface SizeGuideProps {
-  language: Record<string, string>;
+  language: Language;
 }
 
 const SizeGuide = ({ language }: SizeGuideProps) => (

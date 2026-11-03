@@ -1,8 +1,9 @@
 import { Address } from '../../../../app/api/apiTypes/addressApiTypes';
+import { Language } from '../../../../types/types';
 
 interface OrderAddressItemProps {
   address: Address;
-  language: Record<string, string>;
+  language: Language;
 }
 
 const OrderAddressItem = ({ address, language }: OrderAddressItemProps) => (
