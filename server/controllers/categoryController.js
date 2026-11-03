@@ -9,7 +9,7 @@ import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';
 import { validateScheduledDate } from '../validators/validateScheduledDate.js';
 
 // @desc    Create category
-// @route   /api/category
+// @route   /api/categories
 // @method  POST
 // @access  Private for admin and employees
 const createCategory = asyncHandler(async (req, res) => {
@@ -50,7 +50,7 @@ const createCategory = asyncHandler(async (req, res) => {
 });
 
 // @desc   Get all categories
-// @route   /api/category
+// @route   /api/categories
 // @method  GET
 // @access  Private for admin and employees
 const getAllCategories = asyncHandler(async (req, res) => {
@@ -78,7 +78,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 });
 
 // @desc    Check if category is scheduled
-// @route   /api/scheduled
+// @route   /api/categories/scheduled
 // @method  GET
 // @access  Public
 const checkScheduled = asyncHandler(async (req, res) => {
@@ -93,7 +93,7 @@ const checkScheduled = asyncHandler(async (req, res) => {
 });
 
 // @desc   Get category by id
-// @route   /api/category/id
+// @route   /api/categories/id
 // @method  GET
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
@@ -111,7 +111,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
 });
 
 // @desc   Get all published main categories (array of strings)
-// @route   /api/category/published
+// @route   /api/categories/published
 // @method  GET
 // @access  Public
 const getPublishedCategories = asyncHandler(async (req, res) => {
@@ -127,7 +127,7 @@ const getPublishedCategories = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update category
-// @route   /api/category/id
+// @route   /api/categories/id
 // @method  PUT
 // @access  Private for admin and employees
 const updateCategory = [
@@ -172,7 +172,7 @@ const updateCategory = [
 ];
 
 // @desc    Delete category
-// @route   /api/category/id
+// @route   /api/categories/id
 // @method  DELETE
 // @access  Private for admin
 const deleteCategory = asyncHandler(async (req, res) => {
