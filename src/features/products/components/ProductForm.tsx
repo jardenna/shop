@@ -200,7 +200,7 @@ const ProductForm = ({
       return;
     }
 
-    //  upload logic
+    // Upload logic
     const mergedImages = await handleImageUpload({
       id,
       activeImages,
@@ -230,7 +230,7 @@ const ProductForm = ({
     } else {
       await createProduct(productData).unwrap();
     }
-
+    // here is text
     onAddToast({
       message: id ? language.productUpdated : language.productCreated,
     });
