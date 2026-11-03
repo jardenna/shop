@@ -58,6 +58,7 @@ const createPromoCode = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
+    message: t('promoCodeCreated', req.lang),
     promoCode,
   });
 });
@@ -177,7 +178,6 @@ const updatePromoCode = asyncHandler(async (req, res) => {
   promoCode.expiresAt = expiresAt;
 
   const updatedPromoCode = await promoCode.save();
-  // Here is text
   res.status(200).json({
     success: true,
     message: t('promoCodeUpdated', req.lang),
