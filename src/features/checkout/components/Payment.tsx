@@ -8,13 +8,17 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import type { ChangeInputType, InputType } from '../../../types/types';
+import type {
+  ChangeInputType,
+  InputType,
+  Language,
+} from '../../../types/types';
 import { validatePayment } from '../../../utils/validation/validatePayment';
 import { formatExpiryDate } from './formatExpiryDateUtil';
 
 interface PaymentProps {
   additionalFooterInfo: ReactNode;
-  language: Record<string, string>;
+  language: Language;
   paymentMethod: PaymentMethods[];
   value: PaymentMethods;
   isLoading?: boolean;

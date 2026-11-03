@@ -9,13 +9,14 @@ import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { Language } from '../../../types/types';
 
 interface OrderTableRowProps {
   createdAt: Date;
   customer: string;
   deliveryStatus: DeliveryStatus;
   id: string;
-  language: Record<string, string>;
+  language: Language;
   paymentMethod: PaymentMethods;
   paymentStatus: string;
   totalPrice: number;

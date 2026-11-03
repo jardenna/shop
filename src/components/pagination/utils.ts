@@ -1,3 +1,4 @@
+import { Language } from '../../types/types';
 import { PaginationItem } from './createPaginationItems';
 
 export const getRangeText = (page: number, perPage: number, total: number) => {
@@ -23,7 +24,7 @@ export const getRangeText = (page: number, perPage: number, total: number) => {
 
 export const getAriaLabel = (
   paginationBtn: PaginationItem,
-  language: Record<string, string>,
+  language: Language,
   page: number,
 ) => {
   if (paginationBtn.type === 'jumpPrevious') {

@@ -2,15 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import danishLang from '../../locales/da.json';
 import englishLang from '../../locales/en.json';
+import { Language } from '../../types/types';
 
 export type SelectedLanguage = 'en' | 'da';
 
 interface LanguageState {
-  language: Record<string, string>;
+  language: Language;
   selectedLanguage: SelectedLanguage;
 }
 
-const languageFiles: Record<SelectedLanguage, Record<string, string>> = {
+const languageFiles: Record<SelectedLanguage, Language> = {
   da: danishLang,
   en: englishLang,
 };

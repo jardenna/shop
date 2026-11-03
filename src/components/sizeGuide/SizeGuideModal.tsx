@@ -1,9 +1,10 @@
+import { Language } from '../../types/types';
 import Modal from '../Modal/Modal';
 import SizeGuide from './SizeGuide';
 
 interface SizeGuideModalProps {
   ariaControls: string;
-  language: Record<string, string>;
+  language: Language;
   modalId: string;
 }
 

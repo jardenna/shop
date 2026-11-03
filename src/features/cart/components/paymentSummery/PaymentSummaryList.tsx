@@ -1,10 +1,11 @@
 import { Discount, Summary } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { Language } from '../../../../types/types';
 import { createSummaryItemList } from '../../../utils/createSummaryItemList';
 import PaymentSummaryItem from './PaymentSummaryItem';
 import './_payment-summary.scss';
 
 interface PaymentSummaryListProps {
-  language: Record<string, string>;
+  language: Language;
   promoDiscount: Discount;
   summary: Summary;
   cancelled?: boolean;

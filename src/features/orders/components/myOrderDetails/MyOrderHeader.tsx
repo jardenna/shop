@@ -1,11 +1,12 @@
 import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Chip from '../../../../components/chips/Chip';
 import { chipVariants } from '../../../../components/chips/chipsUtils';
+import { Language } from '../../../../types/types';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface MyOrderHeaderProps {
-  language: Record<string, string>;
+  language: Language;
   orderId: string;
   orderStatus: DeliveryStatus;
   totalPrice: number;

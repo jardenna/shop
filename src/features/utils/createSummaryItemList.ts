@@ -1,4 +1,5 @@
 import { Discount, Summary } from '../../app/api/apiTypes/sharedApiTypes';
+import { Language } from '../../types/types';
 import { vat } from '../../utils/utils';
 
 interface SummaryItemProps {
@@ -10,7 +11,7 @@ interface SummaryItemProps {
 }
 
 interface CreateSummaryItemListProps {
-  language: Record<string, string>;
+  language: Language;
   summary: Summary;
   cancelled?: boolean;
   discount?: Discount;

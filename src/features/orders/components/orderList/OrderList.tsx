@@ -1,6 +1,7 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import LabelValue from '../../../../components/LabelValue';
+import { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import './_order-list.scss';
@@ -14,7 +15,7 @@ interface Order extends BaseOrder {
 }
 
 interface OrderListProps {
-  language: Record<string, string>;
+  language: Language;
   orders: Order[];
   hidePrice?: boolean;
 }

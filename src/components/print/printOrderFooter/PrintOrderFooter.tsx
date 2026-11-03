@@ -8,10 +8,11 @@ import {
 } from '../../../utils/contactInformation';
 import { styles } from '../styles';
 import { footerStyles } from './footerStyles';
+import { Language } from '../../../types/types';
 
 interface PrintOrderFooterProps {
   cancelled: boolean;
-  language: Record<string, string>;
+  language: Language;
   method: PaymentMethods;
 }
 

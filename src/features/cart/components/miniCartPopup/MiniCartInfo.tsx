@@ -1,7 +1,8 @@
+import { Language } from '../../../../types/types';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface MiniCartInfoProps {
-  language: Record<string, string>;
+  language: Language;
   remainingForFreeShipping: number;
 }
 

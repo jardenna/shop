@@ -1,3 +1,4 @@
+import { Language } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_tag-list.scss';
 import TagListItem from './TagListItem';
@@ -9,7 +10,7 @@ export interface TagItem {
 }
 
 interface TagListProps {
-  language: Record<string, string>;
+  language: Language;
   tagList: TagItem[];
   onClick: (key: string, value: string) => void;
 }

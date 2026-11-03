@@ -6,9 +6,10 @@ import PdfContainer from './PdfContainer';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
 import PrintOrdertable from './printOrderTable/PrintOrdertable';
 import { styles } from './styles';
+import { Language } from '../../types/types';
 
 export interface BasePrintOrderProps {
-  language: Record<string, string>;
+  language: Language;
   order: OrderResponse;
   rates: Record<CurrencyCode, number>;
 }

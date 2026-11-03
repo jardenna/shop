@@ -1,5 +1,9 @@
 import { AdminPath, ShopPath } from '../layout/nav/enums';
-import type { AriaLabelData, FiltersCountResult } from '../types/types';
+import type {
+  AriaLabelData,
+  FiltersCountResult,
+  Language,
+} from '../types/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';
@@ -19,10 +23,7 @@ const maxFiles = 5;
 const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
 // Translation
-const translateKey = (
-  key: string | undefined,
-  language: Record<string, string>,
-) => {
+const translateKey = (key: string | undefined, language: Language) => {
   if (!key) {
     return '';
   }

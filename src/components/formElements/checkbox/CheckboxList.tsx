@@ -3,10 +3,11 @@ import { translateKey } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
 import './_checkbox.scss';
+import { Language } from '../../../types/types';
 
 interface CheckboxListProps extends BaseControlProps {
   checkBoxList: string[];
-  language: Record<string, string>;
+  language: Language;
   values: string[];
   renderExtra?: (checkbox: string) => ReactNode;
 }

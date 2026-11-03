@@ -1,8 +1,9 @@
 import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
+import { Language } from '../../../types/types';
 import OrderCancelledBadge from './OrderCancelledBadge';
 
 interface MyOrderInfoProps {
-  language: Record<string, string>;
+  language: Language;
   status: DeliveryStatus;
 }
 

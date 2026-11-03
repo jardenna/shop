@@ -2,6 +2,7 @@ import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import Button from '../../../components/Button';
 import ProductAsideNav from '../../../features/shop/components/ProductAsideNav';
 import { BtnVariant } from '../../../types/enums';
+import { Language } from '../../../types/types';
 import { LinkText, ShopPath } from '../enums';
 import NavAd from '../NavAd';
 import { BaseNav } from '../navLists';
@@ -9,7 +10,7 @@ import { subNavConfig } from './subnavConfig';
 
 interface SubNavListMobileProps {
   category: LinkText;
-  language: Record<string, string>;
+  language: Language;
   subMenu: ProductMenuResponse[];
   subNavList: BaseNav[];
   onClick: (id: LinkText) => void;

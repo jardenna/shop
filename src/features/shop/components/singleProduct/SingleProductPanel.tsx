@@ -2,6 +2,7 @@ import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 import { BtnVariant } from '../../../../types/enums';
+import { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
 import { SelectedLanguage } from '../../../language/languageSlice';
 import type { ChangedAttribute } from '../../cartUtils';
@@ -19,7 +20,7 @@ interface SingleProductPanelProps {
   changedValue: string;
   isAddCartItemLoading: boolean;
   isReplaceCartItemLoading: boolean;
-  language: Record<string, string>;
+  language: Language;
   popupData: PopupData;
   selectedLanguage: SelectedLanguage;
   src: string;

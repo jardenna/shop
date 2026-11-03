@@ -3,14 +3,14 @@ import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler } from '../../../types/types';
+import { InputChangeHandler, Language } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 import UserRowText from './UserRowText';
 
 export interface BaseUserTablePopupProps {
   id: ColumnKey;
   isFormDirty: boolean;
-  language: Record<string, string>;
+  language: Language;
   roleValue: Roles;
   submitBtnLabel: string;
   value: string;

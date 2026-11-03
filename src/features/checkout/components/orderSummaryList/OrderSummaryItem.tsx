@@ -1,13 +1,14 @@
 import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../../components/deleteItem/DeleteItem';
 import Img from '../../../../components/Img';
+import { Language } from '../../../../types/types';
 import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryItemProps {
   ariaLabel: string;
   cartItem: Order;
   isLoading: boolean;
-  language: Record<string, string>;
+  language: Language;
   onDeleteItem: () => void;
 }
 

@@ -5,6 +5,7 @@ import {
   isToday,
   isYesterday,
 } from 'date-fns';
+import { Language } from '../../../../types/types';
 
 export type StarType = 'full' | 'half' | 'empty';
 
@@ -34,7 +35,7 @@ export const getStarsArray = (rating: number): StarType[] => {
 
 export const getReviewAgeLabel = (
   reviewDate: Date,
-  language: Record<string, string>,
+  language: Language,
 ): string => {
   if (isToday(reviewDate)) {
     return language.today;

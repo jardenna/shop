@@ -1,10 +1,11 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import LabelValue from '../../../../components/LabelValue';
+import { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
 
 interface SummaryInfoProps {
   cartItem: BaseOrder;
-  language: Record<string, string>;
+  language: Language;
 }
 
 const SummaryInfo = ({ cartItem, language }: SummaryInfoProps) => (
