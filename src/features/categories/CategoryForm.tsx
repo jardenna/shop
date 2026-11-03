@@ -20,17 +20,11 @@ import {
 
 interface CategoryFormProps {
   id: string | null;
-  popupMessage: string;
   selectedCategory?: CreateCategoryRequest;
   onReset?: () => void;
 }
 
-const CategoryForm = ({
-  selectedCategory,
-  id,
-  onReset,
-  popupMessage,
-}: CategoryFormProps) => {
+const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
 
@@ -77,21 +71,22 @@ const CategoryForm = ({
       return;
     }
 
-    if (id) {
-      await updateCategory({
-        id,
-        category: { ...values, scheduledDate: selectedDate },
-      }).unwrap();
-    } else {
-      await createCategory({
-        ...values,
-        scheduledDate: selectedDate,
-      }).unwrap();
+    const result = await (
+      id
+        ? updateCategory({
+            id,
+            category: { ...values, scheduledDate: selectedDate },
+          })
+        : createCategory({ ...values, scheduledDate: selectedDate })
+    ).unwrap();
+
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+
+      navigate(AdminPath.AdminCategories);
     }
-    onAddToast({
-      message: popupMessage,
-    });
-    navigate(AdminPath.AdminCategories);
   }
 
   return (

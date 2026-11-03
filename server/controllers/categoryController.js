@@ -40,7 +40,7 @@ const createCategory = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
-    message: 'New category created',
+    message: t('categoryCreated', req.lang),
     id: category._id,
     categoryName: category.categoryName,
     categoryStatus: category.categoryStatus || INACTIVE,

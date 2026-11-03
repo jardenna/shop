@@ -44,7 +44,6 @@ const UpdateCategoryPage = () => {
           selectedCategory={category}
           onReset={() => refetch()}
           id={id || ''}
-          popupMessage={language.categoryUpdated}
         />
       </AdminPageContainer>
     )
