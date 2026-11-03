@@ -100,7 +100,6 @@ const updateGoals = asyncHandler(async (req, res) => {
       message: t('dashboardNotFound', req.lang),
     });
   }
-  // Here is text
   res.status(200).json({
     success: true,
     message: t('goalWasUpdated', req.lang),
@@ -303,6 +302,7 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
 });
 
 export {
+export {
   getGoals,
   getNewestCustomers,
   getNewProducts,
@@ -310,5 +310,5 @@ export {
   getTopProducts,
   getTopSellingProducts,
   getTotalKpi,
-  updateGoals,
+  updateGoals
 };
