@@ -1,6 +1,7 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import {
   useGetAllCategoriesWithParamsQuery,
   useGetHasCategoriesScheduledQuery,
@@ -17,6 +18,7 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const CategoryPage = () => {
   const { language } = useLanguage();
+  const { isAdmin } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
   });
@@ -60,8 +62,8 @@ const CategoryPage = () => {
   return (
     <AdminPageContainer
       heading={language.categories}
-      linkText={language.createNewCategory}
-      linkTo={AdminPath.AdminCategoryCreate}
+      linkText={isAdmin ? language.createNewCategory : undefined}
+      linkTo={isAdmin ? AdminPath.AdminCategoryCreate : undefined}
       variant="medium"
       hideBreadCrumbs
     >
