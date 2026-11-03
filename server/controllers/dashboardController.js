@@ -302,7 +302,6 @@ const getPeriodKpi = asyncHandler(async (req, res) => {
 });
 
 export {
-export {
   getGoals,
   getNewestCustomers,
   getNewProducts,
@@ -310,5 +309,5 @@ export {
   getTopProducts,
   getTopSellingProducts,
   getTotalKpi,
-  updateGoals
+  updateGoals,
 };
