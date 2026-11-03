@@ -61,7 +61,9 @@ const OrderTableRow = ({
     <td>
       <MoreLink
         linkText={
-          deliveryStatus === 'cancelled' || deliveryStatus === 'delivered'
+          deliveryStatus === 'cancelled' ||
+          deliveryStatus === 'delivered' ||
+          deliveryStatus === 'shipped'
             ? language.viewOrder
             : language.updateOrder
         }
