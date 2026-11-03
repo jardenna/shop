@@ -3,7 +3,7 @@
 .chip {
   width: fit-content;
   font-family: $font-primary-bold;
-  text-wrap: nowrap;
+  white-space: nowrap;
   border: 1px solid currentcolor;
   border-radius: 50px;
   padding: 2px 8px;

@@ -29,7 +29,7 @@ a[class^='btn-'],
   letter-spacing: rem(0.5px);
   outline: transparent;
   text-box: $text-box;
-  text-wrap: nowrap;
+  white-space: nowrap;
 
   @include transition;
 
