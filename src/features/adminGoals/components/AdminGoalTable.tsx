@@ -5,6 +5,7 @@ import {
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
+import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { validateAdminGoals } from '../../../utils/validation/validateAdminGoals';
 import { kr } from '../../currency/currencyConverterUtil';
@@ -18,6 +19,7 @@ interface AdminGoalTableProps {
 
 const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
   const { language } = useLanguage();
+  const { onAddToast } = useToast();
   const { kpis, tableHeaders, goals } = adminGoal;
 
   const initialState = Object.fromEntries(
@@ -49,7 +51,13 @@ const AdminGoalTable = ({ adminGoal }: AdminGoalTableProps) => {
       ]),
     );
 
-    await updateGoals({ goals }).unwrap();
+    const result = await updateGoals({ goals }).unwrap();
+
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+    }
   }
 
   return (

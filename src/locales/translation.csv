@@ -8,6 +8,7 @@ kpiGoalsInfo3;The three periods are 7 days, 30 days and 12 months.;De tre period
 kpiGoalsInfo4;You can change your goals at any time.;Du kan til enhver tid ændre målene.
 totalCustomers;Total customers;Kunder i alt
 customers;Customers;Kunder
+goalWasUpdated;Goals updated successfully;Målene blev opdateret
 totalCustomersDescription;All registered customers;Alle registrerede kunder
 totalRevenue;Total revenue;Samlet omsætning
 totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
