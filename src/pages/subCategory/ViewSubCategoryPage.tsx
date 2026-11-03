@@ -43,12 +43,12 @@ const ViewSubCategoryPage = () => {
     if (result.success) {
       navigate(AdminPath.AdminSubCategories);
       onAddToast({
-        message: language.subCategoryDeleted,
+        message: result.message,
       });
     } else {
       onAddToast({
         type: 'error',
-        message: language.categoryNotFound,
+        message: result.message,
       });
     }
   };
