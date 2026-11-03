@@ -19,6 +19,7 @@ export interface BaseUserTablePopupProps {
 
 interface UserTablePopupProps extends BaseUserTablePopupProps {
   ariaLabel: string;
+  isAdmin: boolean;
   onUpdateChange: InputChangeHandler;
   text: string;
   onOpenPopup: () => void;
@@ -35,35 +36,38 @@ const UserTablePopup = ({
   isFormDirty,
   roleValue,
   submitBtnLabel,
+  isAdmin,
   text,
 }: UserTablePopupProps) => (
   <>
     <UserRowText text={text} language={language} />
-    <Popup
-      className="update-user-popup"
-      onOpenPopup={onOpenPopup}
-      popupContent={({ close }) => (
-        <UpdateUserInput
-          submitBtnLabel={submitBtnLabel}
-          labelText={id}
-          language={language}
-          onSave={() => {
-            onSave();
-            close();
-          }}
-          onCancel={close}
-          onUpdateChange={onUpdateChange}
-          id={id}
-          value={value}
-          roleValue={roleValue}
-          isFormDirty={isFormDirty}
-        />
-      )}
-      triggerBtnVariant={BtnVariant.Ghost}
-      ariaLabel={ariaLabel}
-    >
-      <Icon iconName={IconName.Pencil} />
-    </Popup>
+    {!isAdmin && (
+      <Popup
+        className="update-user-popup"
+        onOpenPopup={onOpenPopup}
+        popupContent={({ close }) => (
+          <UpdateUserInput
+            submitBtnLabel={submitBtnLabel}
+            labelText={id}
+            language={language}
+            onSave={() => {
+              onSave();
+              close();
+            }}
+            onCancel={close}
+            onUpdateChange={onUpdateChange}
+            id={id}
+            value={value}
+            roleValue={roleValue}
+            isFormDirty={isFormDirty}
+          />
+        )}
+        triggerBtnVariant={BtnVariant.Ghost}
+        ariaLabel={ariaLabel}
+      >
+        <Icon iconName={IconName.Pencil} />
+      </Popup>
+    )}
   </>
 );
 

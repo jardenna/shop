@@ -134,6 +134,7 @@ const UserPage = () => {
                     <div className="update-user">
                       <UserTablePopup
                         text={userItem[columnKey]}
+                        isAdmin={isAdmin}
                         submitBtnLabel={language.save}
                         isFormDirty={isFormDirty}
                         onUpdateChange={onUpdateChange}
