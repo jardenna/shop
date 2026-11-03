@@ -432,6 +432,46 @@ const getProductById = asyncHandler(async (req, res) => {
   res.status(200).json(product);
 });
 
+// @desc    Upload Product Images
+// @route   /api/upload
+// @method  POST
+// @access  Private for admin and employees
+// @desc    Upload Product Images
+// @route   /api/upload
+// @method  POST
+// @access  Private for admin and employees
+const uploadImages = asyncHandler(async (req, res, err) => {
+  if (err?.code === 'LIMIT_FILE_SIZE') {
+    return res.status(400).json({
+      success: false,
+      message: t('fileExceedsSize', req.lang),
+    });
+  }
+
+  if (err?.code === 'LIMIT_UNEXPECTED_FILE') {
+    return res.status(400).json({
+      success: false,
+      message: t('maximumFileLimitExceeded', req.lang),
+    });
+  }
+
+  if (err) {
+    return res.status(400).json({
+      success: false,
+      message: err.message,
+    });
+  }
+
+  // Normalize file paths to /images/uploads/... instead of /public/images/uploads/...
+  const filePaths = req.files.map((file) =>
+    file.path.replace(/\\/g, '/').replace(/^.*public/, ''),
+  );
+
+  return res.status(200).json({
+    images: filePaths,
+  });
+});
+
 // @desc    Check Scheduled Products
 // @route   /api/products/scheduled
 // @method  GET
@@ -455,4 +495,5 @@ export {
   getAllProducts,
   getProductById,
   updateProduct,
+  uploadImages,
 };
