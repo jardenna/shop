@@ -538,7 +538,6 @@ const deleteCartItem = asyncHandler(async (req, res) => {
   }
 
   await cart.save();
-  // Here is text
   res.status(200).json({
     success: true,
     message: t('cartItemDeleted', req.lang),

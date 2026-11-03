@@ -165,7 +165,7 @@ const updateCategory = [
 
     res.status(200).json({
       success: true,
-      message: 'Category updated',
+      message: t('categoryUpdated', req.lang),
       category: formatMongoData(updatedCategory.toObject()),
     });
   }),

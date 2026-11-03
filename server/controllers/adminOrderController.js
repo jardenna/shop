@@ -179,7 +179,6 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   });
 
   await order.save();
-  // Here is text
   res.status(200).json({
     success: true,
     message: t('orderUpdated', req.lang),
