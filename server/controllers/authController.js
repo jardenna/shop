@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import { SHOP_NAME } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import User from '../models/userModel.js';
 import { createUserService } from '../services/userService.js';
@@ -31,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
+    message: `${t('welcomeTo', req.lang)} ${SHOP_NAME}`,
     user: {
       id: user._id,
       username: user.username,
@@ -65,6 +67,7 @@ const createUser = asyncHandler(async (req, res) => {
 
   res.status(201).json({
     success: true,
+    message: t('userCreated', req.lang),
     user: {
       id: user._id,
       username: user.username,

@@ -100,7 +100,6 @@ const updateGoals = asyncHandler(async (req, res) => {
       message: t('dashboardNotFound', req.lang),
     });
   }
-
   res.status(200).json({
     success: true,
     message: t('goalWasUpdated', req.lang),

@@ -11,7 +11,7 @@ const CreateCategoryPage = () => {
 
   return (
     <AdminPageContainer heading={language.createNewCategory} variant="small">
-      <CategoryForm id={null} popupMessage={language.categoryCreated} />
+      <CategoryForm id={null} />
     </AdminPageContainer>
   );
 };

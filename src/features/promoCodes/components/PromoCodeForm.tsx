@@ -65,19 +65,17 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
 
   // Submit handler
   async function handleSubmitPromoCode() {
-    const result = id
-      ? await updatePromoCode({ id, body: values })
-      : await createPromoCode(values);
+    const result = await (
+      id ? updatePromoCode({ id, body: values }) : createPromoCode(values)
+    ).unwrap();
 
-    if (result.data?.success !== true) {
-      return;
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+
+      navigate(AdminPath.AdminDiscountCodes);
     }
-
-    onAddToast({
-      message: id ? language.promoCodeUpdated : language.promoCodeCreated,
-    });
-
-    navigate(`/${AdminPath.Admin}`);
   }
 
   return (

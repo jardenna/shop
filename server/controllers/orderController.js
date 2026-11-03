@@ -375,7 +375,6 @@ const cancelMyOrder = asyncHandler(async (req, res) => {
       message: t('orderCancellationNotAllowed', req.lang),
     });
   }
-
   res.status(200).json({
     success: true,
     message: t('orderCancelled', req.lang),

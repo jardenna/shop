@@ -12,7 +12,7 @@ export interface CategoriesResponse extends DefaultResponse {
   categories: Category[];
 }
 
-export interface CategoryItemResponse extends DefaultResponseType {
+export interface CategoryItemResponse extends DefaultResponse {
   category: Category;
 }
 
