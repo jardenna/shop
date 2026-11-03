@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-  createGoals,
   getGoals,
   getNewestCustomers,
   getPeriodKpi,
@@ -18,8 +17,7 @@ const router = express.Router();
 router
   .route('/goals')
   .get(languageMiddleware, authenticate, authorizeEmployee, getGoals)
-  .patch(languageMiddleware, authenticate, authorizeEmployee, updateGoals)
-  .post(languageMiddleware, authenticate, authorizeEmployee, createGoals);
+  .patch(languageMiddleware, authenticate, authorizeEmployee, updateGoals);
 
 router.get(
   '/total-kpi',
