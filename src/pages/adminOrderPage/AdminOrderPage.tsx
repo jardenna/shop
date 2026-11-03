@@ -22,6 +22,7 @@ const AdminOrderPage = () => {
     initialSortField: 'createdAt',
     initialSortOrder: 'desc',
   });
+
   const initialFilters = createInitialFilters(tableHeaders);
 
   const {
