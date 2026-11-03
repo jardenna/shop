@@ -40,6 +40,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
     .sort({ createdAt: -1 });
 
   const orderSortFields = {
+    orderId: '_id',
     customer: 'user.username',
     totalPrice: 'summary.totalPrice',
     paymentMethod: 'payment.method',
