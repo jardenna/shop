@@ -25,7 +25,6 @@ import {
 interface AddressFormModalProps {
   headerText: string;
   id: string | null;
-  popupMessage: string;
   submitLabel: string;
   username: string;
   address?: Address;
@@ -53,7 +52,6 @@ const AddressFormModal = ({
   username,
   headerText,
   submitLabel,
-  popupMessage,
   disabled,
   buttonRef,
 }: AddressFormModalProps) => {
@@ -86,25 +84,18 @@ const AddressFormModal = ({
   const updatedAddress = id ? { ...values, id } : values;
 
   async function handleSubmitAddress() {
-    if (!isFormDirty) {
+    const result = await (
+      id
+        ? updateAddress({ address: updatedAddress, id })
+        : addAddress({ address: updatedAddress })
+    ).unwrap();
+
+    if (result.success) {
       onAddToast({
-        message: language.noChanges,
+        message: result.message,
       });
-      return;
+      closeModal();
     }
-
-    if (id) {
-      await updateAddress({ address: updatedAddress, id }).unwrap();
-    } else {
-      await addAddress({ address: updatedAddress }).unwrap();
-      onClearAllValues();
-    }
-
-    onAddToast({
-      message: popupMessage,
-    });
-
-    closeModal();
   }
 
   return (

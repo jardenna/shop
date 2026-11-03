@@ -20,7 +20,6 @@ const AddressListFooter = ({ address, language }: AddressListFooterProps) => (
       username={address.name}
       headerText={language.updateAddress}
       submitLabel={language.update}
-      popupMessage={language.addressUpdated}
     />
   </div>
 );

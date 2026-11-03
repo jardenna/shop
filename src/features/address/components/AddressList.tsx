@@ -53,7 +53,6 @@ const AddressList = ({
         username={username}
         headerText={language.createNewAddress}
         submitLabel={language.createNewAddress}
-        popupMessage={language.addressCreated}
         disabled={addresses.length === 4}
         buttonRef={buttonRef}
       />

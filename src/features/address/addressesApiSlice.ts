@@ -2,7 +2,7 @@ import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AddAddressRequest,
   Address,
-  BaseAddress,
+  AddressResponse,
   UpdateAddressRequest,
 } from '../../app/api/apiTypes/addressApiTypes';
 import { addressUrl } from '../../app/endpoints';
@@ -13,7 +13,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       query: () => addressUrl,
       providesTags: [TagTypesEnum.Address],
     }),
-    addAddress: builder.mutation<BaseAddress, AddAddressRequest>({
+    addAddress: builder.mutation<AddressResponse, AddAddressRequest>({
       query: (address) => ({
         url: addressUrl,
         method: MethodsEnum.Post,
@@ -21,7 +21,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),
-    updateAddress: builder.mutation<BaseAddress, UpdateAddressRequest>({
+    updateAddress: builder.mutation<AddressResponse, UpdateAddressRequest>({
       query: ({ address, id }) => ({
         url: `${addressUrl}/${id}`,
         method: MethodsEnum.Patch,
@@ -29,7 +29,7 @@ export const addressesApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [TagTypesEnum.Address],
     }),
-    deleteAddress: builder.mutation<BaseAddress, string>({
+    deleteAddress: builder.mutation<AddressResponse, string>({
       query: (id) => ({
         url: `${addressUrl}/${id}`,
         method: MethodsEnum.Delete,
