@@ -16,10 +16,12 @@ import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderPage = () => {
   const { language } = useLanguage();
+
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
+    initialSortField: 'createdAt',
+    initialSortOrder: 'desc',
   });
-
   const initialFilters = createInitialFilters(tableHeaders);
 
   const {

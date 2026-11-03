@@ -4,18 +4,28 @@ import { Column } from '../components/sortTable/SortTable';
 
 type TableProps<T> = {
   columns: Column<T>[];
+  initialSortField?: keyof T;
+  initialSortOrder?: SortOrder;
 };
 
-export const useSortParamsState = <T>({ columns }: TableProps<T>) => {
+export const useSortParamsState = <T>({
+  columns,
+  initialSortField,
+  initialSortOrder = 'asc',
+}: TableProps<T>) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortField =
-    (searchParams.get('sortField') as keyof T) || columns[0]?.key;
+    (searchParams.get('sortField') as keyof T) ||
+    initialSortField ||
+    columns[0]?.key;
 
   const rawSortOrder = searchParams.get('sortOrder');
 
   const sortOrder: SortOrder =
-    rawSortOrder === 'asc' || rawSortOrder === 'desc' ? rawSortOrder : 'asc';
+    rawSortOrder === 'asc' || rawSortOrder === 'desc'
+      ? rawSortOrder
+      : initialSortOrder;
 
   const handleSort = (field: keyof T) => {
     const newOrder: SortOrder =
