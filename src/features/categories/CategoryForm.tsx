@@ -64,13 +64,6 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
 
   // Submit handler
   async function handleSubmitCategory() {
-    if (!isFormDirty) {
-      onAddToast({
-        message: language.noChanges,
-      });
-      return;
-    }
-
     const result = await (
       id
         ? updateCategory({
