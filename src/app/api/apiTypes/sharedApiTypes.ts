@@ -64,7 +64,7 @@ export interface BaseProduct {
 }
 
 export type BaseShopProduct = BaseProduct &
-  DefaultResponseType & {
+  DefaultResponse & {
     description: string;
     discountedPrice: number;
     images: string[];

@@ -29,7 +29,6 @@ const CreateSubCategoryPage = () => {
           onReset={refetch}
           id={null}
           parentCategories={allCategories.categories}
-          popupMessage={language.categoryCreated}
         />
       )}
     </AdminPageContainer>

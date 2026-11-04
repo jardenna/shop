@@ -62,7 +62,7 @@ const createSubCategory = [
     const mainCategoryData =
       await Category.findById(category).select('categoryName');
 
-    res.status(201).json({
+    const createdSubCategory = {
       id: subCategory._id,
       mainCategory: {
         id: mainCategoryData._id,
@@ -74,6 +74,12 @@ const createSubCategory = [
       createdAt: subCategory.createdAt,
       updatedAt: subCategory.updatedAt,
       productCount: 0,
+    };
+
+    res.status(201).json({
+      success: true,
+      message: t('categoryCreated', req.lang),
+      ...createdSubCategory,
     });
   }),
 ];
@@ -404,7 +410,8 @@ const updateSubCategory = [
     await subCategory.save();
 
     res.status(200).json({
-      message: 'Subcategory updated',
+      success: true,
+      message: t('categoryUpdated', req.lang),
       updatedSubCategory: subCategory,
     });
   }),

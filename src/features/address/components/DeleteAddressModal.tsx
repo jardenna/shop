@@ -20,10 +20,13 @@ const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
   const [deleteAddress, { isLoading }] = useDeleteAddressMutation();
 
   const handleDeleteAddress = async (id: string) => {
-    await deleteAddress(id).unwrap();
-    onAddToast({
-      message: language.addressDeleted,
-    });
+    const result = await deleteAddress(id).unwrap();
+
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+    }
   };
 
   return (

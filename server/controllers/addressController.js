@@ -54,7 +54,11 @@ const createUserAddress = asyncHandler(async (req, res) => {
   user.addresses.push(user.addresses.create(address));
   await user.save();
 
-  res.status(201).json(formatAddresses(user.addresses));
+  res.status(201).json({
+    success: true,
+    message: t('addressCreated', req.lang),
+    ...formatAddresses(user.addresses),
+  });
 });
 
 // @desc    Update users address
@@ -109,8 +113,11 @@ const updateUserAddress = asyncHandler(async (req, res) => {
   existingAddress.country = address.country ?? existingAddress.country;
 
   await user.save();
-
-  res.status(200).json(formatAddresses(user.addresses));
+  res.status(200).json({
+    success: true,
+    message: t('addressUpdated', req.lang),
+    ...formatAddresses(user.addresses),
+  });
 });
 
 // @desc    Delete users address
@@ -141,7 +148,11 @@ const deleteUserAddress = asyncHandler(async (req, res) => {
 
   await user.save();
 
-  res.status(200).json(formatAddresses(user.addresses));
+  res.status(200).json({
+    success: true,
+    message: t('addressDeleted', req.lang),
+    ...formatAddresses(user.addresses),
+  });
 });
 
 // @desc    Get users addresses

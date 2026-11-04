@@ -26,7 +26,6 @@ import {
 interface SubCategoryFormProps {
   id: string | null;
   parentCategories: Category[];
-  popupMessage: string;
   selectedCategory?: SubCategoryResponse;
   onReset: () => void;
 }
@@ -36,7 +35,6 @@ const SubCategoryForm = ({
   id,
   onReset,
   parentCategories,
-  popupMessage,
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -88,39 +86,28 @@ const SubCategoryForm = ({
 
   // Submit handler
   async function handleSubmitCategory() {
-    if (!isFormDirty) {
+    const subCategory = {
+      ...values,
+      category: values.category,
+      scheduledDate: selectedDate,
+    };
+
+    const result = await (
+      id
+        ? updateSubCategory({
+            id,
+            subCategory,
+          })
+        : createSubCategory(subCategory)
+    ).unwrap();
+
+    if (result.success) {
       onAddToast({
-        message: language.noChanges,
+        message: result.message,
       });
-      return;
+
+      navigate(AdminPath.AdminSubCategories);
     }
-
-    if (id) {
-      await updateSubCategory({
-        id,
-        subCategory: {
-          ...values,
-          category: values.category,
-          scheduledDate: selectedDate,
-        },
-      }).unwrap();
-
-      onAddToast({
-        message: language.categoryUpdated,
-      });
-    } else {
-      await createSubCategory({
-        ...values,
-        category: values.category,
-        scheduledDate: selectedDate,
-      }).unwrap();
-    }
-
-    onAddToast({
-      message: popupMessage,
-    });
-
-    navigate(AdminPath.AdminSubCategories);
   }
 
   const selectedCategoryOption = parentCategoriesOptions.find(

@@ -55,7 +55,12 @@ const createProduct = [
 
     await product.save();
 
-    res.status(201).json({ id: product._id, ...req.body });
+    res.status(201).json({
+      success: true,
+      message: t('productCreated', req.lang),
+      id: product._id,
+      ...req.body,
+    });
   }),
 ];
 
@@ -65,7 +70,6 @@ const createProduct = [
 // @access  Private for admin and employees
 const duplicateProduct = asyncHandler(async (req, res) => {
   const original = await Product.findById(req.params.id);
-  //       message: t('productNotFound', req.lang),
 
   if (!original) {
     return res.status(404).json({
@@ -170,6 +174,8 @@ const updateProduct = [
     await existingProduct.save();
 
     res.status(200).json({
+      success: true,
+      message: t('productUpdated', req.lang),
       id: existingProduct._id,
       productName: existingProduct.productName,
       countInStock: existingProduct.countInStock,

@@ -45,7 +45,6 @@ const UpdateSubCategoryPage = () => {
             onReset={refetch}
             id={id ?? ''}
             parentCategories={allCategories.categories}
-            popupMessage={language.categoryUpdated}
           />
         </AdminPageContainer>
       )}

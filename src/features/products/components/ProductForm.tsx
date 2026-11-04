@@ -200,7 +200,7 @@ const ProductForm = ({
       return;
     }
 
-    //  upload logic
+    // Upload logic
     const mergedImages = await handleImageUpload({
       id,
       activeImages,
@@ -222,20 +222,22 @@ const ProductForm = ({
       scheduledDate: selectedDate,
     };
 
-    if (id) {
-      await updateProduct({
-        id,
-        product: productData,
-      }).unwrap();
-    } else {
-      await createProduct(productData).unwrap();
+    const result = await (
+      id
+        ? updateProduct({
+            id,
+            product: productData,
+          })
+        : createProduct(productData)
+    ).unwrap();
+
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+
+      navigate(AdminPath.AdminProducts);
     }
-
-    onAddToast({
-      message: id ? language.productUpdated : language.productCreated,
-    });
-
-    navigate(AdminPath.AdminProducts);
   }
 
   // allowedSizes
