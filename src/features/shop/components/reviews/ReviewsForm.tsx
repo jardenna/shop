@@ -3,6 +3,7 @@ import Button from '../../../../components/Button';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../../components/formElements/radioTileList/RadioTileList';
 import Textarea from '../../../../components/formElements/Textarea';
+import { useToast } from '../../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import { IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
@@ -26,6 +27,7 @@ const ReviewsForm = ({
   productId,
 }: ReviewsFormProps) => {
   const { language } = useLanguage();
+  const { onAddToast } = useToast();
 
   const [visible, setVisible] = useState<string | null>(null);
   const initialState = {
@@ -44,12 +46,18 @@ const ReviewsForm = ({
 
   // Submit handler
   async function handleSubmit() {
-    await createReview({
+    const result = await createReview({
       productId,
       reviews: values,
     }).unwrap();
+    console.log(result);
 
-    setVisible(null);
+    if (result.success) {
+      onAddToast({
+        message: result.message,
+      });
+      setVisible(null);
+    }
   }
 
   const handleChange = (event: ChangeInputType) => {
