@@ -33,7 +33,7 @@ export interface SubCategoryResponse extends BaseSubCategory {
   scheduledDate?: Date;
 }
 
-export interface SubCategoriesResponse extends DefaultResponseType {
+export interface GetSubCategoriesResponse extends DefaultResponseType {
   subCategories: SubCategoryResponse[];
 }
 

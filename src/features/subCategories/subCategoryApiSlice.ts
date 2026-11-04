@@ -3,7 +3,7 @@ import { ScheduledResponse } from '../../app/api/apiTypes/adminApiTypes';
 import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import {
   CreateSubCategoryRequest,
-  SubCategoriesResponse,
+  GetSubCategoriesResponse,
   SubCategoriesWithParent,
   SubCategoryParams,
   SubCategoryResponse,
@@ -15,7 +15,7 @@ import { subCategoryUrl } from '../../app/endpoints';
 const subCategoryApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllSubCategories: builder.query<
-      SubCategoriesResponse,
+      GetSubCategoriesResponse,
       SubCategoryParams
     >({
       query: (params) => ({
