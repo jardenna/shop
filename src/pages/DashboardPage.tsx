@@ -3,7 +3,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
+import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
+import { useAuth } from '../features/auth/hooks/useAuth';
 import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
 import {
   useGetPeriodKpiQuery,
@@ -14,11 +16,11 @@ import LayoutElement from '../layout/LayoutElement';
 import { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
-import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
   const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
+  const { currentUser } = useAuth();
 
   const {
     data: totalKpi,
@@ -59,7 +61,9 @@ const DashboardPage = () => {
         ariaLabel={language.dashboard}
         className="dashboard-header"
       >
-        <h2>Welcome back</h2>
+        <h2>
+          {language.welcomeBack} {currentUser?.username}
+        </h2>
         <Selectbox
           id="year"
           variant="secondary"
