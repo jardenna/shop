@@ -66,13 +66,6 @@ const AccountFormModal = ({
   const [updateProfile, { isLoading, reset }] = useUpdateMyAccountMutation();
 
   async function handleSubmit() {
-    if (!isFormDirty) {
-      onAddToast({
-        message: language.noChanges,
-      });
-      return;
-    }
-
     await updateProfile(values).unwrap();
 
     onAddToast({

@@ -1,6 +1,6 @@
 import { SortParams, Status } from './adminApiTypes';
 import { Category, MainCategory } from './categoryApiTypes';
-import { DefaultResponseType } from './sharedApiTypes';
+import { DefaultResponse, DefaultResponseType } from './sharedApiTypes';
 
 export interface CreateSubCategoryRequest {
   category: string;
@@ -16,7 +16,7 @@ export interface SubCategoryParams extends SortParams {
   subCategoryName: string;
 }
 
-export interface BaseSubCategory extends DefaultResponseType {
+export interface BaseSubCategory extends DefaultResponse {
   _id: string;
   allowedSizes: string[];
   category: MainCategory;
@@ -45,7 +45,7 @@ export interface SubCategoriesWithParent {
   parentCategoryName: string;
 }
 
-export interface UpdateSubCategoryResponse {
+export interface UpdateSubCategoryResponse extends DefaultResponse {
   category: Category;
   subCategory: SubCategoryResponse;
 }
