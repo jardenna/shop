@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
+import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Create Product Reviews
@@ -74,6 +75,9 @@ const hasReviewed = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private for Admin
 const getAllReviews = asyncHandler(async (req, res) => {
+  const sortField = req.query.sortField;
+  const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+
   const reviews = await Product.aggregate([
     { $unwind: '$reviews' },
     {
@@ -93,7 +97,13 @@ const getAllReviews = asyncHandler(async (req, res) => {
     { $sort: { createdAt: -1 } },
   ]);
 
-  res.status(200).json(reviews);
+  const sortedReviews = sortColumns({
+    collection: reviews,
+    sortField,
+    sortOrder,
+  });
+
+  res.status(200).json(sortedReviews);
 });
 
 export { createProductReviews, getAllReviews, hasReviewed };
