@@ -14,7 +14,7 @@ interface MobileNavProps {
   navList: NavListProps[];
   className?: string;
   hidePanelHeading?: boolean;
-  reviewsCount?: number;
+  unReadCount?: number;
   onLogout?: () => void;
 }
 
@@ -23,7 +23,7 @@ const MobileNav = ({
   className = '',
   onLogout,
   hidePanelHeading,
-  reviewsCount,
+  unReadCount,
 }: MobileNavProps) => {
   const ariaControls = useId();
   const menuButtonRef = useRef<HTMLDivElement>(null);
@@ -67,7 +67,7 @@ const MobileNav = ({
           navList={navList}
           hideAriaHasPopup
           ariaLabel={language.main}
-          reviewsCount={reviewsCount}
+          unReadCount={unReadCount}
         />
         {onLogout && <Button onClick={onLogout}>{language.logout}</Button>}
       </Panel>

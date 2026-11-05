@@ -47,7 +47,7 @@ const AdminLayout = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
 
-  const { data: reviewsCount } = useGetReviewsCountQuery();
+  const { data: unReadCount } = useGetReviewsCountQuery();
 
   return (
     <div className="main-container admin-container">
@@ -55,12 +55,12 @@ const AdminLayout = () => {
       <AdminHeader
         onLogout={handleLogout}
         isLargeTabletSize={isLargeTabletSize}
-        reviewsCount={reviewsCount?.unreadCount}
+        unReadCount={unReadCount?.unreadCount}
       />
       <div className="main">
         {!isLargeTabletSize && (
           <Aside
-            reviewsCount={reviewsCount?.unreadCount}
+            unReadCount={unReadCount?.unreadCount}
             isShown={isMenuCollapsed}
             onTogglePanel={handleCollapseMenu}
             ariaLabel={

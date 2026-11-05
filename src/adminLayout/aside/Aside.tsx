@@ -9,7 +9,7 @@ import './_aside.scss';
 interface AsideProps {
   ariaLabel: string;
   isShown: boolean;
-  reviewsCount?: number;
+  unReadCount?: number;
   onTogglePanel: () => void;
 }
 
@@ -17,7 +17,7 @@ const Aside = ({
   onTogglePanel,
   isShown,
   ariaLabel,
-  reviewsCount,
+  unReadCount,
 }: AsideProps) => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
@@ -30,7 +30,7 @@ const Aside = ({
         currentUser={currentUser}
         ariaLabel={language.main}
         className="admin-nav"
-        reviewsCount={reviewsCount}
+        unReadCount={unReadCount}
       />
       <IconBtn
         onClick={onTogglePanel}
