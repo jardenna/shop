@@ -12,7 +12,7 @@ export enum AdminPath {
   AdminProductView = '/dashboard/products/view',
   AdminPromoCodeCreate = '/dashboard/discountCodes/create',
   AdminPromoCodeUpdate = '/dashboard/discountCodes/update',
-  AdminReviews = '/dashboard/products/reviews',
+  AdminReviews = 'reviews',
   AdminSubCategories = '/dashboard/subCategories',
   AdminSubCategoryCreate = '/dashboard/subCategories/create',
   AdminSubCategoryUpdate = '/dashboard/subCategories/update',
