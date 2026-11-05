@@ -90,6 +90,11 @@ export const adminNavList: AdminNavList[] = [
     iconName: IconName.Orders,
   },
   {
+    path: AdminPath.AdminReviews,
+    linkText: LinkText.Reviews,
+    iconName: IconName.Star,
+  },
+  {
     path: AdminPath.Goals,
     linkText: LinkText.Goals,
     iconName: IconName.Settings,
