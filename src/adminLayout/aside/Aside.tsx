@@ -1,6 +1,7 @@
 import IconBtn from '../../components/IconBtn';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useGetReviewsCountQuery } from '../../features/reviews/reviewsApiSlice';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navLists';
 import { IconName } from '../../types/enums';
@@ -15,6 +16,9 @@ interface AsideProps {
 const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
+
+  const { data: reviewsCount } = useGetReviewsCountQuery();
+  console.log(reviewsCount?.unreadCount);
 
   return (
     <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
