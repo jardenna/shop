@@ -11,6 +11,7 @@ export interface SubBaseNavList extends BaseNav {
 }
 
 export interface NavListProps extends BaseNav {
+  badgeCount?: number;
   end?: boolean;
   heading?: string;
   iconName?: IconName;
@@ -24,6 +25,7 @@ interface AccountNavList extends BaseNav {
 
 interface AdminNavList extends BaseNav {
   iconName: IconName;
+  badgeCount?: number;
 }
 
 const subNavList = [
