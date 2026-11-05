@@ -1,4 +1,4 @@
-function filterUsersMiddleware(req, res, next) {
+function filterReviewsMiddleware(req, res, next) {
   const { productName, isRead, rating } = req.query;
 
   const filter = {};
@@ -26,4 +26,4 @@ function filterUsersMiddleware(req, res, next) {
   next();
 }
 
-export default filterUsersMiddleware;
+export default filterReviewsMiddleware;
