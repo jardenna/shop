@@ -3,7 +3,7 @@ import Product from '../models/productModel.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 
-// @desc    Create Product Reviews
+// @desc    Create product reviews
 // @route   /api/products/:id/reviews
 // @method  POST
 // @access  Public for logged-in users
@@ -50,7 +50,7 @@ const createProductReviews = asyncHandler(async (req, res) => {
     .json({ success: true, message: t('reviewCreated', req.lang) });
 });
 
-// @desc    Create Product Reviews
+// @desc    Create product reviews
 // @route   /api/products/:id/reviewed
 // @method  GET
 // @access  Public for logged-in users
@@ -70,7 +70,7 @@ const hasReviewed = asyncHandler(async (req, res) => {
   res.json({ reviewed });
 });
 
-// @desc    Get all Product Reviews
+// @desc    Get all product reviews
 // @route   /api/products/reviews
 // @method  GET
 // @access  Private for Admin
@@ -123,4 +123,34 @@ const getAllReviews = asyncHandler(async (req, res) => {
 
   res.status(200).json(sortedReviews);
 });
-export { createProductReviews, getAllReviews, hasReviewed };
+
+// @desc    Get count for all unread reviews
+// @route   /api/products/reviews/unread
+// @method  GET
+// @access  Private for Admin
+
+const getUnreadReviewCount = asyncHandler(async (req, res) => {
+  const unreadCount = await Product.aggregate([
+    { $unwind: '$reviews' },
+    {
+      $match: {
+        $or: [
+          { 'reviews.isRead': false },
+          { 'reviews.isRead': { $exists: false } },
+        ],
+      },
+    },
+    { $count: 'unreadCount' },
+  ]);
+
+  res.status(200).json({
+    unreadCount: unreadCount[0]?.unreadCount ?? 0,
+  });
+});
+
+export {
+  createProductReviews,
+  getAllReviews,
+  getUnreadReviewCount,
+  hasReviewed,
+};

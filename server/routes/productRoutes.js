@@ -19,6 +19,7 @@ import {
 import {
   createProductReviews,
   getAllReviews,
+  getUnreadReviewCount,
   hasReviewed,
 } from '../controllers/productReviewController.js';
 import {
@@ -57,6 +58,13 @@ router.get(
   authenticate,
   authorizeEmployee,
   getAllReviews,
+);
+
+router.get(
+  '/reviews/unread',
+  authenticate,
+  authorizeEmployee,
+  getUnreadReviewCount,
 );
 
 router.post(
