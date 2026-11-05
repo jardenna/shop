@@ -71,7 +71,7 @@ const hasReviewed = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get all product reviews
-// @route   /api/products/reviews
+// @route   /api/reviews
 // @method  GET
 // @access  Private for Admin
 const getAllReviews = asyncHandler(async (req, res) => {
@@ -125,10 +125,9 @@ const getAllReviews = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get count for all unread reviews
-// @route   /api/products/reviews/unread
+// @route   /api/reviews/unread
 // @method  GET
 // @access  Private for Admin
-
 const getUnreadReviewCount = asyncHandler(async (req, res) => {
   const unreadCount = await Product.aggregate([
     { $unwind: '$reviews' },
