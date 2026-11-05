@@ -1,3 +1,24 @@
+import { SortParams } from './adminApiTypes';
+
 export interface ReviewsCountResponse {
   unreadCount: number;
+}
+
+export interface ReviewsResponse {
+  createdAt: string;
+  id: string;
+  image: string;
+  isRead: boolean;
+  productId: string;
+  productName: string;
+  rating: number;
+  user: string;
+  userName: string;
+  comment?: string | null;
+}
+
+export interface ReviewParams extends SortParams {
+  isRead: boolean;
+  productName: string;
+  rating: number;
 }
