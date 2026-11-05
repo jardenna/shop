@@ -52,7 +52,6 @@ const AdminLayout = () => {
       <AdminHeader
         onLogout={handleLogout}
         isLargeTabletSize={isLargeTabletSize}
-        ariaLabel={language.main}
       />
       <div className="main">
         {!isLargeTabletSize && (
