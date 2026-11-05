@@ -34,3 +34,4 @@ export const adminPromoCodeUrl = 'admin/promo-codes';
 export const adminGoalsUrl = `${baseDashboardEndpoint}/goals`;
 export const adminTotalsKpiUrl = `${baseDashboardEndpoint}/total-kpi`;
 export const adminPeriodKpiUrl = `${baseDashboardEndpoint}/period-kpi`;
+export const adminReviewsUrl = `${productUrl}/reviews`;

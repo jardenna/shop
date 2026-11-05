@@ -16,6 +16,7 @@ const NavContainer = ({
   ariaLabel,
   className = '',
   hideAriaHasPopup,
+  reviewsCount,
 }: NavContainerProps) => (
   <>
     <Nav
@@ -23,6 +24,7 @@ const NavContainer = ({
       className={`nav-container ${className}`}
       hideAriaHasPopup={hideAriaHasPopup}
       ariaLabel={ariaLabel}
+      reviewsCount={reviewsCount}
     />
     {currentUser && (
       <NavUser currentUser={currentUser} isMenuCollapsed={isMenuCollapsed} />

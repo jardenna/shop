@@ -12,6 +12,7 @@ export interface SubBaseNavList extends BaseNav {
 
 export interface NavListProps extends BaseNav {
   end?: boolean;
+  hasBadgeCount?: boolean;
   heading?: string;
   iconName?: IconName;
   subNavList?: SubBaseNavList[];
@@ -24,6 +25,8 @@ interface AccountNavList extends BaseNav {
 
 interface AdminNavList extends BaseNav {
   iconName: IconName;
+  end?: boolean;
+  hasBadgeCount?: boolean;
 }
 
 const subNavList = [
@@ -88,6 +91,12 @@ export const adminNavList: AdminNavList[] = [
     path: AdminPath.AdminOrders,
     linkText: LinkText.Orders,
     iconName: IconName.Orders,
+  },
+  {
+    path: AdminPath.AdminReviews,
+    linkText: LinkText.Reviews,
+    iconName: IconName.Star,
+    hasBadgeCount: true,
   },
   {
     path: AdminPath.Goals,

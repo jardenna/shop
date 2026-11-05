@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router';
+import CountBadge from '../../components/countBadge/CountBadge';
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { AriaHasPopup, FocusEventType } from '../../types/types';
@@ -10,6 +11,7 @@ interface NavItemProps {
   ariaControls?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
+  reviewsCount?: number;
   onBlur?: (event: FocusEventType) => void;
   onFocus?: () => void;
   onMouseEnter?: () => void;
@@ -25,6 +27,7 @@ const NavItem = ({
   ariaHasPopup,
   onBlur,
   ariaControls,
+  reviewsCount,
 }: NavItemProps) => {
   const { language } = useLanguage();
 
@@ -49,7 +52,11 @@ const NavItem = ({
             <Icon iconName={navItem.iconName} />
           </span>
         )}
+
         <span className="nav-text">{language[navItem.linkText]}</span>
+        {navItem.hasBadgeCount && reviewsCount && (
+          <CountBadge count={reviewsCount} ariaLabel="unread reviews" />
+        )}
       </NavLink>
       {navItem.subNavList && navItem.heading && (
         <SubNav

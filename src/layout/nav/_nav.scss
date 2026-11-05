@@ -7,6 +7,15 @@
   @include transition;
 }
 
+.nav-item {
+  .count-badge {
+    position: static;
+    width: rem(20px);
+    height: rem(20px);
+    padding: 12px;
+  }
+}
+
 .mobile-nav {
   padding: 0;
   top: $header-height-mobile;

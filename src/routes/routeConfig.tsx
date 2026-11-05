@@ -7,6 +7,7 @@ import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/AddressPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
+import AdminReviewPage from '../pages/AdminReviewPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
@@ -135,6 +136,10 @@ const adminRouteList = [
   {
     path: AdminPath.AdminUserCreate,
     element: <CreateUserPage />,
+  },
+  {
+    path: AdminPath.AdminReviews,
+    element: <AdminReviewPage />,
   },
   {
     path: AdminPath.AdminCategoryCreate,
