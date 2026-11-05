@@ -18,8 +18,6 @@ import {
 
 import {
   createProductReviews,
-  getAllReviews,
-  getUnreadReviewCount,
   hasReviewed,
 } from '../controllers/productReviewController.js';
 import {
@@ -28,7 +26,6 @@ import {
 } from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
 import filterProductsMiddleware from '../middleware/filterProductsMiddleware.js';
-import filterReviewsMiddleware from '../middleware/filterReviewsMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
@@ -50,22 +47,6 @@ router.post(
   createProductReviews,
 );
 router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
-
-router.get(
-  '/reviews',
-  languageMiddleware,
-  filterReviewsMiddleware,
-  authenticate,
-  authorizeEmployee,
-  getAllReviews,
-);
-
-router.get(
-  '/reviews/unread',
-  authenticate,
-  authorizeEmployee,
-  getUnreadReviewCount,
-);
 
 router.post(
   '/:id/duplicate',

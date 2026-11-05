@@ -34,7 +34,7 @@ const OrderTableRow = ({
 }: OrderTableRowProps) => (
   <tr>
     <td>
-      <Link to={`${AdminPath.AdminOrderById}/${id}`}>
+      <Link to={`${AdminPath.AdminOrders}/${id}`}>
         <span className="text-ellipsis">{id}</span>
       </Link>
     </td>
@@ -67,7 +67,7 @@ const OrderTableRow = ({
             ? language.viewOrder
             : language.updateOrder
         }
-        linkTo={`${AdminPath.AdminOrderById}/${id}`}
+        linkTo={`${AdminPath.AdminOrders}/${id}`}
       />
     </td>
   </tr>

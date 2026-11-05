@@ -15,6 +15,7 @@ import favoritesRoutes from './routes/favoritesRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import promoCodeRoutes from './routes/promoCodeRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
 import subCategoryRoutes from './routes/subCategoryRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -70,6 +71,7 @@ app.use('/api/checkout', checkoutRoutes);
 app.use('/api/admin/promo-codes', promoCodeRoutes);
 app.use('/api/promo-code', promoCodeRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // Global error handler
 app.use(errorHandler);
