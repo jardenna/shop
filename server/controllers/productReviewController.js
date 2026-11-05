@@ -1,6 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
-import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Create Product Reviews
@@ -75,15 +74,26 @@ const hasReviewed = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private for Admin
 const getAllReviews = asyncHandler(async (req, res) => {
-  const product = await Product.find().select('reviews').lean();
+  const reviews = await Product.aggregate([
+    { $unwind: '$reviews' },
+    {
+      $project: {
+        id: '$reviews._id',
+        productId: '$_id',
+        productName: 1,
+        image: { $arrayElemAt: ['$images', 0] },
+        userName: '$reviews.name',
+        rating: '$reviews.rating',
+        comment: '$reviews.comment',
+        user: '$reviews.user',
+        isRead: { $ifNull: ['$reviews.isRead', false] },
+        createdAt: '$reviews.createdAt',
+      },
+    },
+    { $sort: { createdAt: -1 } },
+  ]);
 
-  if (!product) {
-    return res.status(404).json({
-      success: false,
-      message: 'Product not found',
-    });
-  }
-  res.send(formatMongoData(product));
+  res.status(200).json(reviews);
 });
 
 export { createProductReviews, getAllReviews, hasReviewed };

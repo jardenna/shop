@@ -19,6 +19,7 @@ const reviewSchema = new Schema(
       required: true,
       ref: 'User',
     },
+    isRead: { type: Boolean, default: false },
   },
   { timestamps: true },
 );
