@@ -17,6 +17,7 @@ import {
 } from '../controllers/adminProductController.js';
 import {
   createProductReviews,
+  getAllReviews,
   hasReviewed,
 } from '../controllers/productReviewController.js';
 import {
@@ -46,6 +47,13 @@ router.post(
   createProductReviews,
 );
 router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
+router.get(
+  '/reviews',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  getAllReviews,
+);
 router.post(
   '/:id/duplicate',
   languageMiddleware,

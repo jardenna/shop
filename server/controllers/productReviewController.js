@@ -1,5 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Product from '../models/productModel.js';
+import { formatMongoData } from '../utils/formatMongoData.js';
 import { t } from '../utils/translator.js';
 
 // @desc    Create Product Reviews
@@ -8,8 +9,6 @@ import { t } from '../utils/translator.js';
 // @access  Public for logged-in users
 const createProductReviews = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
-
-  // Find product by id
   const product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -31,15 +30,13 @@ const createProductReviews = asyncHandler(async (req, res) => {
     });
   }
 
-  // Create review object
   const review = {
     name: req.user.username,
-    user: req.user._id, // keep this as user reference
+    user: req.user._id,
     rating: Number(rating),
     comment,
   };
 
-  // Push review and recalculate
   product.reviews.push(review);
   product.numReviews = product.reviews.length;
   product.rating =
@@ -73,4 +70,20 @@ const hasReviewed = asyncHandler(async (req, res) => {
   res.json({ reviewed });
 });
 
-export { createProductReviews, hasReviewed };
+// @desc    Get all Product Reviews
+// @route   /api/products/reviews
+// @method  GET
+// @access  Private for Admin
+const getAllReviews = asyncHandler(async (req, res) => {
+  const product = await Product.find().select('reviews').lean();
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found',
+    });
+  }
+  res.send(formatMongoData(product));
+});
+
+export { createProductReviews, getAllReviews, hasReviewed };
