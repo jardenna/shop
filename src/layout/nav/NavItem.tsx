@@ -11,6 +11,7 @@ interface NavItemProps {
   ariaControls?: string;
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
+  reviewsCount?: number;
   onBlur?: (event: FocusEventType) => void;
   onFocus?: () => void;
   onMouseEnter?: () => void;
@@ -26,6 +27,7 @@ const NavItem = ({
   ariaHasPopup,
   onBlur,
   ariaControls,
+  reviewsCount,
 }: NavItemProps) => {
   const { language } = useLanguage();
 
@@ -52,8 +54,8 @@ const NavItem = ({
         )}
 
         <span className="nav-text">{language[navItem.linkText]}</span>
-        {navItem.badgeCount && (
-          <CountBadge count={3} ariaLabel="unread reviews" />
+        {navItem.hasBadgeCount && reviewsCount && (
+          <CountBadge count={reviewsCount} ariaLabel="unread reviews" />
         )}
       </NavLink>
       {navItem.subNavList && navItem.heading && (

@@ -18,7 +18,6 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
   const { language } = useLanguage();
 
   const { data: reviewsCount } = useGetReviewsCountQuery();
-  console.log(reviewsCount?.unreadCount);
 
   return (
     <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
@@ -28,6 +27,7 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
         currentUser={currentUser}
         ariaLabel={language.main}
         className="admin-nav"
+        reviewsCount={reviewsCount?.unreadCount}
       />
       <IconBtn
         onClick={onTogglePanel}
