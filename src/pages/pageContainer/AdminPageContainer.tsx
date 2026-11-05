@@ -3,7 +3,7 @@ import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 import { SizeVariant } from '../../types/types';
 
-type AdminPageContainerProps = {
+interface AdminPageContainerProps {
   children: ReactNode;
   heading: string;
   className?: string;
@@ -11,7 +11,7 @@ type AdminPageContainerProps = {
   linkText?: string;
   linkTo?: string;
   variant?: SizeVariant;
-};
+}
 
 const AdminPageContainer = ({
   children,
