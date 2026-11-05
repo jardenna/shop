@@ -4,7 +4,6 @@ export enum AdminPath {
   AdminCategoryCreate = '/dashboard/categories/create',
   AdminCategoryUpdate = '/dashboard/categories/update',
   AdminDiscountCodes = '/dashboard/discountCodes',
-  AdminOrderById = '/dashboard/orders/',
   AdminOrders = '/dashboard/orders',
   AdminProductCreate = '/dashboard/products/create',
   AdminProducts = '/dashboard/products',
