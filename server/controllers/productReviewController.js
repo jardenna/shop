@@ -75,11 +75,29 @@ const hasReviewed = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Private for Admin
 const getAllReviews = asyncHandler(async (req, res) => {
-  const sortField = req.query.sortField;
+  const { sortField } = req.query;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
+  const filter = req.filter;
 
   const reviews = await Product.aggregate([
+    { $match: filter.productName ? { productName: filter.productName } : {} },
     { $unwind: '$reviews' },
+    {
+      $match: {
+        ...(filter.isRead === false && {
+          $or: [
+            { 'reviews.isRead': false },
+            { 'reviews.isRead': { $exists: false } },
+          ],
+        }),
+        ...(filter.isRead === true && {
+          'reviews.isRead': true,
+        }),
+        ...(filter.rating !== undefined && {
+          'reviews.rating': filter.rating,
+        }),
+      },
+    },
     {
       $project: {
         id: '$reviews._id',
@@ -105,5 +123,4 @@ const getAllReviews = asyncHandler(async (req, res) => {
 
   res.status(200).json(sortedReviews);
 });
-
 export { createProductReviews, getAllReviews, hasReviewed };
