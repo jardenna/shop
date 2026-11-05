@@ -8,10 +8,15 @@ import { adminNavList } from '../layout/nav/navLists';
 
 interface AdminHeaderProps {
   isLargeTabletSize: boolean;
+  reviewsCount?: number;
   onLogout: () => void;
 }
 
-const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => {
+const AdminHeader = ({
+  onLogout,
+  isLargeTabletSize,
+  reviewsCount,
+}: AdminHeaderProps) => {
   const { language } = useLanguage();
 
   return (
@@ -25,6 +30,7 @@ const AdminHeader = ({ onLogout, isLargeTabletSize }: AdminHeaderProps) => {
             navList={adminNavList}
             onLogout={onLogout}
             className="admin-nav"
+            reviewsCount={reviewsCount}
           />
         )}
       </>

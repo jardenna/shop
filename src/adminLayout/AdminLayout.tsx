@@ -9,6 +9,7 @@ import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
+import { useGetReviewsCountQuery } from '../features/reviews/reviewsApiSlice';
 import { clearErrorToasts } from '../features/toastSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -46,16 +47,20 @@ const AdminLayout = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
 
+  const { data: reviewsCount } = useGetReviewsCountQuery();
+
   return (
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         onLogout={handleLogout}
         isLargeTabletSize={isLargeTabletSize}
+        reviewsCount={reviewsCount?.unreadCount}
       />
       <div className="main">
         {!isLargeTabletSize && (
           <Aside
+            reviewsCount={reviewsCount?.unreadCount}
             isShown={isMenuCollapsed}
             onTogglePanel={handleCollapseMenu}
             ariaLabel={
