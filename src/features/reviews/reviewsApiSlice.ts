@@ -12,15 +12,14 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
       query: () => `${adminReviewsUrl}/unread`,
       providesTags: [TagTypesEnum.Reviews],
     }),
-    getReviews: builder.mutation<ReviewsResponse, ReviewParams>({
+    getReviews: builder.query<ReviewsResponse, ReviewParams>({
       query: (params) => ({
         url: adminReviewsUrl,
         params,
       }),
-      invalidatesTags: [TagTypesEnum.Reviews],
+      providesTags: [TagTypesEnum.Reviews],
     }),
   }),
 });
 
-export const { useGetReviewsCountQuery, useGetReviewsMutation } =
-  reviewsApiSlice;
+export const { useGetReviewsCountQuery, useGetReviewsQuery } = reviewsApiSlice;
