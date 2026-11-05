@@ -15,6 +15,7 @@ import {
   getProductById,
   updateProduct,
 } from '../controllers/adminProductController.js';
+
 import {
   createProductReviews,
   getAllReviews,
@@ -26,6 +27,7 @@ import {
 } from '../middleware/authMiddleware.js';
 import checkId from '../middleware/checkId.js';
 import filterProductsMiddleware from '../middleware/filterProductsMiddleware.js';
+import filterReviewsMiddleware from '../middleware/filterReviewsMiddleware.js';
 import languageMiddleware from '../middleware/languageMiddleware.js';
 
 const router = express.Router();
@@ -50,6 +52,7 @@ router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
 router.get(
   '/reviews',
   languageMiddleware,
+  filterReviewsMiddleware,
   authenticate,
   authorizeEmployee,
   getAllReviews,
