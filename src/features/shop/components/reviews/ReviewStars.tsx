@@ -13,8 +13,8 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
   const stars = getStarsArray(rating);
 
   return (
-    <>
-      <ul className={`stars ${className}`} aria-hidden={true}>
+    <div className="stars">
+      <ul className={`star-list ${className}`} aria-hidden={true}>
         {stars.map((type, index) => (
           <li key={index}>
             {type === 'full' && (
@@ -26,7 +26,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
         ))}
       </ul>
       <ReviewStarsInfo rating={rating} />
-    </>
+    </div>
   );
 };
 
