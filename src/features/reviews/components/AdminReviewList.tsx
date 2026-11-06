@@ -1,11 +1,11 @@
 import { ReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import Img from '../../../components/Img';
 
-interface ReviewListProps {
+interface AdminReviewListProps {
   reviews: ReviewsResponse[];
 }
 
-const ReviewList = ({ reviews }: ReviewListProps) => (
+const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
   <section>
     {reviews.map((review) => (
       <section key={review.id}>
@@ -20,4 +20,4 @@ const ReviewList = ({ reviews }: ReviewListProps) => (
   </section>
 );
 
-export default ReviewList;
+export default AdminReviewList;
