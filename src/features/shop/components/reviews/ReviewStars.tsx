@@ -6,7 +6,6 @@ import { getStarsArray } from './reviewsUtil.';
 
 interface ReviewStarsProps {
   rating: number;
-
   className?: string;
 }
 
