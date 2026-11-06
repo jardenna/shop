@@ -16,7 +16,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
     <>
       <ul className={`stars ${className}`} aria-hidden={true}>
         {stars.map((type, index) => (
-          <li key={index} className="star-item">
+          <li key={index}>
             {type === 'full' && (
               <Icon iconName={IconName.Star} fill={variables.colorYellow} />
             )}
