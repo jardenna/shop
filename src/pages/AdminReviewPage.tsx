@@ -12,10 +12,10 @@ const AdminReviewPage = () => {
   return (
     <AdminPageContainer heading={language.reviews} hideBreadCrumbs>
       {reviews &&
-        reviews.map((review) => (
-          <section key={review.id}>
+        reviews.map((review, index) => (
+          <section key={index}>
+            {review.id}
             <ReviewStars rating={review.rating} />
-
             <div>
               <Img src={review.image} alt="" className="review-img" />
               <p>{review.productName}</p>
