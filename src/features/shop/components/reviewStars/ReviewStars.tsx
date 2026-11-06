@@ -3,7 +3,7 @@ import variables from '../../../../scss/variables.module.scss';
 import { IconName } from '../../../../types/enums';
 import ReviewStarsInfo from '../reviews/ReviewStarsInfo';
 import { getStarsArray } from '../reviews/reviewsUtil.';
-import './_stars.scss';
+import './_review-stars.scss';
 
 interface ReviewStarsProps {
   rating: number;
