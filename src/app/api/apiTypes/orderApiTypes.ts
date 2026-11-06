@@ -57,7 +57,6 @@ export interface Delivery {
 
 export interface OrderResponse extends DefaultResponse {
   billingAddress: BaseAddress;
-  createdAt: Date;
   delivery: Delivery;
   discount: Discount;
   id: string;

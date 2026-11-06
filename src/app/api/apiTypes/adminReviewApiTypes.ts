@@ -5,7 +5,7 @@ export interface ReviewsCountResponse {
 }
 
 export interface AdminReviewsResponse {
-  createdAt: string;
+  createdAt: Date;
   id: string;
   image: string;
   isRead: boolean;

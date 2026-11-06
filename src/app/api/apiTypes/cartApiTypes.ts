@@ -35,7 +35,6 @@ export interface CartListRequest {
 
 export interface CartListResponse extends DefaultResponse {
   cartItems: Order[];
-  createdAt: Date;
   discount: Discount;
   paymentMethods: PaymentMethods[];
   promoCodeUsed: boolean;

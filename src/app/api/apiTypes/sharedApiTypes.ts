@@ -7,6 +7,7 @@ export type CurrencyResponse = {
 };
 
 export type DefaultResponse = {
+  createdAt: Date;
   message: string;
   success: boolean;
 };

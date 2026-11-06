@@ -4,7 +4,6 @@ import { DefaultResponse } from './sharedApiTypes';
 export interface Category extends DefaultResponse {
   categoryName: string;
   categoryStatus: Status;
-  createdAt: Date;
   id: string;
   scheduledDate?: Date;
 }
