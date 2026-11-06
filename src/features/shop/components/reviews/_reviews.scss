@@ -1,16 +1,5 @@
 @use '../../../../scss/globals' as *;
 
-.stars {
-  display: flex;
-  margin-block: 12px;
-  gap: 12px;
-  align-items: center;
-
-  .star-list {
-    display: flex;
-  }
-}
-
 .review-list {
   display: flex;
   flex-direction: column;
