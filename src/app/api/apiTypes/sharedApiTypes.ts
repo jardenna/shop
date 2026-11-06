@@ -11,13 +11,6 @@ export type DefaultResponse = {
   success: boolean;
 };
 
-export type DefaultResponseType = {
-  createdAt: Date;
-  updatedAt: Date;
-  message?: string;
-  success?: boolean;
-};
-
 // Products
 export type KidsShoesSizes =
   | '24'

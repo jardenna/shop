@@ -1,9 +1,10 @@
 import { SortParams, Status } from './adminApiTypes';
-import { DefaultResponse, DefaultResponseType } from './sharedApiTypes';
+import { DefaultResponse } from './sharedApiTypes';
 
-export interface Category extends DefaultResponseType {
+export interface Category extends DefaultResponse {
   categoryName: string;
   categoryStatus: Status;
+  createdAt: Date;
   id: string;
   scheduledDate?: Date;
 }
@@ -27,7 +28,7 @@ export type UpdateCategoryRequest = {
   id: string;
 };
 
-export interface MainCategory extends DefaultResponseType {
+export interface MainCategory extends DefaultResponse {
   _id: string;
   categoryName: string;
   categoryStatus: Status;
