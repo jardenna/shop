@@ -58,7 +58,10 @@ const NavItem = ({
         >
           {language[navItem.linkText]}
           {navItem.hasBadgeCount && unReadCount && (
-            <CountBadge count={unReadCount} ariaLabel="unread reviews" />
+            <CountBadge
+              count={unReadCount}
+              ariaLabel={`${language.unreadReviews}: ${unReadCount}`}
+            />
           )}
         </span>
       </NavLink>
