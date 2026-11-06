@@ -12,7 +12,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
       query: () => `${adminReviewsUrl}/unread`,
       providesTags: [TagTypesEnum.Reviews],
     }),
-    getReviews: builder.query<ReviewsResponse, ReviewParams>({
+    getReviews: builder.query<ReviewsResponse[], ReviewParams>({
       query: (params) => ({
         url: adminReviewsUrl,
         params,
