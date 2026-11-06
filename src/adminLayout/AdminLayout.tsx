@@ -7,9 +7,9 @@ import {
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
+import { useGetReviewsCountQuery } from '../features/adminReviews/reviewsApiSlice';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { useGetReviewsCountQuery } from '../features/reviews/reviewsApiSlice';
 import { clearErrorToasts } from '../features/toastSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';

@@ -1,6 +1,6 @@
 import Img from '../components/Img';
+import { useGetReviewsQuery } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { useGetReviewsQuery } from '../features/reviews/reviewsApiSlice';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const AdminReviewPage = () => {
@@ -22,7 +22,7 @@ const AdminReviewPage = () => {
             <div>{review.comment}</div>
           </section>
         ))}
-      page
+      pagexx
     </AdminPageContainer>
   );
 };
