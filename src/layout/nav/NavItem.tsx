@@ -53,10 +53,14 @@ const NavItem = ({
           </span>
         )}
 
-        <span className="nav-text">{language[navItem.linkText]}</span>
-        {navItem.hasBadgeCount && unReadCount && (
-          <CountBadge count={unReadCount} ariaLabel="unread reviews" />
-        )}
+        <span
+          className={`nav-text ${navItem.hasBadgeCount ? 'nav-count-badge' : ''}`}
+        >
+          {language[navItem.linkText]}
+          {navItem.hasBadgeCount && unReadCount && (
+            <CountBadge count={unReadCount} ariaLabel="unread reviews" />
+          )}
+        </span>
       </NavLink>
       {navItem.subNavList && navItem.heading && (
         <SubNav
