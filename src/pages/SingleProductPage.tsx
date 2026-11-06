@@ -88,10 +88,7 @@ const SingleProductPage = () => {
       additionalTitle: product.numReviews > 0 ? product.numReviews : '',
       content:
         product.rating > 0 ? (
-          <ReviewList
-            reviewList={product.reviews}
-            title={`${language.numberOfReviews} ${product.numReviews}`}
-          />
+          <ReviewList reviewList={product.reviews} language={language} />
         ) : (
           <span>{language.noReview}</span>
         ),
