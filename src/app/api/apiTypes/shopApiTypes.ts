@@ -39,11 +39,6 @@ export interface ReviewResponse {
   user: string;
 }
 
-export type ReviewsResponse = {
-  message: string;
-  success: boolean;
-};
-
 export type Reviews = {
   comment: string;
   rating: number;

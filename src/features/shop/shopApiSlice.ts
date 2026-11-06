@@ -1,9 +1,11 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import type { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type {
+  BaseShopProduct,
+  DefaultResponse,
+} from '../../app/api/apiTypes/sharedApiTypes';
 import type {
   ProductMenuResponse,
   ReviewsRequest,
-  ReviewsResponse,
   SaleProductResponse,
   ShopAllProductsResponse,
   ShopProductsParams,
@@ -40,7 +42,7 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       query: () => `${productUrl}/sale-menu`,
       providesTags: [TagTypesEnum.Products],
     }),
-    postReviews: builder.mutation<ReviewsResponse, ReviewsRequest>({
+    postReviews: builder.mutation<DefaultResponse, ReviewsRequest>({
       query: ({ productId, reviews }) => ({
         url: `${productUrl}/${productId}/reviews`,
         method: MethodsEnum.Post,
