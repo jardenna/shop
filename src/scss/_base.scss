@@ -98,7 +98,7 @@ img {
   object-fit: cover;
 }
 
-ul:not(.secondary) {
+ul:where(ul:not(.secondary)) {
   list-style: none;
   margin: 0;
   padding: 0;

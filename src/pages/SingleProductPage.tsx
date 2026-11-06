@@ -13,7 +13,6 @@ import ProductPrice from '../features/shop/components/productPrice/ProductPrice'
 import ReviewList from '../features/shop/components/reviews/ReviewList';
 import ReviewsForm from '../features/shop/components/reviews/ReviewsForm';
 import ReviewStars from '../features/shop/components/reviews/ReviewStars';
-import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
 import InStockContainer from '../features/shop/components/singleProduct/InStockContainer';
 import SingleProductHeader from '../features/shop/components/singleProduct/SingleProductHeader';
 import SingleProductPurchaseSection from '../features/shop/components/singleProduct/SingleProductPurchaseSection';
@@ -88,10 +87,7 @@ const SingleProductPage = () => {
       additionalTitle: product.numReviews > 0 ? product.numReviews : '',
       content:
         product.rating > 0 ? (
-          <ReviewList
-            reviewList={product.reviews}
-            title={`${language.numberOfReviews} ${product.numReviews}`}
-          />
+          <ReviewList reviewList={product.reviews} language={language} />
         ) : (
           <span>{language.noReview}</span>
         ),
@@ -119,11 +115,7 @@ const SingleProductPage = () => {
 
           <article className="single-product-content">
             <SingleProductHeader product={product} ariaLabel={language.page} />
-            <ReviewStars
-              stars={getStarsArray(product.rating)}
-              rating={product.rating}
-              className="rating-info"
-            />
+            <ReviewStars rating={product.rating} className="rating-info" />
             <InStockContainer
               currentUser={currentUser}
               missingSizes={missingSizes}

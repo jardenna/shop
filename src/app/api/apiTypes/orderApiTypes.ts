@@ -7,7 +7,7 @@ import {
 import { BaseAddress } from './addressApiTypes';
 import { BaseOrder, Order } from './cartApiTypes';
 import { Payment, PaymentMethods } from './paymentApiTypes';
-import { DefaultResponseType, Discount, Summary } from './sharedApiTypes';
+import { DefaultResponse, Discount, Summary } from './sharedApiTypes';
 
 export interface CreateOrderRequest extends StandardAddressIds {
   orderItems: BaseOrder[];
@@ -55,7 +55,7 @@ export interface Delivery {
   statusHistory: StatusHistory[];
 }
 
-export interface OrderResponse extends DefaultResponseType {
+export interface OrderResponse extends DefaultResponse {
   billingAddress: BaseAddress;
   delivery: Delivery;
   discount: Discount;

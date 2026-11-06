@@ -1,21 +1,21 @@
 import { mainCategoryValues, subCategoryValues } from '../apiConstants';
 import type { Status } from './adminApiTypes';
+import { ReviewResponse } from './shopApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
 };
 
 export type DefaultResponse = {
+  createdAt: Date;
   message: string;
   success: boolean;
 };
 
-export type DefaultResponseType = {
-  createdAt: Date;
-  updatedAt: Date;
-  message?: string;
-  success?: boolean;
-};
+export interface BaseReviews {
+  comment: string;
+  rating: number;
+}
 
 // Products
 export type KidsShoesSizes =
@@ -80,14 +80,6 @@ export type BaseProductParams = {
   page?: string;
   productName?: string;
   productsPerPage?: number;
-};
-
-export type ReviewResponse = DefaultResponseType & {
-  comment: string;
-  id: string;
-  name: string;
-  rating: number;
-  user: string;
 };
 
 export type ReviewRequest = {

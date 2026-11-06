@@ -12,7 +12,7 @@ export interface NavProps {
   navList: NavListProps[];
   className?: string;
   hideAriaHasPopup?: boolean;
-  reviewsCount?: number;
+  unReadCount?: number;
 }
 
 const Nav = ({
@@ -20,7 +20,7 @@ const Nav = ({
   className,
   hideAriaHasPopup,
   ariaLabel,
-  reviewsCount,
+  unReadCount,
 }: NavProps) => {
   const location = useLocation();
   const [isSubNavShown, setIsSubNavShown] = useState(false);
@@ -61,7 +61,7 @@ const Nav = ({
 
           return (
             <NavItem
-              reviewsCount={reviewsCount}
+              unReadCount={unReadCount}
               key={navItem.linkText}
               navItem={navItem}
               ariaControls={hasSubNav ? 'sub-menu' : undefined}

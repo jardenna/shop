@@ -3,8 +3,9 @@ import type {
   BasePagination,
   BaseProduct,
   BaseProductParams,
+  BaseReviews,
   BaseShopProduct,
-  DefaultResponseType,
+  DefaultResponse,
   MainCategoryNames,
   Size,
 } from './sharedApiTypes';
@@ -30,27 +31,17 @@ export type ShopAllProductsResponse = BasePagination & {
   totalCount: number;
 };
 
-export type ReviewsResponse = {
-  message: string;
-  success: boolean;
-};
-
-export type Reviews = {
-  comment: string;
-  rating: number;
-};
-
-export type DisplyReviews = DefaultResponseType & {
-  comment: string;
+export interface ReviewResponse extends BaseReviews {
   createdAt: Date;
+  id: string;
   name: string;
-  rating: number;
-};
+  user: string;
+}
 
-export type ReviewsRequest = {
+export interface ReviewsRequest {
   productId: string;
-  reviews: Reviews;
-};
+  reviews: BaseReviews;
+}
 
 export type ProductMenuResponse = {
   categoryId: string;
@@ -77,7 +68,7 @@ export interface ProductFormData extends BaseProductFormData {
 export type PreferredFashion =
   'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
 
-export type MyAccountResponse = DefaultResponseType &
+export type MyAccountResponse = DefaultResponse &
   BaseProfile & {
     addresses: Address[];
     favorites: string[];

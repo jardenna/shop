@@ -7,6 +7,7 @@ import {
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import SkipLink from '../components/skipLinks/SkipLinks';
+import { useGetReviewsCountQuery } from '../features/adminReviews/reviewsApiSlice';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { clearErrorToasts } from '../features/toastSlice';
@@ -46,16 +47,20 @@ const AdminLayout = () => {
     setIsMenuCollapsed(!isMenuCollapsed);
   };
 
+  const { data: unReadCount } = useGetReviewsCountQuery();
+
   return (
     <div className="main-container admin-container">
       {!isMobileSize && <SkipLink />}
       <AdminHeader
         onLogout={handleLogout}
         isLargeTabletSize={isLargeTabletSize}
+        unReadCount={unReadCount?.unreadCount}
       />
       <div className="main">
         {!isLargeTabletSize && (
           <Aside
+            unReadCount={unReadCount?.unreadCount}
             isShown={isMenuCollapsed}
             onTogglePanel={handleCollapseMenu}
             ariaLabel={

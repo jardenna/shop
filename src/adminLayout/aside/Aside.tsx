@@ -1,7 +1,6 @@
 import IconBtn from '../../components/IconBtn';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetReviewsCountQuery } from '../../features/reviews/reviewsApiSlice';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navLists';
 import { IconName } from '../../types/enums';
@@ -10,14 +9,18 @@ import './_aside.scss';
 interface AsideProps {
   ariaLabel: string;
   isShown: boolean;
+  unReadCount?: number;
   onTogglePanel: () => void;
 }
 
-const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
+const Aside = ({
+  onTogglePanel,
+  isShown,
+  ariaLabel,
+  unReadCount,
+}: AsideProps) => {
   const { currentUser } = useAuth();
   const { language } = useLanguage();
-
-  const { data: reviewsCount } = useGetReviewsCountQuery();
 
   return (
     <aside className={`aside ${isShown ? 'collapsed' : ''}`}>
@@ -27,7 +30,7 @@ const Aside = ({ onTogglePanel, isShown, ariaLabel }: AsideProps) => {
         currentUser={currentUser}
         ariaLabel={language.main}
         className="admin-nav"
-        reviewsCount={reviewsCount?.unreadCount}
+        unReadCount={unReadCount}
       />
       <IconBtn
         onClick={onTogglePanel}

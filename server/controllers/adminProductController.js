@@ -93,6 +93,9 @@ const duplicateProduct = asyncHandler(async (req, res) => {
   const copy = new Product({
     ...rest,
     countInStock,
+    reviews: [],
+    rating: 0,
+    numReviews: 0,
     images: [],
     createdAt: new Date(),
     productName: `${rest.productName} (${t('copy', req.lang)})`,

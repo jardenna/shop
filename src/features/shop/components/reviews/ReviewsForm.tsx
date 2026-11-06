@@ -50,7 +50,6 @@ const ReviewsForm = ({
       productId,
       reviews: values,
     }).unwrap();
-    console.log(result);
 
     if (result.success) {
       onAddToast({

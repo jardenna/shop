@@ -1,6 +1,6 @@
 import { SortParams, Status } from './adminApiTypes';
 import { Category, MainCategory } from './categoryApiTypes';
-import { DefaultResponse, DefaultResponseType } from './sharedApiTypes';
+import { DefaultResponse } from './sharedApiTypes';
 
 export interface CreateSubCategoryRequest {
   category: string;
@@ -33,7 +33,7 @@ export interface SubCategoryResponse extends BaseSubCategory {
   scheduledDate?: Date;
 }
 
-export interface GetSubCategoriesResponse extends DefaultResponseType {
+export interface GetSubCategoriesResponse extends DefaultResponse {
   subCategories: SubCategoryResponse[];
 }
 

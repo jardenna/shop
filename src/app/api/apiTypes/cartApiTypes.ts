@@ -1,7 +1,7 @@
 import { Address } from './addressApiTypes';
 import { PaymentMethods } from './paymentApiTypes';
 import type {
-  DefaultResponseType,
+  DefaultResponse,
   Discount,
   Size,
   Summary,
@@ -33,7 +33,7 @@ export interface CartListRequest {
   cartItems: AddToCartRequest;
 }
 
-export interface CartListResponse extends DefaultResponseType {
+export interface CartListResponse extends DefaultResponse {
   cartItems: Order[];
   discount: Discount;
   paymentMethods: PaymentMethods[];
