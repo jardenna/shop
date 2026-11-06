@@ -3,12 +3,6 @@
 .stars {
   display: flex;
   margin-block: 12px;
-
-  svg {
-    &.filled {
-      color: $color-yellow;
-    }
-  }
 }
 
 .review-list {
@@ -72,6 +66,10 @@
 
     svg {
       @include transition($duration: 0.2s);
+
+      &.filled {
+        color: $color-yellow;
+      }
     }
   }
 
