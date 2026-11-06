@@ -1,8 +1,8 @@
-import Icon from '../../../../components/icons/Icon';
-import variables from '../../../../scss/variables.module.scss';
-import { IconName } from '../../../../types/enums';
-import ReviewStarsInfo from '../reviews/ReviewStarsInfo';
-import { getStarsArray } from '../reviews/reviewsUtil.';
+import ReviewStarsInfo from '../../features/shop/components/reviews/ReviewStarsInfo';
+import { getStarsArray } from '../../features/shop/components/reviews/reviewsUtil.';
+import variables from '../../scss/variables.module.scss';
+import { IconName } from '../../types/enums';
+import Icon from '../icons/Icon';
 import './_review-stars.scss';
 
 interface ReviewStarsProps {

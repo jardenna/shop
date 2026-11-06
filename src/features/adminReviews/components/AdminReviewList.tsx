@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
 import { AdminReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import Img from '../../../components/Img';
+import ReviewStars from '../../../components/reviewStars/ReviewStars';
 import { ShopPath } from '../../../layout/nav/enums';
-import ReviewStars from '../../shop/components/reviewStars/ReviewStars';
 import './_admin-review.scss';
 
 interface AdminReviewListProps {
