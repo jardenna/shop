@@ -12,8 +12,8 @@ const AdminReviewPage = () => {
   return (
     <AdminPageContainer heading={language.reviews} hideBreadCrumbs>
       {reviews &&
-        reviews.map((review, index) => (
-          <section key={index}>
+        reviews.map((review) => (
+          <section key={review.id}>
             {review.id}
             <ReviewStars rating={review.rating} />
             <div>
