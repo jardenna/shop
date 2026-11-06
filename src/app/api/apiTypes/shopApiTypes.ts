@@ -30,24 +30,22 @@ export type ShopAllProductsResponse = BasePagination & {
   totalCount: number;
 };
 
-export interface ReviewResponse {
+interface Reviews {
   comment: string;
+  rating: number;
+}
+
+export interface ReviewResponse extends Reviews {
   createdAt: Date;
   id: string;
   name: string;
-  rating: number;
   user: string;
 }
 
-export type Reviews = {
-  comment: string;
-  rating: number;
-};
-
-export type ReviewsRequest = {
+export interface ReviewsRequest {
   productId: string;
   reviews: Reviews;
-};
+}
 
 export type ProductMenuResponse = {
   categoryId: string;
