@@ -40,13 +40,6 @@ export type Reviews = {
   rating: number;
 };
 
-export type DisplyReviews = DefaultResponseType & {
-  comment: string;
-  createdAt: Date;
-  name: string;
-  rating: number;
-};
-
 export type ReviewsRequest = {
   productId: string;
   reviews: Reviews;

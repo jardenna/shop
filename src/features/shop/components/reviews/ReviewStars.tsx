@@ -4,11 +4,11 @@ import { IconName } from '../../../../types/enums';
 import ReviewStarsInfo from './ReviewStarsInfo';
 import { StarType } from './reviewsUtil.';
 
-type ReviewStarsProps = {
+interface ReviewStarsProps {
   rating: number;
   stars: StarType[];
   className?: string;
-};
+}
 
 const ReviewStars = ({ stars, rating, className = '' }: ReviewStarsProps) => (
   <div className="stars">

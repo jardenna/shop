@@ -82,13 +82,14 @@ export type BaseProductParams = {
   productsPerPage?: number;
 };
 
-export type ReviewResponse = DefaultResponseType & {
+export interface ReviewResponse {
   comment: string;
+  createdAt: Date;
   id: string;
   name: string;
   rating: number;
   user: string;
-};
+}
 
 export type ReviewRequest = {
   comment: string;

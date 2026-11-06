@@ -1,11 +1,11 @@
-import { DisplyReviews } from '../../../../app/api/apiTypes/shopApiTypes';
+import { ReviewResponse } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { Language } from '../../../../types/types';
 import ReviewStars from './ReviewStars';
 import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
 
 type ReviewListProps = {
   language: Language;
-  reviewList: DisplyReviews[];
+  reviewList: ReviewResponse[];
 };
 
 const ReviewList = ({ reviewList, language }: ReviewListProps) => (
