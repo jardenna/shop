@@ -1,5 +1,6 @@
 import { ReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import Img from '../../../components/Img';
+
 interface ReviewListProps {
   reviews: ReviewsResponse[];
 }
