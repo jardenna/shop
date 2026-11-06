@@ -30,6 +30,15 @@ export type ShopAllProductsResponse = BasePagination & {
   totalCount: number;
 };
 
+export interface ReviewResponse {
+  comment: string;
+  createdAt: Date;
+  id: string;
+  name: string;
+  rating: number;
+  user: string;
+}
+
 export type ReviewsResponse = {
   message: string;
   success: boolean;

@@ -1,5 +1,6 @@
 import { mainCategoryValues, subCategoryValues } from '../apiConstants';
 import type { Status } from './adminApiTypes';
+import { ReviewResponse } from './shopApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
@@ -81,15 +82,6 @@ export type BaseProductParams = {
   productName?: string;
   productsPerPage?: number;
 };
-
-export interface ReviewResponse {
-  comment: string;
-  createdAt: Date;
-  id: string;
-  name: string;
-  rating: number;
-  user: string;
-}
 
 export type ReviewRequest = {
   comment: string;

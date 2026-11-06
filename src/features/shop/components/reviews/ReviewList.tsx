@@ -1,4 +1,4 @@
-import { ReviewResponse } from '../../../../app/api/apiTypes/sharedApiTypes';
+import { ReviewResponse } from '../../../../app/api/apiTypes/shopApiTypes';
 import { Language } from '../../../../types/types';
 import ReviewStars from './ReviewStars';
 import { getReviewAgeLabel, getStarsArray } from './reviewsUtil.';
