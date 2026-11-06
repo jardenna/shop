@@ -1,20 +1,18 @@
 import { SortParams } from './adminApiTypes';
+import { BaseReviews } from './sharedApiTypes';
 
 export interface ReviewsCountResponse {
   unreadCount: number;
 }
 
-export interface AdminReviewsResponse {
+export interface AdminReviewsResponse extends BaseReviews {
   createdAt: Date;
   id: string;
   image: string;
   isRead: boolean;
   productId: string;
   productName: string;
-  rating: number;
-  user: string;
   userName: string;
-  comment?: string | null;
 }
 
 export interface ReviewParams extends Partial<SortParams> {

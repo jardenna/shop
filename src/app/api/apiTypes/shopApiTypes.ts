@@ -3,6 +3,7 @@ import type {
   BasePagination,
   BaseProduct,
   BaseProductParams,
+  BaseReviews,
   BaseShopProduct,
   DefaultResponse,
   MainCategoryNames,
@@ -30,12 +31,7 @@ export type ShopAllProductsResponse = BasePagination & {
   totalCount: number;
 };
 
-interface Reviews {
-  comment: string;
-  rating: number;
-}
-
-export interface ReviewResponse extends Reviews {
+export interface ReviewResponse extends BaseReviews {
   createdAt: Date;
   id: string;
   name: string;
@@ -44,7 +40,7 @@ export interface ReviewResponse extends Reviews {
 
 export interface ReviewsRequest {
   productId: string;
-  reviews: Reviews;
+  reviews: BaseReviews;
 }
 
 export type ProductMenuResponse = {

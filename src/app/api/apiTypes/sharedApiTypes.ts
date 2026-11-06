@@ -12,6 +12,11 @@ export type DefaultResponse = {
   success: boolean;
 };
 
+export interface BaseReviews {
+  comment: string;
+  rating: number;
+}
+
 // Products
 export type KidsShoesSizes =
   | '24'
