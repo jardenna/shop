@@ -4,7 +4,7 @@ export interface ReviewsCountResponse {
   unreadCount: number;
 }
 
-export interface ReviewsResponse {
+export interface AdminReviewsResponse {
   createdAt: string;
   id: string;
   image: string;

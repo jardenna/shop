@@ -1,8 +1,8 @@
-import { ReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
+import { AdminReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import Img from '../../../components/Img';
 
 interface AdminReviewListProps {
-  reviews: ReviewsResponse[];
+  reviews: AdminReviewsResponse[];
 }
 
 const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
