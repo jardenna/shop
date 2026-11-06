@@ -4,7 +4,7 @@ import type {
   BaseProduct,
   BaseProductParams,
   BaseShopProduct,
-  DefaultResponseType,
+  DefaultResponse,
   MainCategoryNames,
   Size,
 } from './sharedApiTypes';
@@ -72,7 +72,7 @@ export interface ProductFormData extends BaseProductFormData {
 export type PreferredFashion =
   'mensFashion' | 'womensFashion' | 'kidsFashion' | 'noPreference';
 
-export type MyAccountResponse = DefaultResponseType &
+export type MyAccountResponse = DefaultResponse &
   BaseProfile & {
     addresses: Address[];
     favorites: string[];
