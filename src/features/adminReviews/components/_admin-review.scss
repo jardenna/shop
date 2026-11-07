@@ -22,20 +22,16 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    // .chip {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 4px;
-    // }
   }
 
   .admin-review-footer {
     padding-top: 20px;
+    margin-top: 20px;
     display: flex;
     gap: 12px;
     justify-content: space-between;
     align-items: center;
+    border-top: $border-dark;
 
     .btn {
       min-height: auto;

@@ -43,11 +43,12 @@ const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
           <div className="admin-review-footer">
             <IconBtn
               // onClick={onClick}
-              iconName={IconName.Undo}
+              iconName={IconName.Check}
               ariaLabel="Marker som læst"
               variant={BtnVariant.Secondary}
               showLabel
-            />{' '}
+              disabled={review.isRead}
+            />
             <Chip
               chipText={review.isRead ? 'Læst' : 'Ulæst'}
               variant={review.isRead ? chipVariants.read : chipVariants.unRead}
