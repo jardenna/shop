@@ -9,7 +9,7 @@ export const chipVariants: ChipVariantMap = {
   current: 'success',
   published: 'success',
   cancelled: 'danger',
-  unRead: 'danger',
+  unread: 'danger',
   created: 'info',
   shipped: 'info',
   processing: 'warning',
