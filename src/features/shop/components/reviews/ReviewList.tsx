@@ -1,5 +1,5 @@
 import { ReviewResponse } from '../../../../app/api/apiTypes/shopApiTypes';
-import ReviewStars from '../../../../components/reviewStars/ReviewStars';
+import ReviewStars from '../../../../components/ReviewStars';
 import { Language } from '../../../../types/types';
 import { getReviewAgeLabel } from './reviewsUtil.';
 

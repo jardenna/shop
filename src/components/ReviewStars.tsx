@@ -1,9 +1,8 @@
-import ReviewStarsInfo from '../../features/shop/components/reviews/ReviewStarsInfo';
-import { getStarsArray } from '../../features/shop/components/reviews/reviewsUtil.';
-import variables from '../../scss/variables.module.scss';
-import { IconName } from '../../types/enums';
-import Icon from '../icons/Icon';
-import './_review-stars.scss';
+import ReviewStarsInfo from '../features/shop/components/reviews/ReviewStarsInfo';
+import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
+import variables from '../scss/variables.module.scss';
+import { IconName } from '../types/enums';
+import Icon from './icons/Icon';
 
 interface ReviewStarsProps {
   rating: number;
@@ -14,7 +13,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
   const stars = getStarsArray(rating);
 
   return (
-    <div className="stars">
+    <>
       <ul className={`star-list ${className}`} aria-hidden={true}>
         {stars.map((type, index) => (
           <li key={index}>
@@ -27,7 +26,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
         ))}
       </ul>
       <ReviewStarsInfo rating={rating} />
-    </div>
+    </>
   );
 };
 

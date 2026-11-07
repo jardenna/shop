@@ -5,7 +5,7 @@ import Accordion from '../components/accordion/Accordion';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import ImgList from '../components/ImgList';
 import NotFoundError from '../components/NotFoundError';
-import ReviewStars from '../components/reviewStars/ReviewStars';
+import ReviewStars from '../components/ReviewStars';
 import SkeletonSinglePage from '../components/skeleton/skeletonSinglePage/SkeletonSinglePage';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useLanguage } from '../features/language/useLanguage';
