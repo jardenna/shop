@@ -66,12 +66,14 @@ const AdminReviewList = ({
                 disabled={review.isRead}
                 isLoading={isReadReviewLoading && loadingReviewId === review.id}
               />
-              <Chip
-                chipText={review.isRead ? language.read : language.unread}
-                variant={
-                  review.isRead ? chipVariants.read : chipVariants.unread
-                }
-              />
+              <span aria-live="polite" aria-atomic="true">
+                <Chip
+                  chipText={review.isRead ? language.read : language.unread}
+                  variant={
+                    review.isRead ? chipVariants.read : chipVariants.unread
+                  }
+                />
+              </span>
             </div>
           </article>
         </li>
