@@ -3,6 +3,8 @@ import express from 'express';
 import {
   getAllReviews,
   getUnreadReviewCount,
+  markAllReviewsAsRead,
+  markReviewAsRead,
 } from '../controllers/productReviewController.js';
 
 import filterReviewsMiddleware from '../middleware/filterReviewsMiddleware.js';
@@ -25,5 +27,13 @@ router.get(
 );
 
 router.get('/unread', authenticate, authorizeEmployee, getUnreadReviewCount);
+router.patch(
+  '/read-all',
+  authenticate,
+  authorizeEmployee,
+  markAllReviewsAsRead,
+);
+
+router.patch('/read-all', authenticate, authorizeEmployee, markReviewAsRead);
 
 export default router;
