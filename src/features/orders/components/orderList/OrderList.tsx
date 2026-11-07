@@ -1,6 +1,8 @@
+import { Link } from 'react-router';
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import LabelValue from '../../../../components/LabelValue';
+import { ShopPath } from '../../../../layout/nav/enums';
 import { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
@@ -25,7 +27,10 @@ const OrderList = ({ orders, language, hidePrice }: OrderListProps) => (
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
         <article className="order-cart">
-          <Img src={order.image} alt="" className="order-img" />
+          <Link to={`${ShopPath.AllProducts}/${order.productId}`}>
+            <Img src={order.image} alt="" className="order-img" />
+          </Link>
+
           <div>
             <h2 className="order-item-title">{order.productName}</h2>
             {!hidePrice && (
