@@ -2,7 +2,7 @@
 
 .admin-review-cart {
   display: grid;
-  grid-template-columns: 352px minmax(0, 1fr);
+  grid-template-columns: rem(352px) minmax(0, 1fr);
   gap: 20px;
   border-bottom: $border;
   padding: 20px;
