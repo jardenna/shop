@@ -11,29 +11,33 @@ interface AdminReviewListProps {
 }
 
 const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
-  <div className="admin-review-list">
+  <ul className="admin-review-list">
     {reviews.map((review) => (
-      <section key={review.id} className="admin-review-cart">
-        <div className="review-product">
+      <li key={review.id} className="admin-review-cart">
+        <article className="review-product">
           <Link to={`${ShopPath.AllProducts}/${review.productId}`}>
             <Img src={review.image} alt="" className="review-product-img" />
           </Link>
-          <div>
-            <p>{review.productName}</p>
-            <p>Reviewed by {review.userName}</p>
-            <p>Total rating</p>
+          <div className="review-product-info">
+            <h2 className="review-product-name">{review.productName}</h2>
+            <p>
+              <span className="text-bold">Reviewed by:</span> {review.userName}
+            </p>
+            <p>
+              <span className="text-bold">Total rating:</span> {review.rating}
+            </p>
           </div>
-        </div>
-        <div>
-          <div>
+        </article>
+        <article>
+          <div className="review-info">
             <ReviewStars rating={review.rating} />
             <DateDisplay date={review.createdAt} month="2-digit" />
           </div>
-          {review.comment}
-        </div>
-      </section>
+          <p className="review-comment">{review.comment}</p>
+        </article>
+      </li>
     ))}
-  </div>
+  </ul>
 );
 
 export default AdminReviewList;

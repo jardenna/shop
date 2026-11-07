@@ -9,9 +9,12 @@ const AdminReviewPage = () => {
   const { data: reviews } = useGetReviewsQuery({});
 
   return (
-    <AdminPageContainer heading={language.reviews} hideBreadCrumbs>
+    <AdminPageContainer
+      heading={language.reviews}
+      hideBreadCrumbs
+      variant="medium"
+    >
       {reviews && <AdminReviewList reviews={reviews} />}
-      pagexx
     </AdminPageContainer>
   );
 };
