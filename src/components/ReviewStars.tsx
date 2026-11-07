@@ -9,12 +9,12 @@ interface ReviewStarsProps {
   className?: string;
 }
 
-const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
+const ReviewStars = ({ rating, className }: ReviewStarsProps) => {
   const stars = getStarsArray(rating);
 
   return (
-    <>
-      <ul className={`star-list ${className}`} aria-hidden={true}>
+    <div className={className}>
+      <ul className="star-list" aria-hidden={true}>
         {stars.map((type, index) => (
           <li key={index}>
             {type === 'full' && (
@@ -26,7 +26,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
         ))}
       </ul>
       <ReviewStarsInfo rating={rating} />
-    </>
+    </div>
   );
 };
 
