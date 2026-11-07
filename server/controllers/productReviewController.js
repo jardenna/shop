@@ -183,7 +183,7 @@ const markAllReviewsAsRead = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Mark unread reviews as read by id
+// @desc    Mark one review as read
 // @route   /api/reviews/:reviewId/read
 // @method  Patch
 // @access  Private for admin and employees
