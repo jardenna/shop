@@ -37,12 +37,12 @@ const AdminReviewList = ({
             <div className="review-product-info">
               <h2 className="review-product-name">{review.productName}</h2>
               <p>
-                <span className="text-bold">{language.reviewedBy}:</span>{' '}
-                {review.userName}
+                <span className="text-bold">{language.reviewedBy}: </span>
+                <span>{review.userName}</span>
               </p>
               <p>
-                <span className="text-bold">{language.totalRating}:</span>{' '}
-                {review.rating}
+                <span className="text-bold">{language.totalRating}: </span>
+                <span>{review.rating}</span>
               </p>
             </div>
           </article>
