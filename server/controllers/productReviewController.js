@@ -178,7 +178,8 @@ const markAllReviewsAsRead = asyncHandler(async (req, res) => {
   );
 
   res.status(200).json({
-    message: 'All reviews marked as read.',
+    success: true,
+    message: t('allReviewMarkedAsRead', req.lang),
     modifiedCount: result.modifiedCount,
   });
 });
