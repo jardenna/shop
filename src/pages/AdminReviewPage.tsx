@@ -13,8 +13,10 @@ const AdminReviewPage = () => {
 
   const { data: reviews } = useGetReviewsQuery({});
 
-  const [markAsRead, { isLoading: isReadReviewLoading }] =
-    useMarkOneAsreadMutation();
+  const [
+    markAsRead,
+    { isLoading: isReadReviewLoading, originalArgs: loadingReviewId },
+  ] = useMarkOneAsreadMutation();
 
   const handleReadOneReview = async (reviewId: string) => {
     const result = await markAsRead(reviewId).unwrap();
@@ -36,6 +38,7 @@ const AdminReviewPage = () => {
         <AdminReviewList
           reviews={reviews}
           isReadReviewLoading={isReadReviewLoading}
+          loadingReviewId={loadingReviewId}
           onReadOneReview={handleReadOneReview}
         />
       )}

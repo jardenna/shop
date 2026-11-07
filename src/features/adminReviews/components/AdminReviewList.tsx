@@ -14,6 +14,7 @@ import './_admin-review.scss';
 interface AdminReviewListProps {
   isReadReviewLoading: boolean;
   reviews: AdminReviewsResponse[];
+  loadingReviewId?: string;
   onReadOneReview: (id: string) => void;
 }
 
@@ -21,6 +22,7 @@ const AdminReviewList = ({
   reviews,
   onReadOneReview,
   isReadReviewLoading,
+  loadingReviewId,
 }: AdminReviewListProps) => {
   const { language } = useLanguage();
 
@@ -62,7 +64,7 @@ const AdminReviewList = ({
                 variant={BtnVariant.Secondary}
                 showLabel
                 disabled={review.isRead}
-                isLoading={isReadReviewLoading}
+                isLoading={isReadReviewLoading && loadingReviewId === review.id}
               />
               <Chip
                 chipText={review.isRead ? language.read : language.unread}

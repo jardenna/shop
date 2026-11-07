@@ -36,6 +36,7 @@
     .btn {
       min-height: auto;
       max-width: fit-content;
+      min-width: rem(148px);
       padding: 8px;
       display: flex;
       gap: 4px;
