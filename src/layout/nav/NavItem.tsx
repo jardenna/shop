@@ -48,7 +48,7 @@ const NavItem = ({
         aria-expanded={ariaExpanded}
       >
         {navItem.iconName && (
-          <span>
+          <span className={navItem.className}>
             <Icon iconName={navItem.iconName} />
           </span>
         )}

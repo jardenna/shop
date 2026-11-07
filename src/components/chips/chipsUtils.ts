@@ -5,9 +5,11 @@ type ChipVariantMap = Record<string, ChipVariant>;
 export const chipVariants: ChipVariantMap = {
   delivered: 'success',
   active: 'success',
+  read: 'success',
   current: 'success',
   published: 'success',
   cancelled: 'danger',
+  unRead: 'danger',
   created: 'info',
   shipped: 'info',
   processing: 'warning',

@@ -1,22 +1,22 @@
-import Icon from '../../../../components/icons/Icon';
-import variables from '../../../../scss/variables.module.scss';
-import { IconName } from '../../../../types/enums';
-import ReviewStarsInfo from './ReviewStarsInfo';
-import { getStarsArray } from './reviewsUtil.';
+import ReviewStarsInfo from '../features/shop/components/reviews/ReviewStarsInfo';
+import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
+import variables from '../scss/variables.module.scss';
+import { IconName } from '../types/enums';
+import Icon from './icons/Icon';
 
 interface ReviewStarsProps {
   rating: number;
   className?: string;
 }
 
-const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
+const ReviewStars = ({ rating, className }: ReviewStarsProps) => {
   const stars = getStarsArray(rating);
 
   return (
-    <>
-      <ul className={`stars ${className}`} aria-hidden={true}>
+    <div className={className}>
+      <ul className="star-list" aria-hidden={true}>
         {stars.map((type, index) => (
-          <li key={index} className="star-item">
+          <li key={index}>
             {type === 'full' && (
               <Icon iconName={IconName.Star} fill={variables.colorYellow} />
             )}
@@ -26,7 +26,7 @@ const ReviewStars = ({ rating, className = '' }: ReviewStarsProps) => {
         ))}
       </ul>
       <ReviewStarsInfo rating={rating} />
-    </>
+    </div>
   );
 };
 

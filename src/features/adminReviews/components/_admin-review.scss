@@ -1,6 +1,78 @@
 @use '../../../scss/globals' as *;
 
-.review-product-img {
-  width: 120px;
-  height: 120px;
+.admin-review-cart {
+  display: grid;
+  grid-template-columns: rem(400px) minmax(0, 1fr);
+  gap: 32px;
+  border-bottom: $border;
+  padding: 20px;
+
+  p {
+    margin: 0;
+  }
+
+  .review-product-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .review-info-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admin-review-footer {
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    border-top: $border-dark;
+
+    .btn {
+      min-height: auto;
+      max-width: fit-content;
+      padding: 8px;
+      display: flex;
+      gap: 4px;
+      font-size: 14px;
+
+      svg {
+        height: 1em;
+        width: 1em;
+      }
+    }
+  }
+
+  .review-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .review-product-name {
+    text-transform: uppercase;
+    font-family: $font-primary-semibold;
+    font-size: $font-small;
+  }
+
+  .review-product-img {
+    width: rem(120px);
+    height: rem(120px);
+  }
+
+  .review-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .review-comment {
+    text-wrap: pretty;
+    flex-grow: 1;
+  }
 }

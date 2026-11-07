@@ -1,6 +1,6 @@
 import { ReviewResponse } from '../../../../app/api/apiTypes/shopApiTypes';
+import ReviewStars from '../../../../components/ReviewStars';
 import { Language } from '../../../../types/types';
-import ReviewStars from './ReviewStars';
 import { getReviewAgeLabel } from './reviewsUtil.';
 
 type ReviewListProps = {

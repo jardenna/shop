@@ -8,6 +8,13 @@
 }
 
 .nav-item {
+  .review-nav-item {
+    svg {
+      fill: none;
+      stroke: currentcolor;
+    }
+  }
+
   .count-badge {
     position: static;
     width: rem(20px);
