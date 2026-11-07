@@ -468,8 +468,10 @@ pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
 pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
 dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
 reviewNotFound;Review not found;Anmeldelsen blev ikke fundet
-reviewMarkedAsRead;Review marked as read;Anmeldelsen markeret som læst
-markAsRead;Mark as read;Marker som læst
+reviewMarkedAsRead;Review marked as read;Anmeldelsen blev markeret som læst
+allReviewMarkedAsRead;All review marked as read;Alle anmeldelser blev markeret som læst
+markAsRead;Mark as read;Markér som læst
+markAllAsRead;Mark all as read;Markér alle som læst
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
