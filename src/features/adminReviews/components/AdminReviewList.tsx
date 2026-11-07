@@ -27,7 +27,7 @@ const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
         <div>
           <div>
             <ReviewStars rating={review.rating} />
-            <DateDisplay date={review.createdAt} />
+            <DateDisplay date={review.createdAt} month="2-digit" />
           </div>
           {review.comment}
         </div>
