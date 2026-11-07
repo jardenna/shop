@@ -57,12 +57,14 @@ const NavItem = ({
           className={`nav-text ${navItem.hasBadgeCount ? 'nav-count-badge' : ''}`}
         >
           {language[navItem.linkText]}
-          {navItem.hasBadgeCount && unReadCount && (
-            <CountBadge
-              count={unReadCount}
-              ariaLabel={`${language.unreadReviews}: ${unReadCount}`}
-            />
-          )}
+          {navItem.hasBadgeCount &&
+            unReadCount !== undefined &&
+            unReadCount > 0 && (
+              <CountBadge
+                count={unReadCount}
+                ariaLabel={`${language.unreadReviews}: ${unReadCount}`}
+              />
+            )}
         </span>
       </NavLink>
       {navItem.subNavList && navItem.heading && (
