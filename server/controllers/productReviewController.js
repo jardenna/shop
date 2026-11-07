@@ -215,7 +215,7 @@ const markReviewAsRead = asyncHandler(async (req, res) => {
   }
 
   res.status(200).json({
-    success: false,
+    success: true,
     message: t('reviewMarkedAsRead', req.lang),
     reviewId,
   });

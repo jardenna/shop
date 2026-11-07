@@ -25,12 +25,14 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
         url: `${adminReviewsUrl}/read-all`,
         method: MethodsEnum.Patch,
       }),
+      invalidatesTags: [TagTypesEnum.Reviews],
     }),
     markOneAsread: builder.mutation<DefaultResponse, string>({
       query: (reviewId) => ({
         url: `${adminReviewsUrl}/${reviewId}/read`,
         method: MethodsEnum.Patch,
       }),
+      invalidatesTags: [TagTypesEnum.Reviews],
     }),
   }),
 });

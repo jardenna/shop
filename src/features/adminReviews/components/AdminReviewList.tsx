@@ -12,10 +12,16 @@ import { useLanguage } from '../../language/useLanguage';
 import './_admin-review.scss';
 
 interface AdminReviewListProps {
+  isReadReviewLoading: boolean;
   reviews: AdminReviewsResponse[];
+  onReadOneReview: (id: string) => void;
 }
 
-const AdminReviewList = ({ reviews }: AdminReviewListProps) => {
+const AdminReviewList = ({
+  reviews,
+  onReadOneReview,
+  isReadReviewLoading,
+}: AdminReviewListProps) => {
   const { language } = useLanguage();
 
   return (
@@ -48,12 +54,15 @@ const AdminReviewList = ({ reviews }: AdminReviewListProps) => {
 
             <div className="admin-review-footer">
               <IconBtn
-                // onClick={onClick}
+                onClick={() => {
+                  onReadOneReview(review.id);
+                }}
                 iconName={IconName.Check}
                 ariaLabel={language.markAsRead}
                 variant={BtnVariant.Secondary}
                 showLabel
                 disabled={review.isRead}
+                isLoading={isReadReviewLoading}
               />
               <Chip
                 chipText={review.isRead ? language.read : language.unread}

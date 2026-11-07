@@ -29,11 +29,18 @@ router.get(
 router.get('/unread', authenticate, authorizeEmployee, getUnreadReviewCount);
 router.patch(
   '/read-all',
+  languageMiddleware,
   authenticate,
   authorizeEmployee,
   markAllReviewsAsRead,
 );
 
-router.patch('/read-all', authenticate, authorizeEmployee, markReviewAsRead);
+router.patch(
+  '/:reviewId/read',
+  languageMiddleware,
+  authenticate,
+  authorizeEmployee,
+  markReviewAsRead,
+);
 
 export default router;
