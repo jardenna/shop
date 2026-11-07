@@ -1,7 +1,10 @@
 import Button from '../components/Button';
+import Chip from '../components/chips/Chip';
+import { chipVariants } from '../components/chips/chipsUtils';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewList from '../features/adminReviews/components/AdminReviewList';
 import {
+  useGetReviewsCountQuery,
   useGetReviewsQuery,
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
@@ -14,6 +17,7 @@ const AdminReviewPage = () => {
   const { onAddToast } = useToast();
 
   const { data: reviews } = useGetReviewsQuery({});
+  const { data: unreadCount } = useGetReviewsCountQuery();
 
   const [
     markAsRead,
@@ -49,9 +53,18 @@ const AdminReviewPage = () => {
       hideBreadCrumbs
       variant="medium"
     >
+      {unreadCount && unreadCount.unreadCount > 0 && (
+        <span aria-live="polite" aria-atomic="true">
+          <Chip
+            chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
+            variant={chipVariants.read}
+          />
+        </span>
+      )}
       <Button
         onClick={handleReadAllReviews}
         showBtnLoader={isReadAllReviewLoading}
+        disabled={unreadCount && unreadCount.unreadCount === 0}
       >
         {language.markAllAsRead}
       </Button>
