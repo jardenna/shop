@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
 import { AdminReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
+import DateDisplay from '../../../components/datePicker/DateDisplay';
 import Img from '../../../components/Img';
-import ReviewStars from '../../../components/reviewStars/ReviewStars';
+import ReviewStars from '../../../components/ReviewStars';
 import { ShopPath } from '../../../layout/nav/enums';
 import './_admin-review.scss';
 
@@ -24,7 +25,10 @@ const AdminReviewList = ({ reviews }: AdminReviewListProps) => (
           </div>
         </div>
         <div>
-          <ReviewStars rating={review.rating} />
+          <div>
+            <ReviewStars rating={review.rating} />
+            <DateDisplay date={review.createdAt} />
+          </div>
           {review.comment}
         </div>
       </section>
