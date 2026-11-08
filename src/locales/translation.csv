@@ -1,36 +1,5 @@
 ﻿key;en;da
-goalSettingsDescription;Set goals for your dashboard KPIs;Angiv mål for dashboardets KPI'er
-goalSettingsPeriodDescription;The values show how close you are to reaching your goals for each period.;Tallene viser, hvor tæt du er på at nå dine mål for de forskellige perioder.
-howItWorks;How it works;Sådan fungerer det
-kpiGoalsInfo1;Set a goal for each KPI and period.;Du angiver et mål for hver KPI og periode.
-kpiGoalsInfo2;Goals are displayed on the dashboard alongside current values.;Målene vises på dashboardet sammen med de aktuelle værdier.
-kpiGoalsInfo3;The three periods are 7 days, 30 days and 12 months.;De tre perioder er 7 dage, 30 dage og 12 måneder.
-kpiGoalsInfo4;You can change your goals at any time.;Du kan til enhver tid ændre målene.
-totalCustomers;Total customers;Kunder i alt
-customers;Customers;Kunder
-goalWasUpdated;Goals updated successfully;Målene blev opdateret
-totalCustomersDescription;All registered customers;Alle registrerede kunder
-totalRevenue;Total revenue;Samlet omsætning
-totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
-totalOrders;Total orders;Ordrer i alt
-totalOrdersDescription;All orders placed;Alle afgivne ordrer
-newCustomersDescription;New customers in the selected period;Nye kunder i den valgte periode
-revenueDescription;Revenue in the selected period;Omsætning i den valgte periode
-newOrders;New orders;Nye ordrer
-ordersDescription;New orders in the selected period;Nye ordrer i den valgte periode
 about;About us;Om os
-goal7Days;7 days;7 dage
-goal30Days;30 days;30 dage
-last7Days;Last 7 days;Seneste 7 dage
-last30Days;Last 30 days;Seneste 30 dage
-previous;Previous;Forrige
-last;Last;Seneste
-previousYear;Previous year;Forrige år
-comparisonWithPreviousPeriod;Comparison with previous period;Sammenligning med forrige periode
-goalProgress;Goal progress;Målopfyldelse
-newCustomersDescription;Number of newly registered customers;Antal nye kunder registreret
-revenueDescription;Total revenue in;Samlet omsætning i DDK
-goal12Months;12 months;12 måneder
 accessibilityStatement;Accessibility statement;Tilgængelighedserklæring
 accessories;Accessories;Accessories
 accessoriesAndToys;Accessories & Toys;Accessories & legetøj
@@ -62,16 +31,18 @@ admin;Admin;Admin
 adminCannotBeDeleted;Administrator cannot be deleted;Administrator kan ikke slettes
 all;All;Alle
 allowedFormats;Allowed formats;Tilladte formater
+allReviewMarkedAsRead;All review marked as read;Alle anmeldelser blev markeret som læst
 allSalesBannerAltText;Smiling couple, with the man covering the woman's eyes in a playful and affectionate gesture.;Smilende par, hvor manden holder hænderne over kvindens øjne i en legende og kærlig gestus.
+allYears;All years;Alle år
 alreadyInUse;Value already in use;Værdien er allerede i brug
 alreadyLoggedIn;You are already logged in;Du er allerede logget ind
 alreadyLoggedInAs;You are already logged in as;Du er allerede logget ind som
-allYears;All years;Alle år
 apply;Apply;Tilføj
 ascending;ascending;stigende
 assignRole;Assign role;Tildel rolle
 available;Available;Tilgængelig
 availableColors;Available colours;Tilgængelige farver
+averageRating;Average rating;Gennemsnitlig bedømmelse
 backToOrderList;Back to order list;Tilbage til ordrelisten
 bag;Shopping bag;Indkøbskurv
 birthDateInfo;We use your date of birth to verify your age and ensure that our services and offers are suitable for you.;Vi bruger din fødselsdato til at bekræfte din alder og sikre, at vores tjenester og tilbud passer til dig.
@@ -112,7 +83,6 @@ categoryNotFound;This category is no longer available.;Denne kategori er ikke l�
 categoryRequired;Please select a category;Vælg venligst kategori
 categoryStatus;Category status;Kategori status
 categoryUpdated;Category was updated;Kategori blev opdateret
-netChangeInPeriod;Net change in period;Nettoændring i perioden
 changeBillingAddress;Change billing address;Skift faktureringsadresse
 changeDeliveryAddress;Change delivery address;Skift leveringsadresse
 changeOrderAddress;Change address for this order;Skift adresse for denne ordre
@@ -139,6 +109,7 @@ colors;Colours;Farver
 colours;Colours;Farver
 compact;Compact;Kompakt
 company;Company;Virksomhed
+comparisonWithPreviousPeriod;Comparison with previous period;Sammenligning med forrige periode
 completed;Completed;Gennemført
 confirmPassword;Confirm password;Gentag adgangskode
 contact;Contact;Kontakt
@@ -164,15 +135,17 @@ createNewProduct;Create new product;Opret nyt produkt
 createNewUser;Create new user;Opret ny bruger
 criterionMet;Criterion met;Kriterium opfyldt
 criterionNotMet;Criterion not met;Kriterium ikke opfyldt
-current;Current;Aktuel
 currency;Currency;Valuta
+current;Current;Aktuel
 currentlyUnavailableSizes;Currently unavailable sizes;Midlertidigt udsolgte størrelser
 currentPage;Current page;Nuværende side
 customer;Customer;Kunde
 customerInformation;Customer information;Kundeinformation
+customers;Customers;Kunder
 customerService;Customer service;Kundeservice
 customersList;Customers list;Kundeliste
 dashboard;Dashboard;Dashboard
+dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
 date;Date;Dato
 dateAndTime;Date & time;Dato & tid
 dateOfBirth;Date of birth;Fødselsdato
@@ -216,10 +189,10 @@ estimatedDelivery;Estimated delivery;Anslået leveringsdato
 estimatedShipping;Shipping;Leveringspris
 expanded;Expanded;Udvidet
 expandMenu;Expand menu;Udvid menu
-expiresAt;ExpiresAt at;Slutter
-expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
-expiry;Expiry;Udløbsdato
 expired;Expired;Udløbet
+expiresAt;ExpiresAt at;Slutter
+expiry;Expiry;Udløbsdato
+expiryDate;Expiry date (mm/yy);Udløbsdato (mm/yy)
 eye;Eye;Øje
 eyeClosed;Closed eye;Lukket øje
 failed;Failed;Mislykket
@@ -255,6 +228,13 @@ from;from;fra
 getInspired;Get inspired;Bliv inspireret
 globe;Globe;Globus
 go;Go;Gå
+goal12Months;12 months;12 måneder
+goal30Days;30 days;30 dage
+goal7Days;7 days;7 dage
+goalProgress;Goal progress;Målopfyldelse
+goalSettingsDescription;Set goals for your dashboard KPIs;Angiv mål for dashboardets KPI'er
+goalSettingsPeriodDescription;The values show how close you are to reaching your goals for each period.;Tallene viser, hvor tæt du er på at nå dine mål for de forskellige perioder.
+goalWasUpdated;Goals updated successfully;Målene blev opdateret
 goBack;Go back;Gå tilbage
 goBackTo;Go back to;Gå tilbage til
 gold;Gold;Guld
@@ -277,6 +257,7 @@ hideContent;Hide content;Skjul indhold
 hidePassword;Hide password;Skjul adgangskode
 hips;Hips;Hofte
 home;Home;Hjem
+howItWorks;How it works;Sådan fungerer det
 image;Image;Foto
 imageRequired;Please insert image(s);Indsæt venligst billede(r)
 inactive;Inactive;Inaktiv
@@ -284,6 +265,7 @@ inStock;In stock;På lager
 invalidCartItemId;Invalid item ID.;Ugyldigt vareid.
 invalidColor;The selected color is no longer available;Den valgte farve er ikke længere tilgængelig
 invalidDiscount;Invalid discount. Price cannot be calculated correctly;Ugyldig rabat. Prisen kan ikke beregnes korrekt
+invalidDiscountPercentage;Discount percentage must be between 1 and 99;Rabatprocenten skal være mellem 1 og 99
 invalidExpiryDateFormat;Use MM/YY (e.g. 09/28);Brug MM/ÅÅ (f.eks. 09/28)
 invalidFileType;Invalid file type;Ugyldig fil type
 invalidOrderStatus;Invalid order status.;Ugyldig ordrestatus.
@@ -304,9 +286,16 @@ kids;Kids;Børn
 kidsAltText;Stylish children, a girl in a white sleeveless top with a matching hat and a boy in a colorful shirt, sitting together in a playful yet elegant pose.;Stilfulde børn, en pige i hvid ærmeløs top med matchende hat og en dreng i farverig skjorte, sidder sammen i et legende men elegant udtryk.
 kidsFashion;Kids’s fashion;Børnemode
 kidsSalesBannerAltText;Three children in colourful casual outfits jump joyfully in the air with their arms raised, smiling with excitement.;Tre børn i farverigt, afslappet tøj hopper begejstret i luften med armene løftet og smiler glad.kidsBannerAltText;Four classically dressed children in tartan outfits smile warmly while holding hands.;Fire klassisk klædte børn i skotskternede outfits smiler varmt, mens de holder hinanden i hånden.
-language;Language;Sprog
 kpi;KPI;KPI
 kpiGoals;KPI goals;KPI mål
+kpiGoalsInfo1;Set a goal for each KPI and period.;Du angiver et mål for hver KPI og periode.
+kpiGoalsInfo2;Goals are displayed on the dashboard alongside current values.;Målene vises på dashboardet sammen med de aktuelle værdier.
+kpiGoalsInfo3;The three periods are 7 days, 30 days and 12 months.;De tre perioder er 7 dage, 30 dage og 12 måneder.
+kpiGoalsInfo4;You can change your goals at any time.;Du kan til enhver tid ændre målene.
+language;Language;Sprog
+last;Last;Seneste
+last30Days;Last 30 days;Seneste 30 dage
+last7Days;Last 7 days;Seneste 7 dage
 left;left;tilbage
 list;List;Liste
 loaded;loaded;indlæst
@@ -324,6 +313,8 @@ machineWash;Machine wash at 40 °C;Maskinvask ved 40 °C
 main;Main;Primær
 mainCategoryName;Parent category;Hovedkategori
 man;Man;Mand
+markAllAsRead;Mark all as read;Markér alle som læst
+markAsRead;Mark as read;Markér som læst
 material;Material;Materiale
 materialAndCare;Material and care;Materiale og vaskeanvisning
 materialRequired;Please insert material;Indsæt venligst materiale
@@ -353,6 +344,11 @@ myBag;My bag;Min indkøbskurv
 myOrders;My orders;Mine ordrer
 name;Name;Navn
 needHelp;Need help;Har du brug for hjælp
+netChangeInPeriod;Net change in period;Nettoændring i perioden
+newCustomers;New customers;Nye kunder
+newCustomersDescription;New customers in the selected period;Nye kunder i den valgte periode
+newCustomersDescription;Number of newly registered customers;Antal nye kunder registreret
+newOrders;New orders;Nye ordrer
 noAddressData;You must add an address before placing an order.;Du skal tilføje en adresse, før du kan gennemføre en ordre.
 noChanges;No changes to save;Ingen ændringer at gemme
 noData;No data found;Ingen data fundet
@@ -413,8 +409,7 @@ orderNotFound;We couldn't find the order you're looking for.;Vi kunne ikke finde
 orderNotPaid;Order has not been paid;Ordren er ikke betalt
 orderNumber;Order number;Ordrenummer
 orders;Orders;Ordrer
-newCustomers;New customers;Nye kunder
-revenue;Revenue;Omsætning
+ordersDescription;New orders in the selected period;Nye ordrer i den valgte periode
 ordershipped;Order shipped;Ordre sendt
 orderStatusMessage;We process your order within 24 hours on weekdays. You can follow your order status below.;Vi behandler din ordre inden for 24 timer på hverdage. Du kan følge status på din ordre nedenfor.
 orderStatusUpdateNotAllowed;The order cannot be changed to the selected status.;Ordren kan ikke ændres til den valgte status.
@@ -460,35 +455,30 @@ pleaseEnter;Please enter;Indsæt venligst
 pleaseEnterCardholderName;Please enter a name;Indtast venligst navn
 pleaseEnterCategoryName;Please enter a name for category;Indsæt venligst navn på kategori
 pleaseEnterCity;Please enter city;Indsæt venligst by
-pleaseEnterDiscountCode;Please enter discount code;Indsæt venligst en rabatkode
 pleaseEnterDescription;Please enter a description;Indtast venligst en beskrivelse
-invalidDiscountPercentage;Discount percentage must be between 1 and 99;Rabatprocenten skal være mellem 1 og 99
+pleaseEnterDiscountCode;Please enter discount code;Indsæt venligst en rabatkode
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
-pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
-pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
-dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
-reviewNotFound;Review not found;Anmeldelsen blev ikke fundet
-reviewMarkedAsRead;Review marked as read;Anmeldelsen blev markeret som læst
-allReviewMarkedAsRead;All review marked as read;Alle anmeldelser blev markeret som læst
-markAsRead;Mark as read;Markér som læst
-markAllAsRead;Mark all as read;Markér alle som læst
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
+pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
 pleaseEnterStreet;Please enter  street;Indsæt venligst gade
 pleaseEnterTranslationKey;Please enter a translation key;Indsæt venligst oversættelsesnøgle
 pleaseEnterValidEmail;Please enter a valid email;Indsæt venligst en gyldig e-mail
+pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
+pleaseEnterValidNumber;Please enter a valid number;Indtast venligst et gyldigt tal
 pleaseEnterValidPeriod;Please enter a valid period;Indtast venligst en gyldig periode
 pleaseEnterValidPhone;Please enter a valid phone number;Indtast venligst et gyldigt telefonnummer
 pleaseEnterValidZipcode;Please enter a valid zip code;Indtast venligst et gyldigt postnummer
-pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
 pleaseEnterValue;Please enter a value;Indtast venligst en værdi
-pleaseEnterValidNumber;Please enter a valid number;Indtast venligst et gyldigt tal
 pleaseEnterWholeNumber;Please enter a whole number;Indtast venligst et helt tal
+pleaseEnterZipcode;Please enter zipcode;Indsæt venligst postnummer
 pleaseProvideScheduledDate;Please provide a scheduled date;Angiv venligst en planlagt dato
 pleaseRemoveOneOrMore;please remove one or more;fjern venligst en eller flere
 pleaseSelectParentCategory;Please select parent category;Vælg venligst hovedkategori
 preferences;Preferences;Præferencer
+previous;Previous;Forrige
+previousYear;Previous year;Forrige år
 price;Price;Pris
 priceFrom;Price from;Pris fra
 priceOverview;Price overview;Prisoversigt
@@ -502,6 +492,7 @@ processing;In progress;Behandles
 processOrder;Process order;Behandl ordre
 product;Product;Produkt
 productActions;Product actions;Produkt handlinger
+productActions;Product actions;Produkthandlinger
 productCopied;Product copied;Produkt blev kopieret
 productCreated;Product was created;Produkt blev tilføjet
 productDeleted;Product deleted;Produkt blev slettet
@@ -517,7 +508,6 @@ productNotFound;This product is no longer available;Dette produkt er ikke længe
 productPerPage;products per page;produkter pr. side
 productQuantity;Product quantity;Produkt antal
 products;Products;Produkter
-productActions;Product actions;Produkthandlinger
 productsInStock;Products in stock;Produkter på lager
 productsInSubcategory;Products linked to subcategory;Produkter tilknyttet denne underkategori
 productsNoLongerAvailable;Some products are no longer available;Nogle produkter er ikke længere tilgængelige
@@ -556,10 +546,8 @@ rating2;2 stars: Below average;2 stjerner: Under middel
 rating3;3 stars: Average;3 stjerner: Middel
 rating4;4 stars: Good;4 stjerner: God
 rating5;5 stars: Excellent;5 stjerner: Fremragende
-red;Red;Rød
 read;Read;Læst
-unread;Unread;Ulæst
-unreadPlur;Unread;Ulæste
+red;Red;Rød
 removeFilter;Remove filter;Fjern filter
 removeFromFavorite;Remove from favorite;Fjern fra favorit
 reopenOrder;Reopen order;Genåbn ordre
@@ -567,10 +555,15 @@ replace;Replace;Erstat
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 resourceNotFound;We couldn't find what you're looking for. It may have been removed, or the link is no longer valid.;Vi kunne ikke finde det, du leder efter. Det kan være blevet fjernet, eller linket er ikke længere gyldigt.
 retry;Retry;Forsøg igen
-reviewedBy;Reviewed by;Anmeldt af
 returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
 returnPolicyLink;Read more about returns and refunds.;Læs mere om returnering og tilbagebetaling.
+revenue;Revenue;Omsætning
+revenueDescription;Revenue in the selected period;Omsætning i den valgte periode
+revenueDescription;Total revenue in;Samlet omsætning i DDK
 reviewCreated;Your review has been submitted.;Din anmeldelse er oprettet.
+reviewedBy;Reviewed by;Anmeldt af
+reviewMarkedAsRead;Review marked as read;Anmeldelsen blev markeret som læst
+reviewNotFound;Review not found;Anmeldelsen blev ikke fundet
 reviews;Reviews;Anmeldelser
 role;Role;Rolle
 sale;Sale;Udsalg
@@ -633,8 +626,8 @@ sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 standard;Standard;Standard
-startDateCannotBeInThePast;Start date and time cannot be in the past;Startdato og -tidspunkt må ikke ligge i fortiden
 stars;stars;stjerner
+startDateCannotBeInThePast;Start date and time cannot be in the past;Startdato og -tidspunkt må ikke ligge i fortiden
 startsAt;Starts at;Starter
 status;Status;Status
 street;Street;Gade
@@ -659,10 +652,16 @@ thereAre;There are;Der findes
 title;Title;Titel
 to;to;til
 today;Today;I dag
+totalCustomers;Total customers;Kunder i alt
+totalCustomersDescription;All registered customers;Alle registrerede kunder
+totalOrders;Total orders;Ordrer i alt
+totalOrdersDescription;All orders placed;Alle afgivne ordrer
 totalPrice;Total;I alt
 totalPriceTableHeader;Total price;Samlet pris
 totalProducts;Total products;Antal produkter
 totalRating;Total rating;Samlet bedømmelse
+totalRevenue;Total revenue;Samlet omsætning
+totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
 trackYourOrder;Track your order;Track din ordre
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
@@ -670,6 +669,8 @@ trashCan;Trash can;Skraldespand
 unavailable;Unavailable;Ikke tilgængelig
 undoDeleteImg;Undo deleting this photo;Fortryd sletning af dette foto
 unknownError;Unknown error;Ukendt fejl
+unread;Unread;Ulæst
+unreadPlur;Unread;Ulæste
 unreadReviews;Unread reviews;Ulæste anmeldelser
 unsupportedFile;is not supported type;er ikke understøttet
 update;Update;Opdater
