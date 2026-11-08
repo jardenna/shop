@@ -124,6 +124,32 @@ const getAllReviews = asyncHandler(async (req, res) => {
   res.status(200).json(sortedReviews);
 });
 
+// @desc    Get review statistics
+// @route   GET /api/reviews/stats
+// @access  Private/Admin
+const getReviewStats = asyncHandler(async (req, res) => {
+  const products = await Product.find({}, { 'reviews.rating': 1 });
+
+  const reviews = products.flatMap((product) => product.reviews);
+
+  const totalReviews = reviews.length;
+
+  const averageRating = totalReviews
+    ? reviews.reduce((total, review) => total + review.rating, 0) / totalReviews
+    : 0;
+
+  const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
+    rating,
+    count: reviews.filter((review) => review.rating === rating).length,
+  }));
+
+  res.status(200).json({
+    totalReviews,
+    averageRating: Number(averageRating.toFixed(1)),
+    ratingDistribution,
+  });
+});
+
 // @desc    Get count for all unread reviews
 // @route   /api/reviews/unread
 // @method  GET
@@ -225,6 +251,7 @@ const markReviewAsRead = asyncHandler(async (req, res) => {
 export {
   createProductReviews,
   getAllReviews,
+  getReviewStats,
   getUnreadReviewCount,
   hasReviewed,
   markAllReviewsAsRead,

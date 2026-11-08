@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
   getAllReviews,
+  getReviewStats,
   getUnreadReviewCount,
   markAllReviewsAsRead,
   markReviewAsRead,
@@ -25,6 +26,8 @@ router.get(
   authorizeEmployee,
   getAllReviews,
 );
+
+router.get('/stats', authenticate, authorizeEmployee, getReviewStats);
 
 router.get('/unread', authenticate, authorizeEmployee, getUnreadReviewCount);
 router.patch(
