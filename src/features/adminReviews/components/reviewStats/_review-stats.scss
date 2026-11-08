@@ -38,9 +38,18 @@
 
 .rating-distribution {
   .rating-distribution-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) 40px;
     align-items: center;
-    gap: 8px;
+  }
+
+  .rating-distribution-label,
+  .rating-distribution-count {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rating-distribution-count {
+    text-align: right;
   }
 
   .rating-distribution-bar {
