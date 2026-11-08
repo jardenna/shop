@@ -20,3 +20,14 @@ export interface ReviewParams extends Partial<SortParams> {
   productName?: string;
   rating?: number;
 }
+
+interface RatingDistribution {
+  count: number;
+  rating: number;
+}
+
+export interface ReviewStatsResponse {
+  averageRating: number;
+  ratingDistribution: RatingDistribution[];
+  totalReviews: number;
+}
