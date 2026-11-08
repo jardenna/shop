@@ -18,7 +18,7 @@ export interface AdminReviewsResponse extends BaseReviews {
 export interface ReviewParams extends Partial<SortParams> {
   isRead?: boolean;
   productName?: string;
-  rating?: number;
+  rating?: number[];
 }
 
 export interface RatingDistribution {

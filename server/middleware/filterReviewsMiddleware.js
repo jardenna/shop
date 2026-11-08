@@ -18,7 +18,7 @@ function filterReviewsMiddleware(req, res, next) {
 
   // Filter by rating
   if (rating) {
-    filter.rating = Number(rating);
+    filter.rating = JSON.parse(rating).map(Number);
   }
 
   req.filter = filter;
