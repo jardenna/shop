@@ -15,6 +15,7 @@ const BarChartComp = ({ data }: BarChartComp) => (
     }}
     responsive
     data={data}
+    tabIndex={-1}
   >
     <Bar dataKey="value" barSize={7} fill="currentColor" />
   </BarChart>
