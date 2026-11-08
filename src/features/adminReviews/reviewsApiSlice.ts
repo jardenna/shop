@@ -3,6 +3,7 @@ import {
   AdminReviewsResponse,
   ReviewParams,
   ReviewsCountResponse,
+  ReviewStatsResponse,
 } from '../../app/api/apiTypes/adminReviewApiTypes';
 import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { adminReviewsUrl } from '../../app/endpoints';
@@ -19,6 +20,9 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
         params,
       }),
       providesTags: [TagTypesEnum.Reviews],
+    }),
+    getReviewStats: builder.query<ReviewStatsResponse, void>({
+      query: () => `${adminReviewsUrl}/stats`,
     }),
     markAllAsread: builder.mutation<DefaultResponse, void>({
       query: () => ({
@@ -42,4 +46,5 @@ export const {
   useGetReviewsQuery,
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
+  useGetReviewStatsQuery,
 } = reviewsApiSlice;

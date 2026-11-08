@@ -1,0 +1,30 @@
+@use '../scss/globals/functions' as *;
+
+.admin-review-page {
+  .admin-review-page-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .admin-review-page-heading {
+    display: flex;
+    gap: 4px;
+  }
+
+  .read-review-action-btn {
+    min-height: auto;
+    max-width: fit-content;
+    min-width: rem(148px);
+    padding: 8px;
+    display: flex;
+    gap: 4px;
+    font-size: 14px;
+
+    svg {
+      height: 1em;
+      width: 1em;
+    }
+  }
+}

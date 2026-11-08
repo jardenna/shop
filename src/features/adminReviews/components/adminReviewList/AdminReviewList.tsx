@@ -1,15 +1,15 @@
 import { Link } from 'react-router';
-import { AdminReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
-import Chip from '../../../components/chips/Chip';
-import { chipVariants } from '../../../components/chips/chipsUtils';
-import DateDisplay from '../../../components/datePicker/DateDisplay';
-import IconBtn from '../../../components/IconBtn';
-import Img from '../../../components/Img';
-import ReviewStars from '../../../components/ReviewStars';
-import { ShopPath } from '../../../layout/nav/enums';
-import { BtnVariant, IconName } from '../../../types/enums';
-import { useLanguage } from '../../language/useLanguage';
-import './_admin-review.scss';
+import { AdminReviewsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import Chip from '../../../../components/chips/Chip';
+import { chipVariants } from '../../../../components/chips/chipsUtils';
+import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import IconBtn from '../../../../components/IconBtn';
+import Img from '../../../../components/Img';
+import ReviewStars from '../../../../components/ReviewStars';
+import { ShopPath } from '../../../../layout/nav/enums';
+import { BtnVariant, IconName } from '../../../../types/enums';
+import { useLanguage } from '../../../language/useLanguage';
+import './_admin-review-list.scss';
 
 interface AdminReviewListProps {
   isReadReviewLoading: boolean;
@@ -40,10 +40,6 @@ const AdminReviewList = ({
                 <span className="text-bold">{language.reviewedBy}: </span>
                 <span>{review.userName}</span>
               </p>
-              <p>
-                <span className="text-bold">{language.totalRating}: </span>
-                <span>{review.rating}</span>
-              </p>
             </div>
           </article>
           <article className="review-info-content">
@@ -62,6 +58,7 @@ const AdminReviewList = ({
                 iconName={IconName.Check}
                 ariaLabel={language.markAsRead}
                 variant={BtnVariant.Secondary}
+                className="read-review-action-btn"
                 showLabel
                 disabled={review.isRead}
                 isLoading={isReadReviewLoading && loadingReviewId === review.id}

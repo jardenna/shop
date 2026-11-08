@@ -1,24 +1,24 @@
-import Button from '../components/Button';
-import Chip from '../components/chips/Chip';
-import { chipVariants } from '../components/chips/chipsUtils';
+import { useId } from 'react';
 import { useToast } from '../components/toast/hooks/useToast';
-import AdminReviewList from '../features/adminReviews/components/AdminReviewList';
+import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
+import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
+import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
 import {
   useGetReviewsCountQuery,
   useGetReviewsQuery,
+  useGetReviewStatsQuery,
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
-import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant } from '../types/enums';
-import AdminPageContainer from './pageContainer/AdminPageContainer';
+import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
-  const { language } = useLanguage();
+  const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
   const { data: reviews } = useGetReviewsQuery({});
   const { data: unreadCount } = useGetReviewsCountQuery();
+  const { data: reviewStats } = useGetReviewStatsQuery();
 
   const [
     markAsRead,
@@ -49,38 +49,32 @@ const AdminReviewPage = () => {
   };
 
   return (
-    <AdminPageContainer
-      heading={language.reviews}
-      hideBreadCrumbs
-      variant="medium"
-      className="admin-review-page"
+    <section
+      className="admin-page page-medium admin-review-page"
+      aria-labelledby={ariaLabelledby}
     >
-      Du har {reviews?.length} anmeldelser i alt
-      {unreadCount && unreadCount.unreadCount > 0 && (
-        <span aria-live="polite" aria-atomic="true">
-          <Chip
-            chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
-            variant={chipVariants.read}
-          />
-        </span>
-      )}
-      <Button
-        onClick={handleReadAllReviews}
-        showBtnLoader={isReadAllReviewLoading}
-        disabled={unreadCount && unreadCount.unreadCount === 0}
-        variant={BtnVariant.Secondary}
-      >
-        {language.markAllAsRead}
-      </Button>
-      {reviews && (
-        <AdminReviewList
-          reviews={reviews}
-          isReadReviewLoading={isReadReviewLoading}
-          loadingReviewId={loadingReviewId}
-          onReadOneReview={handleReadOneReview}
+      {unreadCount && (
+        <AdminReviewHeader
+          ariaLabelledby={ariaLabelledby}
+          unreadCount={unreadCount.unreadCount}
+          onReadAllReviews={handleReadAllReviews}
+          isReadAllReviewLoading={isReadAllReviewLoading}
         />
       )}
-    </AdminPageContainer>
+
+      <div className="page-cart">
+        {reviewStats && <ReviewStats reviewStats={reviewStats} />}
+
+        {reviews && (
+          <AdminReviewList
+            reviews={reviews}
+            isReadReviewLoading={isReadReviewLoading}
+            loadingReviewId={loadingReviewId}
+            onReadOneReview={handleReadOneReview}
+          />
+        )}
+      </div>
+    </section>
   );
 };
 

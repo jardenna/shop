@@ -1,21 +1,4 @@
-@use '../../../scss/globals' as *;
-
-.admin-review-page {
-  .btn-secondary {
-    min-height: auto;
-    max-width: fit-content;
-    min-width: rem(148px);
-    padding: 8px;
-    display: flex;
-    gap: 4px;
-    font-size: 14px;
-
-    svg {
-      height: 1em;
-      width: 1em;
-    }
-  }
-}
+@use '../../../../scss/globals' as *;
 
 .admin-review-cart {
   display: grid;

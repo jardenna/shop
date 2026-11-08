@@ -21,7 +21,7 @@ export interface ReviewParams extends Partial<SortParams> {
   rating?: number;
 }
 
-interface RatingDistribution {
+export interface RatingDistribution {
   count: number;
   rating: number;
 }
