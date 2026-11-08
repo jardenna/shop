@@ -56,6 +56,22 @@
     display: flex;
     height: rem(8px);
     border-radius: 4px;
-    background-color: #4e8673;
+    background-color: #62b19b;
+
+    &.star-4 {
+      background-color: #d480ff;
+    }
+
+    &.star-3 {
+      background-color: #e8bf2f;
+    }
+
+    &.star-2 {
+      background-color: #67c1f6;
+    }
+
+    &.star-1 {
+      background-color: #dd7e00;
+    }
   }
 }
