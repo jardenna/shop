@@ -1,7 +1,19 @@
 @use '../../../../scss/globals' as *;
 
 .review-stats-list {
-  display: flex;
+  @include grid-fixed-columns($columns: 3);
+
+  border-bottom: $border;
+  padding-bottom: 20px;
+
+  .review-stats-card {
+    padding: 20px;
+    border-right: $border;
+
+    &:last-child {
+      border: 0;
+    }
+  }
 
   .review-stats-heading {
     font-family: $font-primary-semibold;
@@ -9,6 +21,12 @@
   }
 
   .review-stats-info {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .review-stats-text {
     font-family: $font-primary-semibold;
     font-size: rem(20px);
   }

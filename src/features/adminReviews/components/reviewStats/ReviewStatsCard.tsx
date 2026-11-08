@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import Cart from '../../../../components/carts/Cart';
 
 interface ReviewStatsCardProps {
   children: ReactNode;
@@ -8,13 +7,13 @@ interface ReviewStatsCardProps {
 }
 
 const ReviewStatsCard = ({ heading, children, text }: ReviewStatsCardProps) => (
-  <Cart>
+  <section className="review-stats-card">
     <h2 className="review-stats-heading">{heading}</h2>
-    <div>
-      <p className="review-stats-info">{text}</p>
+    <div className="review-stats-info">
+      <p className="review-stats-text">{text}</p>
       {children}
     </div>
-  </Cart>
+  </section>
 );
 
 export default ReviewStatsCard;

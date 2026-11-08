@@ -1,5 +1,4 @@
 import { ReviewStatsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
-import Cart from '../../../../components/carts/Cart';
 import ReviewStars from '../../../../components/ReviewStars';
 import { useLanguage } from '../../../language/useLanguage';
 import './_review-stats.scss';
@@ -27,7 +26,9 @@ const ReviewStats = ({ reviewStats }: ReviewStatsProps) => {
         <ReviewStars rating={reviewStats.averageRating} />
       </ReviewStatsCard>
 
-      <Cart>Du har {reviewStats.averageRating} anmeldelser i alt</Cart>
+      <section className="review-stats-card">
+        Du har {reviewStats.averageRating} anmeldelser i alt
+      </section>
     </div>
   );
 };
