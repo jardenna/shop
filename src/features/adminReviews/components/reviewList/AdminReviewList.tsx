@@ -1,14 +1,14 @@
 import { Link } from 'react-router';
-import { AdminReviewsResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
-import Chip from '../../../components/chips/Chip';
-import { chipVariants } from '../../../components/chips/chipsUtils';
-import DateDisplay from '../../../components/datePicker/DateDisplay';
-import IconBtn from '../../../components/IconBtn';
-import Img from '../../../components/Img';
-import ReviewStars from '../../../components/ReviewStars';
-import { ShopPath } from '../../../layout/nav/enums';
-import { BtnVariant, IconName } from '../../../types/enums';
-import { useLanguage } from '../../language/useLanguage';
+import { AdminReviewsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import Chip from '../../../../components/chips/Chip';
+import { chipVariants } from '../../../../components/chips/chipsUtils';
+import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import IconBtn from '../../../../components/IconBtn';
+import Img from '../../../../components/Img';
+import ReviewStars from '../../../../components/ReviewStars';
+import { ShopPath } from '../../../../layout/nav/enums';
+import { BtnVariant, IconName } from '../../../../types/enums';
+import { useLanguage } from '../../../language/useLanguage';
 import './_admin-review.scss';
 
 interface AdminReviewListProps {
