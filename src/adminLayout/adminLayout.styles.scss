@@ -91,11 +91,6 @@
     padding: 16px;
     text-transform: none;
 
-    .nav-count-badge {
-      display: flex;
-      gap: 4px;
-    }
-
     &.active {
       background-color: $color-primary;
       color: $color-light-gray-10;

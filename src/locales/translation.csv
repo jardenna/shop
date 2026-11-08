@@ -467,6 +467,11 @@ pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterStartDate;Please enter a start date;Indtast venligst en startdato
 pleaseEnterValidGoal;Please enter a valid goal;Indtast et gyldigt mål
 dashboardNotFound;Dashboard not found;Dashboard blev ikke fundet
+reviewNotFound;Review not found;Anmeldelsen blev ikke fundet
+reviewMarkedAsRead;Review marked as read;Anmeldelsen blev markeret som læst
+allReviewMarkedAsRead;All review marked as read;Alle anmeldelser blev markeret som læst
+markAsRead;Mark as read;Markér som læst
+markAllAsRead;Mark all as read;Markér alle som læst
 pleaseEnterEndDate;Please enter an end date;Indtast venligst en slutdato
 pleaseEnterName;Please enter name;Indsæt venligst navn
 pleaseEnterPassword;Please enter password;Indsæt venligst adgangskode
@@ -552,6 +557,9 @@ rating3;3 stars: Average;3 stjerner: Middel
 rating4;4 stars: Good;4 stjerner: God
 rating5;5 stars: Excellent;5 stjerner: Fremragende
 red;Red;Rød
+read;Read;Læst
+unread;Unread;Ulæst
+unreadPlur;Unread;Ulæste
 removeFilter;Remove filter;Fjern filter
 removeFromFavorite;Remove from favorite;Fjern fra favorit
 reopenOrder;Reopen order;Genåbn ordre
@@ -559,6 +567,7 @@ replace;Replace;Erstat
 resetFiltersAndSorting;Reset filters and sorting;Nulstil filtre og sortering
 resourceNotFound;We couldn't find what you're looking for. It may have been removed, or the link is no longer valid.;Vi kunne ikke finde det, du leder efter. Det kan være blevet fjernet, eller linket er ikke længere gyldigt.
 retry;Retry;Forsøg igen
+reviewedBy;Reviewed by;Anmeldt af
 returnPeriod;You have a 14-day return policy.;Du har 14 dages returret.
 returnPolicyLink;Read more about returns and refunds.;Læs mere om returnering og tilbagebetaling.
 reviewCreated;Your review has been submitted.;Din anmeldelse er oprettet.
@@ -653,6 +662,7 @@ today;Today;I dag
 totalPrice;Total;I alt
 totalPriceTableHeader;Total price;Samlet pris
 totalProducts;Total products;Antal produkter
+totalRating;Total rating;Samlet bedømmelse
 trackYourOrder;Track your order;Track din ordre
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil

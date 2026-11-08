@@ -1,9 +1,10 @@
-import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
+import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AdminReviewsResponse,
   ReviewParams,
   ReviewsCountResponse,
 } from '../../app/api/apiTypes/adminReviewApiTypes';
+import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { adminReviewsUrl } from '../../app/endpoints';
 
 export const reviewsApiSlice = apiSlice.injectEndpoints({
@@ -19,7 +20,26 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [TagTypesEnum.Reviews],
     }),
+    markAllAsread: builder.mutation<DefaultResponse, void>({
+      query: () => ({
+        url: `${adminReviewsUrl}/read-all`,
+        method: MethodsEnum.Patch,
+      }),
+      invalidatesTags: [TagTypesEnum.Reviews],
+    }),
+    markOneAsread: builder.mutation<DefaultResponse, string>({
+      query: (reviewId) => ({
+        url: `${adminReviewsUrl}/${reviewId}/read`,
+        method: MethodsEnum.Patch,
+      }),
+      invalidatesTags: [TagTypesEnum.Reviews],
+    }),
   }),
 });
 
-export const { useGetReviewsCountQuery, useGetReviewsQuery } = reviewsApiSlice;
+export const {
+  useGetReviewsCountQuery,
+  useGetReviewsQuery,
+  useMarkAllAsreadMutation,
+  useMarkOneAsreadMutation,
+} = reviewsApiSlice;

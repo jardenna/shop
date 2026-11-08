@@ -16,9 +16,6 @@
   }
 
   .count-badge {
-    position: static;
-    width: rem(20px);
-    height: rem(20px);
     padding: 12px;
   }
 }
@@ -26,6 +23,12 @@
 .mobile-nav {
   padding: 0;
   top: $header-height-mobile;
+
+  .count-badge {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
   .panel-heading {
     padding: 20px;

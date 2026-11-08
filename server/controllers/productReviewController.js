@@ -73,7 +73,7 @@ const hasReviewed = asyncHandler(async (req, res) => {
 // @desc    Get all product reviews
 // @route   /api/reviews
 // @method  GET
-// @access  Private for Admin
+// @access  Private for admin and employees
 const getAllReviews = asyncHandler(async (req, res) => {
   const { sortField } = req.query;
   const sortOrder = req.query.sortOrder === 'desc' ? -1 : 1;
@@ -124,10 +124,36 @@ const getAllReviews = asyncHandler(async (req, res) => {
   res.status(200).json(sortedReviews);
 });
 
+// @desc    Get review statistics
+// @route   GET /api/reviews/stats
+// @access  Private/Admin
+const getReviewStats = asyncHandler(async (req, res) => {
+  const products = await Product.find({}, { 'reviews.rating': 1 });
+
+  const reviews = products.flatMap((product) => product.reviews);
+
+  const totalReviews = reviews.length;
+
+  const averageRating = totalReviews
+    ? reviews.reduce((total, review) => total + review.rating, 0) / totalReviews
+    : 0;
+
+  const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
+    rating,
+    count: reviews.filter((review) => review.rating === rating).length,
+  }));
+
+  res.status(200).json({
+    totalReviews,
+    averageRating: Number(averageRating.toFixed(1)),
+    ratingDistribution,
+  });
+});
+
 // @desc    Get count for all unread reviews
 // @route   /api/reviews/unread
 // @method  GET
-// @access  Private for Admin
+// @access  Private for admin and employees
 const getUnreadReviewCount = asyncHandler(async (req, res) => {
   const unreadCount = await Product.aggregate([
     { $unwind: '$reviews' },
@@ -147,9 +173,87 @@ const getUnreadReviewCount = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Mark all unread reviews as read
+// @route   /api/reviews/read-all
+// @method  Patch
+// @access  Private for admin and employees
+const markAllReviewsAsRead = asyncHandler(async (req, res) => {
+  const result = await Product.updateMany(
+    {
+      reviews: {
+        $elemMatch: {
+          $or: [{ isRead: false }, { isRead: { $exists: false } }],
+        },
+      },
+    },
+    {
+      $set: {
+        'reviews.$[review].isRead': true,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          $or: [
+            { 'review.isRead': false },
+            { 'review.isRead': { $exists: false } },
+          ],
+        },
+      ],
+    },
+  );
+
+  res.status(200).json({
+    success: true,
+    message: t('allReviewMarkedAsRead', req.lang),
+    modifiedCount: result.modifiedCount,
+  });
+});
+
+// @desc    Mark one review as read
+// @route   /api/reviews/:reviewId/read
+// @method  Patch
+// @access  Private for admin and employees
+const markReviewAsRead = asyncHandler(async (req, res) => {
+  const { reviewId } = req.params;
+
+  const product = await Product.findOneAndUpdate(
+    {
+      'reviews._id': reviewId,
+    },
+    {
+      $set: {
+        'reviews.$.isRead': true,
+      },
+    },
+    {
+      new: true,
+      projection: {
+        _id: 1,
+      },
+    },
+  );
+
+  if (!product) {
+    res.status(404).json({
+      success: false,
+      message: t('reviewNotFound', req.lang),
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    message: t('reviewMarkedAsRead', req.lang),
+    reviewId,
+  });
+});
+
 export {
   createProductReviews,
   getAllReviews,
+  getReviewStats,
   getUnreadReviewCount,
   hasReviewed,
+  markAllReviewsAsRead,
+  markReviewAsRead,
 };
