@@ -10,6 +10,7 @@ import {
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
+import { BtnVariant } from '../types/enums';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const AdminReviewPage = () => {
@@ -52,7 +53,9 @@ const AdminReviewPage = () => {
       heading={language.reviews}
       hideBreadCrumbs
       variant="medium"
+      className="admin-review-page"
     >
+      Du har {reviews?.length} anmeldelser i alt
       {unreadCount && unreadCount.unreadCount > 0 && (
         <span aria-live="polite" aria-atomic="true">
           <Chip
@@ -65,6 +68,7 @@ const AdminReviewPage = () => {
         onClick={handleReadAllReviews}
         showBtnLoader={isReadAllReviewLoading}
         disabled={unreadCount && unreadCount.unreadCount === 0}
+        variant={BtnVariant.Secondary}
       >
         {language.markAllAsRead}
       </Button>
