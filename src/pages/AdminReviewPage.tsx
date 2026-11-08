@@ -1,8 +1,6 @@
 import { useId } from 'react';
-import Button from '../components/Button';
-import Chip from '../components/chips/Chip';
-import { chipVariants } from '../components/chips/chipsUtils';
 import { useToast } from '../components/toast/hooks/useToast';
+import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
 import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
 import {
@@ -12,14 +10,9 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
-import { useLanguage } from '../features/language/useLanguage';
-import LayoutElement from '../layout/LayoutElement';
-import MetaTags from '../layout/MetaTags';
-import { BtnVariant } from '../types/enums';
 
 const AdminReviewPage = () => {
   const ariaLabelledby = useId();
-  const { language } = useLanguage();
   const { onAddToast } = useToast();
 
   const { data: reviews } = useGetReviewsQuery({});
@@ -54,34 +47,20 @@ const AdminReviewPage = () => {
     }
   };
 
-  const heading = language.reviews;
   return (
     <section
       className="admin-page page-medium admin-review-page"
       aria-labelledby={ariaLabelledby}
     >
-      <LayoutElement className="page-header" ariaLabel={language.page}>
-        <MetaTags metaTitle={heading} />
-        <div className="admin-page-heading">
-          <h1 id={ariaLabelledby}>{heading}</h1>
-          {unreadCount && unreadCount.unreadCount > 0 && (
-            <span aria-live="polite" aria-atomic="true">
-              <Chip
-                chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
-                variant={chipVariants.read}
-              />
-            </span>
-          )}
-        </div>
-        <Button
-          onClick={handleReadAllReviews}
-          showBtnLoader={isReadAllReviewLoading}
-          disabled={unreadCount && unreadCount.unreadCount === 0}
-          variant={BtnVariant.Secondary}
-        >
-          {language.markAllAsRead}
-        </Button>
-      </LayoutElement>
+      {unreadCount && (
+        <AdminReviewHeader
+          ariaLabelledby={ariaLabelledby}
+          unreadCount={unreadCount}
+          onReadAllReviews={handleReadAllReviews}
+          isReadAllReviewLoading={isReadAllReviewLoading}
+        />
+      )}
+
       <div className="page-cart">
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
