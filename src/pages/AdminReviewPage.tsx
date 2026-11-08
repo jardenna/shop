@@ -60,17 +60,19 @@ const AdminReviewPage = () => {
       className="admin-page page-medium admin-review-page"
       aria-labelledby={ariaLabelledby}
     >
-      <MetaTags metaTitle={heading} />
       <LayoutElement className="page-header" ariaLabel={language.page}>
-        <h1 id={ariaLabelledby}>{heading}</h1>
-        {unreadCount && unreadCount.unreadCount > 0 && (
-          <span aria-live="polite" aria-atomic="true">
-            <Chip
-              chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
-              variant={chipVariants.read}
-            />
-          </span>
-        )}
+        <MetaTags metaTitle={heading} />
+        <div className="admin-page-heading">
+          <h1 id={ariaLabelledby}>{heading}</h1>
+          {unreadCount && unreadCount.unreadCount > 0 && (
+            <span aria-live="polite" aria-atomic="true">
+              <Chip
+                chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
+                variant={chipVariants.read}
+              />
+            </span>
+          )}
+        </div>
         <Button
           onClick={handleReadAllReviews}
           showBtnLoader={isReadAllReviewLoading}
