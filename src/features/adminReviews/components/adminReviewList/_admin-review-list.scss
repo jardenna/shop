@@ -1,6 +1,18 @@
 @use '../../../../scss/globals' as *;
 
 .admin-review-page {
+  .admin-review-page-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .admin-review-page-heading {
+    display: flex;
+    gap: 4px;
+  }
+
   .btn-secondary {
     min-height: auto;
     max-width: fit-content;

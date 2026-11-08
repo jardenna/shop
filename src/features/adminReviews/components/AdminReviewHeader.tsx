@@ -24,9 +24,12 @@ const AdminReviewHeader = ({
   const heading = language.reviews;
 
   return (
-    <LayoutElement className="page-header" ariaLabel={language.page}>
+    <LayoutElement
+      className="page-header admin-review-page-header"
+      ariaLabel={language.page}
+    >
       <MetaTags metaTitle={heading} />
-      <div className="admin-page-heading">
+      <div className="admin-review-page-heading">
         <h1 id={ariaLabelledby}>{heading}</h1>
         {unreadCount > 0 && (
           <span aria-live="polite" aria-atomic="true">
