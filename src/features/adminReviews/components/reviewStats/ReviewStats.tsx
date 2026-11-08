@@ -11,6 +11,12 @@ interface ReviewStatsProps {
 const ReviewStats = ({ reviewStats }: ReviewStatsProps) => {
   const { language } = useLanguage();
 
+  const ratingDistribution = reviewStats.ratingDistribution.map(
+    (item) => item.count,
+  );
+
+  const highestCount = Math.max(...ratingDistribution);
+
   return (
     <div className="review-stats-list">
       <ReviewStatsCard
@@ -27,7 +33,18 @@ const ReviewStats = ({ reviewStats }: ReviewStatsProps) => {
       </ReviewStatsCard>
 
       <section className="review-stats-card">
-        Du har {reviewStats.averageRating} anmeldelser i alt
+        <ul className="rating-distribution">
+          {reviewStats.ratingDistribution.map((rating) => (
+            <li key={rating.rating} className="rating-distribution-item">
+              <span>{rating.rating}</span>
+              <span
+                className="rating-distribution-bar"
+                style={{ width: `${(rating.count / highestCount) * 100}%` }}
+              />
+              <span>{rating.count}</span>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
