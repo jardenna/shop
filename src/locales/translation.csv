@@ -662,7 +662,7 @@ totalProducts;Total products;Antal produkter
 totalRating;Total rating;Samlet bedømmelse
 totalRevenue;Total revenue;Samlet omsætning
 totalRevenueDescription;Total revenue from all orders;Samlet omsætning fra alle ordrer
-trackYourOrder;Track your order;Track din ordre
+totalReviews;Total reviews;Samlet antal anmeldelser
 translationKey;Translation key;Oversættelsesnøgle
 translationKeyHelpText;Enter the exact key used for translation in your CSV file;Skriv den præcise nøgle, som bruges til oversættelsen i din CSV-fil
 trashCan;Trash can;Skraldespand
