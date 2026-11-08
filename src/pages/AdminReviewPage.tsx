@@ -10,6 +10,7 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
   const ariaLabelledby = useId();
