@@ -1,9 +1,9 @@
 import Button from '../components/Button';
-import Cart from '../components/carts/Cart';
 import Chip from '../components/chips/Chip';
 import { chipVariants } from '../components/chips/chipsUtils';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewList from '../features/adminReviews/components/reviewList/AdminReviewList';
+import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
 import {
   useGetReviewsCountQuery,
   useGetReviewsQuery,
@@ -22,7 +22,6 @@ const AdminReviewPage = () => {
   const { data: reviews } = useGetReviewsQuery({});
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
-  console.log(reviewStats);
 
   const [
     markAsRead,
@@ -59,12 +58,7 @@ const AdminReviewPage = () => {
       variant="medium"
       className="admin-review-page"
     >
-      <section className="review-stats">
-        <Cart>
-          {language.averageRating}
-          Du har {reviews?.length} anmeldelser i alt
-        </Cart>
-      </section>
+      {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
       {unreadCount && unreadCount.unreadCount > 0 && (
         <span aria-live="polite" aria-atomic="true">
