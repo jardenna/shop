@@ -17,6 +17,8 @@
 
   .count-badge {
     padding: 12px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
@@ -26,8 +28,6 @@
 
   .count-badge {
     right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   .panel-heading {
