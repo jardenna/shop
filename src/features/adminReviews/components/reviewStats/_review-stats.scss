@@ -9,15 +9,16 @@
   .review-stats-card {
     padding: 20px;
     border-right: $border;
+  }
 
-    &:last-child {
-      border: 0;
-    }
+  .rating-distribution-container {
+    padding: 20px;
   }
 
   .review-stats-heading {
     font-family: $font-primary-semibold;
-    font-size: rem(16px);
+    margin-bottom: 8px;
+    font-size: $font-medium;
   }
 
   .review-stats-info {
