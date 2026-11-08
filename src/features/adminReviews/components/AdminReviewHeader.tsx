@@ -1,4 +1,3 @@
-import { ReviewsCountResponse } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import Button from '../../../components/Button';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
@@ -10,7 +9,7 @@ import { useLanguage } from '../../language/useLanguage';
 interface AdminReviewHeaderProps {
   ariaLabelledby: string;
   isReadAllReviewLoading: boolean;
-  unreadCount: ReviewsCountResponse;
+  unreadCount: number;
   onReadAllReviews: () => void;
 }
 
@@ -29,10 +28,10 @@ const AdminReviewHeader = ({
       <MetaTags metaTitle={heading} />
       <div className="admin-page-heading">
         <h1 id={ariaLabelledby}>{heading}</h1>
-        {unreadCount.unreadCount > 0 && (
+        {unreadCount > 0 && (
           <span aria-live="polite" aria-atomic="true">
             <Chip
-              chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
+              chipText={`${unreadCount} ${unreadCount > 1 ? language.unreadPlur : language.unread}`}
               variant={chipVariants.read}
             />
           </span>
@@ -41,7 +40,7 @@ const AdminReviewHeader = ({
       <Button
         onClick={onReadAllReviews}
         showBtnLoader={isReadAllReviewLoading}
-        disabled={unreadCount.unreadCount === 0}
+        disabled={unreadCount === 0}
         variant={BtnVariant.Secondary}
       >
         {language.markAllAsRead}

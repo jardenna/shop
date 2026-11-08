@@ -55,7 +55,7 @@ const AdminReviewPage = () => {
       {unreadCount && (
         <AdminReviewHeader
           ariaLabelledby={ariaLabelledby}
-          unreadCount={unreadCount}
+          unreadCount={unreadCount.unreadCount}
           onReadAllReviews={handleReadAllReviews}
           isReadAllReviewLoading={isReadAllReviewLoading}
         />
