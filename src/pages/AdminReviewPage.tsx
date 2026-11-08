@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import Chip from '../components/chips/Chip';
 import { chipVariants } from '../components/chips/chipsUtils';
 import { useToast } from '../components/toast/hooks/useToast';
-import AdminReviewList from '../features/adminReviews/components/reviewList/AdminReviewList';
+import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
 import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
 import {
   useGetReviewsCountQuery,

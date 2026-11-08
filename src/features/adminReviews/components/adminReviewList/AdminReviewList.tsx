@@ -9,7 +9,7 @@ import ReviewStars from '../../../../components/ReviewStars';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../../../types/enums';
 import { useLanguage } from '../../../language/useLanguage';
-import './_admin-review.scss';
+import './_admin-review-list.scss';
 
 interface AdminReviewListProps {
   isReadReviewLoading: boolean;
