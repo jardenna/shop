@@ -40,10 +40,6 @@ const AdminReviewList = ({
                 <span className="text-bold">{language.reviewedBy}: </span>
                 <span>{review.userName}</span>
               </p>
-              <p>
-                <span className="text-bold">{language.totalRating}: </span>
-                <span>{review.rating}</span>
-              </p>
             </div>
           </article>
           <article className="review-info-content">
