@@ -43,6 +43,7 @@ const AdminReviewHeader = ({
       <Button
         onClick={onReadAllReviews}
         showBtnLoader={isReadAllReviewLoading}
+        className="read-review-action-btn"
         disabled={unreadCount === 0}
         variant={BtnVariant.Secondary}
       >

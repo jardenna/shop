@@ -62,6 +62,7 @@ const AdminReviewList = ({
                 iconName={IconName.Check}
                 ariaLabel={language.markAsRead}
                 variant={BtnVariant.Secondary}
+                className="read-review-action-btn"
                 showLabel
                 disabled={review.isRead}
                 isLoading={isReadReviewLoading && loadingReviewId === review.id}
