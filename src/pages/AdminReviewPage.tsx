@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import Button from '../components/Button';
 import Chip from '../components/chips/Chip';
 import { chipVariants } from '../components/chips/chipsUtils';
@@ -12,10 +13,12 @@ import {
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
+import LayoutElement from '../layout/LayoutElement';
+import MetaTags from '../layout/MetaTags';
 import { BtnVariant } from '../types/enums';
-import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const AdminReviewPage = () => {
+  const ariaLabelledby = useId();
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
@@ -50,41 +53,45 @@ const AdminReviewPage = () => {
       });
     }
   };
-
+  const heading = language.page;
   return (
-    <AdminPageContainer
-      heading={language.reviews}
-      hideBreadCrumbs
-      variant="medium"
-      className="admin-review-page"
+    <section
+      className="admin-page page-medium admin-review-page"
+      aria-labelledby={ariaLabelledby}
     >
-      {reviewStats && <ReviewStats reviewStats={reviewStats} />}
+      <MetaTags metaTitle={heading} />
+      <LayoutElement className="page-header" ariaLabel={heading}>
+        <h1 id={ariaLabelledby}>{language.reviews}</h1>
+        {unreadCount && unreadCount.unreadCount > 0 && (
+          <span aria-live="polite" aria-atomic="true">
+            <Chip
+              chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
+              variant={chipVariants.read}
+            />
+          </span>
+        )}
+        <Button
+          onClick={handleReadAllReviews}
+          showBtnLoader={isReadAllReviewLoading}
+          disabled={unreadCount && unreadCount.unreadCount === 0}
+          variant={BtnVariant.Secondary}
+        >
+          {language.markAllAsRead}
+        </Button>
+      </LayoutElement>
+      <div className="page-cart">
+        {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
-      {unreadCount && unreadCount.unreadCount > 0 && (
-        <span aria-live="polite" aria-atomic="true">
-          <Chip
-            chipText={`${unreadCount.unreadCount} ${unreadCount.unreadCount > 1 ? language.unreadPlur : language.unread}`}
-            variant={chipVariants.read}
+        {reviews && (
+          <AdminReviewList
+            reviews={reviews}
+            isReadReviewLoading={isReadReviewLoading}
+            loadingReviewId={loadingReviewId}
+            onReadOneReview={handleReadOneReview}
           />
-        </span>
-      )}
-      <Button
-        onClick={handleReadAllReviews}
-        showBtnLoader={isReadAllReviewLoading}
-        disabled={unreadCount && unreadCount.unreadCount === 0}
-        variant={BtnVariant.Secondary}
-      >
-        {language.markAllAsRead}
-      </Button>
-      {reviews && (
-        <AdminReviewList
-          reviews={reviews}
-          isReadReviewLoading={isReadReviewLoading}
-          loadingReviewId={loadingReviewId}
-          onReadOneReview={handleReadOneReview}
-        />
-      )}
-    </AdminPageContainer>
+        )}
+      </div>
+    </section>
   );
 };
 
