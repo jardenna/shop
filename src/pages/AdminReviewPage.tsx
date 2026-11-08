@@ -53,15 +53,16 @@ const AdminReviewPage = () => {
       });
     }
   };
-  const heading = language.page;
+
+  const heading = language.reviews;
   return (
     <section
       className="admin-page page-medium admin-review-page"
       aria-labelledby={ariaLabelledby}
     >
       <MetaTags metaTitle={heading} />
-      <LayoutElement className="page-header" ariaLabel={heading}>
-        <h1 id={ariaLabelledby}>{language.reviews}</h1>
+      <LayoutElement className="page-header" ariaLabel={language.page}>
+        <h1 id={ariaLabelledby}>{heading}</h1>
         {unreadCount && unreadCount.unreadCount > 0 && (
           <span aria-live="polite" aria-atomic="true">
             <Chip
