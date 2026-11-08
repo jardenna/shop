@@ -1,5 +1,19 @@
 @use '../../../../scss/globals' as *;
 
-.review-stats {
+.review-stats-list {
   display: flex;
+
+  .review-stats-heading {
+    font-family: $font-primary-semibold;
+    font-size: rem(16px);
+  }
+
+  .review-stats-info {
+    font-family: $font-primary-semibold;
+    font-size: rem(20px);
+  }
+
+  p {
+    margin: 0;
+  }
 }
