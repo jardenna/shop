@@ -43,14 +43,11 @@ const SegmentedTabs = ({
   };
 
   return (
-    <ul
-      className={`tab-navigation-list ${className}`}
-      role="tablist"
-      onKeyDown={handleKeyDown}
-    >
+    <ul className={`tab-navigation-list ${className}`} role="tablist">
       {tabItemList.map((tab, index) => (
         <li key={tab.id}>
           <Button
+            onKeyDown={handleKeyDown}
             variant={BtnVariant.Ghost}
             id={`tab-${tab.id}`}
             tabIndex={index === selectedTabIndex ? 0 : -1}
