@@ -1,64 +1,42 @@
-import { useRef, useState, type KeyboardEvent } from 'react';
-import { BtnVariant, KeyCode } from '../../types/enums';
+import { useState } from 'react';
+import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_tabs.scss';
-
-export interface TabItemList {
-  id: number;
+export interface TabItemList<T = string> {
+  id: string | number;
   label: string;
+  value: T;
 }
 
-interface TabsProps {
-  tabItemList: TabItemList[];
+interface TabsProps<T> {
+  tabItemList: TabItemList<T>[];
   className?: string;
   defaultIndex?: number;
-  onClick: (index: number) => void;
+  onClick: (value: T) => void;
 }
 
-const Tabs = ({
+const Tabs = <T,>({
   tabItemList,
-  defaultIndex,
+  defaultIndex = 0,
   onClick,
   className = '',
-}: TabsProps) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(defaultIndex ?? 0);
-  const tabsRefs = useRef<(HTMLButtonElement | null)[]>([]);
+}: TabsProps<T>) => {
+  const [selectedTabIndex, setSelectedTabIndex] = useState(defaultIndex);
+
+  const { itemRefs, handleKeyDown } = useRovingTabIndex({
+    selectedIndex: selectedTabIndex,
+    itemCount: tabItemList.length,
+    onChange: (index) => {
+      setSelectedTabIndex(index);
+      onClick(tabItemList[index].value);
+    },
+  });
 
   const handleActivateTab = (index: number) => {
     setSelectedTabIndex(index);
-    onClick(index);
-    tabsRefs.current[index]?.focus();
-  };
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
-    let nextIndex = selectedTabIndex;
-
-    switch (event.key as KeyCode) {
-      case KeyCode.ArrowRight:
-      case KeyCode.ArrowDown:
-        nextIndex = (selectedTabIndex + 1) % tabItemList.length;
-        break;
-
-      case KeyCode.ArrowLeft:
-      case KeyCode.ArrowUp:
-        nextIndex =
-          (selectedTabIndex - 1 + tabItemList.length) % tabItemList.length;
-        break;
-
-      case KeyCode.Home:
-        nextIndex = 0;
-        break;
-
-      case KeyCode.End:
-        nextIndex = tabItemList.length - 1;
-        break;
-
-      default:
-        return;
-    }
-
-    event.preventDefault();
-    handleActivateTab(nextIndex);
+    onClick(tabItemList[index].value);
+    itemRefs.current[index]?.focus();
   };
 
   return (
@@ -72,7 +50,7 @@ const Tabs = ({
               tabIndex={index === selectedTabIndex ? 0 : -1}
               role="tab"
               refCallback={(element) => {
-                tabsRefs.current[index] = element;
+                itemRefs.current[index] = element;
               }}
               onClick={() => {
                 handleActivateTab(index);
