@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react';
-import { useKeyPress } from '../../hooks/useKeyPress';
+import { useRef, useState, type KeyboardEvent } from 'react';
 import { BtnVariant, KeyCode } from '../../types/enums';
 import Button from '../Button';
 import './_tabs.scss';
@@ -28,38 +27,43 @@ const Tabs = ({
   const handleActivateTab = (index: number) => {
     setSelectedTabIndex(index);
     onClick(index);
-    // Use arrowUp & arrowDown
     tabsRefs.current[index]?.focus();
   };
 
-  const handleNextTab = () => {
-    handleActivateTab((selectedTabIndex + 1) % tabItemList.length);
-  };
+  const handleKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
+    let nextIndex = selectedTabIndex;
 
-  const handlePrevTab = () => {
-    handleActivateTab(
-      (selectedTabIndex - 1 + tabItemList.length) % tabItemList.length,
-    );
-  };
+    switch (event.key as KeyCode) {
+      case KeyCode.ArrowRight:
+      case KeyCode.ArrowDown:
+        nextIndex = (selectedTabIndex + 1) % tabItemList.length;
+        break;
 
-  const handleGotoFirstTab = () => {
-    handleActivateTab(0);
-  };
+      case KeyCode.ArrowLeft:
+      case KeyCode.ArrowUp:
+        nextIndex =
+          (selectedTabIndex - 1 + tabItemList.length) % tabItemList.length;
+        break;
 
-  const handleGotoLastTab = () => {
-    handleActivateTab(tabItemList.length - 1);
-  };
+      case KeyCode.Home:
+        nextIndex = 0;
+        break;
 
-  useKeyPress(handleNextTab, [KeyCode.ArrowRight]);
-  useKeyPress(handlePrevTab, [KeyCode.ArrowLeft]);
-  useKeyPress(handleNextTab, [KeyCode.ArrowDown]);
-  useKeyPress(handlePrevTab, [KeyCode.ArrowUp]);
-  useKeyPress(handleGotoFirstTab, [KeyCode.Home]);
-  useKeyPress(handleGotoLastTab, [KeyCode.End]);
+      case KeyCode.End:
+        nextIndex = tabItemList.length - 1;
+        break;
+
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    handleActivateTab(nextIndex);
+  };
 
   return (
     <div className={`tab-navigation-list ${className}`}>
-      <ul className="tab-navigation" role="tablist">
+      <ul className="tab-navigation" role="tablist" onKeyDown={handleKeyDown}>
         {tabItemList.map((tab, index) => (
           <li key={tab.id}>
             <Button
@@ -67,7 +71,6 @@ const Tabs = ({
               id={`tab-${tab.id}`}
               tabIndex={index === selectedTabIndex ? 0 : -1}
               role="tab"
-              type="button"
               refCallback={(element) => {
                 tabsRefs.current[index] = element;
               }}
