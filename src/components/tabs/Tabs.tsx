@@ -3,39 +3,43 @@ import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import './_tabs.scss';
-export interface TabItemList<T = string> {
+
+export interface TabItemList {
   id: string | number;
   label: string;
-  value: T;
+  value: string;
 }
 
-interface TabsProps<T> {
-  tabItemList: TabItemList<T>[];
+interface TabsProps {
+  tabItemList: TabItemList[];
   className?: string;
   defaultIndex?: number;
-  onClick: (value: T) => void;
+  onClick: (value: string) => void;
 }
 
-const Tabs = <T,>({
+const Tabs = ({
   tabItemList,
   defaultIndex = 0,
   onClick,
   className = '',
-}: TabsProps<T>) => {
+}: TabsProps) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(defaultIndex);
+
+  const handleChangeTab = (index: number) => {
+    setSelectedTabIndex(index);
+    onClick(tabItemList[index].value);
+  };
 
   const { itemRefs, handleKeyDown } = useRovingTabIndex({
     selectedIndex: selectedTabIndex,
     itemCount: tabItemList.length,
     onChange: (index) => {
-      setSelectedTabIndex(index);
-      onClick(tabItemList[index].value);
+      handleChangeTab(index);
     },
   });
 
   const handleActivateTab = (index: number) => {
-    setSelectedTabIndex(index);
-    onClick(tabItemList[index].value);
+    handleChangeTab(index);
     itemRefs.current[index]?.focus();
   };
 

@@ -51,8 +51,8 @@ const AdminReviewPage = () => {
     }
   };
 
-  const handleSort = (index: number) => {
-    console.log(index);
+  const handleSort = (value: string) => {
+    console.log(value);
   };
 
   return (
@@ -78,8 +78,8 @@ const AdminReviewPage = () => {
           <Tabs
             onClick={handleSort}
             tabItemList={[
-              { id: 'asc', value: 1, label: 'asc' },
-              { id: 'desc', value: 2, label: 'desc' },
+              { id: 1, value: 'asc', label: 'asc' },
+              { id: 2, value: 'desc', label: 'desc' },
             ]}
           />
         </div>
