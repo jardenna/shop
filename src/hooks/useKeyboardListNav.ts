@@ -10,14 +10,14 @@ export const useKeyboardListNav = ({
   defaultIndex,
   actionNavDropdownList,
 }: UseKeyboardListNavProps) => {
-  const listRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [selectedListItemIndex, setSelectedListItemIndex] = useState(
     defaultIndex ?? 0,
   );
 
   const handleActivateListItem = (index: number) => {
     setSelectedListItemIndex(index);
-    listRefs.current[index]?.focus();
+    itemRefs.current[index]?.focus();
   };
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
@@ -53,5 +53,5 @@ export const useKeyboardListNav = ({
     }
   };
 
-  return { listRefs, handleKeyDown };
+  return { itemRefs, handleKeyDown };
 };

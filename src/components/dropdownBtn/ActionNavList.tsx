@@ -15,7 +15,7 @@ const ActionNavList = ({
   defaultIndex,
   closePopup,
 }: ActionNavListProps) => {
-  const { listRefs, handleKeyDown } = useKeyboardListNav({
+  const { itemRefs, handleKeyDown } = useKeyboardListNav({
     defaultIndex,
     actionNavDropdownList,
   });
@@ -38,7 +38,7 @@ const ActionNavList = ({
               onKeyDown={handleKeyDown}
               disabled={disabled}
               refCallback={(element) => {
-                listRefs.current[index] = element;
+                itemRefs.current[index] = element;
               }}
             >
               <span>{label}</span>
