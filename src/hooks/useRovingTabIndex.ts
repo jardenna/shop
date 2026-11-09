@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useKeyboardNavigation } from './useKeyboardNavigation';
 
 interface UseRovingTabIndexProps {
   itemCount: number;
@@ -6,37 +7,22 @@ interface UseRovingTabIndexProps {
   onChange: (index: number) => void;
 }
 
-export function useRovingTabIndex({
+export const useRovingTabIndex = ({
   selectedIndex,
   itemCount,
   onChange,
-}: UseRovingTabIndexProps) {
+}: UseRovingTabIndexProps) => {
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const { getNextIndex } = useKeyboardNavigation({
+    selectedIndex,
+    itemCount,
+  });
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    let nextIndex = selectedIndex;
+    const nextIndex = getNextIndex(event.key);
 
-    switch (event.key) {
-      case 'ArrowRight':
-      case 'ArrowDown':
-        nextIndex = (selectedIndex + 1) % itemCount;
-        break;
-
-      case 'ArrowLeft':
-      case 'ArrowUp':
-        nextIndex = (selectedIndex - 1 + itemCount) % itemCount;
-        break;
-
-      case 'Home':
-        nextIndex = 0;
-        break;
-
-      case 'End':
-        nextIndex = itemCount - 1;
-        break;
-
-      default:
-        return;
+    if (nextIndex === null) {
+      return;
     }
 
     event.preventDefault();
@@ -45,8 +31,5 @@ export function useRovingTabIndex({
     itemRefs.current[nextIndex]?.focus();
   };
 
-  return {
-    itemRefs,
-    handleKeyDown,
-  };
-}
+  return { itemRefs, handleKeyDown };
+};
