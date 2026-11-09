@@ -15,6 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
+  ariaSelected?: boolean;
   ref?: RefBtnType;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
@@ -38,6 +39,7 @@ const Button = ({
   ariaHasPopup,
   role,
   className = '',
+  ariaSelected,
   autoFocus,
   disabled,
   name,
@@ -56,6 +58,7 @@ const Button = ({
     aria-expanded={ariaExpanded}
     aria-current={ariaCurrent || undefined}
     aria-controls={ariaControls}
+    aria-selected={ariaSelected}
     aria-haspopup={ariaHasPopup}
     autoFocus={autoFocus}
     disabled={disabled || showBtnLoader ? true : undefined}
