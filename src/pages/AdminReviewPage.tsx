@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import Icon from '../components/icons/Icon';
-import Tabs from '../components/tabs/Tabs';
+import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
@@ -72,17 +72,21 @@ const AdminReviewPage = () => {
       <div className="page-cart">
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
-        <div>
-          <Icon iconName={IconName.ClockDown} />
-          <Icon iconName={IconName.ClockUp} />
-          <Tabs
-            onClick={handleSort}
-            tabItemList={[
-              { id: 1, value: 'asc', label: 'asc' },
-              { id: 2, value: 'desc', label: 'desc' },
-            ]}
-          />
-        </div>
+        <SegmentedTabs
+          onClick={handleSort}
+          tabItemList={[
+            {
+              id: 1,
+              value: 'asc',
+              label: <Icon iconName={IconName.ClockDown} />,
+            },
+            {
+              id: 2,
+              value: 'desc',
+              label: <Icon iconName={IconName.ClockUp} />,
+            },
+          ]}
+        />
 
         {reviews && (
           <AdminReviewList

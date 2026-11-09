@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -6,7 +6,7 @@ import './_tabs.scss';
 
 export interface TabItemList {
   id: string | number;
-  label: string;
+  label: ReactNode;
   value: string;
 }
 
