@@ -78,8 +78,8 @@ const AdminReviewPage = () => {
           <Tabs
             onClick={handleSort}
             tabItemList={[
-              { id: 1, label: 'hello' },
-              { id: 2, label: 'hello no 2' },
+              { id: 'asc', value: 1, label: 'asc' },
+              { id: 'desc', value: 2, label: 'desc' },
             ]}
           />
         </div>
