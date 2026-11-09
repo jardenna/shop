@@ -15,7 +15,7 @@ const ActionNavList = ({
   defaultIndex,
   closePopup,
 }: ActionNavListProps) => {
-  const { listRefs } = useKeyboardListNav({
+  const { listRefs, handleKeyDown } = useKeyboardListNav({
     defaultIndex,
     actionNavDropdownList,
   });
@@ -35,6 +35,7 @@ const ActionNavList = ({
                 onClick();
                 closePopup?.();
               }}
+              onKeyDown={handleKeyDown}
               disabled={disabled}
               refCallback={(element) => {
                 listRefs.current[index] = element;

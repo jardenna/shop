@@ -1,12 +1,10 @@
-import { useRef, useState } from 'react';
+import { KeyboardEvent as ReactKeyboardEvent, useRef, useState } from 'react';
 import { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
-import { KeyCode } from '../types/enums';
-import { useKeyPress } from './useKeyPress';
 
-type UseKeyboardListNavProps = {
+interface UseKeyboardListNavProps {
   actionNavDropdownList: ActionNavItemProps[];
   defaultIndex?: number;
-};
+}
 
 export const useKeyboardListNav = ({
   defaultIndex,
@@ -22,33 +20,38 @@ export const useKeyboardListNav = ({
     listRefs.current[index]?.focus();
   };
 
-  const handleNextListItem = () => {
-    handleActivateListItem(
-      (selectedListItemIndex + 1) % actionNavDropdownList.length,
-    );
+  const handleKeyDown = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
+    const lastIndex = actionNavDropdownList.length - 1;
+
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        event.preventDefault();
+        handleActivateListItem(
+          (selectedListItemIndex + 1) % actionNavDropdownList.length,
+        );
+        break;
+
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        event.preventDefault();
+        handleActivateListItem(
+          (selectedListItemIndex - 1 + actionNavDropdownList.length) %
+            actionNavDropdownList.length,
+        );
+        break;
+
+      case 'Home':
+        event.preventDefault();
+        handleActivateListItem(0);
+        break;
+
+      case 'End':
+        event.preventDefault();
+        handleActivateListItem(lastIndex);
+        break;
+    }
   };
 
-  const handlePrevListItem = () => {
-    handleActivateListItem(
-      (selectedListItemIndex - 1 + actionNavDropdownList.length) %
-        actionNavDropdownList.length,
-    );
-  };
-
-  const handleGotoFirstListItem = () => {
-    handleActivateListItem(0);
-  };
-
-  const handleGotoLastListItem = () => {
-    handleActivateListItem(actionNavDropdownList.length - 1);
-  };
-
-  useKeyPress(handleNextListItem, [KeyCode.ArrowRight]);
-  useKeyPress(handlePrevListItem, [KeyCode.ArrowLeft]);
-  useKeyPress(handleNextListItem, [KeyCode.ArrowDown]);
-  useKeyPress(handlePrevListItem, [KeyCode.ArrowUp]);
-  useKeyPress(handleGotoFirstListItem, [KeyCode.Home]);
-  useKeyPress(handleGotoLastListItem, [KeyCode.End]);
-
-  return { listRefs };
+  return { listRefs, handleKeyDown };
 };
