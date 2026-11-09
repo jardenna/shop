@@ -29,6 +29,7 @@ const Button = ({
   tabIndex,
   variant = BtnVariant.Primary,
   onClick,
+  onKeyDown,
   refCallback,
   ariaPressed,
   ariaDescribedBy,
@@ -53,6 +54,7 @@ const Button = ({
     type={type ?? 'button'}
     ref={refCallback || ref}
     onClick={onClick}
+    onKeyDown={onKeyDown}
     aria-pressed={ariaPressed || undefined}
     aria-describedby={ariaDescribedBy}
     aria-expanded={ariaExpanded}
