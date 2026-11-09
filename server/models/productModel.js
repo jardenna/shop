@@ -7,7 +7,7 @@ const { ObjectId } = Schema;
 // Review schema
 const reviewSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, trim: true },
     rating: { type: Number, required: true },
     comment: {
       type: String,
