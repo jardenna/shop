@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import Icon from '../components/icons/Icon';
+import Tabs from '../components/tabs/Tabs';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
@@ -50,6 +51,10 @@ const AdminReviewPage = () => {
     }
   };
 
+  const handleSort = (index: number) => {
+    console.log(index);
+  };
+
   return (
     <section
       className="admin-page page-medium admin-review-page"
@@ -70,6 +75,13 @@ const AdminReviewPage = () => {
         <div>
           <Icon iconName={IconName.ClockDown} />
           <Icon iconName={IconName.ClockUp} />
+          <Tabs
+            onClick={handleSort}
+            tabItemList={[
+              { id: 1, label: 'hello' },
+              { id: 2, label: 'hello no 2' },
+            ]}
+          />
         </div>
 
         {reviews && (

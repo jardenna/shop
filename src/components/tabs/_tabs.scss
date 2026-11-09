@@ -1,0 +1,49 @@
+@use '../../scss/globals' as *;
+
+.tab-navigation-list {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.tab-navigation {
+  display: flex;
+  gap: 4px;
+
+  @include max-size($small) {
+    overflow: auto;
+    max-width: rem(342px);
+  }
+
+  .tab {
+    &.btn {
+      overflow: hidden;
+      white-space: nowrap;
+
+      &:focus-visible {
+        @include outline;
+      }
+    }
+
+    &.btn-secondary {
+      border: 1px solid $color-white;
+      border-bottom: 4px solid transparent;
+      background-color: $color-light-gray-20;
+
+      &:hover {
+        @include min-size($medium) {
+          background-color: $color-primary;
+          border-bottom: 4px solid $color-secondary;
+          color: gray;
+        }
+      }
+
+      &.active {
+        background-color: $color-primary;
+        border-bottom: 4px solid $color-secondary;
+        color: gray;
+      }
+    }
+  }
+}
