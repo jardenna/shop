@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import Icon from '../components/icons/Icon';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
@@ -10,6 +11,7 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -64,6 +66,11 @@ const AdminReviewPage = () => {
 
       <div className="page-cart">
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
+
+        <div>
+          <Icon iconName={IconName.ClockDown} />
+          <Icon iconName={IconName.ClockUp} />
+        </div>
 
         {reviews && (
           <AdminReviewList
