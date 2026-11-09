@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
+import { KeyCode } from '../types/enums';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
 interface UseKeyboardListNavProps {
@@ -27,7 +28,7 @@ export const useKeyboardListNav = ({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    const nextIndex = getNextIndex(event.key);
+    const nextIndex = getNextIndex(event.key as KeyCode);
 
     if (nextIndex === null) {
       return;

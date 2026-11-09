@@ -1,3 +1,5 @@
+import { KeyCode } from '../types/enums';
+
 interface UseKeyboardNavigationProps {
   itemCount: number;
   selectedIndex: number;
@@ -7,24 +9,20 @@ export const useKeyboardNavigation = ({
   selectedIndex,
   itemCount,
 }: UseKeyboardNavigationProps) => {
-  const getNextIndex = (key: string) => {
-    if (itemCount === 0) {
-      return null;
-    }
-
+  const getNextIndex = (key: KeyCode) => {
     switch (key) {
-      case 'ArrowRight':
-      case 'ArrowDown':
+      case KeyCode.ArrowRight:
+      case KeyCode.ArrowDown:
         return (selectedIndex + 1) % itemCount;
 
-      case 'ArrowLeft':
-      case 'ArrowUp':
+      case KeyCode.ArrowLeft:
+      case KeyCode.ArrowUp:
         return (selectedIndex - 1 + itemCount) % itemCount;
 
-      case 'Home':
+      case KeyCode.Home:
         return 0;
 
-      case 'End':
+      case KeyCode.End:
         return itemCount - 1;
 
       default:
