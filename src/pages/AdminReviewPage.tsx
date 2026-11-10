@@ -78,12 +78,12 @@ const AdminReviewPage = () => {
             {
               id: 1,
               value: 'asc',
-              label: <Icon iconName={IconName.ClockDown} />,
+              label: <Icon iconName={IconName.ClockUp} />,
             },
             {
               id: 2,
               value: 'desc',
-              label: <Icon iconName={IconName.ClockUp} />,
+              label: <Icon iconName={IconName.ClockDown} />,
             },
           ]}
         />
