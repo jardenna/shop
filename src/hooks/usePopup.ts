@@ -2,6 +2,7 @@ import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
 import { useClickOutside } from './useClickOutside';
 import { useMoveFocus } from './useMoveFocus';
+
 interface usePopupProps {
   placement?: Placement;
   callback?: () => void;
