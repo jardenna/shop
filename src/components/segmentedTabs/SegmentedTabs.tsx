@@ -40,7 +40,7 @@ const SegmentedTabs = ({
   return (
     <ul className={`segmented-tab-list ${className}`} role="tablist">
       {tabItemList.map((tab, index) => (
-        <li key={tab.id}>
+        <li key={tab.id} className="tab-item">
           <Button
             onKeyDown={handleKeyDown}
             variant={BtnVariant.Ghost}
@@ -55,7 +55,7 @@ const SegmentedTabs = ({
             }}
             ariaSelected={index === selectedIndex}
             ariaControls={`tabpanel-${tab.id}`}
-            className={`tab-item ${index === selectedIndex ? 'active' : ''}`}
+            className={`tab-item-trigger ${index === selectedIndex ? 'active' : ''}`}
           >
             {tab.label}
           </Button>
