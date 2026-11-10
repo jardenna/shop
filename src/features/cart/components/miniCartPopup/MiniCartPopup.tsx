@@ -54,7 +54,7 @@ const MiniCartPopup = () => {
   return (
     <Panel
       className="mini-cart"
-      onClosePanel={handleCloseMiniCart}
+      closePanel={handleCloseMiniCart}
       isPanelShown={shouldOpenMiniCart}
       portalId="mini-cart"
       heading={language.myBag}

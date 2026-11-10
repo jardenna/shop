@@ -20,12 +20,12 @@ interface PanelProps {
   hideCloseBtn?: boolean;
   ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
-  onClosePanel: () => void;
+  closePanel: () => void;
 }
 
 const Panel = ({
   children,
-  onClosePanel,
+  closePanel,
   isPanelShown,
   className = '',
   ariaControls,
@@ -63,9 +63,9 @@ const Panel = ({
     enabled: Boolean(trapFocus && isPanelShown),
   });
 
-  useKeyPress(onClosePanel, [KeyCode.Esc], isPanelShown);
+  useKeyPress(closePanel, [KeyCode.Esc], isPanelShown);
 
-  useClickOutside(panelRef, onClosePanel, [panelRef, ...ignoreRefs]);
+  useClickOutside(panelRef, closePanel, [panelRef, ...ignoreRefs]);
 
   if (!shouldRender) {
     return null;
@@ -82,7 +82,7 @@ const Panel = ({
         {heading && <h2 className="panel-heading">{heading}</h2>}
         {children}
 
-        {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}
+        {!hideCloseBtn && <CloseBtn onClick={closePanel} />}
       </section>
     </Portal>
   );

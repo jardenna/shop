@@ -154,7 +154,7 @@ const FilterPanel = ({
       </TriggerPanelButton>
       <Panel
         portalId="filter-products"
-        onClosePanel={onHidePanel}
+        closePanel={onHidePanel}
         isPanelShown={isPanelShown}
         className="filter-panel"
         ariaControls={ariaControls}
