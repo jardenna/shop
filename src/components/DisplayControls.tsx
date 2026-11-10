@@ -1,8 +1,7 @@
-import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import IconBtn from './IconBtn';
 
-interface DisplayControlItem {
+export interface DisplayControlItem {
   ariaLabel: string;
   display: string;
   iconName: IconName;
@@ -18,24 +17,21 @@ const DisplayControls = ({
   displayControlList,
   onSetDisplay,
   activeDisplay,
-}: DisplayControlsProps) => {
-  const { language } = useLanguage();
-
-  return (
-    <div className="display-controls">
-      {displayControlList.map(({ display, iconName, ariaLabel }) => (
+}: DisplayControlsProps) => (
+  <ul className="display-controls">
+    {displayControlList.map(({ display, iconName, ariaLabel }) => (
+      <li key={display}>
         <IconBtn
-          key={display}
           iconName={iconName}
-          ariaLabel={language[ariaLabel]}
+          ariaLabel={ariaLabel}
           onClick={() => {
             onSetDisplay(display);
           }}
           disabled={activeDisplay === display}
         />
-      ))}
-    </div>
-  );
-};
+      </li>
+    ))}
+  </ul>
+);
 
 export default DisplayControls;
