@@ -2,9 +2,8 @@ import { ReactNode, useRef } from 'react';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
-import { useKeyPress } from '../../hooks/useKeyPress';
+import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { KeyCode } from '../../types/enums';
 import { RefElementType } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
@@ -20,12 +19,12 @@ interface PanelProps {
   hideCloseBtn?: boolean;
   ignoreRefs?: RefElementType[];
   trapFocus?: boolean;
-  onClosePanel: () => void;
+  closePanel: () => void;
 }
 
 const Panel = ({
   children,
-  onClosePanel,
+  closePanel,
   isPanelShown,
   className = '',
   ariaControls,
@@ -36,6 +35,11 @@ const Panel = ({
   heading,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
+
+  useMoveFocus({
+    closePopup: closePanel,
+    isPopupOpen: isPanelShown,
+  });
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: isPanelShown,
@@ -51,9 +55,7 @@ const Panel = ({
     enabled: Boolean(trapFocus && isPanelShown),
   });
 
-  useKeyPress(onClosePanel, [KeyCode.Esc]);
-
-  useClickOutside(panelRef, onClosePanel, [panelRef, ...ignoreRefs]);
+  useClickOutside(panelRef, closePanel, [panelRef, ...ignoreRefs]);
 
   if (!shouldRender) {
     return null;
@@ -70,7 +72,7 @@ const Panel = ({
         {heading && <h2 className="panel-heading">{heading}</h2>}
         {children}
 
-        {!hideCloseBtn && <CloseBtn onClick={onClosePanel} />}
+        {!hideCloseBtn && <CloseBtn onClick={closePanel} />}
       </section>
     </Portal>
   );

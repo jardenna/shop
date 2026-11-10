@@ -1,13 +1,12 @@
 import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
-import { KeyCode } from '../types/enums';
 import { useClickOutside } from './useClickOutside';
-import { useKeyPress } from './useKeyPress';
+import { useMoveFocus } from './useMoveFocus';
 
-type usePopupProps = {
+interface usePopupProps {
   placement?: Placement;
   callback?: () => void;
-};
+}
 
 export const usePopup = ({ callback, placement }: usePopupProps) => {
   const popupRef = useRef<HTMLDivElement | null>(null);
@@ -20,9 +19,12 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
     setPopupIsOpen(false);
   };
 
-  useKeyPress(() => {
-    closePopup();
-  }, [KeyCode.Esc]);
+  useMoveFocus({
+    closePopup: () => {
+      closePopup();
+    },
+    isPopupOpen: popupIsOpen,
+  });
 
   useClickOutside(popupRef, () => {
     closePopup();

@@ -14,6 +14,8 @@ import ChevronRightIcon from './ChevronRightIcon';
 import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import CircleChevronRightIcon from './CircleChevronRightIcon';
+import ClockDownIcon from './ClockDownIcon';
+import ClockUpIcon from './ClockUpIcon';
 import CloseIcon from './CloseIcon';
 import KidIcon from './colors/KidIcon';
 import ManIcon from './colors/ManIcon';
@@ -80,7 +82,9 @@ const iconMapping = {
   account: AccountIcon,
   add: AddIcon,
   arrowDown: ArrowDownIcon,
+  clockDown: ClockDownIcon,
   arrowUp: ArrowUpIcon,
+  clockUp: ClockUpIcon,
   auth: AuthIcon,
   basket: BasketIcon,
   calendar: CalendarIcon,

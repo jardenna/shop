@@ -53,7 +53,7 @@ const MobileNav = ({
 
       <Panel
         portalId="mobile-nav"
-        onClosePanel={onHidePanel}
+        closePanel={onHidePanel}
         isPanelShown={isPanelShown}
         ariaControls={ariaControls}
         trapFocus

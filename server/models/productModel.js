@@ -7,7 +7,7 @@ const { ObjectId } = Schema;
 // Review schema
 const reviewSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, trim: true },
     rating: { type: Number, required: true },
     comment: {
       type: String,
@@ -25,9 +25,9 @@ const reviewSchema = new Schema(
 
 const productSchema = new Schema(
   {
-    productName: { type: String, required: true },
+    productName: { type: String, required: true, trim: true },
     images: { type: [String], required: true },
-    brand: { type: String, required: true },
+    brand: { type: String, required: true, trim: true },
     quantity: { type: Number },
     subCategory: { type: ObjectId, ref: 'SubCategory', required: true },
     description: { type: String, required: true },
@@ -50,17 +50,19 @@ const productSchema = new Schema(
       type: Date,
     },
     discount: { type: Number, default: 0 },
-    material: { type: String, required: true, default: 0 },
+    material: { type: String, required: true, default: 0, trim: true },
     countInStock: { type: Number, required: true, default: 0 },
 
     sizes: {
       type: [String],
       default: undefined,
+      trim: true,
     },
 
     colors: {
       type: [String],
       required: true,
+      trim: true,
     },
   },
   { timestamps: true },

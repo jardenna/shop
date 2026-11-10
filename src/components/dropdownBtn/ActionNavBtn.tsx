@@ -1,5 +1,6 @@
 import { Placement } from '@popperjs/core';
 import { useId, type ReactNode } from 'react';
+import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
 import { BtnVariant, IconName } from '../../types/enums';
 import { AriaHasPopup } from '../../types/types';
@@ -48,6 +49,11 @@ const ActionNavBtn = ({
     closePopup,
   } = usePopup({ placement });
 
+  useInitialFocus({
+    popupRef,
+    enabled: popupIsOpen,
+  });
+
   return (
     <div>
       <Button
@@ -67,12 +73,12 @@ const ActionNavBtn = ({
       {popupIsOpen && (
         <div ref={popupRef} className="popup-container" id={dropdownId}>
           <ActionNavList
-            defaultIndex={-1}
+            defaultIndex={0}
             actionNavDropdownList={actionNavDropdownList}
             closePopup={closePopup}
           />
           {showArrow && (
-            <span ref={arrowRef} className="popup-arrow" aria-hidden={true} />
+            <span ref={arrowRef} className="popup-arrow" aria-hidden />
           )}
         </div>
       )}

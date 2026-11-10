@@ -93,8 +93,8 @@ const getAllReviews = asyncHandler(async (req, res) => {
         ...(filter.isRead === true && {
           'reviews.isRead': true,
         }),
-        ...(filter.rating !== undefined && {
-          'reviews.rating': filter.rating,
+        ...(filter.rating?.length > 0 && {
+          'reviews.rating': { $in: filter.rating },
         }),
       },
     },

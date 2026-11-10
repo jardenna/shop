@@ -1,4 +1,4 @@
-import { useKeyboardListNav } from '../../hooks/useKeyboardListNav';
+import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
@@ -15,9 +15,9 @@ const ActionNavList = ({
   defaultIndex,
   closePopup,
 }: ActionNavListProps) => {
-  const { listRefs } = useKeyboardListNav({
+  const { itemRefs, handleKeyDown } = useRovingTabIndex({
     defaultIndex,
-    actionNavDropdownList,
+    itemCount: actionNavDropdownList.length,
   });
 
   return (
@@ -35,9 +35,10 @@ const ActionNavList = ({
                 onClick();
                 closePopup?.();
               }}
+              onKeyDown={handleKeyDown}
               disabled={disabled}
               refCallback={(element) => {
-                listRefs.current[index] = element;
+                itemRefs.current[index] = element;
               }}
             >
               <span>{label}</span>

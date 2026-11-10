@@ -15,6 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaHasPopup?: AriaHasPopup;
   ariaLabel?: string;
   ariaPressed?: boolean;
+  ariaSelected?: boolean;
   ref?: RefBtnType;
   showBtnLoader?: boolean;
   variant?: BtnVariant;
@@ -28,6 +29,7 @@ const Button = ({
   tabIndex,
   variant = BtnVariant.Primary,
   onClick,
+  onKeyDown,
   refCallback,
   ariaPressed,
   ariaDescribedBy,
@@ -38,6 +40,7 @@ const Button = ({
   ariaHasPopup,
   role,
   className = '',
+  ariaSelected,
   autoFocus,
   disabled,
   name,
@@ -51,11 +54,13 @@ const Button = ({
     type={type ?? 'button'}
     ref={refCallback || ref}
     onClick={onClick}
+    onKeyDown={onKeyDown}
     aria-pressed={ariaPressed || undefined}
     aria-describedby={ariaDescribedBy}
     aria-expanded={ariaExpanded}
     aria-current={ariaCurrent || undefined}
     aria-controls={ariaControls}
+    aria-selected={ariaSelected}
     aria-haspopup={ariaHasPopup}
     autoFocus={autoFocus}
     disabled={disabled || showBtnLoader ? true : undefined}

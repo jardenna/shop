@@ -48,6 +48,10 @@ const AdminReviewPage = () => {
     }
   };
 
+  // const handleSort = (value: string) => {
+  //   console.log(value);
+  // };
+
   return (
     <section
       className="admin-page page-medium admin-review-page"
@@ -64,6 +68,22 @@ const AdminReviewPage = () => {
 
       <div className="page-cart">
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
+
+        {/* <SegmentedTabs
+          onClick={handleSort}
+          tabItemList={[
+            {
+              id: 1,
+              value: 'asc',
+              label: <Icon iconName={IconName.ClockDown} />,
+            },
+            {
+              id: 2,
+              value: 'desc',
+              label: <Icon iconName={IconName.ClockUp} />,
+            },
+          ]}
+        /> */}
 
         {reviews && (
           <AdminReviewList

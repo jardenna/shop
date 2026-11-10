@@ -8,6 +8,7 @@ import { useTogglePanel } from '../components/panel/useTogglePanel';
 import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/SkeletonProductInfo';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
+import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
@@ -18,7 +19,6 @@ import CartForm, {
   InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import MainPageContainer from './pageContainer/MainPageContainer';
-import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
 
 const FavoritePage = () => {
   const { language } = useLanguage();
@@ -103,7 +103,7 @@ const FavoritePage = () => {
 
       <Panel
         isPanelShown={isPanelShown}
-        onClosePanel={onHidePanel}
+        closePanel={onHidePanel}
         portalId="favorites"
         heading={selectedProduct?.productName ?? ''}
       >

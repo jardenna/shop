@@ -205,7 +205,7 @@ const SingleProductPurchaseSection = ({
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Panel
         isPanelShown={isPanelShown}
-        onClosePanel={onHidePanel}
+        closePanel={onHidePanel}
         portalId="single-product"
         heading={`${language.singleProductPanelHeading} ${changedValue}`}
       >

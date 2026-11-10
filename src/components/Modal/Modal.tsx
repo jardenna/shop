@@ -4,10 +4,9 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
-import { useKeyPress } from '../../hooks/useKeyPress';
+import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { KeyCode } from '../../types/enums';
 import { SizeVariant } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Overlay from '../overlay/Overlay';
@@ -54,14 +53,18 @@ const Modal = ({
 
   const { closeModal } = useModal();
 
-  const handleClose = () => {
+  const closePopup = () => {
     onClearAllValues?.();
     closeModal();
   };
 
-  useKeyPress(handleClose, [KeyCode.Esc], isModalOpen);
+  useMoveFocus({
+    closePopup,
+    isPopupOpen: isModalOpen,
+  });
+
   useScrollLock(shouldRender);
-  useClickOutside(modalRef, handleClose, [modalRef]);
+  useClickOutside(modalRef, closePopup, [modalRef]);
   useTrapFocus({
     popupRef: modalRef,
     enabled: shouldRender,
@@ -90,7 +93,7 @@ const Modal = ({
             {headerText}
           </h2>
           {showCloseBtn && (
-            <CloseBtn onClick={handleClose} ariaLabel={language.closeDialog} />
+            <CloseBtn onClick={closePopup} ariaLabel={language.closeDialog} />
           )}
         </header>
 
