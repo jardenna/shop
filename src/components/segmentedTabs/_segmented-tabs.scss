@@ -1,0 +1,25 @@
+@use '../../scss/globals' as *;
+
+.segmented-tab-list {
+  border: $border;
+  max-width: fit-content;
+  display: flex;
+  border-radius: $border-radius;
+
+  .tab-item {
+    padding: 12px;
+
+    &:focus-visible {
+      @include outline($color: $color-blue-25, $offSet: -3px);
+
+      svg {
+        stroke: currentcolor;
+      }
+    }
+
+    &.active {
+      background-color: $color-primary;
+      color: $color-secondary;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
+import './_segmented-tabs.scss';
 
 export interface TabItemList {
   id: string | number;
@@ -37,7 +38,7 @@ const SegmentedTabs = ({
   };
 
   return (
-    <ul className={`tab-navigation-list ${className}`} role="tablist">
+    <ul className={`segmented-tab-list ${className}`} role="tablist">
       {tabItemList.map((tab, index) => (
         <li key={tab.id}>
           <Button
@@ -54,7 +55,7 @@ const SegmentedTabs = ({
             }}
             ariaSelected={index === selectedIndex}
             ariaControls={`tabpanel-${tab.id}`}
-            className={`tab ${index === selectedIndex ? 'active' : ''}`}
+            className={`tab-item ${index === selectedIndex ? 'active' : ''}`}
           >
             {tab.label}
           </Button>
