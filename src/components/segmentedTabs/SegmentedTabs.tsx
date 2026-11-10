@@ -41,13 +41,13 @@ const SegmentedTabs = ({
 
   return (
     <ul className={`segmented-tab-list ${className}`} role="group">
-      {tabItemList.map((tab, index) => (
-        <li key={tab.id} className="tab-item">
+      {tabItemList.map(({ id, label, ariaLabel }, index) => (
+        <li key={id} className="tab-item">
           <Button
             onKeyDown={handleKeyDown}
             ariaPressed={index === selectedIndex}
             variant={BtnVariant.Ghost}
-            id={`tab-${tab.id}`}
+            id={`tab-${id}`}
             tabIndex={index === selectedIndex ? 0 : -1}
             refCallback={(element) => {
               itemRefs.current[index] = element;
@@ -57,8 +57,8 @@ const SegmentedTabs = ({
             }}
             className={`tab-item-trigger ${index === selectedIndex ? 'active' : ''}`}
           >
-            {tab.label}
-            {tab.ariaLabel && <VisuallyHidden>{tab.ariaLabel}</VisuallyHidden>}
+            {label}
+            {ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
           </Button>
         </li>
       ))}
