@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -23,23 +23,17 @@ const Tabs = ({
   onClick,
   className = '',
 }: TabsProps) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(defaultIndex);
-
-  const handleChangeTab = (index: number) => {
-    setSelectedTabIndex(index);
-    onClick(tabItemList[index].value);
-  };
-
-  const { itemRefs, handleKeyDown } = useRovingTabIndex({
-    selectedIndex: selectedTabIndex,
-    itemCount: tabItemList.length,
-    onChange: (index) => {
-      handleChangeTab(index);
-    },
-  });
+  const { selectedIndex, itemRefs, handleKeyDown, handleChange } =
+    useRovingTabIndex({
+      defaultIndex,
+      itemCount: tabItemList.length,
+      onChange: (index) => {
+        onClick(tabItemList[index].value);
+      },
+    });
 
   const handleActivateTab = (index: number) => {
-    handleChangeTab(index);
+    handleChange(index);
     itemRefs.current[index]?.focus();
   };
 
@@ -51,7 +45,7 @@ const Tabs = ({
             <Button
               variant={BtnVariant.Secondary}
               id={`tab-${tab.id}`}
-              tabIndex={index === selectedTabIndex ? 0 : -1}
+              tabIndex={index === selectedIndex ? 0 : -1}
               role="tab"
               refCallback={(element) => {
                 itemRefs.current[index] = element;
@@ -59,9 +53,9 @@ const Tabs = ({
               onClick={() => {
                 handleActivateTab(index);
               }}
-              ariaSelected={index === selectedTabIndex}
+              ariaSelected={index === selectedIndex}
               ariaControls={`tabpanel-${tab.id}`}
-              className={`tab ${index === selectedTabIndex ? 'active' : ''}`}
+              className={`tab ${index === selectedIndex ? 'active' : ''}`}
             >
               {tab.label}
             </Button>
