@@ -2,12 +2,14 @@ import { ReactNode } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
+import VisuallyHidden from '../VisuallyHidden';
 import './_segmented-tabs.scss';
 
 export interface TabItemList {
   id: string | number;
   label: ReactNode;
   value: string;
+  ariaLabel?: string;
 }
 
 interface SegmentedTabsProps {
@@ -38,26 +40,25 @@ const SegmentedTabs = ({
   };
 
   return (
-    <ul className={`segmented-tab-list ${className}`} role="tablist">
+    <ul className={`segmented-tab-list ${className}`} role="group">
       {tabItemList.map((tab, index) => (
         <li key={tab.id} className="tab-item">
           <Button
             onKeyDown={handleKeyDown}
+            ariaPressed={index === selectedIndex}
             variant={BtnVariant.Ghost}
             id={`tab-${tab.id}`}
             tabIndex={index === selectedIndex ? 0 : -1}
-            role="tab"
             refCallback={(element) => {
               itemRefs.current[index] = element;
             }}
             onClick={() => {
               handleActivateTab(index);
             }}
-            ariaSelected={index === selectedIndex}
-            ariaControls={`tabpanel-${tab.id}`}
             className={`tab-item-trigger ${index === selectedIndex ? 'active' : ''}`}
           >
             {tab.label}
+            {tab.ariaLabel && <VisuallyHidden>{tab.ariaLabel}</VisuallyHidden>}
           </Button>
         </li>
       ))}

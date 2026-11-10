@@ -625,6 +625,8 @@ sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
+sortAscending;Sort ascending;Sortér stigende
+sortDescending;Sort descending;Sortér faldende
 standard;Standard;Standard
 stars;stars;stjerner
 startDateCannotBeInThePast;Start date and time cannot be in the past;Startdato og -tidspunkt må ikke ligge i fortiden

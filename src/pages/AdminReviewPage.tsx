@@ -12,10 +12,12 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useLanguage } from '../features/language/useLanguage';
 import { IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
+  const { language } = useLanguage();
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
@@ -79,11 +81,13 @@ const AdminReviewPage = () => {
               id: 1,
               value: 'asc',
               label: <Icon iconName={IconName.ClockUp} />,
+              ariaLabel: language.sortAscending,
             },
             {
               id: 2,
               value: 'desc',
               label: <Icon iconName={IconName.ClockDown} />,
+              ariaLabel: language.sortDescending,
             },
           ]}
         />
