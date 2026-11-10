@@ -85,13 +85,4 @@ export const useTrapFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
       document.removeEventListener('keydown', handleTabKeyPress);
     };
   }, [enabled]);
-
-  useEffect(() => {
-    if (enabled) {
-      return;
-    }
-
-    triggerRef.current?.focus();
-    triggerRef.current = null;
-  }, [enabled]);
 };

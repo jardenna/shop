@@ -44,12 +44,10 @@ const Panel = ({
       return;
     }
 
-    if (!trapFocus) {
-      triggerRef.current?.focus();
-    }
+    triggerRef.current?.focus();
 
     triggerRef.current = null;
-  }, [isPanelShown, trapFocus]);
+  }, [isPanelShown]);
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: isPanelShown,

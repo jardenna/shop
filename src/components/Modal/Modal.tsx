@@ -1,4 +1,4 @@
-import { ReactNode, useId, useRef } from 'react';
+import { ReactNode, useEffect, useId, useRef } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
@@ -53,6 +53,18 @@ const Modal = ({
   });
 
   const { closeModal } = useModal();
+
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      return;
+    }
+
+    triggerRef.current?.focus();
+    triggerRef.current = null;
+  }, [isModalOpen]);
 
   const handleClose = () => {
     onClearAllValues?.();
