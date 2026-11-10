@@ -66,14 +66,14 @@ const Modal = ({
     triggerRef.current = null;
   }, [isModalOpen]);
 
-  const handleClose = () => {
+  const closePopup = () => {
     onClearAllValues?.();
     closeModal();
   };
 
-  useKeyPress(handleClose, [KeyCode.Esc], isModalOpen);
+  useKeyPress(closePopup, [KeyCode.Esc], isModalOpen);
   useScrollLock(shouldRender);
-  useClickOutside(modalRef, handleClose, [modalRef]);
+  useClickOutside(modalRef, closePopup, [modalRef]);
   useTrapFocus({
     popupRef: modalRef,
     enabled: shouldRender,
@@ -102,7 +102,7 @@ const Modal = ({
             {headerText}
           </h2>
           {showCloseBtn && (
-            <CloseBtn onClick={handleClose} ariaLabel={language.closeDialog} />
+            <CloseBtn onClick={closePopup} ariaLabel={language.closeDialog} />
           )}
         </header>
 

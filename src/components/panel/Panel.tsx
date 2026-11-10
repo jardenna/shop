@@ -63,7 +63,7 @@ const Panel = ({
     enabled: Boolean(trapFocus && isPanelShown),
   });
 
-  useKeyPress(onClosePanel, [KeyCode.Esc]);
+  useKeyPress(onClosePanel, [KeyCode.Esc], isPanelShown);
 
   useClickOutside(panelRef, onClosePanel, [panelRef, ...ignoreRefs]);
 

@@ -20,9 +20,7 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
     setPopupIsOpen(false);
   };
 
-  useKeyPress(() => {
-    closePopup();
-  }, [KeyCode.Esc]);
+  useKeyPress(closePopup, [KeyCode.Esc], popupIsOpen);
 
   useClickOutside(popupRef, () => {
     closePopup();
