@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
@@ -36,6 +36,20 @@ const Panel = ({
   heading,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (isPanelShown) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      return;
+    }
+
+    if (!trapFocus) {
+      triggerRef.current?.focus();
+    }
+
+    triggerRef.current = null;
+  }, [isPanelShown, trapFocus]);
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: isPanelShown,
