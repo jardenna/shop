@@ -1,15 +1,14 @@
 import { useRef, useState } from 'react';
 import { KeyCode } from '../types/enums';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
-
 interface UseRovingTabIndexProps {
-  defaultIndex: number;
   itemCount: number;
-  onChange: (index: number) => void;
+  defaultIndex?: number;
+  onChange?: (index: number) => void;
 }
 
 export const useRovingTabIndex = ({
-  defaultIndex,
+  defaultIndex = 0,
   itemCount,
   onChange,
 }: UseRovingTabIndexProps) => {
@@ -23,7 +22,7 @@ export const useRovingTabIndex = ({
 
   const handleChange = (index: number) => {
     setSelectedIndex(index);
-    onChange(index);
+    onChange?.(index);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {

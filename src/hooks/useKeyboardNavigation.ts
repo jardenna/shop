@@ -10,14 +10,20 @@ export const useKeyboardNavigation = ({
   itemCount,
 }: UseKeyboardNavigationProps) => {
   const getNextIndex = (key: KeyCode) => {
+    if (itemCount === 0) {
+      return null;
+    }
+
     switch (key) {
       case KeyCode.ArrowRight:
       case KeyCode.ArrowDown:
-        return (selectedIndex + 1) % itemCount;
+        return selectedIndex < 0 ? 0 : (selectedIndex + 1) % itemCount;
 
       case KeyCode.ArrowLeft:
       case KeyCode.ArrowUp:
-        return (selectedIndex - 1 + itemCount) % itemCount;
+        return selectedIndex < 0
+          ? itemCount - 1
+          : (selectedIndex - 1 + itemCount) % itemCount;
 
       case KeyCode.Home:
         return 0;
