@@ -1,10 +1,9 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
-import { useKeyPress } from '../../hooks/useKeyPress';
+import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { KeyCode } from '../../types/enums';
 import { RefElementType } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
@@ -36,18 +35,11 @@ const Panel = ({
   heading,
 }: PanelProps) => {
   const panelRef = useRef<HTMLElement>(null);
-  const triggerRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    if (isPanelShown) {
-      triggerRef.current = document.activeElement as HTMLElement;
-      return;
-    }
-
-    triggerRef.current?.focus();
-
-    triggerRef.current = null;
-  }, [isPanelShown]);
+  useMoveFocus({
+    closePopup: closePanel,
+    isPopupOpen: isPanelShown,
+  });
 
   const { shouldRender, transitionState, onTransitionEnd } = useAnimate({
     isOpen: isPanelShown,
@@ -62,8 +54,6 @@ const Panel = ({
     popupRef: panelRef,
     enabled: Boolean(trapFocus && isPanelShown),
   });
-
-  useKeyPress(closePanel, [KeyCode.Esc], isPanelShown);
 
   useClickOutside(panelRef, closePanel, [panelRef, ...ignoreRefs]);
 

@@ -1,8 +1,7 @@
 import { createPopper, Instance, Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
-import { KeyCode } from '../types/enums';
 import { useClickOutside } from './useClickOutside';
-import { useKeyPress } from './useKeyPress';
+import { useMoveFocus } from './useMoveFocus';
 interface usePopupProps {
   placement?: Placement;
   callback?: () => void;
@@ -12,7 +11,6 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
   const popupRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const arrowRef = useRef<HTMLSpanElement | null>(null);
-  const triggerRef = useRef<HTMLElement | null>(null);
   const [popupIsOpen, setPopupIsOpen] = useState(false);
   const popperInstanceRef = useRef<Instance | null>(null);
 
@@ -20,21 +18,16 @@ export const usePopup = ({ callback, placement }: usePopupProps) => {
     setPopupIsOpen(false);
   };
 
-  useKeyPress(closePopup, [KeyCode.Esc], popupIsOpen);
+  useMoveFocus({
+    closePopup: () => {
+      closePopup();
+    },
+    isPopupOpen: popupIsOpen,
+  });
 
   useClickOutside(popupRef, () => {
     closePopup();
   }, [buttonRef]);
-
-  useEffect(() => {
-    if (popupIsOpen) {
-      triggerRef.current = buttonRef.current;
-      return;
-    }
-
-    triggerRef.current?.focus();
-    triggerRef.current = null;
-  }, [popupIsOpen]);
 
   useEffect(() => {
     if (popupIsOpen && buttonRef.current && popupRef.current) {

@@ -1,13 +1,12 @@
-import { ReactNode, useEffect, useId, useRef } from 'react';
+import { ReactNode, useId, useRef } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
-import { useKeyPress } from '../../hooks/useKeyPress';
+import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { KeyCode } from '../../types/enums';
 import { SizeVariant } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Overlay from '../overlay/Overlay';
@@ -54,24 +53,16 @@ const Modal = ({
 
   const { closeModal } = useModal();
 
-  const triggerRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (isModalOpen) {
-      triggerRef.current = document.activeElement as HTMLElement;
-      return;
-    }
-
-    triggerRef.current?.focus();
-    triggerRef.current = null;
-  }, [isModalOpen]);
-
   const closePopup = () => {
     onClearAllValues?.();
     closeModal();
   };
 
-  useKeyPress(closePopup, [KeyCode.Esc], isModalOpen);
+  useMoveFocus({
+    closePopup,
+    isPopupOpen: isModalOpen,
+  });
+
   useScrollLock(shouldRender);
   useClickOutside(modalRef, closePopup, [modalRef]);
   useTrapFocus({
