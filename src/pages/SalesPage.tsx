@@ -3,7 +3,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import DisplayControls from '../components/DisplayControls';
+import DisplayControls, {
+  DisplayControlItem,
+} from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
@@ -20,7 +22,7 @@ import {
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
-import { productViewIconList } from '../utils/productViewIconList';
+import { IconName } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
@@ -87,6 +89,19 @@ const Salespage = () => {
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
+
+  const productViewIconList: DisplayControlItem[] = [
+    {
+      iconName: IconName.LayoutGrid,
+      ariaLabel: language.productViewList,
+      display: 'grid',
+    },
+    {
+      iconName: IconName.LayoutList,
+      ariaLabel: language.productViewGrid,
+      display: 'list',
+    },
+  ];
 
   return (
     <>
