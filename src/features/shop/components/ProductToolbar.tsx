@@ -1,18 +1,13 @@
-import DisplayControls from '../../../components/DisplayControls';
+import DisplayControls, {
+  DisplayControlItem,
+} from '../../../components/DisplayControls';
 import LiveAnnouncement from '../../../components/LiveAnnouncement';
-import { IconName } from '../../../types/enums';
-
-interface ProductViewIconList {
-  ariaLabel: string;
-  display: string;
-  iconName: IconName;
-}
 
 interface ProductToolbarProps {
   activeDisplay: string;
   announce: boolean;
   ariaLiveText: string;
-  displayControlList: ProductViewIconList[];
+  displayControlList: DisplayControlItem[];
   infoText: string;
   setProductView: (id: string) => void;
 }
