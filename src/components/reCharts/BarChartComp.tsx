@@ -1,11 +1,11 @@
 import { Bar, BarChart } from 'recharts';
 import { ChartData } from '../../types/types';
 
-interface BarChartComp {
+interface BarChartCompProps {
   data: ChartData[];
 }
 
-const BarChartComp = ({ data }: BarChartComp) => (
+const BarChartComp = ({ data }: BarChartCompProps) => (
   <BarChart
     style={{
       width: '100%',

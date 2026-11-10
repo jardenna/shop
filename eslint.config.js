@@ -68,6 +68,7 @@ export default defineConfig(
         { usePrettierrc: true },
       ],
       '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-redeclare': 'error',
       '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/consistent-type-imports': 'off',
       '@typescript-eslint/no-invalid-void-type': 'off',
