@@ -514,6 +514,8 @@ productsNoLongerAvailable;Some products are no longer available;Nogle produkter 
 productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
+productViewGrid;Display products as grid;Vis produkter som gitter
+productViewList;Display products as list;Vis produkter som liste
 profile;Profile;Profil
 promoCodeActiveInvalid;Please provide a valid active state;Angiv en gyldig aktivstatus
 promoCodeAlreadyExists;This discount code already exists;Denne rabatkode findes allerede
