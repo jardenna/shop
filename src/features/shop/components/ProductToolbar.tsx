@@ -1,37 +1,47 @@
+import { ReactNode } from 'react';
 import DisplayControls, {
   DisplayControlItem,
 } from '../../../components/DisplayControls';
-import LiveAnnouncement from '../../../components/LiveAnnouncement';
+import { IconName } from '../../../types/enums';
+import { useLanguage } from '../../language/useLanguage';
 
 interface ProductToolbarProps {
   activeDisplay: string;
-  announce: boolean;
-  ariaLiveText: string;
-  displayControlList: DisplayControlItem[];
-  infoText: string;
+
+  children?: ReactNode;
   setProductView: (id: string) => void;
 }
 
 const ProductToolbar = ({
-  displayControlList,
   setProductView,
   activeDisplay,
-  infoText,
-  announce,
-  ariaLiveText,
-}: ProductToolbarProps) => (
-  <>
-    <DisplayControls
-      onSetDisplay={setProductView}
-      displayControlList={displayControlList}
-      activeDisplay={activeDisplay}
-    />
-    <LiveAnnouncement
-      infoText={infoText}
-      announce={announce}
-      ariaLiveText={ariaLiveText}
-    />
-  </>
-);
+  children,
+}: ProductToolbarProps) => {
+  const { language } = useLanguage();
+
+  const displayControlList: DisplayControlItem[] = [
+    {
+      iconName: IconName.LayoutGrid,
+      ariaLabel: language.productViewList,
+      display: 'grid',
+    },
+    {
+      iconName: IconName.LayoutList,
+      ariaLabel: language.productViewGrid,
+      display: 'list',
+    },
+  ];
+
+  return (
+    <div className="product-toolbar">
+      <DisplayControls
+        onSetDisplay={setProductView}
+        displayControlList={displayControlList}
+        activeDisplay={activeDisplay}
+      />
+      {children && children}
+    </div>
+  );
+};
 
 export default ProductToolbar;

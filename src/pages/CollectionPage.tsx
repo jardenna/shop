@@ -5,8 +5,8 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Button from '../components/Button';
-import { DisplayControlItem } from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import LiveAnnouncement from '../components/LiveAnnouncement';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -29,7 +29,6 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import MetaTags from '../layout/MetaTags';
 import { LinkText, ShopPath } from '../layout/nav/enums';
-import { IconName } from '../types/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
@@ -140,19 +139,6 @@ const CollectionPage = () => {
     return <SkeletonShopProducts count={4} />;
   }
 
-  const productViewIconList: DisplayControlItem[] = [
-    {
-      iconName: IconName.LayoutGrid,
-      ariaLabel: language.productViewList,
-      display: 'grid',
-    },
-    {
-      iconName: IconName.LayoutList,
-      ariaLabel: language.productViewGrid,
-      display: 'list',
-    },
-  ];
-
   return (
     <>
       {category && (
@@ -199,11 +185,11 @@ const CollectionPage = () => {
                 priority
                 className="shop-product-banner"
               />
-              <div className="product-toolbar">
-                <ProductToolbar
-                  setProductView={setProductView}
-                  displayControlList={productViewIconList}
-                  activeDisplay={productView}
+              <ProductToolbar
+                setProductView={setProductView}
+                activeDisplay={productView}
+              >
+                <LiveAnnouncement
                   infoText={infoText}
                   announce={announce}
                   ariaLiveText={ariaLiveText}
@@ -223,7 +209,8 @@ const CollectionPage = () => {
                   onClearAllFilters={onClearAllFilters}
                   onClearSingleFilter={onClearSingleFilter}
                 />
-              </div>
+              </ProductToolbar>
+
               <ProductCartList
                 products={products.products}
                 productView={productView}

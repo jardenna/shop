@@ -3,9 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import DisplayControls, {
-  DisplayControlItem,
-} from '../components/DisplayControls';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import NotFoundError from '../components/NotFoundError';
 import Picture from '../components/Picture';
@@ -15,6 +12,7 @@ import { getProductLink } from '../features/shop/cartUtils';
 import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
+import ProductToolbar from '../features/shop/components/ProductToolbar';
 import {
   useGetSaleMenuQuery,
   useGetSaleProductsQuery,
@@ -22,7 +20,6 @@ import {
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import MetaTags from '../layout/MetaTags';
 import { ShopPath } from '../layout/nav/enums';
-import { IconName } from '../types/enums';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
@@ -90,19 +87,6 @@ const Salespage = () => {
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
 
-  const productViewIconList: DisplayControlItem[] = [
-    {
-      iconName: IconName.LayoutGrid,
-      ariaLabel: language.productViewList,
-      display: 'grid',
-    },
-    {
-      iconName: IconName.LayoutList,
-      ariaLabel: language.productViewGrid,
-      display: 'list',
-    },
-  ];
-
   return (
     <>
       {params.category && <MetaTags metaTitle={pageHeading} />}
@@ -142,14 +126,11 @@ const Salespage = () => {
                 priority
                 className="shop-product-banner"
               />
+              <ProductToolbar
+                setProductView={setProductView}
+                activeDisplay={productView}
+              />
 
-              <div className="product-toolbar">
-                <DisplayControls
-                  onSetDisplay={setProductView}
-                  displayControlList={productViewIconList}
-                  activeDisplay={productView}
-                />
-              </div>
               {noCategoryId && <NotFoundError error="" className="sale" />}
               <ProductCartList
                 products={selectedProducts}
