@@ -12,8 +12,10 @@ function filterReviewsMiddleware(req, res, next) {
   }
 
   // Filter by read status
-  if (isRead !== undefined) {
-    filter.isRead = isRead === 'true';
+  if (isRead === 'read') {
+    filter.isRead = true;
+  } else if (isRead === 'unread') {
+    filter.isRead = false;
   }
 
   // Filter by rating
