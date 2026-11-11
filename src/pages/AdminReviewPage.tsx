@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import Icon from '../components/icons/Icon';
 import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
@@ -21,7 +22,15 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  const { data: reviews } = useGetReviewsQuery({});
+  const params: ReviewParams = {
+    sortField: 'createdAt',
+    sortOrder: 'desc',
+    isRead: true,
+    productName: '',
+    rating: [2, 3],
+  };
+
+  const { data: reviews } = useGetReviewsQuery(params);
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
 
