@@ -120,11 +120,6 @@ a[class^='btn-'],
     color: $color-blue-30;
 
     @include outline;
-
-    svg {
-      stroke: $color-blue-30;
-
-      @include transition;
-    }
+    @include transition;
   }
 }
