@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
+import Button from '../components/Button';
 import Icon from '../components/icons/Icon';
 import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
@@ -15,7 +16,7 @@ import {
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { IconName } from '../types/enums';
+import { BtnVariant, IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -31,7 +32,7 @@ const AdminReviewPage = () => {
     rating: ['1', '2'],
   };
 
-  const defaultReviewParams = {
+  const initialFilters = {
     isRead: 'all',
     productName: '',
     rating: [],
@@ -41,7 +42,12 @@ const AdminReviewPage = () => {
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
 
-  const { filterParams } = useSearchParamsState(defaultReviewParams);
+  const {
+    filterParams,
+    // setFilterParams,
+    // toggleFilterParam,
+    onClearAllFilters,
+  } = useSearchParamsState(initialFilters);
 
   console.log(filterParams);
 
@@ -92,6 +98,13 @@ const AdminReviewPage = () => {
       )}
 
       <div className="page-cart">
+        <Button
+          className="clear-filter-btn"
+          onClick={onClearAllFilters}
+          variant={BtnVariant.Default}
+        >
+          <span>{language.clearFilters}</span>
+        </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
         <SegmentedTabs
