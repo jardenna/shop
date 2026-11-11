@@ -8,7 +8,7 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { InputChangeHandler, InputType } from '../../types/types';
 import Button from '../Button';
-import DisplayControls from '../DisplayControls';
+import DisplayControls, { DisplayControlItem } from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
 import SkeletonTable from '../skeleton/skeletonTable/SkeletonTable';
@@ -83,23 +83,20 @@ const SortTable = <T,>({
     paddingBlockMedium,
   );
 
-  const tableGridIconList = [
+  const tableGridIconList: DisplayControlItem[] = [
     {
       display: paddingBlockSmall,
       iconName: IconName.GridSmall,
-      title: language.gridSmall,
       ariaLabel: language.compact,
     },
     {
       display: paddingBlockMedium,
       iconName: IconName.Grid,
-      title: language.grid,
       ariaLabel: language.standard,
     },
     {
       display: paddingBlockLarge,
       iconName: IconName.GridLarge,
-      title: language.gridLarge,
       ariaLabel: language.expanded,
     },
   ];

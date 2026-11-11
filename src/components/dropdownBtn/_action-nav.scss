@@ -20,7 +20,7 @@
     background-color: $color-background;
   }
 
-  &:has(.btn:focus-visible) {
+  &:has(.btn:focus-visible, .btn:focus) {
     border-left-color: $color-blue-25;
     background-color: $color-white;
   }

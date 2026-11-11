@@ -514,6 +514,8 @@ productsNoLongerAvailable;Some products are no longer available;Nogle produkter 
 productStatus;Product status;Produkt status
 productUpdated;Product was updated;Produkt blev opdateret
 productVariants;Product Variants;Produkt varianter
+productViewGrid;Display products as grid;Vis produkter som gitter
+productViewList;Display products as list;Vis produkter som liste
 profile;Profile;Profil
 promoCodeActiveInvalid;Please provide a valid active state;Angiv en gyldig aktivstatus
 promoCodeAlreadyExists;This discount code already exists;Denne rabatkode findes allerede
@@ -625,6 +627,8 @@ sizeRequired;Please select a size;Vælg venligst størrelse
 sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
+sortAscending;Sort ascending;Sortér stigende
+sortDescending;Sort descending;Sortér faldende
 standard;Standard;Standard
 stars;stars;stjerner
 startDateCannotBeInThePast;Start date and time cannot be in the past;Startdato og -tidspunkt må ikke ligge i fortiden

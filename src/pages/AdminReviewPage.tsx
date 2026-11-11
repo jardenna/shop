@@ -1,4 +1,6 @@
 import { useId } from 'react';
+import Icon from '../components/icons/Icon';
+import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
@@ -10,9 +12,12 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useLanguage } from '../features/language/useLanguage';
+import { IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
+  const { language } = useLanguage();
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
@@ -48,9 +53,9 @@ const AdminReviewPage = () => {
     }
   };
 
-  // const handleSort = (value: string) => {
-  //   console.log(value);
-  // };
+  const handleSort = (value: string) => {
+    console.log(value);
+  };
 
   return (
     <section
@@ -69,21 +74,23 @@ const AdminReviewPage = () => {
       <div className="page-cart">
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
-        {/* <SegmentedTabs
+        <SegmentedTabs
           onClick={handleSort}
           tabItemList={[
             {
               id: 1,
               value: 'asc',
-              label: <Icon iconName={IconName.ClockDown} />,
+              label: <Icon iconName={IconName.ClockUp} />,
+              ariaLabel: language.sortAscending,
             },
             {
               id: 2,
               value: 'desc',
-              label: <Icon iconName={IconName.ClockUp} />,
+              label: <Icon iconName={IconName.ClockDown} />,
+              ariaLabel: language.sortDescending,
             },
           ]}
-        /> */}
+        />
 
         {reviews && (
           <AdminReviewList
