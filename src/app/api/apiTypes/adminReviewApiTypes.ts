@@ -16,9 +16,9 @@ export interface AdminReviewsResponse extends BaseReviews {
 }
 
 export interface ReviewParams extends SortParams {
-  isRead: boolean;
-  productName: string;
-  rating: number[];
+  isRead?: 'all' | 'read' | 'unread';
+  productName?: string;
+  rating?: string[];
 }
 
 export interface RatingDistribution {

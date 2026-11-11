@@ -14,6 +14,7 @@ import {
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
+import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
@@ -24,15 +25,25 @@ const AdminReviewPage = () => {
 
   const params: ReviewParams = {
     sortField: 'createdAt',
-    sortOrder: 'desc',
-    isRead: true,
+    sortOrder: 'asc',
+    isRead: 'all',
     productName: '',
-    rating: [2, 3],
+    rating: ['1', '2'],
+  };
+
+  const defaultReviewParams = {
+    isRead: 'all',
+    productName: '',
+    rating: [],
   };
 
   const { data: reviews } = useGetReviewsQuery(params);
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
+
+  const { filterParams } = useSearchParamsState(defaultReviewParams);
+
+  console.log(filterParams);
 
   const [
     markAsRead,
