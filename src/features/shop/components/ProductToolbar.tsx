@@ -22,12 +22,12 @@ const ProductToolbar = ({
   const displayControlList: DisplayControlItem[] = [
     {
       iconName: IconName.LayoutGrid,
-      ariaLabel: language.productViewList,
+      ariaLabel: language.productViewGrid,
       display: 'grid',
     },
     {
       iconName: IconName.LayoutList,
-      ariaLabel: language.productViewGrid,
+      ariaLabel: language.productViewList,
       display: 'list',
     },
   ];
