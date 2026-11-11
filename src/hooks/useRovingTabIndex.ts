@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { KeyCode } from '../types/enums';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
+
 interface UseRovingTabIndexProps {
   itemCount: number;
   defaultIndex?: number;
