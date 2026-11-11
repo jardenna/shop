@@ -15,10 +15,10 @@ export interface AdminReviewsResponse extends BaseReviews {
   userName: string;
 }
 
-export interface ReviewParams extends Partial<SortParams> {
-  isRead?: boolean;
-  productName?: string;
-  rating?: number[];
+export interface ReviewParams extends SortParams {
+  isRead: boolean;
+  productName: string;
+  rating: number[];
 }
 
 export interface RatingDistribution {

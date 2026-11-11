@@ -18,7 +18,10 @@ function filterReviewsMiddleware(req, res, next) {
 
   // Filter by rating
   if (rating) {
-    filter.rating = rating.split(',').map(Number);
+    filter.rating = rating
+      .split(',')
+      .map(Number)
+      .filter((value) => Number.isInteger(value) && value >= 1 && value <= 5);
   }
 
   req.filter = filter;
