@@ -38,6 +38,11 @@ a[class^='btn-'],
     position: absolute;
     inset: -10px;
   }
+
+  .loader {
+    width: rem(20px);
+    height: rem(20px);
+  }
 }
 
 // Primary button
