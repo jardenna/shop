@@ -37,7 +37,7 @@ const SegmentedElement = ({
             checked={checked === value}
             onChange={onChange}
             label={translateKey(label, language)}
-            className="tab-item-trigger"
+            className="segmented-item-trigger"
             iconName={iconName}
           />
         </li>
