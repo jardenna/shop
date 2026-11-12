@@ -1,7 +1,7 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Input from '../../../components/formElements/Input';
-import ProductOptionGroup from '../../../components/formElements/productOptionList/ProductOptionGroup';
+import ProductOptionGroup from '../../../components/formElements/productOptionGroup/ProductOptionGroup';
 import type { InputChangeHandler } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 

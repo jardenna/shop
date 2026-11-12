@@ -10,7 +10,7 @@ import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import ProductOptionGroup from '../../../components/formElements/productOptionList/ProductOptionGroup';
+import ProductOptionGroup from '../../../components/formElements/productOptionGroup/ProductOptionGroup';
 import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
