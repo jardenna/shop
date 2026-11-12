@@ -1,7 +1,4 @@
-import type { ReactNode } from 'react';
-import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
-import IconContent from '../IconContent';
 
 interface SegmentedInputProps {
   checked: boolean;
@@ -10,11 +7,7 @@ interface SegmentedInputProps {
   name: string;
   onChange: InputChangeHandler;
   value: string;
-  ariaLabel?: string;
   className?: string;
-  iconClassName?: string;
-  iconName?: IconName;
-  renderExtra?: ReactNode;
 }
 
 const SegmentedInput = ({
@@ -24,10 +17,6 @@ const SegmentedInput = ({
   id,
   value,
   label,
-  renderExtra,
-  iconName,
-  ariaLabel,
-  iconClassName,
   className = '',
 }: SegmentedInputProps) => (
   <>
@@ -40,16 +29,7 @@ const SegmentedInput = ({
       onChange={onChange}
     />
     <label htmlFor={id} className={className}>
-      {iconName ? (
-        <IconContent
-          iconName={iconName}
-          ariaLabel={ariaLabel || ''}
-          className={iconClassName}
-        />
-      ) : (
-        <span>{label}</span>
-      )}
-      {renderExtra}
+      <span>{label}</span>
     </label>
   </>
 );

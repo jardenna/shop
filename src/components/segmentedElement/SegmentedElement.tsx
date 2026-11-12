@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import { InputChangeHandler, OptionType } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
@@ -11,7 +10,6 @@ interface SegmentedElementProps {
   onChange: InputChangeHandler;
   radioButtonList: OptionType[];
   className?: string;
-  iconName?: IconName;
 }
 
 const SegmentedElement = ({
@@ -19,7 +17,6 @@ const SegmentedElement = ({
   radioButtonList,
   onChange,
   name,
-  iconName,
   className = '',
 }: SegmentedElementProps) => {
   const { language } = useLanguage();
@@ -35,8 +32,6 @@ const SegmentedElement = ({
             checked={checked === radio.value}
             onChange={onChange}
             label={translateKey(radio.label, language)}
-            ariaLabel={translateKey(radio.label, language)}
-            iconName={iconName}
             className="tab-item-trigger"
           />
         </li>
