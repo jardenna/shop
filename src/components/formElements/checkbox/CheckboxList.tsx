@@ -10,12 +10,14 @@ interface CheckboxListProps extends BaseControlInputProps {
   language: Language;
   values: string[];
   ariaLabel?: string;
+  className?: string;
   iconName?: IconName;
   renderExtra?: (checkbox: string) => ReactNode;
 }
 
 const CheckboxList = ({
   checkBoxList,
+  className = '',
   onChange,
   values,
   name,
@@ -25,7 +27,7 @@ const CheckboxList = ({
   ariaLabel,
   autoFocus,
 }: CheckboxListProps) => (
-  <ul className="checkbox-list">
+  <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
       <li key={checkbox} className="checkbox-item">
         <ControlInput
