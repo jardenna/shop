@@ -56,13 +56,13 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
 }
 
 // Filters count
-const getFilterSummary = (
-  filters: Record<string, unknown>,
-): FiltersCountResult => {
+const getFilterSummary = (filters: object): FiltersCountResult => {
   const countsByKey: Record<string, number> = {};
   let totalCount = 0;
 
-  for (const [paramKey, paramValue] of Object.entries(filters)) {
+  const entries = Object.entries(filters) as [string, unknown][];
+
+  for (const [paramKey, paramValue] of entries) {
     let countValue = 0;
 
     if (Array.isArray(paramValue)) {
