@@ -21,12 +21,14 @@ interface ControlInputProps extends BaseControlInputProps {
   iconClassName?: string;
   iconName?: IconName;
   renderExtra?: ReactNode;
+  showControlInfo?: boolean;
   type?: ControlInputType;
 }
 
 const ControlInput = ({
   onChange,
   checked,
+  showControlInfo,
   name,
   id,
   value,
@@ -54,7 +56,7 @@ const ControlInput = ({
     <label htmlFor={id} className={`check-box-label ${className}`}>
       {iconName ? (
         <>
-          <span>{label}</span>
+          {showControlInfo && <span>{label}</span>}
           <IconContent
             iconName={iconName}
             ariaLabel={ariaLabel}

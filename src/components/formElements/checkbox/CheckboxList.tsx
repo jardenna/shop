@@ -11,6 +11,7 @@ interface CheckboxListProps extends BaseControlInputProps {
   values: string[];
   className?: string;
   iconName?: IconName;
+  showControlInfo?: boolean;
   renderExtra?: (checkbox: string) => ReactNode;
 }
 
@@ -24,6 +25,7 @@ const CheckboxList = ({
   iconName,
   renderExtra,
   autoFocus,
+  showControlInfo,
 }: CheckboxListProps) => (
   <ul className={`checkbox-list ${className}`}>
     {checkBoxList.map((checkbox, index) => (
@@ -38,6 +40,7 @@ const CheckboxList = ({
           checked={values.includes(checkbox)}
           label={translateKey(checkbox, language)}
           renderExtra={renderExtra ? renderExtra(checkbox) : undefined}
+          showControlInfo={showControlInfo}
         />
       </li>
     ))}

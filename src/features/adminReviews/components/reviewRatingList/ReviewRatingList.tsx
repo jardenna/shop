@@ -27,6 +27,7 @@ const ReviewRatingList = ({
         language={language}
         iconName={IconName.Star}
         className="rating-list"
+        showControlInfo
       />
     </FieldSet>
   );
