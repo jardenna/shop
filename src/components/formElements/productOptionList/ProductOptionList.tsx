@@ -1,21 +1,16 @@
-import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
-  OptionGroupHeading,
   SizeVariant,
 } from '../../../types/types';
-import TriggerModalButton from '../../Modal/TriggerModalButton';
-import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
-import InputInfo from '../InputInfo';
+import { colorMap } from '../../../utils/colorUtils';
+import { translateKey } from '../../../utils/utils';
 import './_product-option-list.scss';
-import ProductOptionListNew from './ProductOptionListNew';
+import ProductOptionInput from './ProductOptionInput';
 
 interface ProductOptionListProps {
-  groupTitle: OptionGroupHeading;
   name: string;
   onChange: InputChangeHandler;
   options: string[];
@@ -26,22 +21,13 @@ interface ProductOptionListProps {
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
-  initialChecked?: string;
-  inputInfo?: string;
-  modalId?: string;
-  required?: boolean;
-  values?: string[];
   variant?: SizeVariant;
+  checked: (value: string) => boolean;
 }
 
 const ProductOptionList = ({
   name,
   options,
-  groupTitle,
-  required,
-  inputInfo,
-  values = [],
-  initialChecked,
   disabledList,
   onChange,
   iconName,
@@ -50,53 +36,35 @@ const ProductOptionList = ({
   variant = 'medium',
   iconSize,
   type,
-  modalId,
+  checked,
   iconClassName,
 }: ProductOptionListProps) => {
-  const ariaControls = useId();
   const { language } = useLanguage();
-  const checked = (label: string) =>
-    type === 'checkbox' ? values.includes(label) : initialChecked === label;
 
   return (
-    <div>
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      <ProductOptionListNew
-        disabledList={disabledList}
-        checked={checked}
-        type={type}
-        name={name}
-        onChange={onChange}
-        options={options}
-        iconClassName={iconClassName}
-        autoFocus={autoFocus}
-        className={className}
-        iconSize={iconSize}
-        iconName={iconName}
-        variant={variant}
-      />
-
-      {inputInfo && <InputInfo inputInfo={inputInfo} />}
-
-      {modalId && (
-        <div className="size-guide-btn">
-          <TriggerModalButton
-            ariaControls={ariaControls}
-            variant={BtnVariant.Ghost}
-            modalId={modalId}
-          >
-            {language.sizeGuide}
-          </TriggerModalButton>
-        </div>
-      )}
-      {modalId && (
-        <SizeGuideModal
-          language={language}
-          modalId={modalId}
-          ariaControls={ariaControls}
-        />
-      )}
-    </div>
+    <ul className={`control-list product-option-list ${className}`}>
+      {options.map((value, index) => (
+        <li key={value} className="control-item">
+          <ProductOptionInput
+            iconSize={iconSize}
+            autoFocus={autoFocus && index === 0}
+            iconName={iconName}
+            fill={iconName ? colorMap[value] : ''}
+            id={`${name}-${index}`}
+            type={type}
+            name={name}
+            value={value}
+            checked={checked(value)}
+            ariaLabel={translateKey(value, language)}
+            disabled={disabledList ? !disabledList.includes(value) : undefined}
+            onChange={onChange}
+            label={value}
+            variant={variant}
+            iconClassName={iconClassName}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

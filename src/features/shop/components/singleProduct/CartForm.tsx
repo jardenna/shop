@@ -3,7 +3,7 @@ import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/Form';
 import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
-import ProductOptionList from '../../../../components/formElements/productOptionList/ProductOptionList';
+import ProductOptionList from '../../../../components/formElements/productOptionList/ProductOptionGroup';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import {
   getColorOptions,
