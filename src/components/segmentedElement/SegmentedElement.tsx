@@ -28,17 +28,17 @@ const SegmentedElement = ({
 
   return (
     <ul className={`segmented-element-list ${className}`}>
-      {radioButtonList.map((radio) => (
-        <li key={radio.value} className="segmented-element-item">
+      {radioButtonList.map(({ id, value, iconName, label }) => (
+        <li key={value} className="segmented-element-item">
           <SegmentedInput
-            id={radio.id}
+            id={id}
             name={name}
-            value={radio.value}
-            checked={checked === radio.value}
+            value={value}
+            checked={checked === value}
             onChange={onChange}
-            label={translateKey(radio.label, language)}
+            label={translateKey(label, language)}
             className="tab-item-trigger"
-            iconName={radio.iconName}
+            iconName={iconName}
           />
         </li>
       ))}
