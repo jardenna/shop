@@ -87,6 +87,7 @@ const AdminReviewForm = ({
         values={filterParams.rating}
         language={language}
         iconName={IconName.Star}
+        className="rating-list"
       />
     </form>
   );
