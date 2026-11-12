@@ -17,6 +17,10 @@
     padding: 12px;
     border-radius: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: rem(48px);
+    min-width: rem(48px);
   }
 
   .segmented-element-item {
