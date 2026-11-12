@@ -4,7 +4,6 @@ import VisuallyHidden from './VisuallyHidden';
 
 type IconContentProps = BaseIconBtn & {
   fill?: string;
-  size?: string;
 };
 
 const IconContent = ({
@@ -17,8 +16,9 @@ const IconContent = ({
 }: IconContentProps) => (
   <>
     <Icon iconName={iconName} size={size} fill={fill} className={className} />
-    {showLabel ? ariaLabel : <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
+    {showLabel
+      ? ariaLabel
+      : ariaLabel && <VisuallyHidden>{ariaLabel}</VisuallyHidden>}
   </>
 );
-
 export default IconContent;
