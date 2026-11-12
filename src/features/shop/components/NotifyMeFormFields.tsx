@@ -1,7 +1,7 @@
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Input from '../../../components/formElements/Input';
-import ProductOptionList from '../../../components/formElements/productOptionList/ProductOptionGroup';
+import ProductOptionGroup from '../../../components/formElements/productOptionList/ProductOptionGroup';
 import type { InputChangeHandler } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 
@@ -29,7 +29,7 @@ const NotifyMeFormFields = ({
           <p>
             {language.missingYourSize}? {language.notifyMeMessage}.
           </p>
-          <ProductOptionList
+          <ProductOptionGroup
             options={options}
             type="checkbox"
             autoFocus

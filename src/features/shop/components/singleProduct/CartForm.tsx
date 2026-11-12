@@ -3,7 +3,7 @@ import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/Form';
 import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
-import ProductOptionList from '../../../../components/formElements/productOptionList/ProductOptionGroup';
+import ProductOptionGroup from '../../../../components/formElements/productOptionList/ProductOptionGroup';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
 import {
   getColorOptions,
@@ -87,7 +87,7 @@ const CartForm = ({
       className={className}
     >
       <FieldSet legendText={language.productVariants}>
-        <ProductOptionList
+        <ProductOptionGroup
           initialChecked={values.color}
           type="radio"
           className="color-list"
@@ -104,7 +104,7 @@ const CartForm = ({
             errorText: language[errors.color],
           }}
         />
-        <ProductOptionList
+        <ProductOptionGroup
           type="radio"
           initialChecked={values.size}
           required={values.size === ''}

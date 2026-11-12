@@ -10,7 +10,6 @@ import type {
 import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
-import './_product-option-list.scss';
 import ProductOptionGroupTitle from './ProductOptionGroupTitle';
 import ProductOptionList from './ProductOptionList';
 
