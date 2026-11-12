@@ -1,7 +1,6 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
 import {
   AdminReviewsResponse,
-  ReviewParams,
   ReviewsCountResponse,
   ReviewStatsResponse,
 } from '../../app/api/apiTypes/adminReviewApiTypes';
@@ -14,7 +13,7 @@ export const reviewsApiSlice = apiSlice.injectEndpoints({
       query: () => `${adminReviewsUrl}/unread`,
       providesTags: [TagTypesEnum.Reviews],
     }),
-    getReviews: builder.query<AdminReviewsResponse[], ReviewParams>({
+    getReviews: builder.query<AdminReviewsResponse[], any>({
       query: (params) => ({
         url: adminReviewsUrl,
         params,
