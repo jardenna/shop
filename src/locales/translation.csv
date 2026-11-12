@@ -218,6 +218,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterByStarRating;Filter by star rating;Filtrér efter stjernebedømmelse
 filterByStatus;Filter by status;Filtrér efter status
 filterByYear;Filter by year;Filtrer efter år
 filterHeading;Filter;Filter
