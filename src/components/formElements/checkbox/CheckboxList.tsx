@@ -6,7 +6,7 @@ import ControlInput, { BaseControlInputProps } from '../ControlInput';
 import './_checkbox.scss';
 
 interface CheckboxListProps extends BaseControlInputProps {
-  checkBoxList: string[];
+  checkBoxList: readonly string[];
   language: Language;
   values: string[];
   className?: string;
