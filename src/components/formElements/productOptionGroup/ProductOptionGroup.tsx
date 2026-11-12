@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type {
   ControlInputType,
@@ -8,38 +7,36 @@ import type {
   OptionGroupHeading,
   SizeVariant,
 } from '../../../types/types';
-import { colorMap } from '../../../utils/colorUtils';
-import { translateKey } from '../../../utils/utils';
 import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
-import ControlGroupInput from './ProductOptionInput';
-import './_product-option-list.scss';
+import ProductOptionGroupTitle from './ProductOptionGroupTitle';
+import ProductOptionList from './ProductOptionList';
 
-export interface BaseControlGroupProps {
-  groupTitle: OptionGroupHeading;
+export interface BaseProductOptionProps {
   name: string;
   onChange: InputChangeHandler;
   type: ControlInputType;
   autoFocus?: boolean;
-  className?: string;
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
-  inputInfo?: string;
-  required?: boolean;
   variant?: SizeVariant;
 }
 
-interface ProductOptionListProps extends BaseControlGroupProps {
+interface ProductOptionGroupProps extends BaseProductOptionProps {
+  groupTitle: OptionGroupHeading;
   options: string[];
+  className?: string;
   disabledList?: string[];
   initialChecked?: string;
+  inputInfo?: string;
   modalId?: string;
+  required?: boolean;
   values?: string[];
 }
 
-const ProductOptionList = ({
+const ProductOptionGroup = ({
   name,
   options,
   groupTitle,
@@ -57,7 +54,7 @@ const ProductOptionList = ({
   type,
   modalId,
   iconClassName,
-}: ProductOptionListProps) => {
+}: ProductOptionGroupProps) => {
   const ariaControls = useId();
   const { language } = useLanguage();
   const checked = (label: string) =>
@@ -65,40 +62,22 @@ const ProductOptionList = ({
 
   return (
     <div>
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      <ul
-        className={`control-list product-option-list ${className}`}
-        aria-labelledby={groupTitle.id}
-      >
-        {options.map((label, index) => (
-          <li key={label} className="control-item">
-            <ControlGroupInput
-              iconSize={iconSize}
-              autoFocus={autoFocus && index === 0}
-              iconName={iconName}
-              fill={iconName ? colorMap[label] : ''}
-              id={`${name}-${index}`}
-              type={type}
-              name={name}
-              value={label}
-              checked={checked(label)}
-              ariaLabel={translateKey(label, language)}
-              disabled={
-                disabledList ? !disabledList.includes(label) : undefined
-              }
-              onChange={onChange}
-              label={label}
-              variant={variant}
-              iconClassName={iconClassName}
-              groupTitle={{
-                id: '',
-                title: '',
-                errorText: undefined,
-              }}
-            />
-          </li>
-        ))}
-      </ul>
+      <ProductOptionGroupTitle groupTitle={groupTitle} required={required} />
+      <ProductOptionList
+        disabledList={disabledList}
+        checked={checked}
+        type={type}
+        name={name}
+        onChange={onChange}
+        options={options}
+        iconClassName={iconClassName}
+        autoFocus={autoFocus}
+        className={className}
+        iconSize={iconSize}
+        iconName={iconName}
+        variant={variant}
+      />
+
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
 
       {modalId && (
@@ -123,4 +102,4 @@ const ProductOptionList = ({
   );
 };
 
-export default ProductOptionList;
+export default ProductOptionGroup;

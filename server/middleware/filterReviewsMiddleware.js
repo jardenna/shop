@@ -12,13 +12,18 @@ function filterReviewsMiddleware(req, res, next) {
   }
 
   // Filter by read status
-  if (isRead !== undefined) {
-    filter.isRead = isRead === 'true';
+  if (isRead === 'read') {
+    filter.isRead = true;
+  } else if (isRead === 'unread') {
+    filter.isRead = false;
   }
 
   // Filter by rating
   if (rating) {
-    filter.rating = JSON.parse(rating).map(Number);
+    filter.rating = rating
+      .split(',')
+      .map(Number)
+      .filter((value) => Number.isInteger(value) && value >= 1 && value <= 5);
   }
 
   req.filter = filter;

@@ -1,7 +1,7 @@
 import IconContent from '../../IconContent';
-import type { BaseControlGroupProps } from './ProductOptionList';
+import { BaseProductOptionProps } from './ProductOptionGroup';
 
-type ProductOptionInputProps = BaseControlGroupProps & {
+interface ProductOptionInputProps extends BaseProductOptionProps {
   ariaLabel: string;
   checked: boolean;
   id: string;
@@ -9,7 +9,7 @@ type ProductOptionInputProps = BaseControlGroupProps & {
   value: string;
   disabled?: boolean;
   fill?: string;
-};
+}
 
 const ProductOptionInput = ({
   id,

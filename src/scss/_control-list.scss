@@ -19,6 +19,8 @@
   }
 
   .control-item {
+    position: relative;
+
     &:has(input:checked) {
       background-color: $color-background-secondary;
       color: $color-white;

@@ -1,4 +1,6 @@
 import { useId } from 'react';
+import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
+import Button from '../components/Button';
 import Icon from '../components/icons/Icon';
 import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
@@ -13,7 +15,8 @@ import {
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
+import { useSearchParamsState } from '../hooks/useSearchParamsState';
+import { BtnVariant, IconName } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -21,9 +24,32 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  const { data: reviews } = useGetReviewsQuery({});
+  const params: ReviewParams = {
+    sortField: 'createdAt',
+    sortOrder: 'asc',
+    isRead: 'all',
+    productName: '',
+    rating: ['1', '2'],
+  };
+
+  const initialFilters = {
+    isRead: 'all',
+    productName: '',
+    rating: [],
+  };
+
+  const { data: reviews } = useGetReviewsQuery(params);
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
+
+  const {
+    filterParams,
+    // setFilterParams,
+    // toggleFilterParam,
+    onClearAllFilters,
+  } = useSearchParamsState(initialFilters);
+
+  console.log(filterParams);
 
   const [
     markAsRead,
@@ -72,6 +98,13 @@ const AdminReviewPage = () => {
       )}
 
       <div className="page-cart">
+        <Button
+          className="clear-filter-btn"
+          onClick={onClearAllFilters}
+          variant={BtnVariant.Default}
+        >
+          <span>{language.clearFilters}</span>
+        </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
         <SegmentedTabs
