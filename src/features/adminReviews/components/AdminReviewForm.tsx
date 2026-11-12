@@ -1,9 +1,9 @@
 import FieldSet from '../../../components/fieldset/FieldSet';
-import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import SegmentedElement from '../../../components/segmentedElement/SegmentedElement';
 import { IconName } from '../../../types/enums';
 import { InputChangeHandler } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
+import ReviewRatingList from './reviewRatingList/ReviewRatingList';
 
 interface FilterParamsProps {
   isRead: string;
@@ -59,8 +59,6 @@ const AdminReviewForm = ({
     },
   ];
 
-  const ratingList = ['1', '2', '3', '4', '5'];
-
   return (
     <form>
       <FieldSet legendText={language.filterByStatus}>
@@ -79,15 +77,10 @@ const AdminReviewForm = ({
           onChange={setFilterParams}
         />
       </FieldSet>
-
-      <CheckboxList
-        checkBoxList={ratingList}
-        name="rating"
+      <ReviewRatingList
         onChange={toggleFilterParam}
         values={filterParams.rating}
         language={language}
-        iconName={IconName.Star}
-        className="rating-list"
       />
     </form>
   );

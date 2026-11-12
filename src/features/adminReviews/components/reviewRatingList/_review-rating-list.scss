@@ -1,0 +1,41 @@
+@use '../../../../scss/globals' as *;
+
+.rating-list {
+  flex-direction: row;
+  gap: 8px;
+
+  .check-box-label {
+    justify-content: start;
+    gap: 4px;
+    font-variant-numeric: tabular-nums;
+    padding: 12px;
+    border: $border;
+    border-radius: $border-radius;
+    font-family: $font-primary-semibold;
+  }
+
+  .checkbox-item {
+    position: relative;
+
+    svg {
+      fill: $color-yellow;
+      width: rem(14px);
+      height: rem(14px);
+    }
+
+    &:has(input:checked) {
+      background-color: $color-light-gray-30;
+
+      svg {
+        fill: $color-gray-80;
+      }
+    }
+  }
+
+  input[type='checkbox'] {
+    appearance: none;
+    clip-path: inset(50%);
+    position: absolute;
+    margin: 0;
+  }
+}
