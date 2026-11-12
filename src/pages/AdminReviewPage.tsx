@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import Button from '../components/Button';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewForm from '../features/adminReviews/components/AdminReviewForm';
@@ -22,7 +23,7 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  const initialFilters = {
+  const initialFilters: ReviewParams = {
     isRead: 'all',
     productName: '',
     rating: [],

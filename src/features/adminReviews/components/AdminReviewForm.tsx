@@ -1,3 +1,4 @@
+import { ReviewParams } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import SegmentedElement from '../../../components/segmentedElement/SegmentedElement';
 import { IconName } from '../../../types/enums';
@@ -5,16 +6,8 @@ import { InputChangeHandler } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 import ReviewRatingList from './reviewRatingList/ReviewRatingList';
 
-interface FilterParamsProps {
-  isRead: string;
-  productName: string;
-  rating: never[];
-  sortField: string;
-  sortOrder: string;
-}
-
 interface AdminReviewFormProps {
-  filterParams: FilterParamsProps;
+  filterParams: ReviewParams;
   setFilterParams: InputChangeHandler;
   toggleFilterParam: InputChangeHandler;
 }
