@@ -1,7 +1,8 @@
 import { useId } from 'react';
-import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import Button from '../components/Button';
+import FieldSet from '../components/fieldset/FieldSet';
 import Icon from '../components/icons/Icon';
+import SegmentedElement from '../components/segmentedElement/SegmentedElement';
 import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
@@ -24,12 +25,34 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  const params: ReviewParams = {
-    sortField: 'createdAt',
-    sortOrder: 'asc',
-    isRead: 'all',
-    productName: '',
-    rating: ['1', '2'],
+  // const params: ReviewParams = {
+  //   sortField: 'createdAt',
+  //   sortOrder: 'asc',
+  //   isRead: 'all',
+  //   productName: '',
+  //   rating: ['1', '2'],
+  // };
+
+  const isReadTabList = [
+    {
+      id: 'all',
+      value: 'all',
+      label: language.all,
+    },
+    {
+      id: 'read',
+      value: 'read',
+      label: language.read,
+    },
+    {
+      id: 'unread',
+      value: 'unread',
+      label: language.unread,
+    },
+  ];
+
+  const handleSort = (value: string) => {
+    console.log(value);
   };
 
   const initialFilters = {
@@ -38,18 +61,16 @@ const AdminReviewPage = () => {
     rating: [],
   };
 
-  const { data: reviews } = useGetReviewsQuery(params);
-  const { data: unreadCount } = useGetReviewsCountQuery();
-  const { data: reviewStats } = useGetReviewStatsQuery();
-
   const {
     filterParams,
-    // setFilterParams,
+    setFilterParams,
     // toggleFilterParam,
     onClearAllFilters,
   } = useSearchParamsState(initialFilters);
 
-  console.log(filterParams);
+  const { data: reviews } = useGetReviewsQuery(filterParams);
+  const { data: unreadCount } = useGetReviewsCountQuery();
+  const { data: reviewStats } = useGetReviewStatsQuery();
 
   const [
     markAsRead,
@@ -77,10 +98,6 @@ const AdminReviewPage = () => {
         message: result.message,
       });
     }
-  };
-
-  const handleSort = (value: string) => {
-    console.log(value);
   };
 
   return (
@@ -124,7 +141,17 @@ const AdminReviewPage = () => {
             },
           ]}
         />
-
+        <form>
+          <FieldSet legendText="Filter by read status">
+            <SegmentedElement
+              name="isRead"
+              radioButtonList={isReadTabList}
+              checked={filterParams.isRead}
+              onChange={setFilterParams}
+              className="segmented-tab-list"
+            />
+          </FieldSet>
+        </form>
         {reviews && (
           <AdminReviewList
             reviews={reviews}

@@ -1,0 +1,38 @@
+@use '../../scss/globals' as *;
+
+.segmented-element-list {
+  border: $border-dark;
+  max-width: fit-content;
+  display: flex;
+  border-radius: $border-radius;
+  overflow: clip;
+
+  input[type='radio'] {
+    appearance: none;
+    clip-path: inset(50%);
+    position: absolute;
+  }
+
+  .tab-item-trigger {
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .segmented-element-item {
+    position: relative;
+    border-right: $border;
+
+    &:last-child {
+      border: 0;
+    }
+
+    &:has(input:checked) {
+      background-color: $color-primary;
+      color: $color-secondary;
+    }
+
+    &:has(input:focus-visible) {
+      @include outline($color: $color-blue-25, $offSet: -3px);
+    }
+  }
+}
