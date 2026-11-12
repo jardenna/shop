@@ -1,8 +1,7 @@
 import { useId } from 'react';
 import Button from '../components/Button';
-import FieldSet from '../components/fieldset/FieldSet';
-import SegmentedElement from '../components/segmentedElement/SegmentedElement';
 import { useToast } from '../components/toast/hooks/useToast';
+import AdminReviewForm from '../features/adminReviews/components/AdminReviewForm';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
 import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
@@ -15,46 +14,13 @@ import {
 } from '../features/adminReviews/reviewsApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { BtnVariant, IconName } from '../types/enums';
+import { BtnVariant } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
   const { language } = useLanguage();
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
-
-  const createdAtList = [
-    {
-      id: 'asc',
-      value: 'asc',
-      label: language.sortAscending,
-      iconName: IconName.ClockUp,
-    },
-    {
-      id: 'desc',
-      value: 'desc',
-      iconName: IconName.ClockDown,
-      label: language.sortDescending,
-    },
-  ];
-
-  const isReadTabList = [
-    {
-      id: 'all',
-      value: 'all',
-      label: language.all,
-    },
-    {
-      id: 'read',
-      value: 'read',
-      label: language.read,
-    },
-    {
-      id: 'unread',
-      value: 'unread',
-      label: language.unread,
-    },
-  ];
 
   const initialFilters = {
     isRead: 'all',
@@ -123,22 +89,10 @@ const AdminReviewPage = () => {
         </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
-        <form>
-          <FieldSet legendText="Filter by read status">
-            <SegmentedElement
-              name="isRead"
-              radioButtonList={isReadTabList}
-              checked={filterParams.isRead}
-              onChange={setFilterParams}
-            />
-            <SegmentedElement
-              name="sortOrder"
-              radioButtonList={createdAtList}
-              checked={filterParams.sortOrder}
-              onChange={setFilterParams}
-            />
-          </FieldSet>
-        </form>
+        <AdminReviewForm
+          filterParams={filterParams}
+          setFilterParams={setFilterParams}
+        />
         {reviews && (
           <AdminReviewList
             reviews={reviews}

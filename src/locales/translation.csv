@@ -218,6 +218,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterByStatus;Filter by status;Filtrér efter status
 filterByYear;Filter by year;Filtrer efter år
 filterHeading;Filter;Filter
 filterProducts;Filter products;Filtrer produkter
@@ -628,6 +629,7 @@ sizes;Sizes;Størrelser
 somethingWentWrong;Something went wrong, please try again;Noget gik galt, forsøg venligst igen
 sort;Sort;Sorter
 sortAscending;Sort ascending;Sortér stigende
+sortByDate;Sort by date;Sortér efter dato
 sortDescending;Sort descending;Sortér faldende
 standard;Standard;Standard
 stars;stars;stjerner
