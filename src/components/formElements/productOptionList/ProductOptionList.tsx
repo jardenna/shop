@@ -62,7 +62,6 @@ const ProductOptionList = ({
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
-  console.log(options);
 
   return (
     <div>
