@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
+import { Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import type { BaseControlProps } from '../ControlInput';
 import ControlInput from '../ControlInput';
 import './_checkbox.scss';
-import { Language } from '../../../types/types';
 
 interface CheckboxListProps extends BaseControlProps {
   checkBoxList: string[];
