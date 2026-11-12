@@ -86,6 +86,7 @@ const AdminReviewForm = ({
         onChange={toggleFilterParam}
         values={filterParams.rating}
         language={language}
+        iconName={IconName.Star}
       />
     </form>
   );

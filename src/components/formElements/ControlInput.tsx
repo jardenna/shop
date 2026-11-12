@@ -36,7 +36,7 @@ const ControlInput = ({
   ariaLabel,
   disabled,
   iconClassName,
-  className = 'checkbox-label',
+  className = '',
   type = 'checkbox',
 }: ControlInputProps) => (
   <>
@@ -50,13 +50,16 @@ const ControlInput = ({
       disabled={disabled}
       autoFocus={autoFocus}
     />
-    <label htmlFor={id} className={className}>
+    <label htmlFor={id} className={`check-box-label ${className}`}>
       {iconName ? (
-        <IconContent
-          iconName={iconName}
-          ariaLabel={ariaLabel || ''}
-          className={iconClassName}
-        />
+        <>
+          <span>{label}</span>
+          <IconContent
+            iconName={iconName}
+            ariaLabel={ariaLabel || ''}
+            className={iconClassName}
+          />
+        </>
       ) : (
         <span>{label}</span>
       )}
