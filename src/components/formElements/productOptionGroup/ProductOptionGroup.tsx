@@ -13,24 +13,27 @@ import InputInfo from '../InputInfo';
 import ProductOptionGroupTitle from './ProductOptionGroupTitle';
 import ProductOptionList from './ProductOptionList';
 
-interface ProductOptionGroupProps {
-  groupTitle: OptionGroupHeading;
+export interface BaseProductOptionProps {
   name: string;
   onChange: InputChangeHandler;
-  options: string[];
   type: ControlInputType;
   autoFocus?: boolean;
-  className?: string;
-  disabledList?: string[];
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
+  variant?: SizeVariant;
+}
+
+interface ProductOptionGroupProps extends BaseProductOptionProps {
+  groupTitle: OptionGroupHeading;
+  options: string[];
+  className?: string;
+  disabledList?: string[];
   initialChecked?: string;
   inputInfo?: string;
   modalId?: string;
   required?: boolean;
   values?: string[];
-  variant?: SizeVariant;
 }
 
 const ProductOptionGroup = ({

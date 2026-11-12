@@ -1,27 +1,14 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
-import type {
-  ControlInputType,
-  InputChangeHandler,
-  SizeVariant,
-} from '../../../types/types';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import './_product-option-list.scss';
+import { BaseProductOptionProps } from './ProductOptionGroup';
 import ProductOptionInput from './ProductOptionInput';
 
-interface ProductOptionListProps {
-  name: string;
-  onChange: InputChangeHandler;
+interface ProductOptionListProps extends BaseProductOptionProps {
   options: string[];
-  type: ControlInputType;
-  autoFocus?: boolean;
   className?: string;
   disabledList?: string[];
-  iconClassName?: string;
-  iconName?: IconName;
-  iconSize?: string;
-  variant?: SizeVariant;
   checked: (value: string) => boolean;
 }
 
