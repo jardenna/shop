@@ -62,6 +62,7 @@ const ProductOptionList = ({
   const { language } = useLanguage();
   const checked = (label: string) =>
     type === 'checkbox' ? values.includes(label) : initialChecked === label;
+  console.log(options);
 
   return (
     <div>
@@ -70,24 +71,24 @@ const ProductOptionList = ({
         className={`control-list product-option-list ${className}`}
         aria-labelledby={groupTitle.id}
       >
-        {options.map((label, index) => (
-          <li key={label} className="control-item">
+        {options.map((value, index) => (
+          <li key={value} className="control-item">
             <ControlGroupInput
               iconSize={iconSize}
               autoFocus={autoFocus && index === 0}
               iconName={iconName}
-              fill={iconName ? colorMap[label] : ''}
+              fill={iconName ? colorMap[value] : ''}
               id={`${name}-${index}`}
               type={type}
               name={name}
-              value={label}
-              checked={checked(label)}
-              ariaLabel={translateKey(label, language)}
+              value={value}
+              checked={checked(value)}
+              ariaLabel={translateKey(value, language)}
               disabled={
-                disabledList ? !disabledList.includes(label) : undefined
+                disabledList ? !disabledList.includes(value) : undefined
               }
               onChange={onChange}
-              label={label}
+              label={value}
               variant={variant}
               iconClassName={iconClassName}
               groupTitle={{
