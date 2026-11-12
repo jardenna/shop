@@ -40,11 +40,12 @@ const SegmentedTabs = ({
   };
 
   return (
-    <ul className={`segmented-tab-list ${className}`} role="group">
+    <ul className={`segmented-tab-list ${className}`} role="tablist">
       {tabItemList.map(({ id, label, ariaLabel }, index) => (
         <li key={id} className="tab-item">
           <Button
             onKeyDown={handleKeyDown}
+            role="tab"
             ariaPressed={index === selectedIndex}
             variant={BtnVariant.Ghost}
             id={`tab-${id}`}
