@@ -1,9 +1,7 @@
 import { useId } from 'react';
 import Button from '../components/Button';
 import FieldSet from '../components/fieldset/FieldSet';
-import Icon from '../components/icons/Icon';
 import SegmentedElement from '../components/segmentedElement/SegmentedElement';
-import SegmentedTabs from '../components/segmentedTabs/SegmentedTabs';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
@@ -25,13 +23,20 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  // const params: ReviewParams = {
-  //   sortField: 'createdAt',
-  //   sortOrder: 'asc',
-  //   isRead: 'all',
-  //   productName: '',
-  //   rating: ['1', '2'],
-  // };
+  const createdAtList = [
+    {
+      id: 'asc',
+      value: 'asc',
+      label: language.sortAscending,
+      iconName: IconName.ClockUp,
+    },
+    {
+      id: 'desc',
+      value: 'desc',
+      iconName: IconName.ClockDown,
+      label: language.sortDescending,
+    },
+  ];
 
   const isReadTabList = [
     {
@@ -51,22 +56,16 @@ const AdminReviewPage = () => {
     },
   ];
 
-  const handleSort = (value: string) => {
-    console.log(value);
-  };
-
   const initialFilters = {
     isRead: 'all',
     productName: '',
     rating: [],
+    sortOrder: 'asc',
+    sortField: 'createdAt',
   };
 
-  const {
-    filterParams,
-    setFilterParams,
-    // toggleFilterParam,
-    onClearAllFilters,
-  } = useSearchParamsState(initialFilters);
+  const { filterParams, setFilterParams, onClearAllFilters } =
+    useSearchParamsState(initialFilters);
 
   const { data: reviews } = useGetReviewsQuery(filterParams);
   const { data: unreadCount } = useGetReviewsCountQuery();
@@ -124,23 +123,6 @@ const AdminReviewPage = () => {
         </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
 
-        <SegmentedTabs
-          onClick={handleSort}
-          tabItemList={[
-            {
-              id: 1,
-              value: 'asc',
-              label: <Icon iconName={IconName.ClockUp} />,
-              ariaLabel: language.sortAscending,
-            },
-            {
-              id: 2,
-              value: 'desc',
-              label: <Icon iconName={IconName.ClockDown} />,
-              ariaLabel: language.sortDescending,
-            },
-          ]}
-        />
         <form>
           <FieldSet legendText="Filter by read status">
             <SegmentedElement
@@ -148,7 +130,12 @@ const AdminReviewPage = () => {
               radioButtonList={isReadTabList}
               checked={filterParams.isRead}
               onChange={setFilterParams}
-              className="segmented-tab-list"
+            />
+            <SegmentedElement
+              name="sortOrder"
+              radioButtonList={createdAtList}
+              checked={filterParams.sortOrder}
+              onChange={setFilterParams}
             />
           </FieldSet>
         </form>

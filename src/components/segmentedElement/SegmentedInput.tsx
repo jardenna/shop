@@ -1,4 +1,6 @@
+import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
+import IconContent from '../IconContent';
 
 interface SegmentedInputProps {
   checked: boolean;
@@ -8,6 +10,7 @@ interface SegmentedInputProps {
   onChange: InputChangeHandler;
   value: string;
   className?: string;
+  iconName?: IconName;
 }
 
 const SegmentedInput = ({
@@ -18,6 +21,7 @@ const SegmentedInput = ({
   value,
   label,
   className = '',
+  iconName,
 }: SegmentedInputProps) => (
   <>
     <input
@@ -29,7 +33,11 @@ const SegmentedInput = ({
       onChange={onChange}
     />
     <label htmlFor={id} className={className}>
-      <span>{label}</span>
+      {iconName ? (
+        <IconContent iconName={iconName} ariaLabel={label} />
+      ) : (
+        <span>{label}</span>
+      )}
     </label>
   </>
 );

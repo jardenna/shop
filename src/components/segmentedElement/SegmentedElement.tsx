@@ -1,14 +1,19 @@
 import { useLanguage } from '../../features/language/useLanguage';
+import { IconName } from '../../types/enums';
 import { InputChangeHandler, OptionType } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
 import SegmentedInput from './SegmentedInput';
 
+interface RadioButtonListProps extends OptionType {
+  iconName?: IconName;
+}
+
 interface SegmentedElementProps {
   checked: string;
   name: string;
   onChange: InputChangeHandler;
-  radioButtonList: OptionType[];
+  radioButtonList: RadioButtonListProps[];
   className?: string;
 }
 
@@ -33,6 +38,7 @@ const SegmentedElement = ({
             onChange={onChange}
             label={translateKey(radio.label, language)}
             className="tab-item-trigger"
+            iconName={radio.iconName}
           />
         </li>
       ))}
