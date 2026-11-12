@@ -1,6 +1,5 @@
 import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import OptionGroupTitle from '../../../features/shop/components/productLists/OptionGroupTitle';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type {
   ControlInputType,
@@ -12,6 +11,7 @@ import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
 import './_product-option-list.scss';
+import ProductOptionGroupTitle from './ProductOptionGroupTitle';
 import ProductOptionList from './ProductOptionList';
 
 interface ProductOptionGroupProps {
@@ -60,7 +60,7 @@ const ProductOptionGroup = ({
 
   return (
     <div>
-      <OptionGroupTitle groupTitle={groupTitle} required={required} />
+      <ProductOptionGroupTitle groupTitle={groupTitle} required={required} />
       <ProductOptionList
         disabledList={disabledList}
         checked={checked}
