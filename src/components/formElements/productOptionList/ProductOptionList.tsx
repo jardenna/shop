@@ -8,35 +8,30 @@ import type {
   OptionGroupHeading,
   SizeVariant,
 } from '../../../types/types';
-import { colorMap } from '../../../utils/colorUtils';
-import { translateKey } from '../../../utils/utils';
 import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';
-import ControlGroupInput from './ProductOptionInput';
 import './_product-option-list.scss';
+import ProductOptionListNew from './ProductOptionListNew';
 
-export interface BaseControlGroupProps {
+interface ProductOptionListProps {
   groupTitle: OptionGroupHeading;
   name: string;
   onChange: InputChangeHandler;
+  options: string[];
   type: ControlInputType;
   autoFocus?: boolean;
   className?: string;
+  disabledList?: string[];
   iconClassName?: string;
   iconName?: IconName;
   iconSize?: string;
-  inputInfo?: string;
-  required?: boolean;
-  variant?: SizeVariant;
-}
-
-interface ProductOptionListProps extends BaseControlGroupProps {
-  options: string[];
-  disabledList?: string[];
   initialChecked?: string;
+  inputInfo?: string;
   modalId?: string;
+  required?: boolean;
   values?: string[];
+  variant?: SizeVariant;
 }
 
 const ProductOptionList = ({
@@ -66,39 +61,21 @@ const ProductOptionList = ({
   return (
     <div>
       <OptionGroupTitle groupTitle={groupTitle} required={required} />
-      <ul
-        className={`control-list product-option-list ${className}`}
-        aria-labelledby={groupTitle.id}
-      >
-        {options.map((value, index) => (
-          <li key={value} className="control-item">
-            <ControlGroupInput
-              iconSize={iconSize}
-              autoFocus={autoFocus && index === 0}
-              iconName={iconName}
-              fill={iconName ? colorMap[value] : ''}
-              id={`${name}-${index}`}
-              type={type}
-              name={name}
-              value={value}
-              checked={checked(value)}
-              ariaLabel={translateKey(value, language)}
-              disabled={
-                disabledList ? !disabledList.includes(value) : undefined
-              }
-              onChange={onChange}
-              label={value}
-              variant={variant}
-              iconClassName={iconClassName}
-              groupTitle={{
-                id: '',
-                title: '',
-                errorText: undefined,
-              }}
-            />
-          </li>
-        ))}
-      </ul>
+      <ProductOptionListNew
+        disabledList={disabledList}
+        checked={checked}
+        type={type}
+        name={name}
+        onChange={onChange}
+        options={options}
+        iconClassName={iconClassName}
+        autoFocus={autoFocus}
+        className={className}
+        iconSize={iconSize}
+        iconName={iconName}
+        variant={variant}
+      />
+
       {inputInfo && <InputInfo inputInfo={inputInfo} />}
 
       {modalId && (

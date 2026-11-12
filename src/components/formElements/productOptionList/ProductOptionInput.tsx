@@ -1,15 +1,28 @@
+import { IconName } from '../../../types/enums';
+import {
+  InputChangeHandler,
+  ControlInputType,
+  SizeVariant,
+} from '../../../types/types';
 import IconContent from '../../IconContent';
-import type { BaseControlGroupProps } from './ProductOptionList';
 
-type ProductOptionInputProps = BaseControlGroupProps & {
+interface ProductOptionInputProps {
   ariaLabel: string;
   checked: boolean;
   id: string;
   label: string;
+  name: string;
+  onChange: InputChangeHandler;
+  type: ControlInputType;
   value: string;
+  autoFocus?: boolean;
   disabled?: boolean;
   fill?: string;
-};
+  iconClassName?: string;
+  iconName?: IconName;
+  iconSize?: string;
+  variant?: SizeVariant;
+}
 
 const ProductOptionInput = ({
   id,
