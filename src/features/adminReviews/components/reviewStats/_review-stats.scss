@@ -40,7 +40,12 @@
 .rating-distribution {
   .rating-distribution-item {
     display: grid;
-    grid-template-columns: 20px minmax(0, 1fr) 40px;
+    grid-template-columns: 28px minmax(0, 1fr) 40px;
+    align-items: center;
+  }
+
+  .rating-distribution-label {
+    display: flex;
     align-items: center;
   }
 
