@@ -1,14 +1,16 @@
 import type { ReactNode } from 'react';
+import { IconName } from '../../../types/enums';
 import { Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
-import type { BaseControlProps } from '../ControlInput';
-import ControlInput from '../ControlInput';
+import ControlInput, { BaseControlInputProps } from '../ControlInput';
 import './_checkbox.scss';
 
-interface CheckboxListProps extends BaseControlProps {
+interface CheckboxListProps extends BaseControlInputProps {
   checkBoxList: string[];
   language: Language;
   values: string[];
+  ariaLabel?: string;
+  iconName?: IconName;
   renderExtra?: (checkbox: string) => ReactNode;
 }
 

@@ -3,25 +3,26 @@ import { IconName } from '../../types/enums';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
-export interface BaseControlProps {
+export interface BaseControlInputProps {
   name: string;
   onChange: InputChangeHandler;
+  autoFocus?: boolean;
+}
+
+interface ControlInputProps extends BaseControlInputProps {
+  checked: boolean;
+  id: string;
+  label: string;
+  value: string;
   ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
   iconClassName?: string;
   iconName?: IconName;
+  renderExtra?: ReactNode;
   type?: ControlInputType;
 }
-
-type ControlInputProps = BaseControlProps & {
-  checked: boolean;
-  id: string;
-  label: string;
-  value: string;
-  renderExtra?: ReactNode;
-};
 
 const ControlInput = ({
   onChange,
