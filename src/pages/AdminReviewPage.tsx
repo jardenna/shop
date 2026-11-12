@@ -30,8 +30,12 @@ const AdminReviewPage = () => {
     sortField: 'createdAt',
   };
 
-  const { filterParams, setFilterParams, onClearAllFilters } =
-    useSearchParamsState(initialFilters);
+  const {
+    filterParams,
+    setFilterParams,
+    onClearAllFilters,
+    toggleFilterParam,
+  } = useSearchParamsState(initialFilters);
 
   const { data: reviews } = useGetReviewsQuery(filterParams);
   const { data: unreadCount } = useGetReviewsCountQuery();
@@ -88,10 +92,10 @@ const AdminReviewPage = () => {
           <span>{language.clearFilters}</span>
         </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
-
         <AdminReviewForm
           filterParams={filterParams}
           setFilterParams={setFilterParams}
+          toggleFilterParam={toggleFilterParam}
         />
         {reviews && (
           <AdminReviewList

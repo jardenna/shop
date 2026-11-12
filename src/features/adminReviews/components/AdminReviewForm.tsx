@@ -1,4 +1,5 @@
 import FieldSet from '../../../components/fieldset/FieldSet';
+import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import SegmentedElement from '../../../components/segmentedElement/SegmentedElement';
 import { IconName } from '../../../types/enums';
 import { InputChangeHandler } from '../../../types/types';
@@ -15,11 +16,13 @@ interface FilterParamsProps {
 interface AdminReviewFormProps {
   filterParams: FilterParamsProps;
   setFilterParams: InputChangeHandler;
+  toggleFilterParam: InputChangeHandler;
 }
 
 const AdminReviewForm = ({
   filterParams,
   setFilterParams,
+  toggleFilterParam,
 }: AdminReviewFormProps) => {
   const { language } = useLanguage();
 
@@ -56,6 +59,8 @@ const AdminReviewForm = ({
     },
   ];
 
+  const ratingList = ['1', '2', '3', '4', '5'];
+
   return (
     <form>
       <FieldSet legendText={language.filterByStatus}>
@@ -74,6 +79,14 @@ const AdminReviewForm = ({
           onChange={setFilterParams}
         />
       </FieldSet>
+
+      <CheckboxList
+        checkBoxList={ratingList}
+        name="rating"
+        onChange={toggleFilterParam}
+        values={filterParams.rating}
+        language={language}
+      />
     </form>
   );
 };
