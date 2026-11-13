@@ -578,6 +578,7 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
+searchByProductName;Search by product name;Søg efter produktnavn
 securityCode;Security code;Kontrolcifre
 securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
 selectedColor;Selected colour;Valgt farve
