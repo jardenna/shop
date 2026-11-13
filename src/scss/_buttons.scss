@@ -45,6 +45,11 @@ a[class^='btn-'],
   }
 }
 
+.btn-icon {
+  display: flex;
+  gap: 4px;
+}
+
 // Primary button
 .btn-primary {
   background-color: $color-primary;
