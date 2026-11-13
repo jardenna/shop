@@ -35,7 +35,7 @@ const AdminReviewPage = () => {
     onClearAllFilters,
     hasSearchParams,
     toggleFilterParam,
-  } = useSearchParamsState(initialFilters);
+  } = useSearchParamsState(initialFilters, { pagination: false });
 
   const debouncedProductName = useDebouncedValue(filterParams.productName);
 

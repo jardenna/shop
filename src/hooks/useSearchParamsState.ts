@@ -4,10 +4,14 @@ import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 type SearchParamValue = string | string[];
+interface SearchParamsStateOptions {
+  defaultItemsPerPage?: number;
+  pagination?: boolean;
+}
 
 export const useSearchParamsState = <T extends object>(
   defaults: T,
-  defaultItemsPerPage = 8,
+  { defaultItemsPerPage = 8, pagination = true }: SearchParamsStateOptions = {},
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -53,10 +57,11 @@ export const useSearchParamsState = <T extends object>(
   const setValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const updatedSearchParams = new URLSearchParams(searchParams);
 
-    // Reset page inside SAME update
-    updatedSearchParams.set(pageParamKey, '1');
+    if (pagination) {
+      updatedSearchParams.set(pageParamKey, '1');
+    }
 
     updatedSearchParams.delete(name);
 
@@ -79,9 +84,11 @@ export const useSearchParamsState = <T extends object>(
   const toggleValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
 
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const updatedSearchParams = new URLSearchParams(searchParams);
 
-    updatedSearchParams.set(pageParamKey, '1');
+    if (pagination) {
+      updatedSearchParams.set(pageParamKey, '1');
+    }
 
     const current = values[name as keyof T];
 
@@ -104,7 +111,7 @@ export const useSearchParamsState = <T extends object>(
 
   // Remove tags
   const handleRemoveFilterTag = (key: string, value: string) => {
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const updatedSearchParams = new URLSearchParams(searchParams);
 
     // Handle range keys like "minPrice-maxPrice"
     if (key.includes('-')) {
@@ -112,6 +119,10 @@ export const useSearchParamsState = <T extends object>(
 
       updatedSearchParams.delete(minKey);
       updatedSearchParams.delete(maxKey);
+
+      if (pagination) {
+        updatedSearchParams.set(pageParamKey, '1');
+      }
 
       setSearchParams(updatedSearchParams);
       return;
@@ -127,7 +138,9 @@ export const useSearchParamsState = <T extends object>(
       updatedSearchParams.append(key, item);
     });
 
-    updatedSearchParams.set(pageParamKey, '1');
+    if (pagination) {
+      updatedSearchParams.set(pageParamKey, '1');
+    }
 
     setSearchParams(updatedSearchParams);
   };
@@ -139,12 +152,16 @@ export const useSearchParamsState = <T extends object>(
 
   // Clear single filter
   const handleClearSingleFilter = (keys: string | string[]) => {
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
+    const updatedSearchParams = new URLSearchParams(searchParams);
     const keysArray = Array.isArray(keys) ? keys : [keys];
 
     keysArray.forEach((key) => {
       updatedSearchParams.delete(key);
     });
+
+    if (pagination) {
+      updatedSearchParams.set(pageParamKey, '1');
+    }
 
     setSearchParams(updatedSearchParams);
   };
