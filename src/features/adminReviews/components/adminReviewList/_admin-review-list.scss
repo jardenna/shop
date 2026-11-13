@@ -7,6 +7,15 @@
   border-bottom: $border;
   padding: 20px;
 
+  @include max-size($medium) {
+    grid-template-columns: rem(352px) minmax(0, 1fr);
+  }
+
+  @include max-size($small) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   p {
     margin: 0;
   }
@@ -32,6 +41,10 @@
     justify-content: space-between;
     align-items: center;
     border-top: $border-dark;
+
+    @include max-size($small) {
+      margin-top: 12px;
+    }
   }
 
   .review-product-info {
