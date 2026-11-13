@@ -1,23 +1,23 @@
-import { ReviewParams } from '../../../app/api/apiTypes/adminReviewApiTypes';
-import FieldSet from '../../../components/fieldset/FieldSet';
-import Search from '../../../components/formElements/Search';
-import SegmentedElement from '../../../components/segmentedElement/SegmentedElement';
-import { IconName } from '../../../types/enums';
-import { InputChangeHandler } from '../../../types/types';
-import { useLanguage } from '../../language/useLanguage';
-import ReviewRatingList from './reviewRatingList/ReviewRatingList';
+import { ReviewParams } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import FieldSet from '../../../../components/fieldset/FieldSet';
+import Search from '../../../../components/formElements/Search';
+import SegmentedElement from '../../../../components/segmentedElement/SegmentedElement';
+import { IconName } from '../../../../types/enums';
+import { InputChangeHandler } from '../../../../types/types';
+import { useLanguage } from '../../../language/useLanguage';
+import ReviewRatingList from '../reviewRatingList/ReviewRatingList';
 
-interface AdminReviewFormProps {
+interface AdminReviewFilterBarProps {
   filterParams: ReviewParams;
   setFilterParams: InputChangeHandler;
   toggleFilterParam: InputChangeHandler;
 }
 
-const AdminReviewForm = ({
+const AdminReviewFilterBar = ({
   filterParams,
   setFilterParams,
   toggleFilterParam,
-}: AdminReviewFormProps) => {
+}: AdminReviewFilterBarProps) => {
   const { language } = useLanguage();
 
   const createdAtList = [
@@ -89,4 +89,4 @@ const AdminReviewForm = ({
   );
 };
 
-export default AdminReviewForm;
+export default AdminReviewFilterBar;
