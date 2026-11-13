@@ -64,7 +64,10 @@ const AdminReviewFilterBar = ({
         labelText={language.searchByProductName}
         ariaLabel={language.pageSearch}
       />
-      <FieldSet legendText={language.sortByDate} className="sort-review-order">
+      <FieldSet
+        legendText={language.sortByDate}
+        className="sort-order-fieldset"
+      >
         <SegmentedElement
           name="sortOrder"
           radioButtonList={createdAtList}
@@ -74,7 +77,7 @@ const AdminReviewFilterBar = ({
       </FieldSet>
       <FieldSet
         legendText={language.filterByStatus}
-        className="sort-review-read"
+        className="sort-read-fieldset"
       >
         <SegmentedElement
           name="isRead"

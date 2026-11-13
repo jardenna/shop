@@ -13,19 +13,19 @@
     margin: 0;
   }
 
-  > .search-input {
+  .search-input {
     grid-area: search;
   }
 
-  > .sort-review-order {
+  .sort-order-fieldset {
     grid-area: date;
   }
 
-  > .sort-review-read {
+  .sort-read-fieldset {
     grid-area: status;
   }
 
-  > .rating-list-fieldset {
+  .rating-list-fieldset {
     grid-area: rating;
   }
 
@@ -35,8 +35,8 @@
       'search search date'
       'status .      rating';
 
-    > .sort-review-order,
-    > .rating-list-fieldset {
+    .sort-order-fieldset,
+    .rating-list-fieldset {
       justify-self: end;
     }
   }
@@ -48,8 +48,8 @@
       'date   status'
       'rating rating';
 
-    > .sort-review-order,
-    > .rating-list-fieldset {
+    .sort-order-fieldset,
+    .rating-list-fieldset {
       justify-self: stretch;
     }
   }
