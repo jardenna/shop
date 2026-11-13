@@ -61,7 +61,7 @@ const AdminReviewForm = ({
         id="productName"
         name="productName"
         labelText={language.searchByProductName}
-        ariaLabel="Page search"
+        ariaLabel={language.pageSearch}
       />
 
       <FieldSet legendText={language.filterByStatus}>

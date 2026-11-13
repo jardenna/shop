@@ -228,6 +228,7 @@ filtersApplied;Filters applied;Filtre anvendt
 freeShippingSuffix;more, shipping is free.;mere er levering gratis
 from;from;fra
 getInspired;Get inspired;Bliv inspireret
+globalSearch;Global search;Global søgning
 globe;Globe;Globus
 go;Go;Gå
 goal12Months;12 months;12 måneder
@@ -425,6 +426,7 @@ outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
 pagesBack;pages back;sider tilbage
+pageSearch;Page search;Sidesøgning
 pagesForward;pages forward;sider tilbage
 pagination;Pagination;Sideinddeling
 paid;Paid;Betalt
