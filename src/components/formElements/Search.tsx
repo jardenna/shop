@@ -10,6 +10,7 @@ interface SearchProps {
   name: string;
   onChange: InputChangeHandler;
   value: string;
+  inputHasNoLabel?: boolean;
 }
 
 const Search = ({
@@ -19,9 +20,11 @@ const Search = ({
   name,
   id,
   ariaLabel,
+  inputHasNoLabel,
 }: SearchProps) => (
   <search aria-label={ariaLabel}>
     <Input
+      variant="secondary"
       onChange={onChange}
       value={value}
       id={id}
@@ -30,7 +33,7 @@ const Search = ({
       type="search"
       labelText={labelText}
       inputSuffix={<Icon iconName={IconName.Search} />}
-      inputHasNoLabel
+      inputHasNoLabel={inputHasNoLabel}
     />
   </search>
 );
