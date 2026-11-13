@@ -13,6 +13,7 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import './adminReviewPage.styles.scss';
 
@@ -36,7 +37,13 @@ const AdminReviewPage = () => {
     toggleFilterParam,
   } = useSearchParamsState(initialFilters);
 
-  const { data: reviews } = useGetReviewsQuery(filterParams);
+  const debouncedProductName = useDebouncedValue(filterParams.productName);
+
+  const { data: reviews } = useGetReviewsQuery({
+    ...filterParams,
+    productName: debouncedProductName,
+  });
+
   const { data: unreadCount } = useGetReviewsCountQuery();
   const { data: reviewStats } = useGetReviewStatsQuery();
 
