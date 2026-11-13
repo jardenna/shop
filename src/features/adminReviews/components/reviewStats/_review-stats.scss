@@ -3,7 +3,7 @@
 .review-stats-list {
   @include grid-fixed-columns($columns: 3);
 
-  border-bottom: $border;
+  border-bottom: $border-dark;
   padding-bottom: 20px;
 
   .review-stats-card {

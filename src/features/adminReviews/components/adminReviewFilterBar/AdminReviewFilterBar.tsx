@@ -6,6 +6,7 @@ import { IconName } from '../../../../types/enums';
 import { InputChangeHandler } from '../../../../types/types';
 import { useLanguage } from '../../../language/useLanguage';
 import ReviewRatingList from '../reviewRatingList/ReviewRatingList';
+import './_admin-review-filter-bar.scss';
 
 interface AdminReviewFilterBarProps {
   filterParams: ReviewParams;
@@ -54,7 +55,7 @@ const AdminReviewFilterBar = ({
   ];
 
   return (
-    <form>
+    <form className="review-filter-bar">
       <Search
         onChange={setFilterParams}
         value={filterParams.productName}
@@ -63,15 +64,6 @@ const AdminReviewFilterBar = ({
         labelText={language.searchByProductName}
         ariaLabel={language.pageSearch}
       />
-
-      <FieldSet legendText={language.filterByStatus}>
-        <SegmentedElement
-          name="isRead"
-          radioButtonList={isReadList}
-          checked={filterParams.isRead}
-          onChange={setFilterParams}
-        />
-      </FieldSet>
       <FieldSet legendText={language.sortByDate}>
         <SegmentedElement
           name="sortOrder"
@@ -80,6 +72,15 @@ const AdminReviewFilterBar = ({
           onChange={setFilterParams}
         />
       </FieldSet>
+      <FieldSet legendText={language.filterByStatus}>
+        <SegmentedElement
+          name="isRead"
+          radioButtonList={isReadList}
+          checked={filterParams.isRead}
+          onChange={setFilterParams}
+        />
+      </FieldSet>
+
       <ReviewRatingList
         onChange={toggleFilterParam}
         values={filterParams.rating}

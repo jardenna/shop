@@ -2,14 +2,15 @@
 
 .rating-list {
   flex-direction: row;
-  gap: 8px;
+  gap: 4px;
+  margin: 0;
 
   .check-box-label {
     justify-content: start;
     gap: 4px;
     font-variant-numeric: tabular-nums;
     padding: 12px;
-    border: $border;
+    border: $border-dark;
     border-radius: $border-radius;
     font-family: $font-primary-semibold;
   }

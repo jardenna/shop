@@ -1,0 +1,14 @@
+@use '../../../../scss/globals' as *;
+
+.review-filter-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+
+  fieldset {
+    width: fit-content;
+    margin: 0;
+  }
+}
