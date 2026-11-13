@@ -1,14 +1,59 @@
 @use '../../../../scss/globals' as *;
 
 .review-filter-bar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  grid-template-areas: 'search date status rating';
+  align-items: end;
   gap: 12px;
   margin-top: 20px;
 
   fieldset {
     width: fit-content;
     margin: 0;
+  }
+
+  // Børnene placeres via grid-area, så rækkefølgen i markup er ligegyldig
+  > :nth-child(1) {
+    grid-area: search;
+  }
+
+  > :nth-child(2) {
+    grid-area: date;
+  }
+
+  > :nth-child(3) {
+    grid-area: status;
+  }
+
+  > :nth-child(4) {
+    grid-area: rating;
+  }
+
+  // Tablet: søg + dato øverst, status til venstre og rating til højre nedenunder
+  @include max-size(1024px) {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'search search date'
+      'status .      rating';
+
+    > :nth-child(2),
+    > :nth-child(4) {
+      justify-self: end;
+    }
+  }
+
+  // Mobil: søg i fuld bredde, dato + status ved siden af hinanden, rating i fuld bredde
+  @include max-size(640px) {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'search search'
+      'date   status'
+      'rating rating';
+
+    > :nth-child(2),
+    > :nth-child(4) {
+      justify-self: stretch;
+    }
   }
 }
