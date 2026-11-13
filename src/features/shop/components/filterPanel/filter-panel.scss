@@ -26,6 +26,13 @@
       padding-right: 8px;
     }
   }
+
+  .filter-panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 8px;
+  }
 }
 
 .filter-form {
@@ -52,11 +59,4 @@
     gap: 0;
     margin-bottom: 0;
   }
-}
-
-.filter-footer {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  padding-top: 8px;
 }

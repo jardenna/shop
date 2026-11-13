@@ -5,7 +5,6 @@ import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
 } from '../../../../components/accordion/Accordion';
-import ClearFilterBtn from '../../../../components/ClearFilterBtn';
 import ColorItem from '../../../../components/ColorItem';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../../components/fieldset/FieldSet';
@@ -19,12 +18,13 @@ import { useTogglePanel } from '../../../../components/panel/useTogglePanel';
 import TagList from '../../../../components/tags/TagList';
 import VisuallyHidden from '../../../../components/VisuallyHidden';
 import { FilterKeys } from '../../../../pages/CollectionPage';
-import { BtnVariant, IconName } from '../../../../types/enums';
+import { IconName } from '../../../../types/enums';
 import { InputChangeHandler, Language } from '../../../../types/types';
 import { sortSizesDynamic } from '../../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../../utils/utils';
 import { useCurrency } from '../../../currency/useCurrency';
-import './filterPanel.styles.scss';
+import './filter-panel.scss';
+import FilterPanelFooter from './FilterPanelFooter';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -127,16 +127,12 @@ const FilterPanel = ({
           language={language}
           renderExtra={item.renderExtra}
         />
-        <div className="filter-footer">
-          <ClearFilterBtn
-            showIcon
-            variant={BtnVariant.Ghost}
-            onClick={() => {
-              onClearSingleFilter(item.key);
-            }}
-            disabled={countsByKey[item.key] === 0}
-          />
-        </div>
+        <FilterPanelFooter
+          onClick={() => {
+            onClearSingleFilter(item.key);
+          }}
+          disabled={countsByKey[item.key] === 0}
+        />
       </FieldSet>
     ),
   }));
@@ -215,16 +211,12 @@ const FilterPanel = ({
                   onChange={setValue}
                   unitLabel={currencyText}
                 />
-                <div className="filter-footer">
-                  <ClearFilterBtn
-                    showIcon
-                    variant={BtnVariant.Ghost}
-                    onClick={() => {
-                      onClearSingleFilter(['minPrice', 'maxPrice']);
-                    }}
-                    disabled={isClearPriceBtnDisabled}
-                  />
-                </div>
+                <FilterPanelFooter
+                  onClick={() => {
+                    onClearSingleFilter(['minPrice', 'maxPrice']);
+                  }}
+                  disabled={isClearPriceBtnDisabled}
+                />
               </FieldSet>
               <Accordion accordionList={accordionList} name="filter" />
             </FieldSet>
