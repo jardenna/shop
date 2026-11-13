@@ -23,17 +23,25 @@ export const useSearchParamsState = <T extends object>(
 
   const searchKey = searchParams.toString();
 
+  const updateSearchParams = (params: URLSearchParams, resetPage = false) => {
+    if (pagination && resetPage) {
+      params.set(pageParamKey, '1');
+    }
+
+    setSearchParams(params);
+  };
+
   const setPage = (pageNum: number) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(pageParamKey, pageNum.toString());
-    setSearchParams(newParams);
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.set(pageParamKey, pageNum.toString());
+    setSearchParams(updatedParams);
   };
 
   const updatePagination = (pageNum: number, count: number) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set(pageParamKey, pageNum.toString());
-    newParams.set(productsPerPageParamKey, count.toString());
-    setSearchParams(newParams);
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.set(pageParamKey, pageNum.toString());
+    updatedParams.set(productsPerPageParamKey, count.toString());
+    setSearchParams(updatedParams);
   };
 
   const getParamValue = (
@@ -41,8 +49,8 @@ export const useSearchParamsState = <T extends object>(
     defaultValue: SearchParamValue,
   ): SearchParamValue => {
     if (isArray(defaultValue)) {
-      const allValues = searchParams.getAll(key);
-      return allValues.length > 0 ? allValues : defaultValue;
+      const values = searchParams.getAll(key);
+      return values.length > 0 ? values : defaultValue;
     }
 
     return searchParams.get(key) ?? defaultValue;
@@ -57,93 +65,70 @@ export const useSearchParamsState = <T extends object>(
   // Set values for input textarea and select
   const setValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
+    const updatedParams = new URLSearchParams(searchParams);
 
-    const updatedSearchParams = new URLSearchParams(searchParams);
+    updatedParams.delete(name);
 
-    if (pagination) {
-      updatedSearchParams.set(pageParamKey, '1');
-    }
+    const nextValues = isArray(value) ? value : [value];
 
-    updatedSearchParams.delete(name);
+    nextValues
+      .filter((item) => item !== '')
+      .forEach((item) => {
+        updatedParams.append(name, item);
+      });
 
-    const values = isArray(value) ? value : [value];
-    const validValues = values.filter((val) => val !== '');
-
-    if (validValues.length === 0) {
-      setSearchParams(updatedSearchParams);
-      return;
-    }
-
-    validValues.forEach((val) => {
-      updatedSearchParams.append(name, val);
-    });
-
-    setSearchParams(updatedSearchParams);
+    updateSearchParams(updatedParams, true);
   };
 
   // Set values for controls input
   const toggleValue = (event: ChangeInputType) => {
     const { name, value } = event.target;
+    const currentValues = values[name as keyof T];
 
-    const updatedSearchParams = new URLSearchParams(searchParams);
-
-    if (pagination) {
-      updatedSearchParams.set(pageParamKey, '1');
-    }
-
-    const current = values[name as keyof T];
-
-    if (!Array.isArray(current)) {
+    if (!Array.isArray(currentValues)) {
       return;
     }
 
-    updatedSearchParams.delete(name);
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.delete(name);
 
-    const nextValues = current.includes(value)
-      ? current.filter((item) => item !== value)
-      : current.concat(value);
+    const nextValues = currentValues.includes(value)
+      ? currentValues.filter((item) => item !== value)
+      : currentValues.concat(value);
 
     nextValues.forEach((item) => {
-      updatedSearchParams.append(name, item);
+      updatedParams.append(name, item);
     });
 
-    setSearchParams(updatedSearchParams);
+    updateSearchParams(updatedParams, true);
   };
 
   // Remove tags
   const handleRemoveFilterTag = (key: string, value: string) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
+    const updatedParams = new URLSearchParams(searchParams);
 
     // Handle range keys like "minPrice-maxPrice"
     if (key.includes('-')) {
       const [minKey, maxKey] = key.split('-');
 
-      updatedSearchParams.delete(minKey);
-      updatedSearchParams.delete(maxKey);
+      updatedParams.delete(minKey);
+      updatedParams.delete(maxKey);
 
-      if (pagination) {
-        updatedSearchParams.set(pageParamKey, '1');
-      }
-
-      setSearchParams(updatedSearchParams);
+      setSearchParams(updatedParams);
       return;
     }
 
-    const currentValues = updatedSearchParams
+    const remainingValues = updatedParams
       .getAll(key)
       .filter((item) => item !== value);
 
-    updatedSearchParams.delete(key);
+    updatedParams.delete(key);
 
-    currentValues.forEach((item) => {
-      updatedSearchParams.append(key, item);
+    remainingValues.forEach((item) => {
+      updatedParams.append(key, item);
     });
 
-    if (pagination) {
-      updatedSearchParams.set(pageParamKey, '1');
-    }
-
-    setSearchParams(updatedSearchParams);
+    updateSearchParams(updatedParams, true);
   };
 
   // Clear all filters
@@ -153,18 +138,14 @@ export const useSearchParamsState = <T extends object>(
 
   // Clear single filter
   const handleClearSingleFilter = (keys: string | string[]) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
+    const updatedParams = new URLSearchParams(searchParams);
     const keysArray = Array.isArray(keys) ? keys : [keys];
 
     keysArray.forEach((key) => {
-      updatedSearchParams.delete(key);
+      updatedParams.delete(key);
     });
 
-    if (pagination) {
-      updatedSearchParams.set(pageParamKey, '1');
-    }
-
-    setSearchParams(updatedSearchParams);
+    setSearchParams(updatedParams);
   };
 
   const hasSearchParams = searchParams.size > 0;
