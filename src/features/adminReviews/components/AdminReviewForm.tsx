@@ -1,5 +1,7 @@
 import { ReviewParams } from '../../../app/api/apiTypes/adminReviewApiTypes';
 import FieldSet from '../../../components/fieldset/FieldSet';
+import Input from '../../../components/formElements/Input';
+import Icon from '../../../components/icons/Icon';
 import SegmentedElement from '../../../components/segmentedElement/SegmentedElement';
 import { IconName } from '../../../types/enums';
 import { InputChangeHandler } from '../../../types/types';
@@ -54,6 +56,17 @@ const AdminReviewForm = ({
 
   return (
     <form>
+      <search aria-label="Page search">
+        <Input
+          onChange={setFilterParams}
+          value={filterParams.productName}
+          id="categoryNameId"
+          name="productName"
+          labelText="categoryNameLabelText"
+          inputSuffix={<Icon iconName={IconName.Search} />}
+          inputHasNoLabel
+        />
+      </search>
       <FieldSet legendText={language.filterByStatus}>
         <SegmentedElement
           name="isRead"
