@@ -130,6 +130,7 @@ const AdminReviewPage = () => {
               isReadReviewLoading={isReadReviewLoading}
               loadingReviewId={loadingReviewId}
               onReadOneReview={handleReadOneReview}
+              onClearAllFilters={onClearAllFilters}
             />
           )}
         </div>

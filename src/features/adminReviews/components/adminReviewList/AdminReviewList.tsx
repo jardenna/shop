@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { AdminReviewsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import Button from '../../../../components/Button';
 import Chip from '../../../../components/chips/Chip';
 import { chipVariants } from '../../../../components/chips/chipsUtils';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
@@ -9,12 +10,14 @@ import ReviewStars from '../../../../components/ReviewStars';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../../../types/enums';
 import { useLanguage } from '../../../language/useLanguage';
+import EmptyStateContent from '../../../shop/components/emptyState/EmptyStateContent';
 import './_admin-review-list.scss';
 
 interface AdminReviewListProps {
   isReadReviewLoading: boolean;
   reviews: AdminReviewsResponse[];
   loadingReviewId?: string;
+  onClearAllFilters: () => void;
   onReadOneReview: (id: string) => void;
 }
 
@@ -23,10 +26,11 @@ const AdminReviewList = ({
   onReadOneReview,
   isReadReviewLoading,
   loadingReviewId,
+  onClearAllFilters,
 }: AdminReviewListProps) => {
   const { language } = useLanguage();
 
-  return (
+  return reviews.length > 0 ? (
     <ul className="admin-review-list">
       {reviews.map((review) => (
         <li key={review.id} className="admin-review-cart">
@@ -76,6 +80,15 @@ const AdminReviewList = ({
         </li>
       ))}
     </ul>
+  ) : (
+    <EmptyStateContent
+      className="collection"
+      emptyStateText={language.noProductText}
+      emptyStateTitle={language.noProductTitle}
+      src="/images/icons/sad_smiley"
+    >
+      <Button onClick={onClearAllFilters}>{language.clearAllFilters}</Button>
+    </EmptyStateContent>
   );
 };
 
