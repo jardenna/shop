@@ -4,6 +4,7 @@ import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 type SearchParamValue = string | string[];
+
 interface SearchParamsStateOptions {
   defaultItemsPerPage?: number;
   pagination?: boolean;
