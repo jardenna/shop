@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { ChangeInputType, InputChangeHandler } from '../../../types/types';
+import { ChangeInputType } from '../../../types/types';
 import {
   normalizeValueWithinRange,
   parseFiniteNumberOrNull,
@@ -20,7 +20,7 @@ interface RangeControllerProps {
   maxValue: string;
   min: number;
   minValue: string;
-  onChange: InputChangeHandler;
+  onChange: (event: ChangeInputType) => void;
 }
 
 export const useRangeController = ({
@@ -80,7 +80,7 @@ export const useRangeController = ({
           name: fieldName,
           value: isDefaultRange ? '' : String(fieldValue),
         },
-      });
+      } as ChangeInputType);
     });
   };
 
