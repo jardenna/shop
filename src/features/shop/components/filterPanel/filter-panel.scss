@@ -1,4 +1,4 @@
-@use '../../../scss/globals' as *;
+@use '../../../../scss/globals' as *;
 
 .filter-panel {
   .tag-list {
@@ -27,12 +27,11 @@
     }
   }
 
-  .clear-filter-btn {
-    &:disabled {
-      svg {
-        stroke: currentcolor;
-      }
-    }
+  .filter-panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 8px;
   }
 }
 
@@ -60,11 +59,4 @@
     gap: 0;
     margin-bottom: 0;
   }
-}
-
-.filter-footer {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  padding-top: 8px;
 }

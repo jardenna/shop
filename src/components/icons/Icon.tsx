@@ -14,6 +14,7 @@ import ChevronRightIcon from './ChevronRightIcon';
 import ChevronsLeftIcon from './ChevronsLeftIcon';
 import ChevronsRightIcon from './ChevronsRightIcon';
 import CircleChevronRightIcon from './CircleChevronRightIcon';
+import ClearFilterIcon from './ClearFilterIcon';
 import ClockDownIcon from './ClockDownIcon';
 import ClockUpIcon from './ClockUpIcon';
 import CloseIcon from './CloseIcon';
@@ -96,6 +97,7 @@ const iconMapping = {
   chevronsLeft: ChevronsLeftIcon,
   chevronsRight: ChevronsRightIcon,
   circleChevronRight: CircleChevronRightIcon,
+  clearFilter: ClearFilterIcon,
   close: CloseIcon,
   dashboard: DashboardIcon,
   deliver: DeliverIcon,

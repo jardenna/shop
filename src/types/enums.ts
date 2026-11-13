@@ -98,6 +98,7 @@ export enum IconName {
   ChevronsLeft = 'chevronsLeft',
   ChevronsRight = 'chevronsRight',
   CircleChevronRight = 'circleChevronRight',
+  ClearFilter = 'clearFilter',
   ClockDown = 'clockDown',
   ClockUp = 'clockUp',
   Close = 'close',

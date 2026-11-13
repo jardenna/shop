@@ -8,6 +8,7 @@ import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
 import { InputChangeHandler, InputType } from '../../types/types';
 import Button from '../Button';
+import ClearFilterBtn from '../ClearFilterBtn';
 import DisplayControls, { DisplayControlItem } from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
@@ -121,15 +122,13 @@ const SortTable = <T,>({
     <>
       <div className="table-controls">
         <div className="table-filter-container">
-          <Button
-            className="clear-filter-btn"
+          <ClearFilterBtn
             onClick={onClearAllFilters}
-            variant={BtnVariant.Default}
             disabled={!hasSearchParams}
           >
-            <span>{language.clearFilters}</span>
-            {tagList.length > 0 && <span>({tagList.length})</span>}
-          </Button>
+            {tagList.length > 0 && <span>[{tagList.length}]</span>}
+          </ClearFilterBtn>
+
           <TagList
             tagList={tagList}
             language={language}

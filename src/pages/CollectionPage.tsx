@@ -17,7 +17,7 @@ import { getProductLink } from '../features/shop/cartUtils';
 import EmptyStateContent from '../features/shop/components/emptyState/EmptyStateContent';
 import FilterPanel, {
   InitialFilters,
-} from '../features/shop/components/FilterPanel';
+} from '../features/shop/components/filterPanel/FilterPanel';
 import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';

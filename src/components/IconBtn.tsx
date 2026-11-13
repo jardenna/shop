@@ -25,7 +25,7 @@ const IconBtn = ({
   ariaLabel,
   iconName,
   onClick,
-  className,
+  className = '',
   ariaExpanded,
   ariaHasPopup,
   btnType,
@@ -38,7 +38,7 @@ const IconBtn = ({
   <Button
     variant={variant}
     onClick={onClick}
-    className={className}
+    className={`${className} btn-icon`}
     ariaExpanded={ariaExpanded}
     type={btnType}
     disabled={disabled}
