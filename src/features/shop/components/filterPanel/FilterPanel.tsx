@@ -1,29 +1,29 @@
 import { ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router';
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
   AccordionList,
-} from '../../../components/accordion/Accordion';
-import ClearFilterBtn from '../../../components/ClearFilterBtn';
-import ColorItem from '../../../components/ColorItem';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import FieldSet from '../../../components/fieldset/FieldSet';
-import Form from '../../../components/Form';
-import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
-import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
-import Icon from '../../../components/icons/Icon';
-import Panel from '../../../components/panel/Panel';
-import TriggerPanelButton from '../../../components/panel/TriggerPanelButton';
-import { useTogglePanel } from '../../../components/panel/useTogglePanel';
-import TagList from '../../../components/tags/TagList';
-import VisuallyHidden from '../../../components/VisuallyHidden';
-import { FilterKeys } from '../../../pages/CollectionPage';
-import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler, Language } from '../../../types/types';
-import { sortSizesDynamic } from '../../../utils/sizeUtils';
-import { getFilterSummary } from '../../../utils/utils';
-import { useCurrency } from '../../currency/useCurrency';
+} from '../../../../components/accordion/Accordion';
+import ClearFilterBtn from '../../../../components/ClearFilterBtn';
+import ColorItem from '../../../../components/ColorItem';
+import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import FieldSet from '../../../../components/fieldset/FieldSet';
+import Form from '../../../../components/Form';
+import CheckboxList from '../../../../components/formElements/checkbox/CheckboxList';
+import DualRange from '../../../../components/formElements/dualRangeSlider/DualRange';
+import Icon from '../../../../components/icons/Icon';
+import Panel from '../../../../components/panel/Panel';
+import TriggerPanelButton from '../../../../components/panel/TriggerPanelButton';
+import { useTogglePanel } from '../../../../components/panel/useTogglePanel';
+import TagList from '../../../../components/tags/TagList';
+import VisuallyHidden from '../../../../components/VisuallyHidden';
+import { FilterKeys } from '../../../../pages/CollectionPage';
+import { BtnVariant, IconName } from '../../../../types/enums';
+import { InputChangeHandler, Language } from '../../../../types/types';
+import { sortSizesDynamic } from '../../../../utils/sizeUtils';
+import { getFilterSummary } from '../../../../utils/utils';
+import { useCurrency } from '../../../currency/useCurrency';
 import './filterPanel.styles.scss';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
