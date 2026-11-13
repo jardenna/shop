@@ -126,13 +126,15 @@ const FilterPanel = ({
           values={values[item.key]}
           language={language}
           renderExtra={item.renderExtra}
-        />
-        <ClearFiltersBtn
-          onClick={() => {
-            onClearSingleFilter(item.key);
-          }}
-          disabled={countsByKey[item.key] === 0}
-        />
+        />{' '}
+        <div className="filter-footer">
+          <ClearFiltersBtn
+            onClick={() => {
+              onClearSingleFilter(item.key);
+            }}
+            disabled={countsByKey[item.key] === 0}
+          />
+        </div>
       </FieldSet>
     ),
   }));
