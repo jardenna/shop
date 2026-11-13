@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
-import Button from '../components/Button';
+import ClearFilterBtn from '../components/ClearFilterBtn';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
@@ -13,13 +13,10 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
-import { useLanguage } from '../features/language/useLanguage';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { BtnVariant } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
-  const { language } = useLanguage();
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
@@ -86,14 +83,11 @@ const AdminReviewPage = () => {
       )}
 
       <div className="page-cart">
-        <Button
-          className="clear-filter-btn"
+        <ClearFilterBtn
           onClick={onClearAllFilters}
-          variant={BtnVariant.Default}
           disabled={!hasSearchParams}
-        >
-          <span>{language.clearFilters}</span>
-        </Button>
+        />
+
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
         <AdminReviewFilterBar
           filterParams={filterParams}
