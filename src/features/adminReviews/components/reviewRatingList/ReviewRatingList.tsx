@@ -1,5 +1,4 @@
 import { ratingList } from '../../../../app/api/apiConstants';
-import FieldSet from '../../../../components/fieldset/FieldSet';
 import CheckboxList from '../../../../components/formElements/checkbox/CheckboxList';
 import { IconName } from '../../../../types/enums';
 import { InputChangeHandler, Language } from '../../../../types/types';
@@ -16,17 +15,15 @@ const ReviewRatingList = ({
   language,
   values,
 }: ReviewRatingListProps) => (
-  <FieldSet legendText={language.filterByStarRating}>
-    <CheckboxList
-      checkBoxList={ratingList}
-      name="rating"
-      onChange={onChange}
-      values={values}
-      language={language}
-      iconName={IconName.Star}
-      className="rating-list"
-      showControlInfo
-    />
-  </FieldSet>
+  <CheckboxList
+    checkBoxList={ratingList}
+    name="rating"
+    onChange={onChange}
+    values={values}
+    language={language}
+    iconName={IconName.Star}
+    className="rating-list"
+    showControlInfo
+  />
 );
 export default ReviewRatingList;

@@ -64,7 +64,7 @@ const AdminReviewFilterBar = ({
         labelText={language.searchByProductName}
         ariaLabel={language.pageSearch}
       />
-      <FieldSet legendText={language.sortByDate}>
+      <FieldSet legendText={language.sortByDate} className="sort-review-order">
         <SegmentedElement
           name="sortOrder"
           radioButtonList={createdAtList}
@@ -72,7 +72,10 @@ const AdminReviewFilterBar = ({
           onChange={setFilterParams}
         />
       </FieldSet>
-      <FieldSet legendText={language.filterByStatus}>
+      <FieldSet
+        legendText={language.filterByStatus}
+        className="sort-review-read"
+      >
         <SegmentedElement
           name="isRead"
           radioButtonList={isReadList}
@@ -80,12 +83,16 @@ const AdminReviewFilterBar = ({
           onChange={setFilterParams}
         />
       </FieldSet>
-
-      <ReviewRatingList
-        onChange={toggleFilterParam}
-        values={filterParams.rating}
-        language={language}
-      />
+      <FieldSet
+        legendText={language.filterByStarRating}
+        className="rating-list-fieldset"
+      >
+        <ReviewRatingList
+          onChange={toggleFilterParam}
+          values={filterParams.rating}
+          language={language}
+        />
+      </FieldSet>
     </form>
   );
 };
