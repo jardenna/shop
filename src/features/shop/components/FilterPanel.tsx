@@ -126,7 +126,7 @@ const FilterPanel = ({
           values={values[item.key]}
           language={language}
           renderExtra={item.renderExtra}
-        />{' '}
+        />
         <div className="filter-footer">
           <ClearFiltersBtn
             onClick={() => {
@@ -213,12 +213,14 @@ const FilterPanel = ({
                   onChange={setValue}
                   unitLabel={currencyText}
                 />
-                <ClearFiltersBtn
-                  onClick={() => {
-                    onClearSingleFilter(['minPrice', 'maxPrice']);
-                  }}
-                  disabled={isClearPriceBtnDisabled}
-                />
+                <div className="filter-footer">
+                  <ClearFiltersBtn
+                    onClick={() => {
+                      onClearSingleFilter(['minPrice', 'maxPrice']);
+                    }}
+                    disabled={isClearPriceBtnDisabled}
+                  />
+                </div>
               </FieldSet>
               <Accordion accordionList={accordionList} name="filter" />
             </FieldSet>

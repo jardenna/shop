@@ -1,5 +1,5 @@
 import IconBtn from '../../../components/IconBtn';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 interface ClearFiltersBtnProps {
@@ -12,11 +12,10 @@ const ClearFiltersBtn = ({ onClick, disabled }: ClearFiltersBtnProps) => {
 
   return (
     <IconBtn
-      variant={BtnVariant.Ghost}
       className="clear-filter-btn"
       onClick={onClick}
       ariaLabel={language.clearFilters}
-      iconName={IconName.Trash}
+      iconName={IconName.ClearFilter}
       showLabel
       disabled={disabled}
     />

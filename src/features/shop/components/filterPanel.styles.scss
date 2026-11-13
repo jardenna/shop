@@ -26,14 +26,6 @@
       padding-right: 8px;
     }
   }
-
-  .clear-filter-btn {
-    &:disabled {
-      svg {
-        stroke: currentcolor;
-      }
-    }
-  }
 }
 
 .filter-form {
