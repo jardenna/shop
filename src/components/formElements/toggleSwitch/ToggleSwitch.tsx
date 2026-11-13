@@ -1,4 +1,4 @@
-import { ChangeInputType } from '../../../types/types';
+import { InputChangeHandler } from '../../../types/types';
 import './_toggle-switch.scss';
 
 interface ToggleSwitchProps {
@@ -6,7 +6,7 @@ interface ToggleSwitchProps {
   id: string;
   labelText: string;
   name: string;
-  onChange: (event: ChangeInputType) => void;
+  onChange: InputChangeHandler;
 }
 
 const ToggleSwitch = ({
