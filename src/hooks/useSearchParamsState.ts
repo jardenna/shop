@@ -1,12 +1,11 @@
 import { useSearchParams } from 'react-router';
 import { type ChangeInputType } from '../types/types';
 import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
-
-type SearchParamState = Record<string, string | string[]>;
-
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
-export const useSearchParamsState = <T extends SearchParamState>(
+type SearchParamValue = string | string[];
+
+export const useSearchParamsState = <T extends object>(
   defaults: T,
   defaultItemsPerPage = 8,
 ) => {
@@ -32,19 +31,22 @@ export const useSearchParamsState = <T extends SearchParamState>(
     setSearchParams(newParams);
   };
 
-  const getParamValue = (key: string, defaultValue: string | string[]) => {
+  const getParamValue = (
+    key: string,
+    defaultValue: SearchParamValue,
+  ): SearchParamValue => {
     if (isArray(defaultValue)) {
       const allValues = searchParams.getAll(key);
       return allValues.length > 0 ? allValues : defaultValue;
     }
+
     return searchParams.get(key) ?? defaultValue;
   };
 
   const values = Object.fromEntries(
-    Object.entries(defaults).map(([key, defaultValue]) => [
-      key,
-      getParamValue(key, defaultValue),
-    ]),
+    (Object.entries(defaults) as [string, SearchParamValue][]).map(
+      ([key, defaultValue]) => [key, getParamValue(key, defaultValue)],
+    ),
   ) as T;
 
   // Set values for input textarea and select
@@ -81,21 +83,21 @@ export const useSearchParamsState = <T extends SearchParamState>(
 
     updatedSearchParams.set(pageParamKey, '1');
 
-    const current = values[name] as string[];
+    const current = values[name as keyof T];
+
+    if (!Array.isArray(current)) {
+      return;
+    }
 
     updatedSearchParams.delete(name);
 
-    if (!current.includes(value)) {
-      [...current, value].forEach((val) => {
-        updatedSearchParams.append(name, val);
-      });
-    } else {
-      current
-        .filter((val) => val !== value)
-        .forEach((val) => {
-          updatedSearchParams.append(name, val);
-        });
-    }
+    const nextValues = current.includes(value)
+      ? current.filter((item) => item !== value)
+      : current.concat(value);
+
+    nextValues.forEach((item) => {
+      updatedSearchParams.append(name, item);
+    });
 
     setSearchParams(updatedSearchParams);
   };

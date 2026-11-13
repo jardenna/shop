@@ -7,7 +7,7 @@ import type {
   RefElementType,
 } from '../types/types';
 import DatePicker from './datePicker/DatePicker';
-import TimeInput from './formElements/timeInput/TimeInput';
+import TimeInput from './formElements/TimeInput';
 import Selectbox from './selectbox/Selectbox';
 
 interface StatusOptionsValues {

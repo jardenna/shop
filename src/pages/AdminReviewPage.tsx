@@ -1,7 +1,8 @@
 import { useId } from 'react';
+import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import Button from '../components/Button';
 import { useToast } from '../components/toast/hooks/useToast';
-import AdminReviewForm from '../features/adminReviews/components/AdminReviewForm';
+import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
 import AdminReviewList from '../features/adminReviews/components/adminReviewList/AdminReviewList';
 import ReviewStats from '../features/adminReviews/components/reviewStats/ReviewStats';
@@ -22,7 +23,7 @@ const AdminReviewPage = () => {
   const ariaLabelledby = useId();
   const { onAddToast } = useToast();
 
-  const initialFilters = {
+  const initialFilters: ReviewParams = {
     isRead: 'all',
     productName: '',
     rating: [],
@@ -30,8 +31,13 @@ const AdminReviewPage = () => {
     sortField: 'createdAt',
   };
 
-  const { filterParams, setFilterParams, onClearAllFilters } =
-    useSearchParamsState(initialFilters);
+  const {
+    filterParams,
+    setFilterParams,
+    onClearAllFilters,
+    hasSearchParams,
+    toggleFilterParam,
+  } = useSearchParamsState(initialFilters);
 
   const { data: reviews } = useGetReviewsQuery(filterParams);
   const { data: unreadCount } = useGetReviewsCountQuery();
@@ -84,14 +90,15 @@ const AdminReviewPage = () => {
           className="clear-filter-btn"
           onClick={onClearAllFilters}
           variant={BtnVariant.Default}
+          disabled={!hasSearchParams}
         >
           <span>{language.clearFilters}</span>
         </Button>
         {reviewStats && <ReviewStats reviewStats={reviewStats} />}
-
-        <AdminReviewForm
+        <AdminReviewFilterBar
           filterParams={filterParams}
           setFilterParams={setFilterParams}
+          toggleFilterParam={toggleFilterParam}
         />
         {reviews && (
           <AdminReviewList

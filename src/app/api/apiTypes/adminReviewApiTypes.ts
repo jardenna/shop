@@ -1,3 +1,4 @@
+import { ratingList } from '../apiConstants';
 import { SortParams } from './adminApiTypes';
 import { BaseReviews } from './sharedApiTypes';
 
@@ -15,10 +16,12 @@ export interface AdminReviewsResponse extends BaseReviews {
   userName: string;
 }
 
+export type Rating = (typeof ratingList)[number];
+
 export interface ReviewParams extends SortParams {
-  isRead?: 'all' | 'read' | 'unread';
-  productName?: string;
-  rating?: string[];
+  isRead: 'all' | 'read' | 'unread';
+  productName: string;
+  rating: Rating[];
 }
 
 export interface RatingDistribution {

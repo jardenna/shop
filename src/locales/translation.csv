@@ -218,6 +218,7 @@ filesSupported;Files supported;Tilladte filer
 fileTooLarge;File too large;Filen er for stor
 fillAll;Please fill all inputs;Udfyld venligst alle felter
 filter;Filter;Filtrer
+filterByStarRating;Filter by star rating;Filtrér efter stjernebedømmelse
 filterByStatus;Filter by status;Filtrér efter status
 filterByYear;Filter by year;Filtrer efter år
 filterHeading;Filter;Filter
@@ -227,6 +228,7 @@ filtersApplied;Filters applied;Filtre anvendt
 freeShippingSuffix;more, shipping is free.;mere er levering gratis
 from;from;fra
 getInspired;Get inspired;Bliv inspireret
+globalSearch;Global search;Global søgning
 globe;Globe;Globus
 go;Go;Gå
 goal12Months;12 months;12 måneder
@@ -424,6 +426,7 @@ outOf;out of;ud af
 outOfStock;Out of stock;Udsolgt
 page;Page;Side
 pagesBack;pages back;sider tilbage
+pageSearch;Page search;Sidesøgning
 pagesForward;pages forward;sider tilbage
 pagination;Pagination;Sideinddeling
 paid;Paid;Betalt
@@ -577,6 +580,7 @@ scheduledDate;Scheduled date;Planlagt dato
 scheduledDateMustBeFuture;Scheduled date must be after now;Planlagt dato skal være efter nu
 scheduledToBePublished;is scheduled to be published at;er planlagt til udgivelse den 
 search;Search;Søg
+searchByProductName;Search by product name;Søg efter produktnavn
 securityCode;Security code;Kontrolcifre
 securityCodeMustContain3Or4Digits;3 or 4 digits;3 eller 4 cifre
 selectedColor;Selected colour;Valgt farve

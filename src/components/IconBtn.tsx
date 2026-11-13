@@ -4,14 +4,14 @@ import Button from './Button';
 import IconContent from './IconContent';
 
 export type BaseIconBtn = {
-  ariaLabel: string;
   iconName: IconName;
+  ariaLabel?: string;
   className?: string;
   showLabel?: boolean;
   size?: string;
 };
 
-type IconBtnProps = BaseIconBtn & {
+interface IconBtnProps extends BaseIconBtn {
   ariaExpanded?: boolean;
   ariaHasPopup?: AriaHasPopup;
   btnType?: BtnType;
@@ -19,7 +19,7 @@ type IconBtnProps = BaseIconBtn & {
   isLoading?: boolean;
   variant?: BtnVariant;
   onClick?: () => void;
-};
+}
 
 const IconBtn = ({
   ariaLabel,

@@ -3,29 +3,32 @@ import { IconName } from '../../types/enums';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
-export interface BaseControlProps {
+export interface BaseControlInputProps {
   name: string;
   onChange: InputChangeHandler;
+  autoFocus?: boolean;
+}
+
+interface ControlInputProps extends BaseControlInputProps {
+  checked: boolean;
+  id: string;
+  label: string;
+  value: string;
   ariaLabel?: string;
   autoFocus?: boolean;
   className?: string;
   disabled?: boolean;
   iconClassName?: string;
   iconName?: IconName;
+  renderExtra?: ReactNode;
+  showControlInfo?: boolean;
   type?: ControlInputType;
 }
-
-type ControlInputProps = BaseControlProps & {
-  checked: boolean;
-  id: string;
-  label: string;
-  value: string;
-  renderExtra?: ReactNode;
-};
 
 const ControlInput = ({
   onChange,
   checked,
+  showControlInfo,
   name,
   id,
   value,
@@ -36,7 +39,7 @@ const ControlInput = ({
   ariaLabel,
   disabled,
   iconClassName,
-  className = 'checkbox-label',
+  className = '',
   type = 'checkbox',
 }: ControlInputProps) => (
   <>
@@ -50,13 +53,16 @@ const ControlInput = ({
       disabled={disabled}
       autoFocus={autoFocus}
     />
-    <label htmlFor={id} className={className}>
+    <label htmlFor={id} className={`check-box-label ${className}`}>
       {iconName ? (
-        <IconContent
-          iconName={iconName}
-          ariaLabel={ariaLabel || ''}
-          className={iconClassName}
-        />
+        <>
+          {showControlInfo && <span>{label}</span>}
+          <IconContent
+            iconName={iconName}
+            ariaLabel={ariaLabel}
+            className={iconClassName}
+          />
+        </>
       ) : (
         <span>{label}</span>
       )}

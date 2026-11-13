@@ -16,12 +16,13 @@
     }
   }
 
-  label {
+  .check-box-label {
     cursor: pointer;
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   input[type='checkbox'] {

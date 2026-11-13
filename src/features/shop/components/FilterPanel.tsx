@@ -39,7 +39,6 @@ export interface InitialFilters {
   maxPrice: string;
   minPrice: string;
   sizes: string[];
-  [paramKey: string]: string | string[];
 }
 
 interface FilterPanelProps {

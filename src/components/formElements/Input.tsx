@@ -1,4 +1,4 @@
-import { SyntheticEvent, useId } from 'react';
+import { ReactNode, SyntheticEvent, useId } from 'react';
 import type {
   AutoComplete,
   BlurEventType,
@@ -25,7 +25,7 @@ export type InputProps = {
   inputHasNoLabel?: boolean;
   inputInfo?: string;
   inputMode?: InputMode;
-  inputSuffix?: string;
+  inputSuffix?: ReactNode;
   max?: number | string;
   maxLength?: number;
   min?: number | string;
