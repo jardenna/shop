@@ -35,6 +35,7 @@ const AdminReviewPage = () => {
     filterParams,
     setFilterParams,
     onClearAllFilters,
+    hasSearchParams,
     toggleFilterParam,
   } = useSearchParamsState(initialFilters);
 
@@ -89,6 +90,7 @@ const AdminReviewPage = () => {
           className="clear-filter-btn"
           onClick={onClearAllFilters}
           variant={BtnVariant.Default}
+          disabled={!hasSearchParams}
         >
           <span>{language.clearFilters}</span>
         </Button>
