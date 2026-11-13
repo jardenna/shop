@@ -62,6 +62,8 @@ const AdminReviewForm = ({
           value={filterParams.productName}
           id="categoryNameId"
           name="productName"
+          inputMode="search"
+          type="search"
           labelText="categoryNameLabelText"
           inputSuffix={<Icon iconName={IconName.Search} />}
           inputHasNoLabel

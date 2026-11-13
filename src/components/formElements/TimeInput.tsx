@@ -1,5 +1,5 @@
-import type { InputChangeHandler } from '../../../types/types';
-import Input from '../Input';
+import type { InputChangeHandler } from '../../types/types';
+import Input from './Input';
 
 type TimeInputProps = {
   id: string;
