@@ -56,14 +56,16 @@ const AdminReviewFilterBar = ({
 
   return (
     <form className="review-filter-bar">
-      <Search
-        onChange={setFilterParams}
-        value={filterParams.productName}
-        id="productName"
-        name="productName"
-        labelText={language.searchByProductName}
-        ariaLabel={language.pageSearch}
-      />
+      <div className="search-products">
+        <Search
+          onChange={setFilterParams}
+          value={filterParams.productName}
+          id="productName"
+          name="productName"
+          labelText={language.searchByProductName}
+          ariaLabel={language.pageSearch}
+        />
+      </div>
       <FieldSet
         legendText={language.sortByDate}
         className="sort-order-fieldset"
