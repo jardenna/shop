@@ -3,16 +3,35 @@
 .review-stats-list {
   @include grid-fixed-columns($columns: 3);
 
+  @include max-size($mini) {
+    grid-template-columns: 1fr;
+    padding-block: 20px;
+  }
+
   border-bottom: $border-dark;
   padding-bottom: 20px;
 
   .review-stats-card {
     padding: 20px;
     border-right: $border;
+
+    @include max-size($mini) {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+
+      h2 {
+        margin: 0;
+      }
+    }
   }
 
   .rating-distribution-container {
     padding: 20px;
+
+    @include max-size($mini) {
+      padding: 0;
+    }
   }
 
   .review-stats-heading {
