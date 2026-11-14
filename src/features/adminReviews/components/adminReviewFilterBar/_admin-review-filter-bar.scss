@@ -2,6 +2,10 @@
 
 .review-filter-bar {
   display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'search search date'
+    'status .      rating';
   align-items: end;
   gap: 12px;
   margin-top: 20px;
@@ -17,6 +21,7 @@
 
   .sort-order-fieldset {
     grid-area: date;
+    justify-self: end;
   }
 
   .sort-read-fieldset {
@@ -25,15 +30,6 @@
 
   .rating-list-fieldset {
     grid-area: rating;
-  }
-
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    'search search date'
-    'status .      rating';
-
-  .sort-order-fieldset,
-  .rating-list-fieldset {
     justify-self: end;
   }
 
@@ -44,16 +40,13 @@
       'date   status'
       'rating rating';
 
-    .sort-read-fieldset {
-      justify-self: end;
-    }
-
-    .sort-order-fieldset {
-      justify-self: stretch;
-    }
-
+    .sort-order-fieldset,
     .rating-list-fieldset {
       justify-self: stretch;
+    }
+
+    .sort-read-fieldset {
+      justify-self: end;
     }
   }
 }
