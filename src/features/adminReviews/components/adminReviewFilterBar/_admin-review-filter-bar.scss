@@ -41,14 +41,21 @@
     }
   }
 
-  @include max-size($small) {
+  @include max-size($mini) {
     grid-template-columns: auto 1fr;
     grid-template-areas:
       'search search'
       'date   status'
       'rating rating';
 
-    .sort-order-fieldset,
+    .sort-read-fieldset {
+      justify-self: end;
+    }
+
+    .sort-order-fieldset {
+      justify-self: stretch;
+    }
+
     .rating-list-fieldset {
       justify-self: stretch;
     }
