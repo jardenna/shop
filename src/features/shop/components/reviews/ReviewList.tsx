@@ -3,10 +3,10 @@ import ReviewStars from '../../../../components/ReviewStars';
 import { Language } from '../../../../types/types';
 import { getReviewAgeLabel } from './reviewsUtil.';
 
-type ReviewListProps = {
+interface ReviewListProps {
   language: Language;
   reviewList: ReviewResponse[];
-};
+}
 
 const ReviewList = ({ reviewList, language }: ReviewListProps) => (
   <ul className="review-list">

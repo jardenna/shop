@@ -18,6 +18,7 @@ import {
 } from '../features/adminReviews/reviewsApiSlice';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
+import { BtnVariant } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -108,22 +109,26 @@ const AdminReviewPage = () => {
         )}
 
         <div className="page-cart">
-          <ClearFilterBtn
-            onClick={onClearAllFilters}
-            disabled={!hasSearchParams}
-          />
-
           {reviewStats && (
             <ReviewStats
               reviewStats={reviewStats}
               onReset={() => refetchReviewStats}
             />
           )}
-          <AdminReviewFilterBar
-            filterParams={filterParams}
-            setFilterParams={setFilterParams}
-            toggleFilterParam={toggleFilterParam}
-          />
+          <div className="cart">
+            <ClearFilterBtn
+              showIcon
+              variant={BtnVariant.Ghost}
+              onClick={onClearAllFilters}
+              disabled={!hasSearchParams}
+            />
+
+            <AdminReviewFilterBar
+              filterParams={filterParams}
+              setFilterParams={setFilterParams}
+              toggleFilterParam={toggleFilterParam}
+            />
+          </div>
           {reviews && (
             <AdminReviewList
               reviews={reviews}

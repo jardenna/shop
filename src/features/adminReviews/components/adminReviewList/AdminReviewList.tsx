@@ -31,7 +31,7 @@ const AdminReviewList = ({
   const { language } = useLanguage();
 
   return reviews.length > 0 ? (
-    <ul className="admin-review-list">
+    <ul className="admin-review-list cart">
       {reviews.map((review) => (
         <li key={review.id} className="admin-review-cart">
           <article className="review-product-content">
