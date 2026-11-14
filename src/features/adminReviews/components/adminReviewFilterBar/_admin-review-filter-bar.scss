@@ -2,8 +2,6 @@
 
 .review-filter-bar {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  grid-template-areas: 'search date status rating';
   align-items: end;
   gap: 12px;
   margin-top: 20px;
@@ -29,16 +27,14 @@
     grid-area: rating;
   }
 
-  @include max-size($medium) {
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      'search search date'
-      'status .      rating';
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'search search date'
+    'status .      rating';
 
-    .sort-order-fieldset,
-    .rating-list-fieldset {
-      justify-self: end;
-    }
+  .sort-order-fieldset,
+  .rating-list-fieldset {
+    justify-self: end;
   }
 
   @include max-size($mini) {
