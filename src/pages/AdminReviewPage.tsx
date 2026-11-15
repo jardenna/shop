@@ -130,29 +130,31 @@ const AdminReviewPage = () => {
             />
           )}
 
-          <ClearFilterBtn
-            showIcon
-            variant={BtnVariant.Ghost}
-            onClick={onClearAllFilters}
-            disabled={!hasSearchParams}
-          />
-          <FilterPanel
-            onHidePanel={onHidePanel}
-            isPanelShown={isPanelShown}
-            onTogglePanel={onTogglePanel}
-            portalId="filter-reviews"
-            language={language}
-            onReset={() => refetch()}
-            totalFiltersCount={totalFiltersCount}
-            panelHeading={language.filterProducts}
-          >
-            <AdminReviewFilterBar
-              filterParams={filterParams}
-              setFilterParams={setFilterParams}
-              toggleFilterParam={toggleFilterParam}
+          <div className="admin-review-toolbar">
+            <ClearFilterBtn
+              showIcon
+              variant={BtnVariant.Ghost}
+              onClick={onClearAllFilters}
+              disabled={!hasSearchParams}
             />
-          </FilterPanel>
-
+            <FilterPanel
+              onHidePanel={onHidePanel}
+              isPanelShown={isPanelShown}
+              onTogglePanel={onTogglePanel}
+              portalId="filter-reviews"
+              language={language}
+              onReset={() => refetch()}
+              totalFiltersCount={totalFiltersCount}
+              panelHeading={language.filterProducts}
+              ariaLabel={language.filterReviews}
+            >
+              <AdminReviewFilterBar
+                filterParams={filterParams}
+                setFilterParams={setFilterParams}
+                toggleFilterParam={toggleFilterParam}
+              />
+            </FilterPanel>
+          </div>
           {reviews && (
             <AdminReviewList
               reviews={reviews}

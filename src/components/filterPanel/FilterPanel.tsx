@@ -10,6 +10,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import './filter-panel.scss';
 
 interface FilterPanelProps {
+  ariaLabel: string;
   children: ReactNode;
   isPanelShown: boolean;
   language: Language;
@@ -32,22 +33,29 @@ const FilterPanel = ({
   onTogglePanel,
   trapFocus,
   onHidePanel,
+  ariaLabel,
   totalFiltersCount,
 }: FilterPanelProps) => {
   const ariaControls = useId();
+
+  const hasActiveFilters = totalFiltersCount > 0;
 
   return (
     <>
       <TriggerPanelButton
         ariaExpanded={isPanelShown}
         onTogglePanel={onTogglePanel}
-        ariaLabel={language.filterProducts}
+        ariaLabel={ariaLabel}
         ariaControls={ariaControls}
       >
         <>
-          {totalFiltersCount > 0 && `[${totalFiltersCount}]`}
+          {hasActiveFilters && `[${totalFiltersCount}]`}
           <Icon iconName={IconName.Filter} />
-          <VisuallyHidden>{language.filtersApplied}</VisuallyHidden>
+          <VisuallyHidden>
+            {hasActiveFilters
+              ? language.filtersApplied
+              : language.noFiltersApplied}
+          </VisuallyHidden>
         </>
       </TriggerPanelButton>
       <Panel

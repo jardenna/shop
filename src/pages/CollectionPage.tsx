@@ -216,6 +216,7 @@ const CollectionPage = () => {
                   onReset={() => refetch()}
                   totalFiltersCount={totalFiltersCount}
                   panelHeading={language.filterProducts}
+                  ariaLabel={language.filterProducts}
                 >
                   <CollectionFilterForm
                     initialFilters={initialFilters}
