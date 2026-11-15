@@ -5,7 +5,7 @@
   margin: 0 auto;
   margin-top: 30px;
   min-height: rem(280px);
-  max-width: 72%;
+  width: 72%;
   padding-inline: 60px;
   position: relative;
   display: grid;
@@ -13,8 +13,16 @@
   align-items: center;
   gap: 32px;
 
+  &.collection {
+    width: 100%;
+
+    .empty-state-info {
+      min-width: rem(396px);
+    }
+  }
+
   @include max-size($extra-large) {
-    max-width: 100%;
+    width: 100%;
     padding: 32px;
     margin-top: 60px;
   }

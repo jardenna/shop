@@ -1,14 +1,52 @@
 @use '../../../../scss/globals' as *;
 
 .review-filter-bar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'search search date'
+    'status .      rating';
+  align-items: end;
   gap: 12px;
   margin-top: 20px;
 
   fieldset {
     width: fit-content;
     margin: 0;
+  }
+
+  .search-products {
+    grid-area: search;
+  }
+
+  .sort-order-fieldset {
+    grid-area: date;
+    justify-self: end;
+  }
+
+  .sort-read-fieldset {
+    grid-area: status;
+  }
+
+  .rating-list-fieldset {
+    grid-area: rating;
+    justify-self: end;
+  }
+
+  @include max-size($mini) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'search search'
+      'date   status'
+      'rating rating';
+
+    .sort-order-fieldset,
+    .rating-list-fieldset {
+      justify-self: stretch;
+    }
+
+    .sort-read-fieldset {
+      justify-self: end;
+    }
   }
 }

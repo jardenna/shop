@@ -26,6 +26,7 @@ const Search = ({
     <Input
       variant="secondary"
       onChange={onChange}
+      className="search-input"
       value={value}
       id={id}
       name={name}

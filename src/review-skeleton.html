@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>Anmeldelse — Skeleton Loading</title>
+<style>
+  :root {
+    --color-light-gray-30: #ececec;
+    --color-light-gray-40: #dcdcdc;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  /* ---- generic skeleton block, matches provided spec ---- */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-light-gray-30) 25%,
+      var(--color-light-gray-40) 50%,
+      var(--color-light-gray-30) 75%
+    );
+    background-size: 200% 100%;
+    height: 36px;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    animation: skeleton-animation 1.5s infinite linear;
+  }
+
+  @keyframes skeleton-animation {
+    0% { background-position: 100%; }
+    100% { background-position: -100%; }
+  }
+
+  .review-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+    max-width: 1260px;
+    padding: 50px 28px 48px 20px;
+    border-top: 1px solid #eee;
+  }
+
+  /* ---- left: product ---- */
+  .product {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    width: 560px;
+    flex-shrink: 0;
+  }
+
+  .product-thumb {
+    width: 168px;
+    height: 168px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 54px;
+    flex: 1;
+  }
+
+  .product-name {
+    width: 180px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .product-author {
+    width: 140px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  /* ---- right: review ---- */
+  .review {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .date {
+    width: 90px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .text-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .text-lines .skeleton {
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .text-lines .line-1 { width: 100%; }
+  .text-lines .line-2 { width: 35%; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 0 0 28px;
+  }
+
+  .actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mark-btn {
+    width: 207px;
+    height: 50px;
+    border-radius: 4px;
+  }
+
+  .read-badge {
+    width: 72px;
+    height: 32px;
+    border-radius: 999px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="review-row">
+
+    <div class="product">
+      <div class="product-thumb skeleton"></div>
+      <div class="product-info">
+        <div class="product-name skeleton"></div>
+        <div class="product-author skeleton"></div>
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="rating-row">
+        <div class="stars">
+          <div class="star skeleton"></div>
+          <div class="star skeleton"></div>
+          <div class="star skeleton"></div>
+          <div class="star skeleton"></div>
+          <div class="star skeleton"></div>
+        </div>
+        <div class="date skeleton"></div>
+      </div>
+
+      <div class="text-lines">
+        <div class="line-1 skeleton"></div>
+        <div class="line-2 skeleton"></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="actions-row">
+        <div class="mark-btn skeleton"></div>
+        <div class="read-badge skeleton"></div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

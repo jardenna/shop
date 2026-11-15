@@ -1,6 +1,9 @@
 import { useId } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import ClearFilterBtn from '../components/ClearFilterBtn';
+import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import Skeleton from '../components/skeleton/Skeleton';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
@@ -13,7 +16,9 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
+import { BtnVariant } from '../types/enums';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -34,11 +39,22 @@ const AdminReviewPage = () => {
     onClearAllFilters,
     hasSearchParams,
     toggleFilterParam,
-  } = useSearchParamsState(initialFilters);
+  } = useSearchParamsState(initialFilters, { pagination: false });
 
-  const { data: reviews } = useGetReviewsQuery(filterParams);
+  const debouncedProductName = useDebouncedValue(filterParams.productName);
+
+  const {
+    data: reviews,
+    isLoading,
+    refetch,
+  } = useGetReviewsQuery({
+    ...filterParams,
+    productName: debouncedProductName,
+  });
+
   const { data: unreadCount } = useGetReviewsCountQuery();
-  const { data: reviewStats } = useGetReviewStatsQuery();
+  const { data: reviewStats, refetch: refetchReviewStats } =
+    useGetReviewStatsQuery();
 
   const [
     markAsRead,
@@ -68,42 +84,63 @@ const AdminReviewPage = () => {
     }
   };
 
+  if (isLoading) {
+    return <Skeleton />;
+  }
+
   return (
-    <section
-      className="admin-page page-medium admin-review-page"
-      aria-labelledby={ariaLabelledby}
+    <ErrorBoundary
+      FallbackComponent={ErrorBoundaryFallback}
+      onReset={() => {
+        refetch();
+      }}
     >
-      {unreadCount && (
-        <AdminReviewHeader
-          ariaLabelledby={ariaLabelledby}
-          unreadCount={unreadCount.unreadCount}
-          onReadAllReviews={handleReadAllReviews}
-          isReadAllReviewLoading={isReadAllReviewLoading}
-        />
-      )}
-
-      <div className="page-cart">
-        <ClearFilterBtn
-          onClick={onClearAllFilters}
-          disabled={!hasSearchParams}
-        />
-
-        {reviewStats && <ReviewStats reviewStats={reviewStats} />}
-        <AdminReviewFilterBar
-          filterParams={filterParams}
-          setFilterParams={setFilterParams}
-          toggleFilterParam={toggleFilterParam}
-        />
-        {reviews && (
-          <AdminReviewList
-            reviews={reviews}
-            isReadReviewLoading={isReadReviewLoading}
-            loadingReviewId={loadingReviewId}
-            onReadOneReview={handleReadOneReview}
+      <section
+        className="admin-page page-medium admin-review-page"
+        aria-labelledby={ariaLabelledby}
+      >
+        {unreadCount && (
+          <AdminReviewHeader
+            ariaLabelledby={ariaLabelledby}
+            unreadCount={unreadCount.unreadCount}
+            onReadAllReviews={handleReadAllReviews}
+            isReadAllReviewLoading={isReadAllReviewLoading}
           />
         )}
-      </div>
-    </section>
+
+        <div className="page-cart">
+          {reviewStats && (
+            <ReviewStats
+              reviewStats={reviewStats}
+              onReset={() => refetchReviewStats}
+            />
+          )}
+          <div className="cart">
+            <ClearFilterBtn
+              showIcon
+              variant={BtnVariant.Ghost}
+              onClick={onClearAllFilters}
+              disabled={!hasSearchParams}
+            />
+
+            <AdminReviewFilterBar
+              filterParams={filterParams}
+              setFilterParams={setFilterParams}
+              toggleFilterParam={toggleFilterParam}
+            />
+          </div>
+          {reviews && (
+            <AdminReviewList
+              reviews={reviews}
+              isReadReviewLoading={isReadReviewLoading}
+              loadingReviewId={loadingReviewId}
+              onReadOneReview={handleReadOneReview}
+              onClearAllFilters={onClearAllFilters}
+            />
+          )}
+        </div>
+      </section>
+    </ErrorBoundary>
   );
 };
 

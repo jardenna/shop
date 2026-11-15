@@ -56,15 +56,20 @@ const AdminReviewFilterBar = ({
 
   return (
     <form className="review-filter-bar">
-      <Search
-        onChange={setFilterParams}
-        value={filterParams.productName}
-        id="productName"
-        name="productName"
-        labelText={language.searchByProductName}
-        ariaLabel={language.pageSearch}
-      />
-      <FieldSet legendText={language.sortByDate}>
+      <div className="search-products">
+        <Search
+          onChange={setFilterParams}
+          value={filterParams.productName}
+          id="productName"
+          name="productName"
+          labelText={language.searchByProductName}
+          ariaLabel={language.pageSearch}
+        />
+      </div>
+      <FieldSet
+        legendText={language.sortByDate}
+        className="sort-order-fieldset"
+      >
         <SegmentedElement
           name="sortOrder"
           radioButtonList={createdAtList}
@@ -72,7 +77,10 @@ const AdminReviewFilterBar = ({
           onChange={setFilterParams}
         />
       </FieldSet>
-      <FieldSet legendText={language.filterByStatus}>
+      <FieldSet
+        legendText={language.filterByStatus}
+        className="sort-read-fieldset"
+      >
         <SegmentedElement
           name="isRead"
           radioButtonList={isReadList}
@@ -80,12 +88,16 @@ const AdminReviewFilterBar = ({
           onChange={setFilterParams}
         />
       </FieldSet>
-
-      <ReviewRatingList
-        onChange={toggleFilterParam}
-        values={filterParams.rating}
-        language={language}
-      />
+      <FieldSet
+        legendText={language.filterByStarRating}
+        className="rating-list-fieldset"
+      >
+        <ReviewRatingList
+          onChange={toggleFilterParam}
+          values={filterParams.rating}
+          language={language}
+        />
+      </FieldSet>
     </form>
   );
 };

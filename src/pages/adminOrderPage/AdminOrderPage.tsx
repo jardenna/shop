@@ -33,7 +33,9 @@ const AdminOrderPage = () => {
     itemsPerPage,
     setPage,
     updatePagination,
-  } = useSearchParamsState(initialFilters, 12);
+  } = useSearchParamsState(initialFilters, {
+    defaultItemsPerPage: 12,
+  });
 
   const debounceCustomerName = useDebouncedValue(filterParams.customer);
   const debounceCreatedAt = useDebouncedValue(filterParams.createdAt);

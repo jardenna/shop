@@ -74,7 +74,7 @@ const CollectionPage = () => {
     setPage,
     updatePagination,
     searchKey,
-  } = useSearchParamsState(initialFilters);
+  } = useSearchParamsState(initialFilters, { pagination: false });
 
   const {
     data: products,

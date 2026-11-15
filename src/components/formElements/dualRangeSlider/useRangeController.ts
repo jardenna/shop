@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDebounce } from '../../../hooks/useDebounce';
+import { useEffect, useRef, useState } from 'react';
 import { ChangeInputType } from '../../../types/types';
 import {
   normalizeValueWithinRange,
@@ -31,7 +30,8 @@ export const useRangeController = ({
   max,
   inputNames,
 }: RangeControllerProps) => {
-  const { debounce } = useDebounce();
+  const minTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const maxTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const normalizedMinValue = normalizeValueWithinRange(
     Number(minValue || min),
@@ -67,21 +67,39 @@ export const useRangeController = ({
     setMaxInputValue(String(normalizedMaxValue));
   }, [normalizedMaxValue]);
 
+  useEffect(
+    () => () => {
+      if (minTimerRef.current) {
+        clearTimeout(minTimerRef.current);
+      }
+
+      if (maxTimerRef.current) {
+        clearTimeout(maxTimerRef.current);
+      }
+    },
+    [],
+  );
+
   const emitChange = (fieldName: string, fieldValue: number) => {
     const isMin = fieldName === inputNames.min;
     const appliedMinValue = isMin ? fieldValue : minCommittedValue;
     const appliedMaxValue = isMin ? maxCommittedValue : fieldValue;
 
     const isDefaultRange = appliedMinValue === min && appliedMaxValue === max;
+    const timerRef = isMin ? minTimerRef : maxTimerRef;
 
-    debounce(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(() => {
       onChange({
         target: {
           name: fieldName,
           value: isDefaultRange ? '' : String(fieldValue),
         },
       } as ChangeInputType);
-    });
+    }, 500);
   };
 
   const commitInputValue = (
