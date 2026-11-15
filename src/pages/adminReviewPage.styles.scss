@@ -16,9 +16,10 @@
   .admin-review-toolbar {
     border-block: $border;
     display: flex;
-    gap: 12px;
-    padding: 12px 20px;
     justify-content: space-between;
+    gap: 12px;
+    padding-block: 12px;
+    margin-top: 12px;
   }
 
   .read-review-action-btn {
