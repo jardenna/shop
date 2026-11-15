@@ -7,6 +7,9 @@ import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbs
 import Button from '../components/Button';
 import EmptyStateContent from '../components/emptyState/EmptyStateContent';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import FilterPanel, {
+  InitialFilters,
+} from '../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../components/LiveAnnouncement';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
@@ -15,9 +18,6 @@ import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import FilterPanel, {
-  InitialFilters,
-} from '../features/shop/components/filterPanel/FilterPanel';
 import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
