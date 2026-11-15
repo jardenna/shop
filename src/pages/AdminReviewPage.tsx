@@ -3,6 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import ClearFilterBtn from '../components/ClearFilterBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import FilterPanel from '../components/filterPanel/FilterPanel';
+import { useTogglePanel } from '../components/panel/useTogglePanel';
 import Skeleton from '../components/skeleton/Skeleton';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
@@ -16,6 +18,7 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useLanguage } from '../features/language/useLanguage';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant } from '../types/enums';
@@ -23,7 +26,9 @@ import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
   const ariaLabelledby = useId();
+  const { language } = useLanguage();
   const { onAddToast } = useToast();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const initialFilters: ReviewParams = {
     isRead: 'all',
@@ -115,20 +120,30 @@ const AdminReviewPage = () => {
               onReset={() => refetchReviewStats}
             />
           )}
-          <div className="cart">
-            <ClearFilterBtn
-              showIcon
-              variant={BtnVariant.Ghost}
-              onClick={onClearAllFilters}
-              disabled={!hasSearchParams}
-            />
 
+          <ClearFilterBtn
+            showIcon
+            variant={BtnVariant.Ghost}
+            onClick={onClearAllFilters}
+            disabled={!hasSearchParams}
+          />
+          <FilterPanel
+            onHidePanel={onHidePanel}
+            isPanelShown={isPanelShown}
+            onTogglePanel={onTogglePanel}
+            portalId="filter-products"
+            language={language}
+            onReset={() => refetch()}
+            totalFiltersCount={0}
+            panelHeading={language.filterProducts}
+          >
             <AdminReviewFilterBar
               filterParams={filterParams}
               setFilterParams={setFilterParams}
               toggleFilterParam={toggleFilterParam}
             />
-          </div>
+          </FilterPanel>
+
           {reviews && (
             <AdminReviewList
               reviews={reviews}
