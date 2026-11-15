@@ -1,139 +1,40 @@
 import { ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useSearchParams } from 'react-router';
-import { Size } from '../../app/api/apiTypes/sharedApiTypes';
-import { useCurrency } from '../../features/currency/useCurrency';
-import { FilterKeys } from '../../pages/CollectionPage';
 import { IconName } from '../../types/enums';
-import { InputChangeHandler, Language } from '../../types/types';
-import { sortSizesDynamic } from '../../utils/sizeUtils';
-import { getFilterSummary } from '../../utils/utils';
-import Accordion, { AccordionList } from '../accordion/Accordion';
-import ColorItem from '../ColorItem';
+import { Language } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
-import FieldSet from '../fieldset/FieldSet';
-import Form from '../Form';
-import CheckboxList from '../formElements/checkbox/CheckboxList';
-import DualRange from '../formElements/dualRangeSlider/DualRange';
 import Icon from '../icons/Icon';
 import Panel from '../panel/Panel';
 import TriggerPanelButton from '../panel/TriggerPanelButton';
-import { useTogglePanel } from '../panel/useTogglePanel';
-import TagList from '../tags/TagList';
 import VisuallyHidden from '../VisuallyHidden';
 import './filter-panel.scss';
-import FilterPanelFooter from './FilterPanelFooter';
-
-type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
-  key: K;
-  label: string;
-  list: string[];
-  renderExtra?: (checkbox: string) => ReactNode;
-};
-
-export interface InitialFilters {
-  brand: string[];
-  colors: string[];
-  maxPrice: string;
-  minPrice: string;
-  sizes: string[];
-}
 
 interface FilterPanelProps {
-  brands: string[];
-  colors: string[];
-  initialFilters: InitialFilters;
+  children: ReactNode;
+  isPanelShown: boolean;
   language: Language;
-  productCount: number;
-  setValue: InputChangeHandler;
-  sizes: Size[];
-  toggleValue: InputChangeHandler;
-  values: InitialFilters;
-  onClearAllFilters: () => void;
-  onClearSingleFilter: (keys: string | string[]) => void;
-  onRemoveFilterTag: (key: string, value: string) => void;
+  panelHeading: string;
+  portalId: string;
+  totalFiltersCount: number;
+  trapFocus?: boolean;
+  onHidePanel: () => void;
   onReset: () => void;
+  onTogglePanel: () => void;
 }
 
 const FilterPanel = ({
-  initialFilters,
-  sizes,
-  brands,
-  colors,
+  children,
   language,
-  productCount,
+  isPanelShown,
+  panelHeading,
+  portalId,
   onReset,
-  values,
-  toggleValue,
-  setValue,
-  onRemoveFilterTag,
-  onClearSingleFilter,
-  onClearAllFilters,
+  onTogglePanel,
+  trapFocus,
+  onHidePanel,
+  totalFiltersCount,
 }: FilterPanelProps) => {
   const ariaControls = useId();
-  const [searchParams] = useSearchParams();
-  const { currencyText } = useCurrency();
-
-  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
-
-  const primaryBtnText =
-    productCount > 0
-      ? `${language.show} ${productCount} ${productCount === 1 ? language.item : language.items}`
-      : language.noItemsToShow;
-
-  const hasActiveFilters = Object.keys(initialFilters).some((key) =>
-    searchParams.has(key),
-  );
-
-  const isClearFiltersDisabled = !hasActiveFilters;
-
-  const isClearPriceBtnDisabled =
-    values.minPrice.trim() === '' && values.maxPrice.trim() === '';
-
-  const filteredEntries = Object.entries(values).filter(
-    (entry): entry is [string, string[]] =>
-      Array.isArray(entry[1]) && entry[1].length > 0,
-  );
-
-  const filtersCount = getFilterSummary(values);
-  const countsByKey = filtersCount.countsByKey;
-  const totalFiltersCount = filtersCount.totalCount;
-
-  const accordionConfig: AccordionConfigItem[] = [
-    {
-      key: 'colors',
-      label: language.colors,
-      list: colors,
-      renderExtra: (checkbox: string) => (
-        <ColorItem colorKey={checkbox} hasBorderColor={checkbox === 'white'} />
-      ),
-    },
-    { key: 'sizes', label: language.sizes, list: sortSizesDynamic(sizes) },
-    { key: 'brand', label: language.brand, list: brands },
-  ];
-
-  const accordionList: AccordionList[] = accordionConfig.map((item) => ({
-    title: language[item.key],
-    additionalTitle: countsByKey[item.key] || '',
-    content: (
-      <FieldSet legendText={item.label}>
-        <CheckboxList
-          checkBoxList={item.list}
-          name={item.key}
-          onChange={toggleValue}
-          values={values[item.key]}
-          language={language}
-          renderExtra={item.renderExtra}
-        />
-        <FilterPanelFooter
-          onClick={() => {
-            onClearSingleFilter(item.key);
-          }}
-          disabled={countsByKey[item.key] === 0}
-        />
-      </FieldSet>
-    ),
-  }));
 
   return (
     <>
@@ -150,75 +51,19 @@ const FilterPanel = ({
         </>
       </TriggerPanelButton>
       <Panel
-        portalId="filter-products"
+        portalId={portalId}
         closePanel={onHidePanel}
         isPanelShown={isPanelShown}
         className="filter-panel"
         ariaControls={ariaControls}
-        heading={language.filterProducts}
+        heading={panelHeading}
+        trapFocus={trapFocus}
       >
         <ErrorBoundary
           FallbackComponent={ErrorBoundaryFallback}
           onReset={onReset}
         >
-          <Form
-            className="filter-form"
-            submitBtnLabel={primaryBtnText}
-            onSubmit={onHidePanel}
-            cancelBtnProps={{
-              btnLabel: language.clearAllFilters,
-              isDisabled: isClearFiltersDisabled,
-              onCancel: onClearAllFilters,
-            }}
-          >
-            <FieldSet
-              legendText={language.filterProducts}
-              className="filter-fieldset"
-            >
-              {filteredEntries.length > 0 && (
-                <div>
-                  {filteredEntries.map(([key, values]) => (
-                    <TagList
-                      key={key}
-                      language={language}
-                      tagList={values.map((value) => ({
-                        key: key as FilterKeys,
-                        value,
-                      }))}
-                      onClick={onRemoveFilterTag}
-                    />
-                  ))}
-                </div>
-              )}
-              <FieldSet
-                legendText={language.priceRange}
-                className="dural-range-fieldset"
-                showLegendText
-              >
-                <DualRange
-                  minValue={values.minPrice}
-                  maxValue={values.maxPrice}
-                  inputNames={{
-                    min: 'minPrice',
-                    max: 'maxPrice',
-                  }}
-                  inputLabels={{
-                    min: language.priceFrom,
-                    max: language.priceTo,
-                  }}
-                  onChange={setValue}
-                  unitLabel={currencyText}
-                />
-                <FilterPanelFooter
-                  onClick={() => {
-                    onClearSingleFilter(['minPrice', 'maxPrice']);
-                  }}
-                  disabled={isClearPriceBtnDisabled}
-                />
-              </FieldSet>
-              <Accordion accordionList={accordionList} name="filter" />
-            </FieldSet>
-          </Form>
+          {children}
         </ErrorBoundary>
       </Panel>
     </>
