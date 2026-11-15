@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Picture from '../../../../components/Picture';
+import Picture from '../Picture';
 
 export interface BaseEmptyStateProps {
   emptyStateText: string;

@@ -5,6 +5,7 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Button from '../components/Button';
+import EmptyStateContent from '../components/emptyState/EmptyStateContent';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import LiveAnnouncement from '../components/LiveAnnouncement';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
@@ -14,7 +15,6 @@ import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyStateContent from '../features/shop/components/emptyState/EmptyStateContent';
 import FilterPanel, {
   InitialFilters,
 } from '../features/shop/components/filterPanel/FilterPanel';

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppDispatch } from '../app/hooks';
+import EmptyState from '../components/emptyState/EmptyState';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import { useFavorites } from '../components/favorites/useFavorites';
 import Panel from '../components/panel/Panel';
@@ -13,7 +14,6 @@ import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelC
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
