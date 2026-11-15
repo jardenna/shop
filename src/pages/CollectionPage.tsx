@@ -5,19 +5,19 @@ import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
 import Button from '../components/Button';
+import EmptyStateContent from '../components/emptyState/EmptyStateContent';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import FilterPanel from '../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../components/LiveAnnouncement';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
+import { useTogglePanel } from '../components/panel/useTogglePanel';
 import Picture from '../components/Picture';
 import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../features/language/useLanguage';
 import { getProductLink } from '../features/shop/cartUtils';
-import EmptyStateContent from '../features/shop/components/emptyState/EmptyStateContent';
-import FilterPanel, {
-  InitialFilters,
-} from '../features/shop/components/filterPanel/FilterPanel';
+import CollectionFilterForm from '../features/shop/components/CollectionFilterForm';
 import ProductAside from '../features/shop/components/ProductAside';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductToolbar from '../features/shop/components/ProductToolbar';
@@ -32,10 +32,18 @@ import { LinkText, ShopPath } from '../layout/nav/enums';
 import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
+import { getFilterSummary } from '../utils/utils';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
+export interface InitialFilters {
+  brand: string[];
+  colors: string[];
+  maxPrice: string;
+  minPrice: string;
+  sizes: string[];
+}
 
 const CollectionPage = () => {
   const ariaLabelledby = useId();
@@ -98,6 +106,8 @@ const CollectionPage = () => {
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
+
   const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
     page,
     itemsPerPage,
@@ -138,6 +148,9 @@ const CollectionPage = () => {
   if (!products) {
     return <SkeletonShopProducts count={4} />;
   }
+
+  const filtersCount = getFilterSummary(filterParams);
+  const totalFiltersCount = filtersCount.totalCount;
 
   return (
     <>
@@ -195,20 +208,32 @@ const CollectionPage = () => {
                   ariaLiveText={ariaLiveText}
                 />
                 <FilterPanel
-                  initialFilters={initialFilters}
-                  sizes={sortSizesDynamic(products.availableSizes)}
-                  brands={products.availableBrands}
-                  colors={sortedTranslatedColors}
+                  onHidePanel={onHidePanel}
+                  isPanelShown={isPanelShown}
+                  onTogglePanel={onTogglePanel}
+                  portalId="filter-products"
                   language={language}
-                  productCount={products.productCount}
                   onReset={() => refetch()}
-                  values={filterParams}
-                  toggleValue={toggleFilterParam}
-                  setValue={setFilterParams}
-                  onRemoveFilterTag={onRemoveFilterTag}
-                  onClearAllFilters={onClearAllFilters}
-                  onClearSingleFilter={onClearSingleFilter}
-                />
+                  totalFiltersCount={totalFiltersCount}
+                  panelHeading={language.filterProducts}
+                  ariaLabel={language.filterProducts}
+                >
+                  <CollectionFilterForm
+                    initialFilters={initialFilters}
+                    sizes={sortSizesDynamic(products.availableSizes)}
+                    brands={products.availableBrands}
+                    colors={sortedTranslatedColors}
+                    language={language}
+                    productCount={products.productCount}
+                    values={filterParams}
+                    toggleValue={toggleFilterParam}
+                    setValue={setFilterParams}
+                    onRemoveFilterTag={onRemoveFilterTag}
+                    onClearAllFilters={onClearAllFilters}
+                    onClearSingleFilter={onClearSingleFilter}
+                    onHidePanel={onHidePanel}
+                  />
+                </FilterPanel>
               </ProductToolbar>
 
               <ProductCartList
@@ -235,7 +260,7 @@ const CollectionPage = () => {
               )}
               {itemCount === 0 && (
                 <EmptyStateContent
-                  className="collection"
+                  className="no-products"
                   emptyStateText={language.noProductText}
                   emptyStateTitle={language.noProductTitle}
                   src="/images/shoppingBags/collection_shopping_bag"

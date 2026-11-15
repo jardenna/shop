@@ -4,13 +4,13 @@ import Button from '../../../../components/Button';
 import Chip from '../../../../components/chips/Chip';
 import { chipVariants } from '../../../../components/chips/chipsUtils';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
+import EmptyStateContent from '../../../../components/emptyState/EmptyStateContent';
 import IconBtn from '../../../../components/IconBtn';
 import Img from '../../../../components/Img';
 import ReviewStars from '../../../../components/ReviewStars';
 import { ShopPath } from '../../../../layout/nav/enums';
 import { BtnVariant, IconName } from '../../../../types/enums';
 import { useLanguage } from '../../../language/useLanguage';
-import EmptyStateContent from '../../../shop/components/emptyState/EmptyStateContent';
 import './_admin-review-list.scss';
 
 interface AdminReviewListProps {
@@ -82,9 +82,9 @@ const AdminReviewList = ({
     </ul>
   ) : (
     <EmptyStateContent
-      className="collection"
-      emptyStateText={language.noProductText}
-      emptyStateTitle={language.noProductTitle}
+      className="no-review"
+      emptyStateTitle={language.noReviewTitle}
+      emptyStateText={language.noReviewText}
       src="/images/icons/sad_smiley"
     >
       <Button onClick={onClearAllFilters}>{language.clearAllFilters}</Button>

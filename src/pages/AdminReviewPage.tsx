@@ -3,6 +3,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import ClearFilterBtn from '../components/ClearFilterBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
+import FilterPanel from '../components/filterPanel/FilterPanel';
+import { useTogglePanel } from '../components/panel/useTogglePanel';
 import Skeleton from '../components/skeleton/Skeleton';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
@@ -16,14 +18,18 @@ import {
   useMarkAllAsreadMutation,
   useMarkOneAsreadMutation,
 } from '../features/adminReviews/reviewsApiSlice';
+import { useLanguage } from '../features/language/useLanguage';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant } from '../types/enums';
+import { getFilterSummary } from '../utils/utils';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
   const ariaLabelledby = useId();
+  const { language } = useLanguage();
   const { onAddToast } = useToast();
+  const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
   const initialFilters: ReviewParams = {
     isRead: 'all',
@@ -40,6 +46,14 @@ const AdminReviewPage = () => {
     hasSearchParams,
     toggleFilterParam,
   } = useSearchParamsState(initialFilters, { pagination: false });
+
+  const filtersCount = getFilterSummary({
+    isRead: filterParams.isRead === 'all' ? '' : filterParams.isRead,
+    productName: filterParams.productName,
+    rating: filterParams.rating,
+  });
+
+  const totalFiltersCount = filtersCount.totalCount;
 
   const debouncedProductName = useDebouncedValue(filterParams.productName);
 
@@ -115,19 +129,31 @@ const AdminReviewPage = () => {
               onReset={() => refetchReviewStats}
             />
           )}
-          <div className="cart">
+
+          <div className="admin-review-toolbar">
             <ClearFilterBtn
               showIcon
               variant={BtnVariant.Ghost}
               onClick={onClearAllFilters}
               disabled={!hasSearchParams}
             />
-
-            <AdminReviewFilterBar
-              filterParams={filterParams}
-              setFilterParams={setFilterParams}
-              toggleFilterParam={toggleFilterParam}
-            />
+            <FilterPanel
+              onHidePanel={onHidePanel}
+              isPanelShown={isPanelShown}
+              onTogglePanel={onTogglePanel}
+              portalId="filter-reviews"
+              language={language}
+              onReset={() => refetch()}
+              totalFiltersCount={totalFiltersCount}
+              panelHeading={language.filterProducts}
+              ariaLabel={language.filterReviews}
+            >
+              <AdminReviewFilterBar
+                filterParams={filterParams}
+                setFilterParams={setFilterParams}
+                toggleFilterParam={toggleFilterParam}
+              />
+            </FilterPanel>
           </div>
           {reviews && (
             <AdminReviewList

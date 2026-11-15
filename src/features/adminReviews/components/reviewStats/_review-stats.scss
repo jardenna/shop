@@ -9,7 +9,7 @@
   }
 
   .review-stats-card {
-    padding: 20px;
+    padding-block: 20px;
     border-right: $border;
 
     @include max-size($mini) {

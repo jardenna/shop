@@ -1,5 +1,5 @@
-import ClearFilterBtn from '../../../../components/ClearFilterBtn';
-import { BtnVariant } from '../../../../types/enums';
+import { BtnVariant } from '../../types/enums';
+import ClearFilterBtn from '../ClearFilterBtn';
 
 interface FilterPanelFooterProps {
   disabled: boolean;

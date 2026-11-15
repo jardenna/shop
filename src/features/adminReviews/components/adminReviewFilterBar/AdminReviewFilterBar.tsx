@@ -56,42 +56,34 @@ const AdminReviewFilterBar = ({
 
   return (
     <form className="review-filter-bar">
-      <div className="search-products">
-        <Search
-          onChange={setFilterParams}
-          value={filterParams.productName}
-          id="productName"
-          name="productName"
-          labelText={language.searchByProductName}
-          ariaLabel={language.pageSearch}
-        />
+      <Search
+        onChange={setFilterParams}
+        value={filterParams.productName}
+        id="productName"
+        name="productName"
+        labelText={language.searchByProductName}
+        ariaLabel={language.pageSearch}
+      />
+
+      <div className="flex">
+        <FieldSet legendText={language.sortByDate}>
+          <SegmentedElement
+            name="sortOrder"
+            radioButtonList={createdAtList}
+            checked={filterParams.sortOrder}
+            onChange={setFilterParams}
+          />
+        </FieldSet>
+        <FieldSet legendText={language.filterByStatus}>
+          <SegmentedElement
+            name="isRead"
+            radioButtonList={isReadList}
+            checked={filterParams.isRead}
+            onChange={setFilterParams}
+          />
+        </FieldSet>
       </div>
-      <FieldSet
-        legendText={language.sortByDate}
-        className="sort-order-fieldset"
-      >
-        <SegmentedElement
-          name="sortOrder"
-          radioButtonList={createdAtList}
-          checked={filterParams.sortOrder}
-          onChange={setFilterParams}
-        />
-      </FieldSet>
-      <FieldSet
-        legendText={language.filterByStatus}
-        className="sort-read-fieldset"
-      >
-        <SegmentedElement
-          name="isRead"
-          radioButtonList={isReadList}
-          checked={filterParams.isRead}
-          onChange={setFilterParams}
-        />
-      </FieldSet>
-      <FieldSet
-        legendText={language.filterByStarRating}
-        className="rating-list-fieldset"
-      >
+      <FieldSet legendText={language.filterByStarRating}>
         <ReviewRatingList
           onChange={toggleFilterParam}
           values={filterParams.rating}

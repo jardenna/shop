@@ -3,7 +3,7 @@
 .admin-review-list {
   &.cart {
     box-shadow: none;
-    padding-inline: 0;
+    padding: 0;
   }
 }
 
@@ -12,11 +12,10 @@
   grid-template-columns: rem(400px) minmax(0, 1fr);
   gap: 32px;
   border-bottom: $border;
-  padding: 20px;
+  padding-block: 20px;
 
   @include max-size($medium) {
     grid-template-columns: rem(352px) minmax(0, 1fr);
-    padding-inline: 0;
   }
 
   @include max-size($small) {

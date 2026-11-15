@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
+import EmptyState from '../components/emptyState/EmptyState';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonMyOrderPage from '../components/skeleton/skeletonMyOrderPage/SkeletonMyOrderPage';
 import { useLanguage } from '../features/language/useLanguage';
@@ -7,7 +8,6 @@ import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderF
 import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
 import OrderList from '../features/orders/components/orderList/OrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
-import EmptyState from '../features/shop/components/emptyState/EmptyState';
 import { ShopPath } from '../layout/nav/enums';
 import './myOrdersPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
