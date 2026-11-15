@@ -27,4 +27,13 @@
       width: 1em;
     }
   }
+
+  .no-review {
+    width: 100%;
+
+    .empty-state-img {
+      position: static;
+      max-width: rem(180px);
+    }
+  }
 }

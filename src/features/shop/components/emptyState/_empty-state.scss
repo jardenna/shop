@@ -13,14 +13,6 @@
   align-items: center;
   gap: 32px;
 
-  &.collection {
-    width: 100%;
-
-    .empty-state-info {
-      min-width: rem(396px);
-    }
-  }
-
   @include max-size($extra-large) {
     width: 100%;
     padding: 32px;

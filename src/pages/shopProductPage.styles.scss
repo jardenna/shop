@@ -6,6 +6,14 @@
     justify-content: flex-end;
     margin-top: 20px;
   }
+
+  .no-products {
+    width: 100%;
+
+    .empty-state-info {
+      min-width: rem(396px);
+    }
+  }
 }
 
 .shop-product-page-container {

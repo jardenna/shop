@@ -82,9 +82,9 @@ const AdminReviewList = ({
     </ul>
   ) : (
     <EmptyStateContent
-      className="collection"
-      emptyStateText={language.noProductText}
-      emptyStateTitle={language.noProductTitle}
+      className="no-review"
+      emptyStateTitle={language.noReviewTitle}
+      emptyStateText={language.noReviewText}
       src="/images/icons/sad_smiley"
     >
       <Button onClick={onClearAllFilters}>{language.clearAllFilters}</Button>

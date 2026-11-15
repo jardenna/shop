@@ -370,6 +370,8 @@ noProductText;No products match your filters. Try removing some filters or reset
 noProductTitle;No product match your filters;Ingen produkter matcher dine filtre
 noPromoCode;We couldn't recognize the discount code Please try again;Vi kunne desværre ikke genkende rabatkoden Prøv venligst igen
 noReview;Be the first to review this product;Bliv den første til at anmelde dette produkt
+noReviewText;No reviews match your filters. Try removing some filters or reset to see all reviews again;Der er ingen anmeldelser, der matcher dine filtre. Prøv at fjerne nogle filtre eller nulstil for at se alle anmeldelser igen
+noReviewTitle;No reviews match your filters;Ingen anmeldelser matcher dine filtre
 noSaleCta;Explore our collections;Udforsk vores kollektioner
 noSaleText;There are no sale items at the moment, but great deals have a habit of showing up when you least expect them. Check back soon and see what’s waiting for you;Der er ingen tilbudsvarer lige nu, men gode tilbud dukker ofte op, når du mindst venter det. Kom snart tilbage og se, hvad der venter på dig
 noSaleTitle;No sale items right now;Ingen tilbud lige nu

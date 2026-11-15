@@ -235,7 +235,7 @@ const CollectionPage = () => {
               )}
               {itemCount === 0 && (
                 <EmptyStateContent
-                  className="collection"
+                  className="no-products"
                   emptyStateText={language.noProductText}
                   emptyStateTitle={language.noProductTitle}
                   src="/images/shoppingBags/collection_shopping_bag"
