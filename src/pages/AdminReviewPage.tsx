@@ -22,6 +22,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
 import { BtnVariant } from '../types/enums';
+import { getFilterSummary } from '../utils/utils';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
@@ -45,6 +46,14 @@ const AdminReviewPage = () => {
     hasSearchParams,
     toggleFilterParam,
   } = useSearchParamsState(initialFilters, { pagination: false });
+
+  const filtersCount = getFilterSummary({
+    isRead: filterParams.isRead === 'all' ? '' : filterParams.isRead,
+    productName: filterParams.productName,
+    rating: filterParams.rating,
+  });
+
+  const totalFiltersCount = filtersCount.totalCount;
 
   const debouncedProductName = useDebouncedValue(filterParams.productName);
 
@@ -131,10 +140,10 @@ const AdminReviewPage = () => {
             onHidePanel={onHidePanel}
             isPanelShown={isPanelShown}
             onTogglePanel={onTogglePanel}
-            portalId="filter-products"
+            portalId="filter-reviews"
             language={language}
             onReset={() => refetch()}
-            totalFiltersCount={0}
+            totalFiltersCount={totalFiltersCount}
             panelHeading={language.filterProducts}
           >
             <AdminReviewFilterBar
