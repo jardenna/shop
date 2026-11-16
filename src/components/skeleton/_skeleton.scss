@@ -258,8 +258,10 @@
 }
 
 .skeleton-divider {
+  display: flex;
   height: 1px;
   background: $color-border;
+  width: 100%;
 }
 
 .skeleton-kpi-cart {

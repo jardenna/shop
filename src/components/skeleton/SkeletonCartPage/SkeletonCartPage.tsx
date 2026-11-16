@@ -1,5 +1,6 @@
 import SkeletonPaymentMethodIcons from '../checkoutpage/skeletonPaymentMethods/SkeletonPaymentMethodIcons';
 import SkeletonButton from '../SkeletonButton';
+import SkeletonDivider from '../SkeletonDivider';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonPriceList from '../skeletonPriceList/SkeletonPriceList';
 import './_skeleton-cart-page.scss';
@@ -9,6 +10,7 @@ const SkeletonCartPage = () => (
   <span className="order-flow">
     <div>
       <SkeletonProductCart />
+      <SkeletonDivider />
     </div>
     <span className="flex flex-column">
       <SkeletonPriceList />
