@@ -1,14 +1,15 @@
 import Skeleton from '../Skeleton';
+import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 
 const SkeletonToolbar = () => (
   <div className="skeleton-toolbar">
     <div className="view-toggle">
-      <Skeleton />
-      <Skeleton />
+      <SkeletonIcon />
+      <SkeletonIcon />
     </div>
 
     <Skeleton className="results-label" />
-    <Skeleton className="filter-btn" />
+    <SkeletonIcon />
   </div>
 );
 

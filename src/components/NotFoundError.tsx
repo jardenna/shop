@@ -19,7 +19,7 @@ const NotFoundError = ({
 }: NotFoundErrorProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
-  const errorText = error?.data?.message ?? language.somethingWentWrong;
+  const errorText = error?.data?.message ?? language.resourceNotFound;
 
   const src = '/images/icons/sad_smiley';
   const hasStatusCode = error?.status && error.status !== 'FETCH_ERROR';

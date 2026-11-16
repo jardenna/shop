@@ -9,6 +9,7 @@ import EmptyStateContent from '../components/emptyState/EmptyStateContent';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FilterPanel from '../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../components/LiveAnnouncement';
+import NotFoundError from '../components/NotFoundError';
 import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../components/pagination/Pagination';
@@ -33,7 +34,6 @@ import { OptionType } from '../types/types';
 import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
 import { sortSizesDynamic } from '../utils/sizeUtils';
 import { getFilterSummary } from '../utils/utils';
-import MainPageContainer from './pageContainer/MainPageContainer';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
@@ -88,6 +88,7 @@ const CollectionPage = () => {
     data: products,
     isLoading,
     isError,
+    error,
     refetch,
   } = useGetProductsQuery({
     productsPerPage: itemsPerPage,
@@ -139,9 +140,11 @@ const CollectionPage = () => {
 
   if (isError) {
     return (
-      <MainPageContainer heading="collection">
-        <ErrorBoundaryFallback resetErrorBoundary={refetch} />
-      </MainPageContainer>
+      <NotFoundError
+        error={error}
+        btnLabel="collection"
+        path={`/${ShopPath.Collection}`}
+      />
     );
   }
 
