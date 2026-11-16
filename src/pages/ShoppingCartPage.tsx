@@ -103,6 +103,8 @@ const ShoppingCartPage = () => {
 
   return (
     <MainPageContainer heading={pageHeading} variant="large">
+      <SkeletonCartPage />
+
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart}
