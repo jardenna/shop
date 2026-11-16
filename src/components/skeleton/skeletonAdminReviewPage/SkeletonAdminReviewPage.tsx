@@ -1,6 +1,7 @@
 import Skeleton from '../Skeleton';
 import SkeletonHeading from '../SkeletonHeading';
 import SkeletonRatingDistributionList from '../skeletonRatingDistributionList/SkeletonRatingList';
+import SkeletonRatingList from '../SkeletonRatingList';
 import './_skeleton-admin-review-page.scss';
 
 const SkeletonAdminReviewPage = () => (
@@ -17,7 +18,7 @@ const SkeletonAdminReviewPage = () => (
         <SkeletonHeading />
         <div className="review-stats-info">
           <Skeleton width="2" height="1.5" />
-          <Skeleton width="8" height="0.7" />
+          <SkeletonRatingList variant="small" />
         </div>
       </div>
       <div className="rating-distribution-container">
