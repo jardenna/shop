@@ -3,6 +3,7 @@ import { PUBLISHED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
+import SubCategory from '../models/subCategoryModel.js';
 import { getProductByIdService } from '../services/getProductByIdService.js';
 import getProductListing from '../services/getProductListing.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
@@ -73,6 +74,8 @@ const getShopProducts = asyncHandler(async (req, res) => {
 const getSaleProducts = asyncHandler(async (req, res) => {
   const { categoryId } = req.params;
 
+  let subCategoryIds;
+
   if (categoryId) {
     const categoryExists = await Category.exists({
       _id: categoryId,
@@ -85,11 +88,17 @@ const getSaleProducts = asyncHandler(async (req, res) => {
         message: t('resourceNotFound', req.lang),
       });
     }
+
+    subCategoryIds = await SubCategory.distinct('_id', {
+      category: categoryId,
+      categoryStatus: PUBLISHED,
+    });
   }
 
   const saleProducts = await Product.find({
     productStatus: PUBLISHED,
     discount: { $gt: 0 },
+    ...(categoryId && { subCategory: { $in: subCategoryIds } }),
   })
     .select(
       'productName price discount sizes colors images brand countInStock subCategory description',
