@@ -1,28 +1,17 @@
-import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router';
-import ErrorContent from '../components/ErrorContent';
-import { useLanguage } from '../features/language/useLanguage';
+import { isRouteErrorResponse, useRouteError } from 'react-router';
+import NotFoundError from '../components/NotFoundError';
 
 const ErrorPage = () => {
   const error = useRouteError() as Error;
-  const navigate = useNavigate();
-  const { language } = useLanguage();
 
   if (!isRouteErrorResponse(error)) {
     return null;
   }
 
-  const handleGoback = () => {
-    navigate(-1);
-  };
-
   return (
-    <main className="error-page">
-      <ErrorContent
-        onClick={handleGoback}
-        errorText={error.data as string}
-        btnLabel={language.goBack}
-      />
-    </main>
+    <div className="error-page">
+      <NotFoundError error={error} />
+    </div>
   );
 };
 
