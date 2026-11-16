@@ -6,6 +6,7 @@ import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FilterPanel from '../components/filterPanel/FilterPanel';
 import { useTogglePanel } from '../components/panel/useTogglePanel';
 import Skeleton from '../components/skeleton/Skeleton';
+import SkeletonAdminReviewPage from '../components/skeleton/skeletonAdminReviewPage/SkeletonAdminReviewPage';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
@@ -121,8 +122,8 @@ const AdminReviewPage = () => {
             isReadAllReviewLoading={isReadAllReviewLoading}
           />
         )}
-
         <div className="page-cart">
+          <SkeletonAdminReviewPage />
           {reviewStats && (
             <ReviewStats
               reviewStats={reviewStats}
