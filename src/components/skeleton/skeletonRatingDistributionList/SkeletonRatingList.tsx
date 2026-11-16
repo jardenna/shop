@@ -1,13 +1,17 @@
 import './_skeleton-rating-list.scss';
 import SkeletonRatingRow from './SkeletonRatingRow';
 
-const SkeletonRatingList = () => (
+const ratingWidths = [100, 65, 50, 35, 8];
+
+const SkeletonRatingList = ({
+  ratingList = ratingWidths,
+}: {
+  ratingList?: number[];
+}) => (
   <div className="skeleton-rating-list">
-    <SkeletonRatingRow width={100} />
-    <SkeletonRatingRow width={65} />
-    <SkeletonRatingRow width={50} />
-    <SkeletonRatingRow width={35} />
-    <SkeletonRatingRow width={8} />
+    {ratingList.map((rating) => (
+      <SkeletonRatingRow key={rating} width={rating} />
+    ))}
   </div>
 );
 
