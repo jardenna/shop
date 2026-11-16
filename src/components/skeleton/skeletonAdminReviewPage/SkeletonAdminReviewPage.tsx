@@ -1,6 +1,6 @@
 import './_skeleton-admin-review-page.scss';
-import SkeletonAdminReviewCard from './SkeletonAdminReviewCard';
+import SkeletonAdminReviewCardList from './SkeletonAdminReviewCardList';
 
-const SkeletonAdminReviewPage = () => <SkeletonAdminReviewCard />;
+const SkeletonAdminReviewPage = () => <SkeletonAdminReviewCardList />;
 
 export default SkeletonAdminReviewPage;
