@@ -22,6 +22,9 @@ export const shopApiSlice = apiSlice.injectEndpoints({
         return `${productUrl}?${query}`;
       },
       providesTags: [TagTypesEnum.Products],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     getSaleProducts: builder.query<SaleProductResponse[], void>({
       query: () => `${productUrl}/sale`,
