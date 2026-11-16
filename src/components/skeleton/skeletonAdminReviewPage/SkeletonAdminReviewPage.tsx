@@ -1,4 +1,4 @@
-import SkeletonRatingDistributionList from '../skeletonRatingDistributionList/SkeletonRatingDistributionList';
+import SkeletonRatingDistributionList from '../skeletonRatingDistributionList/SkeletonRatingList';
 import './_skeleton-admin-review-page.scss';
 
 const SkeletonAdminReviewPage = () => (

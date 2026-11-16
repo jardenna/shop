@@ -1,10 +1,10 @@
 import './_skeleton-rating-list.scss';
 import SkeletonRatingRow from './SkeletonRatingRow';
 
-const SkeletonRatingDistributionList = () => (
+const SkeletonRatingList = () => (
   <div className="skeleton-rating-list">
     <SkeletonRatingRow />
   </div>
 );
 
-export default SkeletonRatingDistributionList;
+export default SkeletonRatingList;
