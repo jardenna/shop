@@ -1,11 +1,17 @@
 import { isValidObjectId } from 'mongoose';
+import { t } from '../utils/translator.js';
 
-function checkId(req, res, next) {
-  if (!isValidObjectId(req.params.id)) {
-    res.status(404);
-    throw new Error(`Invalid Object of: ${req.params.id}`);
-  }
-  next();
-}
+const checkId =
+  (paramName = 'id') =>
+  (req, res, next) => {
+    if (!isValidObjectId(req.params[paramName])) {
+      return res.status(404).json({
+        success: false,
+        message: t('resourceNotFound', req.lang),
+      });
+    }
+
+    next();
+  };
 
 export default checkId;
