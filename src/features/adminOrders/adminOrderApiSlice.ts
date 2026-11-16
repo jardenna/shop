@@ -17,6 +17,13 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
         url: adminOrdersUrl,
         params,
       }),
+      providesTags: (result) => [
+        { type: TagTypesEnum.Order, id: 'LIST' },
+        ...(result?.orders.map(({ id }) => ({
+          type: TagTypesEnum.Order,
+          id,
+        })) ?? []),
+      ],
     }),
     getAdminOrderById: builder.query<OrderResponse, string>({
       query: (orderId) => `${adminOrdersUrl}/${orderId}`,
@@ -35,6 +42,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (_result, _error, { orderId }) => [
         { type: TagTypesEnum.Order, id: orderId },
+        { type: TagTypesEnum.Order, id: 'LIST' },
       ],
     }),
     cancelOrder: builder.mutation<DefaultResponse, string>({
@@ -44,6 +52,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },
+        { type: TagTypesEnum.Order, id: 'LIST' },
       ],
     }),
     shipOrder: builder.mutation<DefaultResponse, string>({
@@ -53,6 +62,7 @@ export const adminOrderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: (_result, _error, orderId) => [
         { type: TagTypesEnum.Order, id: orderId },
+        { type: TagTypesEnum.Order, id: 'LIST' },
       ],
     }),
   }),
