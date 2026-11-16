@@ -12,6 +12,10 @@
     gap: 8px;
   }
 
+  .skeleton-rating-row-bar {
+    flex: 1;
+  }
+
   .skeleton-rating-row-count,
   .skeleton-rating-row-label {
     height: rem(16px);
