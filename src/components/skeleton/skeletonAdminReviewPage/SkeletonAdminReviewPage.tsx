@@ -14,9 +14,7 @@ const SkeletonAdminReviewPage = () => (
         <SkeletonRatingList />
       </SkeletonAdminReviewStats>
 
-      <div className="rating-distribution-container">
-        <SkeletonRatingDistributionList />
-      </div>
+      <SkeletonRatingDistributionList />
     </div>
 
     {/* <SkeletonAdminReviewCardList /> */}

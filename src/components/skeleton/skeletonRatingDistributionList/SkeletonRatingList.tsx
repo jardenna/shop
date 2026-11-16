@@ -8,7 +8,7 @@ const SkeletonRatingList = ({
 }: {
   ratingList?: number[];
 }) => (
-  <div className="skeleton-rating-list">
+  <div className="rating-distribution-container skeleton-rating-list">
     {ratingList.map((rating) => (
       <SkeletonRatingRow key={rating} width={rating} />
     ))}
