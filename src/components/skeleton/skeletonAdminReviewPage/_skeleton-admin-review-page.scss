@@ -1,9 +1,11 @@
 @use '../../../scss/globals' as *;
 
 .admin-review-cart {
-  .product-thumb {
-    width: rem(120px);
-    height: rem(120px);
-    flex: 0 0 120px;
+  .review-info {
+    margin-bottom: 16px;
+  }
+
+  .skeleton-heading {
+    margin-bottom: 4px;
   }
 }
