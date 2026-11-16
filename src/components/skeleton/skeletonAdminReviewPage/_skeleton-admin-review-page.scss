@@ -1,0 +1,13 @@
+@use '../../../scss/globals' as *;
+
+.skeleton-review-page {
+  // display: flex;
+  // gap: 12px;
+  // align-items: center;
+
+  .product-thumb {
+    width: rem(120px);
+    height: rem(120px);
+    flex: 0 0 120px;
+  }
+}
