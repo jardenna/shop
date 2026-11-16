@@ -71,6 +71,22 @@ const getShopProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getSaleProducts = asyncHandler(async (req, res) => {
+  const { categoryId } = req.params;
+
+  if (categoryId) {
+    const categoryExists = await Category.exists({
+      _id: categoryId,
+      categoryStatus: PUBLISHED,
+    });
+
+    if (!categoryExists) {
+      return res.status(404).json({
+        success: false,
+        message: t('resourceNotFound', req.lang),
+      });
+    }
+  }
+
   const saleProducts = await Product.find({
     productStatus: PUBLISHED,
     discount: { $gt: 0 },
