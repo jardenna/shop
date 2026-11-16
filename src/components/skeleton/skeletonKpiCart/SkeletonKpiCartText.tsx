@@ -1,8 +1,9 @@
 import Skeleton from '../Skeleton';
+import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 
 const SkeletonKpiCartText = () => (
   <>
-    <Skeleton className="skeleton-icon" />
+    <SkeletonIcon />
     <div className="skeleton-kpi-content">
       <Skeleton className="skeleton-kpi-label" />
       <Skeleton className="skeleton-kpi-value" />
