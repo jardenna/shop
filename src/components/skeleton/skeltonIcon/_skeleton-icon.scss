@@ -1,0 +1,16 @@
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-icon {
+  width: rem(32px);
+  height: rem(32px);
+  flex-shrink: 0;
+
+  &.round {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+}

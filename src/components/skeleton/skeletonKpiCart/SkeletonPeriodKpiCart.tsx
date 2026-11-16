@@ -1,10 +1,10 @@
-import Skeleton from '../Skeleton';
 import SkeletonProgressBar from '../skeletonProgressBar/SkeletonProgressBar';
+import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 import SkeletonKpiCartText from './SkeletonKpiCartText';
 
 const SkeletonPeriodKpiCart = () => (
   <div className="cart position-relative">
-    <Skeleton className="skeleton-icon-round" />
+    <SkeletonIcon variant="round" />
     <div className="skeleton-kpi-cart">
       <SkeletonKpiCartText />
     </div>
