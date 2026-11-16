@@ -1,6 +1,11 @@
+import SkeletonRatingDistributionList from '../skeletonRatingDistributionList/SkeletonRatingDistributionList';
 import './_skeleton-admin-review-page.scss';
-import SkeletonAdminReviewCardList from './SkeletonAdminReviewCardList';
 
-const SkeletonAdminReviewPage = () => <SkeletonAdminReviewCardList />;
+const SkeletonAdminReviewPage = () => (
+  <div>
+    <SkeletonRatingDistributionList />
+    {/* <SkeletonAdminReviewCardList /> */}
+  </div>
+);
 
 export default SkeletonAdminReviewPage;

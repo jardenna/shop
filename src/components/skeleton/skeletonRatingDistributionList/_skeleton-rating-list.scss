@@ -1,0 +1,28 @@
+.skeleton-rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+
+  .skeleton-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skeleton-rating-row-label {
+    width: 34px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .row-bar {
+    height: 12px;
+  }
+
+  .skeleton-rating-row-count {
+    width: 18px;
+    height: 16px;
+    border-radius: 4px;
+  }
+}
