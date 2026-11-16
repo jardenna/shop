@@ -1,5 +1,5 @@
 import Skeleton from '../Skeleton';
-import SkeletonHeader from '../SkeletonHeader';
+import SkeletonAdminPage from '../SkeletonAdminPage';
 import SkeletonRatingDistributionList from '../skeletonRatingDistributionList/SkeletonRatingList';
 import SkeletonRatingList from '../SkeletonRatingList';
 import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
@@ -8,8 +8,7 @@ import SkeletonAdminReviewCardList from './SkeletonAdminReviewCardList';
 import SkeletonAdminReviewStats from './SkeletonAdminReviewStats';
 
 const SkeletonAdminReviewPage = () => (
-  <div className="admin-page page-medium">
-    <SkeletonHeader showLink />
+  <SkeletonAdminPage variant="medium" hideBreadcrumbs>
     <div className="page-cart">
       <div className="review-stats-list">
         <SkeletonAdminReviewStats>
@@ -28,7 +27,7 @@ const SkeletonAdminReviewPage = () => (
       </div>
       <SkeletonAdminReviewCardList />
     </div>
-  </div>
+  </SkeletonAdminPage>
 );
 
 export default SkeletonAdminReviewPage;
