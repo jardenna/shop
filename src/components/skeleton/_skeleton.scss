@@ -29,12 +29,6 @@
   gap: 32px;
 }
 
-.skeleton-promo-code-table {
-  .skeleton-header {
-    margin-bottom: 12px;
-  }
-}
-
 .skeleton-update-promo-code-page {
   .footer {
     margin-top: 8px;
@@ -44,6 +38,10 @@
 .skeleton-admin-page {
   margin-top: 20px;
   padding-inline: 20px;
+
+  .skeleton-header {
+    margin: 0;
+  }
 
   .three-col {
     gap: 12px;
@@ -85,6 +83,7 @@
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
+  margin-bottom: 12px;
 
   @include max-size($mini) {
     flex-direction: column;
