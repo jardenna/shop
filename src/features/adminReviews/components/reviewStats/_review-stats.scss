@@ -8,22 +8,6 @@
     padding-block: 20px;
   }
 
-  .review-stats-card {
-    padding-block: 20px;
-    border-right: $border;
-
-    @include max-size($mini) {
-      display: flex;
-      justify-content: space-between;
-      padding: 0;
-      border: 0;
-
-      h2 {
-        margin: 0;
-      }
-    }
-  }
-
   .rating-distribution-container {
     padding: 20px;
     padding-right: 0;
@@ -32,6 +16,20 @@
       padding: 0;
     }
   }
+
+  .review-stats-text {
+    font-family: $font-primary-semibold;
+    font-size: rem(20px);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.review-stats-card {
+  padding-block: 20px;
+  border-right: $border;
 
   .review-stats-heading {
     font-family: $font-primary-semibold;
@@ -45,13 +43,15 @@
     align-items: center;
   }
 
-  .review-stats-text {
-    font-family: $font-primary-semibold;
-    font-size: rem(20px);
-  }
+  @include max-size($mini) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    border: 0;
 
-  p {
-    margin: 0;
+    h2 {
+      margin: 0;
+    }
   }
 }
 
