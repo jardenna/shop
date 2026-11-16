@@ -16,6 +16,23 @@ const getShopProducts = asyncHandler(async (req, res) => {
   const { page, productsPerPage } = req.pagination;
   const { subCategoryId, mainCategory } = req.query;
 
+  if (mainCategory) {
+    const categoryExists = await Category.exists({
+      categoryName: {
+        $regex: `^${mainCategory}$`,
+        $options: 'i',
+      },
+      categoryStatus: PUBLISHED,
+    });
+
+    if (!categoryExists) {
+      return res.status(404).json({
+        success: false,
+        message: t('resourceNotFound', req.lang),
+      });
+    }
+  }
+
   if (subCategoryId && !mongoose.isValidObjectId(subCategoryId)) {
     return res.status(400).json({
       success: false,
