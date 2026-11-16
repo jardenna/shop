@@ -20,7 +20,7 @@
     height: auto;
   }
 
-  // @include animation(skeleton-animation, 1.5s infinite, linear);
+  @include animation(skeleton-animation, 1.5s infinite, linear);
 }
 
 .skeleton-account-page {
