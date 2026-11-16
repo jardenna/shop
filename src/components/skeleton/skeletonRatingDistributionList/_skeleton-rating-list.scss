@@ -1,0 +1,37 @@
+@use '../../../scss/globals/functions' as *;
+
+.skeleton-rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+
+  .skeleton-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skeleton-rating-row-bar {
+    flex: 1;
+  }
+
+  .skeleton-rating-row-count,
+  .skeleton-rating-row-label {
+    height: rem(16px);
+    border-radius: 4px;
+  }
+
+  .skeleton-rating-row-label {
+    width: rem(28px);
+    flex-shrink: 0;
+  }
+
+  .skeleton-rating-bar {
+    height: rem(12px);
+  }
+
+  .skeleton-rating-row-count {
+    width: rem(18px);
+  }
+}

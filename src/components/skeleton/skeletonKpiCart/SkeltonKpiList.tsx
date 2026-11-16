@@ -1,6 +1,7 @@
 import { SkeletonProps } from '../Skeleton';
 import SkeletonKpiCart from './SkeletonKpiCart';
 import SkeletonPeriodKpiCart from './SkeletonPeriodKpiCart';
+import './_skeleton-kpi-list.scss';
 
 const SkeltonKpiList = ({ count = 6 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });

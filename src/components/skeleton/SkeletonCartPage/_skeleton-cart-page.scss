@@ -4,7 +4,6 @@
   display: flex;
   gap: 24px;
   padding-bottom: 12px;
-  border-bottom: $border;
 
   @include max-size($mini) {
     flex-direction: column;
@@ -14,6 +13,7 @@
   .product-thumb {
     width: rem(180px);
     height: rem(180px);
+    flex-shrink: 0;
 
     @include max-size($mini) {
       width: 100%;

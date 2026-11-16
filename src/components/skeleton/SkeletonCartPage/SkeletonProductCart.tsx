@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
 
 const SkeletonProductCart = () => (
-  <span className="skeleton-product-cart">
+  <div className="skeleton-product-cart">
     <Skeleton className="product-thumb" />
     <span className="skeleton-product-cart-content">
       <span className="top-row">
@@ -27,7 +27,7 @@ const SkeletonProductCart = () => (
         </div>
       </span>
     </span>
-  </span>
+  </div>
 );
 
 export default SkeletonProductCart;

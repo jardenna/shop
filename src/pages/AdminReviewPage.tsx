@@ -5,7 +5,7 @@ import ClearFilterBtn from '../components/ClearFilterBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FilterPanel from '../components/filterPanel/FilterPanel';
 import { useTogglePanel } from '../components/panel/useTogglePanel';
-import Skeleton from '../components/skeleton/Skeleton';
+import SkeletonAdminReviewPage from '../components/skeleton/skeletonAdminReviewPage/SkeletonAdminReviewPage';
 import { useToast } from '../components/toast/hooks/useToast';
 import AdminReviewFilterBar from '../features/adminReviews/components/adminReviewFilterBar/AdminReviewFilterBar';
 import AdminReviewHeader from '../features/adminReviews/components/AdminReviewHeader';
@@ -66,7 +66,8 @@ const AdminReviewPage = () => {
     productName: debouncedProductName,
   });
 
-  const { data: unreadCount } = useGetReviewsCountQuery();
+  const { data: unreadCount, isLoading: isUnreadCountLoading } =
+    useGetReviewsCountQuery();
   const { data: reviewStats, refetch: refetchReviewStats } =
     useGetReviewStatsQuery();
 
@@ -98,8 +99,8 @@ const AdminReviewPage = () => {
     }
   };
 
-  if (isLoading) {
-    return <Skeleton />;
+  if (isLoading || isUnreadCountLoading) {
+    return <SkeletonAdminReviewPage />;
   }
 
   return (
@@ -121,7 +122,6 @@ const AdminReviewPage = () => {
             isReadAllReviewLoading={isReadAllReviewLoading}
           />
         )}
-
         <div className="page-cart">
           {reviewStats && (
             <ReviewStats
