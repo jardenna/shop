@@ -1,4 +1,5 @@
 import Skeleton from '../Skeleton';
+import SkeletonDivider from '../SkeletonDivider';
 import SkeletonHeading from '../SkeletonHeading';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonRatingList from '../SkeletonRatingList';
@@ -13,9 +14,9 @@ const SkeletonAdminReviewPage = () => (
         <SkeletonParagraph count={1} width="14" height="1" />
       </div>
 
-      <SkeletonRatingList variant="medium" />
+      <SkeletonRatingList variant="small" />
     </div>
-    <Skeleton className="skeleton-divider" />
+    <SkeletonDivider />
   </>
 );
 
