@@ -1,3 +1,5 @@
+@use '../../../scss/globals/functions' as *;
+
 .skeleton-rating-list {
   display: flex;
   flex-direction: column;
@@ -10,19 +12,22 @@
     gap: 8px;
   }
 
+  .skeleton-rating-row-count,
   .skeleton-rating-row-label {
-    width: 34px;
-    height: 16px;
+    height: rem(16px);
     border-radius: 4px;
+  }
+
+  .skeleton-rating-row-label {
+    width: rem(28px);
+    flex-shrink: 0;
   }
 
   .skeleton-rating-bar {
-    height: 12px;
+    height: rem(12px);
   }
 
   .skeleton-rating-row-count {
-    width: 18px;
-    height: 16px;
-    border-radius: 4px;
+    width: rem(18px);
   }
 }
