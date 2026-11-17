@@ -7,7 +7,6 @@ import { useLanguage } from '../../language/useLanguage';
 
 interface ProductToolbarProps {
   activeDisplay: string;
-
   children?: ReactNode;
   setProductView: (id: string) => void;
 }
