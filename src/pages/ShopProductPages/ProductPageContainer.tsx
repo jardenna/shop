@@ -12,13 +12,14 @@ import { getProductLink } from '../../features/shop/cartUtils';
 import ProductAside from '../../features/shop/components/ProductAside';
 import ProductCartList from '../../features/shop/components/ProductCartList';
 import MetaTags from '../../layout/MetaTags';
-import { ShopPath } from '../../layout/nav/enums';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
 interface ProductPageContainerProps {
   altText: string;
   children: ReactNode;
+  linkTo: string;
   pageHeading: string;
+  path: string;
   products: BaseProduct[];
   productView: string;
   src: string;
@@ -29,12 +30,14 @@ interface ProductPageContainerProps {
 
 const ProductPageContainer = ({
   children,
+  linkTo,
   subMenu,
   refetchSubMenu,
   refetch,
   productView,
   products,
   pageHeading,
+  path,
   src,
   altText,
 }: ProductPageContainerProps) => {
@@ -73,8 +76,8 @@ const ProductPageContainer = ({
               refetchSubMenu();
             }}
             language={language}
-            getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
-            linkTo={`/${ShopPath.Sale}`}
+            getProductLink={(productId) => `/${path}/${productId}`}
+            linkTo={linkTo}
           />
 
           <ErrorBoundary

@@ -9,6 +9,7 @@ import {
   useGetSalesProductsByIdQuery,
 } from '../../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import { ShopPath } from '../../layout/nav/enums';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 import ProductPageContainer from './ProductPageContainer';
 
@@ -77,6 +78,8 @@ const Salespage = () => {
         subMenu={subMenu}
         refetch={refetch}
         refetchSubMenu={refetchSubMenu}
+        path={ShopPath.Sale}
+        linkTo={`/${ShopPath.Sale}`}
       >
         <ProductToolbar
           setProductView={setProductView}
