@@ -35,13 +35,10 @@ const Salespage = () => {
 
   const {
     data: saleProducts,
-    isLoading,
     isError,
     error,
     refetch,
   } = useGetSalesProductsByIdQuery(params.categoryId ?? '');
-
-  console.log(isLoading);
 
   if (!saleProducts) {
     return <SkeletonShopProducts count={4} />;
@@ -77,7 +74,6 @@ const Salespage = () => {
 
   const categoryLabel = selectedCategory?.label ?? 'all';
   const pageHeading = `${language.sale} ${language[categoryLabel]}`;
-  console.log(subMenu);
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
