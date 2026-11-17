@@ -46,9 +46,8 @@ const SubNavListMobile = ({
       ))}
       <li className="mobile-sub-item">
         <ProductAsideNav
-          getProductLink={(productId) =>
-            `/${ShopPath.Collection}/${category}/${productId}`
-          }
+          basePath={`/${ShopPath.Collection}/${category}`}
+
           subMenu={subMenu}
           onReset={onReset}
         />

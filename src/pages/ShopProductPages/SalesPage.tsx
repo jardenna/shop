@@ -95,7 +95,7 @@ const Salespage = () => {
                 refetchSubMenu();
               }}
               language={language}
-              getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
+              basePath={`/${ShopPath.Sale}`}
               linkTo={`/${ShopPath.Sale}`}
             />
           )}

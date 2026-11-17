@@ -6,17 +6,17 @@ import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
 export interface ProductAsideNavProps {
+  basePath: string;
   subMenu: ProductMenuResponse[];
   linkTo?: string;
-  getProductLink: (id: string) => string;
   onReset: () => void;
 }
 
 const ProductAsideNav = ({
   subMenu,
   onReset,
-  getProductLink,
   linkTo,
+  basePath,
 }: ProductAsideNavProps) => {
   const { language } = useLanguage();
 
@@ -36,7 +36,7 @@ const ProductAsideNav = ({
       >
         {subMenu.map(({ label, categoryId }) => (
           <li className="product-nav-item" key={categoryId}>
-            <NavLink to={getProductLink(categoryId)}>
+            <NavLink to={`${basePath}/${categoryId}`}>
               {translateKey(label, language)}
             </NavLink>
           </li>

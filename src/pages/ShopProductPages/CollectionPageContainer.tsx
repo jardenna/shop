@@ -127,7 +127,7 @@ const CollectionPageContainer = ({
                 refetchSubMenu();
               }}
               language={language}
-              getProductLink={(productId) => `${path}/${category}/${productId}`}
+              basePath={`${path}/${category}`}
             />
           )}
 

@@ -17,9 +17,9 @@ const ProductAside = ({
   language,
   linkTo,
   ariaLabelledby,
+  basePath,
   headerText,
   className = '',
-  getProductLink,
 }: ProductAsideProps) => (
   <div>
     <ProductAsideHeader
@@ -30,9 +30,9 @@ const ProductAside = ({
     <section className={`product-aside ${className}`}>
       <LayoutElement as="nav" ariaLabel={language.collection}>
         <ProductAsideNav
+          basePath={basePath}
           subMenu={subMenu}
           onReset={onReset}
-          getProductLink={getProductLink}
           linkTo={linkTo}
         />
       </LayoutElement>
