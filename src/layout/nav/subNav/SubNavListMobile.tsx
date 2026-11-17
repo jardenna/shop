@@ -1,7 +1,6 @@
+import { NavLink } from 'react-router';
 import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
-import Button from '../../../components/Button';
 import ProductAsideNav from '../../../features/shop/components/ProductAsideNav';
-import { BtnVariant } from '../../../types/enums';
 import { Language } from '../../../types/types';
 import { LinkText, ShopPath } from '../enums';
 import NavAd from '../NavAd';
@@ -26,28 +25,25 @@ const SubNavListMobile = ({
   language,
 }: SubNavListMobileProps) => {
   const { headingKey, textKey } = subNavConfig[category];
+  console.log(onClick);
 
   const altText = `${category}AltText`;
 
   return (
     <ul className="sub-nav">
-      {subNavList.map(({ linkText }) => (
-        <li key={linkText} className="sub-nav-item">
-          <Button
-            className={`nav-btn ${category === linkText ? 'active' : ''}`}
-            variant={BtnVariant.Ghost}
-            onClick={() => {
-              onClick(linkText);
-            }}
+      {subNavList.map(({ linkText, path }) => (
+        <li key={linkText} className={`sub-nav-item `}>
+          <NavLink
+            to={path}
+            className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
           >
             {language[linkText]}
-          </Button>
+          </NavLink>
         </li>
       ))}
       <li className="mobile-sub-item">
         <ProductAsideNav
           basePath={`/${ShopPath.Collection}/${category}`}
-
           subMenu={subMenu}
           onReset={onReset}
         />
