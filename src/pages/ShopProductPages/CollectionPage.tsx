@@ -1,39 +1,25 @@
-import { useId } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import type { BaseShopProductsParams } from '../../app/api/apiTypes/shopApiTypes';
-import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import { collectionBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
-import Button from '../../components/Button';
-import EmptyStateContent from '../../components/emptyState/EmptyStateContent';
-import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FilterPanel from '../../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../../components/LiveAnnouncement';
 import NotFoundError from '../../components/NotFoundError';
 import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
-import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
-import Pagination from '../../components/pagination/Pagination';
 import { useTogglePanel } from '../../components/panel/useTogglePanel';
-import Picture from '../../components/Picture';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
-import { getProductLink } from '../../features/shop/cartUtils';
 import CollectionFilterForm from '../../features/shop/components/CollectionFilterForm';
-import ProductAside from '../../features/shop/components/ProductAside';
-import ProductCartList from '../../features/shop/components/ProductCartList';
 import ProductToolbar from '../../features/shop/components/ProductToolbar';
 import { useSubMenu } from '../../features/shop/hooks/useSubMenu';
 import { useGetProductsQuery } from '../../features/shop/shopApiSlice';
 import { useAnnounce } from '../../hooks/useAnnounce';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
-import MetaTags from '../../layout/MetaTags';
 import { LinkText, ShopPath } from '../../layout/nav/enums';
-import { OptionType } from '../../types/types';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
+import CollectionPageContainer from './CollectionPageContainer';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
@@ -46,10 +32,8 @@ export interface InitialFilters {
 }
 
 const CollectionPage = () => {
-  const ariaLabelledby = useId();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-  const { isMobileSize } = useMediaQuery();
 
   const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
 
@@ -79,8 +63,6 @@ const CollectionPage = () => {
     onClearAllFilters,
     page,
     itemsPerPage,
-    setPage,
-    updatePagination,
     searchKey,
   } = useSearchParamsState(initialFilters);
 
@@ -119,24 +101,7 @@ const CollectionPage = () => {
 
   const announce = useAnnounce([page, itemsPerPage, searchKey]);
 
-  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
-    isLoading,
-  });
-
-  const handleSelectCount = (option: OptionType) => {
-    const newCount = Number(option.value);
-    updatePagination(1, newCount);
-    setShouldScroll(true);
-  };
-
-  const handlePagination = (id: number) => {
-    // Early exit so current page doesn't spam history or rerender
-    if (id === page) {
-      return;
-    }
-    setPage(id);
-    setShouldScroll(true);
-  };
+  console.log(paginationMobileText);
 
   if (isError) {
     return (
@@ -156,127 +121,61 @@ const CollectionPage = () => {
   const totalFiltersCount = filtersCount.totalCount;
 
   return (
-    <>
-      <MetaTags metaTitle={pageHeading} />
-
-      <section
-        className="container shop-product-page"
-        ref={scrollToRef}
-        aria-labelledby={ariaLabelledby}
+    <CollectionPageContainer
+      altText={language[altText]}
+      breadcrumbsList={collectionBreadcrumbsList}
+      refetch={refetch}
+      totalBtns={totalBtns}
+      isError={isError}
+      error={error}
+      isLoading={isLoading}
+      itemCount={itemCount}
+      pageHeading={pageHeading}
+      path={`/${ShopPath.Collection}/${category}`}
+      products={products.products}
+      productView={productView}
+      src={src}
+      subMenu={subMenu ?? []}
+      refetchSubMenu={refetchSubMenu}
+    >
+      <ProductToolbar
+        setProductView={setProductView}
+        activeDisplay={productView}
       >
-        <Breadcrumbs
-          subMenu={subMenu}
-          productName=""
-          routeList={collectionBreadcrumbsList}
+        <LiveAnnouncement
+          infoText={infoText}
+          announce={announce}
+          ariaLiveText={ariaLiveText}
         />
-
-        <div className="shop-product-page-container">
-          {!isMobileSize && subMenu && (
-            <ProductAside
-              headerText={pageHeading}
-              ariaLabelledby={ariaLabelledby}
-              subMenu={subMenu}
-              category={category || 'women'}
-              onReset={() => refetchSubMenu()}
-              language={language}
-              getProductLink={(productId) =>
-                `/${ShopPath.Collection}/${category}/${productId}`
-              }
-            />
-          )}
-
-          <ErrorBoundary
-            FallbackComponent={ErrorBoundaryFallback}
-            onReset={() => refetch()}
-          >
-            <div>
-              <section>
-                <Picture
-                  src={`${src}.jpg`}
-                  srcSet={src}
-                  alt={language[altText]}
-                  ratio="16:9"
-                  priority
-                  className="shop-product-banner"
-                />
-                <ProductToolbar
-                  setProductView={setProductView}
-                  activeDisplay={productView}
-                >
-                  <LiveAnnouncement
-                    infoText={infoText}
-                    announce={announce}
-                    ariaLiveText={ariaLiveText}
-                  />
-                  <FilterPanel
-                    onHidePanel={onHidePanel}
-                    isPanelShown={isPanelShown}
-                    onTogglePanel={onTogglePanel}
-                    portalId="filter-products"
-                    language={language}
-                    onReset={() => refetch()}
-                    totalFiltersCount={totalFiltersCount}
-                    panelHeading={language.filterProducts}
-                    ariaLabel={language.filterProducts}
-                  >
-                    <CollectionFilterForm
-                      initialFilters={initialFilters}
-                      sizes={sortSizesDynamic(products.availableSizes)}
-                      brands={products.availableBrands}
-                      colors={sortedTranslatedColors}
-                      language={language}
-                      productCount={products.productCount}
-                      values={filterParams}
-                      toggleValue={toggleFilterParam}
-                      setValue={setFilterParams}
-                      onRemoveFilterTag={onRemoveFilterTag}
-                      onClearAllFilters={onClearAllFilters}
-                      onClearSingleFilter={onClearSingleFilter}
-                      onHidePanel={onHidePanel}
-                    />
-                  </FilterPanel>
-                </ProductToolbar>
-
-                <ProductCartList
-                  products={products.products}
-                  productView={productView}
-                  getProductLink={getProductLink}
-                />
-              </section>
-              {itemCount > 0 && (
-                <Pagination
-                  refetch={refetch}
-                  totalBtns={totalBtns}
-                  isError={isError}
-                  page={page}
-                  onPagination={handlePagination}
-                  onSelectCount={handleSelectCount}
-                  totalCount={itemCount}
-                  paginationMobileText={paginationMobileText}
-                  defaultValue={{
-                    value: itemsPerPage.toString(),
-                    label: itemsPerPage.toString(),
-                    id: itemsPerPage.toString(),
-                  }}
-                />
-              )}
-              {itemCount === 0 && (
-                <EmptyStateContent
-                  className="no-products"
-                  emptyStateText={language.noProductText}
-                  emptyStateTitle={language.noProductTitle}
-                  src="/images/shoppingBags/collection_shopping_bag"
-                >
-                  <Button onClick={onClearAllFilters}>
-                    {language.clearAllFilters}
-                  </Button>
-                </EmptyStateContent>
-              )}
-            </div>
-          </ErrorBoundary>
-        </div>
-      </section>
-    </>
+        <FilterPanel
+          onHidePanel={onHidePanel}
+          isPanelShown={isPanelShown}
+          onTogglePanel={onTogglePanel}
+          portalId="filter-products"
+          language={language}
+          onReset={() => refetch()}
+          totalFiltersCount={totalFiltersCount}
+          panelHeading={language.filterProducts}
+          ariaLabel={language.filterProducts}
+        >
+          <CollectionFilterForm
+            initialFilters={initialFilters}
+            sizes={sortSizesDynamic(products.availableSizes)}
+            brands={products.availableBrands}
+            colors={sortedTranslatedColors}
+            language={language}
+            productCount={products.productCount}
+            values={filterParams}
+            toggleValue={toggleFilterParam}
+            setValue={setFilterParams}
+            onRemoveFilterTag={onRemoveFilterTag}
+            onClearAllFilters={onClearAllFilters}
+            onClearSingleFilter={onClearSingleFilter}
+            onHidePanel={onHidePanel}
+          />
+        </FilterPanel>
+      </ProductToolbar>
+    </CollectionPageContainer>
   );
 };
 
