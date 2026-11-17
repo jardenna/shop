@@ -67,8 +67,25 @@ const getShopProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Sale products
-// @route   /api/products/sale
+// @desc    Get shop product by ID
+// @route   /api/products/shop/:id
+// @method  GET
+// @access  Public
+const getShopProductById = asyncHandler(async (req, res) => {
+  const product = await getProductByIdService(req.params.id);
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
+    });
+  }
+
+  res.status(200).json(product);
+});
+
+// @desc    Get Sale products by ID
+// @route   /api/products/sale/:categoryId
 // @method  GET
 // @access  Public
 const getSaleProducts = asyncHandler(async (req, res) => {
@@ -158,23 +175,6 @@ const getSaleSubMenu = asyncHandler(async (req, res) => {
   }));
 
   res.status(200).json(formatMongoData(saleSubMenu));
-});
-
-// @desc    Get shop product by ID
-// @route   /api/products/shop/:id
-// @method  GET
-// @access  Public
-const getShopProductById = asyncHandler(async (req, res) => {
-  const product = await getProductByIdService(req.params.id);
-
-  if (!product) {
-    return res.status(404).json({
-      success: false,
-      message: t('resourceNotFound', req.lang),
-    });
-  }
-
-  res.status(200).json(product);
 });
 
 export { getSaleProducts, getSaleSubMenu, getShopProductById, getShopProducts };
