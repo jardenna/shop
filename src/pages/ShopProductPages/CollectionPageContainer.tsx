@@ -19,7 +19,6 @@ import ProductCartList from '../../features/shop/components/ProductCartList';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import MetaTags from '../../layout/MetaTags';
-import { ShopPath } from '../../layout/nav/enums';
 import { OptionType } from '../../types/types';
 import { InitialFilters } from './CollectionPage';
 import './shopProductPage.styles.scss';
@@ -100,13 +99,7 @@ const CollectionPageContainer = ({
   };
 
   if (isError) {
-    return (
-      <NotFoundError
-        error={error}
-        btnLabel="collection"
-        path={`/${ShopPath.Collection}`}
-      />
-    );
+    return <NotFoundError error={error} btnLabel="collection" path={path} />;
   }
 
   return (
@@ -130,8 +123,7 @@ const CollectionPageContainer = ({
               headerText={pageHeading}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
-              category={category}
-              linkTo={`/${ShopPath.Collection}/${category}`}
+              linkTo={`${path}/${category}`}
               onReset={() => {
                 refetchSubMenu();
               }}

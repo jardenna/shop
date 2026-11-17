@@ -13,7 +13,6 @@ interface ProductAsideProps extends ProductAsideNavProps {
 
 const ProductAside = ({
   subMenu,
-  category,
   onReset,
   language,
   linkTo,
@@ -32,7 +31,6 @@ const ProductAside = ({
       <LayoutElement as="nav" ariaLabel={language.collection}>
         <ProductAsideNav
           subMenu={subMenu}
-          category={category}
           onReset={onReset}
           getProductLink={getProductLink}
           linkTo={linkTo}

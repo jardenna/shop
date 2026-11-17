@@ -51,7 +51,6 @@ const SubNavListMobile = ({
           }
           linkTo={`/${ShopPath.Collection}/${category}/`}
           subMenu={subMenu}
-          category={category}
           onReset={onReset}
         />
       </li>

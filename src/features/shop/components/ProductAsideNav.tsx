@@ -8,20 +8,17 @@ import { useLanguage } from '../../language/useLanguage';
 export interface ProductAsideNavProps {
   linkTo: string;
   subMenu: ProductMenuResponse[];
-  category?: string;
   getProductLink: (id: string) => string;
   onReset: () => void;
 }
 
 const ProductAsideNav = ({
   subMenu,
-  category,
   onReset,
   getProductLink,
   linkTo,
 }: ProductAsideNavProps) => {
   const { language } = useLanguage();
-  console.log(category);
 
   return (
     <ul className="product-nav-list">
