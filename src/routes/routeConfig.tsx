@@ -7,8 +7,8 @@ import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/AddressPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
+import AdminProductPage from '../pages/adminproducts/AdminProductPage';
 import CreateProductPage from '../pages/adminproducts/CreateProductPage';
-import ProductPage from '../pages/adminproducts/ProductPage';
 import UpdateProductPage from '../pages/adminproducts/UpdateProductPage';
 import ViewProductPage from '../pages/adminproducts/ViewProductPage';
 import AdminReviewPage from '../pages/AdminReviewPage';
@@ -175,7 +175,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminProducts,
-    element: <ProductPage />,
+    element: <AdminProductPage />,
   },
   {
     path: `${AdminPath.AdminProductView}/:id`,
