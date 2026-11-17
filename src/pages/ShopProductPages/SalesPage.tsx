@@ -12,6 +12,7 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { ShopPath } from '../../layout/nav/enums';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 import ProductPageContainer from './ProductPageContainer';
+import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 
 const Salespage = () => {
   // const ariaLabelledby = useId();
@@ -73,6 +74,7 @@ const Salespage = () => {
         products={saleProducts}
         pageHeading={pageHeading}
         productView={productView}
+        breadcrumbsList={saleBreadcrumbsList}
         src={src}
         altText={altText}
         subMenu={subMenu}

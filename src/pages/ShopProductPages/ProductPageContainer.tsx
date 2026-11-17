@@ -2,8 +2,9 @@ import { ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import { ProductMenuResponse } from '../../app/api/apiTypes/shopApiTypes';
-import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
-import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
+import Breadcrumbs, {
+  BreadcrumbsListProps,
+} from '../../components/breadcrumbs/Breadcrumbs';
 import EmptyState from '../../components/emptyState/EmptyState';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';
@@ -16,14 +17,15 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 
 interface ProductPageContainerProps {
   altText: string;
+  breadcrumbsList: BreadcrumbsListProps[];
   children: ReactNode;
-  linkTo: string;
   pageHeading: string;
   path: string;
   products: BaseProduct[];
   productView: string;
   src: string;
   subMenu: ProductMenuResponse[];
+  linkTo?: string;
   refetch: () => void;
   refetchSubMenu: () => void;
 }
@@ -40,6 +42,7 @@ const ProductPageContainer = ({
   path,
   src,
   altText,
+  breadcrumbsList,
 }: ProductPageContainerProps) => {
   const ariaLabelledby = useId();
   const { language } = useLanguage();
@@ -64,7 +67,7 @@ const ProductPageContainer = ({
         className="container shop-product-page"
         aria-labelledby={ariaLabelledby}
       >
-        <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
+        <Breadcrumbs routeList={breadcrumbsList} subMenu={subMenu} />
 
         <div className="shop-product-page-container">
           <ProductAside
