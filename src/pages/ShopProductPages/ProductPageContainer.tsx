@@ -9,7 +9,6 @@ import EmptyState from '../../components/emptyState/EmptyState';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';
 import { useLanguage } from '../../features/language/useLanguage';
-import { getProductLink } from '../../features/shop/cartUtils';
 import ProductAside from '../../features/shop/components/ProductAside';
 import ProductCartList from '../../features/shop/components/ProductCartList';
 import MetaTags from '../../layout/MetaTags';
@@ -100,11 +99,7 @@ const ProductPageContainer = ({
               />
               {children}
 
-              <ProductCartList
-                products={products}
-                getProductLink={getProductLink}
-                productView={productView}
-              />
+              <ProductCartList products={products} productView={productView} />
             </section>
           </ErrorBoundary>
         </div>

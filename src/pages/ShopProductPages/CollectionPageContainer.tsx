@@ -13,7 +13,6 @@ import { useScrollOnPagination } from '../../components/pagination/hooks/useScro
 import Pagination from '../../components/pagination/Pagination';
 import Picture from '../../components/Picture';
 import { useLanguage } from '../../features/language/useLanguage';
-import { getProductLink } from '../../features/shop/cartUtils';
 import ProductAside from '../../features/shop/components/ProductAside';
 import ProductCartList from '../../features/shop/components/ProductCartList';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
@@ -153,7 +152,6 @@ const CollectionPageContainer = ({
                 <ProductCartList
                   products={products}
                   productView={productView}
-                  getProductLink={getProductLink}
                 />
               </section>
               {itemCount > 0 && (

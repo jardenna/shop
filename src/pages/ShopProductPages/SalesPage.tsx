@@ -8,7 +8,6 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
-import { getProductLink } from '../../features/shop/cartUtils';
 import ProductAside from '../../features/shop/components/ProductAside';
 import ProductCartList from '../../features/shop/components/ProductCartList';
 import ProductToolbar from '../../features/shop/components/ProductToolbar';
@@ -120,7 +119,6 @@ const Salespage = () => {
 
               <ProductCartList
                 products={saleProducts}
-                getProductLink={getProductLink}
                 productView={productView}
               />
             </section>

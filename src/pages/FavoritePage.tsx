@@ -13,7 +13,6 @@ import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAdd
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
-import { getProductLink } from '../features/shop/cartUtils';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
   InitialShopValues,
@@ -132,10 +131,7 @@ const FavoritePage = () => {
         </ErrorBoundary>
       </Panel>
 
-      <ProductCartList
-        products={sortedFavorites}
-        getProductLink={getProductLink}
-      >
+      <ProductCartList products={sortedFavorites}>
         {(product) => (
           <FavoritesAddToCartBtn
             countInStock={product.countInStock}
