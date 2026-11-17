@@ -11,14 +11,22 @@ import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import TagList from '../../../components/tags/TagList';
-import {
-  FilterKeys,
-  InitialFilters,
-} from '../../../pages/shopProductPages/CollectionPage';
+
+import { BaseShopProductsParams } from '../../../app/api/apiTypes/shopApiTypes';
 import { InputChangeHandler, Language } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';
+
+type FilterKeys = keyof BaseShopProductsParams;
+
+interface InitialFilters {
+  brand: string[];
+  colors: string[];
+  maxPrice: string;
+  minPrice: string;
+  sizes: string[];
+}
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;
@@ -141,7 +149,7 @@ const CollectionFilterForm = ({
                 key={key}
                 language={language}
                 tagList={values.map((value) => ({
-                  key: key as FilterKeys,
+                  key,
                   value,
                 }))}
                 onClick={onRemoveFilterTag}
