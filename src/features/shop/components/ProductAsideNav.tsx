@@ -6,8 +6,8 @@ import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
 export interface ProductAsideNavProps {
-  linkTo: string;
   subMenu: ProductMenuResponse[];
+  linkTo?: string;
   getProductLink: (id: string) => string;
   onReset: () => void;
 }
@@ -22,11 +22,13 @@ const ProductAsideNav = ({
 
   return (
     <ul className="product-nav-list">
-      <li className="product-nav-item">
-        <NavLink to={linkTo} end>
-          {language.showAll}
-        </NavLink>
-      </li>
+      {linkTo && (
+        <li className="product-nav-item">
+          <NavLink to={linkTo} end>
+            {language.showAll}
+          </NavLink>
+        </li>
+      )}
 
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}

@@ -49,7 +49,6 @@ const SubNavListMobile = ({
           getProductLink={(productId) =>
             `/${ShopPath.Collection}/${category}/${productId}`
           }
-          linkTo={`/${ShopPath.Collection}/${category}/`}
           subMenu={subMenu}
           onReset={onReset}
         />
