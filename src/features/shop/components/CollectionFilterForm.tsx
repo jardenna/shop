@@ -14,7 +14,7 @@ import TagList from '../../../components/tags/TagList';
 import {
   FilterKeys,
   InitialFilters,
-} from '../../../pages/ShopProductPages/CollectionPage';
+} from '../../../pages/shopProductPages/CollectionPage';
 import { InputChangeHandler, Language } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
