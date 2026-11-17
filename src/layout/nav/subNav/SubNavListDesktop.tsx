@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
+import { Language } from '../../../types/types';
 import NavAd from '../NavAd';
 import { SubBaseNavList } from '../navLists';
-import { Language } from '../../../types/types';
 
 type SubNavListDesktoptProps = {
   heading: string;
@@ -43,4 +43,5 @@ const SubNavListDesktop = ({
     </ul>
   );
 };
+
 export default SubNavListDesktop;
