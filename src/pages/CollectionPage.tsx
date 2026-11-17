@@ -166,13 +166,12 @@ const CollectionPage = () => {
         ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
-        {subMenu && (
-          <Breadcrumbs
-            subMenu={subMenu}
-            productName=""
-            routeList={collectionBreadcrumbsList}
-          />
-        )}
+        <Breadcrumbs
+          subMenu={subMenu}
+          productName=""
+          routeList={collectionBreadcrumbsList}
+        />
+
         <div className="shop-product-page-container">
           {!isMobileSize && subMenu && (
             <ProductAside
