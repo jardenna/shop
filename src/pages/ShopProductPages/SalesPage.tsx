@@ -1,21 +1,28 @@
+import { useId } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 import EmptyState from '../../components/emptyState/EmptyState';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Picture from '../../components/Picture';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
+import { getProductLink } from '../../features/shop/cartUtils';
+import ProductAside from '../../features/shop/components/ProductAside';
+import ProductCartList from '../../features/shop/components/ProductCartList';
 import ProductToolbar from '../../features/shop/components/ProductToolbar';
 import {
   useGetSaleMenuQuery,
   useGetSalesProductsByIdQuery,
 } from '../../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import MetaTags from '../../layout/MetaTags';
 import { ShopPath } from '../../layout/nav/enums';
 import MainPageContainer from '../pageContainer/MainPageContainer';
-import ProductPageContainer from './ProductPageContainer';
-import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
 
 const Salespage = () => {
-  // const ariaLabelledby = useId();
+  const ariaLabelledby = useId();
   const { categoryId } = useParams();
   const { language } = useLanguage();
 
@@ -62,33 +69,65 @@ const Salespage = () => {
   }
 
   const selectedCategory = subMenu?.find((a) => a.categoryId === categoryId);
+
   const categoryLabel = selectedCategory?.label ?? 'all';
+  const pageHeading = `${language.sale} ${language[categoryLabel]}`;
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
-  const pageHeading = `${language.sale} ${language[categoryLabel]}`;
 
   return (
-    subMenu && (
-      <ProductPageContainer
-        products={saleProducts}
-        pageHeading={pageHeading}
-        productView={productView}
-        breadcrumbsList={saleBreadcrumbsList}
-        src={src}
-        altText={altText}
-        subMenu={subMenu}
-        refetch={refetch}
-        refetchSubMenu={refetchSubMenu}
-        path={ShopPath.Sale}
-        linkTo={`/${ShopPath.Sale}`}
+    <>
+      <MetaTags metaTitle={pageHeading} />
+      <section
+        className="container shop-product-page"
+        aria-labelledby={ariaLabelledby}
       >
-        <ProductToolbar
-          setProductView={setProductView}
-          activeDisplay={productView}
-        />
-      </ProductPageContainer>
-    )
+        <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
+
+        <div className="shop-product-page-container">
+          {subMenu && (
+            <ProductAside
+              className="sale-aside"
+              ariaLabelledby={ariaLabelledby}
+              subMenu={subMenu}
+              headerText={pageHeading}
+              onReset={() => {
+                refetchSubMenu();
+              }}
+              language={language}
+              getProductLink={(productId) => `/${ShopPath.Sale}/${productId}`}
+              linkTo={`/${ShopPath.Sale}`}
+            />
+          )}
+          <ErrorBoundary
+            FallbackComponent={ErrorBoundaryFallback}
+            onReset={() => refetch()}
+          >
+            <section>
+              <Picture
+                src={`${src}.jpg`}
+                srcSet={src}
+                alt={language[altText]}
+                ratio="16:9"
+                priority
+                className="shop-product-banner"
+              />
+              <ProductToolbar
+                setProductView={setProductView}
+                activeDisplay={productView}
+              />
+
+              <ProductCartList
+                products={saleProducts}
+                getProductLink={getProductLink}
+                productView={productView}
+              />
+            </section>
+          </ErrorBoundary>
+        </div>
+      </section>
+    </>
   );
 };
 
