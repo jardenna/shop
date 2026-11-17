@@ -104,7 +104,7 @@ const Salespage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="shop-product-page-content">
+            <section>
               <Picture
                 src={`${src}.jpg`}
                 srcSet={src}

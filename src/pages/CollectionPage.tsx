@@ -189,58 +189,60 @@ const CollectionPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="shop-product-page-content">
-              <Picture
-                src={`${src}.jpg`}
-                srcSet={src}
-                alt={language[altText]}
-                ratio="16:9"
-                priority
-                className="shop-product-banner"
-              />
-              <ProductToolbar
-                setProductView={setProductView}
-                activeDisplay={productView}
-              >
-                <LiveAnnouncement
-                  infoText={infoText}
-                  announce={announce}
-                  ariaLiveText={ariaLiveText}
+            <section>
+              <div>
+                <Picture
+                  src={`${src}.jpg`}
+                  srcSet={src}
+                  alt={language[altText]}
+                  ratio="16:9"
+                  priority
+                  className="shop-product-banner"
                 />
-                <FilterPanel
-                  onHidePanel={onHidePanel}
-                  isPanelShown={isPanelShown}
-                  onTogglePanel={onTogglePanel}
-                  portalId="filter-products"
-                  language={language}
-                  onReset={() => refetch()}
-                  totalFiltersCount={totalFiltersCount}
-                  panelHeading={language.filterProducts}
-                  ariaLabel={language.filterProducts}
+                <ProductToolbar
+                  setProductView={setProductView}
+                  activeDisplay={productView}
                 >
-                  <CollectionFilterForm
-                    initialFilters={initialFilters}
-                    sizes={sortSizesDynamic(products.availableSizes)}
-                    brands={products.availableBrands}
-                    colors={sortedTranslatedColors}
-                    language={language}
-                    productCount={products.productCount}
-                    values={filterParams}
-                    toggleValue={toggleFilterParam}
-                    setValue={setFilterParams}
-                    onRemoveFilterTag={onRemoveFilterTag}
-                    onClearAllFilters={onClearAllFilters}
-                    onClearSingleFilter={onClearSingleFilter}
-                    onHidePanel={onHidePanel}
+                  <LiveAnnouncement
+                    infoText={infoText}
+                    announce={announce}
+                    ariaLiveText={ariaLiveText}
                   />
-                </FilterPanel>
-              </ProductToolbar>
+                  <FilterPanel
+                    onHidePanel={onHidePanel}
+                    isPanelShown={isPanelShown}
+                    onTogglePanel={onTogglePanel}
+                    portalId="filter-products"
+                    language={language}
+                    onReset={() => refetch()}
+                    totalFiltersCount={totalFiltersCount}
+                    panelHeading={language.filterProducts}
+                    ariaLabel={language.filterProducts}
+                  >
+                    <CollectionFilterForm
+                      initialFilters={initialFilters}
+                      sizes={sortSizesDynamic(products.availableSizes)}
+                      brands={products.availableBrands}
+                      colors={sortedTranslatedColors}
+                      language={language}
+                      productCount={products.productCount}
+                      values={filterParams}
+                      toggleValue={toggleFilterParam}
+                      setValue={setFilterParams}
+                      onRemoveFilterTag={onRemoveFilterTag}
+                      onClearAllFilters={onClearAllFilters}
+                      onClearSingleFilter={onClearSingleFilter}
+                      onHidePanel={onHidePanel}
+                    />
+                  </FilterPanel>
+                </ProductToolbar>
 
-              <ProductCartList
-                products={products.products}
-                productView={productView}
-                getProductLink={getProductLink}
-              />
+                <ProductCartList
+                  products={products.products}
+                  productView={productView}
+                  getProductLink={getProductLink}
+                />
+              </div>
               {itemCount > 0 && (
                 <Pagination
                   refetch={refetch}
