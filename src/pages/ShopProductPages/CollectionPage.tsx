@@ -10,12 +10,14 @@ import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts
 import { useLanguage } from '../../features/language/useLanguage';
 import CollectionFilterForm from '../../features/shop/components/CollectionFilterForm';
 import ProductToolbar from '../../features/shop/components/ProductToolbar';
-import { useSubMenu } from '../../features/shop/hooks/useSubMenu';
-import { useGetProductsQuery } from '../../features/shop/shopApiSlice';
+import {
+  useGetProductsQuery,
+  useGetShopMenuQuery,
+} from '../../features/shop/shopApiSlice';
 import { useAnnounce } from '../../hooks/useAnnounce';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
-import { LinkText, ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/enums';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
@@ -34,8 +36,9 @@ export interface InitialFilters {
 const CollectionPage = () => {
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
-
-  const { subMenu, refetchSubMenu } = useSubMenu(category as LinkText);
+  const { data: subMenu, refetch: refetchSubMenu } = useGetShopMenuQuery(
+    category ?? 'woman',
+  );
 
   const [productView, setProductView] = useLocalStorage(
     localStorageKeys.productView,
