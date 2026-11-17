@@ -108,7 +108,6 @@ const CollectionPageContainer = ({
       />
     );
   }
-  console.log(path);
 
   return (
     <>
