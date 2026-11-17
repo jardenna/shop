@@ -19,13 +19,13 @@ interface ProductPageContainerProps {
   altText: string;
   breadcrumbsList: BreadcrumbsListProps[];
   children: ReactNode;
+  linkTo: string;
   pageHeading: string;
   path: string;
   products: BaseProduct[];
   productView: string;
   src: string;
   subMenu: ProductMenuResponse[];
-  linkTo?: string;
   refetch: () => void;
   refetchSubMenu: () => void;
 }

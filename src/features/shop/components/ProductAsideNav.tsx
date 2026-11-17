@@ -2,14 +2,13 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { NavLink } from 'react-router';
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import { ShopPath } from '../../../layout/nav/enums';
 import { translateKey } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
 export interface ProductAsideNavProps {
+  linkTo: string;
   subMenu: ProductMenuResponse[];
   category?: string;
-  linkTo?: string;
   getProductLink: (id: string) => string;
   onReset: () => void;
 }
@@ -19,9 +18,10 @@ const ProductAsideNav = ({
   category,
   onReset,
   getProductLink,
-  linkTo = `/${ShopPath.Collection}/${category}`,
+  linkTo,
 }: ProductAsideNavProps) => {
   const { language } = useLanguage();
+  console.log(category);
 
   return (
     <ul className="product-nav-list">

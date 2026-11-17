@@ -132,6 +132,7 @@ const CollectionPageContainer = ({
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
               category={category}
+              linkTo={`/${ShopPath.Collection}/${category}`}
               onReset={() => {
                 refetchSubMenu();
               }}
