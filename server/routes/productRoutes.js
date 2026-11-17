@@ -36,6 +36,12 @@ router
 
 router.get('/scheduled', checkScheduled);
 router.get('/sale', languageMiddleware, getSaleProducts);
+router.get(
+  '/sale/:categoryId',
+  languageMiddleware,
+  checkId('categoryId'),
+  getSaleProducts,
+);
 router.get('/sale-menu', languageMiddleware, getSaleSubMenu);
 router.get('/allProducts', filterProductsMiddleware, getAllProducts);
 router.get('/shop/:id', languageMiddleware, getShopProductById);

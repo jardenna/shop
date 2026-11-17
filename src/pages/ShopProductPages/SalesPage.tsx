@@ -1,30 +1,29 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import EmptyState from '../components/emptyState/EmptyState';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import NotFoundError from '../components/NotFoundError';
-import Picture from '../components/Picture';
-import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
-import { useLanguage } from '../features/language/useLanguage';
-import { getProductLink } from '../features/shop/cartUtils';
-import ProductAside from '../features/shop/components/ProductAside';
-import ProductCartList from '../features/shop/components/ProductCartList';
-import ProductToolbar from '../features/shop/components/ProductToolbar';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
+import EmptyState from '../../components/emptyState/EmptyState';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Picture from '../../components/Picture';
+import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
+import { useLanguage } from '../../features/language/useLanguage';
+import { getProductLink } from '../../features/shop/cartUtils';
+import ProductAside from '../../features/shop/components/ProductAside';
+import ProductCartList from '../../features/shop/components/ProductCartList';
+import ProductToolbar from '../../features/shop/components/ProductToolbar';
 import {
   useGetSaleMenuQuery,
-  useGetSaleProductsQuery,
-} from '../features/shop/shopApiSlice';
-import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
-import MetaTags from '../layout/MetaTags';
-import { ShopPath } from '../layout/nav/enums';
-import MainPageContainer from './pageContainer/MainPageContainer';
+  useGetSalesProductsByIdQuery,
+} from '../../features/shop/shopApiSlice';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import MetaTags from '../../layout/MetaTags';
+import { ShopPath } from '../../layout/nav/enums';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
-  const params = useParams();
+  const { categoryId } = useParams();
   const { language } = useLanguage();
 
   const [productView, setProductView] = useLocalStorage(
@@ -32,16 +31,16 @@ const Salespage = () => {
     'grid',
   );
 
-  const { data: products, isError, error, refetch } = useGetSaleProductsQuery();
   const { data: subMenu, refetch: refetchSubMenu } = useGetSaleMenuQuery();
 
-  const filteredSubMenu = subMenu?.filter(({ categoryId }) =>
-    products?.some(
-      ({ categoryId: productCategoryId }) => productCategoryId === categoryId,
-    ),
-  );
+  const {
+    data: saleProducts,
+    isError,
+    error,
+    refetch,
+  } = useGetSalesProductsByIdQuery(categoryId ?? '');
 
-  if (!products) {
+  if (!saleProducts) {
     return <SkeletonShopProducts count={4} />;
   }
 
@@ -56,7 +55,7 @@ const Salespage = () => {
     );
   }
 
-  if (products.length === 0) {
+  if (saleProducts.length === 0) {
     return (
       <MainPageContainer heading={language.sale}>
         <EmptyState
@@ -69,17 +68,7 @@ const Salespage = () => {
     );
   }
 
-  const selectedProducts = params.categoryId
-    ? products.filter((product) => product.categoryId === params.categoryId)
-    : products;
-
-  const selectedCategory = subMenu?.find(
-    ({ categoryId }) => categoryId === params.categoryId,
-  );
-
-  const noCategoryId =
-    params.categoryId &&
-    !subMenu?.some(({ categoryId }) => categoryId === params.categoryId);
+  const selectedCategory = subMenu?.find((a) => a.categoryId === categoryId);
 
   const categoryLabel = selectedCategory?.label ?? 'all';
   const pageHeading = `${language.sale} ${language[categoryLabel]}`;
@@ -89,21 +78,19 @@ const Salespage = () => {
 
   return (
     <>
-      {params.category && <MetaTags metaTitle={pageHeading} />}
-
+      <MetaTags metaTitle={pageHeading} />
       <section
         className="container shop-product-page"
         aria-labelledby={ariaLabelledby}
       >
-        {!noCategoryId && (
-          <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
-        )}
+        <Breadcrumbs routeList={saleBreadcrumbsList} subMenu={subMenu} />
+
         <div className="shop-product-page-container">
           {subMenu && (
             <ProductAside
               className="sale-aside"
               ariaLabelledby={ariaLabelledby}
-              subMenu={filteredSubMenu ?? []}
+              subMenu={subMenu}
               headerText={pageHeading}
               onReset={() => {
                 refetchSubMenu();
@@ -117,7 +104,7 @@ const Salespage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="shop-product-page-content">
+            <section>
               <Picture
                 src={`${src}.jpg`}
                 srcSet={src}
@@ -131,9 +118,8 @@ const Salespage = () => {
                 activeDisplay={productView}
               />
 
-              {noCategoryId && <NotFoundError error="" className="sale" />}
               <ProductCartList
-                products={selectedProducts}
+                products={saleProducts}
                 getProductLink={getProductLink}
                 productView={productView}
               />

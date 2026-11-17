@@ -1,4 +1,4 @@
-@use '../scss/globals' as *;
+@use '../../scss/globals' as *;
 
 .shop-product-page {
   .breadcrumbs-container {
@@ -25,10 +25,6 @@
     flex-direction: column;
     gap: 0;
   }
-}
-
-.shop-product-page-content {
-  width: 100%;
 }
 
 .shop-product-banner {

@@ -3,6 +3,7 @@ import { PUBLISHED } from '../config/constants.js';
 import asyncHandler from '../middleware/asyncHandler.js';
 import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
+import SubCategory from '../models/subCategoryModel.js';
 import { getProductByIdService } from '../services/getProductByIdService.js';
 import getProductListing from '../services/getProductListing.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
@@ -66,14 +67,55 @@ const getShopProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Sale products
-// @route   /api/products/sale
+// @desc    Get shop product by ID
+// @route   /api/products/shop/:id
+// @method  GET
+// @access  Public
+const getShopProductById = asyncHandler(async (req, res) => {
+  const product = await getProductByIdService(req.params.id);
+
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: t('resourceNotFound', req.lang),
+    });
+  }
+
+  res.status(200).json(product);
+});
+
+// @desc    Get Sale products by ID
+// @route   /api/products/sale/:categoryId
 // @method  GET
 // @access  Public
 const getSaleProducts = asyncHandler(async (req, res) => {
+  const { categoryId } = req.params;
+
+  let subCategoryIds;
+
+  if (categoryId) {
+    const categoryExists = await Category.exists({
+      _id: categoryId,
+      categoryStatus: PUBLISHED,
+    });
+
+    if (!categoryExists) {
+      return res.status(404).json({
+        success: false,
+        message: t('resourceNotFound', req.lang),
+      });
+    }
+
+    subCategoryIds = await SubCategory.distinct('_id', {
+      category: categoryId,
+      categoryStatus: PUBLISHED,
+    });
+  }
+
   const saleProducts = await Product.find({
     productStatus: PUBLISHED,
     discount: { $gt: 0 },
+    ...(categoryId && { subCategory: { $in: subCategoryIds } }),
   })
     .select(
       'productName price discount sizes colors images brand countInStock subCategory description',
@@ -110,8 +152,19 @@ const getSaleProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getSaleSubMenu = asyncHandler(async (req, res) => {
+  const subCategoryIds = await Product.distinct('subCategory', {
+    productStatus: PUBLISHED,
+    discount: { $gt: 0 },
+  });
+
   const categories = await Category.find({
     categoryStatus: PUBLISHED,
+    _id: {
+      $in: await SubCategory.distinct('category', {
+        _id: { $in: subCategoryIds },
+        categoryStatus: PUBLISHED,
+      }),
+    },
   })
     .select('categoryName')
     .lean();
@@ -122,23 +175,6 @@ const getSaleSubMenu = asyncHandler(async (req, res) => {
   }));
 
   res.status(200).json(formatMongoData(saleSubMenu));
-});
-
-// @desc    Get shop product by ID
-// @route   /api/products/shop/:id
-// @method  GET
-// @access  Public
-const getShopProductById = asyncHandler(async (req, res) => {
-  const product = await getProductByIdService(req.params.id);
-
-  if (!product) {
-    return res.status(404).json({
-      success: false,
-      message: t('resourceNotFound', req.lang),
-    });
-  }
-
-  res.status(200).json(product);
 });
 
 export { getSaleProducts, getSaleSubMenu, getShopProductById, getShopProducts };

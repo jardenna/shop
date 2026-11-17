@@ -11,7 +11,10 @@ import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import TagList from '../../../components/tags/TagList';
-import { FilterKeys, InitialFilters } from '../../../pages/CollectionPage';
+import {
+  FilterKeys,
+  InitialFilters,
+} from '../../../pages/shopProductPages/CollectionPage';
 import { InputChangeHandler, Language } from '../../../types/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';

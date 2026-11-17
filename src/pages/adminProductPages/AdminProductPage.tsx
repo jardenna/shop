@@ -21,7 +21,7 @@ import { OptionType } from '../../types/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
-const ProductPage = () => {
+const AdminProductPage = () => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
@@ -230,4 +230,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default AdminProductPage;

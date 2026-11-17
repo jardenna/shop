@@ -7,12 +7,15 @@ import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/AddressPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';
 import AdminOrderPage from '../pages/adminOrderPage/AdminOrderPage';
+import AdminProductPage from '../pages/adminProductPages/AdminProductPage';
+import CreateProductPage from '../pages/adminProductPages/CreateProductPage';
+import UpdateProductPage from '../pages/adminProductPages/UpdateProductPage';
+import ViewProductPage from '../pages/adminProductPages/ViewProductPage';
 import AdminReviewPage from '../pages/AdminReviewPage';
 import CategoryPage from '../pages/category/CategoryPage';
 import CreateCategoryPage from '../pages/category/CreateCategoryPage';
 import UpdateCategoryPage from '../pages/category/UpdateCategoryPage';
 import CheckoutPage from '../pages/CheckoutPage';
-import CollectionPage from '../pages/CollectionPage';
 import DashboardPage from '../pages/DashboardPage';
 import ErrorPage from '../pages/ErrorPage';
 import FavoritePage from '../pages/FavoritePage';
@@ -26,22 +29,19 @@ import TermsAndConditionsPage from '../pages/footerPages/TermsAndConditionsPage'
 import GoalsPage from '../pages/GoalsPage';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
-import MainCollectionsPage from '../pages/MainCollectionsPage';
 import MyAccountPage from '../pages/MyAccountPage';
 import MyOrderDetailsPage from '../pages/MyOrderDetailsPage';
 import MyOrdersPage from '../pages/MyOrdersPage';
-import CreateProductPage from '../pages/product/CreateProductPage';
-import ProductPage from '../pages/product/ProductPage';
-import UpdateProductPage from '../pages/product/UpdateProductPage';
-import ViewProductPage from '../pages/product/ViewProductPage';
 import CreatePromoCodePage from '../pages/promoCode/CreatePromoCodePage';
 import PromoCodePage from '../pages/promoCode/PromoCodePage';
 import UpdatePromoCodePage from '../pages/promoCode/UpdatePromoCodePage';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import RegisterUserPage from '../pages/RegisterUserPage';
-import Salespage from '../pages/SalesPage';
 import ShoppingCartPage from '../pages/ShoppingCartPage';
-import SingleProductPage from '../pages/SingleProductPage';
+import CollectionPage from '../pages/shopProductPages/CollectionPage';
+import MainCollectionsPage from '../pages/shopProductPages/MainCollectionsPage';
+import Salespage from '../pages/shopProductPages/SalesPage';
+import SingleProductPage from '../pages/shopProductPages/SingleProductPage';
 import CreateSubCategoryPage from '../pages/subCategory/CreateSubCategoryPage';
 import SubCategoryPage from '../pages/subCategory/SubCategoryPage';
 import UpdateSubCategoryPage from '../pages/subCategory/UpdateSubCategoryPage';
@@ -175,7 +175,7 @@ const adminRouteList = [
   },
   {
     path: AdminPath.AdminProducts,
-    element: <ProductPage />,
+    element: <AdminProductPage />,
   },
   {
     path: `${AdminPath.AdminProductView}/:id`,

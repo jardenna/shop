@@ -1,39 +1,39 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import type { BaseShopProductsParams } from '../app/api/apiTypes/shopApiTypes';
-import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { collectionBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import Button from '../components/Button';
-import EmptyStateContent from '../components/emptyState/EmptyStateContent';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import FilterPanel from '../components/filterPanel/FilterPanel';
-import LiveAnnouncement from '../components/LiveAnnouncement';
-import NotFoundError from '../components/NotFoundError';
-import { usePaginationText } from '../components/pagination/hooks/usePaginationText';
-import { useScrollOnPagination } from '../components/pagination/hooks/useScrollOnPagination';
-import Pagination from '../components/pagination/Pagination';
-import { useTogglePanel } from '../components/panel/useTogglePanel';
-import Picture from '../components/Picture';
-import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
-import { useLanguage } from '../features/language/useLanguage';
-import { getProductLink } from '../features/shop/cartUtils';
-import CollectionFilterForm from '../features/shop/components/CollectionFilterForm';
-import ProductAside from '../features/shop/components/ProductAside';
-import ProductCartList from '../features/shop/components/ProductCartList';
-import ProductToolbar from '../features/shop/components/ProductToolbar';
-import { useSubMenu } from '../features/shop/hooks/useSubMenu';
-import { useGetProductsQuery } from '../features/shop/shopApiSlice';
-import { useAnnounce } from '../hooks/useAnnounce';
-import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
-import { useMediaQuery } from '../hooks/useMediaQuery';
-import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import MetaTags from '../layout/MetaTags';
-import { LinkText, ShopPath } from '../layout/nav/enums';
-import { OptionType } from '../types/types';
-import { colorList, sortColorsByTranslation } from '../utils/colorUtils';
-import { sortSizesDynamic } from '../utils/sizeUtils';
-import { getFilterSummary } from '../utils/utils';
+import type { BaseShopProductsParams } from '../../app/api/apiTypes/shopApiTypes';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { collectionBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
+import Button from '../../components/Button';
+import EmptyStateContent from '../../components/emptyState/EmptyStateContent';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import FilterPanel from '../../components/filterPanel/FilterPanel';
+import LiveAnnouncement from '../../components/LiveAnnouncement';
+import NotFoundError from '../../components/NotFoundError';
+import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
+import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
+import Pagination from '../../components/pagination/Pagination';
+import { useTogglePanel } from '../../components/panel/useTogglePanel';
+import Picture from '../../components/Picture';
+import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
+import { useLanguage } from '../../features/language/useLanguage';
+import { getProductLink } from '../../features/shop/cartUtils';
+import CollectionFilterForm from '../../features/shop/components/CollectionFilterForm';
+import ProductAside from '../../features/shop/components/ProductAside';
+import ProductCartList from '../../features/shop/components/ProductCartList';
+import ProductToolbar from '../../features/shop/components/ProductToolbar';
+import { useSubMenu } from '../../features/shop/hooks/useSubMenu';
+import { useGetProductsQuery } from '../../features/shop/shopApiSlice';
+import { useAnnounce } from '../../hooks/useAnnounce';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useSearchParamsState } from '../../hooks/useSearchParamsState';
+import MetaTags from '../../layout/MetaTags';
+import { LinkText, ShopPath } from '../../layout/nav/enums';
+import { OptionType } from '../../types/types';
+import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
+import { sortSizesDynamic } from '../../utils/sizeUtils';
+import { getFilterSummary } from '../../utils/utils';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
@@ -59,7 +59,7 @@ const CollectionPage = () => {
   );
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
-  const categoryText = category ? language[category] : '';
+  const pageHeading = category ? language[category] : '';
 
   // Redux hooks
   const initialFilters: InitialFilters = {
@@ -82,7 +82,7 @@ const CollectionPage = () => {
     setPage,
     updatePagination,
     searchKey,
-  } = useSearchParamsState(initialFilters, { pagination: false });
+  } = useSearchParamsState(initialFilters);
 
   const {
     data: products,
@@ -157,26 +157,23 @@ const CollectionPage = () => {
 
   return (
     <>
-      {category && (
-        <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
-      )}
+      <MetaTags metaTitle={pageHeading} />
 
       <section
         className="container shop-product-page"
         ref={scrollToRef}
         aria-labelledby={ariaLabelledby}
       >
-        {subMenu && (
-          <Breadcrumbs
-            subMenu={subMenu}
-            productName=""
-            routeList={collectionBreadcrumbsList}
-          />
-        )}
+        <Breadcrumbs
+          subMenu={subMenu}
+          productName=""
+          routeList={collectionBreadcrumbsList}
+        />
+
         <div className="shop-product-page-container">
           {!isMobileSize && subMenu && (
             <ProductAside
-              headerText={categoryText}
+              headerText={pageHeading}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
               category={category || 'women'}
@@ -192,58 +189,60 @@ const CollectionPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section className="shop-product-page-content">
-              <Picture
-                src={`${src}.jpg`}
-                srcSet={src}
-                alt={language[altText]}
-                ratio="16:9"
-                priority
-                className="shop-product-banner"
-              />
-              <ProductToolbar
-                setProductView={setProductView}
-                activeDisplay={productView}
-              >
-                <LiveAnnouncement
-                  infoText={infoText}
-                  announce={announce}
-                  ariaLiveText={ariaLiveText}
+            <section>
+              <div>
+                <Picture
+                  src={`${src}.jpg`}
+                  srcSet={src}
+                  alt={language[altText]}
+                  ratio="16:9"
+                  priority
+                  className="shop-product-banner"
                 />
-                <FilterPanel
-                  onHidePanel={onHidePanel}
-                  isPanelShown={isPanelShown}
-                  onTogglePanel={onTogglePanel}
-                  portalId="filter-products"
-                  language={language}
-                  onReset={() => refetch()}
-                  totalFiltersCount={totalFiltersCount}
-                  panelHeading={language.filterProducts}
-                  ariaLabel={language.filterProducts}
+                <ProductToolbar
+                  setProductView={setProductView}
+                  activeDisplay={productView}
                 >
-                  <CollectionFilterForm
-                    initialFilters={initialFilters}
-                    sizes={sortSizesDynamic(products.availableSizes)}
-                    brands={products.availableBrands}
-                    colors={sortedTranslatedColors}
-                    language={language}
-                    productCount={products.productCount}
-                    values={filterParams}
-                    toggleValue={toggleFilterParam}
-                    setValue={setFilterParams}
-                    onRemoveFilterTag={onRemoveFilterTag}
-                    onClearAllFilters={onClearAllFilters}
-                    onClearSingleFilter={onClearSingleFilter}
-                    onHidePanel={onHidePanel}
+                  <LiveAnnouncement
+                    infoText={infoText}
+                    announce={announce}
+                    ariaLiveText={ariaLiveText}
                   />
-                </FilterPanel>
-              </ProductToolbar>
+                  <FilterPanel
+                    onHidePanel={onHidePanel}
+                    isPanelShown={isPanelShown}
+                    onTogglePanel={onTogglePanel}
+                    portalId="filter-products"
+                    language={language}
+                    onReset={() => refetch()}
+                    totalFiltersCount={totalFiltersCount}
+                    panelHeading={language.filterProducts}
+                    ariaLabel={language.filterProducts}
+                  >
+                    <CollectionFilterForm
+                      initialFilters={initialFilters}
+                      sizes={sortSizesDynamic(products.availableSizes)}
+                      brands={products.availableBrands}
+                      colors={sortedTranslatedColors}
+                      language={language}
+                      productCount={products.productCount}
+                      values={filterParams}
+                      toggleValue={toggleFilterParam}
+                      setValue={setFilterParams}
+                      onRemoveFilterTag={onRemoveFilterTag}
+                      onClearAllFilters={onClearAllFilters}
+                      onClearSingleFilter={onClearSingleFilter}
+                      onHidePanel={onHidePanel}
+                    />
+                  </FilterPanel>
+                </ProductToolbar>
 
-              <ProductCartList
-                products={products.products}
-                productView={productView}
-                getProductLink={getProductLink}
-              />
+                <ProductCartList
+                  products={products.products}
+                  productView={productView}
+                  getProductLink={getProductLink}
+                />
+              </div>
               {itemCount > 0 && (
                 <Pagination
                   refetch={refetch}
