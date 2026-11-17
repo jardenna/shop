@@ -135,8 +135,19 @@ const getSaleProducts = asyncHandler(async (req, res) => {
 // @method  GET
 // @access  Public
 const getSaleSubMenu = asyncHandler(async (req, res) => {
+  const subCategoryIds = await Product.distinct('subCategory', {
+    productStatus: PUBLISHED,
+    discount: { $gt: 0 },
+  });
+
   const categories = await Category.find({
     categoryStatus: PUBLISHED,
+    _id: {
+      $in: await SubCategory.distinct('category', {
+        _id: { $in: subCategoryIds },
+        categoryStatus: PUBLISHED,
+      }),
+    },
   })
     .select('categoryName')
     .lean();
