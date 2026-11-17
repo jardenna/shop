@@ -23,7 +23,7 @@ import MainPageContainer from './pageContainer/MainPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
-  const params = useParams();
+  const { categoryId } = useParams();
   const { language } = useLanguage();
 
   const [productView, setProductView] = useLocalStorage(
@@ -38,7 +38,7 @@ const Salespage = () => {
     isError,
     error,
     refetch,
-  } = useGetSalesProductsByIdQuery(params.categoryId ?? '');
+  } = useGetSalesProductsByIdQuery(categoryId ?? '');
 
   if (!saleProducts) {
     return <SkeletonShopProducts count={4} />;
@@ -68,9 +68,7 @@ const Salespage = () => {
     );
   }
 
-  const selectedCategory = subMenu?.find(
-    ({ categoryId }) => categoryId === params.categoryId,
-  );
+  const selectedCategory = subMenu?.find((a) => a.categoryId === categoryId);
 
   const categoryLabel = selectedCategory?.label ?? 'all';
   const pageHeading = `${language.sale} ${language[categoryLabel]}`;
@@ -80,8 +78,7 @@ const Salespage = () => {
 
   return (
     <>
-      {params.category && <MetaTags metaTitle={pageHeading} />}
-
+      <MetaTags metaTitle={pageHeading} />
       <section
         className="container shop-product-page"
         aria-labelledby={ariaLabelledby}
