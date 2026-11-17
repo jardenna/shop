@@ -32,6 +32,7 @@ interface ProductPageContainerProps {
   isLoading: boolean;
   itemCount: number;
   pageHeading: string;
+  paginationMobileText: string;
   path: string;
   products: BaseProduct[];
   productView: string;
@@ -56,6 +57,7 @@ const CollectionPageContainer = ({
   productView,
   products,
   pageHeading,
+  paginationMobileText,
   path,
   src,
   altText,
@@ -163,7 +165,7 @@ const CollectionPageContainer = ({
                   onPagination={handlePagination}
                   onSelectCount={handleSelectCount}
                   totalCount={itemCount}
-                  paginationMobileText="paginationMobileText"
+                  paginationMobileText={paginationMobileText}
                   defaultValue={{
                     value: itemsPerPage.toString(),
                     label: itemsPerPage.toString(),

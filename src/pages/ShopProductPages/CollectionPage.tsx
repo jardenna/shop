@@ -104,8 +104,6 @@ const CollectionPage = () => {
 
   const announce = useAnnounce([page, itemsPerPage, searchKey]);
 
-  console.log(paginationMobileText);
-
   if (isError) {
     return (
       <NotFoundError
@@ -126,6 +124,7 @@ const CollectionPage = () => {
   return (
     <CollectionPageContainer
       altText={language[altText]}
+      paginationMobileText={paginationMobileText}
       breadcrumbsList={collectionBreadcrumbsList}
       refetch={refetch}
       totalBtns={totalBtns}
