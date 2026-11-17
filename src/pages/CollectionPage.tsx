@@ -59,7 +59,7 @@ const CollectionPage = () => {
   );
 
   const sortedTranslatedColors = sortColorsByTranslation(colorList, language);
-  const categoryText = category ? language[category] : '';
+  const pageHeading = category ? language[category] : '';
 
   // Redux hooks
   const initialFilters: InitialFilters = {
@@ -157,9 +157,7 @@ const CollectionPage = () => {
 
   return (
     <>
-      {category && (
-        <MetaTags metaTitle={`${language.collection} ${language[category]}`} />
-      )}
+      <MetaTags metaTitle={pageHeading} />
 
       <section
         className="container shop-product-page"
@@ -175,7 +173,7 @@ const CollectionPage = () => {
         <div className="shop-product-page-container">
           {!isMobileSize && subMenu && (
             <ProductAside
-              headerText={categoryText}
+              headerText={pageHeading}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
               category={category || 'women'}
