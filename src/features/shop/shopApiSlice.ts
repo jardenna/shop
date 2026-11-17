@@ -26,9 +26,13 @@ export const shopApiSlice = apiSlice.injectEndpoints({
         skipErrorToast: true,
       },
     }),
-    getSaleProducts: builder.query<SaleProductResponse[], void>({
-      query: () => `${productUrl}/sale`,
+
+    getSalesProductsById: builder.query<SaleProductResponse[], string>({
+      query: (id) => `${productUrl}/sale/${id}`,
       providesTags: [TagTypesEnum.Products],
+      extraOptions: {
+        skipErrorToast: true,
+      },
     }),
     getSingleProduct: builder.query<BaseShopProduct, string>({
       query: (id) => `${productUrl}/shop/${id}`,
@@ -67,5 +71,5 @@ export const {
   useGetSingleProductQuery,
   usePostReviewsMutation,
   useCheckReviewedQuery,
-  useGetSaleProductsQuery,
+  useGetSalesProductsByIdQuery,
 } = shopApiSlice;
