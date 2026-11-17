@@ -131,9 +131,10 @@ const CollectionPage = () => {
       isLoading={isLoading}
       itemCount={itemCount}
       pageHeading={pageHeading}
-      path={`/${ShopPath.Collection}/${category}`}
       products={products.products}
       productView={productView}
+      category={category ?? 'women'}
+      path={`/${ShopPath.Collection}`}
       src={src}
       subMenu={subMenu ?? []}
       refetchSubMenu={refetchSubMenu}

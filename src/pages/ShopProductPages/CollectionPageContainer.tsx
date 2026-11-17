@@ -27,6 +27,7 @@ import './shopProductPage.styles.scss';
 interface ProductPageContainerProps {
   altText: string;
   breadcrumbsList: BreadcrumbsListProps[];
+  category: string;
   children: ReactElement;
   error: any;
   isError: boolean;
@@ -49,6 +50,7 @@ const CollectionPageContainer = ({
   error,
   isError,
   isLoading,
+  category,
   totalBtns,
   subMenu,
   refetchSubMenu,
@@ -106,6 +108,7 @@ const CollectionPageContainer = ({
       />
     );
   }
+  console.log(path);
 
   return (
     <>
@@ -128,12 +131,12 @@ const CollectionPageContainer = ({
               headerText={pageHeading}
               ariaLabelledby={ariaLabelledby}
               subMenu={subMenu}
-              category="women"
+              category={category}
               onReset={() => {
                 refetchSubMenu();
               }}
               language={language}
-              getProductLink={(productId) => `/${path}/${productId}`}
+              getProductLink={(productId) => `${path}/${category}/${productId}`}
             />
           )}
 
