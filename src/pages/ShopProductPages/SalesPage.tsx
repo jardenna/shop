@@ -64,12 +64,13 @@ const Salespage = () => {
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
   const altText = `${categoryLabel}SalesBannerAltText`;
+  const pageHeading = `${language.sale} ${language[categoryLabel]}`;
 
   return (
     subMenu && (
       <ProductPageContainer
         products={saleProducts}
-        pageHeading={`${language.sale} ${language[categoryLabel]}`}
+        pageHeading={pageHeading}
         productView={productView}
         src={src}
         altText={altText}
