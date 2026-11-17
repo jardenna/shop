@@ -37,7 +37,6 @@ import { getFilterSummary } from '../../utils/utils';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
-
 export interface InitialFilters {
   brand: string[];
   colors: string[];
@@ -190,8 +189,8 @@ const CollectionPage = () => {
             FallbackComponent={ErrorBoundaryFallback}
             onReset={() => refetch()}
           >
-            <section>
-              <div>
+            <div>
+              <section>
                 <Picture
                   src={`${src}.jpg`}
                   srcSet={src}
@@ -243,7 +242,7 @@ const CollectionPage = () => {
                   productView={productView}
                   getProductLink={getProductLink}
                 />
-              </div>
+              </section>
               {itemCount > 0 && (
                 <Pagination
                   refetch={refetch}
@@ -273,7 +272,7 @@ const CollectionPage = () => {
                   </Button>
                 </EmptyStateContent>
               )}
-            </section>
+            </div>
           </ErrorBoundary>
         </div>
       </section>
