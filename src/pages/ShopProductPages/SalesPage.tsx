@@ -60,7 +60,6 @@ const Salespage = () => {
   }
 
   const selectedCategory = subMenu?.find((a) => a.categoryId === categoryId);
-
   const categoryLabel = selectedCategory?.label ?? 'all';
 
   const src = `/images/banners/sale_${categoryLabel}_banner`;
