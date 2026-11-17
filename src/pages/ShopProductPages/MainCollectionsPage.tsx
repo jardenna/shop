@@ -1,12 +1,12 @@
-import { MainCategoryNames } from '../app/api/apiTypes/sharedApiTypes';
-import { useGetPublishedCategoriesQuery } from '../features/categories/categoriyApiSlice';
-import { useLanguage } from '../features/language/useLanguage';
-import MainCollections from '../features/shop/components/MainCollections';
-import { MainCollectionsBaseProps } from '../features/shop/components/MainCollectionsItem';
-import { ShopPath } from '../layout/nav/enums';
-import { translateKey } from '../utils/utils';
+import { MainCategoryNames } from '../../app/api/apiTypes/sharedApiTypes';
+import { useGetPublishedCategoriesQuery } from '../../features/categories/categoriyApiSlice';
+import { useLanguage } from '../../features/language/useLanguage';
+import MainCollections from '../../features/shop/components/MainCollections';
+import { MainCollectionsBaseProps } from '../../features/shop/components/MainCollectionsItem';
+import { ShopPath } from '../../layout/nav/enums';
+import { translateKey } from '../../utils/utils';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 import './mainCollectionPage.styles.scss';
-import MainPageContainer from './pageContainer/MainPageContainer';
 
 type AdImages = Partial<Record<MainCategoryNames, string[]>> & {
   [key: string]: string[];

@@ -1,25 +1,25 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
-import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
-import { saleBreadcrumbsList } from '../components/breadcrumbs/breadcrumbsLists';
-import EmptyState from '../components/emptyState/EmptyState';
-import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import Picture from '../components/Picture';
-import SkeletonShopProducts from '../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
-import { useLanguage } from '../features/language/useLanguage';
-import { getProductLink } from '../features/shop/cartUtils';
-import ProductAside from '../features/shop/components/ProductAside';
-import ProductCartList from '../features/shop/components/ProductCartList';
-import ProductToolbar from '../features/shop/components/ProductToolbar';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
+import EmptyState from '../../components/emptyState/EmptyState';
+import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
+import Picture from '../../components/Picture';
+import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
+import { useLanguage } from '../../features/language/useLanguage';
+import { getProductLink } from '../../features/shop/cartUtils';
+import ProductAside from '../../features/shop/components/ProductAside';
+import ProductCartList from '../../features/shop/components/ProductCartList';
+import ProductToolbar from '../../features/shop/components/ProductToolbar';
 import {
   useGetSaleMenuQuery,
   useGetSalesProductsByIdQuery,
-} from '../features/shop/shopApiSlice';
-import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
-import MetaTags from '../layout/MetaTags';
-import { ShopPath } from '../layout/nav/enums';
-import MainPageContainer from './pageContainer/MainPageContainer';
+} from '../../features/shop/shopApiSlice';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import MetaTags from '../../layout/MetaTags';
+import { ShopPath } from '../../layout/nav/enums';
+import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
