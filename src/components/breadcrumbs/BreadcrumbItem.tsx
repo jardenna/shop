@@ -2,16 +2,16 @@ import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import LinkButton from '../LinkButton';
 
-type BreadcrumbItemProps = {
+interface BreadcrumbItemProps {
   isCurrent: boolean;
   label: string;
-  linkTo: string;
-};
+  path: string;
+}
 
-const BreadcrumbItem = ({ linkTo, label, isCurrent }: BreadcrumbItemProps) => (
+const BreadcrumbItem = ({ path, label, isCurrent }: BreadcrumbItemProps) => (
   <li className="breadcrumbs-item">
     <LinkButton
-      linkTo={linkTo}
+      linkTo={path}
       linkText={label}
       ariaCurrent={isCurrent ? 'page' : undefined}
     />

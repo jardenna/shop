@@ -32,19 +32,12 @@ const matchesRoute = (routePath: string, currentPath: string) => {
   );
 };
 
-interface UseBreadcrumbsProps {
-  routeList: BreadcrumbsProps['routeList'];
-  subMenu: BreadcrumbsProps['subMenu'];
-  currentLabel?: string;
-  productName?: string;
-}
-
 export const useBreadcrumbs = ({
   routeList,
   subMenu,
   productName,
   currentLabel,
-}: UseBreadcrumbsProps) => {
+}: BreadcrumbsProps) => {
   const { pathname } = useLocation();
   const { category, categoryId } = useParams();
   const { language } = useLanguage();
@@ -95,7 +88,7 @@ export const useBreadcrumbs = ({
         );
 
         if (found) {
-          return language[found.label];
+          return language[found.label] ?? found.label;
         }
       }
 
@@ -122,7 +115,6 @@ export const useBreadcrumbs = ({
       };
     })
     .filter((item) => item !== null);
-
   return {
     breadcrumbList,
     ariaLabel: language.breadcrumbs,

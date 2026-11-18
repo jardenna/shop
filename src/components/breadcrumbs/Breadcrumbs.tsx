@@ -39,7 +39,7 @@ const Breadcrumbs = ({
             key={path}
             label={label}
             isCurrent={isCurrent}
-            linkTo={path}
+            path={path}
           />
         ))}
       </ul>
