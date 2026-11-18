@@ -29,7 +29,6 @@ import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
 import ProductPageContainer from './ProductPageContainer';
-import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
 
