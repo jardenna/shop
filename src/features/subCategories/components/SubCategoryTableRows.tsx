@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import AdminBadge from '../../../components/adminCart/AdminBadge';
 import MoreLink from '../../../components/MoreLink';
@@ -19,20 +20,27 @@ const SubCategoryTableRows = ({
   status,
   categoryName,
   linkText,
-}: SubCategoryTableRowsProps) => (
-  <tr>
-    <td>{categoryName}</td>
-    <td>{subCategoryName}</td>
-    <td>
-      <AdminBadge status={status} scheduledDate={scheduledDate || null} />
-    </td>
-    <td>
-      <MoreLink
-        linkText={linkText}
-        linkTo={`${AdminPath.AdminSubCategoryView}/${id}`}
-      />
-    </td>
-  </tr>
-);
+}: SubCategoryTableRowsProps) => {
+  const location = useLocation();
+
+  return (
+    <tr>
+      <td>{categoryName}</td>
+      <td>{subCategoryName}</td>
+      <td>
+        <AdminBadge status={status} scheduledDate={scheduledDate || null} />
+      </td>
+      <td>
+        <MoreLink
+          linkText={linkText}
+          linkTo={`${AdminPath.AdminSubCategoryView}/${id}`}
+          state={{
+            returnTo: `${location.pathname}${location.search}`,
+          }}
+        />
+      </td>
+    </tr>
+  );
+};
 
 export default SubCategoryTableRows;
