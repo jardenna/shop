@@ -25,6 +25,7 @@ import CollectionPageContainer from './CollectionPageContainer';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
+
 export interface InitialFilters {
   brand: string[];
   colors: string[];
