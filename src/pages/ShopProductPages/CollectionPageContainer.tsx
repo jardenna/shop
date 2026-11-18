@@ -6,7 +6,6 @@ import Breadcrumbs, {
   BreadcrumbsListProps,
 } from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
-import NotFoundError from '../../components/NotFoundError';
 import Picture from '../../components/Picture';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductAside from '../../features/shop/components/ProductAside';
@@ -19,8 +18,6 @@ interface ProductPageContainerProps {
   ariaLabelledby: string;
   breadcrumbsList: BreadcrumbsListProps[];
   children: ReactElement;
-  error: any;
-  isError: boolean;
   pageHeading: string;
   path: string;
   products: BaseProduct[];
@@ -34,8 +31,6 @@ interface ProductPageContainerProps {
 
 const CollectionPageContainer = ({
   children,
-  error,
-  isError,
   subMenu,
   refetchSubMenu,
   refetch,
@@ -50,10 +45,6 @@ const CollectionPageContainer = ({
   breadcrumbsList,
 }: ProductPageContainerProps) => {
   const { language } = useLanguage();
-
-  if (isError) {
-    return <NotFoundError error={error} btnLabel="collection" path={path} />;
-  }
 
   return (
     <>

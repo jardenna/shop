@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { useParams } from 'react-router';
 import { saleBreadcrumbsList } from '../../components/breadcrumbs/breadcrumbsLists';
+import NotFoundError from '../../components/NotFoundError';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductToolbar from '../../features/shop/components/ProductToolbar';
@@ -31,6 +32,16 @@ const Salespage = () => {
     refetch,
   } = useGetSalesProductsByIdQuery(categoryId ?? '');
 
+  if (isError) {
+    return (
+      <NotFoundError
+        error={error}
+        btnLabel="collection"
+        path={`/${ShopPath.Collection}`}
+      />
+    );
+  }
+
   if (!saleProducts) {
     return <SkeletonShopProducts count={4} />;
   }
@@ -51,8 +62,6 @@ const Salespage = () => {
           altText={language[altText]}
           breadcrumbsList={saleBreadcrumbsList}
           refetch={refetch}
-          isError={isError}
-          error={error}
           pageHeading={pageHeading}
           products={saleProducts}
           productView={productView}

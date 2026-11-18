@@ -163,8 +163,7 @@ const CollectionPage = () => {
           altText={language[altText]}
           breadcrumbsList={collectionBreadcrumbsList}
           refetch={refetch}
-          isError={isError}
-          error={error}
+
           pageHeading={pageHeading}
           products={products.products}
           productView={productView}
