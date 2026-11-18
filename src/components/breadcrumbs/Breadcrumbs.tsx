@@ -1,4 +1,3 @@
-import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
@@ -8,12 +7,7 @@ export interface BreadcrumbsListProps {
   path: string;
 }
 
-export interface BaseBreadcrumbProps {
-  currentLabel?: string;
-  productName?: string;
-}
-
-export interface BreadcrumbsProps extends BaseBreadcrumbProps {
+export interface BreadcrumbsProps {
   currentLabel?: string;
   productName?: string;
   routeList?: BreadcrumbsListProps[];
@@ -26,8 +20,7 @@ const Breadcrumbs = ({
   productName,
   currentLabel,
 }: BreadcrumbsProps) => {
-  const { language } = useLanguage();
-  const { breadcrumbList } = useBreadcrumbs({
+  const { breadcrumbList, ariaLabel } = useBreadcrumbs({
     routeList,
     subMenu,
     productName,
@@ -37,7 +30,7 @@ const Breadcrumbs = ({
   return (
     <LayoutElement
       as="nav"
-      ariaLabel={language.breadcrumbs}
+      ariaLabel={ariaLabel}
       className="breadcrumbs-container"
     >
       <ul className="breadcrumbs">

@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { isAdminPath, toCamelCase } from '../../utils/utils';
-import { BaseBreadcrumbProps, BreadcrumbsProps } from './Breadcrumbs';
+import { BreadcrumbsProps } from './Breadcrumbs';
 
 const splitPath = (path: string) => path.split('/').filter(Boolean);
 
@@ -32,9 +32,11 @@ const matchesRoute = (routePath: string, currentPath: string) => {
   );
 };
 
-interface UseBreadcrumbsProps extends BaseBreadcrumbProps {
+interface UseBreadcrumbsProps {
   routeList: BreadcrumbsProps['routeList'];
   subMenu: BreadcrumbsProps['subMenu'];
+  currentLabel?: string;
+  productName?: string;
 }
 
 export const useBreadcrumbs = ({
@@ -123,5 +125,6 @@ export const useBreadcrumbs = ({
 
   return {
     breadcrumbList,
+    ariaLabel: language.breadcrumbs,
   };
 };
