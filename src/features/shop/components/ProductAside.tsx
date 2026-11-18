@@ -21,13 +21,13 @@ const ProductAside = ({
   headerText,
   className = '',
 }: ProductAsideProps) => (
-  <div>
+  <section className="product-aside">
     <ProductAsideHeader
       headerText={headerText}
       ariaLabelledby={ariaLabelledby}
       ariaLabel={language.product}
     />
-    <section className={`product-aside ${className}`}>
+    <div className={`product-aside ${className}`}>
       <LayoutElement as="nav" ariaLabel={language.collection}>
         <ProductAsideNav
           basePath={basePath}
@@ -36,7 +36,7 @@ const ProductAside = ({
           linkTo={linkTo}
         />
       </LayoutElement>
-    </section>
-  </div>
+    </div>
+  </section>
 );
 export default ProductAside;
