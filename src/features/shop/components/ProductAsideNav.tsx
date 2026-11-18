@@ -8,23 +8,23 @@ import { useLanguage } from '../../language/useLanguage';
 export interface ProductAsideNavProps {
   basePath: string;
   subMenu: ProductMenuResponse[];
-  linkTo?: string;
+  linkToAllProducts?: string;
   onReset: () => void;
 }
 
 const ProductAsideNav = ({
   subMenu,
   onReset,
-  linkTo,
+  linkToAllProducts,
   basePath,
 }: ProductAsideNavProps) => {
   const { language } = useLanguage();
 
   return (
     <ul className="product-nav-list">
-      {linkTo && (
+      {linkToAllProducts && (
         <li className="product-nav-item">
-          <NavLink to={linkTo} end>
+          <NavLink to={linkToAllProducts} end>
             {language.showAll}
           </NavLink>
         </li>

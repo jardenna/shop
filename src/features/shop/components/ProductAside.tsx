@@ -15,7 +15,7 @@ const ProductAside = ({
   subMenu,
   onReset,
   language,
-  linkTo,
+  linkToAllProducts,
   ariaLabelledby,
   basePath,
   headerText,
@@ -28,12 +28,12 @@ const ProductAside = ({
       ariaLabel={language.product}
     />
     <div className={`product-aside ${className}`}>
-      <LayoutElement as="nav" ariaLabel={language.collection}>
+      <LayoutElement as="nav" ariaLabel={language.product}>
         <ProductAsideNav
           basePath={basePath}
           subMenu={subMenu}
           onReset={onReset}
-          linkTo={linkTo}
+          linkToAllProducts={linkToAllProducts}
         />
       </LayoutElement>
     </div>
