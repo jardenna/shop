@@ -82,6 +82,7 @@
     .skeleton {
       width: rem(24px);
       height: rem(24px);
+      flex-shrink: 0;
     }
 
     .qty-value {

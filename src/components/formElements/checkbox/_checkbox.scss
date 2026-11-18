@@ -29,6 +29,7 @@
     min-height: auto;
     width: rem(24px);
     height: rem(24px);
+    flex-shrink: 0;
     border: 2px solid $color-gray-60;
     display: flex;
     align-items: center;

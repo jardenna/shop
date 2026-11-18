@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import MetaTags from '../layout/MetaTags';
 import Button from './Button';
 import Picture from './Picture';
@@ -24,6 +25,7 @@ const NotFoundError = ({
   const src = '/images/icons/sad_smiley';
   const hasStatusCode = error?.status && error.status !== 'FETCH_ERROR';
   const metaErrorText = `${language.error} ${hasStatusCode ? error.status : undefined}`;
+  const { isMobileSize } = useMediaQuery();
 
   return (
     <>
@@ -37,8 +39,10 @@ const NotFoundError = ({
         />
 
         <div className="flex">
-          {hasStatusCode && <span className="error-code">{error.status}</span>}
-          <h1 className="error-info">{errorText}</h1>
+          {!isMobileSize && hasStatusCode && (
+            <span className="error-code">{error.status}</span>
+          )}
+          <p className="error-info">{errorText}</p>
         </div>
 
         <Button
