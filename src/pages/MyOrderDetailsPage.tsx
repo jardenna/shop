@@ -52,7 +52,7 @@ const MyOrderDetailsPage = () => {
   return (
     <MainPageContainer
       variant="large"
-      heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
+      heading={language.orderConfirmationTitle}
     >
       {isLoading && <SkeletonOrderDetailsPage />}
       <ErrorBoundary
