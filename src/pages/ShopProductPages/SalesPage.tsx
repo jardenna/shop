@@ -11,7 +11,7 @@ import {
 } from '../../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { ShopPath } from '../../layout/nav/enums';
-import CollectionPageContainer from './CollectionPageContainer';
+import ProductPageContainer from './ProductPageContainer';
 
 const Salespage = () => {
   const ariaLabelledby = useId();
@@ -53,7 +53,7 @@ const Salespage = () => {
       className="container shop-product-page sales-page"
       aria-labelledby={ariaLabelledby}
     >
-      <CollectionPageContainer
+      <ProductPageContainer
         ariaLabelledby={ariaLabelledby}
         altText={language[altText]}
         breadcrumbsList={saleBreadcrumbsList}
@@ -70,7 +70,7 @@ const Salespage = () => {
           setProductView={setProductView}
           activeDisplay={productView}
         />
-      </CollectionPageContainer>
+      </ProductPageContainer>
     </section>
   );
 };

@@ -29,7 +29,7 @@ interface ProductPageContainerProps {
   refetchSubMenu: () => void;
 }
 
-const CollectionPageContainer = ({
+const ProductPageContainer = ({
   children,
   subMenu,
   refetchSubMenu,
@@ -95,4 +95,4 @@ const CollectionPageContainer = ({
   );
 };
 
-export default CollectionPageContainer;
+export default ProductPageContainer;

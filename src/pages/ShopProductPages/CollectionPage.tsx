@@ -28,7 +28,7 @@ import { OptionType } from '../../types/types';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
-import CollectionPageContainer from './CollectionPageContainer';
+import ProductPageContainer from './ProductPageContainer';
 import './shopProductPage.styles.scss';
 
 export type FilterKeys = keyof BaseShopProductsParams;
@@ -151,7 +151,7 @@ const CollectionPage = () => {
       ref={scrollToRef}
       aria-labelledby={ariaLabelledby}
     >
-      <CollectionPageContainer
+      <ProductPageContainer
         ariaLabelledby={ariaLabelledby}
         altText={language[altText]}
         breadcrumbsList={collectionBreadcrumbsList}
@@ -203,7 +203,7 @@ const CollectionPage = () => {
             />
           </FilterPanel>
         </ProductToolbar>
-      </CollectionPageContainer>
+      </ProductPageContainer>
       {itemCount > 0 && (
         <Pagination
           refetch={refetch}
