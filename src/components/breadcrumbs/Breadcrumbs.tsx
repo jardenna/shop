@@ -1,9 +1,8 @@
-import { useLocation, useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { isAdminPath, toCamelCase } from '../../utils/utils';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
+import { useBreadcrumbs } from './useBreadcrumbs';
 
 export interface BreadcrumbsListProps {
   path: string;
@@ -27,108 +26,13 @@ const Breadcrumbs = ({
   productName,
   currentLabel,
 }: BreadcrumbsProps) => {
-  const { pathname } = useLocation();
-  const { category, categoryId } = useParams();
   const { language } = useLanguage();
-
-  const pathnames = pathname.split('/').filter(Boolean);
-
-  const paths = pathnames.map(
-    (_, idx) => `/${pathnames.slice(0, idx + 1).join('/')}`,
-  );
-
-  const isAdmin = isAdminPath(pathname);
-
-  const fullPaths = isAdmin ? paths : ['/', ...paths];
-
-  const split = (path: string) => path.split('/').filter(Boolean);
-  const getLastSegment = (path: string) => split(path).at(-1);
-
-  const hiddenPathSegments = ['update', 'view', 'promo-code'];
-  const shouldHideBreadcrumb = (segment: string) =>
-    hiddenPathSegments.includes(segment.toLowerCase());
-
-  const resolveLabel = (path: string) => {
-    if (path === '/') {
-      return language.home;
-    }
-
-    if (paths.at(-1) === path && currentLabel) {
-      return currentLabel;
-    }
-
-    const parts = split(path);
-    const lastSegment = getLastSegment(path);
-    const translationKey = lastSegment ? toCamelCase(lastSegment) : '';
-
-    if (translationKey && language[translationKey]) {
-      return language[translationKey];
-    }
-
-    const selectedCategory = subMenu?.find(
-      ({ categoryId }) => categoryId === lastSegment,
-    );
-
-    const categoryLabel = selectedCategory
-      ? language[selectedCategory.label]
-      : undefined;
-
-    const matchedRoute = routeList?.find((route) => {
-      if (!route.path) {
-        return false;
-      }
-
-      const routeParts = split(route.path);
-      return (
-        routeParts.length === parts.length &&
-        routeParts.every(
-          (part, index) => part.startsWith(':') || part === parts[index],
-        )
-      );
-    });
-
-    if (matchedRoute) {
-      if (matchedRoute.path.includes(':id') && productName) {
-        return productName;
-      }
-
-      if (matchedRoute.path.includes(':categoryId') && categoryId && subMenu) {
-        if (categoryLabel) {
-          return categoryLabel;
-        }
-
-        const found = subMenu.find(
-          (menuItem) => menuItem.categoryId === categoryId,
-        );
-
-        if (found) {
-          return language[found.label] ?? found.label;
-        }
-      }
-
-      if (matchedRoute.path.includes(':category') && category) {
-        return language[category] ?? category;
-      }
-    }
-
-    return decodeURIComponent(getLastSegment(path) ?? '');
-  };
-
-  const breadcrumbItems = fullPaths
-    .map((path, index) => {
-      const lastPart = getLastSegment(path);
-      if (path !== '/' && (!lastPart || shouldHideBreadcrumb(lastPart))) {
-        return null;
-      }
-
-      return {
-        path,
-        isCurrent: index === fullPaths.length - 1,
-      };
-    })
-    .filter(
-      (item): item is { isCurrent: boolean; path: string } => item !== null,
-    );
+  const { breadcrumbList } = useBreadcrumbs({
+    routeList,
+    subMenu,
+    productName,
+    currentLabel,
+  });
 
   return (
     <LayoutElement
@@ -137,10 +41,10 @@ const Breadcrumbs = ({
       className="breadcrumbs-container"
     >
       <ul className="breadcrumbs">
-        {breadcrumbItems.map(({ path, isCurrent }) => (
+        {breadcrumbList.map(({ path, isCurrent, label }) => (
           <BreadcrumbItem
             key={path}
-            label={resolveLabel(path)}
+            label={label}
             isCurrent={isCurrent}
             linkTo={path}
           />

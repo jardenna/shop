@@ -93,7 +93,7 @@ export const useBreadcrumbs = ({
         );
 
         if (found) {
-          return language[found.label] ?? found.label;
+          return language[found.label];
         }
       }
 
@@ -105,7 +105,7 @@ export const useBreadcrumbs = ({
     return decodeURIComponent(lastSegment ?? '');
   };
 
-  const breadcrumbItems = fullPaths
+  const breadcrumbList = fullPaths
     .map((path, index) => {
       const lastSegment = getLastPathSegment(path);
 
@@ -122,7 +122,6 @@ export const useBreadcrumbs = ({
     .filter((item) => item !== null);
 
   return {
-    breadcrumbItems,
-    ariaLabel: language.breadcrumbs,
+    breadcrumbList,
   };
 };
