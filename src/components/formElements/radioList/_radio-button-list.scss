@@ -17,6 +17,7 @@
 
   label {
     cursor: pointer;
+    width: 100%;
   }
 
   input {
@@ -25,6 +26,7 @@
     color: currentcolor;
     width: rem(24px);
     height: rem(24px);
+    flex-shrink: 0;
     border: 2px solid $color-blue-30;
     transform: translateY(-1.2px);
     display: flex;
