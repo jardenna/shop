@@ -1,31 +1,5 @@
 @use '../../scss/globals' as *;
 
-.shop-product-page {
-  .breadcrumbs-container {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .no-products {
-    width: 100%;
-
-    .empty-state-info {
-      min-width: rem(396px);
-    }
-  }
-}
-
-.shop-product-page-container {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-
-  @include max-size($small) {
-    flex-direction: column;
-    gap: 0;
-  }
-}
-
 .shop-product-banner {
   img {
     max-height: rem(476px);
@@ -41,4 +15,45 @@
   p {
     margin: 0;
   }
+}
+
+.shop-product-page {
+  .no-products {
+    width: 100%;
+
+    .empty-state-info {
+      min-width: rem(396px);
+    }
+  }
+
+  display: grid;
+  grid-template-columns: rem(300px) minmax(0, 1fr);
+  grid-template-areas:
+    'breadcrumbs breadcrumbs'
+    'aside content'
+    'aside pagination';
+  column-gap: 20px;
+
+  @include max-size($small) {
+    display: block;
+  }
+}
+
+.breadcrumbs-container {
+  grid-area: breadcrumbs;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.product-aside {
+  grid-area: aside;
+}
+
+.shop-product-content {
+  grid-area: content;
+  min-width: 0;
+}
+
+.pagination {
+  grid-area: pagination;
 }
