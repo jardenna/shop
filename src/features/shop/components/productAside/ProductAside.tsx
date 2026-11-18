@@ -10,7 +10,7 @@ interface ProductAsideProps extends ProductAsideNavProps {
   language: Language;
 }
 
-const ProductAsideNew = ({
+const ProductAside = ({
   subMenu,
   onReset,
   language,
@@ -35,4 +35,4 @@ const ProductAsideNew = ({
     </LayoutElement>
   </section>
 );
-export default ProductAsideNew;
+export default ProductAside;
