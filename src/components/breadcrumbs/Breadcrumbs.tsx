@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import LayoutElement from '../../layout/LayoutElement';
-import { isAdminPath } from '../../utils/utils';
+import { isAdminPath, toCamelCase } from '../../utils/utils';
 import './_breadcrumbs.scss';
 import BreadcrumbItem from './BreadcrumbItem';
 
@@ -38,11 +38,6 @@ const Breadcrumbs = ({
 
   const split = (path: string) => path.split('/').filter(Boolean);
   const getLastSegment = (path: string) => split(path).at(-1);
-
-  const toCamelCase = (value: string) =>
-    value.replace(/-([a-z])/g, (_, character: string) =>
-      character.toUpperCase(),
-    );
 
   const hiddenPathSegments = ['update', 'view', 'promo-code'];
   const shouldHideBreadcrumb = (segment: string) =>
