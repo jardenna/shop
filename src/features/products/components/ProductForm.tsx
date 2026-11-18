@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
 import { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
@@ -67,6 +67,9 @@ const ProductForm = ({
   const navigate = useNavigate();
   const { language } = useLanguage();
   const formRef = useRef<HTMLFormElement | null>(null);
+  const location = useLocation();
+
+  const returnTo = location.state?.returnTo ?? AdminPath.AdminProducts;
 
   // Options and initial state
   const parentCategoryOptions = parentCategories.map(
@@ -235,8 +238,7 @@ const ProductForm = ({
       onAddToast({
         message: result.message,
       });
-
-      navigate(AdminPath.AdminProducts);
+      navigate(returnTo, { replace: true });
     }
   }
 

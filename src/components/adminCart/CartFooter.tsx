@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
@@ -24,6 +25,11 @@ const CartFooter = ({
   hideDeleteBtn,
 }: CartFooterProps) => {
   const { language } = useLanguage();
+  const location = useLocation();
+
+  const returnTo =
+    location.state?.returnTo ?? `${location.pathname}${location.search}`;
+
   return (
     <footer className="footer">
       {!hideDeleteBtn && (
@@ -49,6 +55,7 @@ const CartFooter = ({
 
       <LinkButton
         linkTo={linkTo}
+        state={{ returnTo }}
         linkText={language.update}
         variant={BtnVariant.Primary}
       />
