@@ -8,7 +8,6 @@ interface ProductAsideProps extends ProductAsideNavProps {
   ariaLabelledby: string;
   headerText: string;
   language: Language;
-  className?: string;
 }
 
 const ProductAside = ({
@@ -19,7 +18,6 @@ const ProductAside = ({
   ariaLabelledby,
   basePath,
   headerText,
-  className = '',
 }: ProductAsideProps) => (
   <section className="product-aside">
     <ProductAsideHeader
@@ -27,16 +25,14 @@ const ProductAside = ({
       ariaLabelledby={ariaLabelledby}
       ariaLabel={language.product}
     />
-    <div className={`product-aside ${className}`}>
-      <LayoutElement as="nav" ariaLabel={language.product}>
-        <ProductAsideNav
-          basePath={basePath}
-          subMenu={subMenu}
-          onReset={onReset}
-          linkToAllProducts={linkToAllProducts}
-        />
-      </LayoutElement>
-    </div>
+    <LayoutElement as="nav" ariaLabel={language.product}>
+      <ProductAsideNav
+        basePath={basePath}
+        subMenu={subMenu}
+        onReset={onReset}
+        linkToAllProducts={linkToAllProducts}
+      />
+    </LayoutElement>
   </section>
 );
 export default ProductAside;

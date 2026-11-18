@@ -147,94 +147,92 @@ const CollectionPage = () => {
 
   return (
     <section
-      className="container"
+      className="container shop-product-page"
       ref={scrollToRef}
       aria-labelledby={ariaLabelledby}
     >
-      <div className="shop-product-page">
-        <CollectionPageContainer
-          ariaLabelledby={ariaLabelledby}
-          altText={language[altText]}
-          breadcrumbsList={collectionBreadcrumbsList}
-          refetch={refetch}
+      <CollectionPageContainer
+        ariaLabelledby={ariaLabelledby}
+        altText={language[altText]}
+        breadcrumbsList={collectionBreadcrumbsList}
+        refetch={refetch}
 
-          pageHeading={pageHeading}
-          products={products.products}
-          productView={productView}
-          path={`/${ShopPath.Collection}/${category}`}
-          src={src}
-          subMenu={subMenu ?? []}
-          hideSubMenu={isMobileSize}
-          refetchSubMenu={refetchSubMenu}
+        pageHeading={pageHeading}
+        products={products.products}
+        productView={productView}
+        path={`/${ShopPath.Collection}/${category}`}
+        src={src}
+        subMenu={subMenu ?? []}
+        hideSubMenu={isMobileSize}
+        refetchSubMenu={refetchSubMenu}
+      >
+        <ProductToolbar
+          setProductView={setProductView}
+          activeDisplay={productView}
         >
-          <ProductToolbar
-            setProductView={setProductView}
-            activeDisplay={productView}
-          >
-            <LiveAnnouncement
-              infoText={infoText}
-              announce={announce}
-              ariaLiveText={ariaLiveText}
-            />
-            <FilterPanel
-              onHidePanel={onHidePanel}
-              isPanelShown={isPanelShown}
-              onTogglePanel={onTogglePanel}
-              portalId="filter-products"
-              language={language}
-              onReset={() => refetch()}
-              totalFiltersCount={totalFiltersCount}
-              panelHeading={language.filterProducts}
-              ariaLabel={language.filterProducts}
-            >
-              <CollectionFilterForm
-                initialFilters={initialFilters}
-                sizes={sortSizesDynamic(products.availableSizes)}
-                brands={products.availableBrands}
-                colors={sortedTranslatedColors}
-                language={language}
-                productCount={products.productCount}
-                values={filterParams}
-                toggleValue={toggleFilterParam}
-                setValue={setFilterParams}
-                onRemoveFilterTag={onRemoveFilterTag}
-                onClearAllFilters={onClearAllFilters}
-                onClearSingleFilter={onClearSingleFilter}
-                onHidePanel={onHidePanel}
-              />
-            </FilterPanel>
-          </ProductToolbar>
-        </CollectionPageContainer>
-        {itemCount > 0 && (
-          <Pagination
-            refetch={refetch}
-            totalBtns={totalBtns}
-            isError={isError}
-            page={page}
-            onPagination={handlePagination}
-            onSelectCount={handleSelectCount}
-            totalCount={itemCount}
-            paginationMobileText={paginationMobileText}
-            defaultValue={{
-              value: itemsPerPage.toString(),
-              label: itemsPerPage.toString(),
-              id: itemsPerPage.toString(),
-            }}
+          <LiveAnnouncement
+            infoText={infoText}
+            announce={announce}
+            ariaLiveText={ariaLiveText}
           />
-        )}
-        {itemCount === 0 && (
-          <EmptyStateContent
-            className="no-products"
-            emptyStateText={language.noProductText}
-            emptyStateTitle={language.noProductTitle}
-            src="/images/shoppingBags/collection_shopping_bag"
+          <FilterPanel
+            onHidePanel={onHidePanel}
+            isPanelShown={isPanelShown}
+            onTogglePanel={onTogglePanel}
+            portalId="filter-products"
+            language={language}
+            onReset={() => refetch()}
+            totalFiltersCount={totalFiltersCount}
+            panelHeading={language.filterProducts}
+            ariaLabel={language.filterProducts}
           >
-            <Button onClick={onClearAllFilters}>
-              {language.clearAllFilters}
-            </Button>
-          </EmptyStateContent>
-        )}
-      </div>
+            <CollectionFilterForm
+              initialFilters={initialFilters}
+              sizes={sortSizesDynamic(products.availableSizes)}
+              brands={products.availableBrands}
+              colors={sortedTranslatedColors}
+              language={language}
+              productCount={products.productCount}
+              values={filterParams}
+              toggleValue={toggleFilterParam}
+              setValue={setFilterParams}
+              onRemoveFilterTag={onRemoveFilterTag}
+              onClearAllFilters={onClearAllFilters}
+              onClearSingleFilter={onClearSingleFilter}
+              onHidePanel={onHidePanel}
+            />
+          </FilterPanel>
+        </ProductToolbar>
+      </CollectionPageContainer>
+      {itemCount > 0 && (
+        <Pagination
+          refetch={refetch}
+          totalBtns={totalBtns}
+          isError={isError}
+          page={page}
+          onPagination={handlePagination}
+          onSelectCount={handleSelectCount}
+          totalCount={itemCount}
+          paginationMobileText={paginationMobileText}
+          defaultValue={{
+            value: itemsPerPage.toString(),
+            label: itemsPerPage.toString(),
+            id: itemsPerPage.toString(),
+          }}
+        />
+      )}
+      {itemCount === 0 && (
+        <EmptyStateContent
+          className="no-products"
+          emptyStateText={language.noProductText}
+          emptyStateTitle={language.noProductTitle}
+          src="/images/shoppingBags/collection_shopping_bag"
+        >
+          <Button onClick={onClearAllFilters}>
+            {language.clearAllFilters}
+          </Button>
+        </EmptyStateContent>
+      )}
     </section>
   );
 };

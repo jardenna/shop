@@ -4,16 +4,18 @@
   background-color: $color-light-gray-10;
 }
 
-.sale-aside {
-  .product-nav-list {
-    @include max-size($small) {
-      display: flex;
+.sales-page {
+  .product-aside {
+    .product-nav-list {
+      @include max-size($small) {
+        display: flex;
 
-      .product-nav-item {
-        width: 100%;
+        .product-nav-item {
+          width: 100%;
 
-        a {
-          justify-content: center;
+          a {
+            justify-content: center;
+          }
         }
       }
     }

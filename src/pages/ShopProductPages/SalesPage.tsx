@@ -49,27 +49,28 @@ const Salespage = () => {
   const altText = `${categoryLabel}SalesBannerAltText`;
 
   return (
-    <section className="container" aria-labelledby={ariaLabelledby}>
-      <div className="shop-product-page">
-        <CollectionPageContainer
-          ariaLabelledby={ariaLabelledby}
-          altText={language[altText]}
-          breadcrumbsList={saleBreadcrumbsList}
-          refetch={refetch}
-          pageHeading={pageHeading}
-          products={saleProducts}
-          productView={productView}
-          path={`/${ShopPath.Sale}`}
-          src={src}
-          subMenu={subMenu ?? []}
-          refetchSubMenu={refetchSubMenu}
-        >
-          <ProductToolbar
-            setProductView={setProductView}
-            activeDisplay={productView}
-          />
-        </CollectionPageContainer>
-      </div>
+    <section
+      className="container shop-product-page sales-page"
+      aria-labelledby={ariaLabelledby}
+    >
+      <CollectionPageContainer
+        ariaLabelledby={ariaLabelledby}
+        altText={language[altText]}
+        breadcrumbsList={saleBreadcrumbsList}
+        refetch={refetch}
+        pageHeading={pageHeading}
+        products={saleProducts}
+        productView={productView}
+        path={`/${ShopPath.Sale}`}
+        src={src}
+        subMenu={subMenu ?? []}
+        refetchSubMenu={refetchSubMenu}
+      >
+        <ProductToolbar
+          setProductView={setProductView}
+          activeDisplay={productView}
+        />
+      </CollectionPageContainer>
     </section>
   );
 };
