@@ -144,7 +144,7 @@ const CheckoutPage = () => {
     }).unwrap();
 
     await deleteCart().unwrap();
-    navigate(`/${ShopPath.MyOrder}/${order.id}`);
+    navigate(`/${ShopPath.MyOrders}/${order.id}`);
 
     onAddToast({
       message: language.orderCreated,

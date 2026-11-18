@@ -230,7 +230,7 @@ const routeConfig = createBrowserRouter([
           },
           { path: ShopPath.Checkout, element: <CheckoutPage /> },
           {
-            path: `${ShopPath.MyOrder}/:id`,
+            path: `${ShopPath.MyOrders}/:id`,
             element: <MyOrderDetailsPage />,
           },
           {

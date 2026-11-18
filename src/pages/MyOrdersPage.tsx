@@ -25,7 +25,7 @@ const MyOrdersPage = () => {
   const pageHeading = language.myOrders;
 
   const handleViewDetails = (id: string) => {
-    navigate(`/${ShopPath.MyOrder}/${id}`);
+    navigate(`/${ShopPath.MyOrders}/${id}`);
   };
 
   if (isError) {
