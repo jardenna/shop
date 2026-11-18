@@ -1,20 +1,18 @@
-import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { useSubMenu } from '../../../features/shop/hooks/useSubMenu';
+import { useGetShopMenuQuery } from '../../../features/shop/shopApiSlice';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import { LinkText } from '../enums';
 import { SubBaseNavList } from '../navLists';
 import './_sub-nav.scss';
 import SubNavListDesktop from './SubNavListDesktop';
 import SubNavListMobile from './SubNavListMobile';
 
-type SubNavProps = {
+interface SubNavProps {
   heading: string;
   isSubNavShown: boolean;
   subNavList: SubBaseNavList[];
   ariaControls?: string;
-};
+}
 
 const SubNav = ({
   subNavList,
@@ -26,18 +24,9 @@ const SubNav = ({
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
-  const initialCategory =
-    category && Object.values(LinkText).includes(category as LinkText)
-      ? (category as LinkText)
-      : LinkText.Women;
-
-  const [selectedCategory, setSelectedCategory] =
-    useState<LinkText>(initialCategory);
-
-  const { subMenu, refetchSubMenu } = useSubMenu(selectedCategory);
-  const handleUpdateCategory = (id: LinkText) => {
-    setSelectedCategory(id);
-  };
+  const { data: subMenu, refetch: refetchSubMenu } = useGetShopMenuQuery(
+    category ?? 'woman',
+  );
 
   return (
     <div
@@ -48,9 +37,8 @@ const SubNav = ({
         subMenu && (
           <SubNavListMobile
             subNavList={subNavList}
-            onClick={handleUpdateCategory}
             subMenu={subMenu}
-            category={selectedCategory}
+            category={category ?? 'women'}
             onReset={() => refetchSubMenu()}
             language={language}
           />

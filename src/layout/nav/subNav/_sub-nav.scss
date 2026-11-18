@@ -6,15 +6,15 @@
 }
 
 .nav-btn {
-  &.btn-ghost {
-    padding: 8px 12px;
-    font-size: $font-medium;
-    text-transform: uppercase;
-    border-bottom: 2px solid transparent;
+  padding: 8px 12px;
+  font-size: $font-medium;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  justify-content: center;
 
-    &.active {
-      border-color: $color-gray-70;
-    }
+  &.active {
+    border-color: $color-gray-70;
   }
 }
 

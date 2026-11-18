@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import DisplayControls, {
   DisplayControlItem,
 } from '../../../components/DisplayControls';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
@@ -17,6 +18,7 @@ const ProductToolbar = ({
   children,
 }: ProductToolbarProps) => {
   const { language } = useLanguage();
+  const { isMobileSize } = useMediaQuery();
 
   const displayControlList: DisplayControlItem[] = [
     {
@@ -33,11 +35,13 @@ const ProductToolbar = ({
 
   return (
     <div className="product-toolbar">
-      <DisplayControls
-        onSetDisplay={setProductView}
-        displayControlList={displayControlList}
-        activeDisplay={activeDisplay}
-      />
+      {!isMobileSize && (
+        <DisplayControls
+          onSetDisplay={setProductView}
+          displayControlList={displayControlList}
+          activeDisplay={activeDisplay}
+        />
+      )}
       {children && children}
     </div>
   );

@@ -1,16 +1,15 @@
 import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import { getProductLink } from '../cartUtils';
 import ProductCart from './ProductCart';
 
 interface ProductCartListProps {
   products: BaseProduct[];
   productView?: string;
   children?: (product: BaseProduct) => React.ReactNode;
-  getProductLink: (id: string) => string;
 }
 const ProductCartList = ({
   products,
   productView = '',
-  getProductLink,
   children,
 }: ProductCartListProps) => (
   <ul className={`product-cart-list ${productView}`}>
@@ -22,7 +21,6 @@ const ProductCartList = ({
           product={product}
           isOutOfStock={product.countInStock === 0}
         />
-
         {children?.(product)}
       </li>
     ))}
