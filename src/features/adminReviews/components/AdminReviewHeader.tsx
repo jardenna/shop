@@ -1,3 +1,4 @@
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import Button from '../../../components/Button';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
@@ -30,7 +31,10 @@ const AdminReviewHeader = ({
     >
       <MetaTags metaTitle={heading} />
       <div className="admin-review-page-heading">
-        <h1 id={ariaLabelledby}>{heading}</h1>
+        <div>
+          <Breadcrumbs currentLabel={heading} />
+          <h1 id={ariaLabelledby}>{heading}</h1>
+        </div>
         {unreadCount > 0 && (
           <span aria-live="polite" aria-atomic="true">
             <Chip

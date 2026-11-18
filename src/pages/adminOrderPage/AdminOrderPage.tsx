@@ -95,11 +95,7 @@ const AdminOrderPage = () => {
   });
 
   return (
-    <AdminPageContainer
-      heading={language.orders}
-      variant="x-large"
-      hideBreadCrumbs
-    >
+    <AdminPageContainer heading={language.orders} variant="x-large">
       <SortTable
         skeletonCount={12}
         scrollToRef={scrollToRef}

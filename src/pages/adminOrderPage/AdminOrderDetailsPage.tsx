@@ -107,7 +107,6 @@ const AdminOrderDetailsPage = () => {
     <AdminPageContainer
       heading={language.orderDetails}
       variant="medium"
-      hideBreadCrumbs
       linkText={language.backToOrderList}
       linkTo={AdminPath.AdminOrders}
     >

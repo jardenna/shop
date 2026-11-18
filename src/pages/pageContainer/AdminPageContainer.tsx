@@ -7,7 +7,6 @@ interface AdminPageContainerProps {
   children: ReactNode;
   heading: string;
   className?: string;
-  hideBreadCrumbs?: boolean;
   linkText?: string;
   linkTo?: string;
   variant?: SizeVariant;
@@ -20,7 +19,6 @@ const AdminPageContainer = ({
   linkTo,
   variant = 'large',
   className = '',
-  hideBreadCrumbs,
 }: AdminPageContainerProps) => {
   const ariaLabelledby = useId();
 
@@ -35,7 +33,6 @@ const AdminPageContainer = ({
         linkText={linkText}
         linkTo={linkTo}
         ariaLabelledby={ariaLabelledby}
-        hideBreadCrumbs={hideBreadCrumbs}
       />
       <div className="page-cart">{children}</div>
     </section>

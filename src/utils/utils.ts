@@ -85,8 +85,8 @@ const getPathName = (pathname: string) => {
   return pathnameList[pathnameList.length - 1] || '';
 };
 
-const titleToCamelCase = (title: string) =>
-  title.replace(/[-_](\w)/g, (_, c: string) => c.toUpperCase());
+const toCamelCase = (value: string) =>
+  value.replace(/[-_](\w)/g, (_, character: string) => character.toUpperCase());
 
 const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
   `/${path}` === `/${enumVal}`;
@@ -136,6 +136,6 @@ export {
   pathEquals,
   productsPerPageParamKey,
   sliceAndCountHidden,
-  titleToCamelCase,
+  toCamelCase,
   translateKey,
 };

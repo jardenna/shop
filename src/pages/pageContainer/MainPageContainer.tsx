@@ -3,13 +3,12 @@ import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 import { SizeVariant } from '../../types/types';
 
-type MainPageContainerProps = {
+interface MainPageContainerProps {
   children: ReactNode;
   heading: string;
   className?: string;
-  hideBreadCrumbs?: boolean;
   variant?: SizeVariant;
-};
+}
 
 // Accept display text, not translation keys.
 const MainPageContainer = ({
@@ -17,7 +16,6 @@ const MainPageContainer = ({
   heading,
   className = '',
   variant,
-  hideBreadCrumbs,
 }: MainPageContainerProps) => {
   const ariaLabelledby = useId();
 
@@ -27,11 +25,7 @@ const MainPageContainer = ({
       aria-labelledby={ariaLabelledby}
     >
       <MetaTags metaTitle={heading} />
-      <PageHeader
-        heading={heading}
-        ariaLabelledby={ariaLabelledby}
-        hideBreadCrumbs={hideBreadCrumbs}
-      />
+      <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
       {children}
     </section>
   );

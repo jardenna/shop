@@ -5,7 +5,6 @@ import SkeletonHeader from './SkeletonHeader';
 
 interface SkeletonAdminPageProps {
   children: ReactNode;
-  hideBreadcrumbs?: boolean;
   showLink?: boolean;
   variant?: SizeVariant;
 }
@@ -14,10 +13,9 @@ const SkeletonAdminPage = ({
   variant = 'small',
   showLink,
   children,
-  hideBreadcrumbs,
 }: SkeletonAdminPageProps) => (
   <div className={`skeleton-admin-page skeleton-column page-${variant}`}>
-    {!hideBreadcrumbs && <SkeletonBreadCrumbs />}
+    <SkeletonBreadCrumbs />
     <SkeletonHeader showLink={showLink} />
     <div className="page-cart">
       <div className="skeleton-column">{children}</div>

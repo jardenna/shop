@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router';
 import Picture from '../components/Picture';
 import { useLanguage } from '../features/language/useLanguage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { getPathName, titleToCamelCase } from '../utils/utils';
+import { getPathName, toCamelCase } from '../utils/utils';
 import './accountLayout.styles.scss';
 import LayoutElement from './LayoutElement';
 import MetaTags from './MetaTags';
@@ -15,7 +15,7 @@ const AccountLayout = () => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const pathInfo = getPathName(pathname);
-  const createdTitle = titleToCamelCase(pathInfo);
+  const createdTitle = toCamelCase(pathInfo);
   const title = language[createdTitle];
   const imgName = pathInfo.replace('my-', '');
   const src = `/images/account/${imgName}`;

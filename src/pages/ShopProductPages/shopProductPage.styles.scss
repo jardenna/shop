@@ -55,16 +55,6 @@
   }
 }
 
-.breadcrumbs-container {
-  grid-area: breadcrumbs;
-  display: flex;
-  justify-content: flex-end;
-
-  @include max-size($small) {
-    justify-content: flex-start;
-  }
-}
-
 .product-aside {
   grid-area: aside;
 }

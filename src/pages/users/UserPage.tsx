@@ -100,7 +100,6 @@ const UserPage = () => {
       linkText={language.createNewUser}
       linkTo={AdminPath.AdminUserCreate}
       variant="medium"
-      hideBreadCrumbs
     >
       <SortTable
         btnLabel="users"

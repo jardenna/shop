@@ -8,7 +8,7 @@ import SkeletonAdminReviewCardList from './SkeletonAdminReviewCardList';
 import SkeletonAdminReviewStats from './SkeletonAdminReviewStats';
 
 const SkeletonAdminReviewPage = () => (
-  <SkeletonAdminPage variant="medium" hideBreadcrumbs>
+  <SkeletonAdminPage variant="medium">
     <div className="page-cart">
       <div className="review-stats-list">
         <SkeletonAdminReviewStats>

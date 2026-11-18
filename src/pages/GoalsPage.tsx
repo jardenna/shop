@@ -14,11 +14,7 @@ const GoalsPage = () => {
   const { data: adminGoal, isLoading, refetch } = useGetAdminGoalsQuery();
 
   return (
-    <AdminPageContainer
-      heading={language.kpiGoals}
-      variant="medium"
-      hideBreadCrumbs
-    >
+    <AdminPageContainer heading={language.kpiGoals} variant="medium">
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch()}

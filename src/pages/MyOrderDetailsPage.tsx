@@ -51,9 +51,8 @@ const MyOrderDetailsPage = () => {
 
   return (
     <MainPageContainer
-      hideBreadCrumbs
       variant="large"
-      heading={`${order && order.user.username}, ${language.orderConfirmationTitle}`}
+      heading={language.orderConfirmationTitle}
     >
       {isLoading && <SkeletonOrderDetailsPage />}
       <ErrorBoundary
