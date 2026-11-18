@@ -23,20 +23,17 @@
       display: flex;
       width: 100%;
       justify-content: center;
+      margin: 0;
     }
   }
 
-  &.sale {
-    height: auto;
-    padding: 0;
-  }
-
-  h1 {
+  .error-info {
     display: flex;
     align-items: center;
     text-transform: uppercase;
     max-width: rem(548px);
     text-wrap: pretty;
+    font-size: $font-large;
 
     @include max-size($small) {
       max-width: 100%;
@@ -50,10 +47,6 @@
 
   .btn-secondary {
     color: currentcolor;
-  }
-
-  .error-info {
-    margin: 0;
   }
 
   .error-code {
