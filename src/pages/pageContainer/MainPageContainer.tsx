@@ -3,12 +3,12 @@ import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 import { SizeVariant } from '../../types/types';
 
-type MainPageContainerProps = {
+interface MainPageContainerProps {
   children: ReactNode;
   heading: string;
   className?: string;
   variant?: SizeVariant;
-};
+}
 
 // Accept display text, not translation keys.
 const MainPageContainer = ({
