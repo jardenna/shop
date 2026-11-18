@@ -54,7 +54,6 @@ const DashboardPage = () => {
     <AdminPageContainer
       heading={language.dashboard}
       variant="x-large"
-      hideBreadCrumbs
       className="dashboard-page"
     >
       <LayoutElement

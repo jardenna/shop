@@ -148,7 +148,6 @@ const AdminProductPage = () => {
       linkText={language.createNewProduct}
       linkTo={AdminPath.AdminProductCreate}
       variant="full"
-      hideBreadCrumbs
     >
       <SortTable
         btnLabel="products"
