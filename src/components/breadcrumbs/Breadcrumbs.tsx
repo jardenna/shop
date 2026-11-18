@@ -9,7 +9,12 @@ export interface BreadcrumbsListProps {
   path: string;
 }
 
-interface BreadcrumbsProps {
+export interface BaseBreadcrumbProps {
+  currentLabel?: string;
+  productName?: string;
+}
+
+export interface BreadcrumbsProps extends BaseBreadcrumbProps {
   currentLabel?: string;
   productName?: string;
   routeList?: BreadcrumbsListProps[];
