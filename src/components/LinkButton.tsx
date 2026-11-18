@@ -1,25 +1,28 @@
-import { Link } from 'react-router';
+import { Link, LinkProps } from 'react-router';
 import { BtnVariant } from '../types/enums';
 import { AriaCurrentType } from '../types/types';
 
-type LinkButtonProps = {
+interface LinkButtonProps {
   linkText: string;
   linkTo: string;
   ariaCurrent?: AriaCurrentType;
   className?: string;
+  state?: LinkProps['state'];
   variant?: BtnVariant;
-};
+}
 
 const LinkButton = ({
   variant = BtnVariant.Ghost,
   linkTo,
   linkText,
+  state,
   ariaCurrent,
   className = '',
 }: LinkButtonProps) => (
   <Link
     className={`btn btn-${variant} ${className}`}
     to={linkTo}
+    state={state}
     aria-current={ariaCurrent}
   >
     <span className="btn-text">{linkText}</span>

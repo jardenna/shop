@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import ActionNavBtn, {
   ActionNavItemProps,
 } from '../../../components/dropdownBtn/ActionNavBtn';
@@ -14,20 +14,27 @@ interface ProductActionsProps {
 
 const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { language } = useLanguage();
+
+  const returnTo = `${location.pathname}${location.search}`;
 
   const actionsDropdownList: ActionNavItemProps[] = [
     {
       label: language.view,
       onClick: () => {
-        navigate(`${AdminPath.AdminProductView}/${id}`);
+        navigate(`${AdminPath.AdminProductView}/${id}`, {
+          state: { returnTo },
+        });
       },
       iconName: IconName.Eye,
     },
     {
       label: language.update,
       onClick: () => {
-        navigate(`${AdminPath.AdminProductUpdate}/${id}`);
+        navigate(`${AdminPath.AdminProductUpdate}/${id}`, {
+          state: { returnTo },
+        });
       },
       iconName: IconName.Pencil,
     },

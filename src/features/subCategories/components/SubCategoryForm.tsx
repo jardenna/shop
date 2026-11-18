@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Category } from '../../../app/api/apiTypes/categoryApiTypes';
 import { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
@@ -38,6 +38,9 @@ const SubCategoryForm = ({
 }: SubCategoryFormProps) => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const location = useLocation();
+
+  const returnTo = location.state?.returnTo ?? AdminPath.AdminSubCategories;
 
   // Helper functions
   const handleGoback = () => {
@@ -106,7 +109,7 @@ const SubCategoryForm = ({
         message: result.message,
       });
 
-      navigate(AdminPath.AdminSubCategories);
+      navigate(returnTo, { replace: true });
     }
   }
 
