@@ -47,14 +47,14 @@ import {
 import ImageUpload from './ImageUpload';
 import './productForm.styles.scss';
 
-type ProductFormProps = {
+interface ProductFormProps {
   allowedSizes: string[];
   id: string | null;
   images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
   refetch: () => void;
-};
+}
 
 const ProductForm = ({
   id,
