@@ -1,4 +1,4 @@
-import LayoutElement from '../../../layout/LayoutElement';
+import LayoutElement from '../../../../layout/LayoutElement';
 
 interface ProductAsideHeaderProps {
   ariaLabel: string;

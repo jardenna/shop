@@ -1,8 +1,8 @@
-import LayoutElement from '../../../layout/LayoutElement';
-import { Language } from '../../../types/types';
+import LayoutElement from '../../../../layout/LayoutElement';
+import { Language } from '../../../../types/types';
 import ProductAsideHeader from './ProductAsideHeader';
 import ProductAsideNav, { ProductAsideNavProps } from './ProductAsideNav';
-import './productAside.styles.scss';
+import './_product-aside.scss';
 
 interface ProductAsideProps extends ProductAsideNavProps {
   ariaLabelledby: string;
@@ -10,7 +10,7 @@ interface ProductAsideProps extends ProductAsideNavProps {
   language: Language;
 }
 
-const ProductAside = ({
+const ProductAsideNew = ({
   subMenu,
   onReset,
   language,
@@ -35,4 +35,4 @@ const ProductAside = ({
     </LayoutElement>
   </section>
 );
-export default ProductAside;
+export default ProductAsideNew;

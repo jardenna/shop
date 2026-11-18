@@ -1,9 +1,9 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { NavLink } from 'react-router';
-import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
-import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
-import { translateKey } from '../../../utils/utils';
-import { useLanguage } from '../../language/useLanguage';
+import type { ProductMenuResponse } from '../../../../app/api/apiTypes/shopApiTypes';
+import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
+import { translateKey } from '../../../../utils/utils';
+import { useLanguage } from '../../../language/useLanguage';
 
 export interface ProductAsideNavProps {
   basePath: string;

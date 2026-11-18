@@ -8,7 +8,7 @@ import Breadcrumbs, {
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';
 import { useLanguage } from '../../features/language/useLanguage';
-import ProductAside from '../../features/shop/components/ProductAside';
+import ProductAsideNew from '../../features/shop/components/productAside/ProductAsideNew';
 import ProductCartList from '../../features/shop/components/ProductCartList';
 import MetaTags from '../../layout/MetaTags';
 import './shopProductPage.styles.scss';
@@ -57,7 +57,7 @@ const ProductPageContainer = ({
       />
 
       {!hideSubMenu && (
-        <ProductAside
+        <ProductAsideNew
           headerText={pageHeading}
           ariaLabelledby={ariaLabelledby}
           subMenu={subMenu}
