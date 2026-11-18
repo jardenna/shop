@@ -39,6 +39,11 @@ const Breadcrumbs = ({
   const split = (path: string) => path.split('/').filter(Boolean);
   const getLastSegment = (path: string) => split(path).at(-1);
 
+  const toCamelCase = (value: string) =>
+    value.replace(/-([a-z])/g, (_, character: string) =>
+      character.toUpperCase(),
+    );
+
   const hiddenPathSegments = ['update', 'view', 'promo-code'];
   const shouldHideBreadcrumb = (segment: string) =>
     hiddenPathSegments.includes(segment.toLowerCase());
@@ -54,9 +59,10 @@ const Breadcrumbs = ({
 
     const parts = split(path);
     const lastSegment = getLastSegment(path);
+    const translationKey = lastSegment ? toCamelCase(lastSegment) : '';
 
-    if (lastSegment && language[lastSegment]) {
-      return language[lastSegment];
+    if (translationKey && language[translationKey]) {
+      return language[translationKey];
     }
 
     const selectedCategory = subMenu?.find(
