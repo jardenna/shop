@@ -4,11 +4,11 @@ import Img from '../../../components/Img';
 import { AdminPath } from '../../../layout/nav/enums';
 import './productOverview.styles.scss';
 
-type ProductOverviewCellProps = {
+interface ProductOverviewCellProps {
   id: string;
   images: string[];
   productName: string;
-};
+}
 
 const ProductOverviewCell = ({
   images,
