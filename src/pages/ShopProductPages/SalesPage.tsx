@@ -33,13 +33,7 @@ const Salespage = () => {
   } = useGetSalesProductsByIdQuery(categoryId ?? '');
 
   if (isError) {
-    return (
-      <NotFoundError
-        error={error}
-        btnLabel="collection"
-        path={`/${ShopPath.Collection}`}
-      />
-    );
+    return <NotFoundError error={error} />;
   }
 
   if (!saleProducts) {
