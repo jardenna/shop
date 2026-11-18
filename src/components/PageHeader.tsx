@@ -1,3 +1,4 @@
+import { LinkProps } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import Breadcrumbs from './breadcrumbs/Breadcrumbs';
@@ -8,6 +9,7 @@ interface PageHeaderProps {
   heading: string;
   linkText?: string;
   linkTo?: string;
+  state?: LinkProps['state'];
 }
 
 const PageHeader = ({
@@ -15,6 +17,7 @@ const PageHeader = ({
   linkTo,
   linkText,
   ariaLabelledby,
+  state,
 }: PageHeaderProps) => {
   const { language } = useLanguage();
 
@@ -29,6 +32,7 @@ const PageHeader = ({
           linkTo={linkTo}
           linkText={linkText}
           className="page-header-link"
+          state={state}
         />
       )}
     </LayoutElement>

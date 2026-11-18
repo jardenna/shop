@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from 'react';
+import { useLocation } from 'react-router';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
 import { SizeVariant } from '../../types/types';
@@ -21,6 +22,7 @@ const AdminPageContainer = ({
   className = '',
 }: AdminPageContainerProps) => {
   const ariaLabelledby = useId();
+  const location = useLocation();
 
   return (
     <section
@@ -33,6 +35,9 @@ const AdminPageContainer = ({
         linkText={linkText}
         linkTo={linkTo}
         ariaLabelledby={ariaLabelledby}
+        state={{
+          returnTo: `${location.pathname}${location.search}`,
+        }}
       />
       <div className="page-cart">{children}</div>
     </section>
