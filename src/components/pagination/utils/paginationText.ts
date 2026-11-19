@@ -1,21 +1,21 @@
 import { Language } from '../../../types/types';
-import { getRangeText } from '../utils';
+import { getRangeText } from './utils';
 
-type Params = {
+interface PaginationTextParams {
   itemCount: number;
   itemsPerPage: number;
   language: Language;
   page: number;
   totalBtns: number;
-};
+}
 
-export const usePaginationText = ({
+export const paginationText = ({
   page,
   itemsPerPage,
   itemCount,
   totalBtns,
   language,
-}: Params) => {
+}: PaginationTextParams) => {
   const { start, end } = getRangeText(page, itemsPerPage, itemCount);
 
   // Viser 17–24 af 32 produkter.

@@ -16,6 +16,7 @@ const ReviewStars = ({ rating, className }: ReviewStarsProps) => {
     <div className={className}>
       <ul className="star-list" aria-hidden={true}>
         {stars.map((type, index) => (
+          // eslint-disable-next-line @eslint-react/no-array-index-key
           <li key={index}>
             {type === 'full' && (
               <Icon iconName={IconName.Star} fill={variables.colorYellow} />

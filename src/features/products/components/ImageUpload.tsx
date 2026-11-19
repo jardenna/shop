@@ -45,9 +45,9 @@ const ImageUpload = ({
       <div className="upload-img-container">
         {images.length > 0 && (
           <ul className="img-list">
-            {images.map((img, index) => (
+            {images.map((img) => (
               <ImgListItem
-                key={index}
+                key={img}
                 onClick={() => {
                   onToggleImage(img);
                 }}

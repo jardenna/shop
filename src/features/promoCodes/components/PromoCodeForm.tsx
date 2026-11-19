@@ -8,7 +8,7 @@ import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSw
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/enums';
-import { dateFormat } from '../../../utils/dates';
+import { dateFormat, newDate } from '../../../utils/dates';
 import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';
 import {
@@ -26,7 +26,7 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
-  const minDateTime = format(new Date(), dateFormat.dateTimeLocal);
+  const minDateTime = format(newDate, dateFormat.dateTimeLocal);
 
   const handleGoback = () => {
     navigate(-1);

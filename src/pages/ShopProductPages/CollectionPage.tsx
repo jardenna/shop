@@ -7,9 +7,9 @@ import EmptyStateContent from '../../components/emptyState/EmptyStateContent';
 import FilterPanel from '../../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../../components/LiveAnnouncement';
 import NotFoundError from '../../components/NotFoundError';
-import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
+import { paginationText } from '../../components/pagination/utils/paginationText';
 import { useTogglePanel } from '../../components/panel/useTogglePanel';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -123,7 +123,7 @@ const CollectionPage = () => {
 
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
-  const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
+  const { infoText, paginationMobileText, ariaLiveText } = paginationText({
     page,
     itemsPerPage,
     itemCount,

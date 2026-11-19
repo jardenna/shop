@@ -1,7 +1,7 @@
 import { Status } from '../../app/api/apiTypes/adminApiTypes';
-import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
+import { paginationText } from '../../components/pagination/utils/paginationText';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
@@ -133,7 +133,7 @@ const AdminProductPage = () => {
     setShouldScroll(true);
   };
 
-  const { paginationMobileText } = usePaginationText({
+  const { paginationMobileText } = paginationText({
     page,
     itemsPerPage,
     itemCount,

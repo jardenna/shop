@@ -27,7 +27,7 @@ export const buildFilterTagsUtils = <T>(
         {
           key: `${minKey}-${maxKey}`,
           label: header.label,
-          value: `${minValue || '0'} - ${maxValue || '∞'}`,
+          value: `${String(minValue || '0')} - ${String(maxValue || '∞')}`,
         },
       ];
     }

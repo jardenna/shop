@@ -1,6 +1,6 @@
-import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
+import { paginationText } from '../../components/pagination/utils/paginationText';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useGetAllAdminOrdersQuery } from '../../features/adminOrders/adminOrderApiSlice';
@@ -86,7 +86,7 @@ const AdminOrderPage = () => {
     setShouldScroll(true);
   };
 
-  const { paginationMobileText } = usePaginationText({
+  const { paginationMobileText } = paginationText({
     page,
     itemsPerPage,
     itemCount,

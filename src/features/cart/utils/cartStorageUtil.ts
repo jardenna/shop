@@ -6,7 +6,10 @@ export const cartStorageUtil = {
     try {
       const storedValue = localStorage.getItem(localStorageKeys.cartItems);
 
-      return storedValue ? (JSON.parse(storedValue) satisfies CartItem[]) : [];
+      if (!storedValue) return [];
+
+      const parsedValue: unknown = JSON.parse(storedValue);
+      return Array.isArray(parsedValue) ? (parsedValue as CartItem[]) : [];
     } catch {
       return [];
     }
