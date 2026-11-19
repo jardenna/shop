@@ -27,7 +27,7 @@ const CustomerServicePage = () => {
           <h2>Address</h2>
           <h3>{shopName}</h3>
           {shopInformationList.map((shopInfo) => (
-            <div key={shopInfo.cvr}>{shopInfo}</div>
+            <div key={shopInfo}>{shopInfo}</div>
           ))}
         </section>
         <section>
