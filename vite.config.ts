@@ -12,7 +12,11 @@ export default defineConfig({
       },
     }),
     eslint({
+      // lintDirtyOnly: false,
+      // include: ['src/**/*.{js,jsx,ts,tsx}'],
       emitWarning: true,
+      // emitError: true,
+      // customOverlay: true,
     }),
   ],
   server: {
