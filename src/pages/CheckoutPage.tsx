@@ -30,7 +30,7 @@ import { ShopPath } from '../layout/nav/enums';
 import {
   findStandardAddress,
   getUpdatedAddresses,
-  StandardAddressIds,
+  type StandardAddressIds,
 } from '../utils/addressUtils';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -144,7 +144,7 @@ const CheckoutPage = () => {
     }).unwrap();
 
     await deleteCart().unwrap();
-    navigate(`/${ShopPath.MyOrders}/${order.id}`);
+    void navigate(`/${ShopPath.MyOrders}/${order.id}`);
 
     onAddToast({
       message: language.orderCreated,

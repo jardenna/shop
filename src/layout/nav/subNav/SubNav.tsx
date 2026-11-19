@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useLanguage } from '../../../features/language/useLanguage';
 import { useGetShopMenuQuery } from '../../../features/shop/shopApiSlice';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import { SubBaseNavList } from '../navLists';
+import type { SubBaseNavList } from '../navLists';
 import './_sub-nav.scss';
 import SubNavListDesktop from './SubNavListDesktop';
 import SubNavListMobile from './SubNavListMobile';

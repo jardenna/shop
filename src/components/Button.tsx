@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-
 import { ButtonHTMLAttributes, type ReactNode } from 'react';
 import { BtnVariant } from '../types/enums';
 import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';

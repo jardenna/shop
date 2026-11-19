@@ -1,3 +1,4 @@
+/* eslint-disable @eslint-react/set-state-in-effect */
 import { useEffect, useState } from 'react';
 import type {
   BlurEventType,
@@ -62,7 +63,7 @@ export function useFormValidation<T extends KeyValuePair>({
   function clearFieldError(name: string) {
     setErrors((previous) => {
       const updatedErrors = { ...previous };
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+
       delete updatedErrors[name];
       return updatedErrors;
     });

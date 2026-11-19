@@ -1,4 +1,4 @@
-import { ToastTypes } from '../components/toast/toastConfig';
+import type { ToastTypes } from '../components/toast/toastConfig';
 
 interface AddMessage {
   message: string;

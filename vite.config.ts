@@ -5,11 +5,7 @@ import eslint from 'vite-plugin-eslint2';
 
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
-    }),
+    react({}),
     checker({
       typescript: {
         tsconfigPath: './tsconfig.app.json',
@@ -19,7 +15,6 @@ export default defineConfig({
       emitWarning: true,
     }),
   ],
-
   server: {
     port: 3000,
     host: true,

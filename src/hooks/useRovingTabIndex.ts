@@ -1,3 +1,4 @@
+/* eslint-disable @eslint-react/naming-convention-ref-name */
 import { useRef, useState } from 'react';
 import { KeyCode } from '../types/enums';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
