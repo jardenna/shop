@@ -53,26 +53,17 @@ export default defineConfig(
       '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-redeclare': 'error',
-      '@typescript-eslint/consistent-type-imports': 'off',
-      '@typescript-eslint/no-invalid-void-type': 'off',
-      '@typescript-eslint/restrict-plus-operands': 'off',
-      '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-confusing-void-expression': 'error',
       '@typescript-eslint/no-duplicate-enum-values': 'warn',
       '@typescript-eslint/no-empty-object-type': 'warn',
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      '@typescript-eslint/no-unnecessary-template-expression': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-misused-promises': 'off',
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-enum-assignment': 'off',
-      '@typescript-eslint/no-misused-promises': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/restrict-template-expressions': 'off',
-      '@typescript-eslint/no-base-to-string': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
-      '@typescript-eslint/no-unnecessary-condition': 'error',
-
-      'object-shorthand': ['error', 'always'],
+      '@typescript-eslint/no-unsafe-argument': 'off',
 
       'perfectionist/sort-interfaces': [
         'error',
@@ -97,6 +88,7 @@ export default defineConfig(
         },
       ],
       'react-refresh/only-export-components': 'warn',
+      'object-shorthand': ['error', 'always'],
       curly: ['error', 'all'],
       eqeqeq: ['error', 'always'],
       'arrow-body-style': 'warn',
@@ -108,6 +100,12 @@ export default defineConfig(
       '@eslint-react/jsx-no-useless-fragment': 'error',
       '@eslint-react/no-unused-props': 'error',
       '@eslint-react/dom-no-unsafe-target-blank': 'error',
+      '@eslint-react/naming-convention-id-name': 'off',
+
+      '@eslint-react/exhaustive-deps': 'off',
+      '@eslint-react/set-state-in-effect': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+      'react-hooks/set-state-in-effect': 'off',
 
       '@stylistic/jsx-self-closing-comp': 'error',
       '@stylistic/jsx-curly-brace-presence': [
@@ -167,13 +165,19 @@ export default defineConfig(
     },
   },
   {
+    files: ['src/components/skeleton/**/*.tsx'],
+    rules: {
+      '@eslint-react/no-array-index-key': 'off',
+    },
+  },
+  {
     files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       globals: globals.browser,
     },
   },
   {
-    files: ['server/**/*.js'],
+    files: ['**/*.js'],
     languageOptions: {
       globals: {
         ...globals.node,
