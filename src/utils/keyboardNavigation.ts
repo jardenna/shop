@@ -1,14 +1,14 @@
 import { KeyCode } from '../types/enums';
 
-interface UseKeyboardNavigationProps {
+interface KeyboardNavigationProps {
   itemCount: number;
   selectedIndex: number;
 }
 
-export const useKeyboardNavigation = ({
+export const keyboardNavigation = ({
   selectedIndex,
   itemCount,
-}: UseKeyboardNavigationProps) => {
+}: KeyboardNavigationProps) => {
   const getNextIndex = (key: KeyCode) => {
     if (itemCount === 0) {
       return null;

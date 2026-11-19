@@ -1,7 +1,6 @@
-/* eslint-disable @eslint-react/naming-convention-ref-name */
 import { useRef, useState } from 'react';
 import { KeyCode } from '../types/enums';
-import { useKeyboardNavigation } from './useKeyboardNavigation';
+import { keyboardNavigation } from '../utils/keyboardNavigation';
 
 interface UseRovingTabIndexProps {
   itemCount: number;
@@ -15,9 +14,9 @@ export const useRovingTabIndex = ({
   onChange,
 }: UseRovingTabIndexProps) => {
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
-  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const itemsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const { getNextIndex } = useKeyboardNavigation({
+  const { getNextIndex } = keyboardNavigation({
     selectedIndex,
     itemCount,
   });
@@ -37,12 +36,12 @@ export const useRovingTabIndex = ({
     event.preventDefault();
 
     handleChange(nextIndex);
-    itemRefs.current[nextIndex]?.focus();
+    itemsRef.current[nextIndex]?.focus();
   };
 
   return {
     selectedIndex,
-    itemRefs,
+    itemsRef,
     handleKeyDown,
     handleChange,
   };

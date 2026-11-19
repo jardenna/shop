@@ -25,7 +25,7 @@ const SegmentedTabs = ({
   onClick,
   className = '',
 }: SegmentedTabsProps) => {
-  const { selectedIndex, itemRefs, handleKeyDown, handleChange } =
+  const { selectedIndex, itemsRef, handleKeyDown, handleChange } =
     useRovingTabIndex({
       defaultIndex,
       itemCount: tabItemList.length,
@@ -36,7 +36,7 @@ const SegmentedTabs = ({
 
   const handleActivateTab = (index: number) => {
     handleChange(index);
-    itemRefs.current[index]?.focus();
+    itemsRef.current[index]?.focus();
   };
 
   return (
@@ -51,7 +51,7 @@ const SegmentedTabs = ({
             id={`tab-${id}`}
             tabIndex={index === selectedIndex ? 0 : -1}
             refCallback={(element) => {
-              itemRefs.current[index] = element;
+              itemsRef.current[index] = element;
             }}
             onClick={() => {
               handleActivateTab(index);
