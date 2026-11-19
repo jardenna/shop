@@ -10,8 +10,8 @@ interface ReviewListProps {
 
 const ReviewList = ({ reviewList, language }: ReviewListProps) => (
   <ul className="review-list">
-    {reviewList.map((review, index) => (
-      <li key={index} className="review-item">
+    {reviewList.map((review) => (
+      <li key={review.id} className="review-item">
         <div className="review-header">
           <ReviewStars rating={review.rating} />
           <p className="text-small text-italic">
