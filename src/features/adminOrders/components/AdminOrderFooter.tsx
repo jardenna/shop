@@ -23,7 +23,7 @@ const AdminOrderFooter = ({
   order,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'cancel-order';
 
   const { closeModal } = useModal();
@@ -39,14 +39,14 @@ const AdminOrderFooter = ({
     <footer className="footer">
       <TriggerModalButton
         variant={BtnVariant.Danger}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         disabled={triggerModalDisabled}
       >
         {language.cancelOrder}
       </TriggerModalButton>
       <Modal
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         headerText={language.cancelOrder}
       >

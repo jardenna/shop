@@ -17,15 +17,15 @@ const MainPageContainer = ({
   className = '',
   variant,
 }: MainPageContainerProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
 
   return (
     <section
       className={`container ${variant ? `page-${variant}` : ''} ${className}`}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <MetaTags metaTitle={heading} />
-      <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
+      <PageHeader heading={heading} ariaLabelledby={ariaLabelledbyId} />
       {children}
     </section>
   );

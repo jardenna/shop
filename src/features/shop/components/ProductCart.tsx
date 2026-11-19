@@ -23,11 +23,11 @@ const ProductCart = ({
   linkTo,
   isOutOfStock,
 }: ProductCartProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { language } = useLanguage();
 
   return (
-    <article aria-labelledby={ariaLabelledby} className="product-cart">
+    <article aria-labelledby={ariaLabelledbyId} className="product-cart">
       <div className="position-relative">
         <Link to={linkTo}>
           <VisuallyHidden>
@@ -60,7 +60,7 @@ const ProductCart = ({
       </div>
 
       <ProductCartContent
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         linkTo={linkTo}
         product={product}
         productView={productView}

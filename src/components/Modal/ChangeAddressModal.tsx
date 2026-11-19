@@ -23,7 +23,7 @@ const ChangeAddressModal = ({
   onChangeAddress,
   text,
 }: ChangeAddressModalProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'changeAddress';
   const { closeModal } = useModal();
 
@@ -52,7 +52,7 @@ const ChangeAddressModal = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
@@ -66,7 +66,7 @@ const ChangeAddressModal = ({
 
       <FormModal
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={text ?? language.changeStandardAddress}
         isLoading={false}
         onSubmit={onSubmit}

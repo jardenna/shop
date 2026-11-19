@@ -42,7 +42,7 @@ export interface InitialFilters {
 
 const CollectionPage = () => {
   const { category, categoryId } = useParams();
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
@@ -148,10 +148,10 @@ const CollectionPage = () => {
     <section
       className="container shop-product-page"
       ref={scrollToRef}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <ProductPageContainer
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         altText={language[altText]}
         breadcrumbsList={collectionBreadcrumbsList}
         refetch={refetch}

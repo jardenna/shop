@@ -21,20 +21,20 @@ const AdminPageContainer = ({
   variant = 'large',
   className = '',
 }: AdminPageContainerProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const location = useLocation();
 
   return (
     <section
       className={`admin-page page-${variant} ${className}`}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <MetaTags metaTitle={heading} />
       <PageHeader
         heading={heading}
         linkText={linkText}
         linkTo={linkTo}
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         state={{
           returnTo: `${location.pathname}${location.search}`,
         }}

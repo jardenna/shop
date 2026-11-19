@@ -27,7 +27,7 @@ const LanguageModal = ({
   onSelectCurrency,
   localLanguage,
 }: LanguageProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'language';
 
   const { closeModal } = useModal();
@@ -40,7 +40,7 @@ const LanguageModal = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
@@ -51,7 +51,7 @@ const LanguageModal = ({
       </TriggerModalButton>
       <FormModal
         submitLabel={localLanguage.updatePreferences}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={localLanguage.preferences}
         modalId={modalId}
         isLoading={false}

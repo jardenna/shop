@@ -55,7 +55,7 @@ const AddressFormModal = ({
   disabled,
   buttonRef,
 }: AddressFormModalProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = id ? `update-${id}` : 'create';
   const { language } = useLanguage();
   const { onAddToast } = useToast();
@@ -102,7 +102,7 @@ const AddressFormModal = ({
     <>
       <TriggerModalButton
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         variant={BtnVariant.Ghost}
         disabled={disabled}
         buttonRef={buttonRef}
@@ -124,7 +124,7 @@ const AddressFormModal = ({
 
       <FormModal
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={headerText}
         isLoading={isLoading || addressIsLoading}
         onSubmit={onSubmit}

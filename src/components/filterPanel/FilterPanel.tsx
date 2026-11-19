@@ -36,7 +36,7 @@ const FilterPanel = ({
   ariaLabel,
   totalFiltersCount,
 }: FilterPanelProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
 
   const hasActiveFilters = totalFiltersCount > 0;
 
@@ -46,7 +46,7 @@ const FilterPanel = ({
         ariaExpanded={isPanelShown}
         onTogglePanel={onTogglePanel}
         ariaLabel={ariaLabel}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
       >
         <>
           {hasActiveFilters && `[${totalFiltersCount}]`}
@@ -63,7 +63,7 @@ const FilterPanel = ({
         closePanel={onHidePanel}
         isPanelShown={isPanelShown}
         className="filter-panel"
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         heading={panelHeading}
         trapFocus={trapFocus}
       >

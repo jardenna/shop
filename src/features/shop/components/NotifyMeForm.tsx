@@ -30,7 +30,7 @@ const NotifyMeForm = ({
   isOutOfStock,
   btnVariant = BtnVariant.Ghost,
 }: NotifyMeFormProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'notify';
   const { language } = useLanguage();
   const { closeModal, openModal } = useModal();
@@ -67,7 +67,7 @@ const NotifyMeForm = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={btnVariant}
         onClick={handleOpenModal}
@@ -85,7 +85,7 @@ const NotifyMeForm = ({
             ? language.currentlyUnavailableSizes
             : language.temporarilyOutOfStock
         }
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
       >
         <form
           onSubmit={(event) => {

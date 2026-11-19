@@ -101,11 +101,10 @@ export default defineConfig(
       '@eslint-react/jsx-no-useless-fragment': 'error',
       '@eslint-react/no-unused-props': 'error',
       '@eslint-react/dom-no-unsafe-target-blank': 'error',
-      '@eslint-react/naming-convention-id-name': 'off',
 
       '@eslint-react/exhaustive-deps': 'off',
-      '@eslint-react/set-state-in-effect': 'off',
       'react-hooks/exhaustive-deps': 'off',
+      '@eslint-react/set-state-in-effect': 'off',
       'react-hooks/set-state-in-effect': 'off',
 
       '@stylistic/jsx-self-closing-comp': 'error',

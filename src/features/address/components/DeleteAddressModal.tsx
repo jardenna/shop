@@ -13,7 +13,7 @@ interface DeleteAddressModalProps {
 }
 
 const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'delete-address';
   const { language } = useLanguage();
   const { onAddToast } = useToast();
@@ -32,7 +32,7 @@ const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
@@ -45,7 +45,7 @@ const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
         isLoading={isLoading}
         modalId={modalId}
         headerText={language.deleteAddress}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         onDelete={handleDeleteAddress}
         modalMessage={address.street}
         itemId={address.id}

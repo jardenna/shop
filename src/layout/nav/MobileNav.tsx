@@ -25,7 +25,7 @@ const MobileNav = ({
   hidePanelHeading,
   unReadCount,
 }: MobileNavProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
@@ -44,7 +44,7 @@ const MobileNav = ({
           ariaExpanded={isPanelShown}
           onTogglePanel={onTogglePanel}
           ariaLabel={language.main}
-          ariaControls={ariaControls}
+          ariaControls={ariaControlsId}
           className="menu-burger"
         >
           <span className="menu-burger-item" aria-hidden />
@@ -55,7 +55,7 @@ const MobileNav = ({
         portalId="mobile-nav"
         closePanel={onHidePanel}
         isPanelShown={isPanelShown}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         trapFocus
         ignoreRefs={[menuButtonRef]}
         className="mobile-nav"
