@@ -1,6 +1,7 @@
 import eslintReact from '@eslint-react/eslint-plugin';
 import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import { importX } from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier/recommended';
@@ -46,6 +47,7 @@ export default defineConfig([
     plugins: {
       '@stylistic': stylistic,
       'jsx-a11y-x': jsxA11y,
+      'import-x': importX,
       perfectionist,
     },
     rules: {
@@ -94,17 +96,20 @@ export default defineConfig([
       'arrow-body-style': 'warn',
       'no-nested-ternary': 'warn',
       'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
-
       '@eslint-react/no-duplicate-key': 'error',
       '@eslint-react/dom-no-missing-button-type': 'error',
       '@eslint-react/jsx-no-useless-fragment': 'error',
       '@eslint-react/no-unused-props': 'error',
       '@eslint-react/dom-no-unsafe-target-blank': 'error',
-
       '@eslint-react/exhaustive-deps': 'off',
       '@eslint-react/set-state-in-effect': 'off',
-
       'react-hooks/exhaustive-deps': 'off',
+
+      'import-x/prefer-default-export': 'warn',
+      'import-x/no-duplicates': 'error',
+      'import-x/no-self-import': 'error',
+      'import-x/no-mutable-exports': 'error',
+      'import-x/no-empty-named-blocks': 'error',
 
       '@stylistic/jsx-self-closing-comp': 'error',
       '@stylistic/jsx-curly-brace-presence': [
@@ -196,6 +201,12 @@ export default defineConfig([
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      'import-x/prefer-default-export': 'off',
     },
   },
   {
