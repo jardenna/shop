@@ -21,7 +21,6 @@ import {
 import { useLanguage } from '../features/language/useLanguage';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../hooks/useSearchParamsState';
-import { BtnVariant } from '../types/enums';
 import { getFilterSummary } from '../utils/utils';
 import './adminReviewPage.styles.scss';
 
@@ -134,7 +133,7 @@ const AdminReviewPage = () => {
           <div className="admin-review-toolbar">
             <ClearFilterBtn
               showIcon
-              variant={BtnVariant.Ghost}
+              variant="ghost"
               onClick={onClearAllFilters}
               disabled={!hasSearchParams}
             />

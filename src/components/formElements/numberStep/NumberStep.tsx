@@ -1,5 +1,4 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { BtnVariant } from '../../../types/enums';
 import type { InputChangeHandler } from '../../../types/types';
 import IconBtn from '../../IconBtn';
 import Input from '../Input';
@@ -54,7 +53,7 @@ const NumberStep = ({
           isLoading={isCurrentLoading}
           ariaLabel={`${language.subtract} ${initCount} `}
           disabled={value === min}
-          variant={BtnVariant.Ghost}
+          variant="ghost"
           onClick={() => {
             handleNumberStepClick(-initCount);
           }}
@@ -78,7 +77,7 @@ const NumberStep = ({
         <IconBtn
           isLoading={isCurrentLoading}
           iconName="add"
-          variant={BtnVariant.Ghost}
+          variant="ghost"
           onClick={() => {
             handleNumberStepClick(initCount);
           }}

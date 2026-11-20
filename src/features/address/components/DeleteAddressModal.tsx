@@ -4,7 +4,6 @@ import IconContent from '../../../components/IconContent';
 import DeleteModal from '../../../components/Modal/DeleteModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useToast } from '../../../components/toast/hooks/useToast';
-import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 import { useDeleteAddressMutation } from '../addressesApiSlice';
 
@@ -34,7 +33,7 @@ const DeleteAddressModal = ({ address }: DeleteAddressModalProps) => {
       <TriggerModalButton
         ariaControls={ariaControlsId}
         modalId={modalId}
-        variant={BtnVariant.Ghost}
+        variant="ghost"
       >
         <IconContent iconName="trash" ariaLabel={language.deleteAddress} />
       </TriggerModalButton>

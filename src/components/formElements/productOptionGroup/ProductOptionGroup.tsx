@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { BtnVariant, type IconNameValue } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
@@ -84,7 +84,7 @@ const ProductOptionGroup = ({
         <div className="size-guide-btn">
           <TriggerModalButton
             ariaControls={ariaControlsId}
-            variant={BtnVariant.Ghost}
+            variant="ghost"
             modalId={modalId}
           >
             {language.sizeGuide}

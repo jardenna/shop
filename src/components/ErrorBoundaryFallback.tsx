@@ -1,6 +1,5 @@
 import { useLanguage } from '../features/language/useLanguage';
 import MetaTags from '../layout/MetaTags';
-import { BtnVariant } from '../types/enums';
 import Button from './Button';
 import ErrorContent from './ErrorContent';
 
@@ -30,7 +29,7 @@ const ErrorBoundaryFallback = ({
       <div className="error-content small">
         <MetaTags metaTitle={metaErrorText} />
         <span className="error-text">{errorText}</span>
-        <Button variant={BtnVariant.Ghost} onClick={resetErrorBoundary}>
+        <Button variant="ghost" onClick={resetErrorBoundary}>
           {language.retry}
         </Button>
       </div>
