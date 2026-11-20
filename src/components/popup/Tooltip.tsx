@@ -1,11 +1,11 @@
-import { IconName } from '../../types/enums';
+import { IconName, type IconNameValue } from '../../types/enums';
 import Icon from '../icons/Icon';
 import Popup from './Popup';
 
 interface TooltipProps {
   ariaLabel: string;
   tooltipContent: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
 }
 
 const Tooltip = ({

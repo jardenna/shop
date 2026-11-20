@@ -138,11 +138,13 @@ const Layout = () => {
         }}
       />
       <RouteErrorBoundary>
-        <main id="main">
-          <Outlet />
-          <MiniCartPopup />
-        </main>
-        <Footer />
+        <>
+          <main id="main">
+            <Outlet />
+            <MiniCartPopup />
+          </main>
+          <Footer />
+        </>
       </RouteErrorBoundary>
       <ScrollRestoration />
     </div>

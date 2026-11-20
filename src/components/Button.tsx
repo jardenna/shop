@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, type ReactNode } from 'react';
-import { BtnVariant } from '../types/enums';
+import { BtnVariant, type BtnVariantValue } from '../types/enums';
 import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
@@ -16,7 +16,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaSelected?: boolean;
   ref?: RefBtnType;
   showBtnLoader?: boolean;
-  variant?: BtnVariant;
+  variant?: BtnVariantValue;
   refCallback?: (element: HTMLButtonElement | null) => void;
 }
 

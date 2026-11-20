@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { BtnVariant } from '../../types/enums';
+import { BtnVariant, type BtnVariantValue } from '../../types/enums';
 import Button from '../Button';
 
 interface TriggerPanelButtonProps {
@@ -8,7 +8,7 @@ interface TriggerPanelButtonProps {
   ariaLabel: string;
   children: ReactElement;
   className?: string;
-  variant?: BtnVariant;
+  variant?: BtnVariantValue;
   onTogglePanel: () => void;
 }
 

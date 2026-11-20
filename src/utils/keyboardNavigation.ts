@@ -1,4 +1,4 @@
-import { KeyCode } from '../types/enums';
+import { KeyCode, type KeyCodeValue } from '../types/enums';
 
 interface KeyboardNavigationProps {
   itemCount: number;
@@ -9,7 +9,7 @@ export const keyboardNavigation = ({
   selectedIndex,
   itemCount,
 }: KeyboardNavigationProps) => {
-  const getNextIndex = (key: KeyCode) => {
+  const getNextIndex = (key: KeyCodeValue) => {
     if (itemCount === 0) {
       return null;
     }

@@ -1,13 +1,13 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
-import { ShopPath } from '../../../layout/nav/enums';
+import type { ShopPathValue } from '../../../layout/nav/enums';
 import type { ImgExtention } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 
 export type MainCollectionsBaseProps = {
   linkText: string;
-  linkTo: ShopPath;
+  linkTo: ShopPathValue;
   title: string;
   imgExtention?: ImgExtention;
   imgList?: string[];

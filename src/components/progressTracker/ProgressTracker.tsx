@@ -2,12 +2,12 @@ import { Fragment } from 'react/jsx-runtime';
 import type { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { orderTrackingList } from '../../features/orders/utils/createTrackingList';
-import { IconName } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import Icon from '../icons/Icon';
 import './_progress-tracker.scss';
 
 interface TrackingList {
-  iconName: IconName;
+  iconName: IconNameValue;
   id: string;
   label: string;
 }

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { IconName } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
@@ -19,7 +19,7 @@ interface ControlInputProps extends BaseControlInputProps {
   className?: string;
   disabled?: boolean;
   iconClassName?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
   renderExtra?: ReactNode;
   showControlInfo?: boolean;
   type?: ControlInputType;

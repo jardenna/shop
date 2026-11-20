@@ -1,4 +1,4 @@
-import { IconName } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 
@@ -10,7 +10,7 @@ interface SegmentedInputProps {
   onChange: InputChangeHandler;
   value: string;
   className?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
 }
 
 const SegmentedInput = ({

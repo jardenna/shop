@@ -1,7 +1,7 @@
-import { IconName } from '../../types/enums';
-import { AdminPath, LinkText, ShopPath } from './enums';
+import { IconName, IconNameValue } from '../../types/enums';
+import { AdminPath, LinkText, type LinkTextValue, ShopPath } from './enums';
 export interface BaseNav {
-  linkText: LinkText;
+  linkText: LinkTextValue;
   path: string;
 }
 
@@ -15,7 +15,7 @@ export interface NavListProps extends BaseNav {
   end?: boolean;
   hasBadgeCount?: boolean;
   heading?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
   subNavList?: SubBaseNavList[];
   type?: string;
 }
@@ -25,7 +25,7 @@ interface AccountNavList extends BaseNav {
 }
 
 interface AdminNavList extends BaseNav {
-  iconName: IconName;
+  iconName: IconNameValue;
   className?: string;
   end?: boolean;
   hasBadgeCount?: boolean;

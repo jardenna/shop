@@ -1,7 +1,7 @@
-import type { ReactElement } from 'react';
+import type { ReactNode } from 'react';
 
 interface SkeletonFormCartProps {
-  children: ReactElement;
+  children: ReactNode;
 }
 
 const SkeletonFormCart = ({ children }: SkeletonFormCartProps) => (

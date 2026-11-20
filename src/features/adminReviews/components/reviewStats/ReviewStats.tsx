@@ -22,7 +22,7 @@ const ReviewStats = ({ reviewStats, onReset }: ReviewStatsProps) => {
           heading={language.totalReviews}
           text={reviewStats.totalReviews}
         >
-          {language.reviews.toLowerCase()}
+          <span>{language.reviews.toLowerCase()}</span>
         </ReviewStatsCard>
         <ReviewStatsCard
           heading={language.averageRating}

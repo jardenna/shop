@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { IconName } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/enums';
 import type { Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { BaseControlInputProps } from '../ControlInput';
@@ -10,7 +10,7 @@ interface CheckboxListProps extends BaseControlInputProps {
   language: Language;
   values: string[];
   className?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
   showControlInfo?: boolean;
   renderExtra?: (checkbox: string) => ReactNode;
 }

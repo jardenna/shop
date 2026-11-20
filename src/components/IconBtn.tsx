@@ -1,10 +1,15 @@
-import { BtnType, BtnVariant, IconName } from '../types/enums';
+import {
+  BtnType,
+  BtnVariant,
+  type BtnVariantValue,
+  type IconNameValue,
+} from '../types/enums';
 import { AriaHasPopup } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
 export type BaseIconBtn = {
-  iconName: IconName;
+  iconName: IconNameValue;
   ariaLabel?: string;
   className?: string;
   showLabel?: boolean;
@@ -17,7 +22,7 @@ interface IconBtnProps extends BaseIconBtn {
   btnType?: BtnType;
   disabled?: boolean;
   isLoading?: boolean;
-  variant?: BtnVariant;
+  variant?: BtnVariantValue;
   onClick?: () => void;
 }
 

@@ -126,7 +126,7 @@ const SortTable = <T,>({
             onClick={onClearAllFilters}
             disabled={!hasSearchParams}
           >
-            {tagList.length > 0 && <span>[{tagList.length}]</span>}
+            {tagList.length > 0 ? <span>[{tagList.length}]</span> : undefined}
           </ClearFilterBtn>
 
           <TagList

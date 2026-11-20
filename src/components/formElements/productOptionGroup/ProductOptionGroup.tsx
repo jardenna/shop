@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { BtnVariant, type IconNameValue } from '../../../types/enums';
 import type {
   ControlInputType,
   InputChangeHandler,
@@ -19,7 +19,7 @@ export interface BaseProductOptionProps {
   type: ControlInputType;
   autoFocus?: boolean;
   iconClassName?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
   iconSize?: string;
   variant?: SizeVariant;
 }
