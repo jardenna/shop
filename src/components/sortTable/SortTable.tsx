@@ -5,7 +5,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
-import { BtnVariant, IconName } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import type { InputChangeHandler, InputType } from '../../types/types';
 import Button from '../Button';
 import ClearFilterBtn from '../ClearFilterBtn';
@@ -87,17 +87,17 @@ const SortTable = <T,>({
   const tableGridIconList: DisplayControlItem[] = [
     {
       display: paddingBlockSmall,
-      iconName: IconName.GridSmall,
+      iconName: 'gridSmall',
       ariaLabel: language.compact,
     },
     {
       display: paddingBlockMedium,
-      iconName: IconName.Grid,
+      iconName: 'grid',
       ariaLabel: language.standard,
     },
     {
       display: paddingBlockLarge,
-      iconName: IconName.GridLarge,
+      iconName: 'gridLarge',
       ariaLabel: language.expanded,
     },
   ];

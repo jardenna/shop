@@ -1,4 +1,4 @@
-import { BtnVariant, IconName } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import type { Language } from '../../types/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
@@ -36,11 +36,7 @@ const PaginationBtnItems = ({
           ariaCurrent={isCurrentPage ? 'page' : undefined}
           ariaLabel={getAriaLabel(paginationBtn, language, page)}
         >
-          {isJumpButton ? (
-            <Icon iconName={IconName.More} />
-          ) : (
-            paginationBtn.label
-          )}
+          {isJumpButton ? <Icon iconName="more" /> : paginationBtn.label}
         </Button>
       </li>
     );
