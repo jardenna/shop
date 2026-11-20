@@ -1,8 +1,5 @@
-import {
-  AdminPath,
-  type AdminPathValue,
-  type ShopPathValue,
-} from '../layout/nav/navConstants';
+import { AdminPath } from '../layout/nav/navConstants';
+import type { AdminPathValue, ShopPathValue } from '../layout/nav/navTypes';
 import type {
   AriaLabelData,
   FiltersCountResult,
