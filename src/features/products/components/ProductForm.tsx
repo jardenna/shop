@@ -24,7 +24,7 @@ import {
   localStorageKeys,
   useLocalStorage,
 } from '../../../hooks/useLocalStorage';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import variables from '../../../scss/variables.module.scss';
 import type { OptionType } from '../../../types/types';
 import { getColorOptions } from '../../../utils/colorUtils';

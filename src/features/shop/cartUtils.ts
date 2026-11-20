@@ -1,5 +1,5 @@
 import type { CartItem } from '../../app/api/apiTypes/cartApiTypes';
-import { ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/navConstants';
 
 export type ChangedAttribute = 'size' | 'color';
 

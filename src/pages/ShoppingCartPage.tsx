@@ -23,7 +23,7 @@ import { useDeleteCartItem } from '../features/hooks/useDeleteCartItem';
 import { useLanguage } from '../features/language/useLanguage';
 import { useGetCurrentPromoCodeQuery } from '../features/promoCodes/promoCodeApiSlice';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import MainPageContainer from './pageContainer/MainPageContainer';
 import './shoppingCartPage.styles.scss';
 

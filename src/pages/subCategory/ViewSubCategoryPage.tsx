@@ -11,7 +11,7 @@ import {
   useDeleteSubCategoryMutation,
   useGetSubCategoryByIdQuery,
 } from '../../features/subCategories/subCategoryApiSlice';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

@@ -3,7 +3,7 @@ import ActionNavBtn, {
   type ActionNavItemProps,
 } from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import { useLanguage } from '../../language/useLanguage';
 
 interface ProductActionsProps {

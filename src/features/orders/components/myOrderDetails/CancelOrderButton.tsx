@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import type { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import { useToast } from '../../../../components/toast/hooks/useToast';
-import { ShopPath } from '../../../../layout/nav/enums';
+import { ShopPath } from '../../../../layout/nav/navConstants';
 import { useLanguage } from '../../../language/useLanguage';
 import { useCancelMyOrderMutation } from '../../orderApiSlice';
 

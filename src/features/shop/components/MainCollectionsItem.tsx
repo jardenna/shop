@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
-import type { ShopPathValue } from '../../../layout/nav/enums';
+import type { ShopPathValue } from '../../../layout/nav/navConstants';
 import type { ImgExtention } from '../../../types/types';
 import { useLanguage } from '../../language/useLanguage';
 

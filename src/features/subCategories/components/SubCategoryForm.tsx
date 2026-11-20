@@ -13,7 +13,7 @@ import StatusOptions from '../../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import { validateSubcategory } from '../../../utils/validation/validateSubcategory';

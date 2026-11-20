@@ -2,8 +2,8 @@ import { NavLink } from 'react-router';
 import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ProductAsideNav from '../../../features/shop/components/productAside/ProductAsideNav';
 import type { Language } from '../../../types/types';
-import { ShopPath } from '../enums';
 import NavAd from '../NavAd';
+import { ShopPath } from '../navConstants';
 import type { BaseNav } from '../navLists';
 import { subNavConfig } from './subnavConfig';
 

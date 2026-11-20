@@ -1,7 +1,7 @@
 import type { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { ShopPath } from '../../../layout/nav/enums';
+import { ShopPath } from '../../../layout/nav/navConstants';
 import type { Language } from '../../../types/types';
 import type { ProductQuantityMap } from '../../shop/cartUtils';
 import './_cart-list.scss';

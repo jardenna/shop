@@ -2,7 +2,7 @@ import { useLocation } from 'react-router';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
 import AdminBadge from '../../../components/adminCart/AdminBadge';
 import MoreLink from '../../../components/MoreLink';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 
 type SubCategoryTableRowsProps = {
   categoryName: string;

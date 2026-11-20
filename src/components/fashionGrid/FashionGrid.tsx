@@ -1,5 +1,5 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/navConstants';
 import './_fashion-grid.scss';
 import FashionGridItem from './FashionGridItem';
 

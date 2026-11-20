@@ -1,6 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
 import CartFooter from './CartFooter';
 

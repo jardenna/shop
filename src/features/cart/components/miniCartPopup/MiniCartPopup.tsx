@@ -6,7 +6,7 @@ import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback'
 import Panel from '../../../../components/panel/Panel';
 import TotalPrice from '../../../../components/TotalPrice';
 import { useAnimate } from '../../../../hooks/useAnimate';
-import { ShopPath } from '../../../../layout/nav/enums';
+import { ShopPath } from '../../../../layout/nav/navConstants';
 import { selectUser } from '../../../auth/authSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import {

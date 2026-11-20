@@ -2,8 +2,8 @@ import Button from '../components/Button';
 import { useLanguage } from '../features/language/useLanguage';
 import Logo from '../layout/header/Logo';
 import LayoutElement from '../layout/LayoutElement';
-import { AdminPath } from '../layout/nav/enums';
 import MobileNav from '../layout/nav/MobileNav';
+import { AdminPath } from '../layout/nav/navConstants';
 import { adminNavList } from '../layout/nav/navLists';
 
 interface AdminHeaderProps {

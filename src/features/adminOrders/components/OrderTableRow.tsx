@@ -7,7 +7,7 @@ import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import type { Language } from '../../../types/types';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 

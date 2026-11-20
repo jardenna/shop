@@ -2,7 +2,7 @@ import {
   AdminPath,
   type AdminPathValue,
   type ShopPathValue,
-} from '../layout/nav/enums';
+} from '../layout/nav/navConstants';
 import type {
   AriaLabelData,
   FiltersCountResult,

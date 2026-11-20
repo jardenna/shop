@@ -13,7 +13,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { clearErrorToasts } from '../features/toastSlice';
 import { localStorageKeys, useLocalStorage } from '../hooks/useLocalStorage';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import RouteErrorBoundary from '../pages/pageContainer/RouteErrorBoundary';
 import AdminHeader from './AdminHeader';
 import './adminLayout.styles.scss';

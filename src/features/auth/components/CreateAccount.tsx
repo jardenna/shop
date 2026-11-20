@@ -6,7 +6,7 @@ import type {
 } from '../../../app/api/apiTypes/userApiTypes';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { ShopPath } from '../../../layout/nav/enums';
+import { ShopPath } from '../../../layout/nav/navConstants';
 import type { AutoComplete } from '../../../types/types';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';

@@ -16,7 +16,7 @@ import OrderSummary from '../features/orders/components/OrderSummary';
 import { useGetOrderByIdQuery } from '../features/orders/orderApiSlice';
 import { createOrderAddressList } from '../features/orders/utils/createOrderAddressList';
 import { orderTrackingList } from '../features/orders/utils/createTrackingList';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const MyOrderDetailsPage = () => {

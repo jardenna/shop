@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import { isAdminPath } from '../utils/utils';
 
 const ProtectedRoute = () => {

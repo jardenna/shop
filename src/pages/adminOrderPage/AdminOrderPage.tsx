@@ -10,7 +10,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import type { OptionType } from '../../types/types';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

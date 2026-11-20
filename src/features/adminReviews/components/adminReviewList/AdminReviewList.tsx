@@ -8,7 +8,7 @@ import EmptyStateContent from '../../../../components/emptyState/EmptyStateConte
 import IconBtn from '../../../../components/IconBtn';
 import Img from '../../../../components/Img';
 import ReviewStars from '../../../../components/ReviewStars';
-import { ShopPath } from '../../../../layout/nav/enums';
+import { ShopPath } from '../../../../layout/nav/navConstants';
 import { useLanguage } from '../../../language/useLanguage';
 import './_admin-review-list.scss';
 

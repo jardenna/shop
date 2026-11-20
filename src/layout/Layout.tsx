@@ -26,7 +26,7 @@ import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
-import { AdminPath, ShopPath } from './nav/enums';
+import { AdminPath, ShopPath } from './nav/navConstants';
 
 const Layout = () => {
   const { pathname } = useLocation();
