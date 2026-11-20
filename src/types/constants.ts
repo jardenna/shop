@@ -1,4 +1,3 @@
-import type { ButtonHTMLAttributes } from 'react';
 import type { IconName } from '../components/icons/iconConstants';
 
 export const ValidationMessage = {
@@ -83,9 +82,3 @@ export const BtnVariant = {
 } as const;
 
 export type IconNameValue = (typeof IconName)[keyof typeof IconName];
-
-export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
-
-export type ValidationMessageValue =
-  (typeof ValidationMessage)[keyof typeof ValidationMessage];
-export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];

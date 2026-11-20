@@ -1,5 +1,16 @@
-import type { ChangeEvent, FocusEvent, MouseEvent, RefObject } from 'react';
-import type { BtnVariant, KeyCode } from './constants';
+import type {
+  ButtonHTMLAttributes,
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+  RefObject,
+} from 'react';
+import type {
+  BtnVariant,
+  KeyCode,
+  PopupRole,
+  ValidationMessage,
+} from './constants';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
@@ -97,3 +108,10 @@ export type Language = Record<string, string>;
 export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
 
 export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
+
+export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
+
+export type ValidationMessageValue =
+  (typeof ValidationMessage)[keyof typeof ValidationMessage];
+
+export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];

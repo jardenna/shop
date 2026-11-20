@@ -1,5 +1,5 @@
-import { type BtnType, type IconNameValue } from '../types/constants';
-import type { AriaHasPopup, BtnVariantValue } from '../types/types';
+import { type IconNameValue } from '../types/constants';
+import type { AriaHasPopup, BtnType, BtnVariantValue } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
