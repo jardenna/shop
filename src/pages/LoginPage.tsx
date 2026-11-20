@@ -11,7 +11,6 @@ import { cartStorageUtil } from '../features/cart/utils/cartStorageUtil';
 import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { ShopPath } from '../layout/nav/enums';
-import { BtnVariant } from '../types/enums';
 import { validateLogin } from '../utils/validation/validateLogin';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
@@ -95,7 +94,7 @@ const LoginPage = () => {
             username={currentUser.username}
           >
             <Button
-              variant={BtnVariant.Secondary}
+              variant="secondary"
               onClick={() => {
                 logout();
               }}

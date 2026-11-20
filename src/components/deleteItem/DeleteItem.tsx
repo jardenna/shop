@@ -30,7 +30,7 @@ const DeleteItem = ({
           </p>
 
           <footer className="footer">
-            <Button variant={BtnVariant.Secondary} onClick={close}>
+            <Button variant="secondary" onClick={close}>
               {language.cancel}
             </Button>
 

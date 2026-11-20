@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import { ShopPath } from '../../layout/nav/enums';
-import { BtnVariant } from '../../types/enums';
 import './_empty-state.scss';
 import EmptyStateContent, {
   type BaseEmptyStateProps,
@@ -21,10 +20,7 @@ const EmptyState = ({
     emptyStateText={emptyStateText}
     src={src}
   >
-    <Link
-      to={`/${ShopPath.Collection}`}
-      className={`btn btn-${BtnVariant.Primary}`}
-    >
+    <Link to={`/${ShopPath.Collection}`} className="btn btn-primary">
       {emptyStateCtaText}
     </Link>
   </EmptyStateContent>

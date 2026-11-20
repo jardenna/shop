@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant } from '../types/enums';
 import type { RefFormType } from '../types/types';
 import Button from './Button';
 
@@ -59,7 +58,7 @@ const Form = ({
           <Button
             onClick={cancelBtnProps.onCancel}
             ariaLabel={ariaLabel}
-            variant={BtnVariant.Secondary}
+            variant="secondary"
             disabled={cancelBtnProps.isDisabled}
           >
             {cancelBtnProps.btnLabel || language.cancel}

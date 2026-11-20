@@ -52,7 +52,7 @@ const AdminOrderFooter = ({
       >
         {language.cancel} # {order.id}
         <footer className="footer">
-          <Button variant={BtnVariant.Secondary} onClick={closeModal}>
+          <Button variant="secondary" onClick={closeModal}>
             {language.dismiss}
           </Button>
           <Button

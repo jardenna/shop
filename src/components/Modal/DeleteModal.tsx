@@ -42,7 +42,7 @@ const DeleteModal = ({
     >
       {language.sureToDelete} {modalMessage}
       <footer className="footer">
-        <Button onClick={closeModal} variant={BtnVariant.Secondary}>
+        <Button onClick={closeModal} variant="secondary">
           {language.cancel}
         </Button>
         <Button

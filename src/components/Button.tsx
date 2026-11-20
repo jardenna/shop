@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import { BtnVariant, type BtnVariantValue } from '../types/enums';
+import { type BtnVariantValue } from '../types/enums';
 import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
@@ -25,7 +25,7 @@ const Button = ({
   type,
   id,
   tabIndex,
-  variant = BtnVariant.Primary,
+  variant = 'primary',
   onClick,
   onKeyDown,
   refCallback,

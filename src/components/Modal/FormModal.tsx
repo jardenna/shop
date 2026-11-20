@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal, { type ModalProps } from './Modal';
 import { useModal } from './useModal';
@@ -51,7 +50,7 @@ const FormModal = ({
         {children}
 
         <footer className="footer">
-          <Button onClick={handleClose} variant={BtnVariant.Secondary}>
+          <Button onClick={handleClose} variant="secondary">
             {language.cancel}
           </Button>
           <Button showBtnLoader={isLoading} type="submit" disabled={disabled}>

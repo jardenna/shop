@@ -4,7 +4,6 @@ import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
 import LayoutElement from '../../../layout/LayoutElement';
 import MetaTags from '../../../layout/MetaTags';
-import { BtnVariant } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 interface AdminReviewHeaderProps {
@@ -49,7 +48,7 @@ const AdminReviewHeader = ({
         showBtnLoader={isReadAllReviewLoading}
         className="read-review-action-btn"
         disabled={unreadCount === 0}
-        variant={BtnVariant.Secondary}
+        variant="secondary"
       >
         {language.markAllAsRead}
       </Button>

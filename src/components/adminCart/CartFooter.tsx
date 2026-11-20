@@ -57,7 +57,7 @@ const CartFooter = ({
         linkTo={linkTo}
         state={{ returnTo }}
         linkText={language.update}
-        variant={BtnVariant.Primary}
+        variant="primary"
       />
     </footer>
   );
