@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from './Skeleton';
+import Skeleton, { type SkeletonProps } from './Skeleton';
 
 const SkeletonButton = ({ width }: SkeletonProps) => (
   <Skeleton width={width} className="btn" />

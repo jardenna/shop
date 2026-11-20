@@ -1,5 +1,5 @@
 import '../_skeleton.scss';
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from '../Skeleton';
 
 const SkeletonPriceItem = ({ count = 5 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });

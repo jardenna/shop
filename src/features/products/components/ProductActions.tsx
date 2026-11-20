@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router';
 import ActionNavBtn, {
-  ActionNavItemProps,
+  type ActionNavItemProps,
 } from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';

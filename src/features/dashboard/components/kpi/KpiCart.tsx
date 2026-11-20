@@ -1,13 +1,13 @@
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
-import { IconName } from '../../../../types/enums';
-import { ChartData } from '../../../../types/types';
+import type { IconNameValue } from '../../../../types/enums';
+import type { ChartData } from '../../../../types/types';
 import { useCurrency } from '../../../currency/useCurrency';
-import { DashboardKpiId } from '../../dashboardUtils';
+import type { DashboardKpiId } from '../../dashboardUtils';
 import KpiCartLayout from './KpiCartLayout';
 
 export interface BaseKpiCartProps {
   description: string;
-  iconName: IconName;
+  iconName: IconNameValue;
   title: string;
 }
 

@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
+import type { Discount } from '../../../../app/api/apiTypes/sharedApiTypes';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Form from '../../../../components/Form';
 import Input from '../../../../components/formElements/Input';

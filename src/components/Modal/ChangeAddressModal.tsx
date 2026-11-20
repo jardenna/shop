@@ -1,9 +1,9 @@
 import { useId } from 'react';
-import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
+import type { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
-import { OptionType } from '../../types/types';
-import { BaseAddressListProps } from '../../utils/addressUtils';
+import type { OptionType } from '../../types/types';
+import type { BaseAddressListProps } from '../../utils/addressUtils';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
 import IconContent from '../IconContent';
@@ -23,7 +23,7 @@ const ChangeAddressModal = ({
   onChangeAddress,
   text,
 }: ChangeAddressModalProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'changeAddress';
   const { closeModal } = useModal();
 
@@ -52,7 +52,7 @@ const ChangeAddressModal = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
@@ -66,7 +66,7 @@ const ChangeAddressModal = ({
 
       <FormModal
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={text ?? language.changeStandardAddress}
         isLoading={false}
         onSubmit={onSubmit}

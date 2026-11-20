@@ -1,4 +1,4 @@
-import Skeleton, { PickedSkeletonTypes } from './Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from './Skeleton';
 import SkeletonBadge from './SkeletonBadge';
 
 const SkeletonAdminSubHeader = ({ width }: PickedSkeletonTypes) => (

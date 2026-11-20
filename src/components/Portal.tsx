@@ -28,6 +28,7 @@ const Portal = ({ children, portalId }: PortalProps) => {
       element = createWrapperAndAppendToBody(portalId);
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setWrapperElement(element);
 
     return () => {

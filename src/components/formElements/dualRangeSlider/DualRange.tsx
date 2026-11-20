@@ -1,8 +1,8 @@
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import './_range.scss';
 import DualRangeSlider from './DualRangeSlider';
 import RangeNumberInput from './RangeNumberInput';
-import { InputUtils, useRangeController } from './useRangeController';
+import { type InputUtils, useRangeController } from './useRangeController';
 
 interface DualRangeProps {
   inputLabels: InputUtils;

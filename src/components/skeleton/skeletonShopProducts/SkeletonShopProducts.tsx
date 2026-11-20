@@ -1,4 +1,4 @@
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from '../Skeleton';
 import SkeletonBreadCrumbs from '../SkeletonBreadCrumbs';
 
 import './_skeleton-shop-products.scss';

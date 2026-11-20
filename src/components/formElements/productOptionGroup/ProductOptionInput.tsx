@@ -1,5 +1,5 @@
 import IconContent from '../../IconContent';
-import { BaseProductOptionProps } from './ProductOptionGroup';
+import type { BaseProductOptionProps } from './ProductOptionGroup';
 
 interface ProductOptionInputProps extends BaseProductOptionProps {
   ariaLabel: string;

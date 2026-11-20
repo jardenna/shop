@@ -1,12 +1,13 @@
 import Cart from '../../../../components/carts/Cart';
-import { IconName } from '../../../../types/enums';
-import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
+import type { IconNameValue } from '../../../../types/enums';
+import type { DashboardKpiId } from '../../dashboardUtils';
+import { dashboardKpiVariants } from '../../dashboardUtils';
 import KpiContent from './KpiContent';
 
 interface KpiCartLayoutProps {
   children: React.ReactNode;
   description: string;
-  iconName: IconName;
+  iconName: IconNameValue;
   id: DashboardKpiId;
   kpiTotal: number | string;
   title: string;

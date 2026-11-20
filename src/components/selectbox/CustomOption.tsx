@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { OptionProps } from 'react-select';
+import type { OptionProps } from 'react-select';
 
 type CustomOptionProps<OptionType> = OptionProps<OptionType> & {
   render: (data: OptionType) => ReactNode;

@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
-import { FocusEventType } from '../../types/types';
+import type { FocusEventType } from '../../types/types';
 import LayoutElement from '../LayoutElement';
 import NavItem from './NavItem';
-import { NavListProps } from './navLists';
+import type { NavListProps } from './navLists';
 
 export interface NavProps {
   ariaLabel: string;
@@ -23,22 +23,21 @@ const Nav = ({
   unReadCount,
 }: NavProps) => {
   const location = useLocation();
-  const [isSubNavShown, setIsSubNavShown] = useState(false);
+  const [openedLocationKey, setOpenedLocationKey] = useState<string | null>(
+    null,
+  );
+
+  const isSubNavShown = openedLocationKey === location.key;
 
   const handleShowSubNav = () => {
-    setIsSubNavShown(true);
+    setOpenedLocationKey(location.key);
   };
+
   const handleHideSubNav = () => {
-    setIsSubNavShown(false);
+    setOpenedLocationKey(null);
   };
 
-  useEffect(() => {
-    handleHideSubNav();
-  }, [location]);
-
-  useKeyPress(() => {
-    handleHideSubNav();
-  }, [KeyCode.Esc]);
+  useKeyPress(handleHideSubNav, [KeyCode.Esc]);
 
   return (
     <LayoutElement as="nav" ariaLabel={ariaLabel} className={className}>
@@ -75,5 +74,4 @@ const Nav = ({
     </LayoutElement>
   );
 };
-
 export default Nav;

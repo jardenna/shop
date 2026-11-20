@@ -1,5 +1,5 @@
-import { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
-import { Column } from '../../../components/sortTable/SortTable';
+import type { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
+import type { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<SubCategoryResponse>[] = [
   {

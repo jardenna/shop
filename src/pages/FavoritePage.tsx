@@ -15,7 +15,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import CartForm, {
-  InitialShopValues,
+  type InitialShopValues,
 } from '../features/shop/components/singleProduct/CartForm';
 import MainPageContainer from './pageContainer/MainPageContainer';
 

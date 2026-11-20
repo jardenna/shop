@@ -8,18 +8,18 @@ import {
   statusValues,
   subCategoryValues,
 } from '../../../app/api/apiConstants';
-import { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
-import {
+import type { Roles, Status } from '../../../app/api/apiTypes/adminApiTypes';
+import type {
   DeliveryStatusFilterValues,
   PaymentMethodFilterValues,
   PaymentStatusFilterValues,
 } from '../../../app/api/apiTypes/orderApiTypes';
-import {
+import type {
   MainCategoryNames,
   SubCategoryNames,
 } from '../../../app/api/apiTypes/sharedApiTypes';
-import { OptionType } from '../../../types/types';
-import { Column } from '../SortTable';
+import type { OptionType } from '../../../types/types';
+import type { Column } from '../SortTable';
 
 export interface ListsMap {
   categoryName: readonly MainCategoryNames[];

@@ -1,5 +1,5 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   CurrentPromoResponse,
   PromoCode,
   PromoCodeResponse,

@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant, IconName } from '../types/enums';
+import { BtnVariant, type BtnVariantValue, IconName } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';
 
 interface ClearFilterBtnProps {
   disabled: boolean;
-  children?: ReactNode;
+  children?: ReactElement;
   showIcon?: boolean;
-  variant?: BtnVariant;
+  variant?: BtnVariantValue;
   onClick: () => void;
 }
 

@@ -1,5 +1,5 @@
 import { roleValues, statusValues } from '../apiConstants';
-import { DefaultResponse, SortOrder } from './sharedApiTypes';
+import type { DefaultResponse, SortOrder } from './sharedApiTypes';
 
 export type Roles = (typeof roleValues)[number];
 

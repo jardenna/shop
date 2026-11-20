@@ -1,6 +1,6 @@
 import SectionHeading from '../../../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../../../app/api/apiConstants';
-import { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
+import type { PaymentMethods } from '../../../../app/api/apiTypes/paymentApiTypes';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import { useLanguage } from '../../../language/useLanguage';
 import MyOrderDetailItem from './MyOrderDetailItem';

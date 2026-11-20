@@ -9,33 +9,37 @@ import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useAppDispatch();
 
-  const [shouldFetch, setShouldFetch] = useState(() => {
+  const [cache] = useState(() => {
     const cached = localStorage.getItem(currencyCacheKey);
     const error = localStorage.getItem(localStorageKeys.currencyApiError);
 
     if (error) {
-      return false;
+      return { shouldFetch: false, rates: null };
     }
+
     if (cached) {
       const { timestamp, rates } = JSON.parse(cached);
       const isFresh = Date.now() - timestamp < oneDay;
+
       if (isFresh) {
-        dispatch(setRates(rates));
-        return false; // skip fetching
+        return { shouldFetch: false, rates };
       }
     }
-    return true; // fetch if no valid cache
+
+    return { shouldFetch: true, rates: null };
   });
 
-  const {
-    data: currency,
-
-    error,
-  } = useGetExchangeRatesQuery(undefined, {
-    pollingInterval: shouldFetch ? oneDay : undefined,
-    skip: !shouldFetch,
+  const { data: currency, error } = useGetExchangeRatesQuery(undefined, {
+    pollingInterval: cache.shouldFetch ? oneDay : undefined,
+    skip: !cache.shouldFetch,
     skipPollingIfUnfocused: true,
   });
+
+  useEffect(() => {
+    if (cache.rates) {
+      dispatch(setRates(cache.rates));
+    }
+  }, [cache.rates, dispatch]);
 
   useEffect(() => {
     if (currency?.data) {
@@ -59,7 +63,6 @@ const CurrencyProvider = ({ children }: { children: ReactNode }) => {
     if (error) {
       dispatch(setRates({ DKK: 1 }));
       localStorage.setItem(localStorageKeys.currencyApiError, 'true');
-      setShouldFetch(false);
     }
   }, [error, dispatch]);
 

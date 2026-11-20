@@ -1,16 +1,16 @@
 import { Link } from 'react-router';
-import { Order } from '../../../app/api/apiTypes/cartApiTypes';
+import type { Order } from '../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../components/deleteItem/DeleteItem';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
+import type { InputChangeHandler } from '../../../types/types';
 import { minInStock, translateKey } from '../../../utils/utils';
-import { ProductQuantityMap } from '../../shop/cartUtils';
+import type { ProductQuantityMap } from '../../shop/cartUtils';
 import InStock from '../../shop/components/InStock';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import { BaseCartProps } from './CartList';
-import { InputChangeHandler } from '../../../types/types';
+import type { BaseCartProps } from './CartList';
 
 interface CartItemProps extends BaseCartProps {
   cart: Order;

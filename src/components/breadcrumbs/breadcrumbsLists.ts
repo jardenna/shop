@@ -1,5 +1,5 @@
 import { ShopPath } from '../../layout/nav/enums';
-import { BreadcrumbsListProps } from './Breadcrumbs';
+import type { BreadcrumbsListProps } from './Breadcrumbs';
 
 export const collectionBreadcrumbsList: BreadcrumbsListProps[] = [
   { path: ShopPath.CollectionCategory },

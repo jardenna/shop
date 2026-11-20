@@ -1,4 +1,4 @@
-import { Status } from '../../app/api/apiTypes/adminApiTypes';
+import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';
 import { translateKey } from '../../utils/utils';

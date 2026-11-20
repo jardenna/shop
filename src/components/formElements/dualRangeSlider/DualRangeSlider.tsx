@@ -1,8 +1,8 @@
 import { useId } from 'react';
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import VisuallyHidden from '../../VisuallyHidden';
 import RangeSliderInput from './RangeSliderInput';
-import { InputUtils } from './useRangeController';
+import type { InputUtils } from './useRangeController';
 
 interface DualRangeSliderProps {
   committed: {

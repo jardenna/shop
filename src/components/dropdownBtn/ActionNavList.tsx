@@ -15,7 +15,7 @@ const ActionNavList = ({
   defaultIndex,
   closePopup,
 }: ActionNavListProps) => {
-  const { itemRefs, handleKeyDown } = useRovingTabIndex({
+  const { itemsRef, handleKeyDown } = useRovingTabIndex({
     defaultIndex,
     itemCount: actionNavDropdownList.length,
   });
@@ -38,7 +38,7 @@ const ActionNavList = ({
               onKeyDown={handleKeyDown}
               disabled={disabled}
               refCallback={(element) => {
-                itemRefs.current[index] = element;
+                itemsRef.current[index] = element;
               }}
             >
               <span>{label}</span>

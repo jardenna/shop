@@ -34,7 +34,7 @@ const AccountFormModal = ({
   profile,
   profileFieldList,
 }: AccountFormModalProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'account-form';
   const { language } = useLanguage();
   const { onAddToast } = useToast();
@@ -80,7 +80,7 @@ const AccountFormModal = ({
     <>
       <TriggerModalButton
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         className="account-trigger-modal"
       >
         {language.update}
@@ -89,7 +89,7 @@ const AccountFormModal = ({
         isLoading={isLoading}
         onSubmit={onSubmit}
         modalId={modalId}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={language.updateYourInfo}
         disabled={!isFormDirty}
         onClearAllValues={onClearAllValues}

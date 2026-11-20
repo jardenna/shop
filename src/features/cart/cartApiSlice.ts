@@ -1,5 +1,5 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   AddToCartRequest,
   BaseOrder,
   CartListResponse,
@@ -7,8 +7,8 @@ import {
   UpdateCartQtyRequest,
   UpdateCartRequest,
 } from '../../app/api/apiTypes/cartApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
-import { QtyResponse } from '../../app/api/apiTypes/shopApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { QtyResponse } from '../../app/api/apiTypes/shopApiTypes';
 import {
   cartUrl,
   guestCartUrl,

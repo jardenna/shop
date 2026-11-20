@@ -1,4 +1,4 @@
-import { CartItem } from '../../../app/api/apiTypes/cartApiTypes';
+import type { CartItem } from '../../../app/api/apiTypes/cartApiTypes';
 import { localStorageKeys } from '../../../hooks/useLocalStorage';
 
 export const cartStorageUtil = {
@@ -6,7 +6,12 @@ export const cartStorageUtil = {
     try {
       const storedValue = localStorage.getItem(localStorageKeys.cartItems);
 
-      return storedValue ? (JSON.parse(storedValue) satisfies CartItem[]) : [];
+      if (!storedValue) {
+        return [];
+      }
+
+      const parsedValue: unknown = JSON.parse(storedValue);
+      return Array.isArray(parsedValue) ? (parsedValue as CartItem[]) : [];
     } catch {
       return [];
     }

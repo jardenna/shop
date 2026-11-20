@@ -1,4 +1,4 @@
-import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
+import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import './_nav.scss';
 import type { NavProps } from './Nav';
 import Nav from './Nav';

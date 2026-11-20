@@ -1,5 +1,5 @@
-import { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
-import { Column } from '../../../components/sortTable/SortTable';
+import type { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
+import type { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<UserResponse>[] = [
   {

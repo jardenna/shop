@@ -1,4 +1,4 @@
-import { SkeletonProps } from '../Skeleton';
+import type { SkeletonProps } from '../Skeleton';
 import SkeletonKpiCart from './SkeletonKpiCart';
 import SkeletonPeriodKpiCart from './SkeletonPeriodKpiCart';
 import './_skeleton-kpi-list.scss';

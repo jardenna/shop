@@ -1,5 +1,5 @@
-import { Address } from './addressApiTypes';
-import { PaymentMethods } from './paymentApiTypes';
+import type { Address } from './addressApiTypes';
+import type { PaymentMethods } from './paymentApiTypes';
 import type {
   DefaultResponse,
   Discount,

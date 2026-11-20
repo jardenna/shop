@@ -2,8 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate } from 'react-router';
-import { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
-import { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
+import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
+import type { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
 import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';

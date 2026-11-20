@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from './Skeleton';
+import Skeleton, { type SkeletonProps } from './Skeleton';
 
 const SkeletonNavItem = ({ width, className = '' }: SkeletonProps) => (
   <div className={`skeleton-nav-item ${className}`}>

@@ -11,7 +11,7 @@ import { BtnVariant } from '../../../types/enums';
 import type { BlurEventType, InputChangeHandler } from '../../../types/types';
 import { roleList } from '../../../utils/productLists';
 import { useLanguage } from '../../language/useLanguage';
-import { BaseCreateAccountProps } from './CreateAccount';
+import type { BaseCreateAccountProps } from './CreateAccount';
 
 interface UserFields {
   email: string;

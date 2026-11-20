@@ -1,4 +1,4 @@
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from '../Skeleton';
 
 const SkeletonOverviewGroup = ({ count = 3 }: PickedSkeletonTypes) => {
   const skeletons = Array.from({ length: count });

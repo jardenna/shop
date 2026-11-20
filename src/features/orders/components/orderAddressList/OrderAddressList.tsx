@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { Address } from '../../../../app/api/apiTypes/addressApiTypes';
+import type { Address } from '../../../../app/api/apiTypes/addressApiTypes';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import { useLanguage } from '../../../language/useLanguage';
 import './_order-address-list.scss';

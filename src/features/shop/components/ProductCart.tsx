@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { Link } from 'react-router';
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import Badge from '../../../components/badge/Badge';
 import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
@@ -23,11 +23,11 @@ const ProductCart = ({
   linkTo,
   isOutOfStock,
 }: ProductCartProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { language } = useLanguage();
 
   return (
-    <article aria-labelledby={ariaLabelledby} className="product-cart">
+    <article aria-labelledby={ariaLabelledbyId} className="product-cart">
       <div className="position-relative">
         <Link to={linkTo}>
           <VisuallyHidden>
@@ -60,7 +60,7 @@ const ProductCart = ({
       </div>
 
       <ProductCartContent
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         linkTo={linkTo}
         product={product}
         productView={productView}

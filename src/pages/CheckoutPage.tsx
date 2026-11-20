@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import SectionHeading from '../adminLayout/sectionHeading/SectionHeading';
-import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
+import type { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useToast } from '../components/toast/hooks/useToast';
@@ -30,7 +30,7 @@ import { ShopPath } from '../layout/nav/enums';
 import {
   findStandardAddress,
   getUpdatedAddresses,
-  StandardAddressIds,
+  type StandardAddressIds,
 } from '../utils/addressUtils';
 import './checkoutPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
@@ -144,7 +144,7 @@ const CheckoutPage = () => {
     }).unwrap();
 
     await deleteCart().unwrap();
-    navigate(`/${ShopPath.MyOrders}/${order.id}`);
+    void navigate(`/${ShopPath.MyOrders}/${order.id}`);
 
     onAddToast({
       message: language.orderCreated,

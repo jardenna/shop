@@ -1,5 +1,5 @@
 import './_chip.scss';
-import { ChipVariant } from './chipsUtils';
+import type { ChipVariant } from './chipsUtils';
 
 interface ChipProps {
   chipText: string;

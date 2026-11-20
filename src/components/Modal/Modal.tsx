@@ -1,4 +1,4 @@
-import { ReactNode, useId, useRef } from 'react';
+import { useId, useRef, type ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';
@@ -7,7 +7,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';

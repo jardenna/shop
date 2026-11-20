@@ -13,7 +13,7 @@ import { useLanguage } from '../features/language/useLanguage';
 import {
   findStandardAddress,
   getAddressUpdates,
-  StandardAddressIds,
+  type StandardAddressIds,
 } from '../utils/addressUtils';
 
 const AddressPage = () => {

@@ -1,4 +1,4 @@
-import DateDisplay, { DateDisplayProps } from './DateDisplay';
+import DateDisplay, { type DateDisplayProps } from './DateDisplay';
 
 interface DateRangeProps {
   endDate: Date;

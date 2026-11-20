@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
+import type { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import ClearFilterBtn from '../components/ClearFilterBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FilterPanel from '../components/filterPanel/FilterPanel';
@@ -26,7 +26,7 @@ import { getFilterSummary } from '../utils/utils';
 import './adminReviewPage.styles.scss';
 
 const AdminReviewPage = () => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { language } = useLanguage();
   const { onAddToast } = useToast();
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
@@ -112,12 +112,12 @@ const AdminReviewPage = () => {
     >
       <section
         className="admin-page page-medium admin-review-page"
-        aria-labelledby={ariaLabelledby}
+        aria-labelledby={ariaLabelledbyId}
       >
         bread crumb
         {unreadCount && (
           <AdminReviewHeader
-            ariaLabelledby={ariaLabelledby}
+            ariaLabelledby={ariaLabelledbyId}
             unreadCount={unreadCount.unreadCount}
             onReadAllReviews={handleReadAllReviews}
             isReadAllReviewLoading={isReadAllReviewLoading}

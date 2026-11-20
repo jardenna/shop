@@ -1,4 +1,4 @@
-import { DefaultResponse } from './sharedApiTypes';
+import type { DefaultResponse } from './sharedApiTypes';
 
 export type AddressFields = {
   city: string;

@@ -2,7 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { useLocation } from 'react-router';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../types/types';
 
 interface AdminPageContainerProps {
   children: ReactNode;
@@ -21,20 +21,20 @@ const AdminPageContainer = ({
   variant = 'large',
   className = '',
 }: AdminPageContainerProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const location = useLocation();
 
   return (
     <section
       className={`admin-page page-${variant} ${className}`}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <MetaTags metaTitle={heading} />
       <PageHeader
         heading={heading}
         linkText={linkText}
         linkTo={linkTo}
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         state={{
           returnTo: `${location.pathname}${location.search}`,
         }}

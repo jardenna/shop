@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
 interface ReviewStatsCardProps {
-  children: ReactNode;
+  children: ReactElement;
   heading: string;
   text: number;
 }

@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type { ProductMenuResponse } from '../../app/api/apiTypes/shopApiTypes';
 import Breadcrumbs, {
-  BreadcrumbsListProps,
+  type BreadcrumbsListProps,
 } from '../../components/breadcrumbs/Breadcrumbs';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';

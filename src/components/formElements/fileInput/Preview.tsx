@@ -1,5 +1,5 @@
 import { Fragment } from 'react/jsx-runtime';
-import { BaseImageUploadProps } from '../../../features/products/components/ImageUpload';
+import type { BaseImageUploadProps } from '../../../features/products/components/ImageUpload';
 import ImgListItem from './ImgListItem';
 
 export type PreviewImg = {

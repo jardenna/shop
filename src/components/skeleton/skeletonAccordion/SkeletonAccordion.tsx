@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from '../Skeleton';
+import Skeleton, { type SkeletonProps } from '../Skeleton';
 import './_skeleton-accordion.scss';
 
 const SkeletonAccordion = ({ count = 4 }: SkeletonProps) => (

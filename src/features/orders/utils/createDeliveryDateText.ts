@@ -1,14 +1,14 @@
 import { addBusinessDays } from 'date-fns';
-import { Delivery } from '../../../app/api/apiTypes/orderApiTypes';
+import type { Delivery } from '../../../app/api/apiTypes/orderApiTypes';
+import { newDate } from '../../../utils/dates';
 
 export const createDeliveryDateText = (delivery: Delivery) => {
-  const currentDate = new Date();
   const latestHistory = delivery.statusHistory.at(-1);
   switch (delivery.status) {
     case 'created':
       return {
         text: 'estimatedDelivery',
-        date: addBusinessDays(currentDate, 4),
+        date: addBusinessDays(newDate, 4),
       };
     case 'delivered':
       return {
@@ -28,10 +28,10 @@ export const createDeliveryDateText = (delivery: Delivery) => {
     case 'processing':
       return {
         text: 'estimatedDelivery',
-        date: addBusinessDays(currentDate, 3),
+        date: addBusinessDays(newDate, 3),
       };
 
     default:
-      throw new Error(`Unsupported delivery status: ${delivery.status}`);
+      throw new Error('Unsupported delivery status');
   }
 };

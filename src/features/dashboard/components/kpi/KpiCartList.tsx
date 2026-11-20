@@ -1,5 +1,5 @@
-import { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
-import {
+import type { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
+import type {
   PeriodKpiResponse,
   TotalKpiResponse,
 } from '../../../../app/api/apiTypes/dashboardApiTypes';

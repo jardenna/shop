@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import Picture from '../Picture';
 import './_image-text-grid.scss';
 

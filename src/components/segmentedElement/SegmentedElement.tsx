@@ -1,12 +1,12 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
-import { InputChangeHandler, OptionType } from '../../types/types';
+import type { IconNameValue } from '../../types/enums';
+import type { InputChangeHandler, OptionType } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
 import SegmentedInput from './SegmentedInput';
 
 interface RadioButtonListProps extends OptionType {
-  iconName?: IconName;
+  iconName?: IconNameValue;
 }
 
 interface SegmentedElementProps {

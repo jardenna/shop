@@ -1,12 +1,12 @@
 import { useId, useState } from 'react';
 import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
-import { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
+import type { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { BtnVariant } from '../../../types/enums';
+import { BtnVariant, type BtnVariantValue } from '../../../types/enums';
 import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
@@ -21,7 +21,7 @@ interface NotifyMeFormProps {
   currentUser: UserResponse | null;
   isOutOfStock: boolean;
   options: string[];
-  btnVariant?: BtnVariant;
+  btnVariant?: BtnVariantValue;
 }
 
 const NotifyMeForm = ({
@@ -30,7 +30,7 @@ const NotifyMeForm = ({
   isOutOfStock,
   btnVariant = BtnVariant.Ghost,
 }: NotifyMeFormProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'notify';
   const { language } = useLanguage();
   const { closeModal, openModal } = useModal();
@@ -67,7 +67,7 @@ const NotifyMeForm = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={btnVariant}
         onClick={handleOpenModal}
@@ -85,9 +85,10 @@ const NotifyMeForm = ({
             ? language.currentlyUnavailableSizes
             : language.temporarilyOutOfStock
         }
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
       >
         <form
+          noValidate
           onSubmit={(event) => {
             event.preventDefault();
             onSubmit();

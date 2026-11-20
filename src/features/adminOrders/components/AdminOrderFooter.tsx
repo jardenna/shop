@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
+import type { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../components/Button';
 import DownloadPdfBtn from '../../../components/DownloadPdfBtn';
 import Modal from '../../../components/Modal/Modal';
@@ -23,7 +23,7 @@ const AdminOrderFooter = ({
   order,
   triggerModalDisabled,
 }: AdminOrderFooterProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'cancel-order';
 
   const { closeModal } = useModal();
@@ -39,14 +39,14 @@ const AdminOrderFooter = ({
     <footer className="footer">
       <TriggerModalButton
         variant={BtnVariant.Danger}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         disabled={triggerModalDisabled}
       >
         {language.cancelOrder}
       </TriggerModalButton>
       <Modal
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         headerText={language.cancelOrder}
       >

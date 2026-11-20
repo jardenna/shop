@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { isAdminPath, toCamelCase } from '../../utils/utils';
-import { BreadcrumbsProps } from './Breadcrumbs';
+import type { BreadcrumbsProps } from './Breadcrumbs';
 
 const splitPath = (path: string) => path.split('/').filter(Boolean);
 

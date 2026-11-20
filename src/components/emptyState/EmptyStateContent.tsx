@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import Picture from '../Picture';
 
 export interface BaseEmptyStateProps {
@@ -9,7 +9,7 @@ export interface BaseEmptyStateProps {
 }
 
 interface EmptyStateContentProps extends BaseEmptyStateProps {
-  children: ReactNode;
+  children: ReactElement;
 }
 
 const EmptyStateContent = ({

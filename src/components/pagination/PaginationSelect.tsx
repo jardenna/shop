@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 

@@ -1,4 +1,4 @@
-import { Link, LinkProps } from 'react-router';
+import { Link, type LinkProps } from 'react-router';
 import { IconName } from '../types/enums';
 import Icon from './icons/Icon';
 

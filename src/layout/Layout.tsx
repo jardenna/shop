@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
-import { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
+import type { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -138,11 +138,13 @@ const Layout = () => {
         }}
       />
       <RouteErrorBoundary>
-        <main id="main">
-          <Outlet />
-          <MiniCartPopup />
-        </main>
-        <Footer />
+        <>
+          <main id="main">
+            <Outlet />
+            <MiniCartPopup />
+          </main>
+          <Footer />
+        </>
       </RouteErrorBoundary>
       <ScrollRestoration />
     </div>

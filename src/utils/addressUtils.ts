@@ -1,5 +1,8 @@
-import { Address, StandardAddress } from '../app/api/apiTypes/addressApiTypes';
-import { Language } from '../types/types';
+import type {
+  Address,
+  StandardAddress,
+} from '../app/api/apiTypes/addressApiTypes';
+import type { Language } from '../types/types';
 
 export interface StandardAddressIds {
   billingAddressId: string;

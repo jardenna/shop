@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type {
   BlurEventType,
   ChangeInputType,
@@ -44,25 +44,14 @@ export function useFormValidation<T extends KeyValuePair>({
   const [values, setValues] = useState<T>(initialState);
   const [errors, setErrors] = useState<KeyValuePair<string>>({});
   const [touched, setTouched] = useState<string[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [filesData, setFilesData] = useState<File[]>([]);
   const [previewData, setPreviewData] = useState<ValidatedFile[]>([]);
 
-  useEffect(() => {
-    if (isSubmitting) {
-      const noErrors = !Object.keys(errors).length;
-      if (noErrors) {
-        setTouched([]);
-      }
-      setIsSubmitting(false);
-    }
-  }, [errors]);
-
   function clearFieldError(name: string) {
     setErrors((previous) => {
       const updatedErrors = { ...previous };
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+
       delete updatedErrors[name];
       return updatedErrors;
     });
@@ -250,18 +239,21 @@ export function useFormValidation<T extends KeyValuePair>({
   const onSubmit = () => {
     const validationErrors = validate ? validate(values) : {};
     const formHasNoErrors = !Object.keys(validationErrors).length;
+
     if (isLoading) {
       return;
     }
+
     if (formHasNoErrors) {
-      setIsSubmitting(true);
-      if (callback) {
-        callback(values);
-      }
-    } else {
-      setErrors(validationErrors);
-      scrollToFirstError(validationErrors);
+      setErrors({});
+      setTouched([]);
+
+      callback?.(values);
+      return;
     }
+
+    setErrors(validationErrors);
+    scrollToFirstError(validationErrors);
   };
 
   return {

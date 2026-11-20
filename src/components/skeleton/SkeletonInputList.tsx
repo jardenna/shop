@@ -1,4 +1,4 @@
-import SkeletonInput, { SkeletonInputProps } from './SkeletonInput';
+import SkeletonInput, { type SkeletonInputProps } from './SkeletonInput';
 
 const SkeletonInputList = ({
   count = 3,

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { BtnVariant, IconName } from '../../types/enums';
 import Button from '../Button';
 import IconContent from '../IconContent';

@@ -4,8 +4,8 @@ import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler, OptionType } from '../../../types/types';
-import { Values } from '../Header';
+import type { InputChangeHandler, OptionType } from '../../../types/types';
+import type { Values } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 interface LanguageProps {
@@ -27,7 +27,7 @@ const LanguageModal = ({
   onSelectCurrency,
   localLanguage,
 }: LanguageProps) => {
-  const ariaControls = useId();
+  const ariaControlsId = useId();
   const modalId = 'language';
 
   const { closeModal } = useModal();
@@ -40,7 +40,7 @@ const LanguageModal = ({
   return (
     <>
       <TriggerModalButton
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         modalId={modalId}
         variant={BtnVariant.Ghost}
       >
@@ -51,7 +51,7 @@ const LanguageModal = ({
       </TriggerModalButton>
       <FormModal
         submitLabel={localLanguage.updatePreferences}
-        ariaControls={ariaControls}
+        ariaControls={ariaControlsId}
         headerText={localLanguage.preferences}
         modalId={modalId}
         isLoading={false}

@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import SectionHeading from '../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
-import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
+import type { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
@@ -134,7 +134,9 @@ const AdminOrderDetailsPage = () => {
                 tableCaption={language.orderSummaryList}
                 tableHeaderList={tableHeaderList}
                 tableDataList={order.delivery.statusHistory}
-                rowKey={({ status, changedAt }) => `${status}-${changedAt}`}
+                rowKey={({ status, changedAt }) =>
+                  `${status}-${changedAt.getTime()}`
+                }
                 renderCells={({ status, changedAt, changedBy, actorType }) => (
                   <>
                     <td>{language[status]}</td>

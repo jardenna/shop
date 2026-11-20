@@ -1,11 +1,12 @@
-import { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { ReactElement } from 'react';
+import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { getProductLink } from '../cartUtils';
 import ProductCart from './ProductCart';
 
 interface ProductCartListProps {
   products: BaseProduct[];
   productView?: string;
-  children?: (product: BaseProduct) => React.ReactNode;
+  children?: (product: BaseProduct) => ReactElement;
 }
 const ProductCartList = ({
   products,

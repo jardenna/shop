@@ -14,7 +14,7 @@ import { ShopPath } from '../../layout/nav/enums';
 import ProductPageContainer from './ProductPageContainer';
 
 const Salespage = () => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { categoryId } = useParams();
   const { language } = useLanguage();
 
@@ -51,10 +51,10 @@ const Salespage = () => {
   return (
     <section
       className="container shop-product-page sales-page"
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <ProductPageContainer
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         altText={language[altText]}
         breadcrumbsList={saleBreadcrumbsList}
         refetch={refetch}

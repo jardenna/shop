@@ -3,7 +3,7 @@ import CountBadge from '../../components/countBadge/CountBadge';
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { AriaHasPopup, FocusEventType } from '../../types/types';
-import { NavListProps } from './navLists';
+import type { NavListProps } from './navLists';
 import SubNav from './subNav/SubNav';
 
 interface NavItemProps {

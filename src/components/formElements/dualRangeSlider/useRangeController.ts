@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { useEffect, useRef, useState } from 'react';
-import { ChangeInputType } from '../../../types/types';
+import type { ChangeInputType } from '../../../types/types';
 import {
   normalizeValueWithinRange,
   parseFiniteNumberOrNull,

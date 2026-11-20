@@ -1,15 +1,15 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/enums';
 import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
-import ControlInput, { BaseControlInputProps } from '../ControlInput';
+import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_radio-tile-list.scss';
 
 interface RadioTileListProps extends BaseControlInputProps {
   checked: string;
   radioButtonList: OptionType[];
   className?: string;
-  iconName?: IconName;
+  iconName?: IconNameValue;
 }
 
 const RadioTileList = ({

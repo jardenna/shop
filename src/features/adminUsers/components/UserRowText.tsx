@@ -1,5 +1,5 @@
 import MailTo from '../../../components/MailTo';
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 
 interface UserRowTextProps {

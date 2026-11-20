@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate } from 'react-router';
-import { Category } from '../../../app/api/apiTypes/categoryApiTypes';
-import { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
+import type { Category } from '../../../app/api/apiTypes/categoryApiTypes';
+import type { SubCategoryResponse } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';

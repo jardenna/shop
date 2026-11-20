@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from '../Skeleton';
+import Skeleton, { type SkeletonProps } from '../Skeleton';
 import SkeletonButton from '../SkeletonButton';
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonParagraph from '../SkeletonParagraph';

@@ -1,6 +1,6 @@
 import type { CurrencyResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { currencyApiSlice } from '../../app/api/currencyApiSlice';
-import { currencies, CurrencyCode } from './currencyConverterUtil';
+import { currencies, type CurrencyCode } from './currencyConverterUtil';
 
 const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY;
 

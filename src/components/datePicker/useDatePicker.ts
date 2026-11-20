@@ -1,9 +1,10 @@
 import { format, setHours, setMinutes } from 'date-fns';
 import { useState } from 'react';
 import type { ChangeInputType } from '../../types/types';
+import { newDate } from '../../utils/dates';
 
 export const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
-  const initTime = initialTime || new Date();
+  const initTime = initialTime || newDate;
   const formattedTime = format(initTime, 'HH:mm');
   const [selectedDate, setSelectedDate] = useState<Date>(initTime);
   const [timeValue, setTimeValue] = useState(formattedTime);

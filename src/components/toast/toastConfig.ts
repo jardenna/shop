@@ -1,11 +1,11 @@
-import { IconName } from '../../types/enums';
-import { ToastRole } from '../../types/types';
+import { IconName, type IconNameValue } from '../../types/enums';
+import type { ToastRole } from '../../types/types';
 
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 
 export const toastTypeConfig: Record<
   ToastTypes,
-  { iconName: IconName; role: ToastRole }
+  { iconName: IconNameValue; role: ToastRole }
 > = {
   success: {
     iconName: IconName.Success,

@@ -1,12 +1,12 @@
-import { DependencyList, useEffect, useRef, useState } from 'react';
+import { type DependencyList, useEffect, useRef, useState } from 'react';
 
 export const useAnnounce = (deps: DependencyList) => {
-  const hasMounted = useRef(false);
+  const hasMountedRef = useRef(false);
   const [announce, setAnnounce] = useState(false);
 
   useEffect(() => {
-    if (!hasMounted.current) {
-      hasMounted.current = true;
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
       return;
     }
 

@@ -1,10 +1,10 @@
-import { IconName } from '../types/enums';
+import { type IconNameValue } from '../types/enums';
 import IconBtn from './IconBtn';
 
 export interface DisplayControlItem {
   ariaLabel: string;
   display: string;
-  iconName: IconName;
+  iconName: IconNameValue;
 }
 
 interface DisplayControlsProps {

@@ -1,4 +1,4 @@
-import { createPopper, Instance, Placement } from '@popperjs/core';
+import { createPopper, type Instance, type Placement } from '@popperjs/core';
 import { useEffect, useRef, useState } from 'react';
 import { useClickOutside } from './useClickOutside';
 import { useMoveFocus } from './useMoveFocus';

@@ -1,5 +1,5 @@
-import { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
-import { AppDispatch } from '../../app/store';
+import type { BaseShopProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type { AppDispatch } from '../../app/store';
 import { shopApiSlice } from '../shop/shopApiSlice';
 import { useUploadImageMutation } from '../uploadImageApiSlice';
 

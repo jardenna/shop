@@ -7,9 +7,9 @@ import EmptyStateContent from '../../components/emptyState/EmptyStateContent';
 import FilterPanel from '../../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../../components/LiveAnnouncement';
 import NotFoundError from '../../components/NotFoundError';
-import { usePaginationText } from '../../components/pagination/hooks/usePaginationText';
 import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
 import Pagination from '../../components/pagination/Pagination';
+import { paginationText } from '../../components/pagination/utils/paginationText';
 import { useTogglePanel } from '../../components/panel/useTogglePanel';
 import SkeletonShopProducts from '../../components/skeleton/skeletonShopProducts/SkeletonShopProducts';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -24,7 +24,7 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { ShopPath } from '../../layout/nav/enums';
-import { OptionType } from '../../types/types';
+import type { OptionType } from '../../types/types';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
@@ -42,7 +42,7 @@ export interface InitialFilters {
 
 const CollectionPage = () => {
   const { category, categoryId } = useParams();
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
   const { language } = useLanguage();
   const { isMobileSize } = useMediaQuery();
 
@@ -123,7 +123,7 @@ const CollectionPage = () => {
 
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
-  const { infoText, paginationMobileText, ariaLiveText } = usePaginationText({
+  const { infoText, paginationMobileText, ariaLiveText } = paginationText({
     page,
     itemsPerPage,
     itemCount,
@@ -148,10 +148,10 @@ const CollectionPage = () => {
     <section
       className="container shop-product-page"
       ref={scrollToRef}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <ProductPageContainer
-        ariaLabelledby={ariaLabelledby}
+        ariaLabelledby={ariaLabelledbyId}
         altText={language[altText]}
         breadcrumbsList={collectionBreadcrumbsList}
         refetch={refetch}

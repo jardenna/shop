@@ -1,4 +1,4 @@
-import { DefaultResponse } from './sharedApiTypes';
+import type { DefaultResponse } from './sharedApiTypes';
 
 export interface BasePromoCode {
   code: string;

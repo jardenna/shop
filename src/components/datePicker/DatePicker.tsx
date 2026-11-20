@@ -1,7 +1,8 @@
-import { DayPicker, OnSelectHandler } from 'react-day-picker';
+import { DayPicker, type OnSelectHandler } from 'react-day-picker';
 import { da, enGB } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
 import { useLanguage } from '../../features/language/useLanguage';
+import { newDate } from '../../utils/dates';
 import VisuallyHidden from '../VisuallyHidden';
 import './_date-picker.scss';
 
@@ -57,7 +58,7 @@ const DatePicker = ({
         mode="single"
         selected={selectedDate}
         onSelect={onSelectDate}
-        today={new Date()}
+        today={newDate}
         locale={locales}
       />
     </div>

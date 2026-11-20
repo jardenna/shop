@@ -1,4 +1,4 @@
-import { BaseShopProduct } from '../../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseShopProduct } from '../../../../app/api/apiTypes/sharedApiTypes';
 import FavoriteHeart from '../../../../components/favorites/FavoriteHeart';
 import LayoutElement from '../../../../layout/LayoutElement';
 import { useLanguage } from '../../../language/useLanguage';

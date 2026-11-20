@@ -1,7 +1,7 @@
 import LayoutElement from '../../../../layout/LayoutElement';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import ProductAsideHeader from './ProductAsideHeader';
-import ProductAsideNav, { ProductAsideNavProps } from './ProductAsideNav';
+import ProductAsideNav, { type ProductAsideNavProps } from './ProductAsideNav';
 import './_product-aside.scss';
 
 interface ProductAsideProps extends ProductAsideNavProps {

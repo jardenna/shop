@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
@@ -7,7 +7,7 @@ import './_segmented-tabs.scss';
 
 export interface TabItemList {
   id: string | number;
-  label: ReactNode;
+  label: ReactElement;
   value: string;
   ariaLabel?: string;
 }
@@ -25,7 +25,7 @@ const SegmentedTabs = ({
   onClick,
   className = '',
 }: SegmentedTabsProps) => {
-  const { selectedIndex, itemRefs, handleKeyDown, handleChange } =
+  const { selectedIndex, itemsRef, handleKeyDown, handleChange } =
     useRovingTabIndex({
       defaultIndex,
       itemCount: tabItemList.length,
@@ -36,7 +36,7 @@ const SegmentedTabs = ({
 
   const handleActivateTab = (index: number) => {
     handleChange(index);
-    itemRefs.current[index]?.focus();
+    itemsRef.current[index]?.focus();
   };
 
   return (
@@ -51,7 +51,7 @@ const SegmentedTabs = ({
             id={`tab-${id}`}
             tabIndex={index === selectedIndex ? 0 : -1}
             refCallback={(element) => {
-              itemRefs.current[index] = element;
+              itemsRef.current[index] = element;
             }}
             onClick={() => {
               handleActivateTab(index);

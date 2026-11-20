@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { KeyCode } from '../types/enums';
+import type { KeyCodeValue } from '../types/enums';
 
 export function useKeyPress(
   callback: () => void,
-  keyCombination: KeyCode[],
+  keyCombination: KeyCodeValue[],
   enabled = true,
 ): void {
   const callbackRef = useRef(callback);
@@ -17,10 +17,10 @@ export function useKeyPress(
       return;
     }
 
-    const pressedKeys = new Set<KeyCode>();
+    const pressedKeys = new Set<KeyCodeValue>();
 
     const downHandler = (event: KeyboardEvent) => {
-      if (!keyCombination.includes(event.code as KeyCode)) {
+      if (!keyCombination.includes(event.code as KeyCodeValue)) {
         return;
       }
 
@@ -29,7 +29,7 @@ export function useKeyPress(
       }
 
       event.preventDefault();
-      pressedKeys.add(event.code as KeyCode);
+      pressedKeys.add(event.code as KeyCodeValue);
 
       if (keyCombination.every((key) => pressedKeys.has(key))) {
         callbackRef.current();
@@ -37,7 +37,7 @@ export function useKeyPress(
     };
 
     const upHandler = (event: KeyboardEvent) => {
-      pressedKeys.delete(event.code as KeyCode);
+      pressedKeys.delete(event.code as KeyCodeValue);
     };
 
     window.addEventListener('keydown', downHandler);

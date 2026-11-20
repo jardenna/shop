@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { AdminReviewsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import type { AdminReviewsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
 import Button from '../../../../components/Button';
 import Chip from '../../../../components/chips/Chip';
 import { chipVariants } from '../../../../components/chips/chipsUtils';

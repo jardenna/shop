@@ -1,12 +1,12 @@
-import {
+import type {
   PaymentMethodField,
   PaymentMethods,
 } from '../app/api/apiTypes/paymentApiTypes';
-import { IconName } from '../types/enums';
+import { IconName, type IconNameValue } from '../types/enums';
 
 interface PaymentMethod {
   fields: PaymentMethodField[];
-  icon: IconName;
+  icon: IconNameValue;
   id: PaymentMethods;
   label: string;
 }

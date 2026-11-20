@@ -1,6 +1,6 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import { ScheduledResponse } from '../../app/api/apiTypes/adminApiTypes';
-import {
+import type { ScheduledResponse } from '../../app/api/apiTypes/adminApiTypes';
+import type {
   Product,
   ProductRequest,
   ProductsParams,

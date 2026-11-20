@@ -1,4 +1,4 @@
-import { RatingDistribution } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import type { RatingDistribution } from '../../../../app/api/apiTypes/adminReviewApiTypes';
 import Icon from '../../../../components/icons/Icon';
 import { IconName } from '../../../../types/enums';
 

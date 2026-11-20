@@ -1,10 +1,10 @@
-import { IconName } from '../types/enums';
+import { IconName, type IconNameValue } from '../types/enums';
 
-const categoryToIconName: Record<string, IconName> = {
+const categoryToIconName: Record<string, IconNameValue> = {
   Women: IconName.Woman,
   Men: IconName.Man,
   Kids: IconName.Kid,
 };
 
-export const resolveIconName = (category: string): IconName =>
+export const resolveIconName = (category: string): IconNameValue =>
   categoryToIconName[category] ?? IconName.Woman;

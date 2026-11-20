@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
-import { AriaHasPopup } from '../../types/types';
+import type { ReactElement } from 'react';
+import type { AriaHasPopup } from '../../types/types';
 import Popup from '../popup/Popup';
 
 interface PopoverBtnProps {
   ariaHasPopup: AriaHasPopup;
-  children: ReactNode;
-  popupContent: ReactNode | string;
+  children: ReactElement;
+  popupContent: ReactElement | string;
   ariaLabel?: string;
   className?: string;
 }

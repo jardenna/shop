@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../types/types';
 
 interface MainPageContainerProps {
   children: ReactNode;
@@ -17,15 +17,15 @@ const MainPageContainer = ({
   className = '',
   variant,
 }: MainPageContainerProps) => {
-  const ariaLabelledby = useId();
+  const ariaLabelledbyId = useId();
 
   return (
     <section
       className={`container ${variant ? `page-${variant}` : ''} ${className}`}
-      aria-labelledby={ariaLabelledby}
+      aria-labelledby={ariaLabelledbyId}
     >
       <MetaTags metaTitle={heading} />
-      <PageHeader heading={heading} ariaLabelledby={ariaLabelledby} />
+      <PageHeader heading={heading} ariaLabelledby={ariaLabelledbyId} />
       {children}
     </section>
   );

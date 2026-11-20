@@ -1,7 +1,7 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
-import ControlInput, { BaseControlInputProps } from '../ControlInput';
+import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_radio-button-list.scss';
 
 interface RadioButtonListProps extends BaseControlInputProps {

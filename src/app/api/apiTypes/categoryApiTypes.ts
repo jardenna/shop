@@ -1,5 +1,5 @@
-import { SortParams, Status } from './adminApiTypes';
-import { DefaultResponse } from './sharedApiTypes';
+import type { SortParams, Status } from './adminApiTypes';
+import type { DefaultResponse } from './sharedApiTypes';
 
 export interface Category extends DefaultResponse {
   categoryName: string;

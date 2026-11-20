@@ -1,4 +1,4 @@
-import { Address } from './addressApiTypes';
+import type { Address } from './addressApiTypes';
 import type {
   BasePagination,
   BaseProduct,

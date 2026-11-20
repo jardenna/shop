@@ -1,5 +1,5 @@
 import { Fragment } from 'react/jsx-runtime';
-import Skeleton, { PickedSkeletonTypes } from '../Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from '../Skeleton';
 import './_skeleton-progress.scss';
 
 const SkeletonProgress = ({ count = 4 }: PickedSkeletonTypes) => {

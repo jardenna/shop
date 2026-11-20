@@ -1,6 +1,6 @@
-import { ReviewResponse } from '../../../../app/api/apiTypes/shopApiTypes';
+import type { ReviewResponse } from '../../../../app/api/apiTypes/shopApiTypes';
 import ReviewStars from '../../../../components/ReviewStars';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import { getReviewAgeLabel } from './reviewsUtil.';
 
 interface ReviewListProps {
@@ -10,8 +10,8 @@ interface ReviewListProps {
 
 const ReviewList = ({ reviewList, language }: ReviewListProps) => (
   <ul className="review-list">
-    {reviewList.map((review, index) => (
-      <li key={index} className="review-item">
+    {reviewList.map((review) => (
+      <li key={review.id} className="review-item">
         <div className="review-header">
           <ReviewStars rating={review.rating} />
           <p className="text-small text-italic">

@@ -1,4 +1,4 @@
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import Input from '../Input';
 
 interface RangeNumberInputProps {

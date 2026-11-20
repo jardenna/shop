@@ -1,5 +1,5 @@
-import { Order } from '../../../app/api/apiTypes/adminOrderApiTypes';
-import { Column } from '../../../components/sortTable/SortTable';
+import type { Order } from '../../../app/api/apiTypes/adminOrderApiTypes';
+import type { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<Order>[] = [
   {

@@ -3,7 +3,7 @@ import { dismissToast, startToastExit } from '../../features/toastSlice';
 import { useAnimate } from '../../hooks/useAnimate';
 import CloseBtn from '../CloseBtn';
 import Icon from '../icons/Icon';
-import { ToastTimerProps, useToastTimer } from './hooks/useToastTimer';
+import { type ToastTimerProps, useToastTimer } from './hooks/useToastTimer';
 import { toastTypeConfig } from './toastConfig';
 
 export interface ToastItemProps extends ToastTimerProps {

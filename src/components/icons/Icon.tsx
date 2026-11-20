@@ -1,4 +1,4 @@
-import { IconName } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
 import ArrowDownIcon from './ArrowDownIcon';
@@ -76,7 +76,7 @@ import WalletIcon from './WalletIcon';
 import WarningIcon from './WarningIcon';
 
 type IconProps = IconDefaultProps & {
-  iconName: IconName;
+  iconName: IconNameValue;
 };
 
 const iconMapping = {

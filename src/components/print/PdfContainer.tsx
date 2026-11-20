@@ -1,15 +1,15 @@
 import { Document, Page, Text, View } from '@react-pdf/renderer';
-import { ReactNode } from 'react';
-import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
-import { SelectedLanguage } from '../../features/language/languageSlice';
+import type { ReactElement } from 'react';
+import type { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
+import type { SelectedLanguage } from '../../features/language/languageSlice';
+import type { Language } from '../../types/types';
 import OrderLogo from './OrderLogo';
 import PrintOrderFooter from './printOrderFooter/PrintOrderFooter';
 import PrintOrderHeader from './PrintOrderHeader';
 import { styles } from './styles';
-import { Language } from '../../types/types';
 
 interface PdfContainerProps {
-  children: ReactNode;
+  children: ReactElement;
   language: Language;
   order: OrderResponse;
   selectedLanguage: SelectedLanguage;

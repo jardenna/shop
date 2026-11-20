@@ -1,5 +1,5 @@
 import variables from '../../../../scss/variables.module.scss';
-import { SizeVariant } from '../../../../types/types';
+import type { SizeVariant } from '../../../../types/types';
 import { getColorOptions } from '../../../../utils/colorUtils';
 import { sliceAndCountHidden, translateKey } from '../../../../utils/utils';
 import { useLanguage } from '../../../language/useLanguage';

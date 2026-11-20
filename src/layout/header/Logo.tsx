@@ -1,9 +1,8 @@
 import { Link } from 'react-router';
 import Icon from '../../components/icons/Icon';
 import { IconName } from '../../types/enums';
-import { AdminPath } from '../nav/enums';
 
-const Logo = ({ linkTo }: { linkTo: AdminPath | string }) => (
+const Logo = ({ linkTo }: { linkTo: string }) => (
   <div className="main-logo">
     <Link to={linkTo}>
       <Icon

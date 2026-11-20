@@ -1,13 +1,13 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   AdminOrderParams,
   AdminOrderResponse,
 } from '../../app/api/apiTypes/adminOrderApiTypes';
-import {
+import type {
   OrderResponse,
   UpdateOrderRequest,
 } from '../../app/api/apiTypes/orderApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { adminOrdersUrl } from '../../app/endpoints';
 
 export const adminOrderApiSlice = apiSlice.injectEndpoints({

@@ -1,10 +1,10 @@
-import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
+import type { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
 import { BtnVariant } from '../../../../types/enums';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
-import { SelectedLanguage } from '../../../language/languageSlice';
+import type { SelectedLanguage } from '../../../language/languageSlice';
 import type { ChangedAttribute } from '../../cartUtils';
 import './_single-product-panel.scss';
 

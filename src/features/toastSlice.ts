@@ -1,6 +1,6 @@
-import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../app/store';
-import { ToastTypes } from '../components/toast/toastConfig';
+import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '../app/store';
+import type { ToastTypes } from '../components/toast/toastConfig';
 
 export interface Toastprops {
   message: string;
