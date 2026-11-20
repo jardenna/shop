@@ -1,4 +1,3 @@
-import { BtnVariant } from '../../types/enums';
 import type { Language } from '../../types/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
@@ -30,7 +29,7 @@ const PaginationBtnItems = ({
           onClick={() => {
             onPagination(paginationBtn.value);
           }}
-          variant={isJumpButton ? BtnVariant.Ghost : undefined}
+          variant={isJumpButton ? 'ghost' : undefined}
           disabled={paginationBtn.disabled}
           className={isCurrentPage ? 'current' : ''}
           ariaCurrent={isCurrentPage ? 'page' : undefined}

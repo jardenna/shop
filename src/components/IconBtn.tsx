@@ -1,6 +1,5 @@
 import {
   type BtnType,
-  BtnVariant,
   type BtnVariantValue,
   type IconNameValue,
 } from '../types/enums';
@@ -34,7 +33,7 @@ const IconBtn = ({
   ariaExpanded,
   ariaHasPopup,
   btnType,
-  variant = BtnVariant.Ghost,
+  variant = 'ghost',
   size,
   disabled,
   isLoading,

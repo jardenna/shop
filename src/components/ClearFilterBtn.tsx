@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant, type BtnVariantValue } from '../types/enums';
+import { type BtnVariantValue } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';
 
@@ -17,7 +17,7 @@ const ClearFilterBtn = ({
   disabled,
   children,
   showIcon,
-  variant = BtnVariant.Default,
+  variant = 'default',
 }: ClearFilterBtnProps) => {
   const { language } = useLanguage();
 

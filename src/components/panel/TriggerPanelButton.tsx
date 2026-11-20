@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { BtnVariant, type BtnVariantValue } from '../../types/enums';
+import { type BtnVariantValue } from '../../types/enums';
 import Button from '../Button';
 
 interface TriggerPanelButtonProps {
@@ -19,7 +19,7 @@ const TriggerPanelButton = ({
   onTogglePanel,
   children,
   className,
-  variant = BtnVariant.Ghost,
+  variant = 'ghost',
 }: TriggerPanelButtonProps) => (
   <Button
     ariaExpanded={ariaExpanded}

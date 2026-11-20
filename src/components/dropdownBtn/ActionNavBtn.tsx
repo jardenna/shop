@@ -2,11 +2,7 @@ import type { Placement } from '@popperjs/core';
 import { useId, type ReactNode } from 'react';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
-import {
-  BtnVariant,
-  type BtnVariantValue,
-  type IconNameValue,
-} from '../../types/enums';
+import { type BtnVariantValue, type IconNameValue } from '../../types/enums';
 import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_action-nav.scss';
@@ -34,7 +30,7 @@ interface ActionNavBtnProps {
 
 const ActionNavBtn = ({
   actionNavDropdownList,
-  triggerBtnVariant = BtnVariant.Ghost,
+  triggerBtnVariant = 'ghost',
   children,
   showArrow,
   placement,

@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import Popup from '../popup/Popup';
@@ -36,7 +35,7 @@ const DeleteItem = ({
 
             <Button
               showBtnLoader={isLoading}
-              variant={BtnVariant.Danger}
+              variant="danger"
               onClick={() => {
                 close();
                 onDeleteItem();

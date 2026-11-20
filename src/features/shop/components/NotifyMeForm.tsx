@@ -6,7 +6,7 @@ import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { BtnVariant, type BtnVariantValue } from '../../../types/enums';
+import { type BtnVariantValue } from '../../../types/enums';
 import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';
@@ -28,7 +28,7 @@ const NotifyMeForm = ({
   options,
   currentUser,
   isOutOfStock,
-  btnVariant = BtnVariant.Ghost,
+  btnVariant = 'ghost',
 }: NotifyMeFormProps) => {
   const ariaControlsId = useId();
   const modalId = 'notify';

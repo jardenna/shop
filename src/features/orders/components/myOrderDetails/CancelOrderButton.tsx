@@ -3,7 +3,6 @@ import type { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes'
 import Button from '../../../../components/Button';
 import { useToast } from '../../../../components/toast/hooks/useToast';
 import { ShopPath } from '../../../../layout/nav/enums';
-import { BtnVariant } from '../../../../types/enums';
 import { useLanguage } from '../../../language/useLanguage';
 import { useCancelMyOrderMutation } from '../../orderApiSlice';
 
@@ -37,7 +36,7 @@ const CancelOrderButton = ({ id, status }: CancelOrderButtonProps) => {
     <Button
       onClick={handleCancelOrder}
       disabled={status !== 'created' && status !== 'processing'}
-      variant={BtnVariant.Danger}
+      variant="danger"
     >
       {language.cancelOrder}
     </Button>

@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal from './Modal';
 import { useModal } from './useModal';
@@ -48,7 +47,7 @@ const DeleteModal = ({
         <Button
           showBtnLoader={isLoading}
           onClick={handleDeleteItem}
-          variant={BtnVariant.Danger}
+          variant="danger"
         >
           {language.delete}
         </Button>
