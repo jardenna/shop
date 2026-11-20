@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useLayoutEffect, useRef, useState } from 'react';
 
 type UseScrollOnPaginationProps = {
@@ -19,6 +20,7 @@ export const useScrollOnPagination = <TElement extends HTMLElement>({
       behavior: 'smooth',
       block: 'start',
     });
+
     setShouldScroll(false);
   }, [shouldScroll, isLoading]);
 

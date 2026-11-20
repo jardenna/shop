@@ -22,6 +22,7 @@ export const useAnimate = ({
   useEffect(() => {
     if (isOpen) {
       // Ensure the element is mounted before starting the enter transition.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShouldRender(true);
       setTransitionState('enter');
 
