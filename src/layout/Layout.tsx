@@ -8,6 +8,7 @@ import {
 } from 'react-router';
 import { useAppDispatch } from '../app/hooks';
 import type { ActionNavItemProps } from '../components/dropdownBtn/ActionNavBtn';
+import { IconName } from '../components/icons/iconConstants';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -22,7 +23,6 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import RouteErrorBoundary from '../pages/pageContainer/RouteErrorBoundary';
-import { IconName } from '../types/enums';
 import type { OptionType } from '../types/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';

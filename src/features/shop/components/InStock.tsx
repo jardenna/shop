@@ -1,5 +1,5 @@
 import Icon from '../../../components/icons/Icon';
-import { IconName } from '../../../types/enums';
+import { IconName } from '../../../components/icons/iconConstants';
 import { minInStock } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 
