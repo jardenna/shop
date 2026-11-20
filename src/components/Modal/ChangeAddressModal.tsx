@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import type { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnVariant, IconName } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import type { OptionType } from '../../types/types';
 import type { BaseAddressListProps } from '../../utils/addressUtils';
 import FieldSet from '../fieldset/FieldSet';
@@ -57,7 +57,7 @@ const ChangeAddressModal = ({
         variant={BtnVariant.Ghost}
       >
         <IconContent
-          iconName={IconName.Refresh}
+          iconName="refresh"
           size="1rem"
           ariaLabel={text ?? language.changeStandardAddress}
           showLabel

@@ -1,5 +1,5 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant, IconName } from '../../types/enums';
+import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import Popup from '../popup/Popup';
@@ -50,7 +50,7 @@ const DeleteItem = ({
       triggerBtnClassName="danger"
       ariaLabel={ariaLabel}
     >
-      <Icon iconName={IconName.Trash} />
+      <Icon iconName="trash" />
     </Popup>
   );
 };

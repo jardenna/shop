@@ -4,7 +4,6 @@ import ActionNavBtn, {
 } from '../../../components/dropdownBtn/ActionNavBtn';
 import Icon from '../../../components/icons/Icon';
 import { AdminPath } from '../../../layout/nav/enums';
-import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 interface ProductActionsProps {
@@ -27,7 +26,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
           state: { returnTo },
         });
       },
-      iconName: IconName.Eye,
+      iconName: 'eye',
     },
     {
       label: language.update,
@@ -36,14 +35,14 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
           state: { returnTo },
         });
       },
-      iconName: IconName.Pencil,
+      iconName: 'pencil',
     },
     {
       label: language.copyAction,
       onClick: () => {
         onCopyProduct(id);
       },
-      iconName: IconName.Dublicate,
+      iconName: 'dublicate',
     },
   ];
 
@@ -55,7 +54,7 @@ const ProductActions = ({ onCopyProduct, id }: ProductActionsProps) => {
       placement="left-start"
       ariaHasPopup="menu"
     >
-      <Icon iconName={IconName.MenuDotsHorizontal} />
+      <Icon iconName="menuDotsHorizontal" />
     </ActionNavBtn>
   );
 };

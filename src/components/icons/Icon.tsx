@@ -146,7 +146,7 @@ const iconMapping = {
   subtract: SubtractIcon,
   success: SuccessIcon,
   tiktok: TiktokIcon,
-  trach: TrashIcon,
+  trash: TrashIcon,
   undo: UndoIcon,
   upload: UploadIcon,
   user: UserIcon,
@@ -155,7 +155,7 @@ const iconMapping = {
   users: UsersIcon,
   warning: WarningIcon,
   woman: WomanIcon,
-};
+} satisfies Record<string, React.ComponentType<IconDefaultProps>>;
 
 export interface IconDefaultProps {
   ariaHidden?: boolean;

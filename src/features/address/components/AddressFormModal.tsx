@@ -13,7 +13,7 @@ import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import type { BaseInputListProps } from '../../../pages/MyAccountPage';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { BtnVariant } from '../../../types/enums';
 import type { RefBtnType } from '../../../types/types';
 import { validateAddress } from '../../../utils/validation/validateAddress';
 import { useLanguage } from '../../language/useLanguage';
@@ -108,13 +108,10 @@ const AddressFormModal = ({
         buttonRef={buttonRef}
       >
         {id ? (
-          <IconContent
-            iconName={IconName.Pencil}
-            ariaLabel={language.updateAddress}
-          />
+          <IconContent iconName="pencil" ariaLabel={language.updateAddress} />
         ) : (
           <IconContent
-            iconName={IconName.Add}
+            iconName="add"
             ariaLabel={language.createNewAddress}
             showLabel
             size="1.2rem"

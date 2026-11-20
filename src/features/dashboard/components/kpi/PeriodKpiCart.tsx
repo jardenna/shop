@@ -3,7 +3,6 @@ import type { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardAp
 import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
 import Icon from '../../../../components/icons/Icon';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
-import { IconName } from '../../../../types/enums';
 import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
 import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
@@ -38,7 +37,7 @@ const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
         ariaHasPopup="dialog"
         ariaLabel={language.comparisonWithPreviousPeriod}
       >
-        <Icon iconName={IconName.Info} />
+        <Icon iconName="info" />
       </PopoverBtn>
 
       <div className="kpi-progress-bar">

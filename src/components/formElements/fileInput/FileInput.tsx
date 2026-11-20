@@ -1,6 +1,5 @@
 import type { FileName } from '../../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
 import type { InputChangeHandler } from '../../../types/types';
 import Icon from '../../icons/Icon';
 import './_file-input.scss';
@@ -27,7 +26,7 @@ const FileInput = ({
   return (
     <div>
       <label htmlFor="images" className="file-upload-label btn btn-primary">
-        <Icon iconName={IconName.Upload} />
+        <Icon iconName="upload" />
         {language.browseImages}
       </label>
       <input

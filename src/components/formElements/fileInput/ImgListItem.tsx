@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
 import IconBtn from '../../IconBtn';
 import Img from '../../Img';
 import Icon from '../../icons/Icon';
@@ -30,7 +29,7 @@ const ImgListItem = ({
     >
       {reason && (
         <div className="invalid-file">
-          <Icon iconName={IconName.Error} />
+          <Icon iconName="error" />
           <span>{language[reason]}</span>
         </div>
       )}
@@ -38,7 +37,7 @@ const ImgListItem = ({
       <IconBtn
         onClick={onClick}
         className="delete-img-list-btn"
-        iconName={isImgDisabled ? IconName.Undo : IconName.Trash}
+        iconName={isImgDisabled ? 'undo' : 'trash'}
         ariaLabel={ariaLabel}
       />
 

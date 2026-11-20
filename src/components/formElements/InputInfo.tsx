@@ -1,4 +1,3 @@
-import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 
 type InputInfoProps = {
@@ -7,7 +6,7 @@ type InputInfoProps = {
 
 const InputInfo = ({ inputInfo }: InputInfoProps) => (
   <span className="input-info">
-    <Icon iconName={IconName.Info} />
+    <Icon iconName="info" />
     <span>{inputInfo}</span>
   </span>
 );

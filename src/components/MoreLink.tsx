@@ -1,5 +1,4 @@
 import { Link, type LinkProps } from 'react-router';
-import { IconName } from '../types/enums';
 import Icon from './icons/Icon';
 
 interface MoreLinkProps {
@@ -11,7 +10,7 @@ interface MoreLinkProps {
 const MoreLink = ({ linkText, linkTo, state }: MoreLinkProps) => (
   <Link to={linkTo} className="more-link btn btn-ghost" state={state}>
     {linkText}
-    <Icon iconName={IconName.CircleChevronRight} />
+    <Icon iconName="circleChevronRight" />
   </Link>
 );
 

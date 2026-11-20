@@ -1,4 +1,3 @@
-import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 import LinkButton from '../LinkButton';
 
@@ -16,7 +15,7 @@ const BreadcrumbItem = ({ path, label, isCurrent }: BreadcrumbItemProps) => (
       ariaCurrent={isCurrent ? 'page' : undefined}
     />
 
-    {!isCurrent && <Icon iconName={IconName.ChevronRight} size="1em" />}
+    {!isCurrent && <Icon iconName="chevronRight" size="1em" />}
   </li>
 );
 
