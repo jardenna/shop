@@ -88,6 +88,7 @@ const NotifyMeForm = ({
         ariaControls={ariaControlsId}
       >
         <form
+          noValidate
           onSubmit={(event) => {
             event.preventDefault();
             onSubmit();

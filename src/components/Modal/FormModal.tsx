@@ -42,6 +42,7 @@ const FormModal = ({
       onClearAllValues={onClearAllValues}
     >
       <form
+        noValidate
         onSubmit={(event) => {
           event.preventDefault();
           onSubmit();
