@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router';
-import { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
+import type { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
 import FormCart from '../../../components/carts/FormCart';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';

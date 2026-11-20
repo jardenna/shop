@@ -1,11 +1,11 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   CreateOrderRequest,
   MyOrdersResponse,
   OrderResponse,
 } from '../../app/api/apiTypes/orderApiTypes';
-import { PayOrderRequest } from '../../app/api/apiTypes/paymentApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { PayOrderRequest } from '../../app/api/apiTypes/paymentApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { ordersUrl, userOrdersUrl } from '../../app/endpoints';
 
 export const orderApiSlice = apiSlice.injectEndpoints({

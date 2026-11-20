@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import {
+import type {
   Address,
   AddressFields,
   AddressInput,
@@ -12,7 +12,7 @@ import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { BaseInputListProps } from '../../../pages/MyAccountPage';
+import type { BaseInputListProps } from '../../../pages/MyAccountPage';
 import { BtnVariant, IconName } from '../../../types/enums';
 import type { RefBtnType } from '../../../types/types';
 import { validateAddress } from '../../../utils/validation/validateAddress';

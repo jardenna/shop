@@ -1,6 +1,6 @@
 import { OmitChecked } from '../../../types/types';
 import { Roles, SortParams } from './adminApiTypes';
-import { DefaultResponse } from './sharedApiTypes';
+import type { DefaultResponse } from './sharedApiTypes';
 
 // --- Users ---
 type EditableUserFields = {

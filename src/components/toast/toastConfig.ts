@@ -1,5 +1,5 @@
 import { IconName, type IconNameValue } from '../../types/enums';
-import { ToastRole } from '../../types/types';
+import type { ToastRole } from '../../types/types';
 
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 

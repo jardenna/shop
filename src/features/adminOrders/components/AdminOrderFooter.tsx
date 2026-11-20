@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
+import type { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../components/Button';
 import DownloadPdfBtn from '../../../components/DownloadPdfBtn';
 import Modal from '../../../components/Modal/Modal';

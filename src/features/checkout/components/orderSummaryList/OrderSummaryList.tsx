@@ -1,4 +1,4 @@
-import {
+import type {
   CartItem,
   CartListResponse,
 } from '../../../../app/api/apiTypes/cartApiTypes';

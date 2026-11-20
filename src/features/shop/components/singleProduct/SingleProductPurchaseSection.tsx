@@ -21,10 +21,10 @@ import { openMiniCart } from '../../../miniCartPopupSlice';
 import {
   cartUtils,
   getTotalCartQuantity,
-  ProductQuantityMap,
+  type ProductQuantityMap,
 } from '../../cartUtils';
-import CartForm, { InitialShopValues } from './CartForm';
-import SingleProductPanel, { PopupData } from './SingleProductPanel';
+import CartForm, { type InitialShopValues } from './CartForm';
+import SingleProductPanel, { type PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
   currentUser: UserResponse | null;

@@ -1,8 +1,8 @@
-import {
+import type {
   GoalKeys,
   GoalPeriod,
 } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
-import { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
+import type { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import Chip from '../../../../components/chips/Chip';
 import type { Language } from '../../../../types/types';
 import { useCurrency } from '../../../currency/useCurrency';

@@ -1,5 +1,5 @@
 import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
-import { Column } from '../../../components/sortTable/SortTable';
+import type { Column } from '../../../components/sortTable/SortTable';
 
 export const tableHeaders: Column<Product>[] = [
   {

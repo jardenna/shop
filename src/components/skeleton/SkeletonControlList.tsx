@@ -1,5 +1,5 @@
 import type { SizeVariant } from '../../types/types';
-import Skeleton, { SkeletonProps } from './Skeleton';
+import Skeleton, { type SkeletonProps } from './Skeleton';
 import SkeletonParagraph from './SkeletonParagraph';
 
 interface SkeletonControlListProps extends SkeletonProps {

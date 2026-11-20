@@ -1,4 +1,4 @@
-import {
+import type {
   AdminGoalsRequest,
   AdminGoalsTableResponse,
 } from '../../../app/api/apiTypes/adminGoalsApiTypes';

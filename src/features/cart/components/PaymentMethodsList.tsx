@@ -1,4 +1,4 @@
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
+import type { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import IconContent from '../../../components/IconContent';
 import { paymentMethodsList } from '../../../config/paymentConfig';
 

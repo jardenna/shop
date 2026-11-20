@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { UseTrapFocusProps } from './useTrapFocus';
+import type { UseTrapFocusProps } from './useTrapFocus';
 
 export const useInitialFocus = ({ popupRef, enabled }: UseTrapFocusProps) => {
   useEffect(() => {

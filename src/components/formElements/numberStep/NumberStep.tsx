@@ -1,6 +1,6 @@
 import { useLanguage } from '../../../features/language/useLanguage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import IconBtn from '../../IconBtn';
 import Input from '../Input';
 import './_number-step.scss';

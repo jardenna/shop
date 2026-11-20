@@ -1,7 +1,7 @@
 import { ratingList } from '../../../../app/api/apiConstants';
 import CheckboxList from '../../../../components/formElements/checkbox/CheckboxList';
 import { IconName } from '../../../../types/enums';
-import { InputChangeHandler, Language } from '../../../../types/types';
+import type { InputChangeHandler, Language } from '../../../../types/types';
 import './_review-rating-list.scss';
 
 interface ReviewRatingListProps {

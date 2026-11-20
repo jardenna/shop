@@ -1,9 +1,9 @@
-import { Roles } from '../../../app/api/apiTypes/adminApiTypes';
+import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
-import { ColumnKey } from '../../../pages/users/UserPage';
+import type { ColumnKey } from '../../../pages/users/UserPage';
 import { BtnVariant, IconName } from '../../../types/enums';
-import { InputChangeHandler, Language } from '../../../types/types';
+import type { InputChangeHandler, Language } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 import UserRowText from './UserRowText';
 

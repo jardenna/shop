@@ -1,4 +1,4 @@
-import {
+import type {
   PaymentMethodField,
   PaymentMethods,
 } from '../app/api/apiTypes/paymentApiTypes';

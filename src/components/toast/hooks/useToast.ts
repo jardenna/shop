@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
-  Toastprops,
+  type Toastprops,
   addToast,
   selectToastList,
 } from '../../../features/toastSlice';

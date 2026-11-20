@@ -1,4 +1,4 @@
-import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
+import type { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../../components/deleteItem/DeleteItem';
 import Img from '../../../../components/Img';
 import type { Language } from '../../../../types/types';

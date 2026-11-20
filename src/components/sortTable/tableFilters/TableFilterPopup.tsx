@@ -12,8 +12,8 @@ import VisuallyHidden from '../../VisuallyHidden';
 import {
   getListByName,
   getMinMaxKeys,
-  InitialTableFilters,
-  ListsMap,
+  type InitialTableFilters,
+  type ListsMap,
 } from '../utils/tableFiltersUtils';
 import './_table-filters.scss';
 

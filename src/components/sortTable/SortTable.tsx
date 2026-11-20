@@ -1,15 +1,15 @@
 import type { ReactNode, RefObject } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
+import type { SortOrder } from '../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
 import { BtnVariant, IconName } from '../../types/enums';
-import { InputChangeHandler, InputType } from '../../types/types';
+import type { InputChangeHandler, InputType } from '../../types/types';
 import Button from '../Button';
 import ClearFilterBtn from '../ClearFilterBtn';
-import DisplayControls, { DisplayControlItem } from '../DisplayControls';
+import DisplayControls, { type DisplayControlItem } from '../DisplayControls';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import NotFoundError from '../NotFoundError';
 import SkeletonTable from '../skeleton/skeletonTable/SkeletonTable';
@@ -18,7 +18,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import './_sort-table.scss';
 import TableFilterPopup from './tableFilters/TableFilterPopup';
 import { buildFilterTagsUtils } from './utils/buildFilterTagsUtils';
-import { InitialTableFilters } from './utils/tableFiltersUtils';
+import type { InitialTableFilters } from './utils/tableFiltersUtils';
 
 export type Column<T> = {
   key: Extract<keyof T, string>;

@@ -1,4 +1,4 @@
-import { DependencyList, useEffect, useRef, useState } from 'react';
+import { type DependencyList, useEffect, useRef, useState } from 'react';
 
 export const useAnnounce = (deps: DependencyList) => {
   const hasMountedRef = useRef(false);

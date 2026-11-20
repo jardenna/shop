@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type {
   CartItem,
   UpdateCartQtyRequest,
 } from '../app/api/apiTypes/cartApiTypes';
-import { RootState } from '../app/store';
+import type { RootState } from '../app/store';
 import { cartStorageUtil } from './cart/utils/cartStorageUtil';
 
 interface CartItemsState {

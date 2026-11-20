@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { paymentMethodLabels } from '../../../app/api/apiConstants';
 import type { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
+import type { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../../components/badge/Badge';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';

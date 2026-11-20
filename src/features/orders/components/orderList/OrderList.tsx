@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
+import type { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import LabelValue from '../../../../components/LabelValue';
 import { ShopPath } from '../../../../layout/nav/enums';

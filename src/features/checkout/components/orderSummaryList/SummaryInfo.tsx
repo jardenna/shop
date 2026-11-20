@@ -1,4 +1,4 @@
-import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
+import type { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import LabelValue from '../../../../components/LabelValue';
 import type { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';

@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from '../Skeleton';
+import Skeleton, { type SkeletonProps } from '../Skeleton';
 import './_skeleton-table.scss';
 
 const SkeletonCell = ({ count = 8, height = '1.4' }: SkeletonProps) => {

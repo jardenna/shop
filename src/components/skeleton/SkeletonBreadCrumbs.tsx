@@ -1,4 +1,4 @@
-import Skeleton, { PickedSkeletonTypes } from './Skeleton';
+import Skeleton, { type PickedSkeletonTypes } from './Skeleton';
 
 const SkeletonBreadCrumbs = ({ width = '24' }: PickedSkeletonTypes) => (
   <Skeleton

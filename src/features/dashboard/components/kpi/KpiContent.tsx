@@ -1,5 +1,5 @@
 import Icon from '../../../../components/icons/Icon';
-import { BaseKpiCartProps } from './KpiCart';
+import type { BaseKpiCartProps } from './KpiCart';
 
 interface KpiContentProps extends BaseKpiCartProps {
   kpiTotal: number | string;

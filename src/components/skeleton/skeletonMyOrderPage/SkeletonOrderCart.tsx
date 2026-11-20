@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from '../Skeleton';
+import Skeleton, { type SkeletonProps } from '../Skeleton';
 import SkeletonBadge from '../SkeletonBadge';
 import SkeletonButton from '../SkeletonButton';
 import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';

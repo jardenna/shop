@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonProps } from '../Skeleton';
+import Skeleton, { type SkeletonProps } from '../Skeleton';
 import SkeletonHeading from '../SkeletonHeading';
 import './_skeleton-info-background.scss';
 

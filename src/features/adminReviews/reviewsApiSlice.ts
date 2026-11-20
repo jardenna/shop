@@ -1,11 +1,11 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   AdminReviewsResponse,
   ReviewParams,
   ReviewsCountResponse,
   ReviewStatsResponse,
 } from '../../app/api/apiTypes/adminReviewApiTypes';
-import { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
+import type { DefaultResponse } from '../../app/api/apiTypes/sharedApiTypes';
 import { adminReviewsUrl } from '../../app/endpoints';
 
 export const reviewsApiSlice = apiSlice.injectEndpoints({

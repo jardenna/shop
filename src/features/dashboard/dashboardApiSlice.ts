@@ -1,5 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import {
+import type {
   PeriodKpiResponse,
   TotalKpiResponse,
 } from '../../app/api/apiTypes/dashboardApiTypes';

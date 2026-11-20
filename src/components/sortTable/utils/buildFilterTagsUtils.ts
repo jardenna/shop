@@ -1,6 +1,6 @@
-import { TagItem } from '../../tags/TagList';
-import { Column } from '../SortTable';
-import { InitialTableFilters, getMinMaxKeys } from './tableFiltersUtils';
+import type { TagItem } from '../../tags/TagList';
+import type { Column } from '../SortTable';
+import { type InitialTableFilters, getMinMaxKeys } from './tableFiltersUtils';
 
 export const buildFilterTagsUtils = <T>(
   tableHeaders: Column<T>[],

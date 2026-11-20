@@ -1,5 +1,5 @@
 import apiSlice, { TagTypesEnum } from '../../app/api/apiSlice';
-import { CheckoutResponse } from '../../app/api/apiTypes/cartApiTypes';
+import type { CheckoutResponse } from '../../app/api/apiTypes/cartApiTypes';
 import { checkoutUrl } from '../../app/endpoints';
 
 export const checkoutApiSlice = apiSlice.injectEndpoints({

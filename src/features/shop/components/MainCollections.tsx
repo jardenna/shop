@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Skeleton from '../../../components/skeleton/Skeleton';
 import MainCollectionsItem, {
-  MainCollectionsBaseProps,
+  type MainCollectionsBaseProps,
 } from './MainCollectionsItem';
 
 type MainCollectionsProps = {

@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { ReviewStatsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import type { ReviewStatsResponse } from '../../../../app/api/apiTypes/adminReviewApiTypes';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import ReviewStars from '../../../../components/ReviewStars';
 import { useLanguage } from '../../../language/useLanguage';

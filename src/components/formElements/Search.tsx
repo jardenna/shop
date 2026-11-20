@@ -1,5 +1,5 @@
 import { IconName } from '../../types/enums';
-import { InputChangeHandler } from '../../types/types';
+import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
 import Input from './Input';
 

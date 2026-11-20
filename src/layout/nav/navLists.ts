@@ -1,4 +1,4 @@
-import { IconName, IconNameValue } from '../../types/enums';
+import { IconName, type IconNameValue } from '../../types/enums';
 import { AdminPath, LinkText, type LinkTextValue, ShopPath } from './enums';
 export interface BaseNav {
   linkText: LinkTextValue;
@@ -72,7 +72,7 @@ export const adminNavList: AdminNavList[] = [
   {
     path: AdminPath.AdminProducts,
     linkText: LinkText.Products,
-    iconName: IconName.Products,
+    iconName: 'products',
   },
   {
     path: AdminPath.AdminCategories,
