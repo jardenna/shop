@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import {
-  CurrencyCode,
+  type CurrencyCode,
   currencyToText,
   getFormattedPrice,
 } from './currencyConverterUtil';

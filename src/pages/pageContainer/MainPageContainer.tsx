@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../types/types';
 
 interface MainPageContainerProps {
   children: ReactNode;

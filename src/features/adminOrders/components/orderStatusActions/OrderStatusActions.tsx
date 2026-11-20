@@ -1,4 +1,4 @@
-import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import type { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import Cart from '../../../../components/carts/Cart';
 import ProgressTracker from '../../../../components/progressTracker/ProgressTracker';

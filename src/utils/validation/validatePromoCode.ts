@@ -1,4 +1,4 @@
-import { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
+import type { PromoCode } from '../../app/api/apiTypes/promoCodeApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 

@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { type ReactElement } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 
 interface RouteErrorBoundaryProps {
-  children: ReactNode;
+  children: ReactElement;
 }
 
 const RouteErrorBoundary = ({ children }: RouteErrorBoundaryProps) => (

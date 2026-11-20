@@ -1,7 +1,7 @@
-import { Delivery } from '../../../../app/api/apiTypes/orderApiTypes';
+import type { Delivery } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
 import DateDisplay from '../../../../components/datePicker/DateDisplay';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import { createDeliveryDateText } from '../../utils/createDeliveryDateText';
 
 interface MyOrderFooterProps {

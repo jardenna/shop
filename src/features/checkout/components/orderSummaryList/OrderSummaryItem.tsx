@@ -1,7 +1,7 @@
 import { Order } from '../../../../app/api/apiTypes/cartApiTypes';
 import DeleteItem from '../../../../components/deleteItem/DeleteItem';
 import Img from '../../../../components/Img';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import SummaryInfo from './SummaryInfo';
 
 interface OrderSummaryItemProps {

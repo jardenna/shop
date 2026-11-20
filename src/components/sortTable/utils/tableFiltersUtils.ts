@@ -18,7 +18,7 @@ import {
   MainCategoryNames,
   SubCategoryNames,
 } from '../../../app/api/apiTypes/sharedApiTypes';
-import { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 import { Column } from '../SortTable';
 
 export interface ListsMap {

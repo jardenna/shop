@@ -1,5 +1,5 @@
 import { addBusinessDays } from 'date-fns';
-import { Delivery } from '../../../app/api/apiTypes/orderApiTypes';
+import type { Delivery } from '../../../app/api/apiTypes/orderApiTypes';
 import { newDate } from '../../../utils/dates';
 
 export const createDeliveryDateText = (delivery: Delivery) => {

@@ -1,6 +1,6 @@
 import { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import LabelValue from '../../../../components/LabelValue';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import { translateKey } from '../../../../utils/utils';
 
 interface SummaryInfoProps {

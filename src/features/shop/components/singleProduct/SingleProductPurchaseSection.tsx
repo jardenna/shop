@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
+import type { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import { type Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
-import { UserResponse } from '../../../../app/api/apiTypes/userApiTypes';
+import type { ProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
+import type { UserResponse } from '../../../../app/api/apiTypes/userApiTypes';
 import { useAppDispatch } from '../../../../app/hooks';
 import ErrorBoundaryFallback from '../../../../components/ErrorBoundaryFallback';
 import Panel from '../../../../components/panel/Panel';

@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { SizeVariant } from '../../types/types';
+import type { ReactElement } from 'react';
+import type { SizeVariant } from '../../types/types';
 import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
 import SkeletonHeader from './SkeletonHeader';
 
 interface SkeletonAdminPageProps {
-  children: ReactNode;
+  children: ReactElement;
   showLink?: boolean;
   variant?: SizeVariant;
 }

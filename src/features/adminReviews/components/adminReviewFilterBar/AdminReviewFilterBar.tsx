@@ -1,4 +1,4 @@
-import { ReviewParams } from '../../../../app/api/apiTypes/adminReviewApiTypes';
+import type { ReviewParams } from '../../../../app/api/apiTypes/adminReviewApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Search from '../../../../components/formElements/Search';
 import SegmentedElement from '../../../../components/segmentedElement/SegmentedElement';

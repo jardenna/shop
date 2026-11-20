@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { KeyCode } from '../../types/enums';
-import { FocusEventType } from '../../types/types';
+import type { FocusEventType } from '../../types/types';
 import LayoutElement from '../LayoutElement';
 import NavItem from './NavItem';
-import { NavListProps } from './navLists';
+import type { NavListProps } from './navLists';
 
 export interface NavProps {
   ariaLabel: string;

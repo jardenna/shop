@@ -1,5 +1,5 @@
 import Selectbox from '../../../components/selectbox/Selectbox';
-import { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../types/types';
 
 interface CurrencySelectProps {
   currencyOptions: OptionType[];

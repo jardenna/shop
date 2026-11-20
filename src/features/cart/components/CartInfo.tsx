@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { ShopPath } from '../../../layout/nav/enums';
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 
 interface CartInfoProps {
   language: Language;

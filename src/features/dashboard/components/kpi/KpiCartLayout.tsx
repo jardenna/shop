@@ -1,6 +1,9 @@
 import Cart from '../../../../components/carts/Cart';
 import { IconName } from '../../../../types/enums';
-import { DashboardKpiId, dashboardKpiVariants } from '../../dashboardUtils';
+import type {
+  DashboardKpiId,
+  dashboardKpiVariants,
+} from '../../dashboardUtils';
 import KpiContent from './KpiContent';
 
 interface KpiCartLayoutProps {

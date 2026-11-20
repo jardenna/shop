@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import {
+import type {
   BaseProduct,
   BaseShopProduct,
 } from '../../../app/api/apiTypes/sharedApiTypes';

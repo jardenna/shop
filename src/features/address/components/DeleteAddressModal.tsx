@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import type { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import IconContent from '../../../components/IconContent';
 import DeleteModal from '../../../components/Modal/DeleteModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';

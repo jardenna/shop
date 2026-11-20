@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
+import type { ReviewParams } from '../app/api/apiTypes/adminReviewApiTypes';
 import ClearFilterBtn from '../components/ClearFilterBtn';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import FilterPanel from '../components/filterPanel/FilterPanel';

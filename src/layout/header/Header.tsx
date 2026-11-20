@@ -1,5 +1,5 @@
-import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
-import { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
+import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
+import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler, OptionType } from '../../types/types';

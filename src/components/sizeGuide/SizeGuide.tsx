@@ -1,4 +1,4 @@
-import { Language } from '../../types/types';
+import type { Language } from '../../types/types';
 import VisuallyHidden from '../VisuallyHidden';
 
 interface SizeGuideProps {

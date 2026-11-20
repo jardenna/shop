@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
   PaymentFormValues,
   PaymentMethods,
 } from '../../../app/api/apiTypes/paymentApiTypes';

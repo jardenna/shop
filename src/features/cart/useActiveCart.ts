@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/query';
-import { UserResponse } from '../../app/api/apiTypes/userApiTypes';
+import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import { useAppSelector } from '../../app/hooks';
 import { selectCartList } from '../cartSlice';
 import { useGetCartQuery, useGetGuestCartQuery } from './cartApiSlice';

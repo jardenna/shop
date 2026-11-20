@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useSearchParams } from 'react-router';
-import { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import Accordion, {
-  AccordionList,
+  type AccordionList,
 } from '../../../components/accordion/Accordion';
 import ColorItem from '../../../components/ColorItem';
 import FieldSet from '../../../components/fieldset/FieldSet';
@@ -11,14 +11,14 @@ import Form from '../../../components/Form';
 import CheckboxList from '../../../components/formElements/checkbox/CheckboxList';
 import DualRange from '../../../components/formElements/dualRangeSlider/DualRange';
 import TagList from '../../../components/tags/TagList';
-import { InputChangeHandler, Language } from '../../../types/types';
-import { sortSizesDynamic } from '../../../utils/sizeUtils';
-import { getFilterSummary } from '../../../utils/utils';
-import { useCurrency } from '../../currency/useCurrency';
-import {
+import type {
   FilterKeys,
   InitialFilters,
 } from '../../../pages/shopProductPages/CollectionPage';
+import type { InputChangeHandler, Language } from '../../../types/types';
+import { sortSizesDynamic } from '../../../utils/sizeUtils';
+import { getFilterSummary } from '../../../utils/utils';
+import { useCurrency } from '../../currency/useCurrency';
 
 type AccordionConfigItem<K extends FilterKeys = FilterKeys> = {
   key: K;

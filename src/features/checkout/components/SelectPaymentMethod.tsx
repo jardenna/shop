@@ -1,6 +1,6 @@
-import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
+import type { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import RadioButtonList from '../../../components/formElements/radioList/RadioButtonList';
-import { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../types/types';
 import PaymentMethodsList from '../../cart/components/PaymentMethodsList';
 
 interface PaymentMethodList {

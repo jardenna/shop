@@ -1,4 +1,4 @@
-import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import type { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import { useLanguage } from '../../language/useLanguage';
 
 interface AddressInforListProps {

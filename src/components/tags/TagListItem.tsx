@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { BtnVariant, IconName } from '../../types/enums';
 import Button from '../Button';
 import IconContent from '../IconContent';
 
 type TagListItemProps = {
   ariaLabel: string;
-  children: ReactNode;
+  children: ReactElement;
   onClick: () => void;
 };
 

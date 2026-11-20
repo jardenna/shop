@@ -1,5 +1,5 @@
-import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
+import type { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
 import FieldSet from '../../../../components/fieldset/FieldSet';
 import Form from '../../../../components/Form';
 import NumberStep from '../../../../components/formElements/numberStep/NumberStep';

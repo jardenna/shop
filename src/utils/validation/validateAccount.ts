@@ -1,4 +1,4 @@
-import { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
+import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 import { phoneNumberRegex } from '../regex';

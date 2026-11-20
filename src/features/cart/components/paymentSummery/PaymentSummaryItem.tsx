@@ -1,4 +1,4 @@
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
 interface PaymentSummaryItemProps {

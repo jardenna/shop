@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { ValidationErrors } from '../../hooks/useFormValidation';
+import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 
 export function validateAdminGoals(values: Record<string, string | number>) {

@@ -2,7 +2,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router';
 import SectionHeading from '../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
-import { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
+import type { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
 import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';

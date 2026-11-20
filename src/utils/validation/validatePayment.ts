@@ -1,5 +1,5 @@
 import { paymentMethodsValues } from '../../app/api/apiConstants';
-import { ValidatePayment } from '../../app/api/apiTypes/paymentApiTypes';
+import type { ValidatePayment } from '../../app/api/apiTypes/paymentApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../types/enums';
 import {

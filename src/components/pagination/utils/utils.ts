@@ -1,4 +1,4 @@
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 import { PaginationItem } from '../createPaginationItems';
 
 export const getRangeText = (page: number, perPage: number, total: number) => {

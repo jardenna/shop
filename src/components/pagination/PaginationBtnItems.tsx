@@ -1,5 +1,5 @@
 import { BtnVariant, IconName } from '../../types/enums';
-import { Language } from '../../types/types';
+import type { Language } from '../../types/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';

@@ -1,5 +1,5 @@
 import Badge from '../../../components/badge/Badge';
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 
 interface OrderCancelledBadgeProps {
   language: Language;

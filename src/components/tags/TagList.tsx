@@ -1,4 +1,4 @@
-import { Language } from '../../types/types';
+import type { Language } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_tag-list.scss';
 import TagListItem from './TagListItem';

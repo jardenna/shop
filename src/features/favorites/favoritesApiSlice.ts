@@ -1,5 +1,5 @@
 import apiSlice, { MethodsEnum, TagTypesEnum } from '../../app/api/apiSlice';
-import { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProduct } from '../../app/api/apiTypes/sharedApiTypes';
 import type { ToggleFavoriteResponse } from '../../app/api/apiTypes/shopApiTypes';
 import { favoritesUrl } from '../../app/endpoints';
 

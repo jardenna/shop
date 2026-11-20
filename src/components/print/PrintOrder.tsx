@@ -2,11 +2,11 @@ import { View } from '@react-pdf/renderer';
 import { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import { CurrencyCode } from '../../features/currency/currencyConverterUtil';
 import { SelectedLanguage } from '../../features/language/languageSlice';
+import type { Language } from '../../types/types';
 import PdfContainer from './PdfContainer';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
 import PrintOrdertable from './printOrderTable/PrintOrdertable';
 import { styles } from './styles';
-import { Language } from '../../types/types';
 
 export interface BasePrintOrderProps {
   language: Language;

@@ -1,8 +1,8 @@
-import { MainCategoryNames } from '../../app/api/apiTypes/sharedApiTypes';
+import type { MainCategoryNames } from '../../app/api/apiTypes/sharedApiTypes';
 import { useGetPublishedCategoriesQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import MainCollections from '../../features/shop/components/MainCollections';
-import { MainCollectionsBaseProps } from '../../features/shop/components/MainCollectionsItem';
+import type { MainCollectionsBaseProps } from '../../features/shop/components/MainCollectionsItem';
 import { ShopPath } from '../../layout/nav/enums';
 import { translateKey } from '../../utils/utils';
 import MainPageContainer from '../pageContainer/MainPageContainer';

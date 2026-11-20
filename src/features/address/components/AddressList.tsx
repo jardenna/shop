@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
-import { Address } from '../../../app/api/apiTypes/addressApiTypes';
+import type { ReactElement } from 'react';
+import type { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import ChangeAddressModal from '../../../components/Modal/ChangeAddressModal';
-import { Language, RefBtnType } from '../../../types/types';
-import { StandardAddressIds } from '../../../utils/addressUtils';
+import type { Language, RefBtnType } from '../../../types/types';
+import type { StandardAddressIds } from '../../../utils/addressUtils';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';
 import './_address-list.scss';
@@ -15,7 +15,7 @@ interface AddressListProps {
   username: string;
   buttonRef?: RefBtnType;
   onChangeAddress: (address: StandardAddressIds) => void;
-  renderAddressFooter?: (address: Address) => ReactNode;
+  renderAddressFooter?: (address: Address) => ReactElement;
 }
 const AddressList = ({
   addresses,

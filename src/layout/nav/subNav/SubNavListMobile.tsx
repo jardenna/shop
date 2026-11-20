@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router';
-import { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
+import type { ProductMenuResponse } from '../../../app/api/apiTypes/shopApiTypes';
 import ProductAsideNav from '../../../features/shop/components/productAside/ProductAsideNav';
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 import { ShopPath } from '../enums';
 import NavAd from '../NavAd';
-import { BaseNav } from '../navLists';
+import type { BaseNav } from '../navLists';
 import { subNavConfig } from './subnavConfig';
 
 interface SubNavListMobileProps {

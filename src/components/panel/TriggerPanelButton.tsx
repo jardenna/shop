@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 
@@ -6,7 +6,7 @@ interface TriggerPanelButtonProps {
   ariaControls: string;
   ariaExpanded: boolean;
   ariaLabel: string;
-  children: ReactNode;
+  children: ReactElement;
   className?: string;
   variant?: BtnVariant;
   onTogglePanel: () => void;

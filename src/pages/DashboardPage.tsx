@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
+import type { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
 import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
@@ -13,7 +13,7 @@ import {
 } from '../features/dashboard/dashboardApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
-import { OptionType } from '../types/types';
+import type { OptionType } from '../types/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 

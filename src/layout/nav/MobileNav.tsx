@@ -8,7 +8,7 @@ import { useTogglePanel } from '../../components/panel/useTogglePanel';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import NavContainer from './NavContainer';
-import { NavListProps } from './navLists';
+import type { NavListProps } from './navLists';
 
 interface MobileNavProps {
   navList: NavListProps[];

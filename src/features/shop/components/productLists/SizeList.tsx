@@ -1,4 +1,4 @@
-import { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
+import type { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
 import { useLanguage } from '../../../language/useLanguage';
 import ProductList from './ProductList';
 import ProductListItem from './ProductListItem';

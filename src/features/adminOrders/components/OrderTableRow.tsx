@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { paymentMethodLabels } from '../../../app/api/apiConstants';
-import { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
+import type { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
 import { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
 import Badge from '../../../components/badge/Badge';
 import Chip from '../../../components/chips/Chip';
@@ -8,7 +8,7 @@ import { chipVariants } from '../../../components/chips/chipsUtils';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/enums';
-import { Language } from '../../../types/types';
+import type { Language } from '../../../types/types';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 
 interface OrderTableRowProps {

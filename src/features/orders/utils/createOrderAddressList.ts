@@ -1,4 +1,4 @@
-import {
+import type {
   Address,
   BaseAddress,
 } from '../../../app/api/apiTypes/addressApiTypes';

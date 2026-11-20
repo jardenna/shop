@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import DisplayControls, {
-  DisplayControlItem,
+  type DisplayControlItem,
 } from '../../../components/DisplayControls';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconName } from '../../../types/enums';

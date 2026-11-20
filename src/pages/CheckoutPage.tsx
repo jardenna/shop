@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router';
 import SectionHeading from '../adminLayout/sectionHeading/SectionHeading';
-import { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
+import type { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import SkeletonCheckoutPage from '../components/skeleton/checkoutpage/SkeletonCheckoutPage';
 import { useToast } from '../components/toast/hooks/useToast';

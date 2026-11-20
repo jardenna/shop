@@ -1,7 +1,7 @@
-import { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
+import type { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Chip from '../../../../components/chips/Chip';
 import { chipVariants } from '../../../../components/chips/chipsUtils';
-import { Language } from '../../../../types/types';
+import type { Language } from '../../../../types/types';
 import { formatOrderNumber } from '../../../../utils/formatOrderNo';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
