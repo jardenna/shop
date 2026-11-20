@@ -5,7 +5,6 @@ import SkeletonAdminGoalTable from '../components/skeleton/SkeletonAdminGoalTabl
 import { useGetAdminGoalsQuery } from '../features/adminGoals/adminGoalsApiSlice';
 import AdminGoalTable from '../features/adminGoals/components/AdminGoalTable';
 import { useLanguage } from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const GoalsPage = () => {
@@ -29,7 +28,7 @@ const GoalsPage = () => {
         {adminGoal && <AdminGoalTable adminGoal={adminGoal} />}
         <section className="goal-info">
           <h2 className="goal-info-title">
-            <Icon iconName={IconName.Info} />
+            <Icon iconName="info" />
             {language.howItWorks}
           </h2>
 

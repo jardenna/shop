@@ -5,7 +5,6 @@ import RadioTileList from '../../../../components/formElements/radioTileList/Rad
 import Textarea from '../../../../components/formElements/Textarea';
 import { useToast } from '../../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import { IconName } from '../../../../types/enums';
 import type { ChangeInputType } from '../../../../types/types';
 import { createRatingList } from '../../../../utils/productLists';
 import { useLanguage } from '../../../language/useLanguage';
@@ -80,7 +79,7 @@ const ReviewsForm = ({
             checked={String(values.rating)}
             onChange={handleChange}
             className="reviews"
-            iconName={IconName.Star}
+            iconName="star"
           />
         </FieldSet>
 

@@ -7,7 +7,6 @@ import IconContent from '../../components/IconContent';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { selectCartList } from '../../features/cartSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import type { HeaderProps } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/enums';
@@ -55,17 +54,14 @@ const HeaderIcons = ({
             ariaHasPopup="menu"
             triggerBtnClassName="header-icon-btn"
           >
-            <IconContent
-              ariaLabel={language.myAccount}
-              iconName={IconName.User}
-            />
+            <IconContent ariaLabel={language.myAccount} iconName="user" />
           </ActionNavBtn>
         </li>
         <li>
           <HeaderBadgeLinks
             linkTo={ShopPath.ShoppingCart}
             ariaLabel={language.viewCart}
-            iconName={IconName.ShoppingBag}
+            iconName="shoppingBag"
             itemUpdatedText={language.itemsUpdated}
             itemText={cartListItemText}
             count={currentUser ? totalQuantity : cartItemsLength}
@@ -86,7 +82,7 @@ const HeaderIcons = ({
           <HeaderBadgeLinks
             linkTo={ShopPath.Favorites}
             ariaLabel={language.viewYourFavorites}
-            iconName={IconName.Heart}
+            iconName="heart"
             count={currentUser ? (favorites?.length ?? 0) : 0}
             itemUpdatedText={language.favoritesUpdated}
             itemText={favoriteItemText}

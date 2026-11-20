@@ -1,4 +1,4 @@
-import { IconName, type IconNameValue } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import { AdminPath, LinkText, type LinkTextValue, ShopPath } from './enums';
 export interface BaseNav {
   linkText: LinkTextValue;
@@ -77,44 +77,44 @@ export const adminNavList: AdminNavList[] = [
   {
     path: AdminPath.AdminCategories,
     linkText: LinkText.Categories,
-    iconName: IconName.Categories,
+    iconName: 'categories',
   },
   {
     path: AdminPath.AdminSubCategories,
     linkText: LinkText.SubCategories,
-    iconName: IconName.SubCategories,
+    iconName: 'subCategories',
   },
   {
     path: AdminPath.Users,
     linkText: LinkText.Users,
-    iconName: IconName.Users,
+    iconName: 'users',
   },
   {
     path: AdminPath.AdminOrders,
     linkText: LinkText.Orders,
-    iconName: IconName.Orders,
+    iconName: 'orders',
   },
   {
     path: AdminPath.AdminReviews,
     linkText: LinkText.Reviews,
-    iconName: IconName.Star,
+    iconName: 'star',
     hasBadgeCount: true,
     className: 'review-nav-item',
   },
   {
     path: AdminPath.Goals,
     linkText: LinkText.Goals,
-    iconName: IconName.Settings,
+    iconName: 'settings',
   },
   {
     path: AdminPath.AdminDiscountCodes,
     linkText: LinkText.DiscountCodes,
-    iconName: IconName.Discount,
+    iconName: 'discount',
   },
   {
     path: ShopPath.Root,
     linkText: LinkText.Shop,
-    iconName: IconName.Basket,
+    iconName: 'basket',
   },
 ];
 

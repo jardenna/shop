@@ -1,6 +1,5 @@
 import { ratingList } from '../../../../app/api/apiConstants';
 import CheckboxList from '../../../../components/formElements/checkbox/CheckboxList';
-import { IconName } from '../../../../types/enums';
 import type { InputChangeHandler, Language } from '../../../../types/types';
 import './_review-rating-list.scss';
 
@@ -21,7 +20,7 @@ const ReviewRatingList = ({
     onChange={onChange}
     values={values}
     language={language}
-    iconName={IconName.Star}
+    iconName="star"
     className="rating-list"
     showControlInfo
   />
