@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import { BtnVariant, type BtnVariantValue, IconName } from '../types/enums';
+import { BtnVariant, type BtnVariantValue } from '../types/enums';
 import Button from './Button';
 import Icon from './icons/Icon';
 
@@ -28,7 +28,7 @@ const ClearFilterBtn = ({
       variant={variant}
       className="clear-filter-btn"
     >
-      {showIcon && <Icon iconName={IconName.ClearFilter} />}
+      {showIcon && <Icon iconName="clearFilter" />}
       {language.clearFilters}
       {children && children}
     </Button>

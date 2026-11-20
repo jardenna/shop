@@ -1,7 +1,6 @@
 import ReviewStarsInfo from '../features/shop/components/reviews/ReviewStarsInfo';
 import { getStarsArray } from '../features/shop/components/reviews/reviewsUtil.';
 import variables from '../scss/variables.module.scss';
-import { IconName } from '../types/enums';
 import Icon from './icons/Icon';
 
 interface ReviewStarsProps {
@@ -19,10 +18,10 @@ const ReviewStars = ({ rating, className }: ReviewStarsProps) => {
           // eslint-disable-next-line @eslint-react/no-array-index-key
           <li key={index}>
             {type === 'full' && (
-              <Icon iconName={IconName.Star} fill={variables.colorYellow} />
+              <Icon iconName="star" fill={variables.colorYellow} />
             )}
-            {type === 'half' && <Icon iconName={IconName.HalfStar} />}
-            {type === 'empty' && <Icon iconName={IconName.Star} />}
+            {type === 'half' && <Icon iconName="halfStar" />}
+            {type === 'empty' && <Icon iconName="star" />}
           </li>
         ))}
       </ul>

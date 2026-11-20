@@ -2,7 +2,7 @@ import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import type { ColumnKey } from '../../../pages/users/UserPage';
-import { BtnVariant, IconName } from '../../../types/enums';
+import { BtnVariant } from '../../../types/enums';
 import type { InputChangeHandler, Language } from '../../../types/types';
 import UpdateUserInput from './UpdateUserInput';
 import UserRowText from './UserRowText';
@@ -65,7 +65,7 @@ const UserTablePopup = ({
         triggerBtnVariant={BtnVariant.Ghost}
         ariaLabel={ariaLabel}
       >
-        <Icon iconName={IconName.Pencil} />
+        <Icon iconName="pencil" />
       </Popup>
     )}
   </>

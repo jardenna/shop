@@ -2,7 +2,7 @@ import type {
   PaymentMethodField,
   PaymentMethods,
 } from '../app/api/apiTypes/paymentApiTypes';
-import { IconName, type IconNameValue } from '../types/enums';
+import { type IconNameValue } from '../types/enums';
 
 interface PaymentMethod {
   fields: PaymentMethodField[];
@@ -39,19 +39,19 @@ export const paymentMethodsList: PaymentMethod[] = [
   {
     id: 'visa',
     label: 'Visa',
-    icon: IconName.Visa,
+    icon: 'visa',
     fields: cardFields,
   },
   {
     id: 'mastercard',
     label: 'Mastercard',
-    icon: IconName.Mastercard,
+    icon: 'mastercard',
     fields: cardFields,
   },
   {
     id: 'paypal',
     label: 'PayPal',
-    icon: IconName.PayPal,
+    icon: 'payPal',
     fields: [
       {
         name: 'paypalEmail',
@@ -69,7 +69,7 @@ export const paymentMethodsList: PaymentMethod[] = [
   {
     id: 'mobilepay',
     label: 'MobilePay',
-    icon: IconName.MobilePay,
+    icon: 'mobilePay',
     fields: [
       {
         name: 'mobilePhoneNumber',

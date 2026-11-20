@@ -3,7 +3,6 @@ import DisplayControls, {
   type DisplayControlItem,
 } from '../../../components/DisplayControls';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
-import { IconName } from '../../../types/enums';
 import { useLanguage } from '../../language/useLanguage';
 
 interface ProductToolbarProps {
@@ -22,12 +21,12 @@ const ProductToolbar = ({
 
   const displayControlList: DisplayControlItem[] = [
     {
-      iconName: IconName.LayoutGrid,
+      iconName: 'layoutGrid',
       ariaLabel: language.productViewGrid,
       display: 'grid',
     },
     {
-      iconName: IconName.LayoutList,
+      iconName: 'layoutList',
       ariaLabel: language.productViewList,
       display: 'list',
     },

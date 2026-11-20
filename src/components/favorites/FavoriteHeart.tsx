@@ -1,7 +1,6 @@
 import type { ChangeEvent } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Icon from '../icons/Icon';
 import VisuallyHidden from '../VisuallyHidden';
@@ -33,7 +32,7 @@ const FavoriteHeart = ({ id, className = '' }: FavoriteHeartProps) => {
       >
         <label htmlFor={id} className="favorite-label">
           <Icon
-            iconName={IconName.Heart}
+            iconName="heart"
             className={`heart-icon ${animate ? 'animate' : ''}`}
           />
           <VisuallyHidden>

@@ -89,13 +89,13 @@ const Layout = () => {
       isActive: pathname.includes(ShopPath.MyAccount),
       onClick: () =>
         navigate(currentUser ? `/${ShopPath.MyAccount}` : `/${ShopPath.Login}`),
-      iconName: IconName.Auth,
+      iconName: 'auth',
     },
     {
       label: language.myOrders,
       isActive: pathname.includes(ShopPath.MyOrders),
       onClick: () => navigate(ShopPath.MyOrders),
-      iconName: IconName.Basket,
+      iconName: 'basket',
     },
     ...(isEmployee
       ? [
@@ -111,7 +111,7 @@ const Layout = () => {
       onClick: currentUser
         ? handleLogout
         : () => navigate(`/${ShopPath.Login}`),
-      iconName: currentUser ? IconName.Logout : IconName.Login,
+      iconName: currentUser ? 'logout' : 'login',
     },
   ];
 

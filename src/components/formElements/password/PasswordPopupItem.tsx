@@ -1,5 +1,4 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
 import Icon from '../../icons/Icon';
 import VisuallyHidden from '../../VisuallyHidden';
 
@@ -13,7 +12,7 @@ const PasswordPopupItem = ({ text, isValid }: PasswordPopupItemProps) => {
 
   return (
     <li className={`popup-item ${!isValid ? 'error' : ''}`}>
-      <Icon iconName={isValid ? IconName.Success : IconName.Error} />
+      <Icon iconName={isValid ? 'success' : 'error'} />
       <span>{text}</span>
       <VisuallyHidden>
         {isValid ? language.criterionMet : language.criterionNotMet}

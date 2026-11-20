@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
 import type { InputChangeHandler, InputType } from '../../../types/types';
 import { dateFormat } from '../../../utils/dates';
 import Input from '../../formElements/Input';
@@ -146,7 +145,7 @@ const TableFilterPopup = <T,>({
       ariaLabel={language.filter}
       className={className}
     >
-      <Icon iconName={IconName.Filter} />
+      <Icon iconName="filter" />
 
       {isFilterActive && (
         <>

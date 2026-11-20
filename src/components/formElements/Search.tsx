@@ -1,4 +1,3 @@
-import { IconName } from '../../types/enums';
 import type { InputChangeHandler } from '../../types/types';
 import Icon from '../icons/Icon';
 import Input from './Input';
@@ -33,7 +32,7 @@ const Search = ({
       inputMode="search"
       type="search"
       labelText={labelText}
-      inputSuffix={<Icon iconName={IconName.Search} />}
+      inputSuffix={<Icon iconName="search" />}
       inputHasNoLabel={inputHasNoLabel}
     />
   </search>

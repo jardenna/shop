@@ -64,7 +64,7 @@ export const PopupRole = {
 export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];
 
 export const KeyCode = {
-  Alt: 'AltLeft',
+  Alt: 'Alt',
   ArrowDown: 'ArrowDown',
   ArrowLeft: 'ArrowLeft',
   ArrowRight: 'ArrowRight',
@@ -73,8 +73,8 @@ export const KeyCode = {
   Enter: 'Enter',
   Esc: 'Escape',
   Home: 'Home',
-  Shift: 'ShiftLeft',
-  Space: 'Space',
+  Shift: 'Shift',
+  Space: ' ',
   Tab: 'Tab',
 } as const;
 
@@ -157,7 +157,7 @@ export const IconName = {
   Subtract: 'subtract',
   Success: 'success',
   Tiktok: 'tiktok',
-  Trash: 'trach',
+  Trash: 'trash',
   Undo: 'undo',
   Upload: 'upload',
   User: 'user',

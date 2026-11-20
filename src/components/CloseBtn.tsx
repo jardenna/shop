@@ -1,5 +1,4 @@
 import { useLanguage } from '../features/language/useLanguage';
-import { IconName } from '../types/enums';
 import IconBtn from './IconBtn';
 
 interface CloseBtnProps {
@@ -13,7 +12,7 @@ const CloseBtn = ({ onClick, ariaLabel, size }: CloseBtnProps) => {
 
   return (
     <IconBtn
-      iconName={IconName.Close}
+      iconName="close"
       ariaLabel={ariaLabel ?? language.close}
       onClick={onClick}
       className="btn-close"

@@ -1,4 +1,4 @@
-import { IconName, type IconNameValue } from '../../types/enums';
+import { type IconNameValue } from '../../types/enums';
 import Icon from '../icons/Icon';
 import Popup from './Popup';
 
@@ -11,7 +11,7 @@ interface TooltipProps {
 const Tooltip = ({
   ariaLabel,
   tooltipContent,
-  iconName = IconName.Info,
+  iconName = 'info',
 }: TooltipProps) => (
   <Popup
     popupType="tooltip"

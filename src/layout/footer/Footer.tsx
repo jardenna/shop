@@ -2,7 +2,6 @@ import IconContent from '../../components/IconContent';
 
 import Icon from '../../components/icons/Icon';
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import { contactInformationList } from '../../utils/contactInformation';
 import LayoutElement from '../LayoutElement';
 import {
@@ -27,7 +26,7 @@ const Footer = () => {
         <article className="footer-container">
           <section className="footer-shop-info">
             <Icon
-              iconName={IconName.Logo}
+              iconName="logo"
               title="Fashion Fusion Logo"
               ariaHidden={false}
               desc="Logo"
@@ -38,12 +37,9 @@ const Footer = () => {
               ))}
             </div>
             <div className="footer-social-container">
-              <IconContent iconName={IconName.Facebook} ariaLabel="Facbook" />
-              <IconContent
-                iconName={IconName.Instagram}
-                ariaLabel="Instagram"
-              />
-              <IconContent iconName={IconName.Tiktok} ariaLabel="Tiktok" />
+              <IconContent iconName="facebook" ariaLabel="Facbook" />
+              <IconContent iconName="instagram" ariaLabel="Instagram" />
+              <IconContent iconName="tiktok" ariaLabel="Tiktok" />
             </div>
           </section>
           <section className="footer-nav-container">

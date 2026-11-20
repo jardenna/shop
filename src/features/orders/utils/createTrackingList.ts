@@ -1,5 +1,5 @@
 import type { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
-import { IconName, type IconNameValue } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/enums';
 
 interface OrderTrackingList {
   iconName: IconNameValue;
@@ -8,20 +8,20 @@ interface OrderTrackingList {
 }
 
 export const orderTrackingList: OrderTrackingList[] = [
-  { id: 'created', label: 'created', iconName: IconName.Basket },
+  { id: 'created', label: 'created', iconName: 'basket' },
   {
     id: 'processing',
     label: 'processing',
-    iconName: IconName.PackageOpen,
+    iconName: 'packageOpen',
   },
   {
     id: 'shipped',
     label: 'shipped',
-    iconName: IconName.Deliver,
+    iconName: 'deliver',
   },
   {
     id: 'delivered',
     label: 'delivered',
-    iconName: IconName.Home,
+    iconName: 'home',
   },
 ];

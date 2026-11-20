@@ -1,5 +1,4 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { IconName } from '../../../types/enums';
 import IconContent from '../../IconContent';
 
 const MissingImage = () => {
@@ -7,7 +6,7 @@ const MissingImage = () => {
   return (
     <span className="missing-img">
       <IconContent
-        iconName={IconName.Image}
+        iconName="image"
         size="50"
         ariaLabel={language.adminCannotBeDeleted}
       />

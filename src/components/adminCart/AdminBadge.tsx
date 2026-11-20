@@ -1,6 +1,5 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
-import { IconName } from '../../types/enums';
 import { translateKey } from '../../utils/utils';
 import Badge from '../badge/Badge';
 import DateDisplay from '../datePicker/DateDisplay';
@@ -28,7 +27,7 @@ const AdminBadge = ({ scheduledDate, status }: AdminBadgeProps) => {
             <DateDisplay date={scheduledDate} hour="2-digit" minute="2-digit" />
           }
         >
-          <Icon iconName={IconName.Calendar} />
+          <Icon iconName="calendar" />
         </Popup>
       )}
     </div>

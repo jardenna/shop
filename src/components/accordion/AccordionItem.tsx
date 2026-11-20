@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { IconName } from '../../types/enums';
 import Icon from '../icons/Icon';
 
 type AccordionItemProps = {
@@ -23,7 +22,7 @@ const AccordionItem = ({
         {title}
         {additionalTitle && <span>[{additionalTitle}]</span>}
       </span>
-      <Icon iconName={IconName.ChevronDown} className="accordion-icon" />
+      <Icon iconName="chevronDown" className="accordion-icon" />
     </summary>
     <div className="accordion-content">{children}</div>
   </details>

@@ -1,7 +1,6 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import LayoutElement from '../../layout/LayoutElement';
-import { IconName } from '../../types/enums';
 import IconBtn from '../IconBtn';
 import './_pagination.scss';
 import { createPaginationItems } from './createPaginationItems';
@@ -48,7 +47,7 @@ const PaginationNav = ({
         {!isTabletSize && (
           <li>
             <IconBtn
-              iconName={IconName.ChevronsLeft}
+              iconName="chevronsLeft"
               ariaLabel={language.gotoFirstPage}
               onClick={() => {
                 onPagination(1);
@@ -59,7 +58,7 @@ const PaginationNav = ({
         )}
         <li>
           <IconBtn
-            iconName={IconName.ChevronLeft}
+            iconName="chevronLeft"
             ariaLabel={language.gotoPrevPage}
             onClick={handleGotoPrevPage}
             disabled={page === 1}
@@ -77,7 +76,7 @@ const PaginationNav = ({
         )}
         <li>
           <IconBtn
-            iconName={IconName.ChevronRight}
+            iconName="chevronRight"
             ariaLabel={language.gotoNextPage}
             onClick={handleGotoNextPage}
             disabled={page === totalBtns}
@@ -86,7 +85,7 @@ const PaginationNav = ({
         {!isTabletSize && (
           <li>
             <IconBtn
-              iconName={IconName.ChevronsRight}
+              iconName="chevronsRight"
               ariaLabel={language.gotoLastPage}
               onClick={() => {
                 onPagination(totalBtns);

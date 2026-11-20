@@ -3,7 +3,6 @@ import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
 import NavContainer from '../../layout/nav/NavContainer';
 import { adminNavList } from '../../layout/nav/navLists';
-import { IconName } from '../../types/enums';
 import './_aside.scss';
 
 interface AsideProps {
@@ -35,7 +34,7 @@ const Aside = ({
       <IconBtn
         onClick={onTogglePanel}
         ariaLabel={ariaLabel}
-        iconName={IconName.ChevronLeft}
+        iconName="chevronLeft"
         ariaExpanded={!isShown}
       />
     </aside>

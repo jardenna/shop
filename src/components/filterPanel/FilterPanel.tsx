@@ -1,6 +1,5 @@
 import { type ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { IconName } from '../../types/enums';
 import type { Language } from '../../types/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Icon from '../icons/Icon';
@@ -50,7 +49,7 @@ const FilterPanel = ({
       >
         <>
           {hasActiveFilters && `[${totalFiltersCount}]`}
-          <Icon iconName={IconName.Filter} />
+          <Icon iconName="filter" />
           <VisuallyHidden>
             {hasActiveFilters
               ? language.filtersApplied
