@@ -1,4 +1,8 @@
-import { AdminPath, ShopPath } from '../layout/nav/enums';
+import {
+  AdminPath,
+  type AdminPathValue,
+  type ShopPathValue,
+} from '../layout/nav/enums';
 import type {
   AriaLabelData,
   FiltersCountResult,
@@ -88,8 +92,10 @@ const getPathName = (pathname: string) => {
 const toCamelCase = (value: string) =>
   value.replace(/[-_](\w)/g, (_, character: string) => character.toUpperCase());
 
-const pathEquals = (path: string | undefined, enumVal: ShopPath | AdminPath) =>
-  `/${path}` === `/${enumVal}`;
+const pathEquals = (
+  path: string | undefined,
+  enumVal: ShopPathValue | AdminPathValue,
+) => `/${path}` === `/${enumVal}`;
 
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);

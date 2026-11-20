@@ -1,16 +1,16 @@
 import { Link } from 'react-router';
 import CountBadge from '../../components/countBadge/CountBadge';
 import IconContent from '../../components/IconContent';
-import { IconName } from '../../types/enums';
-import { ShopPath } from '../nav/enums';
+import type { IconNameValue } from '../../types/enums';
+import type { ShopPathValue } from '../nav/enums';
 
 interface HeaderBadgeLinksProps {
   ariaLabel: string;
   count: number;
-  iconName: IconName;
+  iconName: IconNameValue;
   itemText: string;
   itemUpdatedText: string;
-  linkTo: ShopPath;
+  linkTo: ShopPathValue;
 }
 
 const HeaderBadgeLinks = ({

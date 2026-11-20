@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { KeyCode } from '../types/enums';
 import { keyboardNavigation } from '../utils/keyboardNavigation';
 
 interface UseRovingTabIndexProps {
@@ -27,7 +26,7 @@ export const useRovingTabIndex = ({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    const nextIndex = getNextIndex(event.key as KeyCode);
+    const nextIndex = getNextIndex(event.key);
 
     if (nextIndex === null) {
       return;
