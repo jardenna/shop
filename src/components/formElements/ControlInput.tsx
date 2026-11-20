@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
-import { type IconNameValue } from '../../types/constants';
-import type { ControlInputType, InputChangeHandler } from '../../types/types';
+import type {
+  ControlInputType,
+  IconNameValue,
+  InputChangeHandler,
+} from '../../types/types';
 import IconContent from '../IconContent';
 
 export interface BaseControlInputProps {

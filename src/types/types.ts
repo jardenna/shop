@@ -11,6 +11,7 @@ import type {
   PopupRole,
   ValidationMessage,
 } from './constants';
+import type { IconName } from '../components/icons/iconConstants';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
@@ -110,6 +111,8 @@ export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
 export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
 
 export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
+
+export type IconNameValue = (typeof IconName)[keyof typeof IconName];
 
 export type ValidationMessageValue =
   (typeof ValidationMessage)[keyof typeof ValidationMessage];

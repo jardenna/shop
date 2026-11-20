@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
 import CountBadge from '../../components/countBadge/CountBadge';
 import IconContent from '../../components/IconContent';
-import type { IconNameValue } from '../../types/constants';
 import type { ShopPathValue } from '../nav/navTypes';
+import type { IconNameValue } from '../../types/types';
 
 interface HeaderBadgeLinksProps {
   ariaLabel: string;

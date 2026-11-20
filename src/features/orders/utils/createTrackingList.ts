@@ -1,5 +1,5 @@
 import type { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
-import { type IconNameValue } from '../../../types/constants';
+import type { IconNameValue } from '../../../types/types';
 
 interface OrderTrackingList {
   iconName: IconNameValue;

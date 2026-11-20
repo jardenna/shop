@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
-import { type IconNameValue } from '../../../types/constants';
-import type { Language } from '../../../types/types';
+import type { IconNameValue, Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_checkbox.scss';

@@ -1,5 +1,3 @@
-import type { IconName } from '../components/icons/iconConstants';
-
 export const ValidationMessage = {
   BrandRequired: 'brandRequired',
   CardHasExpired: 'cardHasExpired',
@@ -80,5 +78,3 @@ export const BtnVariant = {
   Primary: 'primary',
   Secondary: 'secondary',
 } as const;
-
-export type IconNameValue = (typeof IconName)[keyof typeof IconName];

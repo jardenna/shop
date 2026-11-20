@@ -1,4 +1,4 @@
-import { type IconNameValue } from '../../types/constants';
+import type { IconNameValue } from '../../types/types';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
 import ArrowDownIcon from './ArrowDownIcon';

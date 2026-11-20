@@ -1,4 +1,4 @@
-import { type IconNameValue } from '../../types/constants';
+import type { IconNameValue } from '../../types/types';
 import Icon from '../icons/Icon';
 import Popup from './Popup';
 
