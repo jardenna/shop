@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import { type BtnVariantValue } from '../types/constants';
+import type { BtnVariantValue } from '../types/types';
 import Button from './Button';
 import Icon from './icons/Icon';
 

@@ -1,4 +1,5 @@
-import { KeyCode, type KeyCodeValue } from '../types/constants';
+import { KeyCode } from '../types/constants';
+import type { KeyCodeValue } from '../types/types';
 
 interface KeyboardNavigationProps {
   itemCount: number;

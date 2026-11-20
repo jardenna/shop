@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import type { KeyCodeValue } from '../types/constants';
+import type { KeyCodeValue } from '../types/types';
 
 export function useKeyPress(
   callback: () => void,

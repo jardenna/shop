@@ -1,6 +1,10 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import { type BtnVariantValue } from '../types/constants';
-import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';
+import type {
+  AriaCurrentType,
+  AriaHasPopup,
+  BtnVariantValue,
+  RefBtnType,
+} from '../types/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 

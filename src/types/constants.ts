@@ -54,15 +54,10 @@ export const ValidationMessage = {
   UnknownError: 'unknownError',
 } as const;
 
-export type ValidationMessageValue =
-  (typeof ValidationMessage)[keyof typeof ValidationMessage];
-
 export const PopupRole = {
   Alert: 'alert',
   Status: 'status',
 } as const;
-
-export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];
 
 export const KeyCode = {
   Alt: 'Alt',
@@ -79,8 +74,6 @@ export const KeyCode = {
   Tab: 'Tab',
 } as const;
 
-export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
-
 export const BtnVariant = {
   Danger: 'danger',
   Default: 'default',
@@ -89,8 +82,10 @@ export const BtnVariant = {
   Secondary: 'secondary',
 } as const;
 
-export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
-
 export type IconNameValue = (typeof IconName)[keyof typeof IconName];
 
 export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
+
+export type ValidationMessageValue =
+  (typeof ValidationMessage)[keyof typeof ValidationMessage];
+export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];

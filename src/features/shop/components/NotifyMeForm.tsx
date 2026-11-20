@@ -6,7 +6,7 @@ import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { type BtnVariantValue } from '../../../types/constants';
+import type { BtnVariantValue } from '../../../types/types';
 import { validateNotefyEmail } from '../../../utils/validation/validateNotityEmail';
 import { validateNotityMe } from '../../../utils/validation/validateNotityMe';
 import { useLanguage } from '../../language/useLanguage';

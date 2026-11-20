@@ -1,5 +1,4 @@
-import { type BtnVariantValue } from '../../types/constants';
-import type { RefBtnType } from '../../types/types';
+import type { BtnVariantValue, RefBtnType } from '../../types/types';
 import Button from '../Button';
 import type { BaseModalProps } from './Modal';
 import { useModal } from './useModal';
