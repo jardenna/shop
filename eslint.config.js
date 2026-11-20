@@ -103,9 +103,9 @@ export default defineConfig(
       '@eslint-react/dom-no-unsafe-target-blank': 'error',
 
       '@eslint-react/exhaustive-deps': 'off',
-      'react-hooks/exhaustive-deps': 'off',
       '@eslint-react/set-state-in-effect': 'off',
-      'react-hooks/set-state-in-effect': 'off',
+
+      'react-hooks/exhaustive-deps': 'off',
 
       '@stylistic/jsx-self-closing-comp': 'error',
       '@stylistic/jsx-curly-brace-presence': [
