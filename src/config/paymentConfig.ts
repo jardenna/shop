@@ -2,7 +2,7 @@ import type {
   PaymentMethodField,
   PaymentMethods,
 } from '../app/api/apiTypes/paymentApiTypes';
-import { type IconNameValue } from '../types/enums';
+import { type IconNameValue } from '../types/constants';
 
 interface PaymentMethod {
   fields: PaymentMethodField[];

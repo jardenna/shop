@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { KeyCode } from '../types/enums';
+import { KeyCode } from '../types/constants';
 import { useKeyPress } from './useKeyPress';
 
 interface UseMoveFocusProps {

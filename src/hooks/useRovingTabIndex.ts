@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import type { KeyCodeValue } from '../types/enums';
+import type { KeyCodeValue } from '../types/constants';
 import { keyboardNavigation } from '../utils/keyboardNavigation';
 
 interface UseRovingTabIndexProps {

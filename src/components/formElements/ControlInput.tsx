@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { type IconNameValue } from '../../types/enums';
+import { type IconNameValue } from '../../types/constants';
 import type { ControlInputType, InputChangeHandler } from '../../types/types';
 import IconContent from '../IconContent';
 

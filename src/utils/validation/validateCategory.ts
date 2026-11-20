@@ -1,6 +1,6 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import type { CategoryState } from '../../pages/category/CreateCategoryPage';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../types/constants';
 
 export function validateCategory(values: CategoryState) {
   const errors: ValidationErrors<CategoryState> = {};

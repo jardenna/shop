@@ -1,6 +1,6 @@
 import type { InitialShopValues } from '../../features/shop/components/singleProduct/CartForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../types/constants';
 
 export function validateShopProduct(values: InitialShopValues) {
   const errors: ValidationErrors<InitialShopValues> = {};

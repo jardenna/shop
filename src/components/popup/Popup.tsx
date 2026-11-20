@@ -3,7 +3,7 @@ import { type ReactNode, useId } from 'react';
 import { createPortal } from 'react-dom';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
-import { type BtnVariantValue } from '../../types/enums';
+import { type BtnVariantValue } from '../../types/constants';
 import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_popup.scss';

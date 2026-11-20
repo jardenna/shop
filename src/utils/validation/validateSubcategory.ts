@@ -1,6 +1,6 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import type { SubCategoryState } from '../../pages/subCategory/CreateSubCategoryPage';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../types/constants';
 
 export function validateSubcategory(values: SubCategoryState) {
   const errors: ValidationErrors<SubCategoryState> = {};

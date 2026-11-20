@@ -1,4 +1,4 @@
-import { type IconNameValue } from '../../types/enums';
+import { type IconNameValue } from '../../types/constants';
 import { AdminPath, LinkText, ShopPath } from './navConstants';
 import type { LinkTextValue } from './navTypes';
 

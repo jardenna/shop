@@ -1,4 +1,4 @@
-import { type BtnVariantValue } from '../../types/enums';
+import { type BtnVariantValue } from '../../types/constants';
 import type { RefBtnType } from '../../types/types';
 import Button from '../Button';
 import type { BaseModalProps } from './Modal';

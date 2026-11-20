@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectToastList, startToastExit } from '../../features/toastSlice';
 import { useKeyPress } from '../../hooks/useKeyPress';
-import { KeyCode } from '../../types/enums';
+import { KeyCode } from '../../types/constants';
 import Portal from '../Portal';
 import './_toast-list.scss';
 import ToastItem from './ToastItem';

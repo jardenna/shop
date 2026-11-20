@@ -1,5 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { type IconNameValue } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/constants';
 import type { OptionType } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { type BaseControlInputProps } from '../ControlInput';

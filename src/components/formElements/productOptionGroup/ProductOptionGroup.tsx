@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import { type IconNameValue } from '../../../types/enums';
+import { type IconNameValue } from '../../../types/constants';
 import type {
   ControlInputType,
   InputChangeHandler,

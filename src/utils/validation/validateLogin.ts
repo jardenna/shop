@@ -1,5 +1,5 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../types/constants';
 import type { OmitChecked } from '../../types/types';
 import { validateEmail } from './CommonFieldValidation';
 import type { AuthFormValues } from './validateCreateAccount';

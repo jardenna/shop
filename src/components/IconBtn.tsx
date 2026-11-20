@@ -2,7 +2,7 @@ import {
   type BtnType,
   type BtnVariantValue,
   type IconNameValue,
-} from '../types/enums';
+} from '../types/constants';
 import type { AriaHasPopup } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';

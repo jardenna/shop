@@ -2,7 +2,10 @@ import type { Placement } from '@popperjs/core';
 import { useId, type ReactNode } from 'react';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { usePopup } from '../../hooks/usePopup';
-import { type BtnVariantValue, type IconNameValue } from '../../types/enums';
+import {
+  type BtnVariantValue,
+  type IconNameValue,
+} from '../../types/constants';
 import type { AriaHasPopup } from '../../types/types';
 import Button from '../Button';
 import './_action-nav.scss';

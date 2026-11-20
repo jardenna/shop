@@ -1,5 +1,5 @@
 import Cart from '../../../../components/carts/Cart';
-import type { IconNameValue } from '../../../../types/enums';
+import type { IconNameValue } from '../../../../types/constants';
 import type { DashboardKpiId } from '../../dashboardUtils';
 import { dashboardKpiVariants } from '../../dashboardUtils';
 import KpiContent from './KpiContent';

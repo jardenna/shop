@@ -1,5 +1,5 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../types/constants';
 
 interface CartPromoCodeValues {
   promoCode: string;

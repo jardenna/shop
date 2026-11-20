@@ -1,4 +1,4 @@
-import { type IconNameValue } from '../types/enums';
+import { type IconNameValue } from '../types/constants';
 import IconBtn from './IconBtn';
 
 export interface DisplayControlItem {
