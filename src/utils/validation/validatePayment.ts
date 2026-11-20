@@ -1,7 +1,7 @@
 import { paymentMethodsValues } from '../../app/api/apiConstants';
 import type { ValidatePayment } from '../../app/api/apiTypes/paymentApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/constants';
+import { ValidationMessage } from '../../shared/constants';
 import {
   cardNumberRegex,
   emailRegex,

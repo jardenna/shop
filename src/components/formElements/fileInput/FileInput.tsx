@@ -1,6 +1,6 @@
 import type { FileName } from '../../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import Icon from '../../icons/Icon';
 import './_file-input.scss';
 

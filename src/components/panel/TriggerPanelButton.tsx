@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { BtnVariantValue } from '../../types/types';
+import type { BtnVariantValue } from '../../shared/types';
 import Button from '../Button';
 
 interface TriggerPanelButtonProps {

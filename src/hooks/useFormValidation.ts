@@ -3,7 +3,7 @@ import type {
   BlurEventType,
   ChangeInputType,
   ChangeTextAreaType,
-} from '../types/types';
+} from '../shared/types';
 import { allowedExtensions, maxFileSize } from '../utils/utils';
 
 export type KeyValuePair<T = unknown> = {

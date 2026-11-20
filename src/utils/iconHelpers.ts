@@ -1,5 +1,5 @@
 import { IconName } from '../components/icons/iconConstants';
-import type { IconNameValue } from '../types/types';
+import type { IconNameValue } from '../shared/types';
 
 const categoryToIconName: Record<string, IconNameValue> = {
   Women: IconName.Woman,

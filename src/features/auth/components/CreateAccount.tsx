@@ -7,7 +7,7 @@ import type {
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { ShopPath } from '../../../layout/nav/navConstants';
-import type { AutoComplete } from '../../../types/types';
+import type { AutoComplete } from '../../../shared/types';
 import { validateSignup } from '../../../utils/validation/validateCreateAccount';
 import { useLanguage } from '../../language/useLanguage';
 import AuthForm from './AuthForm';

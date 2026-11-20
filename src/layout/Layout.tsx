@@ -23,7 +23,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import RouteErrorBoundary from '../pages/pageContainer/RouteErrorBoundary';
-import type { OptionType } from '../types/types';
+import type { OptionType } from '../shared/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/navConstants';

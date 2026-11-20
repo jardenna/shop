@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import VisuallyHidden from '../../VisuallyHidden';
 import RangeSliderInput from './RangeSliderInput';
 import type { InputUtils } from './useRangeController';

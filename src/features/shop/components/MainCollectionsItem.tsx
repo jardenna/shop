@@ -1,9 +1,9 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
-import type { ImgExtention } from '../../../types/types';
-import { useLanguage } from '../../language/useLanguage';
 import type { ShopPathValue } from '../../../layout/nav/navTypes';
+import type { ImgExtention } from '../../../shared/types';
+import { useLanguage } from '../../language/useLanguage';
 
 export type MainCollectionsBaseProps = {
   linkText: string;

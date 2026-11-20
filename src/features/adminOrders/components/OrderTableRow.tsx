@@ -8,7 +8,7 @@ import { chipVariants } from '../../../components/chips/chipsUtils';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/navConstants';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 
 interface OrderTableRowProps {

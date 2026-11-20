@@ -5,7 +5,7 @@ import type {
   InputChangeHandler,
   OptionType,
   RefElementType,
-} from '../types/types';
+} from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';

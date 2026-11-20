@@ -5,7 +5,7 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import NumberStep from '../../../components/formElements/numberStep/NumberStep';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import { minInStock, translateKey } from '../../../utils/utils';
 import type { ProductQuantityMap } from '../../shop/cartUtils';
 import InStock from '../../shop/components/InStock';

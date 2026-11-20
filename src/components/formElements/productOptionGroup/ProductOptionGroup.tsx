@@ -6,7 +6,7 @@ import type {
   InputChangeHandler,
   OptionGroupHeading,
   SizeVariant,
-} from '../../../types/types';
+} from '../../../shared/types';
 import TriggerModalButton from '../../Modal/TriggerModalButton';
 import SizeGuideModal from '../../sizeGuide/SizeGuideModal';
 import InputInfo from '../InputInfo';

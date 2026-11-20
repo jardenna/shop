@@ -24,7 +24,7 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { ShopPath } from '../../layout/nav/navConstants';
-import type { OptionType } from '../../types/types';
+import type { OptionType } from '../../shared/types';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';

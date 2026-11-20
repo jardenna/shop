@@ -3,7 +3,7 @@ import type { BaseOrder } from '../../../../app/api/apiTypes/cartApiTypes';
 import Img from '../../../../components/Img';
 import LabelValue from '../../../../components/LabelValue';
 import { ShopPath } from '../../../../layout/nav/navConstants';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import { translateKey } from '../../../../utils/utils';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 import './_order-list.scss';

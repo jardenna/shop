@@ -1,4 +1,4 @@
-import type { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../shared/types';
 import './_badge.scss';
 
 interface BadgeProps {

@@ -1,4 +1,4 @@
-import type { IconNameValue, ToastRole } from '../../types/types';
+import type { IconNameValue, ToastRole } from '../../shared/types';
 
 export type ToastTypes = 'success' | 'info' | 'warning' | 'error';
 

@@ -1,6 +1,6 @@
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/constants';
-import type { OmitChecked } from '../../types/types';
+import { ValidationMessage } from '../../shared/constants';
+import type { OmitChecked } from '../../shared/types';
 import { validateEmail } from './CommonFieldValidation';
 import type { AuthFormValues } from './validateCreateAccount';
 

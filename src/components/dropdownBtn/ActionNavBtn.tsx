@@ -6,7 +6,7 @@ import type {
   AriaHasPopup,
   BtnVariantValue,
   IconNameValue,
-} from '../../types/types';
+} from '../../shared/types';
 import Button from '../Button';
 import './_action-nav.scss';
 import ActionNavList from './ActionNavList';

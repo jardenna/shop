@@ -1,6 +1,6 @@
 import type { AddressInput } from '../../app/api/apiTypes/addressApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/constants';
+import { ValidationMessage } from '../../shared/constants';
 import { isNumber } from '../regex';
 
 export function validateAddress(values: AddressInput) {

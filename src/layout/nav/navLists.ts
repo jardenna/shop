@@ -1,4 +1,4 @@
-import type { IconNameValue } from '../../types/types';
+import type { IconNameValue } from '../../shared/types';
 import { AdminPath, LinkText, ShopPath } from './navConstants';
 import type { LinkTextValue } from './navTypes';
 

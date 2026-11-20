@@ -6,7 +6,7 @@ import type {
   InputMode,
   InputType,
   RefInputType,
-} from '../../types/types';
+} from '../../shared/types';
 import FormLabel from './FormLabel';
 import InputInfo from './InputInfo';
 

@@ -5,7 +5,7 @@ import type {
   AriaLabelData,
   FiltersCountResult,
   Language,
-} from '../types/types';
+} from '../shared/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';

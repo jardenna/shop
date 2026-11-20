@@ -1,7 +1,7 @@
 import type { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import { translateKey } from '../../../../utils/utils';
 import type { SelectedLanguage } from '../../../language/languageSlice';
 import type { ChangedAttribute } from '../../cartUtils';

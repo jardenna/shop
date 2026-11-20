@@ -13,7 +13,7 @@ import {
 } from '../features/dashboard/dashboardApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
-import type { OptionType } from '../types/types';
+import type { OptionType } from '../shared/types';
 import './DashboardPage.styles.scss';
 import AdminPageContainer from './pageContainer/AdminPageContainer';
 

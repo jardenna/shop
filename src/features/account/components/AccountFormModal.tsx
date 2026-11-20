@@ -13,7 +13,7 @@ import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import type { ProfileFieldListProps } from '../../../pages/MyAccountPage';
-import type { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../shared/types';
 import { validateAccount } from '../../../utils/validation/validateAccount';
 import { useLanguage } from '../../language/useLanguage';
 import { useUpdateMyAccountMutation } from '../accountApiSlice';

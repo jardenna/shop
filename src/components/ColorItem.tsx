@@ -1,5 +1,5 @@
 import variables from '../scss/variables.module.scss';
-import type { SizeVariant } from '../types/types';
+import type { SizeVariant } from '../shared/types';
 import { colorMap } from '../utils/colorUtils';
 
 interface ColorItemProps {

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { InputChangeHandler, InputType } from '../../../types/types';
+import type { InputChangeHandler, InputType } from '../../../shared/types';
 import { dateFormat } from '../../../utils/dates';
 import Input from '../../formElements/Input';
 import RadioButtonList from '../../formElements/radioList/RadioButtonList';

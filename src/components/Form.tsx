@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useLanguage } from '../features/language/useLanguage';
-import type { RefFormType } from '../types/types';
+import type { RefFormType } from '../shared/types';
 import Button from './Button';
 
 type CancelButtonProps = {

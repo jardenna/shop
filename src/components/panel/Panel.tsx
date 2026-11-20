@@ -4,7 +4,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import type { RefElementType } from '../../types/types';
+import type { RefElementType } from '../../shared/types';
 import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
 import './_panel.scss';

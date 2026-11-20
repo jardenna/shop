@@ -3,7 +3,7 @@ import type {
   ControlInputType,
   IconNameValue,
   InputChangeHandler,
-} from '../../types/types';
+} from '../../shared/types';
 import IconContent from '../IconContent';
 
 export interface BaseControlInputProps {

@@ -1,4 +1,4 @@
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 
 interface RangeSliderInputProps {
   ariaValuetext: string;

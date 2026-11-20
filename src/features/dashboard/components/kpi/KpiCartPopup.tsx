@@ -4,7 +4,7 @@ import type {
 } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
 import type { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import Chip from '../../../../components/chips/Chip';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import { useCurrency } from '../../../currency/useCurrency';
 import KpiCartPopupItem from './KpiCartPopupItem';
 

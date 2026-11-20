@@ -5,7 +5,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import variables from '../../scss/variables.module.scss';
-import type { InputChangeHandler, InputType } from '../../types/types';
+import type { InputChangeHandler, InputType } from '../../shared/types';
 import Button from '../Button';
 import ClearFilterBtn from '../ClearFilterBtn';
 import DisplayControls, { type DisplayControlItem } from '../DisplayControls';

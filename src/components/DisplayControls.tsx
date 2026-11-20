@@ -1,4 +1,4 @@
-import type { IconNameValue } from '../types/types';
+import type { IconNameValue } from '../shared/types';
 import IconBtn from './IconBtn';
 
 export interface DisplayControlItem {

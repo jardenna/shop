@@ -13,7 +13,7 @@ import { useModal } from '../../../components/Modal/useModal';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import type { BaseInputListProps } from '../../../pages/MyAccountPage';
-import type { RefBtnType } from '../../../types/types';
+import type { RefBtnType } from '../../../shared/types';
 import { validateAddress } from '../../../utils/validation/validateAddress';
 import { useLanguage } from '../../language/useLanguage';
 import {

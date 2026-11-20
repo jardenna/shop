@@ -3,7 +3,7 @@ import FieldSet from '../../../../components/fieldset/FieldSet';
 import Search from '../../../../components/formElements/Search';
 import { IconName } from '../../../../components/icons/iconConstants';
 import SegmentedElement from '../../../../components/segmentedElement/SegmentedElement';
-import type { InputChangeHandler } from '../../../../types/types';
+import type { InputChangeHandler } from '../../../../shared/types';
 import { useLanguage } from '../../../language/useLanguage';
 import ReviewRatingList from '../reviewRatingList/ReviewRatingList';
 import './_admin-review-filter-bar.scss';

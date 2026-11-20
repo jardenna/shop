@@ -3,7 +3,7 @@ import type {
   IconNameValue,
   InputChangeHandler,
   OptionType,
-} from '../../types/types';
+} from '../../shared/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
 import SegmentedInput from './SegmentedInput';

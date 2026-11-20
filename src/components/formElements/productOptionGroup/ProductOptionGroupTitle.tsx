@@ -1,4 +1,4 @@
-import type { OptionGroupHeading } from '../../../types/types';
+import type { OptionGroupHeading } from '../../../shared/types';
 import RequiredIcon from '../../RequiredIcon';
 import FormError from '../FormError';
 

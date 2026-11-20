@@ -5,7 +5,7 @@ import {
   isToday,
   isYesterday,
 } from 'date-fns';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 
 export type StarType = 'full' | 'half' | 'empty';
 

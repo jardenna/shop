@@ -1,5 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import IconBtn from '../../IconBtn';
 import Input from '../Input';
 import './_number-step.scss';

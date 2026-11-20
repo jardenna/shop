@@ -3,7 +3,7 @@ import type {
   BtnType,
   BtnVariantValue,
   IconNameValue,
-} from '../types/types';
+} from '../shared/types';
 import Button from './Button';
 import IconContent from './IconContent';
 

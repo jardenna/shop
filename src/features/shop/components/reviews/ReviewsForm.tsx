@@ -5,7 +5,7 @@ import RadioTileList from '../../../../components/formElements/radioTileList/Rad
 import Textarea from '../../../../components/formElements/Textarea';
 import { useToast } from '../../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../../hooks/useFormValidation';
-import type { ChangeInputType } from '../../../../types/types';
+import type { ChangeInputType } from '../../../../shared/types';
 import { createRatingList } from '../../../../utils/productLists';
 import { useLanguage } from '../../../language/useLanguage';
 import {

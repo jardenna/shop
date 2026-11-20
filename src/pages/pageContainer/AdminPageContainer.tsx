@@ -2,7 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { useLocation } from 'react-router';
 import PageHeader from '../../components/PageHeader';
 import MetaTags from '../../layout/MetaTags';
-import type { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../shared/types';
 
 interface AdminPageContainerProps {
   children: ReactNode;

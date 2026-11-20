@@ -7,7 +7,7 @@ import Input from '../../../components/formElements/Input';
 import PasswordInput from '../../../components/formElements/password/PasswordInput';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
 import type { KeyValuePair } from '../../../hooks/useFormValidation';
-import type { BlurEventType, InputChangeHandler } from '../../../types/types';
+import type { BlurEventType, InputChangeHandler } from '../../../shared/types';
 import { roleList } from '../../../utils/productLists';
 import { useLanguage } from '../../language/useLanguage';
 import type { BaseCreateAccountProps } from './CreateAccount';

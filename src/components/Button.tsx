@@ -4,7 +4,7 @@ import type {
   AriaHasPopup,
   BtnVariantValue,
   RefBtnType,
-} from '../types/types';
+} from '../shared/types';
 import Loader from './loader/Loader';
 import VisuallyHidden from './VisuallyHidden';
 

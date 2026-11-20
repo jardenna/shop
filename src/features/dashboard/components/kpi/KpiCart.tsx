@@ -1,5 +1,5 @@
 import BarChartComp from '../../../../components/reCharts/BarChartComp';
-import type { ChartData, IconNameValue } from '../../../../types/types';
+import type { ChartData, IconNameValue } from '../../../../shared/types';
 import { useCurrency } from '../../../currency/useCurrency';
 import type { DashboardKpiId } from '../../dashboardUtils';
 import KpiCartLayout from './KpiCartLayout';

@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router';
-import { type ChangeInputType } from '../types/types';
+import { type ChangeInputType } from '../shared/types';
 import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 

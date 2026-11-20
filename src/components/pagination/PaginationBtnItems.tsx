@@ -1,4 +1,4 @@
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';

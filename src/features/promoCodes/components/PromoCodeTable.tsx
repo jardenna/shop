@@ -10,7 +10,7 @@ import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import SkeletonPromoCodeTable from '../../../components/skeleton/SkeletonPromoCodeTable';
 import { AdminPath } from '../../../layout/nav/navConstants';
-import type { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../shared/types';
 import { useLanguage } from '../../language/useLanguage';
 import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
 import PromoCodeDate from './PromoCodeDate';

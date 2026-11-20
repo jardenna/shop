@@ -12,7 +12,7 @@ import type {
   ChangeInputType,
   InputType,
   Language,
-} from '../../../types/types';
+} from '../../../shared/types';
 import { validatePayment } from '../../../utils/validation/validatePayment';
 import { formatExpiryDate } from './formatExpiryDateUtil';
 

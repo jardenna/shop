@@ -2,7 +2,7 @@ import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import Icon from '../../../components/icons/Icon';
 import Popup from '../../../components/popup/Popup';
 import type { ColumnKey } from '../../../pages/users/UserPage';
-import type { InputChangeHandler, Language } from '../../../types/types';
+import type { InputChangeHandler, Language } from '../../../shared/types';
 import UpdateUserInput from './UpdateUserInput';
 import UserRowText from './UserRowText';
 

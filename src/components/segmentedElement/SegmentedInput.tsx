@@ -1,4 +1,4 @@
-import type { IconNameValue, InputChangeHandler } from '../../types/types';
+import type { IconNameValue, InputChangeHandler } from '../../shared/types';
 import IconContent from '../IconContent';
 
 interface SegmentedInputProps {
