@@ -6,14 +6,12 @@ import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-plugin-prettier/recommended';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-export default defineConfig(
-  {
-    ignores: ['dist'],
-  },
+export default defineConfig([
+  globalIgnores(['dist']),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     extends: [js.configs.recommended],
@@ -43,6 +41,7 @@ export default defineConfig(
       reactHooks.configs.flat['recommended-latest'],
       reactRefresh.configs.vite,
       eslintReact.configs['recommended-typescript'],
+      prettier,
     ],
     plugins: {
       '@stylistic': stylistic,
@@ -209,5 +208,4 @@ export default defineConfig(
       },
     },
   },
-  prettier,
-);
+]);
