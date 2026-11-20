@@ -119,6 +119,7 @@ export default defineConfig(
         'error',
         { terms: ['todo', 'fixme'], location: 'anywhere' },
       ],
+      'prefer-const': 'error',
       'prefer-template': 'error',
       'no-param-reassign': [
         'error',
