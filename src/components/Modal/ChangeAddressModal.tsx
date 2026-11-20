@@ -1,9 +1,9 @@
 import { useId } from 'react';
-import { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
+import type { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { BtnVariant, IconName } from '../../types/enums';
 import type { OptionType } from '../../types/types';
-import { BaseAddressListProps } from '../../utils/addressUtils';
+import type { BaseAddressListProps } from '../../utils/addressUtils';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
 import IconContent from '../IconContent';

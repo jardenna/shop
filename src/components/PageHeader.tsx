@@ -1,4 +1,4 @@
-import { LinkProps } from 'react-router';
+import type { LinkProps } from 'react-router';
 import { useLanguage } from '../features/language/useLanguage';
 import LayoutElement from '../layout/LayoutElement';
 import Breadcrumbs from './breadcrumbs/Breadcrumbs';

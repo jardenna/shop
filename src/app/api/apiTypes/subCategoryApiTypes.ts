@@ -1,5 +1,5 @@
-import { SortParams, Status } from './adminApiTypes';
-import { Category, MainCategory } from './categoryApiTypes';
+import type { SortParams, Status } from './adminApiTypes';
+import type { Category, MainCategory } from './categoryApiTypes';
 import type { DefaultResponse } from './sharedApiTypes';
 
 export interface CreateSubCategoryRequest {

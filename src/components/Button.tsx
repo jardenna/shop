@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, type ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { BtnVariant, type BtnVariantValue } from '../types/enums';
 import type { AriaCurrentType, AriaHasPopup, RefBtnType } from '../types/types';
 import Loader from './loader/Loader';

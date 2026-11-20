@@ -1,5 +1,5 @@
 import { Bar, BarChart } from 'recharts';
-import { ChartData } from '../../types/types';
+import type { ChartData } from '../../types/types';
 
 interface BarChartCompProps {
   data: ChartData[];

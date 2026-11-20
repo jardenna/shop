@@ -1,13 +1,13 @@
-import { StandardAddressIds } from '../../../utils/addressUtils';
+import type { StandardAddressIds } from '../../../utils/addressUtils';
 import {
   deliveryStatusFilterValues,
   paymentMethodFilterValues,
   paymentStatusFilterValues,
 } from '../apiConstants';
-import { BaseAddress } from './addressApiTypes';
-import { BaseOrder, Order } from './cartApiTypes';
-import { Payment, PaymentMethods } from './paymentApiTypes';
-import { DefaultResponse, Discount, Summary } from './sharedApiTypes';
+import type { BaseAddress } from './addressApiTypes';
+import type { BaseOrder, Order } from './cartApiTypes';
+import type { Payment, PaymentMethods } from './paymentApiTypes';
+import type { DefaultResponse, Discount, Summary } from './sharedApiTypes';
 
 export interface CreateOrderRequest extends StandardAddressIds {
   orderItems: BaseOrder[];

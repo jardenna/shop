@@ -1,7 +1,7 @@
 import { Text, View } from '@react-pdf/renderer';
-import { BaseAddress } from '../../app/api/apiTypes/addressApiTypes';
-import { User } from '../../app/api/apiTypes/orderApiTypes';
-import { SelectedLanguage } from '../../features/language/languageSlice';
+import type { BaseAddress } from '../../app/api/apiTypes/addressApiTypes';
+import type { User } from '../../app/api/apiTypes/orderApiTypes';
+import type { SelectedLanguage } from '../../features/language/languageSlice';
 import type { Language } from '../../types/types';
 import { formatDate } from './formatdate';
 import { styles } from './styles';

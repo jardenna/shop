@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { type IconNameValue } from '../../../types/enums';
 import type { Language } from '../../../types/types';
 import { translateKey } from '../../../utils/utils';
-import ControlInput, { BaseControlInputProps } from '../ControlInput';
+import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_checkbox.scss';
 
 interface CheckboxListProps extends BaseControlInputProps {

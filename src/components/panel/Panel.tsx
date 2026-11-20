@@ -1,10 +1,10 @@
-import { ReactNode, useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { useAnimate } from '../../hooks/useAnimate';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useInitialFocus } from '../../hooks/useInitialFocus';
 import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import { RefElementType } from '../../types/types';
+import type { RefElementType } from '../../types/types';
 import CloseBtn from '../CloseBtn';
 import Portal from '../Portal';
 import './_panel.scss';

@@ -1,4 +1,4 @@
-import { ReactNode, useId } from 'react';
+import { type ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { IconName } from '../../types/enums';
 import type { Language } from '../../types/types';

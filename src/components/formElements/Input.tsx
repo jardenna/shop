@@ -1,4 +1,4 @@
-import { ReactNode, SyntheticEvent, useId } from 'react';
+import { type ReactNode, type SyntheticEvent, useId } from 'react';
 import type {
   AutoComplete,
   BlurEventType,

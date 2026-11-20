@@ -1,7 +1,7 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
-import Modal, { ModalProps } from './Modal';
+import Modal, { type ModalProps } from './Modal';
 import { useModal } from './useModal';
 
 interface FormModalProps extends ModalProps {

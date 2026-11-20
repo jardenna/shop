@@ -1,6 +1,9 @@
-import { SortParams } from './adminApiTypes';
-import { DeliveryStatus, PaymentStatusFilterValues } from './orderApiTypes';
-import { PaymentMethods } from './paymentApiTypes';
+import type { SortParams } from './adminApiTypes';
+import type {
+  DeliveryStatus,
+  PaymentStatusFilterValues,
+} from './orderApiTypes';
+import type { PaymentMethods } from './paymentApiTypes';
 
 export interface AdminOrderParams extends SortParams {
   ordersPerPage: number;

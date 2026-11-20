@@ -1,10 +1,10 @@
 import {
-  BtnType,
+  type BtnType,
   BtnVariant,
   type BtnVariantValue,
   type IconNameValue,
 } from '../types/enums';
-import { AriaHasPopup } from '../types/types';
+import type { AriaHasPopup } from '../types/types';
 import Button from './Button';
 import IconContent from './IconContent';
 

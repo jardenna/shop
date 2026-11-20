@@ -1,7 +1,7 @@
-import { HTMLInputTypeAttribute } from 'react';
-import { CurrencyCode } from '../../../features/currency/currencyConverterUtil';
-import { KeyValuePair } from '../../../hooks/useFormValidation';
-import { InputMode } from '../../../types/types';
+import type { HTMLInputTypeAttribute } from 'react';
+import type { CurrencyCode } from '../../../features/currency/currencyConverterUtil';
+import type { KeyValuePair } from '../../../hooks/useFormValidation';
+import type { InputMode } from '../../../types/types';
 import { paymentMethodsValues } from '../apiConstants';
 
 export type PaymentMethods =

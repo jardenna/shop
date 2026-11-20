@@ -1,4 +1,4 @@
-import { SortParams, Status } from './adminApiTypes';
+import type { SortParams, Status } from './adminApiTypes';
 import type { DefaultResponse } from './sharedApiTypes';
 
 export interface Category extends DefaultResponse {

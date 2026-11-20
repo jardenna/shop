@@ -1,8 +1,8 @@
 import {
-  BaseQueryFn,
-  FetchArgs,
+  type BaseQueryFn,
+  type FetchArgs,
   fetchBaseQuery,
-  FetchBaseQueryError,
+  type FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 import { selectLanguage } from '../../features/language/languageSlice';
 import { addToast } from '../../features/toastSlice';

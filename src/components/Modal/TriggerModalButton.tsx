@@ -1,7 +1,7 @@
 import { BtnVariant, type BtnVariantValue } from '../../types/enums';
-import { RefBtnType } from '../../types/types';
+import type { RefBtnType } from '../../types/types';
 import Button from '../Button';
-import { BaseModalProps } from './Modal';
+import type { BaseModalProps } from './Modal';
 import { useModal } from './useModal';
 
 interface TriggerModalButtonProps extends BaseModalProps {

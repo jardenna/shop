@@ -1,5 +1,5 @@
 import type { Language } from '../../../types/types';
-import { PaginationItem } from '../createPaginationItems';
+import type { PaginationItem } from '../createPaginationItems';
 
 export const getRangeText = (page: number, perPage: number, total: number) => {
   // Handle zero products early to avoid weird "1–0 of 0" cases

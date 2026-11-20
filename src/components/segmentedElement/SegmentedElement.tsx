@@ -1,6 +1,6 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { type IconNameValue } from '../../types/enums';
-import { InputChangeHandler, OptionType } from '../../types/types';
+import type { IconNameValue } from '../../types/enums';
+import type { InputChangeHandler, OptionType } from '../../types/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
 import SegmentedInput from './SegmentedInput';

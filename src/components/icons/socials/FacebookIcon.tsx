@@ -1,4 +1,4 @@
-import { IconDefaultProps } from '../Icon';
+import type { IconDefaultProps } from '../Icon';
 
 const FacebookIcon = ({ size, className, ariaHidden }: IconDefaultProps) => (
   <svg

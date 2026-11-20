@@ -1,11 +1,14 @@
 import { Text, View } from '@react-pdf/renderer';
-import { Discount, Summary } from '../../../app/api/apiTypes/sharedApiTypes';
+import type {
+  Discount,
+  Summary,
+} from '../../../app/api/apiTypes/sharedApiTypes';
 import {
-  CurrencyCode,
+  type CurrencyCode,
   getFormattedPrice,
 } from '../../../features/currency/currencyConverterUtil';
 import { vat } from '../../../utils/utils';
-import { BasePrintOrderProps } from '../PrintOrder';
+import type { BasePrintOrderProps } from '../PrintOrder';
 import { styles } from '../styles';
 import PrintSummaryItem from './PrintSummaryItem';
 import { summaryStyles } from './summaryStyles';

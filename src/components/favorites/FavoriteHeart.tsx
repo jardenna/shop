@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLanguage } from '../../features/language/useLanguage';
 import { IconName } from '../../types/enums';

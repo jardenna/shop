@@ -1,6 +1,6 @@
 import { ratingList } from '../apiConstants';
-import { SortParams } from './adminApiTypes';
-import { BaseReviews } from './sharedApiTypes';
+import type { SortParams } from './adminApiTypes';
+import type { BaseReviews } from './sharedApiTypes';
 
 export interface ReviewsCountResponse {
   unreadCount: number;

@@ -1,4 +1,4 @@
-import { ReactNode, useId, useRef } from 'react';
+import { useId, useRef, type ReactNode } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useLanguage } from '../../features/language/useLanguage';
 import { selectModalId } from '../../features/modalSlice';

@@ -1,6 +1,6 @@
 import { BlobProvider } from '@react-pdf/renderer';
-import { SelectedLanguage } from '../../features/language/languageSlice';
-import PrintOrder, { BasePrintOrderProps } from './PrintOrder';
+import type { SelectedLanguage } from '../../features/language/languageSlice';
+import PrintOrder, { type BasePrintOrderProps } from './PrintOrder';
 
 interface PdfPreviewProps extends BasePrintOrderProps {
   selectedLanguage: SelectedLanguage;

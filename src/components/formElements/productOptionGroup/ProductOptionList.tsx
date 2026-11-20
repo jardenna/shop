@@ -2,7 +2,7 @@ import { useLanguage } from '../../../features/language/useLanguage';
 import { colorMap } from '../../../utils/colorUtils';
 import { translateKey } from '../../../utils/utils';
 import './_product-option-list.scss';
-import { BaseProductOptionProps } from './ProductOptionGroup';
+import type { BaseProductOptionProps } from './ProductOptionGroup';
 import ProductOptionInput from './ProductOptionInput';
 
 interface ProductOptionListProps extends BaseProductOptionProps {

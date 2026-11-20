@@ -1,6 +1,6 @@
 import { mainCategoryValues, subCategoryValues } from '../apiConstants';
 import type { Status } from './adminApiTypes';
-import { ReviewResponse } from './shopApiTypes';
+import type { ReviewResponse } from './shopApiTypes';
 
 export type CurrencyResponse = {
   data: Record<string, { value: number }>;
