@@ -7,7 +7,7 @@ const SkeltonKpiList = ({ count = 6 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
 
   return (
-    <div className="kpi-cart-list">
+    <div className="kpi-card-list">
       {skeletons.map((_, index) =>
         index < 3 ? (
           <SkeletonKpiCard key={index} />
