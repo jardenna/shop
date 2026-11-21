@@ -9,7 +9,7 @@
     @include grid-template-column;
   }
 
-  .cart {
+  .card {
     margin: 0;
     padding: 12px;
 
@@ -63,11 +63,11 @@
   }
 }
 
-.kpi-cart {
+.kpi-card {
   display: flex;
   justify-content: space-between;
 
-  &.period-kpi-cart {
+  &.period-kpi-card {
     flex-direction: column;
     position: relative;
 
@@ -125,12 +125,12 @@
   }
 }
 
-.kpi-cart-popup {
+.kpi-card-popup {
   display: flex;
   flex-direction: column;
   gap: 12px;
 
-  .kpi-cart-popup-item {
+  .kpi-card-popup-item {
     padding: 12px;
     border-radius: 4px;
     background-color: rgb($color-chip-success-bg, 60%);
@@ -166,7 +166,7 @@
   }
 }
 
-.kpi-cart-popover {
+.kpi-card-popover {
   padding: 20px;
   max-width: rem(332px);
 }

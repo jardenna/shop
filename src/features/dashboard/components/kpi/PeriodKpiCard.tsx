@@ -27,10 +27,10 @@ const PeriodKpiCard = ({ kpi, period }: PeriodKpiCardProps) => {
       description={language[kpi.description]}
       title={language[kpi.label]}
       kpiTotal={isRevenue ? convertedPrice : kpi.value}
-      className="period-kpi-cart"
+      className="period-kpi-card"
     >
       <PopoverBtn
-        className="kpi-cart-popover"
+        className="kpi-card-popover"
         popupContent={
           <KpiCardPopup period={period} kpi={kpi} language={language} />
         }
@@ -39,7 +39,6 @@ const PeriodKpiCard = ({ kpi, period }: PeriodKpiCardProps) => {
       >
         <Icon iconName="info" />
       </PopoverBtn>
-
       <div className="kpi-progress-bar">
         <span className="kpi-progress-info">
           <span>{language.goalProgress}</span>

@@ -24,7 +24,7 @@ const KpiCardLayout = ({
   className = '',
 }: KpiCardLayoutProps) => (
   <Card className={dashboardKpiVariants[id]}>
-    <div className={`kpi-cart ${className}`}>
+    <div className={`kpi-card ${className}`}>
       <KpiContent
         iconName={iconName}
         description={description}

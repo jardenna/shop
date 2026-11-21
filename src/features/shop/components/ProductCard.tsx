@@ -56,7 +56,7 @@ const ProductCard = ({
             )}
           </div>
         </Link>
-        <FavoriteHeart id={product.id} className="product-cart-favorites" />
+        <FavoriteHeart id={product.id} className="product-card-favorites" />
       </div>
 
       <ProductCardContent

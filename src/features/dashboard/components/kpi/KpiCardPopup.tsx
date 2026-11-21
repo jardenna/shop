@@ -31,7 +31,7 @@ const KpiCardPopup = ({ period, kpi, language }: KpiCardPopupProps) => {
   const chipVariant = chipText > 0 ? 'success' : 'danger';
 
   return (
-    <section className="kpi-cart-popup">
+    <section className="kpi-card-popup">
       <h3 className="kpi-popup-title">
         {language.comparisonWithPreviousPeriod}
       </h3>

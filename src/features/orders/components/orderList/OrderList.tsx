@@ -26,7 +26,7 @@ const OrderList = ({ orders, language, hidePrice }: OrderListProps) => (
   <ul className="order-list">
     {orders.map((order) => (
       <li className="order-list-item" key={order.id}>
-        <article className="order-cart">
+        <article className="order-card">
           <Link to={`${ShopPath.AllProducts}/${order.productId}`}>
             <Img src={order.image} alt="" className="order-img" />
           </Link>
