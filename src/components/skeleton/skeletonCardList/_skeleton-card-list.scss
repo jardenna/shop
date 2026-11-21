@@ -1,6 +1,6 @@
 @use '../../../scss/globals' as *;
 
-.skeleton-cart-list {
+.skeleton-card-list {
   width: 100%;
 
   --grid-size: rem(350px);
@@ -10,7 +10,7 @@
     minmax(min(100%, var(--grid-size)), 1fr)
   );
 
-  .skeleton-cart {
+  .skeleton-card {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -36,7 +36,7 @@
     @include set-grid-size(400px);
   }
 
-  &.small-cart {
+  &.small-card {
     @include set-grid-size(230px);
 
     gap: 12px;

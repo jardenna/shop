@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Skeleton from '../components/skeleton/Skeleton';
-import SkeletonCartList from '../components/skeleton/skeletonCartList/SkeletonCartList';
+import SkeletonCardList from '../components/skeleton/skeletonCardList/SkeletonCardList';
 import {
   useGetAddressesQuery,
   useUpdateAddressMutation,
@@ -62,9 +62,9 @@ const AddressPage = () => {
     <>
       <p>{language.addOrManageAddress}</p>
       {isLoading && (
-        <SkeletonCartList count={3} className="small-cart">
+        <SkeletonCardList count={3} className="small-card">
           <Skeleton />
-        </SkeletonCartList>
+        </SkeletonCardList>
       )}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
