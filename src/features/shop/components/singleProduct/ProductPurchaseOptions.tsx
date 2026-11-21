@@ -21,7 +21,7 @@ export type InitialShopValues = {
   size: Size | '';
 };
 
-interface CartFormProps {
+interface ProductPurchaseOptionsProps {
   currentProductQuantity: number;
   displaySizeList: Size[];
   isLoading: boolean;
@@ -33,7 +33,7 @@ interface CartFormProps {
   handleSubmit: (values: InitialShopValues) => void;
 }
 
-const CartForm = ({
+const ProductPurchaseOptions = ({
   productData,
   displaySizeList,
   currentProductQuantity,
@@ -43,7 +43,7 @@ const CartForm = ({
   fixedFooter,
   modalId,
   className = '',
-}: CartFormProps) => {
+}: ProductPurchaseOptionsProps) => {
   const { language } = useLanguage();
 
   const { sizes, colors, categoryName } = productData;
@@ -140,4 +140,4 @@ const CartForm = ({
   );
 };
 
-export default CartForm;
+export default ProductPurchaseOptions;

@@ -14,9 +14,9 @@ import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelC
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
 import ProductCartList from '../features/shop/components/ProductCartList';
-import CartForm, {
+import ProductPurchaseOptions, {
   type InitialShopValues,
-} from '../features/shop/components/singleProduct/CartForm';
+} from '../features/shop/components/singleProduct/ProductPurchaseOptions';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
@@ -113,7 +113,7 @@ const FavoritePage = () => {
           {selectedProduct && (
             <div className="favorites-panel">
               <FavoritesPanelCart product={selectedProduct} />
-              <CartForm
+              <ProductPurchaseOptions
                 className="favorites-form"
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}

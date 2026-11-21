@@ -23,7 +23,9 @@ import {
   getTotalCartQuantity,
   type ProductQuantityMap,
 } from '../../cartUtils';
-import CartForm, { type InitialShopValues } from './CartForm';
+import ProductPurchaseOptions, {
+  type InitialShopValues,
+} from './ProductPurchaseOptions';
 import SingleProductPanel, { type PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
@@ -224,7 +226,7 @@ const SingleProductPurchaseSection = ({
           />
         )}
       </Panel>
-      <CartForm
+      <ProductPurchaseOptions
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}
         productData={productData}

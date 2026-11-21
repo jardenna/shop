@@ -1,4 +1,4 @@
-import type { InitialShopValues } from '../../features/shop/components/singleProduct/CartForm';
+import type { InitialShopValues } from '../../features/shop/components/singleProduct/ProductPurchaseOptions';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../shared/constants';
 
