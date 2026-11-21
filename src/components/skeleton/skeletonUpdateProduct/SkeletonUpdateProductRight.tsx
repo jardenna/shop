@@ -1,32 +1,32 @@
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonFlexInputList from '../SkeletonFlexInputList';
-import SkeletonFormCart from '../SkeletonFormCart';
+import SkeletonFormCard from '../SkeletonFormCard';
 import SkeletonInputList from '../SkeletonInputList';
 import SkeletonPriceItem from '../skeletonPriceList/SkeletonPriceItem';
 import SkeletonToggleButton from '../SkeletonToggleButton';
 
 const SkeletonUpdateProductRight = () => (
   <div className="product-form-right-column">
-    <SkeletonFormCart>
+    <SkeletonFormCard>
       <div className="skeleton-column">
         <SkeletonInputList count={1} />
         <SkeletonControlList variant="medium" count={4} />
       </div>
-    </SkeletonFormCart>
+    </SkeletonFormCard>
 
-    <SkeletonFormCart>
+    <SkeletonFormCard>
       <div className="skeleton-column">
         <SkeletonFlexInputList />
         <SkeletonToggleButton />
       </div>
-    </SkeletonFormCart>
+    </SkeletonFormCard>
 
-    <SkeletonFormCart>
+    <SkeletonFormCard>
       <div className="skeleton-column">
         <SkeletonInputList count={2} />
         <SkeletonPriceItem count={1} />
       </div>
-    </SkeletonFormCart>
+    </SkeletonFormCard>
   </div>
 );
 

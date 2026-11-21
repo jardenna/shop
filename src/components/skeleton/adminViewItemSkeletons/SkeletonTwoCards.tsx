@@ -4,7 +4,7 @@ import SkeletonFooter from '../SkeletonFooter';
 import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
-const SkeletonTwoCarts = () => (
+const SkeletonTwoCards = () => (
   <SkeletonAdminPage variant="medium" showLink>
     <div className="two-col admin-cart-container">
       <article className="admin-cart">
@@ -19,4 +19,4 @@ const SkeletonTwoCarts = () => (
   </SkeletonAdminPage>
 );
 
-export default SkeletonTwoCarts;
+export default SkeletonTwoCards;

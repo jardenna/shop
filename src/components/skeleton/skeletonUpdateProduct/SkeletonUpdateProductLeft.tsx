@@ -1,20 +1,20 @@
 import SkeletonFlexInputList from '../SkeletonFlexInputList';
-import SkeletonFormCart from '../SkeletonFormCart';
+import SkeletonFormCard from '../SkeletonFormCard';
 import SkeletonImageUpload from '../SkeletonImageUpload';
 import SkeletonInputList from '../SkeletonInputList';
 
 const SkeletonUpdateProductLeft = () => (
   <div className="product-form-left-column">
-    <SkeletonFormCart>
+    <SkeletonFormCard>
       <SkeletonInputList count={1} />
-    </SkeletonFormCart>
-    <SkeletonFormCart>
+    </SkeletonFormCard>
+    <SkeletonFormCard>
       <SkeletonImageUpload />
-    </SkeletonFormCart>
-    <SkeletonFormCart>
+    </SkeletonFormCard>
+    <SkeletonFormCard>
       <SkeletonInputList count={2} />
       <SkeletonFlexInputList className="skeleton-flex-input-list" />
-    </SkeletonFormCart>
+    </SkeletonFormCard>
   </div>
 );
 

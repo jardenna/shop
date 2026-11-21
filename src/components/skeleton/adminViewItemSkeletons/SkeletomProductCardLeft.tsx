@@ -3,7 +3,7 @@ import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonPriceItem from '../skeletonPriceList/SkeletonPriceItem';
 import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
-const SkeletomProductCartLeft = () => (
+const SkeletomProductCardLeft = () => (
   <div className="skeleton-view-cart">
     <Skeleton height="9" />
     <SkeletonAdminSubHeader width="12" />
@@ -12,4 +12,4 @@ const SkeletomProductCartLeft = () => (
   </div>
 );
 
-export default SkeletomProductCartLeft;
+export default SkeletomProductCardLeft;

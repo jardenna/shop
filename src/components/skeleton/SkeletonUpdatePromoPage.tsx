@@ -1,29 +1,29 @@
 import SkeletonAdminPage from './SkeletonAdminPage';
 import SkeletonFlexInputList from './SkeletonFlexInputList';
 import SkeletonFooter from './SkeletonFooter';
-import SkeletonFormCart from './SkeletonFormCart';
+import SkeletonFormCard from './SkeletonFormCard';
 import SkeletonInputList from './SkeletonInputList';
 import SkeletonToggleButton from './SkeletonToggleButton';
 
 const SkeletonUpdatePromoPage = () => (
   <SkeletonAdminPage variant="medium">
     <div className="skeleton-update-promo-code-page">
-      <SkeletonFormCart>
+      <SkeletonFormCard>
         <SkeletonToggleButton />
         <div className="skeleton-column" />
-      </SkeletonFormCart>
+      </SkeletonFormCard>
       <div className="flex">
-        <SkeletonFormCart>
+        <SkeletonFormCard>
           <div className="skeleton-column">
             <SkeletonFlexInputList />
             <SkeletonInputList count={1} />
           </div>
-        </SkeletonFormCart>
-        <SkeletonFormCart>
+        </SkeletonFormCard>
+        <SkeletonFormCard>
           <div className="skeleton-column">
             <SkeletonInputList count={2} labelWidth="5" />
           </div>
-        </SkeletonFormCart>
+        </SkeletonFormCard>
       </div>
       <SkeletonFooter />
     </div>

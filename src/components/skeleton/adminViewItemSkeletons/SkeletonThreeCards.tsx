@@ -1,18 +1,18 @@
 import Skeleton from '../Skeleton';
 import SkeletonAdminPage from '../SkeletonAdminPage';
 import SkeletonFooter from '../SkeletonFooter';
-import SkeletomProductCartCenter from './SkeletomProductCartCenter';
-import SkeletomProductCartLeft from './SkeletomProductCartLeft';
+import SkeletomProductCardCenter from './SkeletomProductCardCenter';
+import SkeletomProductCardLeft from './SkeletomProductCardLeft';
 
-const SkeletonThreeCarts = () => (
+const SkeletonThreeCards = () => (
   <SkeletonAdminPage variant="large" showLink>
     <div className="three-col">
-      <SkeletomProductCartLeft />
-      <SkeletomProductCartCenter />
+      <SkeletomProductCardLeft />
+      <SkeletomProductCardCenter />
       <Skeleton className="skeleton-cart-right" />
       <SkeletonFooter />
     </div>
   </SkeletonAdminPage>
 );
 
-export default SkeletonThreeCarts;
+export default SkeletonThreeCards;
