@@ -33,7 +33,7 @@ const ProductCard = ({
           <VisuallyHidden>
             {language.view} {product.productName}
           </VisuallyHidden>
-          <div className="cart-img-container">
+          <div className="card-img-container">
             <div className="badge-container">
               {product.discount > 0 && (
                 <Badge
