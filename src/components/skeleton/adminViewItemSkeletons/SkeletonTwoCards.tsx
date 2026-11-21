@@ -13,7 +13,7 @@ const SkeletonTwoCards = () => (
           <SkeletonParagraph count={2} />
         </div>
       </article>
-      <Skeleton className="skeleton-cart-right" />
+      <Skeleton className="skeleton-card-right" />
       <SkeletonFooter />
     </div>
   </SkeletonAdminPage>

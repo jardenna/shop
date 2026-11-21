@@ -9,7 +9,7 @@ const SkeletonThreeCards = () => (
     <div className="three-col">
       <SkeletomProductCardLeft />
       <SkeletomProductCardCenter />
-      <Skeleton className="skeleton-cart-right" />
+      <Skeleton className="skeleton-card-right" />
       <SkeletonFooter />
     </div>
   </SkeletonAdminPage>

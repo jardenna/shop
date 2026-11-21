@@ -4,7 +4,7 @@ import SkeletonPriceItem from '../skeletonPriceList/SkeletonPriceItem';
 import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
 const SkeletomProductCardLeft = () => (
-  <div className="skeleton-view-cart">
+  <div className="skeleton-view-card">
     <Skeleton height="9" />
     <SkeletonAdminSubHeader width="12" />
     <SkeletonParagraph />

@@ -3,9 +3,9 @@ import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 import SkeletonKpiCardText from './SkeletonKpiCardText';
 
 const SkeletonPeriodKpiCard = () => (
-  <div className="cart position-relative">
+  <div className="card position-relative">
     <SkeletonIcon variant="round" />
-    <div className="skeleton-kpi-cart">
+    <div className="skeleton-kpi-card">
       <SkeletonKpiCardText />
     </div>
     <SkeletonProgressBar />

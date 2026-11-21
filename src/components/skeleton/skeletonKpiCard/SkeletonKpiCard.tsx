@@ -2,7 +2,7 @@ import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 import SkeletonKpiCardText from './SkeletonKpiCardText';
 
 const SkeletonKpiCard = () => (
-  <div className="cart skeleton-kpi-cart">
+  <div className="card skeleton-kpi-card">
     <SkeletonKpiCardText />
     <SkeletonIcon />
   </div>

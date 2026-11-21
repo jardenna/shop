@@ -5,7 +5,7 @@ interface SkeletonFormCardProps {
 }
 
 const SkeletonFormCard = ({ children }: SkeletonFormCardProps) => (
-  <div className="cart">{children}</div>
+  <div className="card">{children}</div>
 );
 
 export default SkeletonFormCard;
