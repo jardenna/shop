@@ -2,12 +2,12 @@ import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { AdminPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
-import CartFooter from './CartFooter';
+import CardFooter from './CardFooter';
 
-import CartRight from './CartRight';
-import CategoryCartLeft from './CategoryCartLeft';
+import CardRight from './CardRight';
+import CategoryCardLeft from './CategoryCardLeft';
 
-interface CategoryCartProps {
+interface CategoryCardProps {
   categoryId: string;
   categoryName: string;
   isAdmin: boolean;
@@ -21,7 +21,7 @@ interface CategoryCartProps {
   onDeleteSubCategory: () => void;
 }
 
-const CategoryCart = ({
+const CategoryCard = ({
   subCategoryName,
   productsInSubcategory,
   categoryName,
@@ -33,25 +33,25 @@ const CategoryCart = ({
   onDeleteSubCategory,
   isDeleteLoading,
   isAdmin,
-}: CategoryCartProps) => {
+}: CategoryCardProps) => {
   const { language } = useLanguage();
 
   return (
     <section className="two-col admin-cart-container">
-      <CategoryCartLeft
+      <CategoryCardLeft
         name={subCategoryName}
         status={status}
         productsInSubcategory={productsInSubcategory}
         scheduledDate={scheduledDate}
       />
-      <CartRight
+      <CardRight
         linkTo={AdminPath.AdminCategories}
         heading={`${language.categoryName}: ${translateKey(categoryName, language)}`}
         name={subCategoryName}
         showStatusMessage={showStatusMessage}
         statusMessage={`${language.parentCategoryIs} ${translateKey(statusMessage, language)}`}
       />
-      <CartFooter
+      <CardFooter
         isLoading={isDeleteLoading}
         id={categoryId}
         name={subCategoryName}
@@ -64,4 +64,4 @@ const CategoryCart = ({
   );
 };
 
-export default CategoryCart;
+export default CategoryCard;

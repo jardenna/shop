@@ -3,9 +3,9 @@ import { useLanguage } from '../../features/language/useLanguage';
 import ColorList from '../../features/shop/components/productLists/ColorList';
 import SizeList from '../../features/shop/components/productLists/SizeList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
-import CartContent from './CartContent';
+import CardContent from './CardContent';
 
-interface ProductCartCenterProps {
+interface ProductCardCenterProps {
   allowedSizes: Size[];
   brand: string;
   colours: string[];
@@ -15,7 +15,7 @@ interface ProductCartCenterProps {
   sizes: Size[];
 }
 
-const ProductCartCenter = ({
+const ProductCardCenter = ({
   brand,
   colours,
   discount,
@@ -23,11 +23,11 @@ const ProductCartCenter = ({
   countInStock,
   sizes,
   allowedSizes,
-}: ProductCartCenterProps) => {
+}: ProductCardCenterProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent className="center">
+    <CardContent className="center">
       <span className="separator" aria-hidden={true} />
       <LabelValueGrid text={language.productsInStock}>
         {countInStock} {language.pcs}
@@ -39,8 +39,8 @@ const ProductCartCenter = ({
       <LabelValueGrid text={language.material}>{material}</LabelValueGrid>
       <ColorList colors={colours} variant="small" />
       <SizeList allowedSizes={allowedSizes} sizes={sizes} />
-    </CartContent>
+    </CardContent>
   );
 };
 
-export default ProductCartCenter;
+export default ProductCardCenter;

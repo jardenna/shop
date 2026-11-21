@@ -1,26 +1,26 @@
 import { useLanguage } from '../../features/language/useLanguage';
 import LinkButton from '../LinkButton';
-import CartContent from './CartContent';
+import CardContent from './CardContent';
 
-type CartRightProps = {
+interface CardRightProps {
   heading: string;
   linkTo: string;
   name: string;
   showStatusMessage: boolean;
   statusMessage: string;
-};
+}
 
-const CartRight = ({
+const CardRight = ({
   linkTo,
   heading,
   name,
   showStatusMessage,
   statusMessage,
-}: CartRightProps) => {
+}: CardRightProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent className="right" heading={heading}>
+    <CardContent className="right" heading={heading}>
       {showStatusMessage && (
         <>
           <div>
@@ -36,8 +36,8 @@ const CartRight = ({
           />
         </>
       )}
-    </CartContent>
+    </CardContent>
   );
 };
 
-export default CartRight;
+export default CardRight;

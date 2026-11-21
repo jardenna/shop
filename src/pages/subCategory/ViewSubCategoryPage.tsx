@@ -1,6 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CategoryCart from '../../components/adminCard/CategoryCart';
+import CategoryCart from '../../components/adminCard/CategoryCard';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonTwoCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCarts';

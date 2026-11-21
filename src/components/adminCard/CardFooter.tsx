@@ -4,7 +4,7 @@ import LinkButton from '../LinkButton';
 import DeleteModal from '../Modal/DeleteModal';
 import TriggerModalButton from '../Modal/TriggerModalButton';
 
-interface CartFooterProps {
+interface CardFooterProps {
   id: string;
   isLoading: boolean;
   linkTo: string;
@@ -14,7 +14,7 @@ interface CartFooterProps {
   onDelete: () => void;
 }
 
-const CartFooter = ({
+const CardFooter = ({
   id,
   name,
   isLoading,
@@ -22,7 +22,7 @@ const CartFooter = ({
   linkTo,
   onDelete,
   hideDeleteBtn,
-}: CartFooterProps) => {
+}: CardFooterProps) => {
   const { language } = useLanguage();
   const location = useLocation();
 
@@ -62,4 +62,4 @@ const CartFooter = ({
   );
 };
 
-export default CartFooter;
+export default CardFooter;

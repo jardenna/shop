@@ -4,10 +4,10 @@ import ProductPrice from '../../features/shop/components/productPrice/ProductPri
 import MissingImage from '../formElements/fileInput/MissingImage';
 import ImgList from '../ImgList';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
-import CartContent from './CartContent';
-import CartHeading from './CartHeading';
+import CardContent from './CardContent';
+import CardHeading from './CardHeading';
 
-type ProductCartLeftProps = {
+interface ProductCardLeftProps {
   description: string;
   discount: number;
   images: string[];
@@ -15,9 +15,9 @@ type ProductCartLeftProps = {
   price: number;
   scheduledDate: Date | null;
   status: Status;
-};
+}
 
-const ProductCartLeft = ({
+const ProductCardLeft = ({
   status,
   name,
   scheduledDate,
@@ -25,13 +25,13 @@ const ProductCartLeft = ({
   images,
   price,
   discount,
-}: ProductCartLeftProps) => {
+}: ProductCardLeftProps) => {
   const { language } = useLanguage();
 
   return (
-    <CartContent>
+    <CardContent>
       {images.length > 0 ? <ImgList images={images} /> : <MissingImage />}
-      <CartHeading
+      <CardHeading
         status={status}
         scheduledDate={scheduledDate || null}
         name={name}
@@ -40,8 +40,8 @@ const ProductCartLeft = ({
       <LabelValueGrid text={language.price}>
         <ProductPrice price={price} discount={discount} />
       </LabelValueGrid>
-    </CartContent>
+    </CardContent>
   );
 };
 
-export default ProductCartLeft;
+export default ProductCardLeft;
