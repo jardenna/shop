@@ -1,7 +1,7 @@
 import Skeleton from '../Skeleton';
 import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
 
-const SkeletonKpiCartText = () => (
+const SkeletonKpiCardText = () => (
   <>
     <SkeletonIcon />
     <div className="skeleton-kpi-content">
@@ -12,4 +12,4 @@ const SkeletonKpiCartText = () => (
   </>
 );
 
-export default SkeletonKpiCartText;
+export default SkeletonKpiCardText;

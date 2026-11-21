@@ -1,15 +1,15 @@
 import SkeletonProgressBar from '../skeletonProgressBar/SkeletonProgressBar';
 import SkeletonIcon from '../skeltonIcon/SkeletonIcon';
-import SkeletonKpiCartText from './SkeletonKpiCartText';
+import SkeletonKpiCardText from './SkeletonKpiCardText';
 
-const SkeletonPeriodKpiCart = () => (
+const SkeletonPeriodKpiCard = () => (
   <div className="cart position-relative">
     <SkeletonIcon variant="round" />
     <div className="skeleton-kpi-cart">
-      <SkeletonKpiCartText />
+      <SkeletonKpiCardText />
     </div>
     <SkeletonProgressBar />
   </div>
 );
 
-export default SkeletonPeriodKpiCart;
+export default SkeletonPeriodKpiCard;

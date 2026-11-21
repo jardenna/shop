@@ -1,6 +1,6 @@
 import type { SkeletonProps } from '../Skeleton';
-import SkeletonKpiCart from './SkeletonKpiCart';
-import SkeletonPeriodKpiCart from './SkeletonPeriodKpiCart';
+import SkeletonKpiCard from './SkeletonKpiCard';
+import SkeletonPeriodKpiCard from './SkeletonPeriodKpiCard';
 import './_skeleton-kpi-list.scss';
 
 const SkeltonKpiList = ({ count = 6 }: SkeletonProps) => {
@@ -10,9 +10,9 @@ const SkeltonKpiList = ({ count = 6 }: SkeletonProps) => {
     <div className="kpi-cart-list">
       {skeletons.map((_, index) =>
         index < 3 ? (
-          <SkeletonKpiCart key={index} />
+          <SkeletonKpiCard key={index} />
         ) : (
-          <SkeletonPeriodKpiCart key={index} />
+          <SkeletonPeriodKpiCard key={index} />
         ),
       )}
     </div>
