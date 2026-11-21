@@ -14,9 +14,9 @@ import {
   selectIsMiniCardOpen,
 } from '../../../miniCardPopupSlice';
 import OrderList from '../../../orders/components/orderList/OrderList';
-import { useActiveCart } from '../../useActiveCart';
 import './_mini-card-popup.scss';
 import MiniCardInfo from './MiniCardInfo';
+import { useActiveCart } from '../../../cart/useActiveCart';
 
 const MiniCardPopup = () => {
   const dispatch = useAppDispatch();

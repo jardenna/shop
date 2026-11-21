@@ -12,7 +12,6 @@ import { IconName } from '../components/icons/iconConstants';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import MiniCardPopup from '../features/cart/components/miniCardPopup/MiniCardPopup';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
@@ -27,6 +26,7 @@ import type { OptionType } from '../shared/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/navConstants';
+import MiniCardPopup from '../features/shop/components/miniCardPopup/MiniCardPopup';
 
 const Layout = () => {
   const { pathname } = useLocation();
