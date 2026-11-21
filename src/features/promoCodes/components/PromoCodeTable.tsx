@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Cart from '../../../components/carts/Cart';
+import Cart from '../../../components/carts/Card';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';

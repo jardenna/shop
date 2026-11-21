@@ -6,22 +6,22 @@ import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
 import { useCurrency } from '../../../currency/useCurrency';
 import { useLanguage } from '../../../language/useLanguage';
-import KpiCartLayout from './KpiCartLayout';
-import KpiCartPopup from './KpiCartPopup';
+import KpiCardLayout from './KpiCardLayout';
+import KpiCardPopup from './KpiCardPopup';
 
-interface PeriodKpiCartProps {
+interface PeriodKpiCardProps {
   kpi: PeriodKpiResponse;
   period: GoalPeriod;
 }
 
-const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
+const PeriodKpiCard = ({ kpi, period }: PeriodKpiCardProps) => {
   const { language } = useLanguage();
   const isRevenue = kpi.key.toLowerCase().includes('revenue');
   const { convertedPrice } = useCurrency(kpi.value);
   const progressPercentage = Math.min((kpi.value / kpi.goal) * 100, 100);
 
   return (
-    <KpiCartLayout
+    <KpiCardLayout
       id={kpi.key}
       iconName={kpiIcons[kpi.key]}
       description={language[kpi.description]}
@@ -32,7 +32,7 @@ const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
       <PopoverBtn
         className="kpi-cart-popover"
         popupContent={
-          <KpiCartPopup period={period} kpi={kpi} language={language} />
+          <KpiCardPopup period={period} kpi={kpi} language={language} />
         }
         ariaHasPopup="dialog"
         ariaLabel={language.comparisonWithPreviousPeriod}
@@ -47,7 +47,7 @@ const PeriodKpiCart = ({ kpi, period }: PeriodKpiCartProps) => {
         </span>
         <ProgressBar progressPercentage={progressPercentage} />
       </div>
-    </KpiCartLayout>
+    </KpiCardLayout>
   );
 };
-export default PeriodKpiCart;
+export default PeriodKpiCard;

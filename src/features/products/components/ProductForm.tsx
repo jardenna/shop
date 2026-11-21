@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router';
 import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
 import type { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
-import FormCart from '../../../components/carts/FormCart';
+import FormCart from '../../../components/carts/FormCard';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';

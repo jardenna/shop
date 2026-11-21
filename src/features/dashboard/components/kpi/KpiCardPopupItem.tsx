@@ -3,7 +3,7 @@ import DateRange from '../../../../components/datePicker/DateRange';
 import { useLanguage } from '../../../language/useLanguage';
 import ConvertedPrice from '../../../shop/components/ConvertedPrice';
 
-interface KpiCartPopupItemProps {
+interface KpiCardPopupItemProps {
   count: number;
   endDate: Date;
   isRevenue: boolean;
@@ -13,7 +13,7 @@ interface KpiCartPopupItemProps {
   isPrevious?: boolean;
 }
 
-const KpiCartPopupItem = ({
+const KpiCardPopupItem = ({
   period,
   startDate,
   endDate,
@@ -21,7 +21,7 @@ const KpiCartPopupItem = ({
   isPrevious,
   count,
   isRevenue,
-}: KpiCartPopupItemProps) => {
+}: KpiCardPopupItemProps) => {
   const { language } = useLanguage();
 
   return (
@@ -50,4 +50,4 @@ const KpiCartPopupItem = ({
   );
 };
 
-export default KpiCartPopupItem;
+export default KpiCardPopupItem;

@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 
-interface CartProps {
+interface CardProps {
   children: ReactNode;
   className?: string;
 }
 
-const Cart = ({ children, className = '' }: CartProps) => (
+const Card = ({ children, className = '' }: CardProps) => (
   <section className={`cart ${className}`}>{children}</section>
 );
 
-export default Cart;
+export default Card;

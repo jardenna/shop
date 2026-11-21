@@ -6,15 +6,15 @@ import type { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardAp
 import Chip from '../../../../components/chips/Chip';
 import type { Language } from '../../../../shared/types';
 import { useCurrency } from '../../../currency/useCurrency';
-import KpiCartPopupItem from './KpiCartPopupItem';
+import KpiCardPopupItem from './KpiCardPopupItem';
 
-interface KpiCartPopupProps {
+interface KpiCardPopupProps {
   kpi: PeriodKpiResponse;
   language: Language;
   period: GoalPeriod;
 }
 
-const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
+const KpiCardPopup = ({ period, kpi, language }: KpiCardPopupProps) => {
   const isRevenue = kpi.key.toLowerCase().includes('revenue');
   const chipText = kpi.value - kpi.previousValue;
 
@@ -35,7 +35,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
       <h3 className="kpi-popup-title">
         {language.comparisonWithPreviousPeriod}
       </h3>
-      <KpiCartPopupItem
+      <KpiCardPopupItem
         endDate={kpi.currentPeriod.endDate}
         startDate={kpi.currentPeriod.startDate}
         period={period}
@@ -43,7 +43,7 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
         count={kpi.value}
         label={popupLabel}
       />
-      <KpiCartPopupItem
+      <KpiCardPopupItem
         endDate={kpi.previousPeriod.endDate}
         startDate={kpi.previousPeriod.startDate}
         period={period}
@@ -64,4 +64,4 @@ const KpiCartPopup = ({ period, kpi, language }: KpiCartPopupProps) => {
   );
 };
 
-export default KpiCartPopup;
+export default KpiCardPopup;

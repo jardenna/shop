@@ -5,27 +5,27 @@ import type {
 } from '../../../../app/api/apiTypes/dashboardApiTypes';
 import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
 import { useLanguage } from '../../../language/useLanguage';
-import KpiCart from './KpiCart';
-import PeriodKpiCart from './PeriodKpiCart';
+import KpiCard from './KpiCard';
+import PeriodKpiCard from './PeriodKpiCard';
 import './_kpi.scss';
 
-interface KpiCartListProps {
+interface KpiCardListProps {
   periodKpi: PeriodKpiResponse[];
   selectedPeriod: GoalPeriod;
   totalKpi: TotalKpiResponse[];
 }
 
-const KpiCartList = ({
+const KpiCardList = ({
   totalKpi,
   periodKpi,
   selectedPeriod,
-}: KpiCartListProps) => {
+}: KpiCardListProps) => {
   const { language } = useLanguage();
 
   return (
     <div className="kpi-cart-list">
       {totalKpi.map((kpi) => (
-        <KpiCart
+        <KpiCard
           key={kpi.key}
           id={kpi.key}
           title={language[kpi.label]}
@@ -36,10 +36,10 @@ const KpiCartList = ({
         />
       ))}
       {periodKpi.map((kpi) => (
-        <PeriodKpiCart key={kpi.key} kpi={kpi} period={selectedPeriod} />
+        <PeriodKpiCard key={kpi.key} kpi={kpi} period={selectedPeriod} />
       ))}
     </div>
   );
 };
 
-export default KpiCartList;
+export default KpiCardList;

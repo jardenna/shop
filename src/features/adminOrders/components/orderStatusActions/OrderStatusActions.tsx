@@ -1,6 +1,6 @@
 import type { DeliveryStatus } from '../../../../app/api/apiTypes/orderApiTypes';
 import Button from '../../../../components/Button';
-import Cart from '../../../../components/carts/Cart';
+import Cart from '../../../../components/carts/Card';
 import ProgressTracker from '../../../../components/progressTracker/ProgressTracker';
 import { useLanguage } from '../../../language/useLanguage';
 import OrderCancelledBadge from '../../../orders/components/OrderCancelledBadge';

@@ -1,15 +1,15 @@
 import type { ReactNode } from 'react';
 import FieldSet from '../fieldset/FieldSet';
 
-type FormCartProps = {
+interface FormCardProps {
   children: ReactNode;
   legendText: string;
-};
+}
 
-const FormCart = ({ children, legendText }: FormCartProps) => (
+const FormCard = ({ children, legendText }: FormCardProps) => (
   <div className="cart">
     <FieldSet legendText={legendText}>{children}</FieldSet>
   </div>
 );
 
-export default FormCart;
+export default FormCard;

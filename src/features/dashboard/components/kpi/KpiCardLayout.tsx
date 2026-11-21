@@ -1,10 +1,10 @@
-import Cart from '../../../../components/carts/Cart';
+import Card from '../../../../components/carts/Card';
 import type { IconNameValue } from '../../../../shared/types';
 import type { DashboardKpiId } from '../../dashboardUtils';
 import { dashboardKpiVariants } from '../../dashboardUtils';
 import KpiContent from './KpiContent';
 
-interface KpiCartLayoutProps {
+interface KpiCardLayoutProps {
   children: React.ReactNode;
   description: string;
   iconName: IconNameValue;
@@ -14,7 +14,7 @@ interface KpiCartLayoutProps {
   className?: string;
 }
 
-const KpiCartLayout = ({
+const KpiCardLayout = ({
   id,
   iconName,
   description,
@@ -22,8 +22,8 @@ const KpiCartLayout = ({
   kpiTotal,
   children,
   className = '',
-}: KpiCartLayoutProps) => (
-  <Cart className={dashboardKpiVariants[id]}>
+}: KpiCardLayoutProps) => (
+  <Card className={dashboardKpiVariants[id]}>
     <div className={`kpi-cart ${className}`}>
       <KpiContent
         iconName={iconName}
@@ -33,7 +33,7 @@ const KpiCartLayout = ({
       />
       {children}
     </div>
-  </Cart>
+  </Card>
 );
 
-export default KpiCartLayout;
+export default KpiCardLayout;

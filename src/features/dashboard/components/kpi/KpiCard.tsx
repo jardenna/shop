@@ -2,33 +2,33 @@ import BarChartComp from '../../../../components/reCharts/BarChartComp';
 import type { ChartData, IconNameValue } from '../../../../shared/types';
 import { useCurrency } from '../../../currency/useCurrency';
 import type { DashboardKpiId } from '../../dashboardUtils';
-import KpiCartLayout from './KpiCartLayout';
+import KpiCardLayout from './KpiCardLayout';
 
-export interface BaseKpiCartProps {
+export interface BaseKpiCardProps {
   description: string;
   iconName: IconNameValue;
   title: string;
 }
 
-interface KpiCartProps extends BaseKpiCartProps {
+interface KpiCardProps extends BaseKpiCardProps {
   chartData: ChartData[];
   id: DashboardKpiId;
   total: number;
 }
 
-const KpiCart = ({
+const KpiCard = ({
   title,
   iconName,
   description,
   total,
   id,
   chartData,
-}: KpiCartProps) => {
+}: KpiCardProps) => {
   const isRevenue = id.toLowerCase().includes('revenue');
   const { convertedPrice } = useCurrency(total);
 
   return (
-    <KpiCartLayout
+    <KpiCardLayout
       iconName={iconName}
       description={description}
       title={title}
@@ -36,8 +36,8 @@ const KpiCart = ({
       id={id}
     >
       <BarChartComp data={chartData} />
-    </KpiCartLayout>
+    </KpiCardLayout>
   );
 };
 
-export default KpiCart;
+export default KpiCard;
