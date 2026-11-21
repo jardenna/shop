@@ -1,6 +1,6 @@
 import Img from '../../../components/Img';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
-import './_favorites-panel-cart.scss';
+import './_favorites-panel-card.scss';
 
 interface OrderItemContainerData {
   discount: number;
