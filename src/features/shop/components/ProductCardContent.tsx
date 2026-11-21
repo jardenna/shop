@@ -19,12 +19,12 @@ const ProductCardContent = ({
   productView,
   linkTo,
 }: ProductCardContentProps) => (
-  <div className="product-cart-content">
+  <div className="product-card-content">
     <Link to={linkTo} tabIndex={-1}>
-      <h2 className="product-cart-title" id={ariaLabelledby}>
+      <h2 className="product-card-title" id={ariaLabelledby}>
         {product.productName}
       </h2>
-      <div className="product-cart-info">
+      <div className="product-card-info">
         {productView === 'list' ? (
           <ProductCardListContent product={product as BaseShopProduct} />
         ) : (

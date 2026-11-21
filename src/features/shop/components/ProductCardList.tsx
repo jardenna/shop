@@ -14,7 +14,7 @@ const ProductCardList = ({
   productView = '',
   children,
 }: ProductCardListProps) => (
-  <ul className={`product-cart-list ${productView}`}>
+  <ul className={`product-card-list ${productView}`}>
     {products.map((product) => (
       <li key={product.id}>
         <ProductCard

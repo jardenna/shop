@@ -27,7 +27,7 @@ const ProductCard = ({
   const { language } = useLanguage();
 
   return (
-    <article aria-labelledby={ariaLabelledbyId} className="product-cart">
+    <article aria-labelledby={ariaLabelledbyId} className="product-card">
       <div className="position-relative">
         <Link to={linkTo}>
           <VisuallyHidden>
