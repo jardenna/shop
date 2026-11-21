@@ -13,7 +13,7 @@
   }
 }
 
-.admin-cart-heading {
+.admin-card-heading {
   display: flex;
   justify-content: space-between;
   gap: 4px;
@@ -26,13 +26,13 @@
   @include max-size($mini) {
     grid-template-columns: repeat(auto-fit, minmax(rem(360px), 1fr));
 
-    .cart-top-line {
+    .card-top-line {
       display: none;
     }
   }
 }
 
-.admin-cart-container {
+.admin-card-container {
   &.two-col {
     @include max-size($small) {
       .footer {
@@ -41,7 +41,7 @@
     }
 
     @include max-size($mini) {
-      .cart-top-line {
+      .card-top-line {
         display: none;
       }
     }
@@ -50,13 +50,13 @@
   &.three-col {
     @include max-size($small) {
       .separator,
-      .cart-top-line {
+      .card-top-line {
         display: none;
       }
     }
   }
 
-  .admin-cart-left-title {
+  .admin-card-left-title {
     margin: 0;
     font-size: rem(20px);
   }
@@ -75,7 +75,7 @@
     background-color: $color-gray-60;
   }
 
-  .admin-cart-title {
+  .admin-card-title {
     text-wrap: balance;
 
     @include min-size($medium) {
@@ -100,7 +100,7 @@
   }
 }
 
-.admin-cart {
+.admin-card {
   background-color: $color-white;
   padding-top: 42px;
 
@@ -114,14 +114,14 @@
     }
   }
 
-  .cart-top-line {
+  .card-top-line {
     display: flex;
     height: 4px;
     width: 100%;
     background-color: $color-gray-80;
   }
 
-  .admin-cart-content {
+  .admin-card-content {
     min-height: rem(252px);
     position: relative;
     display: flex;
@@ -144,7 +144,7 @@
   }
 
   &.center {
-    .admin-cart-content {
+    .admin-card-content {
       padding: 24px;
       gap: 12px;
 
@@ -169,15 +169,15 @@
       margin-right: 12px;
     }
 
-    .admin-cart-content {
+    .admin-card-content {
       padding-left: 20px;
     }
 
-    .cart-top-line {
+    .card-top-line {
       height: 6px;
     }
 
-    .admin-cart-date {
+    .admin-card-date {
       text-align: right;
     }
 

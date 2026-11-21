@@ -6,9 +6,9 @@ import SkeletonAdminSubHeader from '../SkeletonSubHeader';
 
 const SkeletonTwoCards = () => (
   <SkeletonAdminPage variant="medium" showLink>
-    <div className="two-col admin-cart-container">
-      <article className="admin-cart">
-        <div className="admin-cart-content">
+    <div className="two-col admin-card-container">
+      <article className="admin-card">
+        <div className="admin-card-content">
           <SkeletonAdminSubHeader />
           <SkeletonParagraph count={2} />
         </div>

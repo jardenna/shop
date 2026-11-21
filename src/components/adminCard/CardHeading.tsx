@@ -8,8 +8,8 @@ interface CardHeadingProps {
 }
 
 const CardHeading = ({ scheduledDate, name, status }: CardHeadingProps) => (
-  <div className="admin-cart-heading">
-    <p className="admin-cart-left-title">{name}</p>
+  <div className="admin-card-heading">
+    <p className="admin-card-left-title">{name}</p>
     <AdminBadge status={status} scheduledDate={scheduledDate || null} />
   </div>
 );

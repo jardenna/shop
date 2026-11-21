@@ -37,7 +37,7 @@ const CategoryCard = ({
   const { language } = useLanguage();
 
   return (
-    <section className="two-col admin-cart-container">
+    <section className="two-col admin-card-container">
       <CategoryCardLeft
         name={subCategoryName}
         status={status}
