@@ -1,19 +1,19 @@
-import type { Size } from '../../../../app/api/apiTypes/sharedApiTypes';
-import type { BaseProductFormData } from '../../../../app/api/apiTypes/shopApiTypes';
-import FieldSet from '../../../../components/fieldset/FieldSet';
-import Form from '../../../../components/Form';
-import NumberStep from '../../../../components/formElements/numberStep/NumberStep';
-import ProductOptionGroup from '../../../../components/formElements/productOptionGroup/ProductOptionGroup';
-import { useFormValidation } from '../../../../hooks/useFormValidation';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { BaseProductFormData } from '../../../app/api/apiTypes/shopApiTypes';
+import FieldSet from '../../../components/fieldset/FieldSet';
+import Form from '../../../components/Form';
+import NumberStep from '../../../components/formElements/numberStep/NumberStep';
+import ProductOptionGroup from '../../../components/formElements/productOptionGroup/ProductOptionGroup';
+import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
   getColorOptions,
   sortColorsByTranslation,
-} from '../../../../utils/colorUtils';
-import { resolveIconName } from '../../../../utils/iconHelpers';
-import { oneSize } from '../../../../utils/sizeUtils';
-import { translateKey } from '../../../../utils/utils';
-import { validateShopProduct } from '../../../../utils/validation/validateShopProduct';
-import { useLanguage } from '../../../language/useLanguage';
+} from '../../../utils/colorUtils';
+import { resolveIconName } from '../../../utils/iconHelpers';
+import { oneSize } from '../../../utils/sizeUtils';
+import { translateKey } from '../../../utils/utils';
+import { validateShopProduct } from '../../../utils/validation/validateShopProduct';
+import { useLanguage } from '../../language/useLanguage';
 
 export type InitialShopValues = {
   color: string;

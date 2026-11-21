@@ -25,7 +25,7 @@ import {
 } from '../../cartUtils';
 import ProductPurchaseOptions, {
   type InitialShopValues,
-} from './ProductPurchaseOptions';
+} from '../ProductPurchaseOptions';
 import SingleProductPanel, { type PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {

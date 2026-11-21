@@ -16,7 +16,7 @@ import { openMiniCart } from '../features/miniCartPopupSlice';
 import ProductCartList from '../features/shop/components/ProductCartList';
 import ProductPurchaseOptions, {
   type InitialShopValues,
-} from '../features/shop/components/singleProduct/ProductPurchaseOptions';
+} from '../features/shop/components/ProductPurchaseOptions';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
