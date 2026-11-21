@@ -7,7 +7,7 @@ interface FormCardProps {
 }
 
 const FormCard = ({ children, legendText }: FormCardProps) => (
-  <div className="cart">
+  <div className="card">
     <FieldSet legendText={legendText}>{children}</FieldSet>
   </div>
 );
