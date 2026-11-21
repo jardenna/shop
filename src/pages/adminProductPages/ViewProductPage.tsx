@@ -1,9 +1,9 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CartFooter from '../../components/adminCart/CartFooter';
-import CartRight from '../../components/adminCart/CartRight';
-import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
-import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
+import CartFooter from '../../components/adminCard/CartFooter';
+import CartRight from '../../components/adminCard/CartRight';
+import ProductCartCenter from '../../components/adminCard/ProductCartCenter';
+import ProductCartLeft from '../../components/adminCard/ProductCartLeft';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonThreeCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCarts';

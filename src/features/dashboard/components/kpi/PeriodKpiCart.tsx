@@ -1,6 +1,6 @@
 import type { GoalPeriod } from '../../../../app/api/apiTypes/adminGoalsApiTypes';
 import type { PeriodKpiResponse } from '../../../../app/api/apiTypes/dashboardApiTypes';
-import PopoverBtn from '../../../../components/adminCart/PopoverBtn';
+import PopoverBtn from '../../../../components/adminCard/PopoverBtn';
 import Icon from '../../../../components/icons/Icon';
 import ProgressBar from '../../../../components/progressbar/ProgressBar';
 import { kpiIcons } from '../../../adminGoals/adminGoalsUtils';
