@@ -6,23 +6,23 @@ import FavoriteHeart from '../../../components/favorites/FavoriteHeart';
 import Img from '../../../components/Img';
 import VisuallyHidden from '../../../components/VisuallyHidden';
 import { useLanguage } from '../../language/useLanguage';
-import './productCart.styles.scss';
-import ProductCartContent from './ProductCartContent';
+import './productCard.styles.scss';
+import ProductCardContent from './ProductCardContent';
 import SizeOverlay from './SizeOverlay';
 
-interface ProductCartProps {
+interface ProductCardProps {
   linkTo: string;
   product: BaseProduct;
   isOutOfStock?: boolean;
   productView?: string;
 }
 
-const ProductCart = ({
+const ProductCard = ({
   product,
   productView = 'grid',
   linkTo,
   isOutOfStock,
-}: ProductCartProps) => {
+}: ProductCardProps) => {
   const ariaLabelledbyId = useId();
   const { language } = useLanguage();
 
@@ -59,7 +59,7 @@ const ProductCart = ({
         <FavoriteHeart id={product.id} className="product-cart-favorites" />
       </div>
 
-      <ProductCartContent
+      <ProductCardContent
         ariaLabelledby={ariaLabelledbyId}
         linkTo={linkTo}
         product={product}
@@ -69,4 +69,4 @@ const ProductCart = ({
   );
 };
 
-export default ProductCart;
+export default ProductCard;

@@ -13,7 +13,7 @@ import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAdd
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCart } from '../features/miniCartPopupSlice';
-import ProductCartList from '../features/shop/components/ProductCartList';
+import ProductCartList from '../features/shop/components/ProductCardList';
 import ProductPurchaseOptions, {
   type InitialShopValues,
 } from '../features/shop/components/ProductPurchaseOptions';

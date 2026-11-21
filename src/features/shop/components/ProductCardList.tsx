@@ -1,22 +1,22 @@
 import type { ReactElement } from 'react';
 import type { BaseProduct } from '../../../app/api/apiTypes/sharedApiTypes';
 import { getProductLink } from '../cartUtils';
-import ProductCart from './ProductCart';
+import ProductCard from './ProductCard';
 
-interface ProductCartListProps {
+interface ProductCardListProps {
   products: BaseProduct[];
   productView?: string;
   children?: (product: BaseProduct) => ReactElement;
 }
-const ProductCartList = ({
+const ProductCardList = ({
   products,
   productView = '',
   children,
-}: ProductCartListProps) => (
+}: ProductCardListProps) => (
   <ul className={`product-cart-list ${productView}`}>
     {products.map((product) => (
       <li key={product.id}>
-        <ProductCart
+        <ProductCard
           productView={productView}
           linkTo={getProductLink(product.id)}
           product={product}
@@ -28,4 +28,4 @@ const ProductCartList = ({
   </ul>
 );
 
-export default ProductCartList;
+export default ProductCardList;

@@ -3,22 +3,22 @@ import type {
   BaseProduct,
   BaseShopProduct,
 } from '../../../app/api/apiTypes/sharedApiTypes';
-import ProductCartGridContent from './ProductCartGridContent';
-import ProductCartListContent from './ProductCartListContent';
+import ProductCardGridContent from './ProductCardGridContent';
+import ProductCardListContent from './ProductCardListContent';
 
-interface ProductCartContentProps {
+interface ProductCardContentProps {
   ariaLabelledby: string;
   linkTo: string;
   product: BaseProduct;
   productView: string;
 }
 
-const ProductCartContent = ({
+const ProductCardContent = ({
   ariaLabelledby,
   product,
   productView,
   linkTo,
-}: ProductCartContentProps) => (
+}: ProductCardContentProps) => (
   <div className="product-cart-content">
     <Link to={linkTo} tabIndex={-1}>
       <h2 className="product-cart-title" id={ariaLabelledby}>
@@ -26,9 +26,9 @@ const ProductCartContent = ({
       </h2>
       <div className="product-cart-info">
         {productView === 'list' ? (
-          <ProductCartListContent product={product as BaseShopProduct} />
+          <ProductCardListContent product={product as BaseShopProduct} />
         ) : (
-          <ProductCartGridContent
+          <ProductCardGridContent
             discount={product.discount}
             price={product.price}
             colors={product.colors}
@@ -39,4 +39,4 @@ const ProductCartContent = ({
   </div>
 );
 
-export default ProductCartContent;
+export default ProductCardContent;
