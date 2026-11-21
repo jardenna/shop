@@ -3,7 +3,7 @@ import SkeletonBadge from '../SkeletonBadge';
 import SkeletonButton from '../SkeletonButton';
 import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
 
-const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
+const SkeletonOrderCard = ({ count = 3 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
 
   return skeletons.map((_, index) => (
@@ -26,4 +26,4 @@ const SkeletonOrderCart = ({ count = 3 }: SkeletonProps) => {
   ));
 };
 
-export default SkeletonOrderCart;
+export default SkeletonOrderCard;

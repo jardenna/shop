@@ -1,6 +1,6 @@
 import Skeleton from '../Skeleton';
 import SkeletonParagraph from '../SkeletonParagraph';
-import SkeletonOrderCart from './SkeletonOrderCart';
+import SkeletonOrderCard from './SkeletonOrderCard';
 import './_skeleton-my-order-page.scss';
 
 const SkeletonMyOrderPage = () => (
@@ -9,7 +9,7 @@ const SkeletonMyOrderPage = () => (
       <Skeleton className="skeleton-sub-header-title" />
       <SkeletonParagraph count={2} />
     </span>
-    <SkeletonOrderCart />
+    <SkeletonOrderCard />
   </div>
 );
 
