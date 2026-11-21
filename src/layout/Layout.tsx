@@ -12,11 +12,11 @@ import { IconName } from '../components/icons/iconConstants';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup';
+import MiniCardPopup from '../features/cart/components/miniCardPopup/MiniCardPopup';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { closeMiniCart } from '../features/miniCartPopupSlice';
+import { closeMiniCard } from '../features/miniCardPopupSlice';
 import { clearErrorToasts } from '../features/toastSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -36,7 +36,7 @@ const Layout = () => {
 
   // Clear all popups whenever the user navigates
   useEffect(() => {
-    dispatch(closeMiniCart());
+    dispatch(closeMiniCard());
     dispatch(clearErrorToasts());
   }, [pathname, dispatch]);
 
@@ -141,7 +141,7 @@ const Layout = () => {
         <>
           <main id="main">
             <Outlet />
-            <MiniCartPopup />
+            <MiniCardPopup />
           </main>
           <Footer />
         </>

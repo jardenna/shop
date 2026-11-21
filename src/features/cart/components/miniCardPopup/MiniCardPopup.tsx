@@ -10,15 +10,15 @@ import { ShopPath } from '../../../../layout/nav/navConstants';
 import { selectUser } from '../../../auth/authSlice';
 import { useLanguage } from '../../../language/useLanguage';
 import {
-  closeMiniCart,
-  selectIsMiniCartOpen,
-} from '../../../miniCartPopupSlice';
+  closeMiniCard,
+  selectIsMiniCardOpen,
+} from '../../../miniCardPopupSlice';
 import OrderList from '../../../orders/components/orderList/OrderList';
 import { useActiveCart } from '../../useActiveCart';
-import './_mini-cart-popup.scss';
-import MiniCartInfo from './MiniCartInfo';
+import './_mini-card-popup.scss';
+import MiniCardInfo from './MiniCardInfo';
 
-const MiniCartPopup = () => {
+const MiniCardPopup = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const loggedInUser = useAppSelector(selectUser);
@@ -30,18 +30,18 @@ const MiniCartPopup = () => {
     isAuthReady: true,
   });
 
-  const isMiniCartOpen = useAppSelector(selectIsMiniCartOpen);
-  const shouldOpenMiniCart = isMiniCartOpen && !isFetching;
+  const isMiniCardOpen = useAppSelector(selectIsMiniCardOpen);
+  const shouldOpenMiniCard = isMiniCardOpen && !isFetching;
 
   const { shouldRender } = useAnimate({
-    isOpen: shouldOpenMiniCart,
+    isOpen: shouldOpenMiniCard,
   });
 
-  const handleCloseMiniCart = () => {
-    dispatch(closeMiniCart());
+  const handleCloseMiniCard = () => {
+    dispatch(closeMiniCard());
   };
 
-  const handleGoToCart = () => {
+  const handleGoToCard = () => {
     navigate(`/${ShopPath.ShoppingCart}`);
   };
 
@@ -53,26 +53,26 @@ const MiniCartPopup = () => {
 
   return (
     <Panel
-      className="mini-cart"
-      closePanel={handleCloseMiniCart}
-      isPanelShown={shouldOpenMiniCart}
-      portalId="mini-cart"
+      className="mini-card"
+      closePanel={handleCloseMiniCard}
+      isPanelShown={shouldOpenMiniCard}
+      portalId="mini-card"
       heading={language.myBag}
     >
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetchCart()}
       >
-        <MiniCartInfo
+        <MiniCardInfo
           remainingForFreeShipping={summary.remainingForFreeShipping}
           language={language}
         />
         <OrderList orders={cartItems} language={language} />
         <TotalPrice price={summary.totalPrice} />
-        <Button onClick={handleGoToCart}>{language.bag}</Button>
+        <Button onClick={handleGoToCard}>{language.bag}</Button>
       </ErrorBoundary>
     </Panel>
   );
 };
 
-export default MiniCartPopup;
+export default MiniCardPopup;

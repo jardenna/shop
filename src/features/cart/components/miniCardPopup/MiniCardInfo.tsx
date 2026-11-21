@@ -1,21 +1,21 @@
 import type { Language } from '../../../../shared/types';
 import ProductPrice from '../../../shop/components/productPrice/ProductPrice';
 
-interface MiniCartInfoProps {
+interface MiniCardInfoProps {
   language: Language;
   remainingForFreeShipping: number;
 }
 
-const MiniCartInfo = ({
+const MiniCardInfo = ({
   remainingForFreeShipping,
   language,
-}: MiniCartInfoProps) =>
+}: MiniCardInfoProps) =>
   remainingForFreeShipping > 0 && (
-    <div className="mini-cart-info">
+    <div className="mini-card-info">
       <span>{language.buyForFreeShipping}</span>
       <ProductPrice price={remainingForFreeShipping} />
       <span>{language.freeShippingSuffix}</span>
     </div>
   );
 
-export default MiniCartInfo;
+export default MiniCardInfo;

@@ -12,7 +12,7 @@ import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
 import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
-import { openMiniCart } from '../features/miniCartPopupSlice';
+import { openMiniCard } from '../features/miniCardPopupSlice';
 import ProductCartList from '../features/shop/components/ProductCardList';
 import ProductPurchaseOptions, {
   type InitialShopValues,
@@ -54,7 +54,7 @@ const FavoritePage = () => {
 
     await addCartItemApi(cartItem).unwrap();
     onTogglePanel();
-    dispatch(openMiniCart());
+    dispatch(openMiniCard());
   }
 
   if (isError) {

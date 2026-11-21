@@ -1,6 +1,6 @@
 @use '../../../../scss/globals' as *;
 
-.mini-cart {
+.mini-card {
   &.panel {
     width: fit-content;
     height: fit-content;
@@ -26,7 +26,7 @@
     align-items: center;
   }
 
-  .mini-cart-info {
+  .mini-card-info {
     display: flex;
     gap: 4px;
     padding: 12px;

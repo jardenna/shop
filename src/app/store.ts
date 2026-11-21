@@ -3,7 +3,7 @@ import authSliceReducer from '../features/auth/authSlice';
 import cartSlice from '../features/cartSlice';
 import currencyReducer from '../features/currency/currencySlice';
 import languageReducer from '../features/language/languageSlice';
-import miniCartReducer from '../features/miniCartPopupSlice';
+import miniCardReducer from '../features/miniCardPopupSlice';
 import modalReducer from '../features/modalSlice';
 import toastReducer from '../features/toastSlice';
 import apiSlice from './api/apiSlice';
@@ -17,7 +17,7 @@ export const store = configureStore({
     auth: authSliceReducer,
     toast: toastReducer,
     language: languageReducer,
-    miniCart: miniCartReducer,
+    miniCard: miniCardReducer,
     modal: modalReducer,
     cartList: cartSlice,
   },
