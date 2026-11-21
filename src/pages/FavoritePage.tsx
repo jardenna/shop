@@ -10,10 +10,10 @@ import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/Ske
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
-import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
+import FavoritesPanelCard from '../features/favorites/components/FavoritesPanelCard';
 import { useLanguage } from '../features/language/useLanguage';
 import { openMiniCard } from '../features/miniCardPopupSlice';
-import ProductCartList from '../features/shop/components/ProductCardList';
+import ProductCardList from '../features/shop/components/ProductCardList';
 import ProductPurchaseOptions, {
   type InitialShopValues,
 } from '../features/shop/components/ProductPurchaseOptions';
@@ -99,7 +99,6 @@ const FavoritePage = () => {
       {isLoading && (
         <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
       )}
-
       <Panel
         isPanelShown={isPanelShown}
         closePanel={onHidePanel}
@@ -112,7 +111,7 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <div className="favorites-panel">
-              <FavoritesPanelCart product={selectedProduct} />
+              <FavoritesPanelCard product={selectedProduct} />
               <ProductPurchaseOptions
                 className="favorites-form"
                 displaySizeList={selectedProduct.sizes}
@@ -130,8 +129,8 @@ const FavoritePage = () => {
           )}
         </ErrorBoundary>
       </Panel>
-
-      <ProductCartList products={sortedFavorites}>
+      Hello
+      <ProductCardList products={sortedFavorites}>
         {(product) => (
           <FavoritesAddToCartBtn
             countInStock={product.countInStock}
@@ -141,7 +140,7 @@ const FavoritePage = () => {
             btnLabel={language.addToCart}
           />
         )}
-      </ProductCartList>
+      </ProductCardList>
     </MainPageContainer>
   );
 };

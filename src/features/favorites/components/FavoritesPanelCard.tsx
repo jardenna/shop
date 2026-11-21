@@ -9,15 +9,15 @@ interface OrderItemContainerData {
   productName: string;
 }
 
-interface FavoritesPanelCartProps {
+interface FavoritesPanelCardProps {
   product: OrderItemContainerData;
 }
 
-const FavoritesPanelCart = ({ product }: FavoritesPanelCartProps) => (
-  <article className="favorites-item-cart">
+const FavoritesPanelCard = ({ product }: FavoritesPanelCardProps) => (
+  <article className="favorites-item-card">
     <Img src={product.image} alt="" className="favorite-item-img" />
     <ProductPrice price={product.price} discount={product.discount} />
   </article>
 );
 
-export default FavoritesPanelCart;
+export default FavoritesPanelCard;
