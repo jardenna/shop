@@ -1,6 +1,5 @@
 import { Link, type LinkProps } from 'react-router';
-import { BtnVariant, type BtnVariantValue } from '../types/enums';
-import type { AriaCurrentType } from '../types/types';
+import type { AriaCurrentType, BtnVariantValue } from '../shared/types';
 
 interface LinkButtonProps {
   linkText: string;
@@ -12,7 +11,7 @@ interface LinkButtonProps {
 }
 
 const LinkButton = ({
-  variant = BtnVariant.Ghost,
+  variant = 'ghost',
   linkTo,
   linkText,
   state,

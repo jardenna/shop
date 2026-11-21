@@ -1,4 +1,4 @@
-import { IconName } from '../../types/enums';
+import { IconName } from '../../components/icons/iconConstants';
 
 export const kpiOptions = [
   {

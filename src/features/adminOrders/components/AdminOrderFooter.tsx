@@ -6,7 +6,6 @@ import Modal from '../../../components/Modal/Modal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
 import PrintOrder from '../../../components/print/PrintOrder';
-import { BtnVariant } from '../../../types/enums';
 import { useCurrency } from '../../currency/useCurrency';
 import { useLanguage } from '../../language/useLanguage';
 
@@ -38,7 +37,7 @@ const AdminOrderFooter = ({
   return (
     <footer className="footer">
       <TriggerModalButton
-        variant={BtnVariant.Danger}
+        variant="danger"
         ariaControls={ariaControlsId}
         modalId={modalId}
         disabled={triggerModalDisabled}
@@ -52,11 +51,11 @@ const AdminOrderFooter = ({
       >
         {language.cancel} # {order.id}
         <footer className="footer">
-          <Button variant={BtnVariant.Secondary} onClick={closeModal}>
+          <Button variant="secondary" onClick={closeModal}>
             {language.dismiss}
           </Button>
           <Button
-            variant={BtnVariant.Danger}
+            variant="danger"
             onClick={handleCancelOrder}
             showBtnLoader={isLoading}
           >

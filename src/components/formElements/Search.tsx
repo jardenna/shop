@@ -1,4 +1,4 @@
-import type { InputChangeHandler } from '../../types/types';
+import type { InputChangeHandler } from '../../shared/types';
 import Icon from '../icons/Icon';
 import Input from './Input';
 

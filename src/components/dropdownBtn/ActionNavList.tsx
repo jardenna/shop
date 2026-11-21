@@ -1,5 +1,4 @@
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { ActionNavItemProps } from './ActionNavBtn';
@@ -29,7 +28,7 @@ const ActionNavList = ({
         ) => (
           <li key={label} className="action-nav-item">
             <Button
-              variant={btnVariant || BtnVariant.Ghost}
+              variant={btnVariant || 'ghost'}
               className={isActive ? 'active' : ''}
               onClick={() => {
                 onClick();

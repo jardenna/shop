@@ -1,5 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { OptionType } from '../../../types/types';
+import type { OptionType } from '../../../shared/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_radio-button-list.scss';

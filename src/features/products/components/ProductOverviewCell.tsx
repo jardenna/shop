@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router';
 import MissingImage from '../../../components/formElements/fileInput/MissingImage';
 import Img from '../../../components/Img';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import './productOverview.styles.scss';
 
 interface ProductOverviewCellProps {

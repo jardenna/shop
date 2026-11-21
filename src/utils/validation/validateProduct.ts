@@ -1,6 +1,6 @@
 import type { ProductRequest } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 import { maxDiscount, minDiscount } from '../utils';
 
 export function validateProduct(values: ProductRequest) {

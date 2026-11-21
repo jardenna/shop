@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import type { KeyCodeValue } from '../types/enums';
+import type { KeyCodeValue } from '../shared/types';
 
 export function useKeyPress(
   callback: () => void,

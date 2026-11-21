@@ -1,5 +1,5 @@
 import type { Address } from '../../../../app/api/apiTypes/addressApiTypes';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 
 interface OrderAddressItemProps {
   address: Address;

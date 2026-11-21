@@ -2,7 +2,7 @@ import type {
   Discount,
   Summary,
 } from '../../../../app/api/apiTypes/sharedApiTypes';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import { createSummaryItemList } from '../../../utils/createSummaryItemList';
 import PaymentSummaryItem from './PaymentSummaryItem';
 import './_payment-summary.scss';

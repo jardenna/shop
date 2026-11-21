@@ -1,4 +1,5 @@
-import { KeyCode, type KeyCodeValue } from '../types/enums';
+import { KeyCode } from '../shared/constants';
+import type { KeyCodeValue } from '../shared/types';
 
 interface KeyboardNavigationProps {
   itemCount: number;

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 
 export function validateAdminGoals(values: Record<string, string | number>) {
   const errors: ValidationErrors<typeof values> = {};

@@ -10,7 +10,7 @@ import {
 } from '../../features/subCategories/subCategoryApiSlice';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

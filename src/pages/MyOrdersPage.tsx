@@ -8,7 +8,7 @@ import MyOrderFooter from '../features/orders/components/myOrderDetails/MyOrderF
 import MyOrderHeader from '../features/orders/components/myOrderDetails/MyOrderHeader';
 import OrderList from '../features/orders/components/orderList/OrderList';
 import { useGetUserOrderQuery } from '../features/orders/orderApiSlice';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import './myOrdersPage.styles.scss';
 import MainPageContainer from './pageContainer/MainPageContainer';
 

@@ -1,10 +1,9 @@
-import {
-  type BtnType,
-  BtnVariant,
-  type BtnVariantValue,
-  type IconNameValue,
-} from '../types/enums';
-import type { AriaHasPopup } from '../types/types';
+import type {
+  AriaHasPopup,
+  BtnType,
+  BtnVariantValue,
+  IconNameValue,
+} from '../shared/types';
 import Button from './Button';
 import IconContent from './IconContent';
 
@@ -34,7 +33,7 @@ const IconBtn = ({
   ariaExpanded,
   ariaHasPopup,
   btnType,
-  variant = BtnVariant.Ghost,
+  variant = 'ghost',
   size,
   disabled,
   isLoading,

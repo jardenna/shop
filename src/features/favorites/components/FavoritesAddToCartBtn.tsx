@@ -1,6 +1,5 @@
 import type { UserResponse } from '../../../app/api/apiTypes/userApiTypes';
 import Button from '../../../components/Button';
-import { BtnVariant } from '../../../types/enums';
 import NotifyMeForm from '../../shop/components/NotifyMeForm';
 
 interface FavoritesAddToCartBtnProps {
@@ -24,14 +23,14 @@ const FavoritesAddToCartBtn = ({
         options={[]}
         isOutOfStock
         currentUser={currentUser ?? null}
-        btnVariant={BtnVariant.Secondary}
+        btnVariant="secondary"
       />
     ) : (
       <Button
         onClick={() => {
           onOpenPanel(panelId);
         }}
-        variant={BtnVariant.Secondary}
+        variant="secondary"
       >
         {btnLabel}
       </Button>

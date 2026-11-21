@@ -1,4 +1,4 @@
-import type { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../shared/types';
 import Skeleton, { type SkeletonProps } from './Skeleton';
 import SkeletonParagraph from './SkeletonParagraph';
 

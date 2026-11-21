@@ -1,4 +1,4 @@
-import type { ChangeTextAreaType, OmitChecked } from '../../types/types';
+import type { ChangeTextAreaType, OmitChecked } from '../../shared/types';
 import FormLabel from './FormLabel';
 import type { InputProps } from './Input';
 

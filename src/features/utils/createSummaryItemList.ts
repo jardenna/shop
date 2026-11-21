@@ -1,5 +1,5 @@
 import type { Discount, Summary } from '../../app/api/apiTypes/sharedApiTypes';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import { vat } from '../../utils/utils';
 
 interface SummaryItemProps {

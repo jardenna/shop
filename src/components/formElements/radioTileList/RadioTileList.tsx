@@ -1,6 +1,5 @@
 import { useLanguage } from '../../../features/language/useLanguage';
-import { type IconNameValue } from '../../../types/enums';
-import type { OptionType } from '../../../types/types';
+import type { IconNameValue, OptionType } from '../../../shared/types';
 import { translateKey } from '../../../utils/utils';
 import ControlInput, { type BaseControlInputProps } from '../ControlInput';
 import './_radio-tile-list.scss';

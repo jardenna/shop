@@ -1,6 +1,5 @@
 import { PDFDownloadLink, type DocumentProps } from '@react-pdf/renderer';
 import type { ReactElement } from 'react';
-import { BtnVariant } from '../types/enums';
 import Button from './Button';
 
 interface DownloadPdfBtnProps {
@@ -12,7 +11,7 @@ interface DownloadPdfBtnProps {
 const DownloadPdfBtn = ({ document, fileName, label }: DownloadPdfBtnProps) => (
   <PDFDownloadLink document={document} fileName={fileName} className="pdf-link">
     {({ loading }) => (
-      <Button variant={BtnVariant.Secondary} disabled={loading}>
+      <Button variant="secondary" disabled={loading}>
         {loading ? 'Generating PDF...' : label}
       </Button>
     )}

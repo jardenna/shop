@@ -7,7 +7,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { useMoveFocus } from '../../hooks/useMoveFocus';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useTrapFocus } from '../../hooks/useTrapFocus';
-import type { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../shared/types';
 import CloseBtn from '../CloseBtn';
 import Overlay from '../overlay/Overlay';
 import Portal from '../Portal';

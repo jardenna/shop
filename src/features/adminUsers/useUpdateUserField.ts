@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { ChangeInputType } from '../../types/types';
+import type { ChangeInputType } from '../../shared/types';
 
 interface UseTableUpdateFieldProps<T extends { id: string }> {
   data: T[];

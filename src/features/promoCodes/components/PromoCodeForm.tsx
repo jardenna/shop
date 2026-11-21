@@ -7,7 +7,7 @@ import Input from '../../../components/formElements/Input';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
-import { AdminPath } from '../../../layout/nav/enums';
+import { AdminPath } from '../../../layout/nav/navConstants';
 import { dateFormat, newDate } from '../../../utils/dates';
 import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';

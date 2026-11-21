@@ -1,5 +1,5 @@
 import ImageBackground from '../../components/imageBackground/ImageBackground';
-import type { ImgExtention } from '../../types/types';
+import type { ImgExtention } from '../../shared/types';
 
 type NavAdProps = {
   alt: string;

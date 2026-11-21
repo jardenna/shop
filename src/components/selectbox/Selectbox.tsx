@@ -6,7 +6,7 @@ import type {
 } from 'react-select';
 import Select from 'react-select';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { OptionType, RefElementType } from '../../types/types';
+import type { OptionType, RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 

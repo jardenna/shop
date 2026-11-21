@@ -3,7 +3,7 @@ import { useGetPublishedCategoriesQuery } from '../../features/categories/catego
 import { useLanguage } from '../../features/language/useLanguage';
 import MainCollections from '../../features/shop/components/MainCollections';
 import type { MainCollectionsBaseProps } from '../../features/shop/components/MainCollectionsItem';
-import { ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 import './mainCollectionPage.styles.scss';

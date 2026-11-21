@@ -1,4 +1,12 @@
-import type { ChangeEvent, FocusEvent, MouseEvent, RefObject } from 'react';
+import type {
+  ButtonHTMLAttributes,
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+  RefObject,
+} from 'react';
+import type { IconName } from '../components/icons/iconConstants';
+import type { BtnVariant, KeyCode, ValidationMessage } from './constants';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
@@ -84,7 +92,7 @@ export type FiltersCountResult = {
 export type SizeVariant =
   'mini' | 'small' | 'medium' | 'large' | 'x-large' | 'full';
 
-export type ToastRole = 'alert' | 'status';
+export type PopupRole = 'alert' | 'status';
 
 export interface ChartData {
   date: string;
@@ -92,3 +100,14 @@ export interface ChartData {
 }
 
 export type Language = Record<string, string>;
+
+export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
+
+export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
+
+export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
+
+export type IconNameValue = (typeof IconName)[keyof typeof IconName];
+
+export type ValidationMessageValue =
+  (typeof ValidationMessage)[keyof typeof ValidationMessage];

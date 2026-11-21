@@ -1,6 +1,6 @@
 import { type ReactNode, useId } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
 import Icon from '../icons/Icon';
 import Panel from '../panel/Panel';

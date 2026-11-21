@@ -1,4 +1,4 @@
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import { getRangeText } from './utils';
 
 interface PaginationTextParams {

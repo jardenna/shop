@@ -1,6 +1,6 @@
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import RoleRadioBtn from './RoleRadioBtn';
 import type { BaseUserTablePopupProps } from './UserTablePopup';
 

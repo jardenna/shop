@@ -1,4 +1,4 @@
-import type { InputChangeHandler } from '../types/types';
+import type { InputChangeHandler } from '../shared/types';
 import Input from './formElements/Input';
 import type { StatusInputsProps } from './StatusInputs';
 import StatusInputs from './StatusInputs';

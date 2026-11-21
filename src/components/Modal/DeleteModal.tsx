@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import Modal from './Modal';
 import { useModal } from './useModal';
@@ -42,13 +41,13 @@ const DeleteModal = ({
     >
       {language.sureToDelete} {modalMessage}
       <footer className="footer">
-        <Button onClick={closeModal} variant={BtnVariant.Secondary}>
+        <Button onClick={closeModal} variant="secondary">
           {language.cancel}
         </Button>
         <Button
           showBtnLoader={isLoading}
           onClick={handleDeleteItem}
-          variant={BtnVariant.Danger}
+          variant="danger"
         >
           {language.delete}
         </Button>

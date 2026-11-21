@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 import danishLang from '../../locales/da.json';
 import englishLang from '../../locales/en.json';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 
 export type SelectedLanguage = 'en' | 'da';
 

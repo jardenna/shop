@@ -4,7 +4,7 @@ import {
   useGetFavoritesQuery,
   useToggleFavoriteMutation,
 } from '../../features/favorites/favoritesApiSlice';
-import { ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/navConstants';
 
 export const useFavorites = ({ id }: { id?: string }) => {
   const navigate = useNavigate();

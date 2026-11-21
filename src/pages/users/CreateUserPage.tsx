@@ -2,7 +2,7 @@ import { useCreateUserMutation } from '../../features/auth/authApiSlice';
 import CreateAccount from '../../features/auth/components/CreateAccount';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const CreateUserPage = () => {

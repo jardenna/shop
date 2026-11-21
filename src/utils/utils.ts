@@ -1,13 +1,11 @@
-import {
-  AdminPath,
-  type AdminPathValue,
-  type ShopPathValue,
-} from '../layout/nav/enums';
+import { AdminPath } from '../layout/nav/navConstants';
+import type { AdminPathValue, ShopPathValue } from '../layout/nav/navTypes';
+
 import type {
   AriaLabelData,
   FiltersCountResult,
   Language,
-} from '../types/types';
+} from '../shared/types';
 
 const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 const currencyCacheKey = 'exchangeRates';

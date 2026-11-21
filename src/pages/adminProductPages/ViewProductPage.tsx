@@ -13,7 +13,7 @@ import {
   useDeleteProductMutation,
   useGetProductByIdQuery,
 } from '../../features/products/productApiSlice';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

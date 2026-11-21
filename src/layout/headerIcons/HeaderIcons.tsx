@@ -9,7 +9,7 @@ import { selectCartList } from '../../features/cartSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { HeaderProps } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
-import { ShopPath } from '../nav/enums';
+import { ShopPath } from '../nav/navConstants';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
 
 const HeaderIcons = ({

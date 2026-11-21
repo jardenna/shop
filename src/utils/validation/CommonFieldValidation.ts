@@ -1,4 +1,4 @@
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 import { emailRegex } from '../regex';
 
 export const validateEmail = (email: string) => {

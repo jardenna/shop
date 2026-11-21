@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { AriaHasPopup } from '../../types/types';
+import type { AriaHasPopup } from '../../shared/types';
 import Popup from '../popup/Popup';
 
 interface PopoverBtnProps {

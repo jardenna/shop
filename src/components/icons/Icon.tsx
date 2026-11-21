@@ -1,4 +1,4 @@
-import { type IconNameValue } from '../../types/enums';
+import type { IconNameValue } from '../../shared/types';
 import AccountIcon from './AccountIcon';
 import AddIcon from './AddIcon';
 import ArrowDownIcon from './ArrowDownIcon';

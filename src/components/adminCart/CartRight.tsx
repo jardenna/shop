@@ -1,5 +1,4 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import { BtnVariant } from '../../types/enums';
 import LinkButton from '../LinkButton';
 import CartContent from './CartContent';
 
@@ -33,7 +32,7 @@ const CartRight = ({
           <LinkButton
             linkTo={linkTo}
             linkText={language.publish}
-            variant={BtnVariant.Primary}
+            variant="primary"
           />
         </>
       )}

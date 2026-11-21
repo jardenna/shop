@@ -1,7 +1,7 @@
 import { Text, View } from '@react-pdf/renderer';
 import { paymentMethodLabels } from '../../../app/api/apiConstants';
 import type { PaymentMethods } from '../../../app/api/apiTypes/paymentApiTypes';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import {
   contactInformationList,
   shopInformationList,

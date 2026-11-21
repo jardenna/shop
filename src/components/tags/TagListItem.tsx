@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import IconContent from '../IconContent';
 
@@ -11,7 +10,7 @@ type TagListItemProps = {
 
 const TagListItem = ({ onClick, children, ariaLabel }: TagListItemProps) => (
   <li className="tag-item">
-    <Button variant={BtnVariant.Ghost} onClick={onClick}>
+    <Button variant="ghost" onClick={onClick}>
       {children}
       <IconContent iconName="close" ariaLabel={ariaLabel} size="1em" />
     </Button>

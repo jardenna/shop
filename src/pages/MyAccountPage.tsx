@@ -4,7 +4,7 @@ import { useGetMyAccountQuery } from '../features/account/accountApiSlice';
 import AccountFormModal from '../features/account/components/AccountFormModal';
 import AccountInfoList from '../features/account/components/AccountInfoList';
 import { useLanguage } from '../features/language/useLanguage';
-import type { InputMode, InputType } from '../types/types';
+import type { InputMode, InputType } from '../shared/types';
 
 export interface BaseInputListProps {
   inputMode?: InputMode;

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import type { Address } from '../../../app/api/apiTypes/addressApiTypes';
 import ChangeAddressModal from '../../../components/Modal/ChangeAddressModal';
-import type { Language, RefBtnType } from '../../../types/types';
+import type { Language, RefBtnType } from '../../../shared/types';
 import type { StandardAddressIds } from '../../../utils/addressUtils';
 import AddressFormModal from './AddressFormModal';
 import AddressInfoListContent from './AddressInfoListContent';

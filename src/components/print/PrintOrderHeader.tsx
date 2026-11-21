@@ -2,7 +2,7 @@ import { Text, View } from '@react-pdf/renderer';
 import type { BaseAddress } from '../../app/api/apiTypes/addressApiTypes';
 import type { User } from '../../app/api/apiTypes/orderApiTypes';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import { formatDate } from './formatdate';
 import { styles } from './styles';
 

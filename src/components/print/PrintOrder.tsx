@@ -2,7 +2,7 @@ import { View } from '@react-pdf/renderer';
 import type { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import type { CurrencyCode } from '../../features/currency/currencyConverterUtil';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import PdfContainer from './PdfContainer';
 import PrintOrderSummary from './printOrderSummary/PrintOrderSummary';
 import PrintOrdertable from './printOrderTable/PrintOrdertable';

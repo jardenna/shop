@@ -1,4 +1,3 @@
-import { BtnVariant } from '../../types/enums';
 import ClearFilterBtn from '../ClearFilterBtn';
 
 interface FilterPanelFooterProps {
@@ -10,7 +9,7 @@ const FilterPanelFooter = ({ onClick, disabled }: FilterPanelFooterProps) => (
   <div className="filter-panel-footer">
     <ClearFilterBtn
       showIcon
-      variant={BtnVariant.Ghost}
+      variant="ghost"
       onClick={onClick}
       disabled={disabled}
     />

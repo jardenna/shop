@@ -1,8 +1,7 @@
 import { useId } from 'react';
 import type { StandardAddress } from '../../app/api/apiTypes/addressApiTypes';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { BtnVariant } from '../../types/enums';
-import type { OptionType } from '../../types/types';
+import type { OptionType } from '../../shared/types';
 import type { BaseAddressListProps } from '../../utils/addressUtils';
 import FieldSet from '../fieldset/FieldSet';
 import RadioButtonList from '../formElements/radioList/RadioButtonList';
@@ -54,7 +53,7 @@ const ChangeAddressModal = ({
       <TriggerModalButton
         ariaControls={ariaControlsId}
         modalId={modalId}
-        variant={BtnVariant.Ghost}
+        variant="ghost"
       >
         <IconContent
           iconName="refresh"

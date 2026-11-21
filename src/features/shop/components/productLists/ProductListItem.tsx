@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import VisuallyHidden from '../../../../components/VisuallyHidden';
-import type { SizeVariant } from '../../../../types/types';
+import type { SizeVariant } from '../../../../shared/types';
 
 type ProductListItemProps = {
   screenReaderText?: string;

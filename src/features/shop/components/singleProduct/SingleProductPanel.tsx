@@ -1,8 +1,7 @@
 import type { CartItem } from '../../../../app/api/apiTypes/cartApiTypes';
 import Button from '../../../../components/Button';
 import Img from '../../../../components/Img';
-import { BtnVariant } from '../../../../types/enums';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import { translateKey } from '../../../../utils/utils';
 import type { SelectedLanguage } from '../../../language/languageSlice';
 import type { ChangedAttribute } from '../../cartUtils';
@@ -62,11 +61,11 @@ const SingleProductPanel = ({
           {language.replace} {changedValue} {value} {language.with}{' '}
           {changedValue} {newValue}
         </Button>
-        <Button variant={BtnVariant.Secondary} onClick={onHidePanel}>
+        <Button variant="secondary" onClick={onHidePanel}>
           {language.keep} {changedValue} {value}
         </Button>
         <Button
-          variant={BtnVariant.Secondary}
+          variant="secondary"
           onClick={() => {
             onKeepBoth(popupData.cartItem);
           }}

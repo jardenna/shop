@@ -1,4 +1,4 @@
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import Modal from '../Modal/Modal';
 import SizeGuide from './SizeGuide';
 

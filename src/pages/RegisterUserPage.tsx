@@ -1,7 +1,7 @@
 import { useRegisterUserMutation } from '../features/auth/authApiSlice';
 import CreateAccount from '../features/auth/components/CreateAccount';
 import { useLanguage } from '../features/language/useLanguage';
-import { ShopPath } from '../layout/nav/enums';
+import { ShopPath } from '../layout/nav/navConstants';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const RegisterUserPage = () => {

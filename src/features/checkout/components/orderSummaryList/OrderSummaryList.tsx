@@ -3,7 +3,7 @@ import type {
   CartListResponse,
 } from '../../../../app/api/apiTypes/cartApiTypes';
 import LayoutElement from '../../../../layout/LayoutElement';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import './_order-summary-list.scss';
 import OrderSummaryItem from './OrderSummaryItem';
 

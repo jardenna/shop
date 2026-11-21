@@ -1,4 +1,4 @@
-import type { OmitChecked } from '../../../types/types';
+import type { OmitChecked } from '../../../shared/types';
 import type { Roles, SortParams } from './adminApiTypes';
 import type { DefaultResponse } from './sharedApiTypes';
 

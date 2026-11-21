@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../../../features/language/useLanguage';
-import type { OmitChecked } from '../../../types/types';
+import type { OmitChecked } from '../../../shared/types';
 import IconBtn from '../../IconBtn';
 import type { InputProps } from '../Input';
 import Input from '../Input';

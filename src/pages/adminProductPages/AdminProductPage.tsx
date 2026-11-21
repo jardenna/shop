@@ -16,8 +16,8 @@ import {
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
-import { AdminPath } from '../../layout/nav/enums';
-import type { OptionType } from '../../types/types';
+import { AdminPath } from '../../layout/nav/navConstants';
+import type { OptionType } from '../../shared/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

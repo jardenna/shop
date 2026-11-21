@@ -8,8 +8,7 @@ import EmptyStateContent from '../../../../components/emptyState/EmptyStateConte
 import IconBtn from '../../../../components/IconBtn';
 import Img from '../../../../components/Img';
 import ReviewStars from '../../../../components/ReviewStars';
-import { ShopPath } from '../../../../layout/nav/enums';
-import { BtnVariant } from '../../../../types/enums';
+import { ShopPath } from '../../../../layout/nav/navConstants';
 import { useLanguage } from '../../../language/useLanguage';
 import './_admin-review-list.scss';
 
@@ -61,7 +60,7 @@ const AdminReviewList = ({
                 }}
                 iconName="check"
                 ariaLabel={language.markAsRead}
-                variant={BtnVariant.Secondary}
+                variant="secondary"
                 className="read-review-action-btn"
                 showLabel
                 disabled={review.isRead}

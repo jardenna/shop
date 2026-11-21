@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import AdminLayout from '../adminLayout/AdminLayout';
 import AccountLayout from '../layout/AccountLayout';
 import Layout from '../layout/Layout';
-import { AdminPath, ShopPath } from '../layout/nav/enums';
+import { AdminPath, ShopPath } from '../layout/nav/navConstants';
 import AboutUsPage from '../pages/AboutUsPage';
 import AddressPage from '../pages/AddressPage';
 import AdminOrderDetailsPage from '../pages/adminOrderPage/AdminOrderDetailsPage';

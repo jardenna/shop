@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { SizeVariant } from '../../types/types';
+import type { SizeVariant } from '../../shared/types';
 import SkeletonBreadCrumbs from './SkeletonBreadCrumbs';
 import SkeletonHeader from './SkeletonHeader';
 

@@ -2,7 +2,7 @@ import { Document, Page, Text, View } from '@react-pdf/renderer';
 import type { ReactElement } from 'react';
 import type { OrderResponse } from '../../app/api/apiTypes/orderApiTypes';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
-import type { Language } from '../../types/types';
+import type { Language } from '../../shared/types';
 import OrderLogo from './OrderLogo';
 import PrintOrderFooter from './printOrderFooter/PrintOrderFooter';
 import PrintOrderHeader from './PrintOrderHeader';

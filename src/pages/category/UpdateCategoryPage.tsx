@@ -4,7 +4,7 @@ import SkeletonFormPage from '../../components/skeleton/SkeletonFormPage';
 import CategoryForm from '../../features/categories/CategoryForm';
 import { useGetCategoryByIdQuery } from '../../features/categories/categoriyApiSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import { translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 

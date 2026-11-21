@@ -1,6 +1,6 @@
 import type { Roles } from '../../../app/api/apiTypes/adminApiTypes';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import { roleList } from '../../../utils/productLists';
 
 type RoleRadioBtnProps = {

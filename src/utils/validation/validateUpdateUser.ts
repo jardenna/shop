@@ -1,5 +1,5 @@
 import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 import { emailRegex } from '../regex';
 
 export function validateUpdateUser(values: Partial<UserResponse>) {

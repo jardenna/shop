@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
 import Picture from '../../../components/Picture';
-import type { ShopPathValue } from '../../../layout/nav/enums';
-import type { ImgExtention } from '../../../types/types';
+import type { ShopPathValue } from '../../../layout/nav/navTypes';
+import type { ImgExtention } from '../../../shared/types';
 import { useLanguage } from '../../language/useLanguage';
 
 export type MainCollectionsBaseProps = {

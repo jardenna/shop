@@ -1,4 +1,4 @@
-import type { ChartData } from '../../../types/types';
+import type { ChartData } from '../../../shared/types';
 import type { GoalKeys } from './adminGoalsApiTypes';
 
 type TotalKpiKey = 'totalCustomers' | 'totalRevenue' | 'totalOrders';

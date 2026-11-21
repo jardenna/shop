@@ -1,6 +1,6 @@
 import type { BaseProfile } from '../../app/api/apiTypes/shopApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 import { phoneNumberRegex } from '../regex';
 import { validateEmail } from './CommonFieldValidation';
 

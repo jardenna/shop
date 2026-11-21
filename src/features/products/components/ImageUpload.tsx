@@ -4,7 +4,7 @@ import Preview, {
   type PreviewImg,
 } from '../../../components/formElements/fileInput/Preview';
 import InputInfo from '../../../components/formElements/InputInfo';
-import type { InputChangeHandler } from '../../../types/types';
+import type { InputChangeHandler } from '../../../shared/types';
 import { allowedExtensions, maxFiles } from '../../../utils/utils';
 import { useLanguage } from '../../language/useLanguage';
 

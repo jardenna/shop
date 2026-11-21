@@ -1,6 +1,5 @@
 import type { ReactElement } from 'react';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndex';
-import { BtnVariant } from '../../types/enums';
 import Button from '../Button';
 import VisuallyHidden from '../VisuallyHidden';
 import './_segmented-tabs.scss';
@@ -47,7 +46,7 @@ const SegmentedTabs = ({
             onKeyDown={handleKeyDown}
             role="tab"
             ariaPressed={index === selectedIndex}
-            variant={BtnVariant.Ghost}
+            variant="ghost"
             id={`tab-${id}`}
             tabIndex={index === selectedIndex ? 0 : -1}
             refCallback={(element) => {

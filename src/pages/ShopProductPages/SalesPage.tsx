@@ -10,7 +10,7 @@ import {
   useGetSalesProductsByIdQuery,
 } from '../../features/shop/shopApiSlice';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { ShopPath } from '../../layout/nav/enums';
+import { ShopPath } from '../../layout/nav/navConstants';
 import ProductPageContainer from './ProductPageContainer';
 
 const Salespage = () => {

@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { NavLink } from 'react-router';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import NavAd from '../NavAd';
 import type { SubBaseNavList } from '../navLists';
 

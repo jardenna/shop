@@ -1,6 +1,6 @@
 import SectionHeading from '../../../adminLayout/sectionHeading/SectionHeading';
 import type { OrderResponse } from '../../../app/api/apiTypes/orderApiTypes';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import PaymentSummaryList from '../../cart/components/paymentSummery/PaymentSummaryList';
 import OrderList from './orderList/OrderList';
 

@@ -1,5 +1,5 @@
 import type { DeliveryStatus } from '../../../app/api/apiTypes/orderApiTypes';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import OrderCancelledBadge from './OrderCancelledBadge';
 
 interface MyOrderInfoProps {

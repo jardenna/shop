@@ -1,5 +1,4 @@
-import { BtnVariant, type BtnVariantValue } from '../../types/enums';
-import type { RefBtnType } from '../../types/types';
+import type { BtnVariantValue, RefBtnType } from '../../shared/types';
 import Button from '../Button';
 import type { BaseModalProps } from './Modal';
 import { useModal } from './useModal';
@@ -19,7 +18,7 @@ const TriggerModalButton = ({
   disabled,
   className = '',
   buttonRef,
-  variant = BtnVariant.Primary,
+  variant = 'primary',
 }: TriggerModalButtonProps) => {
   const { openModal } = useModal();
 

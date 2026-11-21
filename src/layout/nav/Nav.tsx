@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { useKeyPress } from '../../hooks/useKeyPress';
-import { KeyCode } from '../../types/enums';
-import type { FocusEventType } from '../../types/types';
+import { KeyCode } from '../../shared/constants';
+import type { FocusEventType } from '../../shared/types';
 import LayoutElement from '../LayoutElement';
 import NavItem from './NavItem';
 import type { NavListProps } from './navLists';

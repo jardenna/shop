@@ -1,5 +1,5 @@
 import LayoutElement from '../../../../layout/LayoutElement';
-import type { Language } from '../../../../types/types';
+import type { Language } from '../../../../shared/types';
 import ProductAsideHeader from './ProductAsideHeader';
 import ProductAsideNav, { type ProductAsideNavProps } from './ProductAsideNav';
 import './_product-aside.scss';

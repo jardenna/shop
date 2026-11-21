@@ -22,8 +22,6 @@ export const AdminPath = {
   Users: 'users',
 } as const;
 
-export type AdminPathValue = (typeof AdminPath)[keyof typeof AdminPath];
-
 export const ShopPath = {
   AboutUs: 'about-us',
   AccessibilityStatement: 'accessibility-statement',
@@ -55,8 +53,6 @@ export const ShopPath = {
   TermsAndConditions: 'terms-and-conditions',
   Women: '/collection/women',
 } as const;
-
-export type ShopPathValue = (typeof ShopPath)[keyof typeof ShopPath];
 
 export const LinkText = {
   AboutUs: 'about',
@@ -98,5 +94,3 @@ export const LinkText = {
   View: 'view',
   Women: 'women',
 } as const;
-
-export type LinkTextValue = (typeof LinkText)[keyof typeof LinkText];

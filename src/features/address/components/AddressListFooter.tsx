@@ -1,5 +1,5 @@
 import type { Address } from '../../../app/api/apiTypes/addressApiTypes';
-import type { Language } from '../../../types/types';
+import type { Language } from '../../../shared/types';
 import AddressFormModal from './AddressFormModal';
 import DeleteAddressModal from './DeleteAddressModal';
 

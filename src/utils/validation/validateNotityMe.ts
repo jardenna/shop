@@ -1,6 +1,6 @@
 import type { InitialNotifyValues } from '../../features/shop/components/NotifyMeForm';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
-import { ValidationMessage } from '../../types/enums';
+import { ValidationMessage } from '../../shared/constants';
 import { validateEmail } from './CommonFieldValidation';
 
 export function validateNotityMe(values: InitialNotifyValues) {

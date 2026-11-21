@@ -1,6 +1,6 @@
 import { roleValues } from '../app/api/apiConstants';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
-import type { OptionType } from '../types/types';
+import type { OptionType } from '../shared/types';
 
 const sizeList: Size[] = ['S', 'M', 'L', 'XL', 'Onesize'];
 

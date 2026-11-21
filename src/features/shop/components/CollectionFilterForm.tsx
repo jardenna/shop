@@ -15,7 +15,7 @@ import type {
   FilterKeys,
   InitialFilters,
 } from '../../../pages/shopProductPages/CollectionPage';
-import type { InputChangeHandler, Language } from '../../../types/types';
+import type { InputChangeHandler, Language } from '../../../shared/types';
 import { sortSizesDynamic } from '../../../utils/sizeUtils';
 import { getFilterSummary } from '../../../utils/utils';
 import { useCurrency } from '../../currency/useCurrency';

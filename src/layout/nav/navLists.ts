@@ -1,5 +1,7 @@
-import { type IconNameValue } from '../../types/enums';
-import { AdminPath, LinkText, type LinkTextValue, ShopPath } from './enums';
+import type { IconNameValue } from '../../shared/types';
+import { AdminPath, LinkText, ShopPath } from './navConstants';
+import type { LinkTextValue } from './navTypes';
+
 export interface BaseNav {
   linkText: LinkTextValue;
   path: string;

@@ -6,7 +6,7 @@ import SkeletonUpdatePromoPage from '../../components/skeleton/SkeletonUpdatePro
 import { useLanguage } from '../../features/language/useLanguage';
 import PromoCodeForm from '../../features/promoCodes/components/PromoCodeForm';
 import { useGetPromoCodeByIdQuery } from '../../features/promoCodes/promoCodeApiSlice';
-import { AdminPath } from '../../layout/nav/enums';
+import { AdminPath } from '../../layout/nav/navConstants';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const UpdatePromoCodePage = () => {

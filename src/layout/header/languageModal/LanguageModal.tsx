@@ -3,8 +3,7 @@ import IconContent from '../../../components/IconContent';
 import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import { BtnVariant } from '../../../types/enums';
-import type { InputChangeHandler, OptionType } from '../../../types/types';
+import type { InputChangeHandler, OptionType } from '../../../shared/types';
 import type { Values } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
@@ -42,7 +41,7 @@ const LanguageModal = ({
       <TriggerModalButton
         ariaControls={ariaControlsId}
         modalId={modalId}
-        variant={BtnVariant.Ghost}
+        variant="ghost"
       >
         <IconContent
           iconName="language"

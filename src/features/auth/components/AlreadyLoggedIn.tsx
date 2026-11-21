@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 import type { NavigateFunction } from 'react-router';
 import Button from '../../../components/Button';
-import { ShopPath } from '../../../layout/nav/enums';
-import type { Language } from '../../../types/types';
+import { ShopPath } from '../../../layout/nav/navConstants';
+import type { Language } from '../../../shared/types';
 
 interface AlreadyLoggedInProps {
   children: ReactElement;
