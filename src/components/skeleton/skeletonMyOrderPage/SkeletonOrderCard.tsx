@@ -7,7 +7,7 @@ const SkeletonOrderCard = ({ count = 3 }: SkeletonProps) => {
   const skeletons = Array.from({ length: count });
 
   return skeletons.map((_, index) => (
-    <div className="my-orders-page-cart skeleton-order-cart" key={index}>
+    <div className="my-orders-page-card skeleton-order-card" key={index}>
       <div className="order-header">
         <div className="skeleton-control-item">
           <Skeleton className="order-id" />
