@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import SectionHeading from '../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import type { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
-import Cart from '../../components/carts/Card';
+import Card from '../../components/carts/Card';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
@@ -128,7 +128,7 @@ const AdminOrderDetailsPage = () => {
 
         {order && (
           <>
-            <Cart>
+            <Card>
               <SectionHeading heading={language.orderHistory} />
               <SimpleTable
                 tableCaption={language.orderSummaryList}
@@ -155,11 +155,11 @@ const AdminOrderDetailsPage = () => {
                   </>
                 )}
               />
-            </Cart>
-            <Cart>
+            </Card>
+            <Card>
               <OrderSummary language={language} order={order} />
-            </Cart>
-            <Cart>
+            </Card>
+            <Card>
               <SectionHeading heading={language.customerInformation} />
               <article className="order-details">
                 <OrderMethodInfo
@@ -168,7 +168,7 @@ const AdminOrderDetailsPage = () => {
                 />
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </article>
-            </Cart>
+            </Card>
             <AdminOrderFooter
               onCancelOrder={handleCancelOrder}
               isLoading={isLoading}

@@ -8,6 +8,7 @@ interface ProductCardListProps {
   productView?: string;
   children?: (product: BaseProduct) => ReactElement;
 }
+
 const ProductCardList = ({
   products,
   productView = '',
