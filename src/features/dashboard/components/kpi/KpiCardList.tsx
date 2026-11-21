@@ -23,7 +23,7 @@ const KpiCardList = ({
   const { language } = useLanguage();
 
   return (
-    <div className="kpi-cart-list">
+    <div className="kpi-card-list">
       {totalKpi.map((kpi) => (
         <KpiCard
           key={kpi.key}
