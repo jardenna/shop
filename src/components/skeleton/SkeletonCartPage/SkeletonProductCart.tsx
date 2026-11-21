@@ -1,9 +1,9 @@
 import Skeleton from '../Skeleton';
 
 const SkeletonProductCart = () => (
-  <div className="skeleton-product-cart">
+  <div className="skeleton-product-card">
     <Skeleton className="product-thumb" />
-    <span className="skeleton-product-cart-content">
+    <span className="skeleton-product-card-content">
       <span className="top-row">
         <Skeleton className="title-skeleton" />
         <Skeleton className="price-skeleton" />
@@ -14,7 +14,7 @@ const SkeletonProductCart = () => (
         <Skeleton className="meta-size" />
       </span>
 
-      <span className="product-cart-bottom-row">
+      <span className="product-card-bottom-row">
         <span className="qty-selector">
           <Skeleton />
           <Skeleton className=" qty-value" />

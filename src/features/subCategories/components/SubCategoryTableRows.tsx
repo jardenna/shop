@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router';
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import AdminBadge from '../../../components/adminCart/AdminBadge';
+import AdminBadge from '../../../components/adminCard/AdminBadge';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/navConstants';
 

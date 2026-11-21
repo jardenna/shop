@@ -5,7 +5,7 @@ import SkeletonParagraph from '../SkeletonParagraph';
 import SkeletonRatingList from '../SkeletonRatingList';
 
 const SkeletonAdminReviewCard = () => (
-  <div className="admin-review-cart">
+  <div className="admin-review-card">
     <div className="review-product-content">
       <Skeleton className="review-product-img" />
       <div className="review-product-info">

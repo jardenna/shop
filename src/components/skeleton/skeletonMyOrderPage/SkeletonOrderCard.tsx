@@ -1,0 +1,29 @@
+import Skeleton, { type SkeletonProps } from '../Skeleton';
+import SkeletonBadge from '../SkeletonBadge';
+import SkeletonButton from '../SkeletonButton';
+import SkeletonMyOrderSummary from './SkeletonMyOrderSummary';
+
+const SkeletonOrderCard = ({ count = 3 }: SkeletonProps) => {
+  const skeletons = Array.from({ length: count });
+
+  return skeletons.map((_, index) => (
+    <div className="my-orders-page-card skeleton-order-card" key={index}>
+      <div className="order-header">
+        <div className="skeleton-control-item">
+          <Skeleton className="order-id" />
+          <SkeletonBadge width="8" />
+        </div>
+        <Skeleton className="order-price" />
+      </div>
+      <SkeletonMyOrderSummary />
+      <Skeleton className="skeleton-divider" />
+
+      <div className="footer-row">
+        <Skeleton className="delivery-date" />
+        <SkeletonButton width="10" />
+      </div>
+    </div>
+  ));
+};
+
+export default SkeletonOrderCard;

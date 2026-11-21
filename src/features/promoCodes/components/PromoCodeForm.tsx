@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router';
 import type { PromoCode } from '../../../app/api/apiTypes/promoCodeApiTypes';
-import FormCart from '../../../components/carts/FormCart';
+import FormCard from '../../../components/carts/FormCard';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
@@ -88,7 +88,7 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
         onCancel: handleGoback,
       }}
     >
-      <FormCart legendText={language.promoCodeDetails}>
+      <FormCard legendText={language.promoCodeDetails}>
         <ToggleSwitch
           id="active"
           name="active"
@@ -96,9 +96,9 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
           onChange={onChangeToggleSwitch}
           labelText={language.active}
         />
-      </FormCart>
+      </FormCard>
       <section className="promo-code-form-container">
-        <FormCart legendText={language.promoCodeDetails}>
+        <FormCard legendText={language.promoCodeDetails}>
           <div className="promo-code-2-columns">
             <Input
               onChange={onChange}
@@ -131,8 +131,8 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
             required
             inputSuffix="%"
           />
-        </FormCart>
-        <FormCart legendText={language.promoCodeValidity}>
+        </FormCard>
+        <FormCard legendText={language.promoCodeValidity}>
           <Input
             type="datetime-local"
             name="startsAt"
@@ -154,7 +154,7 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
             labelText={language.expiresAt}
             required
           />
-        </FormCart>
+        </FormCard>
       </section>
     </Form>
   );

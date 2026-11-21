@@ -16,7 +16,7 @@
     }
   }
 
-  &:not(.product-cart-favorites) {
+  &:not(.product-card-favorites) {
     &:hover {
       @include animation(heartbeat, 0.3s);
     }
