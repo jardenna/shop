@@ -51,11 +51,6 @@ export const ValidationMessage = {
   UnknownError: 'unknownError',
 } as const;
 
-export const PopupRole = {
-  Alert: 'alert',
-  Status: 'status',
-} as const;
-
 export const KeyCode = {
   Alt: 'Alt',
   ArrowDown: 'ArrowDown',

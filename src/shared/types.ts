@@ -5,13 +5,8 @@ import type {
   MouseEvent,
   RefObject,
 } from 'react';
-import type {
-  BtnVariant,
-  KeyCode,
-  PopupRole,
-  ValidationMessage,
-} from './constants';
 import type { IconName } from '../components/icons/iconConstants';
+import type { BtnVariant, KeyCode, ValidationMessage } from './constants';
 
 export type ButtonEventType = MouseEvent<HTMLButtonElement>;
 export type ChangeInputType = ChangeEvent<HTMLInputElement>;
@@ -97,7 +92,7 @@ export type FiltersCountResult = {
 export type SizeVariant =
   'mini' | 'small' | 'medium' | 'large' | 'x-large' | 'full';
 
-export type ToastRole = 'alert' | 'status';
+export type PopupRole = 'alert' | 'status';
 
 export interface ChartData {
   date: string;
@@ -116,5 +111,3 @@ export type IconNameValue = (typeof IconName)[keyof typeof IconName];
 
 export type ValidationMessageValue =
   (typeof ValidationMessage)[keyof typeof ValidationMessage];
-
-export type PopupRoleValue = (typeof PopupRole)[keyof typeof PopupRole];
