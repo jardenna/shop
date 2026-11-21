@@ -6,7 +6,7 @@ interface CardProps {
 }
 
 const Card = ({ children, className = '' }: CardProps) => (
-  <section className={`cart ${className}`}>{children}</section>
+  <section className={`card ${className}`}>{children}</section>
 );
 
 export default Card;
