@@ -1,7 +1,7 @@
 import SkeletonControlList from '../SkeletonControlList';
 import SkeletonGrid from '../SkeletonGrid';
 
-const SkeletomProductCartCenter = () => (
+const SkeletomProductCardCenter = () => (
   <div className="skeleton-view-cart">
     <SkeletonGrid count={4} />
     <SkeletonControlList count={4} />
@@ -9,4 +9,4 @@ const SkeletomProductCartCenter = () => (
   </div>
 );
 
-export default SkeletomProductCartCenter;
+export default SkeletomProductCardCenter;
