@@ -8,6 +8,7 @@ import TotalPrice from '../../../../components/TotalPrice';
 import { useAnimate } from '../../../../hooks/useAnimate';
 import { ShopPath } from '../../../../layout/nav/navConstants';
 import { selectUser } from '../../../auth/authSlice';
+import { useActiveCart } from '../../../cart/useActiveCart';
 import { useLanguage } from '../../../language/useLanguage';
 import {
   closeMiniCard,
@@ -16,7 +17,6 @@ import {
 import OrderList from '../../../orders/components/orderList/OrderList';
 import './_mini-card-popup.scss';
 import MiniCardInfo from './MiniCardInfo';
-import { useActiveCart } from '../../../cart/useActiveCart';
 
 const MiniCardPopup = () => {
   const dispatch = useAppDispatch();
