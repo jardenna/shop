@@ -39,7 +39,7 @@ const AdminPageContainer = ({
           returnTo: `${location.pathname}${location.search}`,
         }}
       />
-      <div className="page-cart">{children}</div>
+      <div className="page-card">{children}</div>
     </section>
   );
 };

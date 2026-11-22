@@ -9,7 +9,7 @@ import SkeletonAdminReviewStats from './SkeletonAdminReviewStats';
 
 const SkeletonAdminReviewPage = () => (
   <SkeletonAdminPage variant="medium">
-    <div className="page-cart">
+    <div className="page-card">
       <div className="review-stats-list">
         <SkeletonAdminReviewStats>
           <Skeleton width="8" height="0.7" />

@@ -1,12 +1,12 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CartFooter from '../../components/adminCart/CartFooter';
-import CartRight from '../../components/adminCart/CartRight';
-import ProductCartCenter from '../../components/adminCart/ProductCartCenter';
-import ProductCartLeft from '../../components/adminCart/ProductCartLeft';
+import CardFooter from '../../components/adminCard/CardFooter';
+import CardRight from '../../components/adminCard/CardRight';
+import ProductCardCenter from '../../components/adminCard/ProductCardCenter';
+import ProductCardLeft from '../../components/adminCard/ProductCardLeft';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonThreeCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCarts';
+import SkeletonThreeCards from '../../components/skeleton/adminViewItemSkeletons/SkeletonThreeCards';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useLanguage } from '../../features/language/useLanguage';
 import {
@@ -75,7 +75,7 @@ const ViewProductPage = () => {
 
   return (
     <>
-      {isLoading && <SkeletonThreeCarts />}
+      {isLoading && <SkeletonThreeCards />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
         onReset={() => refetch}
@@ -86,8 +86,8 @@ const ViewProductPage = () => {
             linkText={language.createNewProduct}
             linkTo={AdminPath.AdminProductCreate}
           >
-            <section className="three-col admin-cart-container">
-              <ProductCartLeft
+            <section className="three-col admin-card-container">
+              <ProductCardLeft
                 name={product.productName}
                 scheduledDate={product.scheduledDate || null}
                 status={product.productStatus}
@@ -96,7 +96,7 @@ const ViewProductPage = () => {
                 price={product.price}
                 discount={product.discount || 0}
               />
-              <ProductCartCenter
+              <ProductCardCenter
                 countInStock={product.countInStock}
                 brand={product.brand}
                 colours={product.colors}
@@ -105,7 +105,7 @@ const ViewProductPage = () => {
                 sizes={product.sizes}
                 allowedSizes={product.allowedSizes}
               />
-              <CartRight
+              <CardRight
                 linkTo={AdminPath.AdminSubCategories}
                 heading={heading}
                 name={product.productName}
@@ -114,7 +114,7 @@ const ViewProductPage = () => {
                 }
                 statusMessage={statusMessage}
               />
-              <CartFooter
+              <CardFooter
                 isLoading={isDeleteLoading}
                 id={product.id}
                 name={product.productName}

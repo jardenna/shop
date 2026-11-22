@@ -122,7 +122,7 @@ const AdminReviewPage = () => {
             isReadAllReviewLoading={isReadAllReviewLoading}
           />
         )}
-        <div className="page-cart">
+        <div className="page-card">
           {reviewStats && (
             <ReviewStats
               reviewStats={reviewStats}

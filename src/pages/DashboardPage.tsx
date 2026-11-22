@@ -3,10 +3,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import type { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
 import Selectbox from '../components/selectbox/Selectbox';
-import SkeltonKpiList from '../components/skeleton/skeletonKpiCart/SkeltonKpiList';
+import SkeltonKpiList from '../components/skeleton/skeletonKpiCard/SkeltonKpiList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import { useAuth } from '../features/auth/hooks/useAuth';
-import KpiCartList from '../features/dashboard/components/kpi/KpiCartList';
+import KpiCardList from '../features/dashboard/components/kpi/KpiCardList';
 import {
   useGetPeriodKpiQuery,
   useGetTotalKpiQuery,
@@ -81,7 +81,7 @@ const DashboardPage = () => {
       >
         {isPeriodKpiLoading && isTotalKpiLoading && <SkeltonKpiList />}
         {periodKpi && totalKpi && (
-          <KpiCartList
+          <KpiCardList
             periodKpi={periodKpi}
             totalKpi={totalKpi}
             selectedPeriod={selectedPeriod}

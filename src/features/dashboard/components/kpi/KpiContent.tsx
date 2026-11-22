@@ -1,7 +1,7 @@
 import Icon from '../../../../components/icons/Icon';
-import type { BaseKpiCartProps } from './KpiCart';
+import type { BaseKpiCardProps } from './KpiCard';
 
-interface KpiContentProps extends BaseKpiCartProps {
+interface KpiContentProps extends BaseKpiCardProps {
   kpiTotal: number | string;
   changePercentage?: number;
 }
