@@ -129,7 +129,6 @@ const FavoritePage = () => {
           )}
         </ErrorBoundary>
       </Panel>
-      Hello
       <ProductCardList products={sortedFavorites}>
         {(product) => (
           <FavoritesAddToCartBtn
