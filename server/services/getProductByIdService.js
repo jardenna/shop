@@ -31,6 +31,10 @@ export const getProductByIdService = async (
 
   return {
     ...formattedProduct,
+    reviews: product.reviews.map(({ _id, ...review }) => ({
+      ...review,
+      id: _id,
+    })),
     discountedPrice: Math.round(discountedPrice),
     subCategoryName: product.subCategory?.subCategoryName || '',
     categoryName: product.subCategory?.category?.categoryName || '',

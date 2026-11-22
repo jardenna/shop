@@ -109,10 +109,11 @@ $placement-x: 12px;
 .product-card-list {
   @include grid-template-column;
 
+  row-gap: 12px;
+
   // List view
   &.list {
     grid-template-columns: 1fr;
-    row-gap: 16px;
 
     .product-card {
       gap: 20px;
