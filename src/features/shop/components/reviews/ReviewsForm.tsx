@@ -14,11 +14,11 @@ import {
 } from '../../shopApiSlice';
 import './_reviews.scss';
 
-type ReviewsFormProps = {
+interface ReviewsFormProps {
   productId: string;
   initialRating?: number;
   totalStars?: number;
-};
+}
 
 const ReviewsForm = ({
   totalStars = 5,
