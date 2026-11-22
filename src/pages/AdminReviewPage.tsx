@@ -113,7 +113,6 @@ const AdminReviewPage = () => {
         className="admin-page page-medium admin-review-page"
         aria-labelledby={ariaLabelledbyId}
       >
-        bread crumb
         {unreadCount && (
           <AdminReviewHeader
             ariaLabelledby={ariaLabelledbyId}
