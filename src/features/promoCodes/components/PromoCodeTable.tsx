@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Card from '../../../components/carts/Card';
+import Cart from '../../../components/carts/Cart';
 import Chip from '../../../components/chips/Chip';
 import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
@@ -58,7 +58,7 @@ const PromoCodeTable = () => {
     : promoCodes;
 
   return (
-    <Card>
+    <Cart>
       {isLoading && <SkeletonPromoCodeTable />}
       <ErrorBoundary
         FallbackComponent={ErrorBoundaryFallback}
@@ -81,6 +81,7 @@ const PromoCodeTable = () => {
               labelText={language.filterByYear}
             />
           </div>
+
           <LinkButton
             linkTo={AdminPath.AdminPromoCodeCreate}
             linkText={language.createNewDiscountCode}
@@ -129,7 +130,7 @@ const PromoCodeTable = () => {
           />
         )}
       </ErrorBoundary>
-    </Card>
+    </Cart>
   );
 };
 

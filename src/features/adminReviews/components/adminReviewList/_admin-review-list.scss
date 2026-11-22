@@ -1,13 +1,13 @@
 @use '../../../../scss/globals' as *;
 
 .admin-review-list {
-  &.card {
+  &.cart {
     box-shadow: none;
     padding: 0;
   }
 }
 
-.admin-review-card {
+.admin-review-cart {
   display: grid;
   grid-template-columns: rem(400px) minmax(0, 1fr);
   gap: 32px;

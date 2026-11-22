@@ -43,7 +43,6 @@ const UpdateUserInput = ({
         value={value}
         labelText={language[labelText]}
         inputHasNoLabel
-        variant="secondary"
       />
     )}
   </Form>

@@ -1,6 +1,6 @@
 @use '../../../../scss/globals' as *;
 
-.kpi-card-list {
+.kpi-cart-list {
   @include grid-fixed-columns($columns: 3);
 
   gap: 20px;
@@ -9,7 +9,7 @@
     @include grid-template-column;
   }
 
-  .card {
+  .cart {
     margin: 0;
     padding: 12px;
 
@@ -63,11 +63,11 @@
   }
 }
 
-.kpi-card {
+.kpi-cart {
   display: flex;
   justify-content: space-between;
 
-  &.period-kpi-card {
+  &.period-kpi-cart {
     flex-direction: column;
     position: relative;
 
@@ -125,12 +125,12 @@
   }
 }
 
-.kpi-card-popup {
+.kpi-cart-popup {
   display: flex;
   flex-direction: column;
   gap: 12px;
 
-  .kpi-card-popup-item {
+  .kpi-cart-popup-item {
     padding: 12px;
     border-radius: 4px;
     background-color: rgb($color-chip-success-bg, 60%);
@@ -166,7 +166,7 @@
   }
 }
 
-.kpi-card-popover {
+.kpi-cart-popover {
   padding: 20px;
   max-width: rem(332px);
 }

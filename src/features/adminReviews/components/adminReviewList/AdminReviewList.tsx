@@ -30,9 +30,9 @@ const AdminReviewList = ({
   const { language } = useLanguage();
 
   return reviews.length > 0 ? (
-    <ul className="admin-review-list card">
+    <ul className="admin-review-list cart">
       {reviews.map((review) => (
-        <li key={review.id} className="admin-review-card">
+        <li key={review.id} className="admin-review-cart">
           <article className="review-product-content">
             <Link to={`${ShopPath.AllProducts}/${review.productId}`}>
               <Img src={review.image} alt="" className="review-product-img" />

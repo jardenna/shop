@@ -64,7 +64,7 @@ const MyOrdersPage = () => {
         {myOrders && (
           <section className="my-orders-page">
             {myOrders.map((myOrder) => (
-              <article key={myOrder.id} className="my-orders-page-card">
+              <article key={myOrder.id} className="my-orders-page-cart">
                 <MyOrderHeader
                   language={language}
                   totalPrice={myOrder.summary.totalPrice}
