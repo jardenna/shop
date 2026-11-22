@@ -17,7 +17,7 @@ const SkeletonAdminPage = ({
   <div className={`skeleton-admin-page skeleton-column page-${variant}`}>
     <SkeletonBreadCrumbs />
     <SkeletonHeader showLink={showLink} />
-    <div className="page-card">
+    <div className="page-cart">
       <div className="skeleton-column">{children}</div>
     </div>
   </div>

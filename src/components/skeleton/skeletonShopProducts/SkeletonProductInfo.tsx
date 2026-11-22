@@ -15,7 +15,7 @@ const SkeletonProductInfo = ({
   const skeletons = Array.from({ length: count });
 
   return (
-    <div className={`product-card-list ${className}`}>
+    <div className={`product-cart-list ${className}`}>
       {skeletons.map((_, index) => (
         <span key={index} className="skeleton-product-info">
           <Skeleton height="24" />

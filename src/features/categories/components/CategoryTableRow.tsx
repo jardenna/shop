@@ -1,5 +1,5 @@
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import AdminBadge from '../../../components/adminCard/AdminBadge';
+import AdminBadge from '../../../components/adminCart/AdminBadge';
 import DateDisplay from '../../../components/datePicker/DateDisplay';
 import MoreLink from '../../../components/MoreLink';
 import { AdminPath } from '../../../layout/nav/navConstants';

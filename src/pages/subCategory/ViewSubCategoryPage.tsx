@@ -1,9 +1,9 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate, useParams } from 'react-router';
-import CategoryCard from '../../components/adminCard/CategoryCard';
+import CategoryCart from '../../components/adminCart/CategoryCart';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
-import SkeletonTwoCards from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCards';
+import SkeletonTwoCarts from '../../components/skeleton/adminViewItemSkeletons/SkeletonTwoCarts';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -66,7 +66,7 @@ const ViewSubCategoryPage = () => {
   }
 
   if (isLoading) {
-    return <SkeletonTwoCards />;
+    return <SkeletonTwoCarts />;
   }
 
   return (
@@ -81,7 +81,7 @@ const ViewSubCategoryPage = () => {
           linkTo={AdminPath.AdminSubCategoryCreate}
           variant="medium"
         >
-          <CategoryCard
+          <CategoryCart
             isDeleteLoading={isDeleteLoading}
             isAdmin={isAdmin}
             onDeleteSubCategory={handleDeleteSubCategory}

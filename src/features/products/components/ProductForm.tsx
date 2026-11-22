@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router';
 import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
 import type { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
-import FormCard from '../../../components/carts/FormCard';
+import FormCart from '../../../components/carts/FormCart';
 import { useDatePicker } from '../../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import Form from '../../../components/Form';
@@ -282,7 +282,7 @@ const ProductForm = ({
       >
         <section className="product-form-container">
           <article className="product-form-left-column">
-            <FormCard legendText={language.category}>
+            <FormCart legendText={language.category}>
               <Selectbox
                 errorText={language[errors.subCategory]}
                 id="subCategory"
@@ -297,8 +297,8 @@ const ProductForm = ({
                 }}
                 required
               />
-            </FormCard>
-            <FormCard
+            </FormCart>
+            <FormCart
               legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
             >
               <ImageUpload
@@ -311,8 +311,8 @@ const ProductForm = ({
                 }}
                 disabledImages={disabledImages}
               />
-            </FormCard>
-            <FormCard legendText={language.productInformation}>
+            </FormCart>
+            <FormCart legendText={language.productInformation}>
               <Input
                 value={values.productName}
                 id="productName"
@@ -351,10 +351,10 @@ const ProductForm = ({
                   required
                 />
               </div>
-            </FormCard>
+            </FormCart>
           </article>
           <article className="product-form-right-column">
-            <FormCard legendText={language.productVariants}>
+            <FormCart legendText={language.productVariants}>
               <Selectbox
                 id="colors"
                 name="colors"
@@ -389,8 +389,8 @@ const ProductForm = ({
                   errorText: language[errors.sizes],
                 }}
               />
-            </FormCard>
-            <FormCard legendText={language.pricing}>
+            </FormCart>
+            <FormCart legendText={language.pricing}>
               <div className="product-form-2-columns">
                 <Input
                   type="number"
@@ -436,8 +436,8 @@ const ProductForm = ({
                   />
                 )}
               </div>
-            </FormCard>
-            <FormCard legendText={language.details}>
+            </FormCart>
+            <FormCart legendText={language.details}>
               <StatusInputs
                 labelText={language.productStatus}
                 ref={formRef}
@@ -471,7 +471,7 @@ const ProductForm = ({
                   {selectedProduct.countInStock} {language.pcs}
                 </LabelValueGrid>
               )}
-            </FormCard>
+            </FormCart>
           </article>
         </section>
       </Form>

@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import SectionHeading from '../../adminLayout/sectionHeading/SectionHeading';
 import { paymentMethodLabels } from '../../app/api/apiConstants';
 import type { DeliveryStatus } from '../../app/api/apiTypes/orderApiTypes';
-import Card from '../../components/carts/Card';
+import Cart from '../../components/carts/Cart';
 import DateDisplay from '../../components/datePicker/DateDisplay';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import NotFoundError from '../../components/NotFoundError';
@@ -128,14 +128,14 @@ const AdminOrderDetailsPage = () => {
 
         {order && (
           <>
-            <Card>
+            <Cart>
               <SectionHeading heading={language.orderHistory} />
               <SimpleTable
                 tableCaption={language.orderSummaryList}
                 tableHeaderList={tableHeaderList}
                 tableDataList={order.delivery.statusHistory}
                 rowKey={({ status, changedAt }) =>
-                  `${status}-${changedAt.toString()}`
+                  `${status}-${changedAt.getTime()}`
                 }
                 renderCells={({ status, changedAt, changedBy, actorType }) => (
                   <>
@@ -155,11 +155,11 @@ const AdminOrderDetailsPage = () => {
                   </>
                 )}
               />
-            </Card>
-            <Card>
+            </Cart>
+            <Cart>
               <OrderSummary language={language} order={order} />
-            </Card>
-            <Card>
+            </Cart>
+            <Cart>
               <SectionHeading heading={language.customerInformation} />
               <article className="order-details">
                 <OrderMethodInfo
@@ -168,7 +168,7 @@ const AdminOrderDetailsPage = () => {
                 />
                 <OrderAddressList addresses={addressList} refetch={refetch} />
               </article>
-            </Card>
+            </Cart>
             <AdminOrderFooter
               onCancelOrder={handleCancelOrder}
               isLoading={isLoading}

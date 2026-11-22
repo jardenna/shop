@@ -1,5 +1,5 @@
 import type { Status } from '../../../app/api/apiTypes/adminApiTypes';
-import AdminBadge from '../../../components/adminCard/AdminBadge';
+import AdminBadge from '../../../components/adminCart/AdminBadge';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import ProductActions from './ProductActions';
 import ProductOverviewCell from './ProductOverviewCell';

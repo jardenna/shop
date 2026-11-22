@@ -12,10 +12,11 @@ import { IconName } from '../components/icons/iconConstants';
 import SkipLink from '../components/skipLinks/SkipLinks';
 import { useLogoutMutation } from '../features/auth/authApiSlice';
 import { useAuth } from '../features/auth/hooks/useAuth';
+import MiniCartPopup from '../features/cart/components/miniCartPopup/MiniCartPopup';
 import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
-import { closeMiniCard } from '../features/miniCardPopupSlice';
+import { closeMiniCart } from '../features/miniCartPopupSlice';
 import { clearErrorToasts } from '../features/toastSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -26,7 +27,6 @@ import type { OptionType } from '../shared/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/navConstants';
-import MiniCardPopup from '../features/shop/components/miniCardPopup/MiniCardPopup';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -36,7 +36,7 @@ const Layout = () => {
 
   // Clear all popups whenever the user navigates
   useEffect(() => {
-    dispatch(closeMiniCard());
+    dispatch(closeMiniCart());
     dispatch(clearErrorToasts());
   }, [pathname, dispatch]);
 
@@ -141,7 +141,7 @@ const Layout = () => {
         <>
           <main id="main">
             <Outlet />
-            <MiniCardPopup />
+            <MiniCartPopup />
           </main>
           <Footer />
         </>

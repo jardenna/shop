@@ -13,6 +13,16 @@
     gap: 4px;
   }
 
+  .admin-review-toolbar {
+    border-block: $border;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-block: 12px;
+    margin-top: 12px;
+  }
+
   .read-review-action-btn {
     min-height: auto;
     max-width: fit-content;
@@ -36,14 +46,4 @@
       max-width: rem(180px);
     }
   }
-}
-
-.admin-review-toolbar {
-  border-block: $border;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding-block: 12px;
-  margin-top: 12px;
 }

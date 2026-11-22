@@ -9,7 +9,7 @@ import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import Picture from '../../components/Picture';
 import { useLanguage } from '../../features/language/useLanguage';
 import ProductAside from '../../features/shop/components/productAside/ProductAside';
-import ProductCardList from '../../features/shop/components/ProductCardList';
+import ProductCartList from '../../features/shop/components/ProductCartList';
 import MetaTags from '../../layout/MetaTags';
 import './shopProductPage.styles.scss';
 
@@ -88,7 +88,7 @@ const ProductPageContainer = ({
 
           {children}
 
-          <ProductCardList products={products} productView={productView} />
+          <ProductCartList products={products} productView={productView} />
         </section>
       </ErrorBoundary>
     </>

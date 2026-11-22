@@ -1,6 +1,6 @@
 @use '../../../scss/globals' as *;
 
-.skeleton-product-card {
+.skeleton-product-cart {
   display: flex;
   gap: 24px;
   padding-bottom: 12px;
@@ -21,7 +21,7 @@
   }
 }
 
-.skeleton-product-card-content {
+.skeleton-product-cart-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
     }
   }
 
-  .product-card-bottom-row {
+  .product-cart-bottom-row {
     display: flex;
     justify-content: space-between;
     align-items: center;

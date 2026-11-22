@@ -10,13 +10,13 @@ import SkeletonProductInfo from '../components/skeleton/skeletonShopProducts/Ske
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useAddToCartMutation } from '../features/cart/cartApiSlice';
 import FavoritesAddToCartBtn from '../features/favorites/components/FavoritesAddToCartBtn';
-import FavoritesPanelCard from '../features/favorites/components/FavoritesPanelCard';
+import FavoritesPanelCart from '../features/favorites/components/FavoritesPanelCart';
 import { useLanguage } from '../features/language/useLanguage';
-import { openMiniCard } from '../features/miniCardPopupSlice';
-import ProductCardList from '../features/shop/components/ProductCardList';
-import ProductPurchaseOptions, {
+import { openMiniCart } from '../features/miniCartPopupSlice';
+import ProductCartList from '../features/shop/components/ProductCartList';
+import CartForm, {
   type InitialShopValues,
-} from '../features/shop/components/ProductPurchaseOptions';
+} from '../features/shop/components/singleProduct/CartForm';
 import MainPageContainer from './pageContainer/MainPageContainer';
 
 const FavoritePage = () => {
@@ -54,7 +54,7 @@ const FavoritePage = () => {
 
     await addCartItemApi(cartItem).unwrap();
     onTogglePanel();
-    dispatch(openMiniCard());
+    dispatch(openMiniCart());
   }
 
   if (isError) {
@@ -99,6 +99,7 @@ const FavoritePage = () => {
       {isLoading && (
         <SkeletonProductInfo showCtaBtn className="skeleton-favorites" />
       )}
+
       <Panel
         isPanelShown={isPanelShown}
         closePanel={onHidePanel}
@@ -111,8 +112,8 @@ const FavoritePage = () => {
         >
           {selectedProduct && (
             <div className="favorites-panel">
-              <FavoritesPanelCard product={selectedProduct} />
-              <ProductPurchaseOptions
+              <FavoritesPanelCart product={selectedProduct} />
+              <CartForm
                 className="favorites-form"
                 displaySizeList={selectedProduct.sizes}
                 isLoading={isAddCartItemLoading}
@@ -129,8 +130,8 @@ const FavoritePage = () => {
           )}
         </ErrorBoundary>
       </Panel>
-      Hello
-      <ProductCardList products={sortedFavorites}>
+
+      <ProductCartList products={sortedFavorites}>
         {(product) => (
           <FavoritesAddToCartBtn
             countInStock={product.countInStock}
@@ -140,7 +141,7 @@ const FavoritePage = () => {
             btnLabel={language.addToCart}
           />
         )}
-      </ProductCardList>
+      </ProductCartList>
     </MainPageContainer>
   );
 };

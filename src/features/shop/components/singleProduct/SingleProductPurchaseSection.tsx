@@ -17,15 +17,13 @@ import {
 import { useActiveCart } from '../../../cart/useActiveCart';
 import { addCartItem, replaceCartItem } from '../../../cartSlice';
 import { useLanguage } from '../../../language/useLanguage';
-import { openMiniCard } from '../../../miniCardPopupSlice';
+import { openMiniCart } from '../../../miniCartPopupSlice';
 import {
   cartUtils,
   getTotalCartQuantity,
   type ProductQuantityMap,
 } from '../../cartUtils';
-import ProductPurchaseOptions, {
-  type InitialShopValues,
-} from '../ProductPurchaseOptions';
+import CartForm, { type InitialShopValues } from './CartForm';
 import SingleProductPanel, { type PopupData } from './SingleProductPanel';
 
 interface SingleProductPurchaseSectionProps {
@@ -92,7 +90,7 @@ const SingleProductPurchaseSection = ({
     }
 
     onHidePanel();
-    dispatch(openMiniCard());
+    dispatch(openMiniCart());
   };
 
   async function handleSubmitCartItem(values: InitialShopValues) {
@@ -147,7 +145,7 @@ const SingleProductPurchaseSection = ({
           dispatch(replaceCartItem(updatedCartList));
         }
 
-        dispatch(openMiniCard());
+        dispatch(openMiniCart());
         break;
       }
 
@@ -187,7 +185,7 @@ const SingleProductPurchaseSection = ({
     }
 
     onHidePanel();
-    dispatch(openMiniCard());
+    dispatch(openMiniCart());
   };
 
   const quantityByProductId = activeCartList.reduce<ProductQuantityMap>(
@@ -226,7 +224,7 @@ const SingleProductPurchaseSection = ({
           />
         )}
       </Panel>
-      <ProductPurchaseOptions
+      <CartForm
         handleSubmit={handleSubmitCartItem}
         currentProductQuantity={currentProductQuantity}
         productData={productData}
