@@ -52,7 +52,8 @@ router.post(
   languageMiddleware,
   createProductReviews,
 );
-router.get('/:id/reviewed', authenticate, checkId, hasReviewed);
+
+router.get('/:id/reviewed', authenticate, hasReviewed);
 
 router.post(
   '/:id/duplicate',
