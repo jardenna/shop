@@ -1,4 +1,3 @@
-import { components } from 'react-select';
 import SelectField from '../../components/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -42,7 +41,6 @@ const CookiesPage = () => {
           onChange={onSelectChange}
           isMulti
           isClearable
-          components={components}
           closeMenuOnSelect={false}
         />
       </div>
