@@ -1,5 +1,6 @@
 import Product from '../models/productModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
+import { normalizeAllowedSizes } from '../utils/sizeUtils.js';
 
 export const getProductByIdService = async (
   productId,
@@ -29,6 +30,11 @@ export const getProductByIdService = async (
 
   const formattedProduct = formatMongoData(product);
 
+  const allowedSizes = normalizeAllowedSizes(
+    product.sizes,
+    product.subCategory?.allowedSizes,
+  );
+
   return {
     ...formattedProduct,
     reviews: product.reviews.map(({ _id, ...review }) => ({
@@ -38,6 +44,6 @@ export const getProductByIdService = async (
     discountedPrice: Math.round(discountedPrice),
     subCategoryName: product.subCategory?.subCategoryName || '',
     categoryName: product.subCategory?.category?.categoryName || '',
-    allowedSizes: product.subCategory?.allowedSizes || [],
+    allowedSizes,
   };
 };

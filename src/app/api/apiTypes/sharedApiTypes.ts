@@ -17,6 +17,8 @@ export interface BaseReviews {
   rating: number;
 }
 
+export type OneSize = 'Onesize';
+
 // Products
 export type KidsShoesSizes =
   | '24'
@@ -30,13 +32,13 @@ export type KidsShoesSizes =
   | '32'
   | '33'
   | '34'
-  | 'Onesize';
+  | OneSize;
 
 export type MenShoesSizes =
-  '40' | '41' | '42' | '43' | '44' | '45' | '46' | 'Onesize';
+  '40' | '41' | '42' | '43' | '44' | '45' | '46' | OneSize;
 
 export type WomenShoesSizes =
-  '36' | '37' | '38' | '39' | '40' | '41' | '42' | 'Onesize';
+  '36' | '37' | '38' | '39' | '40' | '41' | '42' | OneSize;
 
 export type ClothingSizes = 'S' | 'M' | 'L' | 'XL';
 

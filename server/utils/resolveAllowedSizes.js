@@ -2,6 +2,7 @@ import {
   CLOTHING_SIZES,
   KIDS_SHOE_SIZES,
   MEN_SHOE_SIZES,
+  oneSize,
   SHOE_SIZES,
 } from '../config/constants.js';
 
@@ -24,7 +25,7 @@ const resolveAllowedSizes = ({ subKey, mainKey }) => {
 
   // Accessories are always "Onesize"
   if (subKey.includes('accessories')) {
-    return ['Onesize'];
+    return [oneSize];
   }
 
   // Default to general sizes (used by most other categories)
