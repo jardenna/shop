@@ -1,3 +1,4 @@
+import BrandOptions from '../../components/selectbox/BrandOptions';
 import SelectField from '../../components/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -42,6 +43,7 @@ const CookiesPage = () => {
           isMulti
           isClearable
           closeMenuOnSelect={false}
+          components={{ Option: BrandOptions }}
         />
       </div>
 
