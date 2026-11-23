@@ -33,9 +33,9 @@ export const getAllowedSizes = (name = '') => {
 };
 
 export const normalizeAllowedSizes = (productSizes = [], allowedSizes = []) => {
-  if (productSizes.includes('Onesize')) {
-    return ['Onesize'];
+  if (productSizes.includes(oneSize)) {
+    return [oneSize];
   }
 
-  return allowedSizes.filter((size) => size !== 'Onesize');
+  return allowedSizes.filter((size) => size !== oneSize);
 };
