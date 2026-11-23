@@ -44,7 +44,6 @@ const AccessibilityPage = () => {
           onChange={onSelectChange}
           components={{ Option: CategoryOptions }}
           id="Teast"
-          menuIsOpen
         />
 
         <section>
