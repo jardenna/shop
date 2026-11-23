@@ -1,9 +1,33 @@
 import CustomerServiceLink from '../../components/CustomerServiceLink';
+import SelectField from '../../components/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
+interface Category {
+  label: string;
+  value: string;
+}
+
+interface InitialAccessibilityValues {
+  category: Category | null;
+}
 
 const AccessibilityPage = () => {
   const { language } = useLanguage();
+
+  const categoryOptions: Category[] = [
+    { value: 'clothing', label: 'Clothing' },
+    { value: 'electronics', label: 'Electronics' },
+    { value: 'furniture', label: 'Furniture' },
+  ];
+
+  const initialState: InitialAccessibilityValues = {
+    category: null,
+  };
+
+  const { values, onSelectChange } = useFormValidation({
+    initialState,
+  });
 
   return (
     <MainPageContainer
@@ -11,6 +35,14 @@ const AccessibilityPage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
+        <SelectField<Category>
+          name="category"
+          label="Category"
+          options={categoryOptions}
+          value={values.category}
+          onChange={onSelectChange}
+        />
+
         <section>
           <h2>Our commitment to accessibility</h2>
           <p>
