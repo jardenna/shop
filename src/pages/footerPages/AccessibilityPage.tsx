@@ -38,11 +38,13 @@ const AccessibilityPage = () => {
       <div className="generel-page-container">
         <SelectboxNew
           name="category"
-          label="Category"
+          labelText="Category"
           options={categoryOptions}
           value={values.category}
           onChange={onSelectChange}
           components={{ Option: CategoryOptions }}
+          id="Teast"
+          menuIsOpen
         />
 
         <section>

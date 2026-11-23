@@ -36,7 +36,7 @@ const CookiesPage = () => {
       <div className="generel-page-container">
         <SelectboxNew
           name="brands"
-          label="Brands"
+          labelText="Brands"
           options={brandOptions}
           value={values.brands}
           onChange={onSelectChange}
@@ -44,6 +44,9 @@ const CookiesPage = () => {
           isClearable
           closeMenuOnSelect={false}
           components={{ Option: BrandOptions }}
+          id="brands"
+          isSearchable
+          placeholder="sss"
         />
       </div>
 
