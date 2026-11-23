@@ -1,9 +1,10 @@
 import CustomerServiceLink from '../../components/CustomerServiceLink';
+import CategoryOptions from '../../components/selectbox/CategoryOptions';
 import SelectField from '../../components/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
-interface Category {
+export interface Category {
   label: string;
   value: string;
 }
@@ -41,6 +42,7 @@ const AccessibilityPage = () => {
           options={categoryOptions}
           value={values.category}
           onChange={onSelectChange}
+          components={{ Option: CategoryOptions }}
         />
 
         <section>
