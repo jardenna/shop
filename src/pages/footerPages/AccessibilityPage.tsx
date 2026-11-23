@@ -36,7 +36,7 @@ const AccessibilityPage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        <SelectField<Category>
+        <SelectField
           name="category"
           label="Category"
           options={categoryOptions}

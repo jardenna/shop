@@ -34,7 +34,7 @@ const CookiesPage = () => {
   return (
     <MainPageContainer heading={language.cookies} className="general-page">
       <div className="generel-page-container">
-        <SelectField<BrandProps, true>
+        <SelectField
           name="brands"
           label="Brands"
           options={brandOptions}
