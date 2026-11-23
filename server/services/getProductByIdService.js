@@ -30,6 +30,11 @@ export const getProductByIdService = async (
 
   const formattedProduct = formatMongoData(product);
 
+  const allowedSizes = normalizeAllowedSizes(
+    product.sizes,
+    product.subCategory?.allowedSizes,
+  );
+
   return {
     ...formattedProduct,
     reviews: product.reviews.map(({ _id, ...review }) => ({
@@ -39,6 +44,6 @@ export const getProductByIdService = async (
     discountedPrice: Math.round(discountedPrice),
     subCategoryName: product.subCategory?.subCategoryName || '',
     categoryName: product.subCategory?.category?.categoryName || '',
-    allowedSizes: normalizeAllowedSizes(product.subCategory?.allowedSizes),
+    allowedSizes,
   };
 };
