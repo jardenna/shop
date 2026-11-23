@@ -1,6 +1,6 @@
 import CustomerServiceLink from '../../components/CustomerServiceLink';
 import CategoryOptions from '../../components/selectbox/CategoryOptions';
-import SelectField from '../../components/SelectFields';
+import SelectField from '../../components/selectbox/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';

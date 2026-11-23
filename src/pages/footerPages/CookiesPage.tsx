@@ -1,5 +1,5 @@
 import BrandOptions from '../../components/selectbox/BrandOptions';
-import SelectField from '../../components/SelectFields';
+import SelectField from '../../components/selectbox/SelectFields';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
