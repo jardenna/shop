@@ -6,7 +6,7 @@ import Category from '../models/categoryModel.js';
 import Product from '../models/productModel.js';
 import SubCategory from '../models/subCategoryModel.js';
 import { formatMongoData } from '../utils/formatMongoData.js';
-import getAllowedSizes from '../utils/getAllowedSizes.js';
+import { getAllowedSizes } from '../utils/sizeUtils.js';
 import { sortColumns } from '../utils/sortColumns.js';
 import { t } from '../utils/translator.js';
 import { updateScheduledItems } from '../utils/UpdateScheduledItemsOptions.js';

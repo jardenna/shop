@@ -1,6 +1,5 @@
 // If creating a new sub category with special sizes be sure to add it here
-
-const getAllowedSizes = (name = '') => {
+export const getAllowedSizes = (name = '') => {
   if (name === 'shoes') {
     return [
       '36',
@@ -30,4 +29,10 @@ const getAllowedSizes = (name = '') => {
   return ['S', 'M', 'L', 'XL'];
 };
 
-export default getAllowedSizes;
+export const normalizeAllowedSizes = (allowedSizes = []) => {
+  if (allowedSizes.includes('Onesize') && allowedSizes.length > 1) {
+    return allowedSizes.filter((size) => size !== 'Onesize');
+  }
+
+  return allowedSizes;
+};
