@@ -16,6 +16,7 @@ import { useCurrency } from '../features/currency/useCurrency';
 import { useGetFavoritesQuery } from '../features/favorites/favoritesApiSlice';
 import { useLanguage } from '../features/language/useLanguage';
 import { closeMiniCard } from '../features/miniCardPopupSlice';
+import MiniCardPopup from '../features/shop/components/miniCardPopup/MiniCardPopup';
 import { clearErrorToasts } from '../features/toastSlice';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -26,7 +27,6 @@ import type { OptionType } from '../shared/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/navConstants';
-import MiniCardPopup from '../features/shop/components/miniCardPopup/MiniCardPopup';
 
 const Layout = () => {
   const { pathname } = useLocation();
