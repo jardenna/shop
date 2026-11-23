@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { ActionMeta, MultiValue, SingleValue } from 'react-select';
 import type {
   BlurEventType,
   ChangeInputType,
@@ -18,7 +19,7 @@ export type FormValues = {
   [key: string]: string | number | string[] | null;
 };
 
-type FormValidationProps<T extends KeyValuePair> = {
+type FormValidationProps<T extends object> = {
   initialState: T;
   isArray?: boolean;
   isLoading?: boolean;
@@ -34,7 +35,7 @@ type ValidatedFile = {
   reason?: 'invalidFileType' | 'fileTooLarge';
 };
 
-export function useFormValidation<T extends KeyValuePair>({
+export function useFormValidation<T extends object>({
   initialState,
   callback,
   validate,
@@ -64,7 +65,7 @@ export function useFormValidation<T extends KeyValuePair>({
       let updatedValue: string | number | null | string[];
 
       if (type === 'checkbox') {
-        const currentValues = previous[name] as string[];
+        const currentValues = previous[name as keyof T] as string[];
 
         updatedValue = checked
           ? [...currentValues, value]
@@ -92,7 +93,7 @@ export function useFormValidation<T extends KeyValuePair>({
   const handleNumberStepChange = (field: string, amount: number) => {
     setValues((previous) => ({
       ...previous,
-      [field]: (previous[field] as number) + amount,
+      [field]: (previous[field as keyof T] as number) + amount,
     }));
   };
 
@@ -166,6 +167,24 @@ export function useFormValidation<T extends KeyValuePair>({
     );
   };
 
+  function handleSelectChange<Option>(
+    selected: SingleValue<Option> | MultiValue<Option>,
+    actionMeta: ActionMeta<Option>,
+  ) {
+    const { name } = actionMeta;
+
+    if (typeof name !== 'string') {
+      return;
+    }
+
+    setValues((previous) => ({
+      ...previous,
+      [name]: selected,
+    }));
+
+    clearFieldError(name);
+  }
+
   function handleCustomChange(
     name: string,
     value: Date | string | number | (string | number)[],
@@ -176,7 +195,7 @@ export function useFormValidation<T extends KeyValuePair>({
           ...previous,
           [name]: [
             ...new Set([
-              ...(previous[name] as (string | number | Date)[]),
+              ...(previous[name as keyof T] as (string | number | Date)[]),
               value,
             ]),
           ],
@@ -211,6 +230,7 @@ export function useFormValidation<T extends KeyValuePair>({
   const onBlur = (event: BlurEventType) => {
     setIsFocused(false);
     const { name } = event.target;
+
     if (!touched.includes(name)) {
       setTouched((prev) => [...prev, name]);
     }
@@ -228,6 +248,7 @@ export function useFormValidation<T extends KeyValuePair>({
   const scrollToFirstError = (errors: KeyValuePair<string>) => {
     const firstErrorField = Object.keys(errors)[0];
     const errorElement = document.querySelector(`[name="${firstErrorField}"]`);
+
     if (errorElement) {
       errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       (errorElement as HTMLElement).focus();
@@ -261,6 +282,7 @@ export function useFormValidation<T extends KeyValuePair>({
     onChange,
     onChangeTextArea: handleChangeTextArea,
     onCustomChange: handleCustomChange,
+    onSelectChange: handleSelectChange,
     onClearInput: handleClearInput,
     isFocused,
     onFocus,
