@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import SectionHeading from '../adminLayout/sectionHeading/SectionHeading';
 import type { PaymentFormValues } from '../app/api/apiTypes/paymentApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
@@ -152,7 +152,7 @@ const CheckoutPage = () => {
   };
 
   if (checkout && checkout.cartItems.length === 0) {
-    return null;
+    return <Navigate to={`/${ShopPath.ShoppingCart}`} replace />;
   }
 
   const availablePaymentMethods = paymentMethodsList.filter((method) =>
