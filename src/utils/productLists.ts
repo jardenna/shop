@@ -1,8 +1,9 @@
 import { roleValues } from '../app/api/apiConstants';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
 import type { OptionType } from '../shared/types';
+import { oneSize } from './sizeUtils';
 
-const sizeList: Size[] = ['S', 'M', 'L', 'XL', 'Onesize'];
+const sizeList: Size[] = ['S', 'M', 'L', 'XL', oneSize];
 
 const roleList: OptionType[] = roleValues.map((role) => ({
   value: role,

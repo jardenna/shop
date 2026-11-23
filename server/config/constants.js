@@ -29,7 +29,8 @@ export const PROMO_CODE_STATUS = {
   CURRENT: 'current',
 };
 
-export const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', 'Onesize'];
+export const oneSize = 'Onesize';
+export const SHOE_SIZES = ['36', '37', '38', '39', '40', '41', '42', oneSize];
 export const MEN_SHOE_SIZES = [
   '40',
   '41',
@@ -38,7 +39,7 @@ export const MEN_SHOE_SIZES = [
   '44',
   '45',
   '46',
-  'Onesize',
+  oneSize,
 ];
 
 export const KIDS_SHOE_SIZES = [
@@ -53,7 +54,7 @@ export const KIDS_SHOE_SIZES = [
   '32',
   '33',
   '34',
-  'Onesize',
+  oneSize,
 ];
 
 export const CLOTHING_SIZES = ['S', 'M', 'L', 'XL'];

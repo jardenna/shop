@@ -1,4 +1,7 @@
+import { oneSize } from '../config/constants.js';
+
 // If creating a new sub category with special sizes be sure to add it here
+
 export const getAllowedSizes = (name = '') => {
   if (name === 'shoes') {
     return [
@@ -13,7 +16,7 @@ export const getAllowedSizes = (name = '') => {
       '44',
       '45',
       '46',
-      'Onesize',
+      oneSize,
     ];
   }
 
@@ -22,7 +25,7 @@ export const getAllowedSizes = (name = '') => {
   }
 
   if (name.includes('accessories')) {
-    return ['Onesize']; // Accessories have no sizes
+    return [oneSize]; // Accessories have no sizes
   }
 
   // Default

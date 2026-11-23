@@ -1,7 +1,7 @@
-import type { Size } from '../app/api/apiTypes/sharedApiTypes';
+import type { OneSize, Size } from '../app/api/apiTypes/sharedApiTypes';
 
 const clothingSizes: Size[] = ['S', 'M', 'L', 'XL'];
-export const oneSize = 'Onesize';
+export const oneSize: OneSize = 'Onesize';
 
 export function sortSizesDynamic(sizes: Size[]) {
   const numericSizes = sizes
