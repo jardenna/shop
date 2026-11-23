@@ -3,19 +3,19 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
 
-interface Brand {
+export interface BrandProps {
   label: string;
   value: string;
 }
 
 interface InitialCookiesValues {
-  brands: readonly Brand[];
+  brands: readonly BrandProps[];
 }
 
 const CookiesPage = () => {
   const { language } = useLanguage();
 
-  const brandOptions: Brand[] = [
+  const brandOptions: BrandProps[] = [
     { value: 'nike', label: 'Nike' },
     { value: 'adidas', label: 'Adidas' },
     { value: 'puma', label: 'Puma' },
@@ -33,7 +33,7 @@ const CookiesPage = () => {
   return (
     <MainPageContainer heading={language.cookies} className="general-page">
       <div className="generel-page-container">
-        <SelectField<Brand, true>
+        <SelectField<BrandProps, true>
           name="brands"
           label="Brands"
           options={brandOptions}
