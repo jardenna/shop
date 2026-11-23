@@ -1,6 +1,6 @@
 import CustomerServiceLink from '../../components/CustomerServiceLink';
 import CategoryOptions from '../../components/selectbox/CategoryOptions';
-import SelectField from '../../components/selectbox/SelectFields';
+import SelectboxNew from '../../components/selectbox/SelectboxNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
@@ -36,7 +36,7 @@ const AccessibilityPage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        <SelectField
+        <SelectboxNew
           name="category"
           label="Category"
           options={categoryOptions}

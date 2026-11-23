@@ -1,6 +1,6 @@
 import Select, { type GroupBase, type Props } from 'react-select';
 
-interface SelectFieldProps<
+interface SelectboxNewProps<
   Option,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
@@ -8,11 +8,11 @@ interface SelectFieldProps<
   label?: string;
 }
 
-function SelectField<
+function SelectboxNew<
   Option,
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
->({ label, ...props }: SelectFieldProps<Option, IsMulti, Group>) {
+>({ label, ...props }: SelectboxNewProps<Option, IsMulti, Group>) {
   return (
     <div className="select-field">
       {label && <label>{label}</label>}
@@ -22,4 +22,4 @@ function SelectField<
   );
 }
 
-export default SelectField;
+export default SelectboxNew;

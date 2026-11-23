@@ -1,5 +1,5 @@
 import BrandOptions from '../../components/selectbox/BrandOptions';
-import SelectField from '../../components/selectbox/SelectFields';
+import SelectboxNew from '../../components/selectbox/SelectboxNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
@@ -34,7 +34,7 @@ const CookiesPage = () => {
   return (
     <MainPageContainer heading={language.cookies} className="general-page">
       <div className="generel-page-container">
-        <SelectField
+        <SelectboxNew
           name="brands"
           label="Brands"
           options={brandOptions}
