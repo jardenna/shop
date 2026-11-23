@@ -5,11 +5,11 @@ import type { OptionType } from '../../shared/types';
 import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 
-export type PaginationSelectProps = {
+export interface PaginationSelectProps {
   defaultValue: OptionType;
   totalCount: number;
   onSelectCount: (option: OptionType) => void;
-};
+}
 
 const PaginationSelect = ({
   defaultValue,
