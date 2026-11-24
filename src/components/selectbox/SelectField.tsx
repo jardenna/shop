@@ -3,6 +3,7 @@ import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategory
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { translateKey } from '../../utils/utils';
+import { validateProductNew } from '../../utils/validation/validateProductNew';
 import SelectboxNew from './SelectboxNew';
 import StatusOptionsNew from './StatusOptionsNew';
 
@@ -12,8 +13,8 @@ export interface CategoryProps {
   value: string;
 }
 
-interface InitialStateValues {
-  category: CategoryProps;
+export interface InitialStateValues {
+  subCategory: CategoryProps;
 }
 
 interface SelectFieldProps {
@@ -32,22 +33,26 @@ const SelectField = ({ subCategories }: SelectFieldProps) => {
   );
 
   const initialState: InitialStateValues = {
-    category: parentCategoryOptions[0],
+    subCategory: parentCategoryOptions[0],
   };
 
-  const { values, onSelectChange } = useFormValidation({
+  const { values, onSelectChange, errors } = useFormValidation({
     initialState,
+    validate: validateProductNew,
   });
 
   return (
     <SelectboxNew
-      name="category"
-      labelText="CategoryProps"
+      errorText={language[errors.subCategory]}
+      name="subCategory"
+      labelText={language.category}
       options={parentCategoryOptions}
-      value={values.category}
+      value={values.subCategory}
       onChange={onSelectChange}
-      id="category"
+      id="subCategory"
+      isSearchable
       components={{ Option: StatusOptionsNew }}
+      required
     />
   );
 };
