@@ -29,7 +29,6 @@ const CookiesPage = () => {
   const { values, onSelectChange } = useFormValidation({
     initialState,
   });
-  console.log(values);
 
   return (
     <MainPageContainer heading={language.cookies} className="general-page">
