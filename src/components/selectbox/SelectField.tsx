@@ -249,6 +249,7 @@ const SelectField = ({
               id="colors"
               name="colors"
               errorText={language[errors.colors]}
+              closeMenuOnSelect={false}
               labelText={language.colours}
               options={sortedColorList}
               components={{ Option: ColorOptions }}
