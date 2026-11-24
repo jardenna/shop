@@ -2,7 +2,7 @@ import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
-import type { InputChangeHandler } from '../shared/types';
+import type { InputChangeHandler, RefElementType } from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
@@ -23,6 +23,7 @@ export interface BaseStatusInputsProps {
 interface StatusInputsProps extends BaseStatusInputsProps {
   max?: number;
   min?: number;
+  ref?: RefElementType;
 }
 
 const StatusInputsNew = ({
@@ -32,6 +33,7 @@ const StatusInputsNew = ({
   onTimeChange,
   min,
   max,
+  ref,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
 
@@ -68,6 +70,7 @@ const StatusInputsNew = ({
         onChange={onSelectChange}
         id="status"
         isSearchable
+        ref={ref}
       />
       {values.status.value === 'Scheduled' && (
         <>

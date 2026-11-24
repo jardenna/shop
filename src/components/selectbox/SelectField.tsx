@@ -325,6 +325,7 @@ const SelectField = ({
           </FormCard>
           <FormCard legendText={language.details}>
             <StatusInputsNew
+              ref={formRef}
               onSelectDate={handleDaySelect}
               selectedDate={selectedDate}
               timeValue={timeValue}

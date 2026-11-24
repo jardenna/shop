@@ -3,6 +3,7 @@ import Select, {
   type OptionsOrGroups,
   type Props,
 } from 'react-select';
+import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
 
 interface SelectboxNewProps<
@@ -17,6 +18,7 @@ interface SelectboxNewProps<
   errorText?: string;
   inputHasNoLabel?: boolean;
   isFixed?: boolean;
+  ref?: RefElementType;
   required?: boolean;
   variant?: 'secondary';
 }
@@ -33,9 +35,18 @@ const SelectboxNew = <
   inputHasNoLabel,
   required,
   labelText,
+  ref,
   ...props
 }: SelectboxNewProps<Option, IsMulti, Group>) => {
   const ariaErrorId = `${id}-error`;
+
+  const closeMenuOnScroll = () => {
+    if (ref) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <div className={`input-container select-box-container ${variant ?? ''}`}>
@@ -59,6 +70,7 @@ const SelectboxNew = <
           inputId={id}
           aria-errormessage={errorText ? ariaErrorId : undefined}
           aria-invalid={errorText ? true : undefined}
+          closeMenuOnScroll={closeMenuOnScroll}
         />
       </div>
     </div>
