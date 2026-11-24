@@ -24,8 +24,8 @@ const SelectField = ({ subCategories }: SelectFieldProps) => {
   const { language } = useLanguage();
 
   const parentCategoryOptions = subCategories.map(
-    ({ label, parentCategoryName, categoryId, categoryStatus }) => ({
-      label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(label, language)}`,
+    ({ parentCategoryName, categoryId, categoryStatus, translationKey }) => ({
+      label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(translationKey, language)}`,
       value: categoryId,
       status: categoryStatus,
     }),
