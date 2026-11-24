@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import MailTo from '../../components/MailTo';
 import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -22,15 +23,15 @@ const CustomerServicePage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        {subCategories && (
+        {subCategories && product && (
           <>
             <SelectField
               parentCategories={subCategories}
-              selectedProduct={product ?? null}
+              selectedSubCategoryId={product.subCategory._id}
             />
             <SelectField
               parentCategories={subCategories}
-              selectedProduct={null}
+              selectedSubCategoryId={null}
             />
           </>
         )}
