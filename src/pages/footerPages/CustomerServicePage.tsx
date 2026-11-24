@@ -29,6 +29,7 @@ const CustomerServicePage = () => {
               parentCategories={subCategories}
               selectedSubCategoryId={product.subCategory._id}
               selectedProduct={product}
+              allowedSizes={product.subCategory.allowedSizes}
               images={product.images}
             />
             <SelectField
@@ -36,6 +37,7 @@ const CustomerServicePage = () => {
               selectedSubCategoryId={null}
               selectedProduct={null}
               images={[]}
+              allowedSizes={[]}
             />
           </>
         )}

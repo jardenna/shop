@@ -3,9 +3,13 @@ import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { Product } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategoryApiTypes';
+import { useCurrency } from '../../features/currency/useCurrency';
 import { useLanguage } from '../../features/language/useLanguage';
 import ImageUpload from '../../features/products/components/ImageUpload';
+import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import { useFormValidation } from '../../hooks/useFormValidation';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import { findAvailableSizes } from '../../utils/sizeUtils';
 import {
   maxDiscount,
   maxFiles,
@@ -16,14 +20,11 @@ import { validateProductNew } from '../../utils/validation/validateProductNew';
 import FormCard from '../carts/FormCard';
 import Form from '../Form';
 import Input from '../formElements/Input';
+import ProductOptionGroup from '../formElements/productOptionGroup/ProductOptionGroup';
 import Textarea from '../formElements/Textarea';
-import SelectboxNew from './SelectboxNew';
-
-import { useCurrency } from '../../features/currency/useCurrency';
-import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
-import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import ToggleSwitch from '../formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
+import SelectboxNew from './SelectboxNew';
 import StatusOptionsNew from './StatusOptionsNew';
 
 export interface CategoryProps {
@@ -48,6 +49,7 @@ export interface InitialStateValues {
   scheduledDate?: Date;
 }
 interface SelectFieldProps {
+  allowedSizes: Size[];
   images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
@@ -59,6 +61,7 @@ const SelectField = ({
   selectedSubCategoryId,
   selectedProduct,
   images,
+  allowedSizes,
 }: SelectFieldProps) => {
   const { currencyText } = useCurrency();
 
@@ -124,8 +127,12 @@ const SelectField = ({
         : [...disabledImages, img],
     );
   };
-  console.log(values);
 
+  const availableSizes = findAvailableSizes({
+    parentCategories,
+    selectedSubCategoryId: values.subCategory?.value ?? null,
+    allowedSizes,
+  });
   return (
     <Form onSubmit={onSubmit} submitBtnLabel="send">
       <section className="product-form-container">
@@ -201,7 +208,6 @@ const SelectField = ({
 
           <article className="product-form-right-column">
             <FormCard legendText={language.productVariants}>
-              aa
               {/* <Selectbox
                 id="colors"
                 name="colors"
@@ -218,6 +224,7 @@ const SelectField = ({
                 }}
                 required
               />
+           */}
               <ProductOptionGroup
                 options={availableSizes}
                 name="sizes"
@@ -235,7 +242,7 @@ const SelectField = ({
                   id: 'choose-product-sizes',
                   errorText: language[errors.sizes],
                 }}
-              /> */}
+              />
             </FormCard>
             <FormCard legendText={language.pricing}>
               <div className="product-form-2-columns">
