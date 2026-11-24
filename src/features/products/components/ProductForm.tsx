@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate } from 'react-router';
 import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
 import type { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
 import { useAppDispatch } from '../../../app/hooks';
 import FormCard from '../../../components/carts/FormCard';
@@ -48,7 +49,7 @@ import ImageUpload from './ImageUpload';
 import './productForm.styles.scss';
 
 interface ProductFormProps {
-  allowedSizes: string[];
+  allowedSizes: Size[];
   id: string | null;
   images: string[];
   parentCategories: SubCategoriesWithParent[];

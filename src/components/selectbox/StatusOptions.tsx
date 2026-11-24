@@ -3,11 +3,11 @@ import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import CustomOption from './CustomOption';
 
-type StatusProps = {
+interface StatusProps {
   label: string;
   status: Status;
   value: string;
-};
+}
 
 const StatusOptions = (props: OptionProps<StatusProps>) => {
   const { language } = useLanguage();
