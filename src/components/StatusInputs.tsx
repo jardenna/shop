@@ -17,19 +17,22 @@ interface StatusOptionsValues {
   value: Status;
 }
 
-export type StatusInputsProps = {
+export interface BaseStatusInputsProps {
   defaultStatusValue: StatusOptionsValues;
   labelText: string;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
   status: string;
   timeValue: string;
+  onSelectDate: (date: Date) => void;
+  onSelectStatus: (selectedOptions: OptionType) => void;
+}
+
+export interface StatusInputsProps extends BaseStatusInputsProps {
   max?: number;
   min?: number;
   ref?: RefElementType;
-  onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionType) => void;
-};
+}
 
 const StatusInputs = ({
   status,
