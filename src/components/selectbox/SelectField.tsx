@@ -6,7 +6,12 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { translateKey } from '../../utils/utils';
 import { validateProductNew } from '../../utils/validation/validateProductNew';
+import FormCard from '../carts/FormCard';
+import Form from '../Form';
+import Input from '../formElements/Input';
+import Textarea from '../formElements/Textarea';
 import SelectboxNew from './SelectboxNew';
+
 import StatusOptionsNew from './StatusOptionsNew';
 
 export interface CategoryProps {
@@ -16,7 +21,7 @@ export interface CategoryProps {
 }
 
 export interface InitialStateValues {
-  brand: string | null;
+  brand: string;
   colors: string[];
   description: string;
   discount: number;
@@ -71,26 +76,79 @@ const SelectField = ({
     sizes: selectedProduct?.sizes ?? [],
   };
 
-  const { values, onSelectChange, errors } = useFormValidation({
+  const {
+    values,
+    onSelectChange,
+    errors,
+    onSubmit,
+    onChange,
+    onChangeTextArea,
+  } = useFormValidation({
     initialState,
     validate: validateProductNew,
   });
 
-  console.log(values);
-
   return (
-    <SelectboxNew
-      errorText={language[errors.subCategory]}
-      name="subCategory"
-      labelText={language.category}
-      options={parentCategoryOptions}
-      value={values.subCategory}
-      onChange={onSelectChange}
-      id="subCategory"
-      isSearchable
-      components={{ Option: StatusOptionsNew }}
-      required
-    />
+    <Form onSubmit={onSubmit} submitBtnLabel="send">
+      <section className="product-form-container">
+        <FormCard legendText={language.category}>
+          <article className="product-form-right-column">
+            <SelectboxNew
+              errorText={language[errors.subCategory]}
+              name="subCategory"
+              labelText={language.category}
+              options={parentCategoryOptions}
+              value={values.subCategory}
+              onChange={onSelectChange}
+              id="subCategory"
+              isSearchable
+              components={{ Option: StatusOptionsNew }}
+              required
+            />
+            <FormCard legendText={language.productInformation}>
+              <Input
+                value={values.productName}
+                id="productName"
+                name="productName"
+                errorText={language[errors.productName]}
+                labelText={language.productName}
+                onChange={onChange}
+                required
+              />
+              <Textarea
+                value={values.description}
+                errorText={language[errors.description]}
+                name="description"
+                id="description"
+                labelText={language.description}
+                onChange={onChangeTextArea}
+                required
+              />
+              <div className="product-form-2-columns">
+                <Input
+                  value={values.brand}
+                  id="brand"
+                  name="brand"
+                  errorText={language[errors.brand]}
+                  labelText={language.brand}
+                  onChange={onChange}
+                  required
+                />
+                <Input
+                  value={values.material}
+                  id="material"
+                  name="material"
+                  errorText={language[errors.material]}
+                  labelText={language.material}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+            </FormCard>
+          </article>
+        </FormCard>
+      </section>
+    </Form>
   );
 };
 
