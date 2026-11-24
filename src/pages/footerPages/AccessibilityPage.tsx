@@ -1,9 +1,11 @@
 import CustomerServiceLink from '../../components/CustomerServiceLink';
+import Input from '../../components/formElements/Input';
 import CategoryOptions from '../../components/selectbox/CategoryOptions';
 import SelectboxNew from '../../components/selectbox/SelectboxNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
+
 export interface Category {
   label: string;
   value: string;
@@ -11,6 +13,7 @@ export interface Category {
 
 interface InitialAccessibilityValues {
   category: Category | null;
+  name: string;
 }
 
 const AccessibilityPage = () => {
@@ -24,11 +27,14 @@ const AccessibilityPage = () => {
 
   const initialState: InitialAccessibilityValues = {
     category: null,
+    name: '',
   };
 
-  const { values, onSelectChange } = useFormValidation({
+  const { values, onSelectChange, onChange } = useFormValidation({
     initialState,
   });
+
+  console.log(values);
 
   return (
     <MainPageContainer
@@ -45,7 +51,13 @@ const AccessibilityPage = () => {
           components={{ Option: CategoryOptions }}
           id="Teast"
         />
-
+        <Input
+          onChange={onChange}
+          id="name"
+          labelText="Name"
+          name="name"
+          value={values.name}
+        />
         <section>
           <h2>Our commitment to accessibility</h2>
           <p>
