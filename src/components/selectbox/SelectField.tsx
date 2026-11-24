@@ -1,4 +1,5 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
+import type { Product } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategoryApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
@@ -18,19 +19,24 @@ export interface InitialStateValues {
 }
 
 interface SelectFieldProps {
-  subCategories: SubCategoriesWithParent[];
+  parentCategories: SubCategoriesWithParent[];
+  selectedProduct: Product | null;
 }
 
-const SelectField = ({ subCategories }: SelectFieldProps) => {
+const SelectField = ({
+  parentCategories,
+  selectedProduct,
+}: SelectFieldProps) => {
   const { language } = useLanguage();
 
-  const parentCategoryOptions = subCategories.map(
+  const parentCategoryOptions = parentCategories.map(
     ({ parentCategoryName, categoryId, categoryStatus, translationKey }) => ({
       label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(translationKey, language)}`,
       value: categoryId,
       status: categoryStatus,
     }),
   );
+  console.log(selectedProduct?.subCategory, parentCategories);
 
   const initialState: InitialStateValues = {
     subCategory: parentCategoryOptions[0],

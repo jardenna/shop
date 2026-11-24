@@ -1,6 +1,7 @@
 import MailTo from '../../components/MailTo';
 import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
+import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import {
   contactInformation,
@@ -12,6 +13,8 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 const CustomerServicePage = () => {
   const { language } = useLanguage();
   const { data: subCategories } = useGetSubCategoriesWithParentQuery();
+  const id = '68512200e5d1e20900c9ad83';
+  const { data: product } = useGetProductByIdQuery(id);
 
   return (
     <MainPageContainer
@@ -19,7 +22,18 @@ const CustomerServicePage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        {subCategories && <SelectField subCategories={subCategories} />}
+        {subCategories && (
+          <>
+            <SelectField
+              parentCategories={subCategories}
+              selectedProduct={product ?? null}
+            />
+            <SelectField
+              parentCategories={subCategories}
+              selectedProduct={null}
+            />
+          </>
+        )}
         <section>
           <h2>We're here to help</h2>
           <p>
