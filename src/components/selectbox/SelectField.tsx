@@ -6,7 +6,12 @@ import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategory
 import { useLanguage } from '../../features/language/useLanguage';
 import ImageUpload from '../../features/products/components/ImageUpload';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { maxFiles, translateKey } from '../../utils/utils';
+import {
+  maxDiscount,
+  maxFiles,
+  minDiscount,
+  translateKey,
+} from '../../utils/utils';
 import { validateProductNew } from '../../utils/validation/validateProductNew';
 import FormCard from '../carts/FormCard';
 import Form from '../Form';
@@ -14,6 +19,8 @@ import Input from '../formElements/Input';
 import Textarea from '../formElements/Textarea';
 import SelectboxNew from './SelectboxNew';
 
+import { useCurrency } from '../../features/currency/useCurrency';
+import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import StatusOptionsNew from './StatusOptionsNew';
 
 export interface CategoryProps {
@@ -50,6 +57,8 @@ const SelectField = ({
   selectedProduct,
   images,
 }: SelectFieldProps) => {
+  const { currencyText } = useCurrency();
+
   const { language } = useLanguage();
 
   const parentCategoryOptions = parentCategories.map(
@@ -90,6 +99,7 @@ const SelectField = ({
     onFileChange,
     removePreviewImage,
     previewData,
+    onBlur,
   } = useFormValidation({
     initialState,
     validate: validateProductNew,
@@ -178,6 +188,128 @@ const SelectField = ({
                   required
                 />
               </div>
+            </FormCard>
+          </article>
+
+          <article className="product-form-right-column">
+            <FormCard legendText={language.productVariants}>
+              aa
+              {/* <Selectbox
+                id="colors"
+                name="colors"
+                errorText={language[errors.colors]}
+                closeMenuOnSelect={false}
+                labelText={language.colours}
+                options={sortedColorList}
+                components={{ Option: ColorOptions }}
+                isSearchable
+                defaultValue={defaultColorValue}
+                isMulti
+                onChange={(values: OptionType[]) => {
+                  handleSelectColors('colors', values);
+                }}
+                required
+              />
+              <ProductOptionGroup
+                options={availableSizes}
+                name="sizes"
+                type="checkbox"
+                onChange={onChange}
+                values={values.sizes}
+                required
+                inputInfo={
+                  availableSizes.length === 0
+                    ? language.sizeInfoText
+                    : undefined
+                }
+                groupTitle={{
+                  title: language.sizes,
+                  id: 'choose-product-sizes',
+                  errorText: language[errors.sizes],
+                }}
+              /> */}
+            </FormCard>
+            <FormCard legendText={language.pricing}>
+              <div className="product-form-2-columns">
+                <Input
+                  type="number"
+                  value={values.price || ''}
+                  id="price"
+                  name="price"
+                  errorText={language[errors.price]}
+                  labelText={language.price}
+                  onChange={onChange}
+                  required
+                  min={5}
+                  inputSuffix={currencyText}
+                  inputMode="numeric"
+                />
+                <Input
+                  type="number"
+                  value={values.discount || ''}
+                  id="discount"
+                  name="discount"
+                  labelText={language.discount}
+                  onChange={onChange}
+                  inputSuffix="%"
+                  max={maxDiscount}
+                  min={minDiscount}
+                  inputMode="numeric"
+                  errorText={language[errors.discount]}
+                  onBlur={onBlur}
+                />
+              </div>
+              {/* <div className="product-form-2-columns">
+                <ToggleSwitch
+                  id="show-price"
+                  name="show-price"
+                  checked={showPrice}
+                  onChange={handleShowPrice}
+                  labelText={language.showPrice}
+                />
+                {showPrice && (
+                  <ProductPrice
+                    price={values.price}
+                    discount={values.discount}
+                    hasError={errors.discount}
+                  />
+                )}
+              </div> */}
+            </FormCard>
+            <FormCard legendText={language.details}>
+              {/* <StatusInputs
+                labelText={language.productStatus}
+                ref={formRef}
+                defaultStatusValue={{
+                  label: translateKey(values.productStatus, language),
+                  value: values.productStatus,
+                  id: values.productStatus,
+                }}
+                onSelectStatus={(selectedOptions: OptionType) => {
+                  handleSelectStatus('productStatus', selectedOptions);
+                }}
+                status={values.productStatus}
+                onSelectDate={handleDaySelect}
+                selectedDate={selectedDate}
+                timeValue={timeValue}
+                onTimeChange={handleTimeChange}
+              /> */}
+              <div>
+                <Input
+                  value={values.quantity || ''}
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  labelText={language.addToStock}
+                  onChange={onChange}
+                  inputMode="numeric"
+                />
+              </div>
+              {selectedProduct && (
+                <LabelValueGrid text={language.productsInStock}>
+                  {selectedProduct.countInStock} {language.pcs}
+                </LabelValueGrid>
+              )}
             </FormCard>
           </article>
         </FormCard>
