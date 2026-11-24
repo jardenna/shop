@@ -1,4 +1,5 @@
 import MailTo from '../../components/MailTo';
+import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import {
@@ -7,7 +8,6 @@ import {
   shopName,
 } from '../../utils/contactInformation';
 import MainPageContainer from '../pageContainer/MainPageContainer';
-import SelectField from './SelectField';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();

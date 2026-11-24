@@ -1,7 +1,7 @@
 import type { OptionProps } from 'react-select';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { CategoryProps } from '../../pages/footerPages/SelectField';
 import CustomOption from './CustomOption';
+import type { CategoryProps } from './SelectField';
 
 const StatusOptions = (props: OptionProps<CategoryProps>) => {
   const { language } = useLanguage();

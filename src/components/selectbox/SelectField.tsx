@@ -1,10 +1,10 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategoryApiTypes';
-import SelectboxNew from '../../components/selectbox/SelectboxNew';
-import StatusOptionsNew from '../../components/selectbox/StatusOptionsNew';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { translateKey } from '../../utils/utils';
+import SelectboxNew from './SelectboxNew';
+import StatusOptionsNew from './StatusOptionsNew';
 
 export interface CategoryProps {
   label: string;
