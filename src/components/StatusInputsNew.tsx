@@ -1,6 +1,11 @@
+import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import { useFormValidation } from '../hooks/useFormValidation';
+import type { InputChangeHandler } from '../shared/types';
+import { newDate, today } from '../utils/dates';
+import DatePicker from './datePicker/DatePicker';
+import TimeInput from './formElements/TimeInput';
 import SelectboxNew from './selectbox/SelectboxNew';
 
 interface StatusOptionsValues {
@@ -8,7 +13,26 @@ interface StatusOptionsValues {
   value: Status;
 }
 
-const StatusInputsNew = () => {
+export interface BaseStatusInputsProps {
+  onTimeChange: InputChangeHandler;
+  selectedDate: Date;
+  timeValue: string;
+  onSelectDate: (date: Date) => void;
+}
+
+interface StatusInputsProps extends BaseStatusInputsProps {
+  max?: number;
+  min?: number;
+}
+
+const StatusInputsNew = ({
+  onSelectDate,
+  selectedDate,
+  timeValue,
+  onTimeChange,
+  min,
+  max,
+}: StatusInputsProps) => {
   const { language } = useLanguage();
 
   const statusOptions: StatusOptionsValues[] = [
@@ -45,7 +69,29 @@ const StatusInputsNew = () => {
         id="status"
         isSearchable
       />
-      {values.status.value === 'Scheduled' && <div>h</div>}
+      {values.status.value === 'Scheduled' && (
+        <>
+          <TimeInput
+            value={timeValue}
+            onChange={onTimeChange}
+            id="time"
+            labelText={language.publishTime}
+            name="time"
+            min={min}
+            max={max}
+            required
+          />
+          <DatePicker
+            onSelectDate={onSelectDate}
+            selectedDate={selectedDate}
+            labelText={language.publishDate}
+            disabled={(date: Date) => isBefore(date, today)}
+            startMonth={newDate}
+            captionLayout="label"
+            required
+          />
+        </>
+      )}
     </>
   );
 };

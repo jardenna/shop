@@ -18,6 +18,7 @@ import {
 } from '../../utils/utils';
 import { validateProductNew } from '../../utils/validation/validateProductNew';
 import FormCard from '../carts/FormCard';
+import { useDatePicker } from '../datePicker/useDatePicker';
 import Form from '../Form';
 import Input from '../formElements/Input';
 import ProductOptionGroup from '../formElements/productOptionGroup/ProductOptionGroup';
@@ -134,6 +135,11 @@ const SelectField = ({
     selectedSubCategoryId: values.subCategory?.value ?? null,
     allowedSizes,
   });
+
+  const selectedTime = selectedProduct?.scheduledDate;
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker({ initialTime: selectedTime });
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel="send">
       <section className="product-form-container">
@@ -293,7 +299,12 @@ const SelectField = ({
               </div>
             </FormCard>
             <FormCard legendText={language.details}>
-              <StatusInputsNew />
+              <StatusInputsNew
+                onSelectDate={handleDaySelect}
+                selectedDate={selectedDate}
+                timeValue={timeValue}
+                onTimeChange={handleTimeChange}
+              />
               <div>
                 <Input
                   value={values.quantity || ''}
