@@ -1,7 +1,5 @@
 import MailTo from '../../components/MailTo';
-import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
-import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import {
   contactInformation,
   shopInformationList,
@@ -11,7 +9,6 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
-  const { data: subCategories } = useGetSubCategoriesWithParentQuery();
 
   return (
     <MainPageContainer
@@ -19,7 +16,6 @@ const CustomerServicePage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        {subCategories && <SelectField subCategories={subCategories} />}
         <section>
           <h2>We're here to help</h2>
           <p>
