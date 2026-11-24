@@ -9,6 +9,8 @@ import ImageUpload from '../../features/products/components/ImageUpload';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import variables from '../../scss/variables.module.scss';
+import { getColorOptions } from '../../utils/colorUtils';
 import { findAvailableSizes } from '../../utils/sizeUtils';
 import {
   maxDiscount,
@@ -26,6 +28,7 @@ import Textarea from '../formElements/Textarea';
 import ToggleSwitch from '../formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import StatusInputsNew from '../StatusInputsNew';
+import ColorOptions from './ColorOptions';
 import SelectboxNew from './SelectboxNew';
 import StatusOptionsNew from './StatusOptionsNew';
 
@@ -140,6 +143,11 @@ const SelectField = ({
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
     useDatePicker({ initialTime: selectedTime });
 
+  const sortedColorList = getColorOptions({
+    language,
+    borderColor: variables.colorIconBorder,
+  });
+
   return (
     <Form onSubmit={onSubmit} submitBtnLabel="send">
       <section className="product-form-container">
@@ -215,23 +223,19 @@ const SelectField = ({
 
           <article className="product-form-right-column">
             <FormCard legendText={language.productVariants}>
-              {/* <Selectbox
+              <SelectboxNew
                 id="colors"
                 name="colors"
                 errorText={language[errors.colors]}
-                closeMenuOnSelect={false}
                 labelText={language.colours}
                 options={sortedColorList}
                 components={{ Option: ColorOptions }}
                 isSearchable
-                defaultValue={defaultColorValue}
                 isMulti
-                onChange={(values: OptionType[]) => {
-                  handleSelectColors('colors', values);
-                }}
+                onChange={onSelectChange}
                 required
               />
-           */}
+
               <ProductOptionGroup
                 options={availableSizes}
                 name="sizes"

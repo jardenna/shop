@@ -1,4 +1,8 @@
-import Select, { type GroupBase, type Props } from 'react-select';
+import Select, {
+  type GroupBase,
+  type OptionsOrGroups,
+  type Props,
+} from 'react-select';
 import FormLabel from '../formElements/FormLabel';
 
 interface SelectboxNewProps<
@@ -8,6 +12,8 @@ interface SelectboxNewProps<
 > extends Props<Option, IsMulti, Group> {
   id: string;
   labelText: string;
+  onChange: NonNullable<Props<Option, IsMulti, Group>['onChange']>;
+  options: OptionsOrGroups<Option, Group>;
   errorText?: string;
   inputHasNoLabel?: boolean;
   isFixed?: boolean;
