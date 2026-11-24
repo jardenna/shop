@@ -28,7 +28,7 @@ export interface BaseStatusInputsProps {
   onSelectStatus: (selectedOptions: OptionType) => void;
 }
 
-export interface StatusInputsProps extends BaseStatusInputsProps {
+interface StatusInputsProps extends BaseStatusInputsProps {
   max?: number;
   min?: number;
   ref?: RefElementType;

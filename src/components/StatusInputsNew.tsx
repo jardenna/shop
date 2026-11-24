@@ -1,104 +1,51 @@
-import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
-import type {
-  InputChangeHandler,
-  OptionType,
-  RefElementType,
-} from '../shared/types';
-import { newDate, today } from '../utils/dates';
-import DatePicker from './datePicker/DatePicker';
-import TimeInput from './formElements/TimeInput';
-import Selectbox from './selectbox/Selectbox';
+import { useFormValidation } from '../hooks/useFormValidation';
+import SelectboxNew from './selectbox/SelectboxNew';
 
 interface StatusOptionsValues {
-  id: string;
   label: string;
   value: Status;
 }
 
-export interface StatusInputsNewProps {
-  defaultStatusValue: StatusOptionsValues;
-  labelText: string;
-  onTimeChange: InputChangeHandler;
-  selectedDate: Date;
-  status: string;
-  timeValue: string;
-  max?: number;
-  min?: number;
-  ref?: RefElementType;
-  onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionType) => void;
-}
-
-const StatusInputsNew = ({
-  status,
-  onSelectDate,
-  selectedDate,
-  timeValue,
-  onTimeChange,
-  onSelectStatus,
-  defaultStatusValue,
-  ref,
-  labelText,
-  min,
-  max,
-}: StatusInputsNewProps) => {
+const StatusInputsNew = () => {
   const { language } = useLanguage();
 
   const statusOptions: StatusOptionsValues[] = [
     {
       label: language.inactive,
       value: 'Inactive',
-      id: 'inactive',
     },
     {
       label: language.scheduled,
       value: 'Scheduled',
-      id: 'scheduled',
     },
     {
       label: language.published,
       value: 'Published',
-      id: 'published',
     },
   ];
 
+  const initialState = {
+    status: statusOptions[0],
+  };
+
+  const { values, onSelectChange } = useFormValidation({
+    initialState,
+  });
+
   return (
     <>
-      <Selectbox
-        id="status"
-        defaultValue={defaultStatusValue}
-        options={statusOptions}
-        onChange={onSelectStatus}
+      <SelectboxNew
         name="status"
-        labelText={labelText}
-        ref={ref}
-        required
+        labelText={language.category}
+        options={statusOptions}
+        value={values.status}
+        onChange={onSelectChange}
+        id="status"
+        isSearchable
       />
-      {status === 'Scheduled' && (
-        <>
-          <TimeInput
-            value={timeValue}
-            onChange={onTimeChange}
-            id="time"
-            labelText={language.publishTime}
-            name="time"
-            min={min}
-            max={max}
-            required
-          />
-          <DatePicker
-            onSelectDate={onSelectDate}
-            selectedDate={selectedDate}
-            labelText={language.publishDate}
-            disabled={(date: Date) => isBefore(date, today)}
-            startMonth={newDate}
-            captionLayout="label"
-            required
-          />
-        </>
-      )}
+      {values.status.value === 'Scheduled' && <div>h</div>}
     </>
   );
 };

@@ -24,6 +24,7 @@ import ProductOptionGroup from '../formElements/productOptionGroup/ProductOption
 import Textarea from '../formElements/Textarea';
 import ToggleSwitch from '../formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
+import StatusInputsNew from '../StatusInputsNew';
 import SelectboxNew from './SelectboxNew';
 import StatusOptionsNew from './StatusOptionsNew';
 
@@ -292,23 +293,7 @@ const SelectField = ({
               </div>
             </FormCard>
             <FormCard legendText={language.details}>
-              {/* <StatusInputs
-                labelText={language.productStatus}
-                ref={formRef}
-                defaultStatusValue={{
-                  label: translateKey(values.productStatus, language),
-                  value: values.productStatus,
-                  id: values.productStatus,
-                }}
-                onSelectStatus={(selectedOptions: OptionType) => {
-                  handleSelectStatus('productStatus', selectedOptions);
-                }}
-                status={values.productStatus}
-                onSelectDate={handleDaySelect}
-                selectedDate={selectedDate}
-                timeValue={timeValue}
-                onTimeChange={handleTimeChange}
-              /> */}
+              <StatusInputsNew />
               <div>
                 <Input
                   value={values.quantity || ''}
