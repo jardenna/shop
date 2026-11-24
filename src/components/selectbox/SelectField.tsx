@@ -20,6 +20,9 @@ import Textarea from '../formElements/Textarea';
 import SelectboxNew from './SelectboxNew';
 
 import { useCurrency } from '../../features/currency/useCurrency';
+import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
+import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
+import ToggleSwitch from '../formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
 import StatusOptionsNew from './StatusOptionsNew';
 
@@ -106,8 +109,13 @@ const SelectField = ({
   });
 
   const [disabledImages, setDisabledImages] = useState<string[]>([]);
-
-  // Helper functions
+  const [showPrice, setShowPrice] = useLocalStorage(
+    localStorageKeys.showPrice,
+    false,
+  );
+  const handleShowPrice = () => {
+    setShowPrice(!showPrice);
+  };
 
   const handleToggleImage = (img: string) => {
     setDisabledImages(
@@ -259,7 +267,7 @@ const SelectField = ({
                   onBlur={onBlur}
                 />
               </div>
-              {/* <div className="product-form-2-columns">
+              <div className="product-form-2-columns">
                 <ToggleSwitch
                   id="show-price"
                   name="show-price"
@@ -274,7 +282,7 @@ const SelectField = ({
                     hasError={errors.discount}
                   />
                 )}
-              </div> */}
+              </div>
             </FormCard>
             <FormCard legendText={language.details}>
               {/* <StatusInputs
