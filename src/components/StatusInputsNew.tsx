@@ -71,6 +71,7 @@ const StatusInputsNew = ({
         id="status"
         isSearchable
         ref={ref}
+        required
       />
       {values.status.value === 'Scheduled' && (
         <>
