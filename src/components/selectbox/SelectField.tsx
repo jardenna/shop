@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { Product } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
 import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategoryApiTypes';
 import { useLanguage } from '../../features/language/useLanguage';
+import ImageUpload from '../../features/products/components/ImageUpload';
 import { useFormValidation } from '../../hooks/useFormValidation';
-import { translateKey } from '../../utils/utils';
+import { maxFiles, translateKey } from '../../utils/utils';
 import { validateProductNew } from '../../utils/validation/validateProductNew';
 import FormCard from '../carts/FormCard';
 import Form from '../Form';
@@ -36,6 +38,7 @@ export interface InitialStateValues {
   scheduledDate?: Date;
 }
 interface SelectFieldProps {
+  images: string[];
   parentCategories: SubCategoriesWithParent[];
   selectedProduct: Product | null;
   selectedSubCategoryId: string | null;
@@ -45,6 +48,7 @@ const SelectField = ({
   parentCategories,
   selectedSubCategoryId,
   selectedProduct,
+  images,
 }: SelectFieldProps) => {
   const { language } = useLanguage();
 
@@ -83,10 +87,26 @@ const SelectField = ({
     onSubmit,
     onChange,
     onChangeTextArea,
+    onFileChange,
+    removePreviewImage,
+    previewData,
   } = useFormValidation({
     initialState,
     validate: validateProductNew,
   });
+
+  const [disabledImages, setDisabledImages] = useState<string[]>([]);
+
+  // Helper functions
+
+  const handleToggleImage = (img: string) => {
+    setDisabledImages(
+      disabledImages.includes(img)
+        ? disabledImages.filter((i: string) => i !== img)
+        : [...disabledImages, img],
+    );
+  };
+  console.log(values);
 
   return (
     <Form onSubmit={onSubmit} submitBtnLabel="send">
@@ -105,6 +125,20 @@ const SelectField = ({
               components={{ Option: StatusOptionsNew }}
               required
             />
+            <FormCard
+              legendText={`${language.productImages} (${language.maximum} ${maxFiles})`}
+            >
+              <ImageUpload
+                images={images}
+                onChange={onFileChange}
+                previewData={previewData}
+                removePreviewImage={removePreviewImage}
+                onToggleImage={(id) => {
+                  handleToggleImage(id);
+                }}
+                disabledImages={disabledImages}
+              />
+            </FormCard>
             <FormCard legendText={language.productInformation}>
               <Input
                 value={values.productName}
