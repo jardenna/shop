@@ -28,10 +28,12 @@ const CustomerServicePage = () => {
             <SelectField
               parentCategories={subCategories}
               selectedSubCategoryId={product.subCategory._id}
+              selectedProduct={product}
             />
             <SelectField
               parentCategories={subCategories}
               selectedSubCategoryId={null}
+              selectedProduct={null}
             />
           </>
         )}
