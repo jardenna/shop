@@ -1,7 +1,6 @@
 import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
-import { useFormValidation } from '../hooks/useFormValidation';
 import type { InputChangeHandler, RefElementType } from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
@@ -15,9 +14,11 @@ interface StatusOptionsValues {
 
 export interface BaseStatusInputsProps {
   labelText: string;
+  onSelectStatus: any;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
   timeValue: string;
+  value: Status;
   onSelectDate: (date: Date) => void;
 }
 
@@ -36,6 +37,8 @@ const StatusInputsNew = ({
   min,
   max,
   ref,
+  value,
+  onSelectStatus,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
 
@@ -54,28 +57,20 @@ const StatusInputsNew = ({
     },
   ];
 
-  const initialState = {
-    status: 'Inactive' as Status,
-  };
-
-  const { values, onSelectChange } = useFormValidation({
-    initialState,
-  });
-
   return (
     <>
       <SelectboxNew
-        id="status"
+        id="productStatus"
         options={statusOptions}
-        onChange={onSelectChange}
-        name="status"
+        onChange={onSelectStatus}
+        name="productStatus"
         labelText={labelText}
-        value={values.status}
+        value={value}
         ref={ref}
         required
       />
 
-      {values.status === 'Scheduled' && (
+      {value === 'Scheduled' && (
         <>
           <TimeInput
             value={timeValue}

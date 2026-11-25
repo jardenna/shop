@@ -326,6 +326,8 @@ const SelectField = ({
               selectedDate={selectedDate}
               timeValue={timeValue}
               onTimeChange={handleTimeChange}
+              onSelectStatus={onSelectChange}
+              value={values.productStatus}
             />
             <div>
               <Input
