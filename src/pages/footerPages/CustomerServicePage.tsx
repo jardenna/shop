@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import MailTo from '../../components/MailTo';
 import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -27,19 +26,23 @@ const CustomerServicePage = () => {
           <>
             <SelectField
               parentCategories={subCategories}
-              selectedSubCategoryId={product.subCategory._id}
               selectedProduct={product}
               allowedSizes={product.subCategory.allowedSizes}
               images={product.images}
               id={id}
+              refetch={() => {
+                console.log(1);
+              }}
             />
             <SelectField
               parentCategories={subCategories}
-              selectedSubCategoryId={null}
               selectedProduct={null}
               images={[]}
               allowedSizes={[]}
               id={null}
+              refetch={() => {
+                console.log(1);
+              }}
             />
           </>
         )}
