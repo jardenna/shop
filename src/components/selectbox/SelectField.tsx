@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { Product } from '../../app/api/apiTypes/adminProductApiTypes';
 import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
@@ -10,7 +10,6 @@ import ImageUpload from '../../features/products/components/ImageUpload';
 import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { AdminPath } from '../../layout/nav/navConstants';
 import variables from '../../scss/variables.module.scss';
 import { getColorOptions } from '../../utils/colorUtils';
 import { findAvailableSizes } from '../../utils/sizeUtils';
@@ -73,13 +72,13 @@ const SelectField = ({
   allowedSizes,
 }: SelectFieldProps) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const formRef = useRef<HTMLFormElement | null>(null);
   const { currencyText } = useCurrency();
   const { language } = useLanguage();
 
-  const returnTo = location.state?.returnTo ?? AdminPath.AdminProducts;
-  console.log(returnTo);
+  // const location = useLocation();
+  // const returnTo = location.state?.returnTo ?? AdminPath.AdminProducts;
+  // console.log(returnTo);
 
   const parentCategoryOptions = parentCategories.map(
     ({ parentCategoryName, categoryId, categoryStatus, translationKey }) => ({
