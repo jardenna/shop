@@ -328,6 +328,8 @@ const SelectField = ({
               onTimeChange={handleTimeChange}
               onSelectStatus={onSelectChange}
               value={values.productStatus}
+              name="productStatus"
+              id="productStatus"
             />
             <div>
               <Input

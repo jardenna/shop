@@ -13,7 +13,9 @@ interface StatusOptionsValues {
 }
 
 export interface BaseStatusInputsProps {
+  id: string;
   labelText: string;
+  name: string;
   onSelectStatus: any;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
@@ -38,6 +40,8 @@ const StatusInputsNew = ({
   max,
   ref,
   value,
+  id,
+  name,
   onSelectStatus,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
@@ -60,10 +64,10 @@ const StatusInputsNew = ({
   return (
     <>
       <SelectboxNew
-        id="productStatus"
+        id={id}
         options={statusOptions}
         onChange={onSelectStatus}
-        name="productStatus"
+        name={name}
         labelText={labelText}
         value={value}
         ref={ref}
