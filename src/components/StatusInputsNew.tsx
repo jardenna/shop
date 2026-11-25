@@ -55,7 +55,7 @@ const StatusInputsNew = ({
   ];
 
   const initialState = {
-    status: statusOptions[0],
+    status: 'Inactive' as Status,
   };
 
   const { values, onSelectChange } = useFormValidation({
@@ -74,7 +74,8 @@ const StatusInputsNew = ({
         ref={ref}
         required
       />
-      {values.status.value === 'Scheduled' && (
+
+      {values.status === 'Scheduled' && (
         <>
           <TimeInput
             value={timeValue}

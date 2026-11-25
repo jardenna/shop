@@ -7,14 +7,15 @@ import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
 
 interface SelectboxNewProps<
-  Option,
+  Option extends { value: string },
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Props<Option, IsMulti, Group> {
+> extends Omit<Props<Option, IsMulti, Group>, 'value'> {
   id: string;
   labelText: string;
   onChange: NonNullable<Props<Option, IsMulti, Group>['onChange']>;
   options: OptionsOrGroups<Option, Group>;
+  value: IsMulti extends true ? string[] : string;
   errorText?: string;
   inputHasNoLabel?: boolean;
   isFixed?: boolean;
@@ -24,7 +25,7 @@ interface SelectboxNewProps<
 }
 
 const SelectboxNew = <
-  Option,
+  Option extends { value: string },
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
@@ -36,17 +37,22 @@ const SelectboxNew = <
   required,
   labelText,
   ref,
+  options,
+  value,
+  isMulti,
   ...props
 }: SelectboxNewProps<Option, IsMulti, Group>) => {
   const ariaErrorId = `${id}-error`;
 
-  const closeMenuOnScroll = () => {
-    if (ref) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  const flatOptions = options.flatMap((option) =>
+    'options' in option ? option.options : [option],
+  );
+
+  const selectedValue = isMulti
+    ? flatOptions.filter((option) => (value as string[]).includes(option.value))
+    : (flatOptions.find((option) => option.value === value) ?? null);
+
+  const closeMenuOnScroll = () => Boolean(ref);
 
   return (
     <div className={`input-container select-box-container ${variant ?? ''}`}>
@@ -60,8 +66,11 @@ const SelectboxNew = <
       />
 
       <div className="select-box">
-        <Select
+        <Select<Option, IsMulti, Group>
           {...props}
+          isMulti={isMulti}
+          options={options}
+          value={selectedValue}
           styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           menuPortalTarget={document.body}
           classNamePrefix="select-box"
@@ -76,4 +85,5 @@ const SelectboxNew = <
     </div>
   );
 };
+
 export default SelectboxNew;

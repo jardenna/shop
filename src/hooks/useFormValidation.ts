@@ -167,19 +167,29 @@ export function useFormValidation<T extends object>({
     );
   };
 
-  function handleSelectChange<Option>(
+  function handleSelectChange<Option extends { value: string }>(
     selected: SingleValue<Option> | MultiValue<Option>,
     actionMeta: ActionMeta<Option>,
   ) {
     const { name } = actionMeta;
 
-    if (typeof name !== 'string') {
+    if (!name) {
       return;
+    }
+
+    let selectedValue: string | string[];
+
+    if (selected === null) {
+      selectedValue = '';
+    } else if ('length' in selected) {
+      selectedValue = selected.map((option) => option.value);
+    } else {
+      selectedValue = selected.value;
     }
 
     setValues((previous) => ({
       ...previous,
-      [name]: selected,
+      [name]: selectedValue,
     }));
 
     clearFieldError(name);

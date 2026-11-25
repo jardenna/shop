@@ -6,7 +6,7 @@ export function validateProductNew(values: InitialStateValues) {
   const errors: ValidationErrors<InitialStateValues> = {};
   const { subCategory } = values;
 
-  if (!subCategory || subCategory.value === '') {
+  if (subCategory === '') {
     errors.subCategory = ValidationMessage.CategoryRequired;
   }
 

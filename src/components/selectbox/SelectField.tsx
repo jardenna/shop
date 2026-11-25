@@ -51,7 +51,7 @@ export interface InitialStateValues {
   productStatus: Status;
   quantity: number;
   sizes: Size[];
-  subCategory: CategoryProps | null;
+  subCategory: string;
   scheduledDate?: Date;
 }
 interface SelectFieldProps {
@@ -88,13 +88,8 @@ const SelectField = ({
     }),
   );
 
-  const subCategory =
-    parentCategoryOptions.find(
-      ({ value }) => value === selectedSubCategoryId,
-    ) ?? null;
-
   const initialState: InitialStateValues = {
-    subCategory,
+    subCategory: selectedSubCategoryId ?? '',
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
     quantity: selectedProduct?.quantity ?? 0,
@@ -148,7 +143,7 @@ const SelectField = ({
 
   const availableSizes = findAvailableSizes({
     parentCategories,
-    selectedSubCategoryId: values.subCategory?.value ?? null,
+    selectedSubCategoryId: values.subCategory,
     allowedSizes,
   });
 
@@ -253,6 +248,7 @@ const SelectField = ({
               options={sortedColorList}
               components={{ Option: ColorOptions }}
               isSearchable
+              value={values.colors}
               isMulti
               onChange={onSelectChange}
               required
