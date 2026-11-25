@@ -19,6 +19,7 @@ interface SelectboxNewProps<
   errorText?: string;
   inputHasNoLabel?: boolean;
   isFixed?: boolean;
+  placeHolder?: string;
   ref?: RefElementType;
   required?: boolean;
   variant?: 'secondary';
@@ -40,6 +41,7 @@ const SelectboxNew = <
   options,
   value,
   isMulti,
+  placeHolder = '',
   ...props
 }: SelectboxNewProps<Option, IsMulti, Group>) => {
   const ariaErrorId = `${id}-error`;
@@ -80,6 +82,7 @@ const SelectboxNew = <
           aria-errormessage={errorText ? ariaErrorId : undefined}
           aria-invalid={errorText ? true : undefined}
           closeMenuOnScroll={closeMenuOnScroll}
+          placeholder={placeHolder}
         />
       </div>
     </div>
