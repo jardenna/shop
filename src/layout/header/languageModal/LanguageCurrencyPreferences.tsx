@@ -1,6 +1,6 @@
 import FieldSet from '../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
-import CurrencySelect from '../../../features/currency/components/CurrencySelect';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import { languageOptions } from '../../../features/language/useLanguage';
 import type { BaseHeaderProps } from '../Header';
 
@@ -22,11 +22,14 @@ const LanguageCurrencyPreferences = ({
       />
     </FieldSet>
     <FieldSet legendText={localLanguage.currency} showLegendText>
-      <CurrencySelect
-        currencyOptions={currencyOptions}
+      <Selectbox
+        id="currency"
         defaultValue={defaultValue}
-        onSelectCurrency={onSelectCurrency}
+        options={currencyOptions}
+        onChange={onSelectCurrency}
+        name="currency"
         labelText={localLanguage.currency}
+        inputHasNoLabel
       />
     </FieldSet>
   </div>
