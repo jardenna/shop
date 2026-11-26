@@ -1,6 +1,11 @@
 import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
+import type { SelectChangeHandler } from '../../components/selectbox/SelectboxNew';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { InputChangeHandler, Language } from '../../shared/types';
+import type {
+  InputChangeHandler,
+  Language,
+  OptionType,
+} from '../../shared/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import MobileNav from '../nav/MobileNav';
@@ -18,7 +23,7 @@ interface MobileProps {
 export interface BaseHeaderProps {
   localLanguage: Language;
   onChange: InputChangeHandler;
-  onSelectChange: any;
+  onSelectChange: SelectChangeHandler<OptionType>;
   values: LanguageCurrencyPreferencesValues;
   onSubmit: () => void;
 }
