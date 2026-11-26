@@ -19,7 +19,7 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
-  const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
+  const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>('7');
   const { currentUser } = useAuth();
 
   const {
@@ -36,7 +36,7 @@ const DashboardPage = () => {
 
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
-      setSelectedPeriod(Number(option.value) as GoalPeriod);
+      setSelectedPeriod(option.value as GoalPeriod);
     }
   };
 
@@ -66,7 +66,7 @@ const DashboardPage = () => {
         <SelectboxNew
           id="year"
           variant="secondary"
-          value={selectedPeriod.toString()}
+          value={selectedPeriod}
           options={translatedOptions}
           onChange={handleSelectPeriod}
           inputHasNoLabel

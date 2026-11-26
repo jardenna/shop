@@ -29,7 +29,7 @@ const KpiCardPopupItem = ({
       <div>
         <p className="text-bold">
           {isPrevious ? language.previous : language.last}{' '}
-          {period === 365 ? language.years : `${period} ${language.days}`}
+          {period === '365' ? language.years : `${period} ${language.days}`}
         </p>
         <p>
           <DateRange

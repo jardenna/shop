@@ -10,7 +10,7 @@ export const dashboardApiSlice = apiSlice.injectEndpoints({
     getTotalKpi: builder.query<TotalKpiResponse[], void>({
       query: () => adminTotalsKpiUrl,
     }),
-    getPeriodKpi: builder.query<PeriodKpiResponse[], number>({
+    getPeriodKpi: builder.query<PeriodKpiResponse[], string>({
       query: (id) => `${adminPeriodKpiUrl}/${id}`,
       providesTags: [TagTypesEnum.Goals],
     }),
