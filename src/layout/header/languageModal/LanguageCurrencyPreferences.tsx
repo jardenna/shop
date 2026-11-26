@@ -2,19 +2,15 @@ import FieldSet from '../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import { useCurrency } from '../../../features/currency/useCurrency';
-import type { SelectedLanguage } from '../../../features/language/languageSlice';
 import { languageOptions } from '../../../features/language/useLanguage';
 import type {
   InputChangeHandler,
   Language,
   OptionType,
 } from '../../../shared/types';
+import type { Values } from '../Header';
 
-export interface Values {
-  languageOption: SelectedLanguage;
-}
-
-interface BaseHeaderProps {
+interface LanguageCurrencyPreferencesProps {
   localLanguage: Language;
   onChange: InputChangeHandler;
   values: Values;
@@ -24,7 +20,7 @@ const LanguageCurrencyPreferences = ({
   values,
   onChange,
   localLanguage,
-}: BaseHeaderProps) => {
+}: LanguageCurrencyPreferencesProps) => {
   const { currencyOptions, exchangeRate } = useCurrency();
 
   const handleSelectCurrency = (selectedOptions: OptionType) => {

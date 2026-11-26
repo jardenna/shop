@@ -19,12 +19,15 @@ interface MobileProps {
   isMobileSize: boolean;
 }
 
-export interface HeaderProps {
-  dropdownBtnList: ActionNavItemProps[];
+export interface BaseHeaderProps {
   localLanguage: Language;
   onChange: InputChangeHandler;
   values: Values;
   onSubmit: () => void;
+}
+
+export interface HeaderProps extends BaseHeaderProps {
+  dropdownBtnList: ActionNavItemProps[];
 }
 
 const Header = ({

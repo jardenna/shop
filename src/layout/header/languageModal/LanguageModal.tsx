@@ -3,23 +3,15 @@ import IconContent from '../../../components/IconContent';
 import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import type { InputChangeHandler, Language } from '../../../shared/types';
-import type { Values } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
-
-interface LanguageProps {
-  localLanguage: Language;
-  onChange: InputChangeHandler;
-  values: Values;
-  onSubmit: () => void;
-}
+import type { BaseHeaderProps } from '../Header';
 
 const LanguageModal = ({
   onChange,
   values,
   onSubmit,
   localLanguage,
-}: LanguageProps) => {
+}: BaseHeaderProps) => {
   const ariaControlsId = useId();
   const modalId = 'language';
 
