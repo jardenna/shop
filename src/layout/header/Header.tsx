@@ -12,13 +12,13 @@ import { navList } from '../nav/navLists';
 import './_header.scss';
 import Logo from './Logo';
 
-export type Values = {
+export interface Values {
   languageOption: SelectedLanguage;
-};
+}
 
-type MobileProps = {
+interface MobileProps {
   isMobileSize: boolean;
-};
+}
 
 export interface BaseHeaderProps {
   currencyOptions: OptionType[];
