@@ -5,9 +5,7 @@ import type { InputChangeHandler, RefElementType } from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
-import SelectboxNew, {
-  type StatusOptionsValues,
-} from './selectbox/SelectboxNew';
+import SelectboxNew from './selectbox/SelectboxNew';
 
 export interface BaseStatusInputsProps {
   id: string;
