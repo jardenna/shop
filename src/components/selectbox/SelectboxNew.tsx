@@ -33,6 +33,7 @@ interface SelectboxNewProps<
   placeHolder?: string;
   ref?: RefElementType;
   required?: boolean;
+  selectKey?: string;
   variant?: 'secondary';
 }
 
@@ -44,6 +45,7 @@ const SelectboxNew = <
   isFixed = true,
   id,
   variant,
+  selectKey,
   errorText,
   inputHasNoLabel,
   required,
@@ -80,6 +82,7 @@ const SelectboxNew = <
 
       <div className="select-box">
         <Select<Option, IsMulti, Group>
+          key={selectKey}
           {...props}
           isMulti={isMulti}
           options={options}
