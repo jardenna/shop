@@ -11,12 +11,12 @@ const CreateProductPage = () => {
     subCategories && (
       <AdminPageContainer heading={language.createNewProduct}>
         <ProductForm
+          parentCategories={subCategories}
           selectedProduct={null}
           images={[]}
-          refetch={refetch}
-          id={null}
-          parentCategories={subCategories}
           allowedSizes={[]}
+          id={null}
+          refetch={refetch}
         />
       </AdminPageContainer>
     )

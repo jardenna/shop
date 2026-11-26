@@ -45,12 +45,12 @@ const UpdateProductPage = () => {
     subCategories && (
       <AdminPageContainer heading={`${language.update} ${product.productName}`}>
         <ProductForm
+          parentCategories={subCategories}
           selectedProduct={product}
-          refetch={refetch}
+          allowedSizes={product.subCategory.allowedSizes}
           images={product.images}
           id={id || null}
-          parentCategories={subCategories}
-          allowedSizes={product.subCategory.allowedSizes}
+          refetch={refetch}
         />
       </AdminPageContainer>
     )
