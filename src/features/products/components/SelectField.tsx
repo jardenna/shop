@@ -47,6 +47,7 @@ import {
   useUpdateProductMutation,
 } from '../productApiSlice';
 import ImageUpload from './ImageUpload';
+import './productForm.styles.scss';
 
 interface SelectFieldProps {
   allowedSizes: Size[];
