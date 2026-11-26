@@ -1,10 +1,24 @@
-import Select, {
-  type GroupBase,
-  type OptionsOrGroups,
-  type Props,
+import type {
+  ActionMeta,
+  GroupBase,
+  OnChangeValue,
+  OptionsOrGroups,
+  Props,
 } from 'react-select';
+import Select from 'react-select';
+import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
+
+export interface StatusOptionsValues {
+  label: string;
+  value: Status;
+}
+
+export type StatusChangeHandler = (
+  selected: OnChangeValue<StatusOptionsValues, false>,
+  actionMeta: ActionMeta<StatusOptionsValues>,
+) => void;
 
 interface SelectboxNewProps<
   Option extends { value: string },

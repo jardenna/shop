@@ -1,6 +1,7 @@
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import type { InputChangeHandler } from '../shared/types';
 import Input from './formElements/Input';
+import type { StatusChangeHandler } from './selectbox/SelectboxNew';
 import StatusInputs from './StatusInputs';
 
 interface SharedCategoryInputsProps {
@@ -12,7 +13,7 @@ interface SharedCategoryInputsProps {
   labelText: string;
   name: string;
   onCategoryNameChange: InputChangeHandler;
-  onSelectStatus: any;
+  onSelectStatus: StatusChangeHandler;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
   timeValue: string;
