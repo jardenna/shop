@@ -10,7 +10,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
-import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
+import SharedCategoryInputsNew from '../../../components/SharedCategoryInputsNew';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/navConstants';
@@ -71,12 +71,19 @@ const SubCategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const { onChange, values, onSubmit, onCustomChange, errors, isFormDirty } =
-    useFormValidation({
-      initialState,
-      validate: validateSubcategory,
-      callback: handleSubmitCategory,
-    });
+  const {
+    onChange,
+    values,
+    onSubmit,
+    onCustomChange,
+    onSelectChange,
+    errors,
+    isFormDirty,
+  } = useFormValidation({
+    initialState,
+    validate: validateSubcategory,
+    callback: handleSubmitCategory,
+  });
 
   const { onAddToast } = useToast();
   const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
@@ -116,6 +123,7 @@ const SubCategoryForm = ({
   const selectedCategoryOption = parentCategoriesOptions.find(
     (option) => option.value === values.category,
   );
+  console.log(selectedDate, timeValue);
 
   return (
     <ErrorBoundary
@@ -157,26 +165,21 @@ const SubCategoryForm = ({
             inputInfo={language.translationKeyHelpText}
             required
           />
-          <SharedCategoryInputs
+          <SharedCategoryInputsNew
             labelText={language.categoryStatus}
             categoryNamevalue={values.subCategoryName}
             categoryNameId="subCategoryName"
             categoryNameErrorText={language[errors.subCategoryName]}
             categoryNameLabelText={language.categoryName}
             onCategoryNameChange={onChange}
-            defaultStatusValue={{
-              label: translateKey(values.categoryStatus, language),
-              value: values.categoryStatus,
-              id: values.categoryStatus,
-            }}
-            onSelectStatus={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            status={values.categoryStatus}
+            onSelectStatus={onSelectChange}
+            value={values.categoryStatus}
             onSelectDate={handleDaySelect}
             selectedDate={selectedDate}
             timeValue={timeValue}
             onTimeChange={handleTimeChange}
+            name="categoryStatus"
+            id="categoryStatus"
           />
         </FieldSet>
       </Form>

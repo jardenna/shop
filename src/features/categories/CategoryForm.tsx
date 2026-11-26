@@ -5,12 +5,10 @@ import { useDatePicker } from '../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import SharedCategoryInputs from '../../components/SharedCategoryInputs';
+import SharedCategoryInputsNew from '../../components/SharedCategoryInputsNew';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/navConstants';
-import type { OptionType } from '../../shared/types';
-import { translateKey } from '../../utils/utils';
 import { validateCategory } from '../../utils/validation/validateCategory';
 import { useLanguage } from '../language/useLanguage';
 import {
@@ -33,10 +31,6 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
     navigate(-1);
   };
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
   // Initial state
   const initialState: CreateCategoryRequest = {
     categoryName: selectedCategory?.categoryName || '',
@@ -46,7 +40,7 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const { onChange, values, onSubmit, errors, onCustomChange, isFormDirty } =
+  const { onChange, values, onSubmit, errors, onSelectChange, isFormDirty } =
     useFormValidation({
       initialState,
       validate: validateCategory,
@@ -94,26 +88,22 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
         isLoading={isLoading || isCreateLoading}
       >
         <FieldSet legendText={language.categories}>
-          <SharedCategoryInputs
+          <SharedCategoryInputsNew
             labelText={language.categoryStatus}
             onCategoryNameChange={onChange}
             categoryNamevalue={values.categoryName}
             categoryNameId="categoryName"
-            defaultStatusValue={{
-              label: translateKey(values.categoryStatus, language),
-              value: values.categoryStatus,
-              id: values.categoryStatus,
-            }}
-            onSelectStatus={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            status={values.categoryStatus}
+
+            onSelectStatus={onSelectChange}
+            value={values.categoryStatus}
             onSelectDate={handleDaySelect}
             selectedDate={selectedDate}
             timeValue={timeValue}
             onTimeChange={handleTimeChange}
             categoryNameErrorText={language[errors.categoryName]}
             categoryNameLabelText={language.categoryName}
+            name="categoryStatus"
+            id="categoryStatus"
           />
         </FieldSet>
       </Form>
