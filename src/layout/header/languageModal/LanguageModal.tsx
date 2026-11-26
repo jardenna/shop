@@ -3,12 +3,12 @@ import IconContent from '../../../components/IconContent';
 import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import type { InputChangeHandler } from '../../../shared/types';
+import type { InputChangeHandler, Language } from '../../../shared/types';
 import type { Values } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 interface LanguageProps {
-  localLanguage: Record<string, string>;
+  localLanguage: Language;
   onChange: InputChangeHandler;
   values: Values;
   onSubmit: () => void;

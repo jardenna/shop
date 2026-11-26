@@ -4,14 +4,18 @@ import Selectbox from '../../../components/selectbox/Selectbox';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import type { SelectedLanguage } from '../../../features/language/languageSlice';
 import { languageOptions } from '../../../features/language/useLanguage';
-import type { InputChangeHandler, OptionType } from '../../../shared/types';
+import type {
+  InputChangeHandler,
+  Language,
+  OptionType,
+} from '../../../shared/types';
 
 export interface Values {
   languageOption: SelectedLanguage;
 }
 
 interface BaseHeaderProps {
-  localLanguage: Record<string, string>;
+  localLanguage: Language;
   onChange: InputChangeHandler;
   values: Values;
 }
