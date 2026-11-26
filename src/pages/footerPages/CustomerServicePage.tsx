@@ -1,8 +1,5 @@
 import MailTo from '../../components/MailTo';
 import { useLanguage } from '../../features/language/useLanguage';
-import SelectField from '../../features/products/components/SelectField';
-import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
-import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import {
   contactInformation,
   shopInformationList,
@@ -12,9 +9,6 @@ import MainPageContainer from '../pageContainer/MainPageContainer';
 
 const CustomerServicePage = () => {
   const { language } = useLanguage();
-  const { data: subCategories } = useGetSubCategoriesWithParentQuery();
-  const id = '68512200e5d1e20900c9ad83';
-  const { data: product } = useGetProductByIdQuery(id);
 
   return (
     <MainPageContainer
@@ -22,30 +16,6 @@ const CustomerServicePage = () => {
       className="general-page"
     >
       <div className="generel-page-container">
-        {subCategories && product && (
-          <>
-            <SelectField
-              parentCategories={subCategories}
-              selectedProduct={product}
-              allowedSizes={product.subCategory.allowedSizes}
-              images={product.images}
-              id={id}
-              refetch={() => {
-                console.log(1);
-              }}
-            />
-            <SelectField
-              parentCategories={subCategories}
-              selectedProduct={null}
-              images={[]}
-              allowedSizes={[]}
-              id={null}
-              refetch={() => {
-                console.log(1);
-              }}
-            />
-          </>
-        )}
         <section>
           <h2>We're here to help</h2>
           <p>
