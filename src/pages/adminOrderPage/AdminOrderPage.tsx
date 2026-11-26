@@ -1,6 +1,5 @@
-import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
+import { usePagination } from '../../components/pagination/hooks/usePagination';
 import Pagination from '../../components/pagination/Pagination';
-import { paginationText } from '../../components/pagination/utils/paginationText';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useGetAllAdminOrdersQuery } from '../../features/adminOrders/adminOrderApiSlice';
@@ -11,7 +10,6 @@ import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/navConstants';
-import type { OptionType } from '../../shared/types';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
 const AdminOrderPage = () => {
@@ -67,31 +65,20 @@ const AdminOrderPage = () => {
   const totalBtns = allOrders?.pages ?? 1;
   const itemCount = allOrders ? allOrders.orderCount : 0;
 
-  const handleSelectCount = (option: OptionType) => {
-    const newCount = Number(option.value);
-    updatePagination(1, newCount);
-  };
-
-  const { scrollToRef, setShouldScroll } =
-    useScrollOnPagination<HTMLTableElement>({
-      isLoading,
-    });
-
-  const handlePagination = (id: number) => {
-    // Early exit so current page doesn't spam history or rerender
-    if (id === page) {
-      return;
-    }
-    setPage(id);
-    setShouldScroll(true);
-  };
-
-  const { paginationMobileText } = paginationText({
+  const {
+    scrollToRef,
+    handlePagination,
+    handleSelectCount,
+    paginationMobileText,
+  } = usePagination({
+    isLoading,
     page,
     itemsPerPage,
     itemCount,
     totalBtns,
     language,
+    setPage,
+    updatePagination,
   });
 
   return (
