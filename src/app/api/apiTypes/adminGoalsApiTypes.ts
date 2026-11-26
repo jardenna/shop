@@ -1,7 +1,7 @@
 import type { DefaultResponse } from './sharedApiTypes';
 
-export type GoalPeriod = 7 | 30 | 365;
-type GoalPeriods = Record<GoalPeriod, number>;
+export type GoalPeriod = '7' | '30' | '365';
+type GoalPeriods = Record<GoalPeriod, string>;
 
 export type GoalKeys = 'newCustomers' | 'revenue' | 'orders';
 
@@ -35,5 +35,5 @@ export interface AdminGoalsTableResponse {
 }
 
 export interface AdminGoalsRequest {
-  goals: Record<string, Record<number, number>>;
+  goals: Record<string, Record<string, string>>;
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import type { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import Selectbox from '../components/selectbox/Selectbox';
+import SelectboxNew from '../components/selectbox/SelectboxNew';
 import SkeltonKpiList from '../components/skeleton/skeletonKpiCard/SkeltonKpiList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -19,7 +19,7 @@ import AdminPageContainer from './pageContainer/AdminPageContainer';
 
 const DashboardPage = () => {
   const { language } = useLanguage();
-  const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>(7);
+  const [selectedPeriod, setSelectedPeriod] = useState<GoalPeriod>('7');
   const { currentUser } = useAuth();
 
   const {
@@ -36,7 +36,7 @@ const DashboardPage = () => {
 
   const handleSelectPeriod = (option: OptionType | null) => {
     if (option) {
-      setSelectedPeriod(Number(option.value) as GoalPeriod);
+      setSelectedPeriod(option.value as GoalPeriod);
     }
   };
 
@@ -63,10 +63,10 @@ const DashboardPage = () => {
         <h2>
           {language.welcomeBack} {currentUser?.username}
         </h2>
-        <Selectbox
+        <SelectboxNew
           id="year"
           variant="secondary"
-          defaultValue={translatedOptions[0]}
+          value={selectedPeriod}
           options={translatedOptions}
           onChange={handleSelectPeriod}
           inputHasNoLabel

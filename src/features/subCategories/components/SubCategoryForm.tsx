@@ -8,13 +8,12 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import Selectbox from '../../../components/selectbox/Selectbox';
+import SelectboxNew from '../../../components/selectbox/SelectboxNew';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/navConstants';
-import type { OptionType } from '../../../shared/types';
 import { translateKey } from '../../../utils/utils';
 import { validateSubcategory } from '../../../utils/validation/validateSubcategory';
 import { useLanguage } from '../../language/useLanguage';
@@ -47,11 +46,7 @@ const SubCategoryForm = ({
     navigate(-1);
   };
 
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  // Options and initial state
+  // Options
   const parentCategoriesOptions = parentCategories.map(
     ({ categoryName, id, categoryStatus }) => ({
       label: translateKey(categoryName, language) || categoryName,
@@ -71,19 +66,12 @@ const SubCategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const {
-    onChange,
-    values,
-    onSubmit,
-    onCustomChange,
-    onSelectChange,
-    errors,
-    isFormDirty,
-  } = useFormValidation({
-    initialState,
-    validate: validateSubcategory,
-    callback: handleSubmitCategory,
-  });
+  const { onChange, values, onSubmit, onSelectChange, errors, isFormDirty } =
+    useFormValidation({
+      initialState,
+      validate: validateSubcategory,
+      callback: handleSubmitCategory,
+    });
 
   const { onAddToast } = useToast();
   const {
@@ -125,10 +113,6 @@ const SubCategoryForm = ({
     }
   }
 
-  const selectedCategoryOption = parentCategoriesOptions.find(
-    (option) => option.value === values.category,
-  );
-
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
@@ -146,14 +130,12 @@ const SubCategoryForm = ({
         isLoading={isLoading || isCreateLoading}
       >
         <FieldSet legendText={language.categories}>
-          <Selectbox
+          <SelectboxNew
             id="category"
-            defaultValue={selectedCategoryOption}
+            value={values.category}
             options={parentCategoriesOptions}
+            onChange={onSelectChange}
             components={{ Option: StatusOptions }}
-            onChange={(selectedOptions: OptionType) => {
-              handleSelectStatus('category', selectedOptions);
-            }}
             name="category"
             labelText={language.categoryName}
             errorText={language[errors.category]}

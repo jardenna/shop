@@ -6,7 +6,7 @@ import { chipVariants } from '../../../components/chips/chipsUtils';
 import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import LinkButton from '../../../components/LinkButton';
 import MoreLink from '../../../components/MoreLink';
-import Selectbox from '../../../components/selectbox/Selectbox';
+import SelectboxNew from '../../../components/selectbox/SelectboxNew';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import SkeletonPromoCodeTable from '../../../components/skeleton/SkeletonPromoCodeTable';
 import { AdminPath } from '../../../layout/nav/navConstants';
@@ -68,14 +68,12 @@ const PromoCodeTable = () => {
       >
         <div className="promo-code-header">
           <div className="promo-code-select">
-            <Selectbox
-              variant="secondary"
+            <SelectboxNew
               id="year"
-              placeHolder={language.selectYear}
+              variant="secondary"
+              value={selectedYear}
               options={yearOptions}
-              onChange={(option) => {
-                handleSelectYear(option);
-              }}
+              onChange={handleSelectYear}
               inputHasNoLabel
               name="year"
               labelText={language.filterByYear}
