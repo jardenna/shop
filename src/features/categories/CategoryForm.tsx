@@ -48,8 +48,13 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
     });
 
   const { onAddToast } = useToast();
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
+  const {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  } = useDatePicker({ initialTime: selectedTime });
 
   // Redux hooks
   const [updateCategory, { isLoading }] = useUpdateCategoryMutation();
@@ -80,7 +85,7 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
     <ErrorBoundary FallbackComponent={ErrorBoundaryFallback} onReset={onReset}>
       <Form
         onSubmit={onSubmit}
-        disabled={!!id && !isFormDirty}
+        disabled={!!id && !isFormDirty && !isChanged}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
           onCancel: handleGoback,

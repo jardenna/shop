@@ -84,8 +84,13 @@ const ProductForm = ({
   });
 
   // Hooks
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
+  const {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  } = useDatePicker({ initialTime: selectedTime });
 
   const { activeImages, isImageTouched, onToggleDisableImage, disabledImages } =
     useUploadImages({
@@ -198,7 +203,7 @@ const ProductForm = ({
   }
 
   const isSubmitActive =
-    previewData.length > 0 || isFormDirty || isImageTouched;
+    previewData.length > 0 || isFormDirty || isImageTouched || isChanged;
 
   return (
     <ErrorBoundary

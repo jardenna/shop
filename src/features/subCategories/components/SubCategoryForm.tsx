@@ -86,8 +86,13 @@ const SubCategoryForm = ({
   });
 
   const { onAddToast } = useToast();
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
+  const {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  } = useDatePicker({ initialTime: selectedTime });
 
   // Redux hooks
   const [updateSubCategory, { isLoading }] = useUpdateSubCategoryMutation();
@@ -123,7 +128,6 @@ const SubCategoryForm = ({
   const selectedCategoryOption = parentCategoriesOptions.find(
     (option) => option.value === values.category,
   );
-  console.log(selectedDate, timeValue);
 
   return (
     <ErrorBoundary
@@ -133,7 +137,7 @@ const SubCategoryForm = ({
       }}
     >
       <Form
-        disabled={!!id && !isFormDirty}
+        disabled={!!id && !isFormDirty && !isChanged}
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
