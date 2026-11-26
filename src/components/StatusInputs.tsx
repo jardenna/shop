@@ -5,14 +5,16 @@ import type { InputChangeHandler, RefElementType } from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
-import SelectboxNew from './selectbox/SelectboxNew';
+import SelectboxNew, {
+  type SelectChangeHandler,
+} from './selectbox/SelectboxNew';
 import type { StatusOptionsValues } from './SharedCategoryInputs';
 
 export interface BaseStatusInputsProps {
   id: string;
   labelText: string;
   name: string;
-  onSelectStatus: any;
+  onSelectStatus: SelectChangeHandler<StatusOptionsValues>;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
   timeValue: string;
