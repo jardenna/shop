@@ -1,16 +1,28 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { useAppSelector } from '../../app/hooks';
-import ActionNavBtn from '../../components/dropdownBtn/ActionNavBtn';
+import ActionNavBtn, {
+  type ActionNavItemProps,
+} from '../../components/dropdownBtn/ActionNavBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { selectCartList } from '../../features/cartSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { HeaderProps } from '../header/Header';
+import type { InputChangeHandler } from '../../shared/types';
+import type { Values } from '../header/Header';
 import LanguageModal from '../header/languageModal/LanguageModal';
 import { ShopPath } from '../nav/navConstants';
 import HeaderBadgeLinks from './HeaderBadgeLinks';
+
+export interface HeaderProps {
+  dropdownBtnList: ActionNavItemProps[];
+  localLanguage: Record<string, string>;
+  onChange: InputChangeHandler;
+  values: Values;
+  onSubmit: () => void;
+}
 
 const HeaderIcons = ({
   dropdownBtnList,
@@ -18,11 +30,11 @@ const HeaderIcons = ({
   onChange,
   values,
   localLanguage,
-  currentUser,
 }: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
   const cartItems = useAppSelector(selectCartList);
+  const { currentUser } = useAuth();
 
   const cartItemsLength = cartItems.length;
   const favoriteItemText =

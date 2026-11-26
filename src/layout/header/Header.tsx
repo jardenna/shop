@@ -1,8 +1,7 @@
-import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
 import type { SelectedLanguage } from '../../features/language/languageSlice';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { InputChangeHandler, OptionType } from '../../shared/types';
+import type { InputChangeHandler } from '../../shared/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import MobileNav from '../nav/MobileNav';
@@ -21,18 +20,13 @@ interface MobileProps {
 }
 
 export interface BaseHeaderProps {
-  currencyOptions: OptionType[];
-  defaultValue: OptionType;
   localLanguage: Record<string, string>;
   onChange: InputChangeHandler;
   values: Values;
-  onSelectCurrency: (selectedOptions: OptionType) => void;
 }
 
 export interface HeaderProps extends BaseHeaderProps {
-  currentUser: UserResponse | null;
   dropdownBtnList: ActionNavItemProps[];
-  isAuthReady: boolean;
   onSubmit: () => void;
 }
 
@@ -40,11 +34,6 @@ const Header = ({
   dropdownBtnList,
   onChange,
   values,
-  currencyOptions,
-  onSelectCurrency,
-  defaultValue,
-  currentUser,
-  isAuthReady,
   isMobileSize,
   onSubmit,
   localLanguage,
@@ -72,12 +61,7 @@ const Header = ({
           dropdownBtnList={dropdownBtnList}
           onChange={onChange}
           values={values}
-          currencyOptions={currencyOptions}
-          onSelectCurrency={onSelectCurrency}
-          defaultValue={defaultValue}
           localLanguage={localLanguage}
-          currentUser={currentUser}
-          isAuthReady={isAuthReady}
           onSubmit={onSubmit}
         />
       </div>
