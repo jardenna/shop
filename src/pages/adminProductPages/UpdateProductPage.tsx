@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import NotFoundError from '../../components/NotFoundError';
 import SkeletonUpdateProduct from '../../components/skeleton/skeletonUpdateProduct/SkeletonUpdateProduct';
 import { useLanguage } from '../../features/language/useLanguage';
-import SelectField from '../../features/products/components/SelectField';
+import ProductForm from '../../features/products/components/ProductForm';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import { AdminPath } from '../../layout/nav/navConstants';
@@ -44,7 +44,7 @@ const UpdateProductPage = () => {
     product &&
     subCategories && (
       <AdminPageContainer heading={`${language.update} ${product.productName}`}>
-        <SelectField
+        <ProductForm
           parentCategories={subCategories}
           selectedProduct={product}
           allowedSizes={product.subCategory.allowedSizes}

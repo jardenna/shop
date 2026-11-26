@@ -1,5 +1,5 @@
 import { useLanguage } from '../../features/language/useLanguage';
-import SelectField from '../../features/products/components/SelectField';
+import ProductForm from '../../features/products/components/ProductForm';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -10,7 +10,7 @@ const CreateProductPage = () => {
   return (
     subCategories && (
       <AdminPageContainer heading={language.createNewProduct}>
-        <SelectField
+        <ProductForm
           parentCategories={subCategories}
           selectedProduct={null}
           images={[]}

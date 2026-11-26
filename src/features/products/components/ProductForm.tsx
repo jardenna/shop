@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate } from 'react-router';
 import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
@@ -16,9 +16,9 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
-import Selectbox from '../../../components/selectbox/Selectbox';
+import SelectboxNew from '../../../components/selectbox/SelectboxNew';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
-import StatusInputs from '../../../components/StatusInputs';
+import StatusInputsNew from '../../../components/StatusInputsNew';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
@@ -27,8 +27,8 @@ import {
 } from '../../../hooks/useLocalStorage';
 import { AdminPath } from '../../../layout/nav/navConstants';
 import variables from '../../../scss/variables.module.scss';
-import type { OptionType } from '../../../shared/types';
 import { getColorOptions } from '../../../utils/colorUtils';
+import { findAvailableSizes } from '../../../utils/sizeUtils';
 import {
   maxDiscount,
   maxFiles,
@@ -41,6 +41,7 @@ import { handleImageUpload } from '../../imageUploads/handleImageUpload';
 import { useLanguage } from '../../language/useLanguage';
 import ProductPrice from '../../shop/components/productPrice/ProductPrice';
 import { useUploadImageMutation } from '../../uploadImageApiSlice';
+import { useUploadImages } from '../hooks/useUploadImages';
 import {
   useCreateProductMutation,
   useUpdateProductMutation,
@@ -58,40 +59,50 @@ interface ProductFormProps {
 }
 
 const ProductForm = ({
-  id,
-  selectedProduct,
   parentCategories,
+  selectedProduct,
   images,
+  id,
   allowedSizes,
   refetch,
 }: ProductFormProps) => {
   const navigate = useNavigate();
-  const { language } = useLanguage();
-  const formRef = useRef<HTMLFormElement | null>(null);
   const location = useLocation();
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const { language } = useLanguage();
+  const { currencyText } = useCurrency();
+  const { onAddToast } = useToast();
+  const dispatch = useAppDispatch();
 
   const returnTo = location.state?.returnTo ?? AdminPath.AdminProducts;
 
-  // Options and initial state
-  const parentCategoryOptions = parentCategories.map(
-    ({ translationKey, parentCategoryName, categoryId, categoryStatus }) => ({
-      label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(translationKey, language)}`,
-      value: categoryId,
-      id: categoryId,
-      status: categoryStatus,
-    }),
-  );
-
+  const selectedTime = selectedProduct?.scheduledDate;
+  const uploadedImg = selectedProduct?.images || [];
   const sortedColorList = getColorOptions({
     language,
     borderColor: variables.colorIconBorder,
   });
 
-  const handleSelectCategory = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
+  // Hooks
+  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
+    useDatePicker({ initialTime: selectedTime });
+
+  const { activeImages, isImageTouched, onToggleDisableImage, disabledImages } =
+    useUploadImages({
+      uploadedImg,
+    });
+
+  // Options
+  const parentCategoryOptions = parentCategories.map(
+    ({ parentCategoryName, categoryId, categoryStatus, translationKey }) => ({
+      label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(translationKey, language)}`,
+      value: categoryId,
+      status: categoryStatus,
+    }),
+  );
 
   const initialState = {
+    subCategory: selectedProduct?.subCategory._id ?? '',
     brand: selectedProduct?.brand ?? '',
     colors: selectedProduct?.colors ?? [],
     quantity: selectedProduct?.quantity ?? 0,
@@ -103,63 +114,20 @@ const ProductForm = ({
     productName: selectedProduct?.productName ?? '',
     productStatus: selectedProduct?.productStatus ?? 'Inactive',
     sizes: selectedProduct?.sizes ?? [],
-    subCategory: selectedProduct?.subCategory._id ?? '',
   };
 
-  const defaultColorValue = selectedProduct?.colors.map((color) => ({
-    label: language[color],
-    value: color,
-    id: color,
-  }));
-
-  const defaultCategoryValue = parentCategoryOptions.find(
-    (category) => category.value === selectedProduct?.subCategory._id,
-  );
-
-  const selectedTime = selectedProduct?.scheduledDate;
-  const uploadedImg = selectedProduct?.images || [];
-
-  const [disabledImages, setDisabledImages] = useState<string[]>([]);
-
-  // Helper functions
-  const handleGoback = () => {
-    navigate(-1);
-  };
-
-  const handleToggleImage = (img: string) => {
-    setDisabledImages(
-      disabledImages.includes(img)
-        ? disabledImages.filter((i: string) => i !== img)
-        : [...disabledImages, img],
-    );
-  };
-
-  const activeImages = uploadedImg.filter(
-    (img) => !disabledImages.includes(img),
-  );
-
-  const handleSelectStatus = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
-  const handleSelectColors = (name: string, selectedOptions: OptionType[]) => {
-    const selectedValues = selectedOptions.map((option) => option.value);
-    onCustomChange(name, selectedValues);
-  };
-
-  // Hooks
   const {
-    onChange,
     values,
-    onSubmit,
+    onSelectChange,
     errors,
-    onCustomChange,
+    onSubmit,
+    onChange,
     onChangeTextArea,
-    filesData,
-    previewData,
-    removePreviewImage,
-    onBlur,
     onFileChange,
+    removePreviewImage,
+    previewData,
+    filesData,
+    onBlur,
     isFormDirty,
   } = useFormValidation({
     initialState,
@@ -172,40 +140,31 @@ const ProductForm = ({
     false,
   );
 
-  const { onAddToast } = useToast();
-
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
-
-  const { currencyText } = useCurrency();
-
+  // Helper functions
   const handleShowPrice = () => {
     setShowPrice(!showPrice);
   };
 
+  const handleGoback = () => {
+    navigate(-1);
+  };
+
+  const availableSizes = findAvailableSizes({
+    parentCategories,
+    selectedSubCategoryId: values.subCategory,
+    allowedSizes,
+  });
+
   // Redux hooks
   const [uploadImages] = useUploadImageMutation();
+
   const [createProduct, { isLoading: isCreateLoading }] =
     useCreateProductMutation();
+
   const [updateProduct, { isLoading }] = useUpdateProductMutation();
-
-  const dispatch = useAppDispatch();
-
-  const isSubmitActive =
-    previewData.length > 0 ||
-    isFormDirty ||
-    uploadedImg.length !== activeImages.length;
 
   // Submit handler
   async function handleSubmitProduct() {
-    if (!isSubmitActive) {
-      onAddToast({
-        message: language.noChanges,
-      });
-      return;
-    }
-
-    // Upload logic
     const mergedImages = await handleImageUpload({
       id,
       activeImages,
@@ -214,56 +173,32 @@ const ProductForm = ({
       dispatch,
     });
 
-    // eslint-disable-next-line react-hooks/immutability
-    values.images = mergedImages;
-
-    const filteredSizes = values.sizes.filter((size) =>
-      availableSizes.includes(size),
-    );
-
     const productData = {
       ...values,
-      sizes: filteredSizes,
+      images: mergedImages,
+      sizes: values.sizes.filter((size) => availableSizes.includes(size)),
       scheduledDate: selectedDate,
     };
 
     const result = await (
       id
-        ? updateProduct({
-            id,
-            product: productData,
-          })
+        ? updateProduct({ id, product: productData })
         : createProduct(productData)
     ).unwrap();
 
-    if (result.success) {
-      onAddToast({
-        message: result.message,
-      });
-      navigate(returnTo, { replace: true });
+    if (!result.success) {
+      return;
     }
+
+    onAddToast({
+      message: result.message,
+    });
+
+    navigate(returnTo, { replace: true });
   }
 
-  // allowedSizes
-  const selectedCategory = parentCategories.find(
-    (category) => values.subCategory === category.categoryId,
-  );
-
-  const availableSizes = selectedCategory
-    ? selectedCategory.allowedSizes
-    : allowedSizes;
-
-  useEffect(() => {
-    // Only keep sizes that are still allowed in the new category
-    if (availableSizes.length) {
-      const filteredSizes = values.sizes.filter((size) =>
-        availableSizes.includes(size),
-      );
-      if (filteredSizes.length !== values.sizes.length) {
-        onCustomChange('sizes', filteredSizes);
-      }
-    }
-  }, [availableSizes, values.sizes, onCustomChange]);
+  const isSubmitActive =
+    previewData.length > 0 || isFormDirty || isImageTouched;
 
   return (
     <ErrorBoundary
@@ -275,28 +210,26 @@ const ProductForm = ({
       <Form
         onSubmit={onSubmit}
         disabled={!!id && !isSubmitActive}
+        isLoading={isLoading || isCreateLoading}
         submitBtnLabel={id ? language.save : language.create}
         ref={formRef}
         cancelBtnProps={{
           onCancel: handleGoback,
         }}
-        isLoading={isLoading || isCreateLoading}
       >
         <section className="product-form-container">
           <article className="product-form-left-column">
             <FormCard legendText={language.category}>
-              <Selectbox
+              <SelectboxNew
                 errorText={language[errors.subCategory]}
-                id="subCategory"
                 name="subCategory"
                 labelText={language.category}
                 options={parentCategoryOptions}
-                components={{ Option: StatusOptions }}
-                defaultValue={defaultCategoryValue}
+                value={values.subCategory}
+                onChange={onSelectChange}
+                id="subCategory"
                 isSearchable
-                onChange={(selectedOptions: OptionType) => {
-                  handleSelectCategory('subCategory', selectedOptions);
-                }}
+                components={{ Option: StatusOptions }}
                 required
               />
             </FormCard>
@@ -309,7 +242,7 @@ const ProductForm = ({
                 previewData={previewData}
                 removePreviewImage={removePreviewImage}
                 onToggleImage={(id) => {
-                  handleToggleImage(id);
+                  onToggleDisableImage(id);
                 }}
                 disabledImages={disabledImages}
               />
@@ -355,9 +288,10 @@ const ProductForm = ({
               </div>
             </FormCard>
           </article>
+
           <article className="product-form-right-column">
             <FormCard legendText={language.productVariants}>
-              <Selectbox
+              <SelectboxNew
                 id="colors"
                 name="colors"
                 errorText={language[errors.colors]}
@@ -366,13 +300,12 @@ const ProductForm = ({
                 options={sortedColorList}
                 components={{ Option: ColorOptions }}
                 isSearchable
-                defaultValue={defaultColorValue}
+                value={values.colors}
                 isMulti
-                onChange={(values: OptionType[]) => {
-                  handleSelectColors('colors', values);
-                }}
+                onChange={onSelectChange}
                 required
               />
+
               <ProductOptionGroup
                 options={availableSizes}
                 name="sizes"
@@ -440,22 +373,17 @@ const ProductForm = ({
               </div>
             </FormCard>
             <FormCard legendText={language.details}>
-              <StatusInputs
+              <StatusInputsNew
                 labelText={language.productStatus}
                 ref={formRef}
-                defaultStatusValue={{
-                  label: translateKey(values.productStatus, language),
-                  value: values.productStatus,
-                  id: values.productStatus,
-                }}
-                onSelectStatus={(selectedOptions: OptionType) => {
-                  handleSelectStatus('productStatus', selectedOptions);
-                }}
-                status={values.productStatus}
                 onSelectDate={handleDaySelect}
                 selectedDate={selectedDate}
                 timeValue={timeValue}
                 onTimeChange={handleTimeChange}
+                onSelectStatus={onSelectChange}
+                value={values.productStatus}
+                name="productStatus"
+                id="productStatus"
               />
               <div>
                 <Input
