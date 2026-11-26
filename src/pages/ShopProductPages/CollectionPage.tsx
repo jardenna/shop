@@ -205,9 +205,9 @@ const CollectionPage = () => {
       </ProductPageContainer>
       {itemCount > 0 && (
         <Pagination
+          isError={isError}
           refetch={refetch}
           totalBtns={totalBtns}
-          isError={isError}
           page={page}
           onPagination={handlePagination}
           onSelectCount={handleSelectCount}
