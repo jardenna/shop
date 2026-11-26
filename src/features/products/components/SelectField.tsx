@@ -2,48 +2,51 @@
 import { useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useLocation, useNavigate } from 'react-router';
-import type { Product } from '../../app/api/apiTypes/adminProductApiTypes';
-import type { Size } from '../../app/api/apiTypes/sharedApiTypes';
-import type { SubCategoriesWithParent } from '../../app/api/apiTypes/subCategoryApiTypes';
-import { useAppDispatch } from '../../app/hooks';
-import { useCurrency } from '../../features/currency/useCurrency';
-import { handleImageUpload } from '../../features/imageUploads/handleImageUpload';
-import { useLanguage } from '../../features/language/useLanguage';
-import ImageUpload from '../../features/products/components/ImageUpload';
-import { useHandleImages } from '../../features/products/hooks/useHandleImages';
+import type { Product } from '../../../app/api/apiTypes/adminProductApiTypes';
+import type { Size } from '../../../app/api/apiTypes/sharedApiTypes';
+import type { SubCategoriesWithParent } from '../../../app/api/apiTypes/subCategoryApiTypes';
+import { useAppDispatch } from '../../../app/hooks';
+import FormCard from '../../../components/carts/FormCard';
+import { useDatePicker } from '../../../components/datePicker/useDatePicker';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
+import Form from '../../../components/Form';
+import Input from '../../../components/formElements/Input';
+import ProductOptionGroup from '../../../components/formElements/productOptionGroup/ProductOptionGroup';
+import Textarea from '../../../components/formElements/Textarea';
+import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
+import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
+import ColorOptions from '../../../components/selectbox/ColorOptions';
+import SelectboxNew from '../../../components/selectbox/SelectboxNew';
+import StatusOptions from '../../../components/selectbox/StatusOptions';
+import StatusInputsNew from '../../../components/StatusInputsNew';
+import { useToast } from '../../../components/toast/hooks/useToast';
+import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
-  useCreateProductMutation,
-  useUpdateProductMutation,
-} from '../../features/products/productApiSlice';
-import ProductPrice from '../../features/shop/components/productPrice/ProductPrice';
-import { useUploadImageMutation } from '../../features/uploadImageApiSlice';
-import { useFormValidation } from '../../hooks/useFormValidation';
-import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
-import { AdminPath } from '../../layout/nav/navConstants';
-import variables from '../../scss/variables.module.scss';
-import { getColorOptions } from '../../utils/colorUtils';
-import { findAvailableSizes } from '../../utils/sizeUtils';
+  localStorageKeys,
+  useLocalStorage,
+} from '../../../hooks/useLocalStorage';
+import { AdminPath } from '../../../layout/nav/navConstants';
+import variables from '../../../scss/variables.module.scss';
+import { getColorOptions } from '../../../utils/colorUtils';
+import { findAvailableSizes } from '../../../utils/sizeUtils';
 import {
   maxDiscount,
   maxFiles,
   minDiscount,
   translateKey,
-} from '../../utils/utils';
-import { validateProduct } from '../../utils/validation/validateProduct';
-import FormCard from '../carts/FormCard';
-import { useDatePicker } from '../datePicker/useDatePicker';
-import ErrorBoundaryFallback from '../ErrorBoundaryFallback';
-import Form from '../Form';
-import Input from '../formElements/Input';
-import ProductOptionGroup from '../formElements/productOptionGroup/ProductOptionGroup';
-import Textarea from '../formElements/Textarea';
-import ToggleSwitch from '../formElements/toggleSwitch/ToggleSwitch';
-import LabelValueGrid from '../labelValueGrid/LabelValueGrid';
-import StatusInputsNew from '../StatusInputsNew';
-import { useToast } from '../toast/hooks/useToast';
-import ColorOptions from './ColorOptions';
-import SelectboxNew from './SelectboxNew';
-import StatusOptions from './StatusOptions';
+} from '../../../utils/utils';
+import { validateProduct } from '../../../utils/validation/validateProduct';
+import { useCurrency } from '../../currency/useCurrency';
+import { handleImageUpload } from '../../imageUploads/handleImageUpload';
+import { useLanguage } from '../../language/useLanguage';
+import ProductPrice from '../../shop/components/productPrice/ProductPrice';
+import { useUploadImageMutation } from '../../uploadImageApiSlice';
+import { useUploadImages } from '../hooks/useUploadImages';
+import {
+  useCreateProductMutation,
+  useUpdateProductMutation,
+} from '../productApiSlice';
+import ImageUpload from './ImageUpload';
 
 interface SelectFieldProps {
   allowedSizes: Size[];
@@ -84,7 +87,7 @@ const SelectField = ({
     useDatePicker({ initialTime: selectedTime });
 
   const { activeImages, isImageTouched, onToggleDisableImage, disabledImages } =
-    useHandleImages({
+    useUploadImages({
       uploadedImg,
     });
 
