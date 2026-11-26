@@ -3,13 +3,14 @@ import IconContent from '../../../components/IconContent';
 import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 import type { BaseHeaderProps } from '../Header';
+import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
 
 const LanguageModal = ({
   onChange,
   values,
   onSubmit,
+  onSelectChange,
   localLanguage,
 }: BaseHeaderProps) => {
   const ariaControlsId = useId();
@@ -46,6 +47,7 @@ const LanguageModal = ({
           values={values}
           onChange={onChange}
           localLanguage={localLanguage}
+          onSelectChange={onSelectChange}
         />
       </FormModal>
     </>

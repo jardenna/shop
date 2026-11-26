@@ -71,7 +71,7 @@ const Layout = () => {
     currencyOption: exchangeRate,
   };
 
-  const { values, onChange } = useFormValidation({
+  const { values, onChange, onSelectChange } = useFormValidation({
     initialState,
   });
 
@@ -120,6 +120,7 @@ const Layout = () => {
         onSubmit={handleChangePreferences}
         values={values}
         onChange={onChange}
+        onSelectChange={onSelectChange}
       />
       <RouteErrorBoundary>
         <>

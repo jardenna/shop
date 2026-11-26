@@ -1,5 +1,4 @@
 import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
-import type { SelectedLanguage } from '../../features/language/languageSlice';
 import { useLanguage } from '../../features/language/useLanguage';
 import type { InputChangeHandler, Language } from '../../shared/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
@@ -9,11 +8,8 @@ import { ShopPath } from '../nav/navConstants';
 import NavContainer from '../nav/NavContainer';
 import { navList } from '../nav/navLists';
 import './_header.scss';
+import type { LanguageCurrencyPreferencesValues } from './languageModal/LanguageCurrencyPreferences';
 import Logo from './Logo';
-
-export interface Values {
-  languageOption: SelectedLanguage;
-}
 
 interface MobileProps {
   isMobileSize: boolean;
@@ -22,7 +18,8 @@ interface MobileProps {
 export interface BaseHeaderProps {
   localLanguage: Language;
   onChange: InputChangeHandler;
-  values: Values;
+  onSelectChange: any;
+  values: LanguageCurrencyPreferencesValues;
   onSubmit: () => void;
 }
 
@@ -37,6 +34,7 @@ const Header = ({
   isMobileSize,
   onSubmit,
   localLanguage,
+  onSelectChange,
 }: HeaderProps & MobileProps) => {
   const { language } = useLanguage();
 
@@ -63,6 +61,7 @@ const Header = ({
           values={values}
           localLanguage={localLanguage}
           onSubmit={onSubmit}
+          onSelectChange={onSelectChange}
         />
       </div>
     </LayoutElement>

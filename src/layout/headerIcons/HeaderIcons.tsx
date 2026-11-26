@@ -19,6 +19,7 @@ const HeaderIcons = ({
   onChange,
   values,
   localLanguage,
+  onSelectChange,
 }: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
@@ -71,6 +72,7 @@ const HeaderIcons = ({
             onChange={onChange}
             localLanguage={localLanguage}
             onSubmit={onSubmit}
+            onSelectChange={onSelectChange}
           />
         </li>
         <li>

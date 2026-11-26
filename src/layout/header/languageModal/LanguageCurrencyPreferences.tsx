@@ -1,33 +1,31 @@
 import FieldSet from '../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
-import Selectbox from '../../../components/selectbox/Selectbox';
+import SelectboxNew from '../../../components/selectbox/SelectboxNew';
+import type { CurrencyCode } from '../../../features/currency/currencyConverterUtil';
 import { useCurrency } from '../../../features/currency/useCurrency';
+import type { SelectedLanguage } from '../../../features/language/languageSlice';
 import { languageOptions } from '../../../features/language/useLanguage';
-import type {
-  InputChangeHandler,
-  Language,
-  OptionType,
-} from '../../../shared/types';
-import type { Values } from '../Header';
+import type { InputChangeHandler, Language } from '../../../shared/types';
+
+export interface LanguageCurrencyPreferencesValues {
+  currencyOption: CurrencyCode;
+  languageOption: SelectedLanguage;
+}
 
 interface LanguageCurrencyPreferencesProps {
   localLanguage: Language;
   onChange: InputChangeHandler;
-  values: Values;
+  onSelectChange: any;
+  values: LanguageCurrencyPreferencesValues;
 }
 
 const LanguageCurrencyPreferences = ({
   values,
   onChange,
+  onSelectChange,
   localLanguage,
 }: LanguageCurrencyPreferencesProps) => {
-  const { currencyOptions, exchangeRate } = useCurrency();
-
-  const handleSelectCurrency = (selectedOptions: OptionType) => {
-    onChange({
-      target: { name: 'currencyOption', value: selectedOptions.value },
-    } as Parameters<InputChangeHandler>[0]);
-  };
+  const { currencyOptions } = useCurrency();
 
   return (
     <div className="preferences">
@@ -41,18 +39,14 @@ const LanguageCurrencyPreferences = ({
       </FieldSet>
 
       <FieldSet legendText={localLanguage.currency} showLegendText>
-        <Selectbox
+        <SelectboxNew
           id="currency"
-          defaultValue={{
-            label: exchangeRate,
-            value: exchangeRate,
-            id: exchangeRate,
-          }}
           options={currencyOptions}
-          onChange={handleSelectCurrency}
-          name="currency"
+          onChange={onSelectChange}
+          name="currencyOption"
           labelText={localLanguage.currency}
           inputHasNoLabel
+          value={values.currencyOption}
         />
       </FieldSet>
     </div>
