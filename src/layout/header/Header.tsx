@@ -19,7 +19,7 @@ interface MobileProps {
   isMobileSize: boolean;
 }
 
-interface HeaderProps {
+export interface HeaderProps {
   dropdownBtnList: ActionNavItemProps[];
   localLanguage: Language;
   onChange: InputChangeHandler;
