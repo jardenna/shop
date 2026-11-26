@@ -1,6 +1,6 @@
 import MailTo from '../../components/MailTo';
-import SelectField from '../../components/selectbox/SelectField';
 import { useLanguage } from '../../features/language/useLanguage';
+import SelectField from '../../features/products/components/SelectField';
 import { useGetProductByIdQuery } from '../../features/products/productApiSlice';
 import { useGetSubCategoriesWithParentQuery } from '../../features/subCategories/subCategoryApiSlice';
 import {
