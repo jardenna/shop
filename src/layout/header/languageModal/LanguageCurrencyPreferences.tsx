@@ -5,26 +5,22 @@ import type { CurrencyCode } from '../../../features/currency/currencyConverterU
 import { useCurrency } from '../../../features/currency/useCurrency';
 import type { SelectedLanguage } from '../../../features/language/languageSlice';
 import { languageOptions } from '../../../features/language/useLanguage';
-import type { InputChangeHandler, Language } from '../../../shared/types';
+import type { OmitChecked } from '../../../shared/types';
+import type { BaseHeaderProps } from '../Header';
 
 export interface LanguageCurrencyPreferencesValues {
   currencyOption: CurrencyCode;
   languageOption: SelectedLanguage;
 }
 
-interface LanguageCurrencyPreferencesProps {
-  localLanguage: Language;
-  onChange: InputChangeHandler;
-  onSelectChange: any;
-  values: LanguageCurrencyPreferencesValues;
-}
+type OmittedHeaderProps = OmitChecked<BaseHeaderProps, 'onSubmit'>;
 
 const LanguageCurrencyPreferences = ({
   values,
   onChange,
   onSelectChange,
   localLanguage,
-}: LanguageCurrencyPreferencesProps) => {
+}: OmittedHeaderProps) => {
   const { currencyOptions } = useCurrency();
 
   return (
