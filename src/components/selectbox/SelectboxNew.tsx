@@ -6,28 +6,25 @@ import type {
   Props,
 } from 'react-select';
 import Select from 'react-select';
-import type { Status } from '../../app/api/apiTypes/adminApiTypes';
 import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
 
-export interface StatusOptionsValues {
-  label: string;
-  value: Status;
-}
-
-export type StatusChangeHandler = (
-  selected: OnChangeValue<StatusOptionsValues, false>,
-  actionMeta: ActionMeta<StatusOptionsValues>,
+export type SelectChangeHandler<
+  Option extends { value: string },
+  IsMulti extends boolean = false,
+> = (
+  selected: OnChangeValue<Option, IsMulti>,
+  actionMeta: ActionMeta<Option>,
 ) => void;
 
 interface SelectboxNewProps<
   Option extends { value: string },
   IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<Props<Option, IsMulti, Group>, 'value'> {
+> extends Omit<Props<Option, IsMulti, Group>, 'value' | 'onChange'> {
   id: string;
   labelText: string;
-  onChange: NonNullable<Props<Option, IsMulti, Group>['onChange']>;
+  onChange: SelectChangeHandler<Option, IsMulti>;
   options: OptionsOrGroups<Option, Group>;
   value: IsMulti extends true ? string[] : string;
   errorText?: string;
