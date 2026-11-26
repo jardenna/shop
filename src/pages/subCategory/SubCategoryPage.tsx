@@ -19,6 +19,8 @@ const SubCategoryPage = () => {
 
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
+    initialSortField: 'createdAt',
+    initialSortOrder: 'desc',
   });
 
   const { data: hasScheduledData } = useGetHasSubCatScheduledQuery(undefined, {
