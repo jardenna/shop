@@ -18,7 +18,7 @@ import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import SelectboxNew from '../../../components/selectbox/SelectboxNew';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
-import StatusInputsNew from '../../../components/StatusInputsNew';
+import StatusInputs from '../../../components/StatusInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
@@ -378,7 +378,7 @@ const ProductForm = ({
               </div>
             </FormCard>
             <FormCard legendText={language.details}>
-              <StatusInputsNew
+              <StatusInputs
                 labelText={language.productStatus}
                 ref={formRef}
                 onSelectDate={handleDaySelect}

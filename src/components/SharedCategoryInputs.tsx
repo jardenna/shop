@@ -1,23 +1,34 @@
+import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import type { InputChangeHandler } from '../shared/types';
 import Input from './formElements/Input';
-import StatusInputs, { type BaseStatusInputsProps } from './StatusInputs';
+import StatusInputs from './StatusInputs';
 
-interface SharedCategoryInputsProps extends BaseStatusInputsProps {
+interface SharedCategoryInputsProps {
   categoryNameErrorText: string;
   categoryNameId: string;
   categoryNameLabelText: string;
   categoryNamevalue: string;
+  id: string;
+  labelText: string;
+  name: string;
   onCategoryNameChange: InputChangeHandler;
+  onSelectStatus: any;
+  onTimeChange: InputChangeHandler;
+  selectedDate: Date;
+  timeValue: string;
+  value: Status;
+  onSelectDate: (date: Date) => void;
 }
 
 const SharedCategoryInputs = ({
-  status,
+  id,
   onSelectDate,
   selectedDate,
   timeValue,
   onTimeChange,
   onSelectStatus,
-  defaultStatusValue,
+  name,
+  value,
   onCategoryNameChange,
   categoryNamevalue,
   categoryNameId,
@@ -40,11 +51,12 @@ const SharedCategoryInputs = ({
       labelText={labelText}
       timeValue={timeValue}
       onTimeChange={onTimeChange}
-      status={status}
       onSelectDate={onSelectDate}
       onSelectStatus={onSelectStatus}
-      defaultStatusValue={defaultStatusValue}
       selectedDate={selectedDate}
+      id={id}
+      name={name}
+      value={value}
     />
   </>
 );

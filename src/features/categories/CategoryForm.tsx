@@ -5,7 +5,7 @@ import { useDatePicker } from '../../components/datePicker/useDatePicker';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import FieldSet from '../../components/fieldset/FieldSet';
 import Form from '../../components/Form';
-import SharedCategoryInputsNew from '../../components/SharedCategoryInputsNew';
+import SharedCategoryInputs from '../../components/SharedCategoryInputs';
 import { useToast } from '../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../hooks/useFormValidation';
 import { AdminPath } from '../../layout/nav/navConstants';
@@ -93,7 +93,7 @@ const CategoryForm = ({ selectedCategory, id, onReset }: CategoryFormProps) => {
         isLoading={isLoading || isCreateLoading}
       >
         <FieldSet legendText={language.categories}>
-          <SharedCategoryInputsNew
+          <SharedCategoryInputs
             labelText={language.categoryStatus}
             onCategoryNameChange={onChange}
             categoryNamevalue={values.categoryName}

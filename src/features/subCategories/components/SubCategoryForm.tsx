@@ -10,7 +10,7 @@ import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
 import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
-import SharedCategoryInputsNew from '../../../components/SharedCategoryInputsNew';
+import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/navConstants';
@@ -169,7 +169,7 @@ const SubCategoryForm = ({
             inputInfo={language.translationKeyHelpText}
             required
           />
-          <SharedCategoryInputsNew
+          <SharedCategoryInputs
             labelText={language.categoryStatus}
             categoryNamevalue={values.subCategoryName}
             categoryNameId="subCategoryName"
