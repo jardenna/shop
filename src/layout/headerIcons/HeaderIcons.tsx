@@ -17,9 +17,6 @@ const HeaderIcons = ({
   onSubmit,
   onChange,
   values,
-  currencyOptions,
-  defaultValue,
-  onSelectCurrency,
   localLanguage,
   currentUser,
 }: HeaderProps) => {
@@ -71,9 +68,6 @@ const HeaderIcons = ({
           <LanguageModal
             values={values}
             onChange={onChange}
-            currencyOptions={currencyOptions}
-            defaultValue={defaultValue}
-            onSelectCurrency={onSelectCurrency}
             localLanguage={localLanguage}
             onSubmit={onSubmit}
           />
