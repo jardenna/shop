@@ -3,29 +3,16 @@ import IconContent from '../../../components/IconContent';
 import FormModal from '../../../components/Modal/FormModal';
 import TriggerModalButton from '../../../components/Modal/TriggerModalButton';
 import { useModal } from '../../../components/Modal/useModal';
-import type { InputChangeHandler, OptionType } from '../../../shared/types';
-import type { Values } from '../Header';
+import type { BaseHeaderProps } from '../Header';
 import LanguageCurrencyPreferences from './LanguageCurrencyPreferences';
-
-interface LanguageProps {
-  currencyOptions: OptionType[];
-  defaultValue: OptionType;
-  localLanguage: Record<string, string>;
-  onChange: InputChangeHandler;
-  values: Values;
-  onSelectCurrency: (selectedOptions: OptionType) => void;
-  onSubmit: () => void;
-}
 
 const LanguageModal = ({
   onChange,
   values,
-  currencyOptions,
-  defaultValue,
   onSubmit,
-  onSelectCurrency,
+  onSelectChange,
   localLanguage,
-}: LanguageProps) => {
+}: BaseHeaderProps) => {
   const ariaControlsId = useId();
   const modalId = 'language';
 
@@ -59,10 +46,8 @@ const LanguageModal = ({
         <LanguageCurrencyPreferences
           values={values}
           onChange={onChange}
-          currencyOptions={currencyOptions}
-          defaultValue={defaultValue}
-          onSelectCurrency={onSelectCurrency}
           localLanguage={localLanguage}
+          onSelectChange={onSelectChange}
         />
       </FormModal>
     </>

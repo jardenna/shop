@@ -23,7 +23,6 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 import danishLang from '../locales/da.json';
 import englishLang from '../locales/en.json';
 import RouteErrorBoundary from '../pages/pageContainer/RouteErrorBoundary';
-import type { OptionType } from '../shared/types';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import { AdminPath, ShopPath } from './nav/navConstants';
@@ -41,8 +40,8 @@ const Layout = () => {
   }, [pathname, dispatch]);
 
   // Hooks
-  const { currentUser, isAuthReady, isEmployee } = useAuth();
-  const { currencyOptions, onChangePrice, exchangeRate } = useCurrency();
+  const { currentUser, isEmployee } = useAuth();
+  const { onChangePrice, exchangeRate } = useCurrency();
   const [logout] = useLogoutMutation();
   const { isMobileSize } = useMediaQuery();
 
@@ -61,10 +60,6 @@ const Layout = () => {
     navigate(ShopPath.Root);
   };
 
-  const handleSelectCurrency = (name: string, selectedOptions: OptionType) => {
-    onCustomChange(name, selectedOptions.value);
-  };
-
   function handleChangePreferences() {
     switchLanguage(values.languageOption);
     onChangePrice(values.currencyOption);
@@ -76,7 +71,7 @@ const Layout = () => {
     currencyOption: exchangeRate,
   };
 
-  const { onChange, values, onCustomChange } = useFormValidation({
+  const { values, onChange, onSelectChange } = useFormValidation({
     initialState,
   });
 
@@ -122,20 +117,10 @@ const Layout = () => {
         localLanguage={localLanguage}
         dropdownBtnList={accountDropdownList}
         isMobileSize={isMobileSize}
-        defaultValue={{
-          label: exchangeRate,
-          value: exchangeRate,
-          id: exchangeRate,
-        }}
-        onChange={onChange}
         onSubmit={handleChangePreferences}
         values={values}
-        currencyOptions={currencyOptions}
-        currentUser={currentUser}
-        isAuthReady={isAuthReady}
-        onSelectCurrency={(selectedOptions: OptionType) => {
-          handleSelectCurrency('currencyOption', selectedOptions);
-        }}
+        onChange={onChange}
+        onSelectChange={onSelectChange}
       />
       <RouteErrorBoundary>
         <>

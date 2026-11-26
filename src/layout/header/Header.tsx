@@ -1,8 +1,11 @@
-import type { UserResponse } from '../../app/api/apiTypes/userApiTypes';
 import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
-import type { SelectedLanguage } from '../../features/language/languageSlice';
+import type { SelectChangeHandler } from '../../components/selectbox/SelectboxNew';
 import { useLanguage } from '../../features/language/useLanguage';
-import type { InputChangeHandler, OptionType } from '../../shared/types';
+import type {
+  InputChangeHandler,
+  Language,
+  OptionType,
+} from '../../shared/types';
 import HeaderIcons from '../headerIcons/HeaderIcons';
 import LayoutElement from '../LayoutElement';
 import MobileNav from '../nav/MobileNav';
@@ -10,44 +13,33 @@ import { ShopPath } from '../nav/navConstants';
 import NavContainer from '../nav/NavContainer';
 import { navList } from '../nav/navLists';
 import './_header.scss';
+import type { LanguageCurrencyPreferencesValues } from './languageModal/LanguageCurrencyPreferences';
 import Logo from './Logo';
 
-export type Values = {
-  languageOption: SelectedLanguage;
-};
-
-type MobileProps = {
+interface MobileProps {
   isMobileSize: boolean;
-};
+}
 
 export interface BaseHeaderProps {
-  currencyOptions: OptionType[];
-  defaultValue: OptionType;
-  localLanguage: Record<string, string>;
+  localLanguage: Language;
   onChange: InputChangeHandler;
-  values: Values;
-  onSelectCurrency: (selectedOptions: OptionType) => void;
+  onSelectChange: SelectChangeHandler<OptionType>;
+  values: LanguageCurrencyPreferencesValues;
+  onSubmit: () => void;
 }
 
 export interface HeaderProps extends BaseHeaderProps {
-  currentUser: UserResponse | null;
   dropdownBtnList: ActionNavItemProps[];
-  isAuthReady: boolean;
-  onSubmit: () => void;
 }
 
 const Header = ({
   dropdownBtnList,
   onChange,
   values,
-  currencyOptions,
-  onSelectCurrency,
-  defaultValue,
-  currentUser,
-  isAuthReady,
   isMobileSize,
   onSubmit,
   localLanguage,
+  onSelectChange,
 }: HeaderProps & MobileProps) => {
   const { language } = useLanguage();
 
@@ -72,13 +64,9 @@ const Header = ({
           dropdownBtnList={dropdownBtnList}
           onChange={onChange}
           values={values}
-          currencyOptions={currencyOptions}
-          onSelectCurrency={onSelectCurrency}
-          defaultValue={defaultValue}
           localLanguage={localLanguage}
-          currentUser={currentUser}
-          isAuthReady={isAuthReady}
           onSubmit={onSubmit}
+          onSelectChange={onSelectChange}
         />
       </div>
     </LayoutElement>

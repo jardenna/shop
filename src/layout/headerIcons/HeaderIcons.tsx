@@ -4,6 +4,7 @@ import ActionNavBtn from '../../components/dropdownBtn/ActionNavBtn';
 import ErrorBoundaryFallback from '../../components/ErrorBoundaryFallback';
 import { useFavorites } from '../../components/favorites/useFavorites';
 import IconContent from '../../components/IconContent';
+import { useAuth } from '../../features/auth/hooks/useAuth';
 import { useGetTotalQtyQuery } from '../../features/cart/cartApiSlice';
 import { selectCartList } from '../../features/cartSlice';
 import { useLanguage } from '../../features/language/useLanguage';
@@ -17,15 +18,13 @@ const HeaderIcons = ({
   onSubmit,
   onChange,
   values,
-  currencyOptions,
-  defaultValue,
-  onSelectCurrency,
   localLanguage,
-  currentUser,
+  onSelectChange,
 }: HeaderProps) => {
   const { language } = useLanguage();
   const { favorites, onReset } = useFavorites({});
   const cartItems = useAppSelector(selectCartList);
+  const { currentUser } = useAuth();
 
   const cartItemsLength = cartItems.length;
   const favoriteItemText =
@@ -71,11 +70,9 @@ const HeaderIcons = ({
           <LanguageModal
             values={values}
             onChange={onChange}
-            currencyOptions={currencyOptions}
-            defaultValue={defaultValue}
-            onSelectCurrency={onSelectCurrency}
             localLanguage={localLanguage}
             onSubmit={onSubmit}
+            onSelectChange={onSelectChange}
           />
         </li>
         <li>
