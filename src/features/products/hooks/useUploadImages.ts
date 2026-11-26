@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-interface useHandleImagesProps {
+interface useUploadImagesProps {
   uploadedImg: string[];
 }
 
-export const useHandleImages = ({ uploadedImg }: useHandleImagesProps) => {
+export const useUploadImages = ({ uploadedImg }: useUploadImagesProps) => {
   const [disabledImages, setDisabledImages] = useState<string[]>([]);
 
   const handleToggleDisableImage = (img: string) => {
