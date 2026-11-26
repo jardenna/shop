@@ -6,6 +6,7 @@ import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
 import SelectboxNew from './selectbox/SelectboxNew';
+import type { StatusOptionsValues } from './SharedCategoryInputs';
 
 export interface BaseStatusInputsProps {
   id: string;
