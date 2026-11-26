@@ -1,31 +1,27 @@
 import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
-import type {
-  InputChangeHandler,
-  OptionType,
-  RefElementType,
-} from '../shared/types';
+import type { InputChangeHandler, RefElementType } from '../shared/types';
 import { newDate, today } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
-import Selectbox from './selectbox/Selectbox';
+import SelectboxNew from './selectbox/SelectboxNew';
 
 interface StatusOptionsValues {
-  id: string;
   label: string;
   value: Status;
 }
 
 export interface BaseStatusInputsProps {
-  defaultStatusValue: StatusOptionsValues;
+  id: string;
   labelText: string;
+  name: string;
+  onSelectStatus: any;
   onTimeChange: InputChangeHandler;
   selectedDate: Date;
-  status: string;
   timeValue: string;
+  value: Status;
   onSelectDate: (date: Date) => void;
-  onSelectStatus: (selectedOptions: OptionType) => void;
 }
 
 interface StatusInputsProps extends BaseStatusInputsProps {
@@ -35,17 +31,18 @@ interface StatusInputsProps extends BaseStatusInputsProps {
 }
 
 const StatusInputs = ({
-  status,
   onSelectDate,
   selectedDate,
   timeValue,
   onTimeChange,
-  onSelectStatus,
-  defaultStatusValue,
-  ref,
   labelText,
   min,
   max,
+  ref,
+  value,
+  id,
+  name,
+  onSelectStatus,
 }: StatusInputsProps) => {
   const { language } = useLanguage();
 
@@ -53,33 +50,31 @@ const StatusInputs = ({
     {
       label: language.inactive,
       value: 'Inactive',
-      id: 'inactive',
     },
     {
       label: language.scheduled,
       value: 'Scheduled',
-      id: 'scheduled',
     },
     {
       label: language.published,
       value: 'Published',
-      id: 'published',
     },
   ];
 
   return (
     <>
-      <Selectbox
-        id="status"
-        defaultValue={defaultStatusValue}
+      <SelectboxNew
+        id={id}
         options={statusOptions}
         onChange={onSelectStatus}
-        name="status"
+        name={name}
         labelText={labelText}
+        value={value}
         ref={ref}
         required
       />
-      {status === 'Scheduled' && (
+
+      {value === 'Scheduled' && (
         <>
           <TimeInput
             value={timeValue}

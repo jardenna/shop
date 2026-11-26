@@ -71,16 +71,28 @@ const SubCategoryForm = ({
   const selectedTime = selectedCategory?.scheduledDate;
 
   // Hooks
-  const { onChange, values, onSubmit, onCustomChange, errors, isFormDirty } =
-    useFormValidation({
-      initialState,
-      validate: validateSubcategory,
-      callback: handleSubmitCategory,
-    });
+  const {
+    onChange,
+    values,
+    onSubmit,
+    onCustomChange,
+    onSelectChange,
+    errors,
+    isFormDirty,
+  } = useFormValidation({
+    initialState,
+    validate: validateSubcategory,
+    callback: handleSubmitCategory,
+  });
 
   const { onAddToast } = useToast();
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
+  const {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  } = useDatePicker({ initialTime: selectedTime });
 
   // Redux hooks
   const [updateSubCategory, { isLoading }] = useUpdateSubCategoryMutation();
@@ -125,7 +137,7 @@ const SubCategoryForm = ({
       }}
     >
       <Form
-        disabled={!!id && !isFormDirty}
+        disabled={!!id && !isFormDirty && !isChanged}
         onSubmit={onSubmit}
         submitBtnLabel={id ? language.save : language.create}
         cancelBtnProps={{
@@ -164,19 +176,14 @@ const SubCategoryForm = ({
             categoryNameErrorText={language[errors.subCategoryName]}
             categoryNameLabelText={language.categoryName}
             onCategoryNameChange={onChange}
-            defaultStatusValue={{
-              label: translateKey(values.categoryStatus, language),
-              value: values.categoryStatus,
-              id: values.categoryStatus,
-            }}
-            onSelectStatus={(selectedOptions: OptionType) => {
-              handleSelectStatus('categoryStatus', selectedOptions);
-            }}
-            status={values.categoryStatus}
+            onSelectStatus={onSelectChange}
+            value={values.categoryStatus}
             onSelectDate={handleDaySelect}
             selectedDate={selectedDate}
             timeValue={timeValue}
             onTimeChange={handleTimeChange}
+            name="categoryStatus"
+            id="categoryStatus"
           />
         </FieldSet>
       </Form>

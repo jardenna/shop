@@ -4,10 +4,18 @@ import type { ChangeInputType } from '../../shared/types';
 import { newDate } from '../../utils/dates';
 
 export const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
-  const initTime = initialTime || newDate;
+  const initTime = initialTime ? new Date(initialTime) : newDate;
   const formattedTime = format(initTime, 'HH:mm');
   const [selectedDate, setSelectedDate] = useState<Date>(initTime);
   const [timeValue, setTimeValue] = useState(formattedTime);
+  const [initialValues] = useState(() => ({
+    selectedDate: initTime.getTime(),
+    timeValue: formattedTime,
+  }));
+
+  const isChanged =
+    selectedDate.getTime() !== initialValues.selectedDate ||
+    timeValue !== initialValues.timeValue;
 
   const parseTime = (value: string) => {
     const [hours, minutes] = value.split(':').map(Number);
@@ -35,5 +43,11 @@ export const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
     setSelectedDate(newDate);
   };
 
-  return { handleTimeChange, handleDaySelect, selectedDate, timeValue };
+  return {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  };
 };

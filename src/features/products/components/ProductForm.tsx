@@ -18,7 +18,7 @@ import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
 import SelectboxNew from '../../../components/selectbox/SelectboxNew';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
-import StatusInputsNew from '../../../components/StatusInputsNew';
+import StatusInputs from '../../../components/StatusInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import {
@@ -84,8 +84,13 @@ const ProductForm = ({
   });
 
   // Hooks
-  const { handleTimeChange, handleDaySelect, selectedDate, timeValue } =
-    useDatePicker({ initialTime: selectedTime });
+  const {
+    handleTimeChange,
+    handleDaySelect,
+    selectedDate,
+    timeValue,
+    isChanged,
+  } = useDatePicker({ initialTime: selectedTime });
 
   const { activeImages, isImageTouched, onToggleDisableImage, disabledImages } =
     useUploadImages({
@@ -198,7 +203,7 @@ const ProductForm = ({
   }
 
   const isSubmitActive =
-    previewData.length > 0 || isFormDirty || isImageTouched;
+    previewData.length > 0 || isFormDirty || isImageTouched || isChanged;
 
   return (
     <ErrorBoundary
@@ -373,7 +378,7 @@ const ProductForm = ({
               </div>
             </FormCard>
             <FormCard legendText={language.details}>
-              <StatusInputsNew
+              <StatusInputs
                 labelText={language.productStatus}
                 ref={formRef}
                 onSelectDate={handleDaySelect}
