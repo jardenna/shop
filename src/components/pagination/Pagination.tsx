@@ -15,7 +15,6 @@ const Pagination = ({
   page,
   totalBtns,
   onPagination,
-  defaultValue,
   onSelectCount,
   totalCount,
   paginationMobileText,
@@ -40,7 +39,6 @@ const Pagination = ({
         />
         <PaginationSelect
           onSelectCount={onSelectCount}
-          defaultValue={defaultValue}
           totalCount={totalCount}
         />
       </section>

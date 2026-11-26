@@ -140,11 +140,6 @@ const AdminOrderPage = () => {
         onSelectCount={handleSelectCount}
         totalCount={itemCount}
         paginationMobileText={paginationMobileText}
-        defaultValue={{
-          value: itemsPerPage.toString(),
-          label: itemsPerPage.toString(),
-          id: itemsPerPage.toString(),
-        }}
       />
     </AdminPageContainer>
   );

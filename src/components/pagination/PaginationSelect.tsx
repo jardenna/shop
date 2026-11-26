@@ -6,13 +6,11 @@ import FieldSet from '../fieldset/FieldSet';
 import Selectbox from '../selectbox/Selectbox';
 
 export interface PaginationSelectProps {
-  defaultValue: OptionType;
   totalCount: number;
   onSelectCount: (option: OptionType) => void;
 }
 
 const PaginationSelect = ({
-  defaultValue,
   onSelectCount,
   totalCount,
 }: PaginationSelectProps) => {
@@ -42,7 +40,6 @@ const PaginationSelect = ({
           id="productCount"
           onChange={onSelectCount}
           labelText={language.selectNumber}
-          defaultValue={defaultValue}
           inputHasNoLabel
           variant="secondary"
         />

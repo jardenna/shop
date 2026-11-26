@@ -1,3 +1,4 @@
+import type { SingleValue } from 'react-select';
 import type { Language, OptionType } from '../../../shared/types';
 import { paginationText } from '../utils/paginationText';
 import { useScrollOnPagination } from './useScrollOnPagination';
@@ -37,12 +38,14 @@ export const usePagination = ({
     setShouldScroll(true);
   };
 
-  const handleSelectCount = (option: OptionType) => {
-    updatePagination(1, Number(option.value));
+  const handleSelectCount = (selected: SingleValue<OptionType>) => {
+    if (!selected) {
+      return;
+    }
 
+    updatePagination(1, Number(selected.value));
     setShouldScroll(true);
   };
-
   const { paginationMobileText } = paginationText({
     page,
     itemsPerPage,
@@ -51,17 +54,10 @@ export const usePagination = ({
     language,
   });
 
-  const defaultValue = {
-    value: itemsPerPage.toString(),
-    label: itemsPerPage.toString(),
-    id: itemsPerPage.toString(),
-  };
-
   return {
     scrollToRef,
     handlePagination,
     handleSelectCount,
     paginationMobileText,
-    defaultValue,
   };
 };
