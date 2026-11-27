@@ -3,6 +3,7 @@ import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import FieldSet from '../fieldset/FieldSet';
 import SelectboxNew from '../selectbox/SelectboxNew';
+import type { PaginationCount } from '../../hooks/useSearchParamsState';
 
 export interface PaginationSelectProps {
   itemsPerPage: number;
@@ -18,13 +19,13 @@ const PaginationSelect = ({
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const { isLargeTabletSize } = useMediaQuery();
-  const selectPaginationCountList = ['8', '16', '32'];
+  const paginationCountList: PaginationCount[] = [8, 16, 32];
 
-  const selectProductCountOptions = selectPaginationCountList
-    .filter((count) => Number(count) <= totalCount)
+  const selectPaginationCountOptions = paginationCountList
+    .filter((count) => count <= totalCount)
     .map((count) => ({
-      label: count,
-      value: count,
+      label: String(count),
+      value: String(count),
     }));
 
   return (
@@ -33,7 +34,7 @@ const PaginationSelect = ({
         <SelectboxNew
           selectKey={`perpage-${pathname}`}
           name="productCount"
-          options={selectProductCountOptions}
+          options={selectPaginationCountOptions}
           id="productCount"
           onChange={onSelectCount}
           labelText={language.selectNumber}

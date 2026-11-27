@@ -4,9 +4,10 @@ import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 type SearchParamValue = string | string[];
+export type PaginationCount = 8 | 16 | 32;
 
 interface SearchParamsStateOptions {
-  defaultPaginationCount?: number;
+  defaultPaginationCount?: PaginationCount;
   pagination?: boolean;
 }
 
