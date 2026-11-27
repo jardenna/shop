@@ -46,24 +46,29 @@ const StatusInputs = ({
 
   const statusOptions: StatusOptionsValues[] = [
     {
-      label: language.inactive,
+      label: 'inactive',
       value: 'Inactive',
     },
     {
-      label: language.scheduled,
+      label: 'scheduled',
       value: 'Scheduled',
     },
     {
-      label: language.published,
+      label: 'published',
       value: 'Published',
     },
   ];
+
+  const translatedOptions = statusOptions.map((option) => ({
+    ...option,
+    label: language[option.label],
+  }));
 
   return (
     <>
       <SelectboxNew
         id={id}
-        options={statusOptions}
+        options={translatedOptions}
         onChange={onSelectStatus}
         name={name}
         labelText={labelText}

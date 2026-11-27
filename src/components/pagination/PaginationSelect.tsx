@@ -1,50 +1,46 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import type { OptionType } from '../../shared/types';
 import FieldSet from '../fieldset/FieldSet';
-import Selectbox from '../selectbox/Selectbox';
+import SelectboxNew from '../selectbox/SelectboxNew';
+import type { PaginationCount } from '../../hooks/useSearchParamsState';
 
 export interface PaginationSelectProps {
-  defaultValue: OptionType;
+  itemsPerPage: number;
+  onSelectCount: any;
   totalCount: number;
-  onSelectCount: (option: OptionType) => void;
 }
 
 const PaginationSelect = ({
-  defaultValue,
   onSelectCount,
   totalCount,
+  itemsPerPage,
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const { isLargeTabletSize } = useMediaQuery();
-  const selectProductCountList = ['8', '16', '32'];
+  const paginationCountList: PaginationCount[] = [8, 16, 32];
 
-  const options = [...selectProductCountList, String(totalCount)]
-    .filter(
-      (count, index, values) =>
-        Number(count) <= totalCount && values.indexOf(count) === index,
-    )
+  const selectPaginationCountOptions = paginationCountList
+    .filter((count) => count <= totalCount)
     .map((count) => ({
-      value: count,
-      label: count,
-      id: count,
+      label: String(count),
+      value: String(count),
     }));
 
   return (
     <form className="pagination-select">
       <FieldSet legendText={language.displayOptions}>
-        <Selectbox
+        <SelectboxNew
           selectKey={`perpage-${pathname}`}
           name="productCount"
-          options={options}
+          options={selectPaginationCountOptions}
           id="productCount"
           onChange={onSelectCount}
           labelText={language.selectNumber}
-          defaultValue={defaultValue}
           inputHasNoLabel
           variant="secondary"
+          value={itemsPerPage.toString()}
         />
       </FieldSet>
       {!isLargeTabletSize && <p>{language.productPerPage}</p>}

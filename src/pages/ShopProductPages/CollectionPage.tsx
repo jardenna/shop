@@ -7,7 +7,7 @@ import EmptyStateContent from '../../components/emptyState/EmptyStateContent';
 import FilterPanel from '../../components/filterPanel/FilterPanel';
 import LiveAnnouncement from '../../components/LiveAnnouncement';
 import NotFoundError from '../../components/NotFoundError';
-import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
+import { usePagination } from '../../components/pagination/hooks/usePagination';
 import Pagination from '../../components/pagination/Pagination';
 import { paginationText } from '../../components/pagination/utils/paginationText';
 import { useTogglePanel } from '../../components/panel/useTogglePanel';
@@ -24,7 +24,6 @@ import { localStorageKeys, useLocalStorage } from '../../hooks/useLocalStorage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { ShopPath } from '../../layout/nav/navConstants';
-import type { OptionType } from '../../shared/types';
 import { colorList, sortColorsByTranslation } from '../../utils/colorUtils';
 import { sortSizesDynamic } from '../../utils/sizeUtils';
 import { getFilterSummary } from '../../utils/utils';
@@ -98,32 +97,31 @@ const CollectionPage = () => {
     mainCategory: category,
     subCategoryId: categoryId || '',
   });
-  const { scrollToRef, setShouldScroll } = useScrollOnPagination({
-    isLoading,
-  });
 
-  const handleSelectCount = (option: OptionType) => {
-    const newCount = Number(option.value);
-    updatePagination(1, newCount);
-    setShouldScroll(true);
-  };
-
-  const handlePagination = (id: number) => {
-    // Early exit so current page doesn't spam history or rerender
-    if (id === page) {
-      return;
-    }
-    setPage(id);
-    setShouldScroll(true);
-  };
   const itemCount = products ? products.productCount : 0;
   const totalBtns = products?.pages ?? 1;
   const src = `/images/banners/${category}_banner`;
   const altText = `${category}BannerAltText`;
 
+  const {
+    scrollToRef,
+    handlePagination,
+    handleSelectCount,
+    paginationMobileText,
+  } = usePagination({
+    isLoading,
+    page,
+    itemsPerPage,
+    itemCount,
+    totalBtns,
+    language,
+    setPage,
+    updatePagination,
+  });
+
   const { isPanelShown, onTogglePanel, onHidePanel } = useTogglePanel();
 
-  const { infoText, paginationMobileText, ariaLiveText } = paginationText({
+  const { infoText, ariaLiveText } = paginationText({
     page,
     itemsPerPage,
     itemCount,
@@ -155,7 +153,6 @@ const CollectionPage = () => {
         altText={language[altText]}
         breadcrumbsList={collectionBreadcrumbsList}
         refetch={refetch}
-
         pageHeading={pageHeading}
         products={products.products}
         productView={productView}
@@ -205,19 +202,15 @@ const CollectionPage = () => {
       </ProductPageContainer>
       {itemCount > 0 && (
         <Pagination
+          isError={isError}
           refetch={refetch}
           totalBtns={totalBtns}
-          isError={isError}
           page={page}
           onPagination={handlePagination}
           onSelectCount={handleSelectCount}
           totalCount={itemCount}
           paginationMobileText={paginationMobileText}
-          defaultValue={{
-            value: itemsPerPage.toString(),
-            label: itemsPerPage.toString(),
-            id: itemsPerPage.toString(),
-          }}
+          itemsPerPage={itemsPerPage}
         />
       )}
       {itemCount === 0 && (

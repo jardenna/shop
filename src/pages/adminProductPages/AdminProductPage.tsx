@@ -1,7 +1,6 @@
 import type { Status } from '../../app/api/apiTypes/adminApiTypes';
-import { useScrollOnPagination } from '../../components/pagination/hooks/useScrollOnPagination';
+import { usePagination } from '../../components/pagination/hooks/usePagination';
 import Pagination from '../../components/pagination/Pagination';
-import { paginationText } from '../../components/pagination/utils/paginationText';
 import SortTable from '../../components/sortTable/SortTable';
 import { createInitialFilters } from '../../components/sortTable/utils/tableFiltersUtils';
 import { useToast } from '../../components/toast/hooks/useToast';
@@ -17,7 +16,6 @@ import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useSearchParamsState } from '../../hooks/useSearchParamsState';
 import { useSortParamsState } from '../../hooks/useSortParamsState';
 import { AdminPath } from '../../layout/nav/navConstants';
-import type { OptionType } from '../../shared/types';
 import { oneDay, translateKey } from '../../utils/utils';
 import AdminPageContainer from '../pageContainer/AdminPageContainer';
 
@@ -116,31 +114,20 @@ const AdminProductPage = () => {
   const totalBtns = allProducts?.pages ?? 1;
   const itemCount = allProducts ? allProducts.productCount : 0;
 
-  const handleSelectCount = (option: OptionType) => {
-    const newCount = Number(option.value);
-    updatePagination(1, newCount);
-  };
-
-  const { scrollToRef, setShouldScroll } =
-    useScrollOnPagination<HTMLTableElement>({
-      isLoading,
-    });
-
-  const handlePagination = (id: number) => {
-    // Early exit so current page doesn't spam history or rerender
-    if (id === page) {
-      return;
-    }
-    setPage(id);
-    setShouldScroll(true);
-  };
-
-  const { paginationMobileText } = paginationText({
+  const {
+    scrollToRef,
+    handlePagination,
+    handleSelectCount,
+    paginationMobileText,
+  } = usePagination({
+    isLoading,
     page,
     itemsPerPage,
     itemCount,
     totalBtns,
     language,
+    setPage,
+    updatePagination,
   });
 
   return (
@@ -221,11 +208,7 @@ const AdminProductPage = () => {
         onSelectCount={handleSelectCount}
         totalCount={itemCount}
         paginationMobileText={paginationMobileText}
-        defaultValue={{
-          value: itemsPerPage.toString(),
-          label: itemsPerPage.toString(),
-          id: itemsPerPage.toString(),
-        }}
+        itemsPerPage={itemsPerPage}
       />
     </AdminPageContainer>
   );

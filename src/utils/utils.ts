@@ -7,25 +7,25 @@ import type {
   Language,
 } from '../shared/types';
 
-const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
-const currencyCacheKey = 'exchangeRates';
-const pageParamKey = 'page';
-const productsPerPageParamKey = 'productsPerPage';
+export const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+export const currencyCacheKey = 'exchangeRates';
+export const pageParamKey = 'page';
+export const productsPerPageParamKey = 'productsPerPage';
 
-const discountCalculation = (price: number, discount?: number) => {
+export const discountCalculation = (price: number, discount?: number) => {
   const discountPrice = discount ? (price * discount) / 100 : 0;
   return price - discountPrice;
 };
 
 // File upload utils
 const maxSizeInBytes = 1024 * 1024;
-const maxFileSize = 1 * maxSizeInBytes;
-const maxFiles = 5;
+export const maxFileSize = 1 * maxSizeInBytes;
+export const maxFiles = 5;
 
-const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+export const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
 
 // Translation
-const translateKey = (key: string | undefined, language: Language) => {
+export const translateKey = (key: string | undefined, language: Language) => {
   if (!key) {
     return '';
   }
@@ -34,7 +34,7 @@ const translateKey = (key: string | undefined, language: Language) => {
 };
 
 // Generic function to get visible items and count of hidden items from a list
-const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
+export const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
   const finalCount = visibleCount ?? list.length;
   const visibleItems = list.slice(0, finalCount);
   const additionalOptionsCount = Math.max(list.length - finalCount, 0);
@@ -43,13 +43,16 @@ const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
 };
 
 //  Generic function that generates an array of string numbers from 1 up to `count`.
-const optionsList = (count: number) =>
+export const optionsList = (count: number) =>
   [...Array(count).keys()].map((i) => (i + 1).toString());
 
 //  Generic function that returns an accessible label for a given `count`:
 //   - If a custom label exists in `ariaLabels`, it uses that.
 //   - Otherwise, it falls back to a default format using the `unit`.
-function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
+export function getAriaLabel(
+  count: number,
+  ariaLabelData: AriaLabelData,
+): string {
   const { ariaLabels, unit } = ariaLabelData;
 
   // Ensure the value is a string before returning, fallback to default
@@ -58,7 +61,7 @@ function getAriaLabel(count: number, ariaLabelData: AriaLabelData): string {
 }
 
 // Filters count
-const getFilterSummary = (filters: object): FiltersCountResult => {
+export const getFilterSummary = (filters: object): FiltersCountResult => {
   const countsByKey: Record<string, number> = {};
   let totalCount = 0;
 
@@ -80,17 +83,17 @@ const getFilterSummary = (filters: object): FiltersCountResult => {
   return { countsByKey, totalCount };
 };
 
-const getPathName = (pathname: string) => {
+export const getPathName = (pathname: string) => {
   // Normalize: remove empty segments
   const pathnameList = pathname.split('/').filter(Boolean);
 
   return pathnameList[pathnameList.length - 1] || '';
 };
 
-const toCamelCase = (value: string) =>
+export const toCamelCase = (value: string) =>
   value.replace(/[-_](\w)/g, (_, character: string) => character.toUpperCase());
 
-const pathEquals = (
+export const pathEquals = (
   path: string | undefined,
   enumVal: ShopPathValue | AdminPathValue,
 ) => `/${path}` === `/${enumVal}`;
@@ -99,7 +102,7 @@ export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
 
 // Creates an array of pagination button numbers
-function calculateBtnsRange(
+export function calculateBtnsRange(
   currentPage: number,
   totalBtns: number,
   maxPaginationBtns: number,
@@ -123,23 +126,3 @@ export const maxDiscount = 90;
 export const minDiscount = 0;
 export const minInStock = 5;
 export const vat = 25;
-
-export {
-  allowedExtensions,
-  calculateBtnsRange,
-  currencyCacheKey,
-  discountCalculation,
-  getAriaLabel,
-  getFilterSummary,
-  getPathName,
-  maxFiles,
-  maxFileSize,
-  oneDay,
-  optionsList,
-  pageParamKey,
-  pathEquals,
-  productsPerPageParamKey,
-  sliceAndCountHidden,
-  toCamelCase,
-  translateKey,
-};

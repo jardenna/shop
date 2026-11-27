@@ -4,22 +4,26 @@ import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 type SearchParamValue = string | string[];
+export type PaginationCount = 8 | 16 | 32;
 
 interface SearchParamsStateOptions {
-  defaultItemsPerPage?: number;
+  defaultPaginationCount?: PaginationCount;
   pagination?: boolean;
 }
 
 export const useSearchParamsState = <T extends object>(
   defaults: T,
-  { defaultItemsPerPage = 8, pagination = true }: SearchParamsStateOptions = {},
+  {
+    defaultPaginationCount = 8,
+    pagination = true,
+  }: SearchParamsStateOptions = {},
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get(pageParamKey)) || 1;
 
   const itemsPerPage =
-    Number(searchParams.get(productsPerPageParamKey)) || defaultItemsPerPage;
+    Number(searchParams.get(productsPerPageParamKey)) || defaultPaginationCount;
 
   const searchKey = searchParams.toString();
 
