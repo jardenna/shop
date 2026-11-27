@@ -542,9 +542,9 @@ promoCodeStartDateInvalid;Invalid start date;Ugyldig startdato
 promoCodeUpdated;Discount code was updated;Rabatkode blev opdateret
 promoCodeValidity;Validity period;Gyldighedsperiode
 publish;Publish;Udgiv
-publishDate;Publish date;Udgivelsesdato
+releaseDate;Release Date;Udgivelsesdato
 published;Published;Udgivet
-publishTime;Publish time;Udgivelsestidspunkt
+time;Time;Tidspunkt
 purple;Purple;Lilla
 qty;Qty;Antal
 qtyMustBeAtLeast;Quantity must be at least 1;Antal skal være mindst 1

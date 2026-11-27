@@ -81,7 +81,7 @@ const StatusInputs = ({
             value={timeValue}
             onChange={onTimeChange}
             id="time"
-            labelText={language.publishTime}
+            labelText={language.time}
             name="time"
             min={min}
             max={max}
@@ -90,7 +90,7 @@ const StatusInputs = ({
           <DatePicker
             onSelectDate={onSelectDate}
             selectedDate={selectedDate}
-            labelText={language.publishDate}
+            labelText={language.releaseDate}
             disabled={(date: Date) => isBefore(date, today)}
             startMonth={newDate}
             captionLayout="label"

@@ -1,7 +1,7 @@
 import type { InputChangeHandler } from '../../shared/types';
 import Input from './Input';
 
-type TimeInputProps = {
+interface TimeInputProps {
   id: string;
   labelText: string;
   name: string;
@@ -13,7 +13,7 @@ type TimeInputProps = {
   max?: number;
   min?: number;
   required?: boolean;
-};
+}
 
 const TimeInput = ({
   id,
