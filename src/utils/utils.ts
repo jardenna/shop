@@ -1,5 +1,4 @@
 import { AdminPath } from '../layout/nav/navConstants';
-
 import type { FiltersCountResult, Language } from '../shared/types';
 
 export const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
