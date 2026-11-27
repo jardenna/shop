@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import FieldSet from '../fieldset/FieldSet';
-import SelectboxNew from '../selectbox/SelectboxNew';
 import type { PaginationCount } from '../../hooks/useSearchParamsState';
+import FieldSet from '../fieldset/FieldSet';
+import Selectbox from '../selectbox/Selectbox';
 
 export interface PaginationSelectProps {
   itemsPerPage: number;
@@ -31,7 +31,7 @@ const PaginationSelect = ({
   return (
     <form className="pagination-select">
       <FieldSet legendText={language.displayOptions}>
-        <SelectboxNew
+        <Selectbox
           selectKey={`perpage-${pathname}`}
           name="productCount"
           options={selectPaginationCountOptions}

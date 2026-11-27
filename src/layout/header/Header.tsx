@@ -1,5 +1,5 @@
 import type { ActionNavItemProps } from '../../components/dropdownBtn/ActionNavBtn';
-import type { SelectChangeHandler } from '../../components/selectbox/SelectboxNew';
+import type { SelectChangeHandler } from '../../components/selectbox/Selectbox';
 import { useLanguage } from '../../features/language/useLanguage';
 import type {
   InputChangeHandler,

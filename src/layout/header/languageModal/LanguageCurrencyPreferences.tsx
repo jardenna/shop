@@ -1,6 +1,6 @@
 import FieldSet from '../../../components/fieldset/FieldSet';
 import RadioTileList from '../../../components/formElements/radioTileList/RadioTileList';
-import SelectboxNew from '../../../components/selectbox/SelectboxNew';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import type { CurrencyCode } from '../../../features/currency/currencyConverterUtil';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import type { SelectedLanguage } from '../../../features/language/languageSlice';
@@ -35,7 +35,7 @@ const LanguageCurrencyPreferences = ({
       </FieldSet>
 
       <FieldSet legendText={localLanguage.currency} showLegendText>
-        <SelectboxNew
+        <Selectbox
           id="currency"
           options={currencyOptions}
           onChange={onSelectChange}

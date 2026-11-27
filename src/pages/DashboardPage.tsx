@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import type { GoalPeriod } from '../app/api/apiTypes/adminGoalsApiTypes';
 import ErrorBoundaryFallback from '../components/ErrorBoundaryFallback';
-import SelectboxNew from '../components/selectbox/SelectboxNew';
+import Selectbox from '../components/selectbox/Selectbox';
 import SkeltonKpiList from '../components/skeleton/skeletonKpiCard/SkeltonKpiList';
 import { kpiOptions } from '../features/adminGoals/adminGoalsUtils';
 import { useAuth } from '../features/auth/hooks/useAuth';
@@ -63,7 +63,7 @@ const DashboardPage = () => {
         <h2>
           {language.welcomeBack} {currentUser?.username}
         </h2>
-        <SelectboxNew
+        <Selectbox
           id="year"
           variant="secondary"
           value={selectedPeriod}

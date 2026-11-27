@@ -8,7 +8,7 @@ import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback';
 import FieldSet from '../../../components/fieldset/FieldSet';
 import Form from '../../../components/Form';
 import Input from '../../../components/formElements/Input';
-import SelectboxNew from '../../../components/selectbox/SelectboxNew';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import SharedCategoryInputs from '../../../components/SharedCategoryInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
@@ -130,7 +130,7 @@ const SubCategoryForm = ({
         isLoading={isLoading || isCreateLoading}
       >
         <FieldSet legendText={language.categories}>
-          <SelectboxNew
+          <Selectbox
             id="category"
             value={values.category}
             options={parentCategoriesOptions}
