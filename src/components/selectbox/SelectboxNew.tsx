@@ -8,6 +8,7 @@ import type {
 import Select from 'react-select';
 import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
+import './_select-box.scss';
 
 export type SelectChangeHandler<
   Option extends { value: string },

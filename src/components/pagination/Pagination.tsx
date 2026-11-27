@@ -7,6 +7,7 @@ import PaginationSelect, {
 
 interface PaginationProps extends BasePaginationNav {
   isError: boolean;
+  itemsPerPage: number;
   pageLimit?: number;
   refetch: () => void;
 }
@@ -20,6 +21,7 @@ const Pagination = ({
   paginationMobileText,
   isError,
   refetch,
+  itemsPerPage,
   pageLimit = 5,
 }: PaginationProps & PaginationSelectProps) => (
   <ErrorBoundary
@@ -38,6 +40,7 @@ const Pagination = ({
           pageLimit={pageLimit}
         />
         <PaginationSelect
+          itemsPerPage={itemsPerPage}
           onSelectCount={onSelectCount}
           totalCount={totalCount}
         />

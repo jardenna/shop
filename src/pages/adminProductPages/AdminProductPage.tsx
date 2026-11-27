@@ -208,6 +208,7 @@ const AdminProductPage = () => {
         onSelectCount={handleSelectCount}
         totalCount={itemCount}
         paginationMobileText={paginationMobileText}
+        itemsPerPage={itemsPerPage}
       />
     </AdminPageContainer>
   );

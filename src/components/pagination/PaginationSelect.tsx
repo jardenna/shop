@@ -1,47 +1,45 @@
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../features/language/useLanguage';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import type { OptionType } from '../../shared/types';
 import FieldSet from '../fieldset/FieldSet';
-import Selectbox from '../selectbox/Selectbox';
+import SelectboxNew from '../selectbox/SelectboxNew';
 
 export interface PaginationSelectProps {
+  itemsPerPage: number;
+  onSelectCount: any;
   totalCount: number;
-  onSelectCount: (option: OptionType) => void;
 }
 
 const PaginationSelect = ({
   onSelectCount,
   totalCount,
+  itemsPerPage,
 }: PaginationSelectProps) => {
   const { pathname } = useLocation();
   const { language } = useLanguage();
   const { isLargeTabletSize } = useMediaQuery();
-  const selectProductCountList = ['8', '16', '32'];
+  const selectPaginationCountList = ['8', '16', '32'];
 
-  const options = [...selectProductCountList, String(totalCount)]
-    .filter(
-      (count, index, values) =>
-        Number(count) <= totalCount && values.indexOf(count) === index,
-    )
+  const selectProductCountOptions = selectPaginationCountList
+    .filter((count) => Number(count) <= totalCount)
     .map((count) => ({
-      value: count,
       label: count,
-      id: count,
+      value: count,
     }));
 
   return (
     <form className="pagination-select">
       <FieldSet legendText={language.displayOptions}>
-        <Selectbox
+        <SelectboxNew
           selectKey={`perpage-${pathname}`}
           name="productCount"
-          options={options}
+          options={selectProductCountOptions}
           id="productCount"
           onChange={onSelectCount}
           labelText={language.selectNumber}
           inputHasNoLabel
           variant="secondary"
+          value={itemsPerPage.toString()}
         />
       </FieldSet>
       {!isLargeTabletSize && <p>{language.productPerPage}</p>}

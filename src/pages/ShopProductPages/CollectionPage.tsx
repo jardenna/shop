@@ -210,6 +210,7 @@ const CollectionPage = () => {
           onSelectCount={handleSelectCount}
           totalCount={itemCount}
           paginationMobileText={paginationMobileText}
+          itemsPerPage={itemsPerPage}
         />
       )}
       {itemCount === 0 && (

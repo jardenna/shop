@@ -32,7 +32,7 @@ const AdminOrderPage = () => {
     setPage,
     updatePagination,
   } = useSearchParamsState(initialFilters, {
-    defaultItemsPerPage: 12,
+    defaultItemsPerPage: 16,
   });
 
   const debounceCustomerName = useDebouncedValue(filterParams.customer);
@@ -140,6 +140,7 @@ const AdminOrderPage = () => {
         onSelectCount={handleSelectCount}
         totalCount={itemCount}
         paginationMobileText={paginationMobileText}
+        itemsPerPage={itemsPerPage}
       />
     </AdminPageContainer>
   );
