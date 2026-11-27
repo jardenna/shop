@@ -1,15 +1,9 @@
 import { AdminPath } from '../layout/nav/navConstants';
 
-import type {
-  AriaLabelData,
-  FiltersCountResult,
-  Language,
-} from '../shared/types';
+import type { FiltersCountResult, Language } from '../shared/types';
 
 export const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
 export const currencyCacheKey = 'exchangeRates';
-export const pageParamKey = 'page';
-export const productsPerPageParamKey = 'productsPerPage';
 
 export const discountCalculation = (price: number, discount?: number) => {
   const discountPrice = discount ? (price * discount) / 100 : 0;
@@ -40,20 +34,6 @@ export const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
 
   return { visibleItems, additionalOptionsCount };
 };
-
-//  Generic function that returns an accessible label for a given `count`:
-//   - If a custom label exists in `ariaLabels`, it uses that.
-//   - Otherwise, it falls back to a default format using the `unit`.
-export function getAriaLabel(
-  count: number,
-  ariaLabelData: AriaLabelData,
-): string {
-  const { ariaLabels, unit } = ariaLabelData;
-
-  // Ensure the value is a string before returning, fallback to default
-  const label = ariaLabels[count - 1];
-  return typeof label === 'string' ? label : `${count} ${unit}`;
-}
 
 // Filters count
 export const getFilterSummary = (filters: object): FiltersCountResult => {
