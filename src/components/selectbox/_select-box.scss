@@ -87,15 +87,15 @@
   &.selected {
     background-color: $color-background-secondary;
     color: $color-white;
+
+    &.focused {
+      @include outline;
+    }
   }
 
   &.focused:not(.selected) {
     background-color: $color-blue-20;
     color: $color-primary;
-  }
-
-  &.focused {
-    @include outline;
   }
 }
 
