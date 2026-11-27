@@ -19,7 +19,12 @@ export type RefInputType = RefObject<HTMLInputElement | null>;
 export type RefBtnType = RefObject<HTMLButtonElement | null>;
 export type RefFormType = RefObject<HTMLFormElement | null>;
 export type AutoComplete = 'on' | 'off';
+export type Language = Record<string, string>;
 
+export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
+export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
+export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
+export type IconNameValue = (typeof IconName)[keyof typeof IconName];
 export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
 export interface OptionType<T = string> {
@@ -86,13 +91,3 @@ export interface ChartData {
   date: string;
   value: number;
 }
-
-export type Language = Record<string, string>;
-
-export type KeyCodeValue = (typeof KeyCode)[keyof typeof KeyCode];
-
-export type BtnVariantValue = (typeof BtnVariant)[keyof typeof BtnVariant];
-
-export type BtnType = ButtonHTMLAttributes<HTMLButtonElement>['type'];
-
-export type IconNameValue = (typeof IconName)[keyof typeof IconName];
