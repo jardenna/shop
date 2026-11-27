@@ -22,7 +22,7 @@ export const getRangeText = (page: number, perPage: number, total: number) => {
   return { start, end };
 };
 
-export const getAriaLabel = (
+export const getPaginationAriaLabel = (
   paginationBtn: PaginationItem,
   language: Language,
   page: number,

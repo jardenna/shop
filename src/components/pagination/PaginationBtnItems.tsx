@@ -2,7 +2,7 @@ import type { Language } from '../../shared/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
-import { getAriaLabel } from './utils/utils';
+import { getPaginationAriaLabel } from './utils/utils';
 
 type PaginationBtnItemsProps = {
   language: Language;
@@ -33,7 +33,7 @@ const PaginationBtnItems = ({
           disabled={paginationBtn.disabled}
           className={isCurrentPage ? 'current' : ''}
           ariaCurrent={isCurrentPage ? 'page' : undefined}
-          ariaLabel={getAriaLabel(paginationBtn, language, page)}
+          ariaLabel={getPaginationAriaLabel(paginationBtn, language, page)}
         >
           {isJumpButton ? <Icon iconName="more" /> : paginationBtn.label}
         </Button>
