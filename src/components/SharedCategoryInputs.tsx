@@ -1,7 +1,7 @@
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import type { InputChangeHandler } from '../shared/types';
 import Input from './formElements/Input';
-import type { SelectChangeHandler } from './selectbox/SelectboxNew';
+import type { SelectChangeHandler } from './selectbox/Selectbox';
 import StatusInputs from './StatusInputs';
 
 export interface StatusOptionsValues {

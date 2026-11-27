@@ -66,6 +66,15 @@
   .select-box__single-value {
     color: $color-primary;
   }
+
+  .select-box__option--is-selected {
+    background-color: $color-background-secondary;
+    color: $color-white;
+
+    &.select-box__option--is-focused {
+      @include outline;
+    }
+  }
 }
 
 .select-box-menu-list-item {
@@ -78,9 +87,13 @@
   &.selected {
     background-color: $color-background-secondary;
     color: $color-white;
+
+    &.focused {
+      @include outline;
+    }
   }
 
-  &.focused {
+  &.focused:not(.selected) {
     background-color: $color-blue-20;
     color: $color-primary;
   }

@@ -16,7 +16,7 @@ import Textarea from '../../../components/formElements/Textarea';
 import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSwitch';
 import LabelValueGrid from '../../../components/labelValueGrid/LabelValueGrid';
 import ColorOptions from '../../../components/selectbox/ColorOptions';
-import SelectboxNew from '../../../components/selectbox/SelectboxNew';
+import Selectbox from '../../../components/selectbox/Selectbox';
 import StatusOptions from '../../../components/selectbox/StatusOptions';
 import StatusInputs from '../../../components/StatusInputs';
 import { useToast } from '../../../components/toast/hooks/useToast';
@@ -225,7 +225,7 @@ const ProductForm = ({
         <section className="product-form-container">
           <article className="product-form-left-column">
             <FormCard legendText={language.category}>
-              <SelectboxNew
+              <Selectbox
                 errorText={language[errors.subCategory]}
                 name="subCategory"
                 labelText={language.category}
@@ -296,7 +296,7 @@ const ProductForm = ({
 
           <article className="product-form-right-column">
             <FormCard legendText={language.productVariants}>
-              <SelectboxNew
+              <Selectbox
                 id="colors"
                 name="colors"
                 errorText={language[errors.colors]}

@@ -1,85 +1,74 @@
 import type {
+  ActionMeta,
   GroupBase,
-  MultiValue,
+  OnChangeValue,
   OptionsOrGroups,
-  SingleValue,
+  Props,
 } from 'react-select';
 import Select from 'react-select';
-import { useLanguage } from '../../features/language/useLanguage';
-import type { OptionType, RefElementType } from '../../shared/types';
+import type { RefElementType } from '../../shared/types';
 import FormLabel from '../formElements/FormLabel';
 import './_select-box.scss';
 
-type SelectedOption = SingleValue<OptionType> | MultiValue<OptionType>;
+export type SelectChangeHandler<
+  Option extends { value: string },
+  IsMulti extends boolean = false,
+> = (
+  selected: OnChangeValue<Option, IsMulti>,
+  actionMeta: ActionMeta<Option>,
+) => void;
 
-type SelectboxProps = {
+interface SelectboxProps<
+  Option extends { value: string },
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>,
+> extends Omit<Props<Option, IsMulti, Group>, 'value' | 'onChange'> {
   id: string;
   labelText: string;
-  name: string;
-  options: OptionsOrGroups<OptionType, GroupBase<OptionType>>;
-  closeMenuOnSelect?: boolean;
-  components?: any;
-  defaultValue?: OptionType | OptionType[];
+  onChange: SelectChangeHandler<Option, IsMulti>;
+  options: OptionsOrGroups<Option, Group>;
+  value: IsMulti extends true ? string[] : string;
   errorText?: string;
   inputHasNoLabel?: boolean;
-  isClearable?: boolean;
-  isDisabled?: boolean;
   isFixed?: boolean;
-  isLoading?: boolean;
-  isMulti?: boolean;
-  isSearchable?: boolean;
-  menuIsOpen?: boolean;
   placeHolder?: string;
   ref?: RefElementType;
   required?: boolean;
   selectKey?: string;
   variant?: 'secondary';
-  isOptionDisabled?: (option: { value: string }) => boolean;
-  onChange: (value: any) => void;
-};
+}
 
-const Selectbox = ({
-  options,
-  isMulti,
-  onChange,
-  defaultValue,
+const Selectbox = <
+  Option extends { value: string },
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>,
+>({
+  isFixed = true,
   id,
-  placeHolder = '',
-  isSearchable = false,
-  required,
-  menuIsOpen,
-  name,
-  isDisabled,
-  closeMenuOnSelect,
-  labelText,
+  variant,
+  selectKey,
   errorText,
   inputHasNoLabel,
+  required,
+  labelText,
   ref,
-  selectKey,
-  components,
-  isFixed = true,
-  isLoading,
-  isClearable,
-  isOptionDisabled,
-  variant,
-}: SelectboxProps) => {
-  const { language } = useLanguage();
-  const handleChange = (newValue: SelectedOption) => {
-    if (isMulti) {
-      onChange(newValue);
-    } else {
-      onChange(newValue);
-    }
-  };
-
-  const closeMenuOnScroll = () => {
-    if (ref) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  options,
+  value,
+  isMulti,
+  placeHolder = '',
+  ...props
+}: SelectboxProps<Option, IsMulti, Group>) => {
   const ariaErrorId = `${id}-error`;
+
+  const flatOptions = options.flatMap((option) =>
+    'options' in option ? option.options : [option],
+  );
+
+  const selectedValue = isMulti
+    ? flatOptions.filter((option) => (value as string[]).includes(option.value))
+    : (flatOptions.find((option) => option.value === value) ?? null);
+
+  const closeMenuOnScroll = () => Boolean(ref);
 
   return (
     <div className={`input-container select-box-container ${variant ?? ''}`}>
@@ -93,39 +82,22 @@ const Selectbox = ({
       />
 
       <div className="select-box">
-        <Select
-          isLoading={isLoading}
-          isClearable={isClearable}
-          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-          menuPortalTarget={document.body}
-          menuPosition={isFixed ? 'fixed' : 'absolute'}
-          theme={(theme) => ({
-            ...theme,
-            colors: {
-              ...theme.colors,
-              primary50: '#DCE4E7',
-            },
-          })}
-          aria-errormessage={errorText ? ariaErrorId : undefined}
-          classNamePrefix="select-box"
-          closeMenuOnScroll={closeMenuOnScroll}
+        <Select<Option, IsMulti, Group>
+          key={selectKey}
+          {...props}
           isMulti={isMulti}
           options={options}
-          aria-invalid={errorText ? true : undefined}
-          onChange={handleChange}
-          defaultValue={defaultValue}
-          inputId={id}
-          name={name}
-          isSearchable={isSearchable}
-          isDisabled={isDisabled}
+          value={selectedValue}
+          styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          menuPortalTarget={document.body}
+          classNamePrefix="select-box"
+          menuPosition={isFixed ? 'fixed' : 'absolute'}
           menuPlacement="auto"
-          closeMenuOnSelect={closeMenuOnSelect}
+          inputId={id}
+          aria-errormessage={errorText ? ariaErrorId : undefined}
+          aria-invalid={errorText ? true : undefined}
+          closeMenuOnScroll={closeMenuOnScroll}
           placeholder={placeHolder}
-          noOptionsMessage={() => language.noOptions}
-          components={components}
-          menuIsOpen={menuIsOpen}
-          isOptionDisabled={isOptionDisabled}
-          key={selectKey}
         />
       </div>
     </div>
