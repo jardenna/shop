@@ -2,17 +2,17 @@ import { Fragment } from 'react/jsx-runtime';
 import type { BaseImageUploadProps } from '../../../features/products/components/ImageUpload';
 import ImgListItem from './ImgListItem';
 
-export type PreviewImg = {
+export interface PreviewImg {
   file: File;
   name: string;
   size: string;
   url: string;
   reason?: string;
-};
+}
 
-type PreviewProps = BaseImageUploadProps & {
+interface PreviewProps extends BaseImageUploadProps {
   ariaLabel: string;
-};
+}
 
 const Preview = ({
   removePreviewImage,
