@@ -1,5 +1,4 @@
 import { AdminPath } from '../layout/nav/navConstants';
-import type { AdminPathValue, ShopPathValue } from '../layout/nav/navTypes';
 
 import type {
   AriaLabelData,
@@ -41,10 +40,6 @@ export const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
 
   return { visibleItems, additionalOptionsCount };
 };
-
-//  Generic function that generates an array of string numbers from 1 up to `count`.
-export const optionsList = (count: number) =>
-  [...Array(count).keys()].map((i) => (i + 1).toString());
 
 //  Generic function that returns an accessible label for a given `count`:
 //   - If a custom label exists in `ariaLabels`, it uses that.
@@ -92,11 +87,6 @@ export const getPathName = (pathname: string) => {
 
 export const toCamelCase = (value: string) =>
   value.replace(/[-_](\w)/g, (_, character: string) => character.toUpperCase());
-
-export const pathEquals = (
-  path: string | undefined,
-  enumVal: ShopPathValue | AdminPathValue,
-) => `/${path}` === `/${enumVal}`;
 
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
