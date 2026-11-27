@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { localStorageKeys } from '../../hooks/useLocalStorage';
-import { currencyCacheKey, oneDay } from '../../utils/utils';
+import { oneDay } from '../../utils/utils';
+import { currencyCacheKey } from './currencyConverterUtil';
 import { setRates } from './currencySlice';
 import { useGetExchangeRatesQuery } from './exchangeRatesApiSlice';
 

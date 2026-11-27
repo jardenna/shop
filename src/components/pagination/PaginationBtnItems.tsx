@@ -2,7 +2,7 @@ import type { Language } from '../../shared/types';
 import Button from '../Button';
 import Icon from '../icons/Icon';
 import type { PaginationItem } from './createPaginationItems';
-import { getPaginationAriaLabel } from './utils/utils';
+import { getPaginationAriaLabel } from './utils/paginationUtils';
 
 type PaginationBtnItemsProps = {
   language: Language;

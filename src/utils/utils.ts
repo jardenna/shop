@@ -2,7 +2,6 @@ import { AdminPath } from '../layout/nav/navConstants';
 import type { FiltersCountResult, Language } from '../shared/types';
 
 export const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
-export const currencyCacheKey = 'exchangeRates';
 
 export const discountCalculation = (price: number, discount?: number) => {
   const discountPrice = discount ? (price * discount) / 100 : 0;
