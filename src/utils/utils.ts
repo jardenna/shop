@@ -71,27 +71,6 @@ export const toCamelCase = (value: string) =>
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
 
-// Creates an array of pagination button numbers
-export function calculateBtnsRange(
-  currentPage: number,
-  totalBtns: number,
-  maxPaginationBtns: number,
-) {
-  // Determine which "button group" the current page belongs to
-  const startBtn =
-    Math.floor((currentPage - 1) / maxPaginationBtns) * maxPaginationBtns + 1;
-
-  // Find the last button number in the current visible group
-  const endBtn = Math.min(startBtn + maxPaginationBtns - 1, totalBtns);
-
-  const range = Array.from(
-    { length: endBtn - startBtn + 1 },
-    (_, i) => startBtn + i,
-  );
-
-  return range;
-}
-
 export const maxDiscount = 90;
 export const minDiscount = 0;
 export const minInStock = 5;
