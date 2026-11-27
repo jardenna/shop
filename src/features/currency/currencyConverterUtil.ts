@@ -23,6 +23,7 @@ export const currencyToText: Record<CurrencyCode, CurrencyText> = {
 };
 
 export const currencies = Object.keys(currencyToLocaleMap).join(',');
+export const currencyCacheKey = 'exchangeRates';
 
 export const getFormattedPrice = (
   price: number,

@@ -1,11 +1,11 @@
 import { useSearchParams } from 'react-router';
 import type { ChangeInputType } from '../shared/types';
-import { pageParamKey, productsPerPageParamKey } from '../utils/utils';
 const isArray = (value: unknown): value is string[] => Array.isArray(value);
 
 type SearchParamValue = string | string[];
 export type PaginationCount = 8 | 16 | 32;
-
+const productsPerPageParamKey = 'productsPerPage';
+const pageParamKey = 'page';
 interface SearchParamsStateOptions {
   defaultPaginationCount?: PaginationCount;
   pagination?: boolean;

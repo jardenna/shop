@@ -34,10 +34,8 @@ const ImageUpload = ({
     .map((ext) => ext.toUpperCase())
     .join(', ');
 
-  // Tilladte filer  JPG, JPEG, PNG, WEBP, AVIF | Maksimal filstørrelse 1MB
   const inputInfoText = `${language.filesSupported}  ${allowedImages} | ${language.maximumFileSize} 1MB`;
 
-  // Maksimalt 5 filer kan uploades fjern venligst en eller flere
   const errorText = `${language.maximum} ${maxFiles} ${language.filesCanBeUploaded} ${language.pleaseRemoveOneOrMore}`;
   const deleteAriaText = language.deleteFoto;
   return (

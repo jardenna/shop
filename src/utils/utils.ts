@@ -1,16 +1,7 @@
 import { AdminPath } from '../layout/nav/navConstants';
-import type { AdminPathValue, ShopPathValue } from '../layout/nav/navTypes';
-
-import type {
-  AriaLabelData,
-  FiltersCountResult,
-  Language,
-} from '../shared/types';
+import type { FiltersCountResult, Language } from '../shared/types';
 
 export const oneDay = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
-export const currencyCacheKey = 'exchangeRates';
-export const pageParamKey = 'page';
-export const productsPerPageParamKey = 'productsPerPage';
 
 export const discountCalculation = (price: number, discount?: number) => {
   const discountPrice = discount ? (price * discount) / 100 : 0;
@@ -41,24 +32,6 @@ export const sliceAndCountHidden = <T>(list: T[], visibleCount?: number) => {
 
   return { visibleItems, additionalOptionsCount };
 };
-
-//  Generic function that generates an array of string numbers from 1 up to `count`.
-export const optionsList = (count: number) =>
-  [...Array(count).keys()].map((i) => (i + 1).toString());
-
-//  Generic function that returns an accessible label for a given `count`:
-//   - If a custom label exists in `ariaLabels`, it uses that.
-//   - Otherwise, it falls back to a default format using the `unit`.
-export function getAriaLabel(
-  count: number,
-  ariaLabelData: AriaLabelData,
-): string {
-  const { ariaLabels, unit } = ariaLabelData;
-
-  // Ensure the value is a string before returning, fallback to default
-  const label = ariaLabels[count - 1];
-  return typeof label === 'string' ? label : `${count} ${unit}`;
-}
 
 // Filters count
 export const getFilterSummary = (filters: object): FiltersCountResult => {
@@ -93,34 +66,8 @@ export const getPathName = (pathname: string) => {
 export const toCamelCase = (value: string) =>
   value.replace(/[-_](\w)/g, (_, character: string) => character.toUpperCase());
 
-export const pathEquals = (
-  path: string | undefined,
-  enumVal: ShopPathValue | AdminPathValue,
-) => `/${path}` === `/${enumVal}`;
-
 export const isAdminPath = (pathname: string) =>
   pathname.startsWith(`/${AdminPath.Admin}`);
-
-// Creates an array of pagination button numbers
-export function calculateBtnsRange(
-  currentPage: number,
-  totalBtns: number,
-  maxPaginationBtns: number,
-) {
-  // Determine which "button group" the current page belongs to
-  const startBtn =
-    Math.floor((currentPage - 1) / maxPaginationBtns) * maxPaginationBtns + 1;
-
-  // Find the last button number in the current visible group
-  const endBtn = Math.min(startBtn + maxPaginationBtns - 1, totalBtns);
-
-  const range = Array.from(
-    { length: endBtn - startBtn + 1 },
-    (_, i) => startBtn + i,
-  );
-
-  return range;
-}
 
 export const maxDiscount = 90;
 export const minDiscount = 0;
