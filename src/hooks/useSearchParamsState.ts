@@ -6,20 +6,23 @@ const isArray = (value: unknown): value is string[] => Array.isArray(value);
 type SearchParamValue = string | string[];
 
 interface SearchParamsStateOptions {
-  defaultItemsPerPage?: number;
+  defaultPaginationCount?: number;
   pagination?: boolean;
 }
 
 export const useSearchParamsState = <T extends object>(
   defaults: T,
-  { defaultItemsPerPage = 8, pagination = true }: SearchParamsStateOptions = {},
+  {
+    defaultPaginationCount = 8,
+    pagination = true,
+  }: SearchParamsStateOptions = {},
 ) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = Number(searchParams.get(pageParamKey)) || 1;
 
   const itemsPerPage =
-    Number(searchParams.get(productsPerPageParamKey)) || defaultItemsPerPage;
+    Number(searchParams.get(productsPerPageParamKey)) || defaultPaginationCount;
 
   const searchKey = searchParams.toString();
 
