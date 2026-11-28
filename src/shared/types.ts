@@ -32,6 +32,10 @@ export interface OptionType<T = string> {
   value: T;
 }
 
+export interface OptionWithId<T = string> extends OptionType<T> {
+  id: string;
+}
+
 export interface OptionGroupHeading {
   id: string;
   title: string;

@@ -2,13 +2,13 @@ import { useLanguage } from '../../features/language/useLanguage';
 import type {
   IconNameValue,
   InputChangeHandler,
-  OptionType,
+  OptionWithId,
 } from '../../shared/types';
 import { translateKey } from '../../utils/utils';
 import './_segmented-element.scss';
 import SegmentedInput from './SegmentedInput';
 
-interface RadioButtonListProps extends OptionType {
+interface RadioButtonListProps extends OptionWithId {
   iconName?: IconNameValue;
 }
 
