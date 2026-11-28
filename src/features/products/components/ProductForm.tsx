@@ -100,7 +100,7 @@ const ProductForm = ({
   // Options
   const parentCategoryOptions = parentCategories.map(
     ({ parentCategoryName, categoryId, categoryStatus, translationKey }) => ({
-      label: `${language[parentCategoryName.toLowerCase()]} / ${translateKey(translationKey, language)}`,
+      label: `${translateKey(parentCategoryName, language)} / ${translateKey(translationKey, language)}`,
       value: categoryId,
       status: categoryStatus,
     }),
