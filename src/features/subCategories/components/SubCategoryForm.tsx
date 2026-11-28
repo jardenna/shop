@@ -54,7 +54,6 @@ const SubCategoryForm = ({
       status: categoryStatus,
     }),
   );
-  console.log(parentCategories);
 
   const initialState = {
     subCategoryName: selectedCategory?.subCategoryName ?? '',
