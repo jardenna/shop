@@ -1,8 +1,7 @@
-import { format } from 'date-fns';
 import { useCurrency } from '../../../features/currency/useCurrency';
 import { useLanguage } from '../../../features/language/useLanguage';
 import type { InputChangeHandler, InputType } from '../../../shared/types';
-import { dateFormat } from '../../../utils/dates';
+import { formattedCurrentDate } from '../../../utils/dates';
 import Input from '../../formElements/Input';
 import RadioButtonList from '../../formElements/radioList/RadioButtonList';
 import Icon from '../../icons/Icon';
@@ -68,11 +67,7 @@ const TableFilterPopup = <T,>({
             <Input
               type={filterType}
               name={name}
-              max={
-                filterType === 'date'
-                  ? format(new Date(), dateFormat.date)
-                  : undefined
-              }
+              max={filterType === 'date' ? formattedCurrentDate : undefined}
               id={id}
               value={value}
               onChange={onFilter}

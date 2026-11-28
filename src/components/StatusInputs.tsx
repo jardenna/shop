@@ -2,7 +2,7 @@ import { isBefore } from 'date-fns';
 import type { Status } from '../app/api/apiTypes/adminApiTypes';
 import { useLanguage } from '../features/language/useLanguage';
 import type { InputChangeHandler, RefElementType } from '../shared/types';
-import { newDate, today } from '../utils/dates';
+import { newDate, startOfToday } from '../utils/dates';
 import DatePicker from './datePicker/DatePicker';
 import TimeInput from './formElements/TimeInput';
 import Selectbox, { type SelectChangeHandler } from './selectbox/Selectbox';
@@ -81,7 +81,7 @@ const StatusInputs = ({
             value={timeValue}
             onChange={onTimeChange}
             id="time"
-            labelText={language.publishTime}
+            labelText={language.time}
             name="time"
             min={min}
             max={max}
@@ -90,8 +90,8 @@ const StatusInputs = ({
           <DatePicker
             onSelectDate={onSelectDate}
             selectedDate={selectedDate}
-            labelText={language.publishDate}
-            disabled={(date: Date) => isBefore(date, today)}
+            labelText={language.releaseDate}
+            disabled={(date: Date) => isBefore(date, startOfToday)}
             startMonth={newDate}
             captionLayout="label"
             required

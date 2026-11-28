@@ -10,8 +10,8 @@ type TableProps<T> = {
 
 export const useSortParamsState = <T>({
   columns,
-  initialSortField,
-  initialSortOrder = 'asc',
+  initialSortField = 'createdAt' as keyof T,
+  initialSortOrder = 'desc',
 }: TableProps<T>) => {
   const [searchParams, setSearchParams] = useSearchParams();
 

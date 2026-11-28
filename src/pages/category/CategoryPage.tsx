@@ -21,8 +21,6 @@ const CategoryPage = () => {
   const { isAdmin } = useAuth();
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
-    initialSortField: 'createdAt',
-    initialSortOrder: 'desc',
   });
 
   const { data: hasScheduledData } = useGetHasCategoriesScheduledQuery(

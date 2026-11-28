@@ -1,4 +1,4 @@
-import { startOfDay } from 'date-fns';
+import { format, startOfDay } from 'date-fns';
 import type { SelectedLanguage } from '../features/language/languageSlice';
 import type { Locales } from './locales';
 
@@ -12,6 +12,12 @@ export const dateFormat = {
   date: 'yyyy-MM-dd',
 };
 
-export const today = startOfDay(new Date());
+export const startOfToday = startOfDay(new Date());
 
 export const newDate = new Date();
+
+export const formattedCurrentDate = format(newDate, dateFormat.date);
+export const formattedCurrentDateTime = format(
+  newDate,
+  dateFormat.dateTimeLocal,
+);

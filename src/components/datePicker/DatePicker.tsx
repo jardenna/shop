@@ -9,7 +9,7 @@ import './_date-picker.scss';
 type CaptionLayout =
   'label' | 'dropdown' | 'dropdown-months' | 'dropdown-years';
 
-type DatePickerProps = {
+interface DatePickerProps {
   labelText: string;
   onSelectDate: OnSelectHandler<Date>;
   selectedDate: Date;
@@ -19,7 +19,7 @@ type DatePickerProps = {
   required?: boolean;
   startMonth?: Date;
   disabled?: (date: Date) => boolean;
-};
+}
 
 const DatePicker = ({
   onSelectDate,
