@@ -4,17 +4,14 @@ export const kpiOptions = [
   {
     label: 'last7Days',
     value: '7',
-    id: '7',
   },
   {
     label: 'last30Days',
     value: '30',
-    id: '30',
   },
   {
     label: 'previousYear',
     value: '365',
-    id: '365',
   },
 ];
 

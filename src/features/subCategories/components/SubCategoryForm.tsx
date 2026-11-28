@@ -51,7 +51,6 @@ const SubCategoryForm = ({
     ({ categoryName, id, categoryStatus }) => ({
       label: translateKey(categoryName, language) || categoryName,
       value: id,
-      id,
       status: categoryStatus,
     }),
   );

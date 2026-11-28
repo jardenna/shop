@@ -1,5 +1,5 @@
 import type { SingleValue } from 'react-select';
-import type { Language, OptionType } from '../../../shared/types';
+import type { Language, OptionWithId } from '../../../shared/types';
 import { paginationText } from '../utils/paginationText';
 import { useScrollOnPagination } from './useScrollOnPagination';
 
@@ -38,7 +38,7 @@ export const usePagination = ({
     setShouldScroll(true);
   };
 
-  const handleSelectCount = (selected: SingleValue<OptionType>) => {
+  const handleSelectCount = (selected: SingleValue<OptionWithId>) => {
     if (!selected) {
       return;
     }

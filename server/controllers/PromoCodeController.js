@@ -115,6 +115,29 @@ const getPromoCodeById = asyncHandler(async (req, res) => {
   res.status(200).json(promoCode);
 });
 
+// @desc    Get  years for all promo codes
+// @route   /api/admin/promo-codes/years
+// @method  GET
+// @access  Private for admin and employees
+const getPromoCodeYears = asyncHandler(async (req, res) => {
+  const years = await PromoCode.aggregate([
+    {
+      $group: {
+        _id: {
+          $year: '$startsAt',
+        },
+      },
+    },
+    {
+      $sort: {
+        _id: -1,
+      },
+    },
+  ]);
+
+  res.status(200).json(years.map(({ _id }) => String(_id)));
+});
+
 // @desc    Update Promo code
 // @route   /api/admin/promo-codes/:id
 // @method  PATCH
@@ -190,5 +213,6 @@ export {
   getCurrentPromoCode,
   getPromoCode,
   getPromoCodeById,
+  getPromoCodeYears,
   updatePromoCode,
 };

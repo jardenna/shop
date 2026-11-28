@@ -28,9 +28,12 @@ export type IconNameValue = (typeof IconName)[keyof typeof IconName];
 export type OmitChecked<T, K extends keyof T> = Omit<T, K>;
 
 export interface OptionType<T = string> {
-  id: string;
   label: string;
   value: T;
+}
+
+export interface OptionWithId<T = string> extends OptionType<T> {
+  id: string;
 }
 
 export interface OptionGroupHeading {

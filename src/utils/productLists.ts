@@ -1,17 +1,17 @@
 import { roleValues } from '../app/api/apiConstants';
 import type { Size } from '../app/api/apiTypes/sharedApiTypes';
-import type { OptionType } from '../shared/types';
+import type { OptionWithId } from '../shared/types';
 import { oneSize } from './sizeUtils';
 
 const sizeList: Size[] = ['S', 'M', 'L', 'XL', oneSize];
 
-const roleList: OptionType[] = roleValues.map((role) => ({
+const roleList: OptionWithId[] = roleValues.map((role) => ({
   value: role,
   label: role.toLowerCase(),
   id: role,
 }));
 
-const createRatingList = (count: number): OptionType[] =>
+const createRatingList = (count: number): OptionWithId[] =>
   [...Array(count).keys()].map((i) => {
     const value = (i + 1).toString();
     return {
