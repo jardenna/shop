@@ -10,10 +10,17 @@ import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import SkeletonPromoCodeTable from '../../../components/skeleton/SkeletonPromoCodeTable';
 import { AdminPath } from '../../../layout/nav/navConstants';
-import type { OptionType } from '../../../shared/types';
 import { useLanguage } from '../../language/useLanguage';
-import { useGetPromoCodesQuery } from '../promoCodeApiSlice';
+import {
+  useGetPromoCodesQuery,
+  useGetpromoCodeYearsQuery,
+} from '../promoCodeApiSlice';
 import PromoCodeDate from './PromoCodeDate';
+
+interface YearOption {
+  label: string;
+  value: string;
+}
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
@@ -27,26 +34,19 @@ const PromoCodeTable = () => {
 
   const { data: promoCodes, isLoading, refetch } = useGetPromoCodesQuery();
 
+  const { data: promoCodeYears } = useGetpromoCodeYearsQuery();
+
   const yearOptions = [
-    { label: language.allYears, value: '', id: 'all-years' },
-    ...[
-      ...new Set(
-        promoCodes?.map((promoCode) =>
-          String(new Date(promoCode.startsAt).getFullYear()),
-        ) ?? [],
-      ),
-    ]
-      .sort((firstYear, secondYear) => Number(secondYear) - Number(firstYear))
-      .map((year) => ({
-        label: year,
-        value: year,
-        id: year,
-      })),
+    { label: language.allYears, value: '' },
+    ...(promoCodeYears ?? []).map((year) => ({
+      label: year,
+      value: year,
+    })),
   ];
 
   const [selectedYear, setSelectedYear] = useState('');
 
-  const handleSelectYear = (option: OptionType | null) => {
+  const handleSelectYear = (option: YearOption | null) => {
     setSelectedYear(option?.value ?? '');
   };
 
