@@ -2,6 +2,7 @@ import { paymentMethodsValues } from '../../app/api/apiConstants';
 import type { ValidatePayment } from '../../app/api/apiTypes/paymentApiTypes';
 import type { ValidationErrors } from '../../hooks/useFormValidation';
 import { ValidationMessage } from '../../shared/constants';
+import { newDate } from '../dates';
 import {
   cardNumberRegex,
   emailRegex,
@@ -40,9 +41,8 @@ export function validatePayment(values: ValidatePayment) {
     } else {
       const [month, year] = expiryDate.split('/').map(Number);
 
-      const today = new Date();
-      const currentMonth = today.getMonth() + 1;
-      const currentYear = today.getFullYear() % 100;
+      const currentMonth = newDate.getMonth() + 1;
+      const currentYear = newDate.getFullYear() % 100;
 
       if (
         year < currentYear ||

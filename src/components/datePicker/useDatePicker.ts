@@ -38,9 +38,9 @@ export const useDatePicker = ({ initialTime }: { initialTime?: Date } = {}) => {
     }
 
     const { hours, minutes } = parseTime(timeValue);
-    const newDate = new Date(date);
-    newDate.setHours(hours, minutes);
-    setSelectedDate(newDate);
+    const updatedDate = new Date(date);
+    updatedDate.setHours(hours, minutes);
+    setSelectedDate(updatedDate);
   };
 
   return {

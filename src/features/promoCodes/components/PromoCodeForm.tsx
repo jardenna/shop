@@ -8,7 +8,7 @@ import ToggleSwitch from '../../../components/formElements/toggleSwitch/ToggleSw
 import { useToast } from '../../../components/toast/hooks/useToast';
 import { useFormValidation } from '../../../hooks/useFormValidation';
 import { AdminPath } from '../../../layout/nav/navConstants';
-import { dateFormat, newDate } from '../../../utils/dates';
+import { dateFormat, formattedCurrentDateTime } from '../../../utils/dates';
 import { validatePromoCode } from '../../../utils/validation/validatePromoCode';
 import { useLanguage } from '../../language/useLanguage';
 import {
@@ -26,8 +26,6 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
   const { language } = useLanguage();
   const { onAddToast } = useToast();
 
-  const minDateTime = format(newDate, dateFormat.dateTimeLocal);
-
   const handleGoback = () => {
     navigate(-1);
   };
@@ -39,7 +37,7 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
     percent: promoCode?.percent ?? 0,
     startsAt: promoCode?.startsAt
       ? format(new Date(promoCode.startsAt), dateFormat.dateTimeLocal)
-      : minDateTime,
+      : formattedCurrentDateTime,
     expiresAt: promoCode?.expiresAt
       ? format(new Date(promoCode.expiresAt), dateFormat.dateTimeLocal)
       : '',
@@ -137,7 +135,7 @@ const PromoCodeForm = ({ promoCode, id }: PromoCodeFormProps) => {
             type="datetime-local"
             name="startsAt"
             id="startsAt"
-            min={minDateTime}
+            min={formattedCurrentDateTime}
             value={values.startsAt}
             onChange={onChange}
             labelText={language.startsAt}
