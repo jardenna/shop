@@ -31,10 +31,10 @@ const SegmentedElement = ({
 
   return (
     <ul className={`segmented-element-list ${className}`}>
-      {radioButtonList.map(({ id, value, iconName, label }) => (
+      {radioButtonList.map(({ value, iconName, label }) => (
         <li key={value} className="segmented-element-item">
           <SegmentedInput
-            id={id}
+            id={value}
             name={name}
             value={value}
             checked={checked === value}

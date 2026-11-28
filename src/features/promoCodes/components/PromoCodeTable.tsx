@@ -10,17 +10,13 @@ import Selectbox from '../../../components/selectbox/Selectbox';
 import SimpleTable from '../../../components/simpleTable/SimpleTable';
 import SkeletonPromoCodeTable from '../../../components/skeleton/SkeletonPromoCodeTable';
 import { AdminPath } from '../../../layout/nav/navConstants';
+import type { OptionType } from '../../../shared/types';
 import { useLanguage } from '../../language/useLanguage';
 import {
   useGetPromoCodesQuery,
   useGetpromoCodeYearsQuery,
 } from '../promoCodeApiSlice';
 import PromoCodeDate from './PromoCodeDate';
-
-interface YearOption {
-  label: string;
-  value: string;
-}
 
 const PromoCodeTable = () => {
   const { language } = useLanguage();
@@ -46,7 +42,7 @@ const PromoCodeTable = () => {
 
   const [selectedYear, setSelectedYear] = useState('');
 
-  const handleSelectYear = (option: YearOption | null) => {
+  const handleSelectYear = (option: OptionType | null) => {
     setSelectedYear(option?.value ?? '');
   };
 
