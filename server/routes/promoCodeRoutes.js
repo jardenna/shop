@@ -4,6 +4,7 @@ import {
   getCurrentPromoCode,
   getPromoCode,
   getPromoCodeById,
+  getPromoCodeYears,
   updatePromoCode,
 } from '../controllers/PromoCodeController.js';
 import {
@@ -22,6 +23,8 @@ router
 router
   .route('/current')
   .get(languageMiddleware, authenticate, getCurrentPromoCode);
+
+router.route('/years').get(authenticate, authorizeEmployee, getPromoCodeYears);
 
 router
   .route('/:id')
