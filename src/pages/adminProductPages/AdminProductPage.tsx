@@ -33,8 +33,6 @@ const AdminProductPage = () => {
 
   const { sortOrder, onSort, sortField } = useSortParamsState({
     columns: tableHeaders,
-    initialSortField: 'createdAt',
-    initialSortOrder: 'desc',
   });
 
   const initialFilters = createInitialFilters(tableHeaders);
